@@ -1,0 +1,25 @@
+node_modules/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Next.js
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+
+# Local scraper output
+data/jpdb/
+.vercel
+tsconfig.tsbuildinfo
+data/kanjidic/

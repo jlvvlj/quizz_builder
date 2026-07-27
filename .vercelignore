@@ -1,0 +1,21 @@
+.git
+.next
+node_modules
+database/node_modules
+data
+.vercel
+
+# Local/deck assets are too large for Vercel serverless upload.
+database/Japanese_Core_10k
+ankidecks
+audio
+
+# Local scripts and generated artifacts not needed by the web app runtime.
+scripts
+*.sql
+*.txt
+*.html
+kanji_database.json
+kanjis.json
+processed_readings.json
+readings_output.txt
