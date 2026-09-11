@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useId, useRef, type FC, type ReactNode } from "react";
+import { useState, useEffect, useSyncExternalStore, useId, useRef, type FC, type ReactNode } from "react";
 import { motion, LayoutGroup } from "motion/react";
 
 /* ---------- Types ---------- */
@@ -45,16 +45,13 @@ export const ContinuousTabs: FC<ContinuousTabsProps> = ({
     const [internalActive, setInternalActive] = useState<string>(
         defaultActiveId ?? tabs[0]?.id ?? "",
     );
-    const [isMounted, setIsMounted] = useState<boolean>(false);
+    const isMounted = useSyncExternalStore(() => () => {}, () => true, () => false);
     const activeBtnRef = useRef<HTMLButtonElement>(null);
     // Per-instance layout id so sibling ContinuousTabs don't bridge their
     // active pill across each other.
     const instanceId = useId();
     const pillLayoutId = `active-pill-${instanceId}`;
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
 
     // Controlled mode: prefer `activeId` when provided
     const active = activeId !== undefined ? activeId : internalActive;

@@ -1,62 +1,21 @@
-import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { useState, type ReactNode } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Sidebar from './sidebar';
-import SettingsModal from '@/pages/settings_modal';
-import { SettingsContext } from './SettingsContext';
-
-interface AppLayoutProps {
-    children: ReactNode;
-}
-
-export default function AppLayout({ children }: AppLayoutProps) {
-    const router = useRouter();
-    const [showSettings, setShowSettings] = useState(false);
-    const listenersRef = useRef(new Set<() => void>());
-
-    const openSettings = useCallback(() => setShowSettings(true), []);
-    const closeSettings = useCallback(() => setShowSettings(false), []);
-
-    const onSettingsSaved = useCallback((handler: () => void) => {
-        listenersRef.current.add(handler);
-        return () => {
-            listenersRef.current.delete(handler);
-        };
-    }, []);
-
-    const handleSettingsChange = useCallback(() => {
-        listenersRef.current.forEach(fn => {
-            try {
-                fn();
-            } catch (err) {
-                console.error('settings listener failed:', err);
-            }
-        });
-    }, []);
-
-    const handleLogout = async () => {
-        try {
-            await fetch('/api/auth/logout', { method: 'POST' });
-            router.push('/login');
-        } catch (err) {
-            console.error('Logout error:', err);
-        }
-    };
-
-    const ctxValue = useMemo(
-        () => ({ isSettingsOpen: showSettings, openSettings, closeSettings, onSettingsSaved }),
-        [showSettings, openSettings, closeSettings, onSettingsSaved],
-    );
-
-    return (
-        <SettingsContext.Provider value={ctxValue}>
-            <Sidebar onOpenSettings={openSettings} onLogout={handleLogout} />
-            <div className="md:pl-16 pb-[calc(3.75rem+env(safe-area-inset-bottom))] md:pb-0">{children}</div>
-            {showSettings && (
-                <SettingsModal
-                    onClose={closeSettings}
-                    onSettingsChange={handleSettingsChange}
-                />
-            )}
-        </SettingsContext.Provider>
-    );
+import { BookOpen, LogOut, Settings, Layers } from 'lucide-react';
+import { appName, request } from '@/lib/client';
+export default function AppLayout({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const [error, setError] = useState('');
+  async function logout() {
+    try { await request('/api/auth/logout', { method: 'POST' }); await router.push('/login'); }
+    catch (e) { setError((e as Error).message); }
+  }
+  return <div className="app-layout">
+    <aside className="sidebar">
+      <Link href="/" className="brand"><span className="brand-mark"><Layers size={21} /></span>{appName}</Link>
+      <div className="sidebar-caption">YOUR LEARNING SPACE</div>
+      <nav aria-label="Main navigation"><Link href="/" className={router.pathname === '/' || router.pathname.startsWith('/quiz/') ? 'active' : ''}><BookOpen size={18} /> Quiz library</Link><Link href="/settings" className={router.pathname === '/settings' ? 'active' : ''}><Settings size={18} /> Preferences</Link></nav>
+      <div className="sidebar-bottom"><p>A little practice.<br />A little more understanding.</p><button className="quiet" onClick={logout}><LogOut size={17} /> Sign out</button>{error && <p role="alert">{error}</p>}</div>
+    </aside><main className="main">{children}</main>
+  </div>;
 }
