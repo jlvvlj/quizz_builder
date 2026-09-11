@@ -23,5 +23,3 @@ data/jpdb/
 .vercel
 tsconfig.tsbuildinfo
 data/kanjidic/
-
-supabase/.temp/

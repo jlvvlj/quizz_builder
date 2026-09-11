@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    swcMinify: true,
+    experimental: {
+        // kuromoji loads its dictionary from node_modules/kuromoji/dict at
+        // runtime via a dynamic fs path, so Next's tracer can't see it.
+        // Force it into the serverless bundle for the custom-content route
+        // so /api/custom/create works when deployed.
+        outputFileTracingIncludes: {
+            '/api/custom/create': ['./node_modules/kuromoji/dict/**'],
+        },
+    },
     async headers() {
         return [
             {
