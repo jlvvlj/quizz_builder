@@ -53,7 +53,7 @@ function SignupPage() {
     return (
         <AuthShell
             title="Create your account"
-            subtitle="Start learning Japanese in minutes."
+            subtitle="Start practising in minutes."
             footer={
                 <>
                     Already have an account?{' '}
@@ -84,9 +84,9 @@ function SignupPage() {
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
                     autoComplete="new-password"
-                    minLength={6}
+                    minLength={8}
                     required
-                    hint="At least 6 characters"
+                    hint="At least 8 characters"
                 />
 
                 <PasswordField

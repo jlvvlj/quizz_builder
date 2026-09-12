@@ -1,7 +1,8 @@
 # French 500 — Japanese prompts, French answers
 
-This is a data-only addition to the original application. No files under `src/`,
-styles, dependencies, or app configuration differ from the original snapshot.
+The original quiz interface and learning flow are retained. Navigation and deck
+counts now use the available content, and accounts/settings/progress are stored
+in private Supabase tables behind verified server sessions.
 
 The 500 pairs are loaded in the separate `quizz` Supabase project
 (`fruozdtzduszjrbutzwa`), in the original app's `words10k` table:
@@ -11,9 +12,9 @@ The 500 pairs are loaded in the separate `quizz` Supabase project
 - `japanese_reading`: empty, so French answers are not shown as reading hints
 - `section_1`, `step_1` through `step_5`: 100 words per step
 
-For French typing, use the existing Latin-letter answer mode, currently labelled
-English, and the existing forward direction. No labels or interactions were
-changed. French accents are retained. Audio fields are empty.
+Use Typing or Multiple choice in the existing session preview. The default
+direction is Japanese question to French answer. French accents are retained;
+audio fields are empty and audio is disabled by default.
 
 ## Source and selection
 
@@ -34,15 +35,20 @@ ca, ii, hey, ok, est-ce, avez-vous, est-il, as-tu, a-t-il, vas-y.
 The source rank and count are preserved in questions.json for reproducibility.
 The final selected word is travailler. Each answer has its own Japanese cue.
 
-## Verification and remaining connection blocker
+## Running and verification
 
-Database verified: 500 rows, 500 unique French answers, five steps.
-The previous rewrite is reverted. Its separate builder_* tables are retained but
-are not used by this original application.
+Set NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY and the server-only
+SUPABASE_SERVICE_ROLE_KEY in .env.local. Run npm ci, then npm run dev.
+The connect_existing_quiz migration provides the original account/settings and
+progress contracts, opaque expiring sessions, and deck metadata. Its private
+tables intentionally deny anon/authenticated access; only server routes access
+them after session verification. Vocabulary remains publicly readable.
 
-The restored project does not contain the original users, user_progress, or
-user_daily_activity tables. The original code queries users (including password
-hashes) through an anon client. No anonymous account access has been enabled.
-Consequently original login/progress cannot yet be verified end-to-end against
-this restored project. Connecting these safely requires separate, explicitly
-approved backend work; the UI and quiz engine must remain unchanged.
+There are 500 unique French answers in five steps of 100. Catalog counts come
+from rows, including partial steps. Session size remains configurable. The old
+builder_* tables are retained but unused.
+
+Run node tests/existing-app.mjs against a running local app (default port 3016,
+override TEST_BASE_URL). This creates and cleans up disposable accounts and checks
+login, isolation, catalog, settings, progress, quiz modes, activity and logout.
+TypeScript, lint and the production build also pass with inherited lint warnings.

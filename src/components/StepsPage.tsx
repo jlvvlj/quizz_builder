@@ -16,13 +16,16 @@ interface StepsPageProps {
     content?: 'words' | 'kanji_freq' | 'words_tubelex'
     // The last kanji section is partial, so it may have fewer than 10 steps.
     numSteps?: number
+    actualSteps?: {id:number;items:number}[]
+    deckTitle?: string
+    deckDescription?: string
 }
 
 interface StepProgress {
     [key: string]: number;
 }
 
-export default function StepsPage({ onCourseSelect, onSettingsClick, currentSection, content = 'words', numSteps = 10 }: StepsPageProps) {
+export default function StepsPage({ onCourseSelect, onSettingsClick, currentSection, content = 'words', numSteps = 10, actualSteps, deckTitle, deckDescription }: StepsPageProps) {
     const [stepProgress, setStepProgress] = useState<StepProgress>({});
     // Show the progress for the input mode the user is currently in: typing and
     // multiple-choice each track their own score. Reactive so changing Quiz Mode
@@ -33,26 +36,26 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
 
     // Extract the section number for display
     const sectionNumber = currentSection.replace('section_', '');
-    const itemNoun = isKanji ? 'kanji' : 'words';
+    const itemNoun = deckTitle ? 'items' : isKanji ? 'kanji' : 'words';
     const rankStart = (parseInt(sectionNumber) - 1) * 1000 + 1;
     const rankEnd = parseInt(sectionNumber) * 1000;
-    const sectionTitle = isKanji
+    const sectionTitle = deckTitle || (isKanji
         ? `Kanji by Frequency ${rankStart}–${rankEnd}`
         : isTubelex
         ? `Words by Frequency ${rankStart}–${rankEnd}`
-        : `Japanese Core ${sectionNumber}000`;
+        : `Japanese Core ${sectionNumber}000`);
 
     // Generate steps for this section. Memoized so its identity is stable across
     // renders (otherwise the progress effect below would refetch every render).
     const steps = useMemo(() => (
-        Array.from({ length: numSteps }, (_, i) => ({
+        actualSteps ? actualSteps.map(s => ({...s,sentences:0,users:'',image:''})) : Array.from({ length: numSteps }, (_, i) => ({
             id: i + 1,
             items: 100,
             sentences: 100,
             users: (3000 + (parseInt(sectionNumber) * 100) + (i * 50)).toLocaleString(),
             image: `https://placehold.co/80x80/e2e8f0/1e293b?text=Step+${i + 1}`,
         }))
-    ), [sectionNumber, numSteps]);
+    ), [sectionNumber, numSteps, actualSteps]);
 
     // Calculate progress for each step.
     // useQuizType() starts at its 'multiple_choice' default and only corrects to
@@ -106,10 +109,10 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
             section: currentSection,
             step: step,
             title: 'Study Session',
-            subtitle: isKanji ? 'Kanji in this session' : 'Words in this session',
-            description: isKanji
+            subtitle: deckTitle || (isKanji ? 'Kanji in this session' : 'Items in this session'),
+            description: deckDescription || (isKanji
                 ? 'These are the kanji you\'ll practice in this session.'
-                : 'These are the words you\'ll practice in this session.'
+                : 'These are the items you\'ll practice in this session.')
         });
         if (isKanji) params.set('content', 'kanji_freq');
         else if (isTubelex) params.set('content', 'words_tubelex');
@@ -135,10 +138,10 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
                                 <span className="font-medium text-white">{sectionTitle}</span>
                             </div>
                             <div className="mb-2 text-[#A1A1A1] flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
-                                <span><span>Level: </span><span className="font-medium text-white">Intermediate</span></span>
-                                <span><span>Items: </span><span className="font-medium text-white">{numSteps * 100}</span></span>
+                                <span><span>Level: </span><span className="font-medium text-white">Practice</span></span>
+                                <span><span>Items: </span><span className="font-medium text-white">{steps.reduce((n,s)=>n+s.items,0)}</span></span>
                             </div>
-                            {isKanji ? (
+                            {deckDescription ? <p className="text-[#A1A1A1] mb-2">{deckDescription}</p> : isKanji ? (
                                 <p className="text-[#A1A1A1] mb-2">
                                     Kanji reading questions ranked {rankStart}–{rankEnd} by frequency of use in Japanese.
                                 </p>
@@ -172,7 +175,7 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
                                         <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">Step {step.id}</h3>
                                         <div className="space-y-1 sm:space-y-2">
                                             <p className="text-[#A1A1A1] text-sm sm:text-base">{step.items} {itemNoun}</p>
-                                            {!isKanji && (
+                                            {!deckTitle && !isKanji && (
                                                 <p className="text-[#A1A1A1] text-sm sm:text-base">{step.sentences} example sentences</p>
                                             )}
                                         </div>

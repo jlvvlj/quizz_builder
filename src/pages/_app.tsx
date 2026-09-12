@@ -19,10 +19,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     return (
         <>
             <Head>
-                <title>Jalingo — Learn Japanese</title>
+                <title>Quizz — Learn anything</title>
                 <meta
                     name="description"
-                    content="Learn Japanese with kanji, vocabulary, and reading practice tuned to how you study."
+                    content="Build knowledge with questions, answers, and review tuned to how you study."
                 />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

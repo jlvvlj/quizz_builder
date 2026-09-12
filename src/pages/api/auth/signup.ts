@@ -1,10 +1,11 @@
+import { startSession } from '@/server/auth';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -16,12 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { email, password } = req.body;
 
         // Validate input
-        if (!email || !password) {
+        if (typeof email !== 'string' || typeof password !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !password || Buffer.byteLength(password, 'utf8') > 72) {
             return res.status(400).json({ error: 'Email and password are required' });
         }
 
-        if (password.length < 6) {
-            return res.status(400).json({ error: 'Password must be at least 6 characters' });
+        if (password.length < 8) {
+            return res.status(400).json({ error: 'Password must be at least 8 characters' });
         }
 
         // Check if email already exists
@@ -49,9 +50,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 email: email.toLowerCase(),
                 password_hash: passwordHash,
                 auth_provider: 'email',
-                session_size: 20,
+                session_size: 7,
                 auto_advance: true,
-                audio_auto_play: true,
+                audio_auto_play: false,
                 show_phrase: false,
                 dark_mode: false,
                 large_text: false,
@@ -70,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log('✅ User created successfully:', newUser.id);
 
         // Set session cookie
-        res.setHeader('Set-Cookie', `userId=${newUser.id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 7}`);
+        await startSession(res, userId);
 
         return res.status(201).json({
             message: 'User created successfully',

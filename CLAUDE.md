@@ -31,7 +31,9 @@ Two things bite every time, so follow this exactly.
 ### App login is NOT Supabase Auth
 
 The app has its own `users` table (bcrypt `password_hash`, `auth_provider`)
-and sets a plain `userId` cookie. `POST /api/auth/login` and
+and issues an opaque HttpOnly `quiz_session` cookie. Middleware verifies the
+expiring hashed token in `app_sessions` before supplying the trusted `userId`
+to legacy handlers. Never accept a browser-provided userId as authentication. `POST /api/auth/login` and
 `POST /api/auth/signup` are the only ways in. A user created through Supabase
 Auth (`auth.users`, admin API, etc.) **cannot** log in — don't waste time on it.
 
@@ -41,7 +43,7 @@ documented here so any session can sign in without asking):
 - Email: `claude-verify@example.com`
 - Password: `JalingoTest123!`
 
-Authenticate by hitting the endpoint directly (sets the `userId` cookie):
+Authenticate by hitting the endpoint directly (sets the `quiz_session` cookie):
 
 ```sh
 curl -s -X POST http://localhost:<port>/api/auth/login \

@@ -47,7 +47,7 @@ export function AuthShell({
                     {/* Compact brand for mobile, where the side panel is hidden. */}
                     <div className="mb-8 flex items-center gap-2 lg:hidden">
                         <BrandMark className="h-9 w-9 text-base" />
-                        <span className="text-lg font-semibold">Jalingo</span>
+                        <span className="text-lg font-semibold">Quizz</span>
                     </div>
 
                     <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
@@ -74,18 +74,18 @@ function AuthBrandPanel() {
             />
             <div className="relative flex items-center gap-3">
                 <BrandMark className="h-11 w-11 text-xl" />
-                <span className="text-2xl font-bold">Jalingo</span>
+                <span className="text-2xl font-bold">Quizz</span>
             </div>
 
             <div className="relative">
-                <p className="text-5xl font-bold leading-tight tracking-tight">日本語を</p>
-                <p className="text-5xl font-bold leading-tight tracking-tight text-[#FF0054]">マスターしよう</p>
+                <p className="text-5xl font-bold leading-tight tracking-tight">学びを</p>
+                <p className="text-5xl font-bold leading-tight tracking-tight text-[#FF0054]">深めよう</p>
                 <p className="mt-6 max-w-sm text-[#A1A1A1]">
-                    Learn Japanese the way it sticks — kanji, vocabulary, and reading practice tuned to how you study.
+                    Learn in a way that sticks — questions, answers, and review tuned to how you study.
                 </p>
             </div>
 
-            <div className="relative text-sm text-[#6F6F6F]">Master Japanese, one session at a time.</div>
+            <div className="relative text-sm text-[#6F6F6F]">Build knowledge, one session at a time.</div>
         </div>
     )
 }
@@ -98,7 +98,7 @@ export function BrandMark({ className }: { className?: string }) {
                 className,
             )}
         >
-            J
+            Q
         </span>
     )
 }
