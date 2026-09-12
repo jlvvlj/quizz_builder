@@ -4,147 +4,147 @@
     "source_rank": 1,
     "answer": "de",
     "frequency": 8435682,
-    "question": "〜の・〜から（前置詞）"
+    "question": "〜の"
   },
   {
     "rank": 2,
     "source_rank": 2,
     "answer": "je",
     "frequency": 8308698,
-    "question": "私は（主語）"
+    "question": "私"
   },
   {
     "rank": 3,
     "source_rank": 3,
     "answer": "est",
     "frequency": 6942248,
-    "question": "彼・彼女は〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 4,
     "source_rank": 4,
     "answer": "pas",
     "frequency": 5833676,
-    "question": "〜ない（否定語）"
+    "question": "〜ない"
   },
   {
     "rank": 5,
     "source_rank": 5,
     "answer": "le",
     "frequency": 5305591,
-    "question": "その（男性単数の定冠詞）"
+    "question": "その"
   },
   {
     "rank": 6,
     "source_rank": 6,
     "answer": "que",
     "frequency": 5083052,
-    "question": "〜ということ（接続詞）"
+    "question": "〜ということ"
   },
   {
     "rank": 7,
     "source_rank": 7,
     "answer": "la",
     "frequency": 4825603,
-    "question": "その（女性単数の定冠詞）"
+    "question": "その"
   },
   {
     "rank": 8,
     "source_rank": 8,
     "answer": "vous",
     "frequency": 4500162,
-    "question": "あなた・あなたたちは（主語）"
+    "question": "あなた"
   },
   {
     "rank": 9,
     "source_rank": 9,
     "answer": "tu",
     "frequency": 4434920,
-    "question": "君は（親しい相手への主語）"
+    "question": "君"
   },
   {
     "rank": 10,
     "source_rank": 10,
     "answer": "un",
     "frequency": 4360896,
-    "question": "一つの（男性単数の不定冠詞）"
+    "question": "一つの"
   },
   {
     "rank": 11,
     "source_rank": 12,
     "answer": "à",
     "frequency": 4119959,
-    "question": "〜に・〜へ（前置詞）"
+    "question": "〜に"
   },
   {
     "rank": 12,
     "source_rank": 13,
     "answer": "et",
     "frequency": 4110855,
-    "question": "そして・〜と"
+    "question": "そして"
   },
   {
     "rank": 13,
     "source_rank": 14,
     "answer": "il",
     "frequency": 4025241,
-    "question": "彼は"
+    "question": "彼"
   },
   {
     "rank": 14,
     "source_rank": 15,
     "answer": "a",
     "frequency": 3679682,
-    "question": "彼・彼女は持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 15,
     "source_rank": 17,
     "answer": "ne",
     "frequency": 3343288,
-    "question": "〜ない（動詞の前に置く否定語）"
+    "question": "〜ない"
   },
   {
     "rank": 16,
     "source_rank": 18,
     "answer": "les",
     "frequency": 3046663,
-    "question": "その（複数の定冠詞）"
+    "question": "その"
   },
   {
     "rank": 17,
     "source_rank": 20,
     "answer": "en",
     "frequency": 2925411,
-    "question": "〜の中に・〜で（前置詞）"
+    "question": "〜の中に"
   },
   {
     "rank": 18,
     "source_rank": 21,
     "answer": "on",
     "frequency": 2756346,
-    "question": "人は・私たちは（一般的な主語）"
+    "question": "私たち"
   },
   {
     "rank": 19,
     "source_rank": 22,
     "answer": "ça",
     "frequency": 2742676,
-    "question": "それ（話し言葉の代名詞）"
+    "question": "それ"
   },
   {
     "rank": 20,
     "source_rank": 23,
     "answer": "une",
     "frequency": 2717481,
-    "question": "一つの（女性単数の不定冠詞）"
+    "question": "一つの"
   },
   {
     "rank": 21,
     "source_rank": 25,
     "answer": "ce",
     "frequency": 2533544,
-    "question": "この（男性単数・子音の前）"
+    "question": "この"
   },
   {
     "rank": 22,
@@ -158,21 +158,21 @@
     "source_rank": 28,
     "answer": "ai",
     "frequency": 2437065,
-    "question": "私は持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 24,
     "source_rank": 30,
     "answer": "des",
     "frequency": 1902327,
-    "question": "いくつかの（複数の不定冠詞）"
+    "question": "いくつかの"
   },
   {
     "rank": 25,
     "source_rank": 31,
     "answer": "qui",
     "frequency": 1665879,
-    "question": "誰・〜する人（関係代名詞）"
+    "question": "誰"
   },
   {
     "rank": 26,
@@ -186,63 +186,63 @@
     "source_rank": 33,
     "answer": "dans",
     "frequency": 1508883,
-    "question": "〜の中に（場所を表す前置詞）"
+    "question": "〜の中に"
   },
   {
     "rank": 28,
     "source_rank": 34,
     "answer": "nous",
     "frequency": 1504467,
-    "question": "私たちは"
+    "question": "私たち"
   },
   {
     "rank": 29,
     "source_rank": 35,
     "answer": "elle",
     "frequency": 1476885,
-    "question": "彼女は"
+    "question": "彼女"
   },
   {
     "rank": 30,
     "source_rank": 36,
     "answer": "me",
     "frequency": 1446772,
-    "question": "私を・私に（動詞の前）"
+    "question": "私を"
   },
   {
     "rank": 31,
     "source_rank": 37,
     "answer": "bien",
     "frequency": 1438129,
-    "question": "うまく・よく"
+    "question": "うまく"
   },
   {
     "rank": 32,
     "source_rank": 38,
     "answer": "si",
     "frequency": 1409401,
-    "question": "もし〜なら"
+    "question": "もし"
   },
   {
     "rank": 33,
     "source_rank": 39,
     "answer": "du",
     "frequency": 1337227,
-    "question": "いくらかの（男性単数の部分冠詞）"
+    "question": "いくらかの"
   },
   {
     "rank": 34,
     "source_rank": 40,
     "answer": "y",
     "frequency": 1320695,
-    "question": "そこに（代名詞）"
+    "question": "そこに"
   },
   {
     "rank": 35,
     "source_rank": 41,
     "answer": "suis",
     "frequency": 1303070,
-    "question": "私は〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 36,
@@ -263,49 +263,49 @@
     "source_rank": 45,
     "answer": "tout",
     "frequency": 1243107,
-    "question": "すべて・全部（男性単数形）"
+    "question": "すべて"
   },
   {
     "rank": 39,
     "source_rank": 46,
     "answer": "plus",
     "frequency": 1214520,
-    "question": "もっと・より多く"
+    "question": "もっと"
   },
   {
     "rank": 40,
     "source_rank": 47,
     "answer": "mon",
     "frequency": 1195613,
-    "question": "私の（男性単数名詞の前）"
+    "question": "私の"
   },
   {
     "rank": 41,
     "source_rank": 49,
     "answer": "te",
     "frequency": 1127735,
-    "question": "君を・君に（動詞の前）"
+    "question": "君を"
   },
   {
     "rank": 42,
     "source_rank": 50,
     "answer": "au",
     "frequency": 1109359,
-    "question": "その〜に（àとleの縮約）"
+    "question": "その〜に"
   },
   {
     "rank": 43,
     "source_rank": 51,
     "answer": "fait",
     "frequency": 1054966,
-    "question": "した・作った（過去分詞・男性単数）"
+    "question": "した"
   },
   {
     "rank": 44,
     "source_rank": 52,
     "answer": "moi",
     "frequency": 1048758,
-    "question": "私（強勢形）"
+    "question": "私"
   },
   {
     "rank": 45,
@@ -319,35 +319,35 @@
     "source_rank": 55,
     "answer": "va",
     "frequency": 989526,
-    "question": "彼・彼女は行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 47,
     "source_rank": 56,
     "answer": "était",
     "frequency": 985841,
-    "question": "彼・彼女は〜だった（半過去）"
+    "question": "〜だった"
   },
   {
     "rank": 48,
     "source_rank": 57,
     "answer": "as",
     "frequency": 974673,
-    "question": "君は持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 49,
     "source_rank": 58,
     "answer": "faire",
     "frequency": 966573,
-    "question": "する・作る（不定詞）"
+    "question": "する"
   },
   {
     "rank": 50,
     "source_rank": 59,
     "answer": "ils",
     "frequency": 945659,
-    "question": "彼らは（男性または男女混合）"
+    "question": "彼ら"
   },
   {
     "rank": 51,
@@ -361,14 +361,14 @@
     "source_rank": 61,
     "answer": "quoi",
     "frequency": 894291,
-    "question": "何（強勢形の疑問代名詞）"
+    "question": "何"
   },
   {
     "rank": 53,
     "source_rank": 62,
     "answer": "se",
     "frequency": 867737,
-    "question": "自分を・自分に（再帰代名詞）"
+    "question": "自分を"
   },
   {
     "rank": 54,
@@ -382,21 +382,21 @@
     "source_rank": 64,
     "answer": "sais",
     "frequency": 851748,
-    "question": "私は・君は知っている（事実を知る現在形）"
+    "question": "知っている"
   },
   {
     "rank": 56,
     "source_rank": 65,
     "answer": "être",
     "frequency": 743252,
-    "question": "〜である・いる（不定詞）"
+    "question": "〜である"
   },
   {
     "rank": 57,
     "source_rank": 66,
     "answer": "veux",
     "frequency": 738917,
-    "question": "私は・君は欲しい（現在形）"
+    "question": "欲しい"
   },
   {
     "rank": 58,
@@ -410,42 +410,42 @@
     "source_rank": 68,
     "answer": "ma",
     "frequency": 716527,
-    "question": "私の（女性単数名詞の前）"
+    "question": "私の"
   },
   {
     "rank": 60,
     "source_rank": 69,
     "answer": "toi",
     "frequency": 707904,
-    "question": "君（強勢形）"
+    "question": "君"
   },
   {
     "rank": 61,
     "source_rank": 71,
     "answer": "dit",
     "frequency": 701414,
-    "question": "彼・彼女は言う（現在形）"
+    "question": "言う"
   },
   {
     "rank": 62,
     "source_rank": 72,
     "answer": "lui",
     "frequency": 689708,
-    "question": "彼に・彼（強勢形）"
+    "question": "彼に"
   },
   {
     "rank": 63,
     "source_rank": 73,
     "answer": "votre",
     "frequency": 677006,
-    "question": "あなたの（単数名詞の前）"
+    "question": "あなたの"
   },
   {
     "rank": 64,
     "source_rank": 74,
     "answer": "es",
     "frequency": 662531,
-    "question": "君は〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 65,
@@ -466,7 +466,7 @@
     "source_rank": 77,
     "answer": "là",
     "frequency": 643024,
-    "question": "そこ・あそこ"
+    "question": "そこ"
   },
   {
     "rank": 68,
@@ -480,70 +480,70 @@
     "source_rank": 79,
     "answer": "cette",
     "frequency": 626319,
-    "question": "この（女性単数名詞の前）"
+    "question": "この"
   },
   {
     "rank": 70,
     "source_rank": 80,
     "answer": "sont",
     "frequency": 609102,
-    "question": "彼ら・彼女らは〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 71,
     "source_rank": 81,
     "answer": "quand",
     "frequency": 598113,
-    "question": "いつ・〜するとき"
+    "question": "いつ"
   },
   {
     "rank": 72,
     "source_rank": 82,
     "answer": "peux",
     "frequency": 594578,
-    "question": "私は・君はできる（現在形）"
+    "question": "できる"
   },
   {
     "rank": 73,
     "source_rank": 83,
     "answer": "dire",
     "frequency": 586553,
-    "question": "言う（不定詞）"
+    "question": "言う"
   },
   {
     "rank": 74,
     "source_rank": 84,
     "answer": "son",
     "frequency": 585229,
-    "question": "彼の・彼女の（男性単数名詞の前）"
+    "question": "彼の"
   },
   {
     "rank": 75,
     "source_rank": 85,
     "answer": "avez",
     "frequency": 552796,
-    "question": "あなたは持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 76,
     "source_rank": 86,
     "answer": "vais",
     "frequency": 542593,
-    "question": "私は行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 77,
     "source_rank": 87,
     "answer": "alors",
     "frequency": 542173,
-    "question": "そのとき・それでは"
+    "question": "そのとき"
   },
   {
     "rank": 78,
     "source_rank": 88,
     "answer": "ton",
     "frequency": 540446,
-    "question": "君の（男性単数名詞の前）"
+    "question": "君の"
   },
   {
     "rank": 79,
@@ -557,7 +557,7 @@
     "source_rank": 90,
     "answer": "par",
     "frequency": 519463,
-    "question": "〜によって・〜を通って"
+    "question": "〜によって"
   },
   {
     "rank": 81,
@@ -571,21 +571,21 @@
     "source_rank": 92,
     "answer": "chose",
     "frequency": 490339,
-    "question": "物・事（一つ）"
+    "question": "物"
   },
   {
     "rank": 83,
     "source_rank": 93,
     "answer": "bon",
     "frequency": 483364,
-    "question": "良い（男性単数形）"
+    "question": "良い"
   },
   {
     "rank": 84,
     "source_rank": 94,
     "answer": "ont",
     "frequency": 471659,
-    "question": "彼ら・彼女らは持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 85,
@@ -599,7 +599,7 @@
     "source_rank": 96,
     "answer": "juste",
     "frequency": 465932,
-    "question": "ちょうど・正しい"
+    "question": "ちょうど"
   },
   {
     "rank": 87,
@@ -613,14 +613,14 @@
     "source_rank": 98,
     "answer": "jamais",
     "frequency": 436873,
-    "question": "一度も〜ない・決して〜ない"
+    "question": "決して"
   },
   {
     "rank": 89,
     "source_rank": 99,
     "answer": "été",
     "frequency": 432574,
-    "question": "夏／〜であった（êtreの過去分詞）"
+    "question": "夏"
   },
   {
     "rank": 90,
@@ -634,7 +634,7 @@
     "source_rank": 101,
     "answer": "avoir",
     "frequency": 427178,
-    "question": "持っている（不定詞）"
+    "question": "持っている"
   },
   {
     "rank": 92,
@@ -648,28 +648,28 @@
     "source_rank": 103,
     "answer": "voir",
     "frequency": 419803,
-    "question": "見る（不定詞）"
+    "question": "見る"
   },
   {
     "rank": 94,
     "source_rank": 104,
     "answer": "même",
     "frequency": 411247,
-    "question": "同じ・〜さえ"
+    "question": "同じ"
   },
   {
     "rank": 95,
     "source_rank": 105,
     "answer": "sa",
     "frequency": 408233,
-    "question": "彼の・彼女の（女性単数名詞の前）"
+    "question": "彼の"
   },
   {
     "rank": 96,
     "source_rank": 106,
     "answer": "oh",
     "frequency": 408070,
-    "question": "おお！（驚きの感嘆詞）"
+    "question": "おお！"
   },
   {
     "rank": 97,
@@ -683,21 +683,21 @@
     "source_rank": 108,
     "answer": "tous",
     "frequency": 399645,
-    "question": "すべての人・すべての（男性複数形）"
+    "question": "すべての人"
   },
   {
     "rank": 99,
     "source_rank": 109,
     "answer": "peut",
     "frequency": 393199,
-    "question": "彼・彼女はできる（現在形）"
+    "question": "できる"
   },
   {
     "rank": 100,
     "source_rank": 110,
     "answer": "deux",
     "frequency": 388269,
-    "question": "二つ・二"
+    "question": "二つ"
   },
   {
     "rank": 101,
@@ -711,161 +711,161 @@
     "source_rank": 112,
     "answer": "êtes",
     "frequency": 376665,
-    "question": "あなたは〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 103,
     "source_rank": 113,
     "answer": "allez",
     "frequency": 374660,
-    "question": "あなたは行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 104,
     "source_rank": 114,
     "answer": "ta",
     "frequency": 373455,
-    "question": "君の（女性単数名詞の前）"
+    "question": "君の"
   },
   {
     "rank": 105,
     "source_rank": 115,
     "answer": "autre",
     "frequency": 370961,
-    "question": "別の・他の（単数形）"
+    "question": "別の"
   },
   {
     "rank": 106,
     "source_rank": 116,
     "answer": "peu",
     "frequency": 354756,
-    "question": "少し・少量"
+    "question": "少し"
   },
   {
     "rank": 107,
     "source_rank": 117,
     "answer": "temps",
     "frequency": 354330,
-    "question": "時間・天気"
+    "question": "時間"
   },
   {
     "rank": 108,
     "source_rank": 118,
     "answer": "quelque",
     "frequency": 353553,
-    "question": "何らかの・いくらかの（単数形）"
+    "question": "何らかの"
   },
   {
     "rank": 109,
     "source_rank": 119,
     "answer": "fais",
     "frequency": 353373,
-    "question": "私は・君はする（現在形）"
+    "question": "する"
   },
   {
     "rank": 110,
     "source_rank": 120,
     "answer": "toujours",
     "frequency": 345760,
-    "question": "いつも・常に"
+    "question": "いつも"
   },
   {
     "rank": 111,
     "source_rank": 121,
     "answer": "encore",
     "frequency": 342386,
-    "question": "まだ・もう一度"
+    "question": "まだ"
   },
   {
     "rank": 112,
     "source_rank": 122,
     "answer": "notre",
     "frequency": 339810,
-    "question": "私たちの（単数名詞の前）"
+    "question": "私たちの"
   },
   {
     "rank": 113,
     "source_rank": 123,
     "answer": "mes",
     "frequency": 332672,
-    "question": "私の（複数名詞の前）"
+    "question": "私の"
   },
   {
     "rank": 114,
     "source_rank": 124,
     "answer": "besoin",
     "frequency": 329446,
-    "question": "必要・欲求"
+    "question": "必要"
   },
   {
     "rank": 115,
     "source_rank": 125,
     "answer": "avait",
     "frequency": 320073,
-    "question": "彼・彼女は持っていた（半過去）"
+    "question": "持っていた"
   },
   {
     "rank": 116,
     "source_rank": 126,
     "answer": "accord",
     "frequency": 315183,
-    "question": "同意・合意"
+    "question": "同意"
   },
   {
     "rank": 117,
     "source_rank": 127,
     "answer": "faut",
     "frequency": 313023,
-    "question": "〜する必要がある（非人称現在形）"
+    "question": "必要だ"
   },
   {
     "rank": 118,
     "source_rank": 128,
     "answer": "dois",
     "frequency": 310780,
-    "question": "私は・君は〜しなければならない（現在形）"
+    "question": "〜すべき"
   },
   {
     "rank": 119,
     "source_rank": 129,
     "answer": "vie",
     "frequency": 310140,
-    "question": "人生・命"
+    "question": "人生"
   },
   {
     "rank": 120,
     "source_rank": 130,
     "answer": "peut-être",
     "frequency": 306785,
-    "question": "たぶん・もしかすると"
+    "question": "たぶん"
   },
   {
     "rank": 121,
     "source_rank": 131,
     "answer": "aller",
     "frequency": 303502,
-    "question": "行く（不定詞）"
+    "question": "行く"
   },
   {
     "rank": 122,
     "source_rank": 132,
     "answer": "fois",
     "frequency": 297685,
-    "question": "回・度"
+    "question": "回"
   },
   {
     "rank": 123,
     "source_rank": 133,
     "answer": "vu",
     "frequency": 290541,
-    "question": "見た（過去分詞・男性単数）"
+    "question": "見た"
   },
   {
     "rank": 124,
     "source_rank": 134,
     "answer": "donc",
     "frequency": 281973,
-    "question": "だから・したがって"
+    "question": "だから"
   },
   {
     "rank": 125,
@@ -886,56 +886,56 @@
     "source_rank": 137,
     "answer": "étais",
     "frequency": 276408,
-    "question": "私は・君は〜だった（半過去）"
+    "question": "〜だった"
   },
   {
     "rank": 128,
     "source_rank": 138,
     "answer": "parce",
     "frequency": 273723,
-    "question": "〜だから（「___ que」の最初の語）"
+    "question": "〜だから"
   },
   {
     "rank": 129,
     "source_rank": 139,
     "answer": "avant",
     "frequency": 272706,
-    "question": "〜の前に（時間）"
+    "question": "〜の前に"
   },
   {
     "rank": 130,
     "source_rank": 140,
     "answer": "sûr",
     "frequency": 271047,
-    "question": "確かな・自信がある（男性形）"
+    "question": "確かな"
   },
   {
     "rank": 131,
     "source_rank": 141,
     "answer": "trop",
     "frequency": 265575,
-    "question": "多すぎる・〜すぎる"
+    "question": "多すぎる"
   },
   {
     "rank": 132,
     "source_rank": 143,
     "answer": "parler",
     "frequency": 262709,
-    "question": "話す（不定詞）"
+    "question": "話す"
   },
   {
     "rank": 133,
     "source_rank": 144,
     "answer": "personne",
     "frequency": 260005,
-    "question": "人／誰も〜ない"
+    "question": "人"
   },
   {
     "rank": 134,
     "source_rank": 145,
     "answer": "avais",
     "frequency": 257602,
-    "question": "私は・君は持っていた（半過去）"
+    "question": "持っていた"
   },
   {
     "rank": 135,
@@ -949,7 +949,7 @@
     "source_rank": 147,
     "answer": "crois",
     "frequency": 251561,
-    "question": "私は・君は信じる（現在形）"
+    "question": "信じる"
   },
   {
     "rank": 137,
@@ -963,7 +963,7 @@
     "source_rank": 149,
     "answer": "aux",
     "frequency": 244896,
-    "question": "その〜に（àとlesの縮約）"
+    "question": "その〜に"
   },
   {
     "rank": 139,
@@ -977,119 +977,119 @@
     "source_rank": 151,
     "answer": "ouais",
     "frequency": 241407,
-    "question": "うん（くだけた肯定）"
+    "question": "うん"
   },
   {
     "rank": 141,
     "source_rank": 152,
     "answer": "ses",
     "frequency": 240780,
-    "question": "彼の・彼女の（複数名詞の前）"
+    "question": "彼の"
   },
   {
     "rank": 142,
     "source_rank": 153,
     "answer": "pense",
     "frequency": 240390,
-    "question": "私は考える（現在形）"
+    "question": "考える"
   },
   {
     "rank": 143,
     "source_rank": 154,
     "answer": "eu",
     "frequency": 238206,
-    "question": "持った（avoirの過去分詞）"
+    "question": "持った"
   },
   {
     "rank": 144,
     "source_rank": 155,
     "answer": "aime",
     "frequency": 237696,
-    "question": "私は好きだ・愛している（現在形）"
+    "question": "好きだ"
   },
   {
     "rank": 145,
     "source_rank": 156,
     "answer": "leur",
     "frequency": 236536,
-    "question": "彼らに／彼らの（単数名詞の前）"
+    "question": "彼らの"
   },
   {
     "rank": 146,
     "source_rank": 157,
     "answer": "homme",
     "frequency": 236357,
-    "question": "男性・人間（一人）"
+    "question": "男性"
   },
   {
     "rank": 147,
     "source_rank": 158,
     "answer": "viens",
     "frequency": 233234,
-    "question": "私は・君は来る（現在形）"
+    "question": "来る"
   },
   {
     "rank": 148,
     "source_rank": 159,
     "answer": "vrai",
     "frequency": 233001,
-    "question": "本当の（男性単数形）"
+    "question": "本当の"
   },
   {
     "rank": 149,
     "source_rank": 160,
     "answer": "femme",
     "frequency": 232974,
-    "question": "女性・妻（一人）"
+    "question": "女性"
   },
   {
     "rank": 150,
     "source_rank": 162,
     "answer": "doit",
     "frequency": 227951,
-    "question": "彼・彼女は〜しなければならない（現在形）"
+    "question": "〜すべき"
   },
   {
     "rank": 151,
     "source_rank": 163,
     "answer": "veut",
     "frequency": 227166,
-    "question": "彼・彼女は欲しい（現在形）"
+    "question": "欲しい"
   },
   {
     "rank": 152,
     "source_rank": 164,
     "answer": "ans",
     "frequency": 225795,
-    "question": "〜歳・年（年齢や期間・複数）"
+    "question": "〜歳"
   },
   {
     "rank": 153,
     "source_rank": 166,
     "answer": "mal",
     "frequency": 219886,
-    "question": "悪く・具合が悪い"
+    "question": "悪く"
   },
   {
     "rank": 154,
     "source_rank": 167,
     "answer": "chez",
     "frequency": 218436,
-    "question": "〜の家で・〜のところで"
+    "question": "〜の家で"
   },
   {
     "rank": 155,
     "source_rank": 168,
     "answer": "déjà",
     "frequency": 214718,
-    "question": "すでに・もう"
+    "question": "すでに"
   },
   {
     "rank": 156,
     "source_rank": 169,
     "answer": "depuis",
     "frequency": 214022,
-    "question": "〜以来・〜からずっと"
+    "question": "〜以来"
   },
   {
     "rank": 157,
@@ -1103,21 +1103,21 @@
     "source_rank": 171,
     "answer": "vos",
     "frequency": 211081,
-    "question": "あなたの（複数名詞の前）"
+    "question": "あなたの"
   },
   {
     "rank": 159,
     "source_rank": 172,
     "answer": "bonne",
     "frequency": 209592,
-    "question": "良い（女性単数形）"
+    "question": "良い"
   },
   {
     "rank": 160,
     "source_rank": 173,
     "answer": "mort",
     "frequency": 208796,
-    "question": "死・死んだ（男性単数形）"
+    "question": "死"
   },
   {
     "rank": 161,
@@ -1131,7 +1131,7 @@
     "source_rank": 175,
     "answer": "vas",
     "frequency": 203968,
-    "question": "君は行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 163,
@@ -1145,77 +1145,77 @@
     "source_rank": 177,
     "answer": "sera",
     "frequency": 202795,
-    "question": "彼・彼女は〜になるだろう（単純未来）"
+    "question": "〜になる"
   },
   {
     "rank": 165,
     "source_rank": 178,
     "answer": "dis",
     "frequency": 201949,
-    "question": "私は・君は言う（現在形）"
+    "question": "言う"
   },
   {
     "rank": 166,
     "source_rank": 179,
     "answer": "fille",
     "frequency": 201540,
-    "question": "女の子・娘（一人）"
+    "question": "女の子"
   },
   {
     "rank": 167,
     "source_rank": 180,
     "answer": "tes",
     "frequency": 199689,
-    "question": "君の（複数名詞の前）"
+    "question": "君の"
   },
   {
     "rank": 168,
     "source_rank": 181,
     "answer": "gens",
     "frequency": 198558,
-    "question": "人々（集合的な複数名詞）"
+    "question": "人々"
   },
   {
     "rank": 169,
     "source_rank": 182,
     "answer": "quel",
     "frequency": 193928,
-    "question": "どの・何という（男性単数形）"
+    "question": "どの"
   },
   {
     "rank": 170,
     "source_rank": 183,
     "answer": "vois",
     "frequency": 193613,
-    "question": "私は・君は見る（現在形）"
+    "question": "見る"
   },
   {
     "rank": 171,
     "source_rank": 184,
     "answer": "désolé",
     "frequency": 191841,
-    "question": "申し訳ない（男性の話者）"
+    "question": "申し訳ない"
   },
   {
     "rank": 172,
     "source_rank": 186,
     "answer": "voilà",
     "frequency": 189677,
-    "question": "ほら・それです"
+    "question": "ほら"
   },
   {
     "rank": 173,
     "source_rank": 187,
     "answer": "avons",
     "frequency": 186788,
-    "question": "私たちは持っている（現在形）"
+    "question": "持っている"
   },
   {
     "rank": 174,
     "source_rank": 188,
     "answer": "petit",
     "frequency": 186600,
-    "question": "小さい（男性単数形）"
+    "question": "小さい"
   },
   {
     "rank": 175,
@@ -1229,98 +1229,98 @@
     "source_rank": 190,
     "answer": "soit",
     "frequency": 179962,
-    "question": "〜であるように（êtreの接続法現在・三人称単数）"
+    "question": "である"
   },
   {
     "rank": 177,
     "source_rank": 191,
     "answer": "cela",
     "frequency": 177397,
-    "question": "それ（改まった代名詞）"
+    "question": "それ"
   },
   {
     "rank": 178,
     "source_rank": 192,
     "answer": "autres",
     "frequency": 175480,
-    "question": "他の（複数形）"
+    "question": "他の"
   },
   {
     "rank": 179,
     "source_rank": 193,
     "answer": "toute",
     "frequency": 174066,
-    "question": "すべての・丸ごとの（女性単数形）"
+    "question": "すべての"
   },
   {
     "rank": 180,
     "source_rank": 194,
     "answer": "soir",
     "frequency": 172574,
-    "question": "夕方・晩"
+    "question": "夕方"
   },
   {
     "rank": 181,
     "source_rank": 195,
     "answer": "passé",
     "frequency": 172214,
-    "question": "過去／過ぎた（男性単数形）"
+    "question": "過去"
   },
   {
     "rank": 182,
     "source_rank": 196,
     "answer": "prendre",
     "frequency": 170367,
-    "question": "取る（不定詞）"
+    "question": "取る"
   },
   {
     "rank": 183,
     "source_rank": 197,
     "answer": "jour",
     "frequency": 170304,
-    "question": "日（一日）"
+    "question": "日"
   },
   {
     "rank": 184,
     "source_rank": 198,
     "answer": "monsieur",
     "frequency": 164959,
-    "question": "〜さん・男性への敬称"
+    "question": "紳士"
   },
   {
     "rank": 185,
     "source_rank": 199,
     "answer": "nos",
     "frequency": 164465,
-    "question": "私たちの（複数名詞の前）"
+    "question": "私たちの"
   },
   {
     "rank": 186,
     "source_rank": 200,
     "answer": "savoir",
     "frequency": 163428,
-    "question": "知っている（事実や方法・不定詞）"
+    "question": "知っている"
   },
   {
     "rank": 187,
     "source_rank": 201,
     "answer": "choses",
     "frequency": 163193,
-    "question": "物事（複数形）"
+    "question": "物事"
   },
   {
     "rank": 188,
     "source_rank": 202,
     "answer": "salut",
     "frequency": 160990,
-    "question": "やあ・じゃあね（親しい挨拶）"
+    "question": "やあ"
   },
   {
     "rank": 189,
     "source_rank": 203,
     "answer": "cet",
     "frequency": 160783,
-    "question": "この（男性単数・母音の前）"
+    "question": "この"
   },
   {
     "rank": 190,
@@ -1334,7 +1334,7 @@
     "source_rank": 205,
     "answer": "argent",
     "frequency": 159413,
-    "question": "お金・銀"
+    "question": "お金"
   },
   {
     "rank": 192,
@@ -1355,7 +1355,7 @@
     "source_rank": 208,
     "answer": "raison",
     "frequency": 153137,
-    "question": "理由・理性"
+    "question": "理由"
   },
   {
     "rank": 195,
@@ -1369,7 +1369,7 @@
     "source_rank": 210,
     "answer": "arrive",
     "frequency": 152291,
-    "question": "私は到着する（現在形）"
+    "question": "到着する"
   },
   {
     "rank": 197,
@@ -1383,49 +1383,49 @@
     "source_rank": 212,
     "answer": "reste",
     "frequency": 150311,
-    "question": "残り／私は残る（現在形）"
+    "question": "残り"
   },
   {
     "rank": 199,
     "source_rank": 213,
     "answer": "moment",
     "frequency": 149622,
-    "question": "瞬間・ひととき"
+    "question": "瞬間"
   },
   {
     "rank": 200,
     "source_rank": 214,
     "answer": "voulais",
     "frequency": 149394,
-    "question": "私は・君は欲しかった（半過去）"
+    "question": "欲しかった"
   },
   {
     "rank": 201,
     "source_rank": 215,
     "answer": "seul",
     "frequency": 149265,
-    "question": "一人だけの（男性単数形）"
+    "question": "一人だけの"
   },
   {
     "rank": 202,
     "source_rank": 216,
     "answer": "aider",
     "frequency": 148607,
-    "question": "助ける（不定詞）"
+    "question": "助ける"
   },
   {
     "rank": 203,
     "source_rank": 217,
     "answer": "air",
     "frequency": 148370,
-    "question": "空気・様子"
+    "question": "空気"
   },
   {
     "rank": 204,
     "source_rank": 218,
     "answer": "entre",
     "frequency": 147420,
-    "question": "〜の間に（二つ以上の間）"
+    "question": "〜の間に"
   },
   {
     "rank": 205,
@@ -1439,63 +1439,63 @@
     "source_rank": 220,
     "answer": "passe",
     "frequency": 144680,
-    "question": "私は通る・渡す（現在形）"
+    "question": "通る"
   },
   {
     "rank": 207,
     "source_rank": 221,
     "answer": "aurais",
     "frequency": 143292,
-    "question": "私は・君は持つだろうに（条件法現在）"
+    "question": "持つだろう"
   },
   {
     "rank": 208,
     "source_rank": 222,
     "answer": "problème",
     "frequency": 141208,
-    "question": "問題・困り事"
+    "question": "問題"
   },
   {
     "rank": 209,
     "source_rank": 223,
     "answer": "ah",
     "frequency": 140158,
-    "question": "ああ！（気づきの感嘆詞）"
+    "question": "ああ！"
   },
   {
     "rank": 210,
     "source_rank": 224,
     "answer": "peur",
     "frequency": 139829,
-    "question": "恐れ・怖さ"
+    "question": "恐れ"
   },
   {
     "rank": 211,
     "source_rank": 225,
     "answer": "regarde",
     "frequency": 138016,
-    "question": "私は見る・眺める（現在形）"
+    "question": "見る"
   },
   {
     "rank": 212,
     "source_rank": 226,
     "answer": "voulez",
     "frequency": 137416,
-    "question": "あなたは欲しい（現在形）"
+    "question": "欲しい"
   },
   {
     "rank": 213,
     "source_rank": 227,
     "answer": "gars",
     "frequency": 136154,
-    "question": "男・若者（口語）"
+    "question": "男"
   },
   {
     "rank": 214,
     "source_rank": 228,
     "answer": "trouvé",
     "frequency": 135198,
-    "question": "見つけた（過去分詞・男性単数）"
+    "question": "見つけた"
   },
   {
     "rank": 215,
@@ -1509,35 +1509,35 @@
     "source_rank": 230,
     "answer": "attends",
     "frequency": 134144,
-    "question": "私は・君は待つ（現在形）"
+    "question": "待つ"
   },
   {
     "rank": 217,
     "source_rank": 231,
     "answer": "savez",
     "frequency": 133759,
-    "question": "あなたは知っている（現在形）"
+    "question": "知っている"
   },
   {
     "rank": 218,
     "source_rank": 233,
     "answer": "trouver",
     "frequency": 132646,
-    "question": "見つける（不定詞）"
+    "question": "見つける"
   },
   {
     "rank": 219,
     "source_rank": 234,
     "answer": "trois",
     "frequency": 132625,
-    "question": "三つ・三"
+    "question": "三つ"
   },
   {
     "rank": 220,
     "source_rank": 235,
     "answer": "assez",
     "frequency": 132619,
-    "question": "十分に・かなり"
+    "question": "十分に"
   },
   {
     "rank": 221,
@@ -1551,56 +1551,56 @@
     "source_rank": 237,
     "answer": "dû",
     "frequency": 132063,
-    "question": "〜しなければならなかった（devoirの過去分詞）"
+    "question": "必要だった"
   },
   {
     "rank": 223,
     "source_rank": 238,
     "answer": "eh",
     "frequency": 131788,
-    "question": "えっ・おや（感嘆詞）"
+    "question": "えっ"
   },
   {
     "rank": 224,
     "source_rank": 239,
     "answer": "toutes",
     "frequency": 131387,
-    "question": "すべての（女性複数形）"
+    "question": "すべての"
   },
   {
     "rank": 225,
     "source_rank": 240,
     "answer": "plaît",
     "frequency": 131162,
-    "question": "気に入る（plaireの現在形・三人称単数）"
+    "question": "気に入る"
   },
   {
     "rank": 226,
     "source_rank": 241,
     "answer": "pourrait",
     "frequency": 130894,
-    "question": "彼・彼女はできるだろうに（条件法現在）"
+    "question": "できるだろう"
   },
   {
     "rank": 227,
     "source_rank": 242,
     "answer": "travail",
     "frequency": 130261,
-    "question": "仕事（標準的な名詞）"
+    "question": "仕事"
   },
   {
     "rank": 228,
     "source_rank": 243,
     "answer": "pris",
     "frequency": 129066,
-    "question": "取った（過去分詞・男性単数）"
+    "question": "取った"
   },
   {
     "rank": 229,
     "source_rank": 244,
     "answer": "pu",
     "frequency": 128934,
-    "question": "できた（pouvoirの過去分詞）"
+    "question": "できた"
   },
   {
     "rank": 230,
@@ -1614,77 +1614,77 @@
     "source_rank": 246,
     "answer": "quelle",
     "frequency": 128659,
-    "question": "どの・何という（女性単数形）"
+    "question": "どの"
   },
   {
     "rank": 232,
     "source_rank": 247,
     "answer": "sait",
     "frequency": 128125,
-    "question": "彼・彼女は知っている（現在形）"
+    "question": "知っている"
   },
   {
     "rank": 233,
     "source_rank": 248,
     "answer": "sommes",
     "frequency": 127717,
-    "question": "私たちは〜である（現在形）"
+    "question": "〜である"
   },
   {
     "rank": 234,
     "source_rank": 249,
     "answer": "appelle",
     "frequency": 127367,
-    "question": "私は呼ぶ・電話する（現在形）"
+    "question": "呼ぶ"
   },
   {
     "rank": 235,
     "source_rank": 250,
     "answer": "quelques",
     "frequency": 127034,
-    "question": "いくつかの（複数形容詞）"
+    "question": "いくつかの"
   },
   {
     "rank": 236,
     "source_rank": 251,
     "answer": "faites",
     "frequency": 125636,
-    "question": "あなたはする・作る（現在形）"
+    "question": "する"
   },
   {
     "rank": 237,
     "source_rank": 252,
     "answer": "partir",
     "frequency": 125282,
-    "question": "出発する・立ち去る（不定詞）"
+    "question": "出発する"
   },
   {
     "rank": 238,
     "source_rank": 253,
     "answer": "vite",
     "frequency": 125063,
-    "question": "速く・急いで"
+    "question": "速く"
   },
   {
     "rank": 239,
     "source_rank": 254,
     "answer": "arrête",
     "frequency": 124854,
-    "question": "私は止める（現在形）"
+    "question": "止める"
   },
   {
     "rank": 240,
     "source_rank": 255,
     "answer": "seule",
     "frequency": 124521,
-    "question": "一人だけの（女性単数形）"
+    "question": "一人だけの"
   },
   {
     "rank": 241,
     "source_rank": 256,
     "answer": "serait",
     "frequency": 123944,
-    "question": "彼・彼女は〜だろうに（条件法現在）"
+    "question": "〜だろう"
   },
   {
     "rank": 242,
@@ -1705,21 +1705,21 @@
     "source_rank": 259,
     "answer": "tuer",
     "frequency": 121829,
-    "question": "殺す（不定詞）"
+    "question": "殺す"
   },
   {
     "rank": 245,
     "source_rank": 260,
     "answer": "merde",
     "frequency": 121318,
-    "question": "くそ！（下品な感嘆詞）"
+    "question": "くそ！"
   },
   {
     "rank": 246,
     "source_rank": 261,
     "answer": "hé",
     "frequency": 121065,
-    "question": "おい！（呼びかけ）"
+    "question": "おい！"
   },
   {
     "rank": 247,
@@ -1733,56 +1733,56 @@
     "source_rank": 263,
     "answer": "idée",
     "frequency": 120671,
-    "question": "考え・アイデア"
+    "question": "考え"
   },
   {
     "rank": 249,
     "source_rank": 264,
     "answer": "chance",
     "frequency": 120655,
-    "question": "幸運・好機"
+    "question": "幸運"
   },
   {
     "rank": 250,
     "source_rank": 265,
     "answer": "parle",
     "frequency": 120341,
-    "question": "私は話す（現在形）"
+    "question": "話す"
   },
   {
     "rank": 251,
     "source_rank": 266,
     "answer": "aurait",
     "frequency": 120181,
-    "question": "彼・彼女は持つだろうに（条件法現在）"
+    "question": "持つだろう"
   },
   {
     "rank": 252,
     "source_rank": 267,
     "answer": "part",
     "frequency": 119964,
-    "question": "部分・分け前"
+    "question": "部分"
   },
   {
     "rank": 253,
     "source_rank": 268,
     "answer": "elles",
     "frequency": 118978,
-    "question": "彼女たちは"
+    "question": "彼女たち"
   },
   {
     "rank": 254,
     "source_rank": 269,
     "answer": "jours",
     "frequency": 118455,
-    "question": "日々・日（複数形）"
+    "question": "日々"
   },
   {
     "rank": 255,
     "source_rank": 270,
     "answer": "grand",
     "frequency": 117213,
-    "question": "大きい・背が高い（男性単数形）"
+    "question": "大きい"
   },
   {
     "rank": 256,
@@ -1796,14 +1796,14 @@
     "source_rank": 272,
     "answer": "venir",
     "frequency": 116762,
-    "question": "来る（不定詞）"
+    "question": "来る"
   },
   {
     "rank": 258,
     "source_rank": 273,
     "answer": "ami",
     "frequency": 116639,
-    "question": "友達（男性単数形）"
+    "question": "友達"
   },
   {
     "rank": 259,
@@ -1817,7 +1817,7 @@
     "source_rank": 275,
     "answer": "hein",
     "frequency": 116301,
-    "question": "え？・だよね？（確認）"
+    "question": "え？"
   },
   {
     "rank": 261,
@@ -1838,63 +1838,63 @@
     "source_rank": 278,
     "answer": "truc",
     "frequency": 114959,
-    "question": "物・やつ・こつ（口語）"
+    "question": "物"
   },
   {
     "rank": 264,
     "source_rank": 279,
     "answer": "passer",
     "frequency": 114718,
-    "question": "通る・過ごす（不定詞）"
+    "question": "通る"
   },
   {
     "rank": 265,
     "source_rank": 280,
     "answer": "petite",
     "frequency": 114295,
-    "question": "小さい（女性単数形）"
+    "question": "小さい"
   },
   {
     "rank": 266,
     "source_rank": 281,
     "answer": "tant",
     "frequency": 113917,
-    "question": "それほど多く・そんなに"
+    "question": "そんなに"
   },
   {
     "rank": 267,
     "source_rank": 282,
     "answer": "connais",
     "frequency": 113815,
-    "question": "私は・君は知っている（人や場所を知る現在形）"
+    "question": "知っている"
   },
   {
     "rank": 268,
     "source_rank": 283,
     "answer": "combien",
     "frequency": 113220,
-    "question": "いくつ・いくら"
+    "question": "いくつ"
   },
   {
     "rank": 269,
     "source_rank": 284,
     "answer": "mec",
     "frequency": 113219,
-    "question": "男・やつ（くだけた言い方）"
+    "question": "男"
   },
   {
     "rank": 270,
     "source_rank": 285,
     "answer": "sens",
     "frequency": 112925,
-    "question": "意味・方向／私は感じる"
+    "question": "意味"
   },
   {
     "rank": 271,
     "source_rank": 286,
     "answer": "pouvez",
     "frequency": 112615,
-    "question": "あなたはできる（現在形）"
+    "question": "できる"
   },
   {
     "rank": 272,
@@ -1908,63 +1908,63 @@
     "source_rank": 288,
     "answer": "sortir",
     "frequency": 109313,
-    "question": "外に出る（不定詞）"
+    "question": "外に出る"
   },
   {
     "rank": 274,
     "source_rank": 289,
     "answer": "super",
     "frequency": 108980,
-    "question": "すごい・最高の（口語）"
+    "question": "すごい"
   },
   {
     "rank": 275,
     "source_rank": 290,
     "answer": "heure",
     "frequency": 108452,
-    "question": "時刻・一時間"
+    "question": "時刻"
   },
   {
     "rank": 276,
     "source_rank": 291,
     "answer": "contre",
     "frequency": 108451,
-    "question": "〜に反対して・〜に接して"
+    "question": "〜に反対して"
   },
   {
     "rank": 277,
     "source_rank": 292,
     "answer": "coup",
     "frequency": 108065,
-    "question": "一撃・打撃"
+    "question": "一撃"
   },
   {
     "rank": 278,
     "source_rank": 293,
     "answer": "comprends",
     "frequency": 107885,
-    "question": "私は・君は理解する（現在形）"
+    "question": "理解する"
   },
   {
     "rank": 279,
     "source_rank": 294,
     "answer": "entendu",
     "frequency": 107777,
-    "question": "聞いた（過去分詞・男性単数）"
+    "question": "聞いた"
   },
   {
     "rank": 280,
     "source_rank": 295,
     "answer": "vient",
     "frequency": 107616,
-    "question": "彼・彼女は来る（現在形）"
+    "question": "来る"
   },
   {
     "rank": 281,
     "source_rank": 296,
     "answer": "allons",
     "frequency": 106551,
-    "question": "私たちは行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 282,
@@ -1978,7 +1978,7 @@
     "source_rank": 298,
     "answer": "nouveau",
     "frequency": 105566,
-    "question": "新しい（男性単数・子音の前）"
+    "question": "新しい"
   },
   {
     "rank": 284,
@@ -1992,7 +1992,7 @@
     "source_rank": 300,
     "answer": "importe",
     "frequency": 104429,
-    "question": "重要である（importerの現在形・三人称単数）"
+    "question": "重要である"
   },
   {
     "rank": 286,
@@ -2006,14 +2006,14 @@
     "source_rank": 302,
     "answer": "désolée",
     "frequency": 102105,
-    "question": "申し訳ない（女性の話者）"
+    "question": "申し訳ない"
   },
   {
     "rank": 288,
     "source_rank": 303,
     "answer": "cas",
     "frequency": 100615,
-    "question": "場合・事例"
+    "question": "場合"
   },
   {
     "rank": 289,
@@ -2027,28 +2027,28 @@
     "source_rank": 305,
     "answer": "rester",
     "frequency": 99983,
-    "question": "とどまる・残る（不定詞）"
+    "question": "とどまる"
   },
   {
     "rank": 291,
     "source_rank": 306,
     "answer": "amis",
     "frequency": 99948,
-    "question": "友達（男性または男女混合・複数形）"
+    "question": "友達"
   },
   {
     "rank": 292,
     "source_rank": 307,
     "answer": "prends",
     "frequency": 99491,
-    "question": "私は・君は取る（現在形）"
+    "question": "取る"
   },
   {
     "rank": 293,
     "source_rank": 308,
     "answer": "fini",
     "frequency": 98823,
-    "question": "終わった（過去分詞・男性単数）"
+    "question": "終わった"
   },
   {
     "rank": 294,
@@ -2062,7 +2062,7 @@
     "source_rank": 310,
     "answer": "tué",
     "frequency": 98218,
-    "question": "殺した（過去分詞・男性単数）"
+    "question": "殺した"
   },
   {
     "rank": 296,
@@ -2076,70 +2076,70 @@
     "source_rank": 312,
     "answer": "partie",
     "frequency": 97788,
-    "question": "一部分・試合"
+    "question": "一部分"
   },
   {
     "rank": 298,
     "source_rank": 313,
     "answer": "histoire",
     "frequency": 97363,
-    "question": "歴史・物語"
+    "question": "歴史"
   },
   {
     "rank": 299,
     "source_rank": 314,
     "answer": "devrais",
     "frequency": 97220,
-    "question": "私は・君は〜すべきだ（条件法現在）"
+    "question": "〜すべき"
   },
   {
     "rank": 300,
     "source_rank": 315,
     "answer": "aide",
     "frequency": 96574,
-    "question": "助け・援助"
+    "question": "助け"
   },
   {
     "rank": 301,
     "source_rank": 316,
     "answer": "dernière",
     "frequency": 96425,
-    "question": "最後の・前回の（女性単数形）"
+    "question": "最後の"
   },
   {
     "rank": 302,
     "source_rank": 317,
     "answer": "demande",
     "frequency": 95954,
-    "question": "要求・依頼／私は尋ねる"
+    "question": "要求"
   },
   {
     "rank": 303,
     "source_rank": 318,
     "answer": "chercher",
     "frequency": 95887,
-    "question": "探す（不定詞）"
+    "question": "探す"
   },
   {
     "rank": 304,
     "source_rank": 319,
     "answer": "pensais",
     "frequency": 95747,
-    "question": "私は・君は考えていた（半過去）"
+    "question": "考えていた"
   },
   {
     "rank": 305,
     "source_rank": 320,
     "answer": "genre",
     "frequency": 95698,
-    "question": "種類・ジャンル"
+    "question": "種類"
   },
   {
     "rank": 306,
     "source_rank": 321,
     "answer": "seulement",
     "frequency": 95569,
-    "question": "〜だけ・単に"
+    "question": "〜だけ"
   },
   {
     "rank": 307,
@@ -2153,98 +2153,98 @@
     "source_rank": 323,
     "answer": "car",
     "frequency": 94921,
-    "question": "なぜなら（接続詞・一語）"
+    "question": "なぜなら"
   },
   {
     "rank": 309,
     "source_rank": 324,
     "answer": "mois",
     "frequency": 94016,
-    "question": "月（期間の単位）"
+    "question": "月"
   },
   {
     "rank": 310,
     "source_rank": 325,
     "answer": "frère",
     "frequency": 94005,
-    "question": "兄・弟"
+    "question": "兄"
   },
   {
     "rank": 311,
     "source_rank": 326,
     "answer": "laisser",
     "frequency": 93545,
-    "question": "そのままにする・残す（不定詞）"
+    "question": "そのままにする"
   },
   {
     "rank": 312,
     "source_rank": 327,
     "answer": "aucun",
     "frequency": 93134,
-    "question": "一つも〜ない（男性単数形）"
+    "question": "何もない"
   },
   {
     "rank": 313,
     "source_rank": 328,
     "answer": "mettre",
     "frequency": 92980,
-    "question": "置く・身につける（不定詞）"
+    "question": "置く"
   },
   {
     "rank": 314,
     "source_rank": 329,
     "answer": "eux",
     "frequency": 92010,
-    "question": "彼ら（強勢形）"
+    "question": "彼ら"
   },
   {
     "rank": 315,
     "source_rank": 330,
     "answer": "laisse",
     "frequency": 91272,
-    "question": "私はそのままにする（現在形）"
+    "question": "そのままにする"
   },
   {
     "rank": 316,
     "source_rank": 331,
     "answer": "chaque",
     "frequency": 91035,
-    "question": "それぞれの・毎〜"
+    "question": "それぞれの"
   },
   {
     "rank": 317,
     "source_rank": 332,
     "answer": "ville",
     "frequency": 90067,
-    "question": "町・都市"
+    "question": "町"
   },
   {
     "rank": 318,
     "source_rank": 333,
     "answer": "arrivé",
     "frequency": 89653,
-    "question": "到着した（過去分詞・男性単数）"
+    "question": "到着した"
   },
   {
     "rank": 319,
     "source_rank": 334,
     "answer": "devrait",
     "frequency": 89639,
-    "question": "彼・彼女は〜すべきだ（条件法現在）"
+    "question": "〜すべき"
   },
   {
     "rank": 320,
     "source_rank": 335,
     "answer": "parlé",
     "frequency": 89232,
-    "question": "話した（過去分詞）"
+    "question": "話した"
   },
   {
     "rank": 321,
     "source_rank": 337,
     "answer": "vont",
     "frequency": 88659,
-    "question": "彼ら・彼女らは行く（現在形）"
+    "question": "行く"
   },
   {
     "rank": 322,
@@ -2258,14 +2258,14 @@
     "source_rank": 339,
     "answer": "aucune",
     "frequency": 87577,
-    "question": "一つも〜ない（女性単数形）"
+    "question": "何もない"
   },
   {
     "rank": 324,
     "source_rank": 340,
     "answer": "heures",
     "frequency": 87343,
-    "question": "時間（複数形）"
+    "question": "時間"
   },
   {
     "rank": 325,
@@ -2279,56 +2279,56 @@
     "source_rank": 342,
     "answer": "place",
     "frequency": 86562,
-    "question": "場所・席"
+    "question": "場所"
   },
   {
     "rank": 327,
     "source_rank": 343,
     "answer": "revoir",
     "frequency": 86062,
-    "question": "再び見る・再会する（不定詞）"
+    "question": "再び見る"
   },
   {
     "rank": 328,
     "source_rank": 344,
     "answer": "putain",
     "frequency": 85798,
-    "question": "ちくしょう！（強い卑語）"
+    "question": "ちくしょう！"
   },
   {
     "rank": 329,
     "source_rank": 345,
     "answer": "compris",
     "frequency": 85603,
-    "question": "理解した（過去分詞・男性単数）"
+    "question": "理解した"
   },
   {
     "rank": 330,
     "source_rank": 346,
     "answer": "ni",
     "frequency": 84992,
-    "question": "〜も〜もない（否定の接続詞）"
+    "question": "〜も〜もない"
   },
   {
     "rank": 331,
     "source_rank": 347,
     "answer": "savais",
     "frequency": 84626,
-    "question": "私は・君は知っていた（半過去）"
+    "question": "知っていた"
   },
   {
     "rank": 332,
     "source_rank": 348,
     "answer": "leurs",
     "frequency": 84050,
-    "question": "彼らの・彼女らの（複数名詞の前）"
+    "question": "彼らの"
   },
   {
     "rank": 333,
     "source_rank": 349,
     "answer": "étaient",
     "frequency": 83848,
-    "question": "彼ら・彼女らは〜だった（半過去）"
+    "question": "〜だった"
   },
   {
     "rank": 334,
@@ -2342,28 +2342,28 @@
     "source_rank": 351,
     "answer": "donner",
     "frequency": 83428,
-    "question": "与える（不定詞）"
+    "question": "与える"
   },
   {
     "rank": 336,
     "source_rank": 352,
     "answer": "affaire",
     "frequency": 83076,
-    "question": "事柄・事件・商売（一件）"
+    "question": "事柄"
   },
   {
     "rank": 337,
     "source_rank": 353,
     "answer": "endroit",
     "frequency": 82941,
-    "question": "場所・地点"
+    "question": "場所"
   },
   {
     "rank": 338,
     "source_rank": 354,
     "answer": "pourrais",
     "frequency": 82579,
-    "question": "私は・君はできるだろうに（条件法現在）"
+    "question": "できるだろう"
   },
   {
     "rank": 339,
@@ -2377,21 +2377,21 @@
     "source_rank": 356,
     "answer": "façon",
     "frequency": 82429,
-    "question": "やり方・方法"
+    "question": "やり方"
   },
   {
     "rank": 341,
     "source_rank": 357,
     "answer": "donné",
     "frequency": 82427,
-    "question": "与えた（過去分詞・男性単数）"
+    "question": "与えた"
   },
   {
     "rank": 342,
     "source_rank": 359,
     "answer": "voici",
     "frequency": 82156,
-    "question": "こちらに・これが"
+    "question": "こちらに"
   },
   {
     "rank": 343,
@@ -2405,119 +2405,119 @@
     "source_rank": 361,
     "answer": "dont",
     "frequency": 81842,
-    "question": "その〜の・〜についての（関係代名詞）"
+    "question": "その〜の"
   },
   {
     "rank": 345,
     "source_rank": 362,
     "answer": "écoute",
     "frequency": 81813,
-    "question": "私は聞く・耳を傾ける（現在形）"
+    "question": "聞く"
   },
   {
     "rank": 346,
     "source_rank": 363,
     "answer": "yeux",
     "frequency": 81633,
-    "question": "目（複数形）"
+    "question": "目"
   },
   {
     "rank": 347,
     "source_rank": 364,
     "answer": "trouve",
     "frequency": 81473,
-    "question": "私は見つける（現在形）"
+    "question": "見つける"
   },
   {
     "rank": 348,
     "source_rank": 365,
     "answer": "pouvoir",
     "frequency": 81369,
-    "question": "〜できる（不定詞）"
+    "question": "〜できる"
   },
   {
     "rank": 349,
     "source_rank": 366,
     "answer": "type",
     "frequency": 81069,
-    "question": "型・タイプ／やつ"
+    "question": "型"
   },
   {
     "rank": 350,
     "source_rank": 367,
     "answer": "perdu",
     "frequency": 80940,
-    "question": "失った・道に迷った（男性単数形）"
+    "question": "失った"
   },
   {
     "rank": 351,
     "source_rank": 368,
     "answer": "premier",
     "frequency": 80900,
-    "question": "最初の（男性単数形）"
+    "question": "最初の"
   },
   {
     "rank": 352,
     "source_rank": 369,
     "answer": "première",
     "frequency": 80647,
-    "question": "最初の（女性単数形）"
+    "question": "最初の"
   },
   {
     "rank": 353,
     "source_rank": 370,
     "answer": "côté",
     "frequency": 80162,
-    "question": "側・横"
+    "question": "側"
   },
   {
     "rank": 354,
     "source_rank": 371,
     "answer": "point",
     "frequency": 80138,
-    "question": "点・要点"
+    "question": "点"
   },
   {
     "rank": 355,
     "source_rank": 372,
     "answer": "tellement",
     "frequency": 80089,
-    "question": "とても・それほど（程度を強調）"
+    "question": "とても"
   },
   {
     "rank": 356,
     "source_rank": 373,
     "answer": "main",
     "frequency": 79961,
-    "question": "手（単数形）"
+    "question": "手"
   },
   {
     "rank": 357,
     "source_rank": 374,
     "answer": "tiens",
     "frequency": 79293,
-    "question": "私は・君は持っている・保つ（tenirの現在形）"
+    "question": "持つ"
   },
   {
     "rank": 358,
     "source_rank": 375,
     "answer": "sois",
     "frequency": 79031,
-    "question": "〜であれ（êtreの君への命令形）"
+    "question": "であれ"
   },
   {
     "rank": 359,
     "source_rank": 376,
     "answer": "enfant",
     "frequency": 78904,
-    "question": "子ども（一人）"
+    "question": "子ども"
   },
   {
     "rank": 360,
     "source_rank": 377,
     "answer": "vieux",
     "frequency": 78652,
-    "question": "古い・年老いた（男性形）"
+    "question": "古い"
   },
   {
     "rank": 361,
@@ -2531,21 +2531,21 @@
     "source_rank": 379,
     "answer": "venu",
     "frequency": 77238,
-    "question": "来た（過去分詞・男性単数）"
+    "question": "来た"
   },
   {
     "rank": 363,
     "source_rank": 380,
     "answer": "pardon",
     "frequency": 77144,
-    "question": "すみません・許し"
+    "question": "すみません"
   },
   {
     "rank": 364,
     "source_rank": 381,
     "answer": "là-bas",
     "frequency": 76653,
-    "question": "あそこに・向こうに"
+    "question": "あそこに"
   },
   {
     "rank": 365,
@@ -2559,56 +2559,56 @@
     "source_rank": 383,
     "answer": "vers",
     "frequency": 76542,
-    "question": "〜の方へ・〜頃"
+    "question": "〜の方へ"
   },
   {
     "rank": 367,
     "source_rank": 384,
     "answer": "minutes",
     "frequency": 76229,
-    "question": "分（時間の単位・複数形）"
+    "question": "分"
   },
   {
     "rank": 368,
     "source_rank": 385,
     "answer": "demandé",
     "frequency": 76129,
-    "question": "尋ねた・頼んだ（過去分詞・男性単数）"
+    "question": "尋ねた"
   },
   {
     "rank": 369,
     "source_rank": 386,
     "answer": "venez",
     "frequency": 76029,
-    "question": "あなたは来る（現在形）"
+    "question": "来る"
   },
   {
     "rank": 370,
     "source_rank": 387,
     "answer": "devant",
     "frequency": 75940,
-    "question": "〜の前に（場所）"
+    "question": "〜の前に"
   },
   {
     "rank": 371,
     "source_rank": 388,
     "answer": "dr",
     "frequency": 75475,
-    "question": "医師・博士（略記・小文字）"
+    "question": "医師"
   },
   {
     "rank": 372,
     "source_rank": 389,
     "answer": "enfin",
     "frequency": 75391,
-    "question": "ついに・やっと"
+    "question": "ついに"
   },
   {
     "rank": 373,
     "source_rank": 390,
     "answer": "arrêter",
     "frequency": 74860,
-    "question": "止める・やめる（不定詞）"
+    "question": "止める"
   },
   {
     "rank": 374,
@@ -2622,42 +2622,42 @@
     "source_rank": 392,
     "answer": "nouvelle",
     "frequency": 74677,
-    "question": "新しい（女性単数形）／知らせ"
+    "question": "新しい"
   },
   {
     "rank": 376,
     "source_rank": 393,
     "answer": "attendez",
     "frequency": 74608,
-    "question": "あなたは待つ（現在形）"
+    "question": "待つ"
   },
   {
     "rank": 377,
     "source_rank": 394,
     "answer": "chambre",
     "frequency": 74591,
-    "question": "部屋・寝室"
+    "question": "部屋"
   },
   {
     "rank": 378,
     "source_rank": 395,
     "answer": "droit",
     "frequency": 74535,
-    "question": "権利／まっすぐな"
+    "question": "権利"
   },
   {
     "rank": 379,
     "source_rank": 396,
     "answer": "parti",
     "frequency": 74523,
-    "question": "出発した（過去分詞・男性単数）"
+    "question": "出発した"
   },
   {
     "rank": 380,
     "source_rank": 397,
     "answer": "mis",
     "frequency": 74511,
-    "question": "置いた（過去分詞・男性単数）"
+    "question": "置いた"
   },
   {
     "rank": 381,
@@ -2671,42 +2671,42 @@
     "source_rank": 399,
     "answer": "compte",
     "frequency": 74243,
-    "question": "勘定・口座／私は数える"
+    "question": "口座"
   },
   {
     "rank": 383,
     "source_rank": 400,
     "answer": "dirait",
     "frequency": 74046,
-    "question": "彼・彼女は言うだろうに（条件法現在）"
+    "question": "言うだろう"
   },
   {
     "rank": 384,
     "source_rank": 401,
     "answer": "terre",
     "frequency": 74029,
-    "question": "地球・大地"
+    "question": "地球"
   },
   {
     "rank": 385,
     "source_rank": 402,
     "answer": "belle",
     "frequency": 74001,
-    "question": "美しい（女性単数形）"
+    "question": "美しい"
   },
   {
     "rank": 386,
     "source_rank": 403,
     "answer": "espère",
     "frequency": 73948,
-    "question": "私は望む・期待する（現在形）"
+    "question": "望む"
   },
   {
     "rank": 387,
     "source_rank": 404,
     "answer": "aimerais",
     "frequency": 73931,
-    "question": "私は・君は〜したいのですが（aimerの条件法現在）"
+    "question": "〜したい"
   },
   {
     "rank": 388,
@@ -2727,7 +2727,7 @@
     "source_rank": 408,
     "answer": "donne",
     "frequency": 72911,
-    "question": "私は与える（現在形）"
+    "question": "与える"
   },
   {
     "rank": 391,
@@ -2741,77 +2741,77 @@
     "source_rank": 410,
     "answer": "croire",
     "frequency": 72465,
-    "question": "信じる（不定詞）"
+    "question": "信じる"
   },
   {
     "rank": 393,
     "source_rank": 411,
     "answer": "mme",
     "frequency": 72376,
-    "question": "女性への敬称（略記・小文字）"
+    "question": "夫人"
   },
   {
     "rank": 394,
     "source_rank": 412,
     "answer": "aura",
     "frequency": 72059,
-    "question": "彼・彼女は持つだろう（単純未来）"
+    "question": "持つだろう"
   },
   {
     "rank": 395,
     "source_rank": 413,
     "answer": "gros",
     "frequency": 71871,
-    "question": "太い・大きな（男性形）"
+    "question": "太い"
   },
   {
     "rank": 396,
     "source_rank": 414,
     "answer": "boulot",
     "frequency": 71509,
-    "question": "仕事（くだけた名詞）"
+    "question": "仕事"
   },
   {
     "rank": 397,
     "source_rank": 415,
     "answer": "plutôt",
     "frequency": 71199,
-    "question": "むしろ・どちらかといえば"
+    "question": "むしろ"
   },
   {
     "rank": 398,
     "source_rank": 416,
     "answer": "chérie",
     "frequency": 71179,
-    "question": "愛しい人（女性への呼びかけ）"
+    "question": "愛しい人"
   },
   {
     "rank": 399,
     "source_rank": 417,
     "answer": "prêt",
     "frequency": 70737,
-    "question": "準備ができた（男性単数形）"
+    "question": "準備ができた"
   },
   {
     "rank": 400,
     "source_rank": 418,
     "answer": "filles",
     "frequency": 70420,
-    "question": "女の子たち・娘たち"
+    "question": "女の子たち"
   },
   {
     "rank": 401,
     "source_rank": 419,
     "answer": "bureau",
     "frequency": 70339,
-    "question": "事務所・机"
+    "question": "事務所"
   },
   {
     "rank": 402,
     "source_rank": 420,
     "answer": "mourir",
     "frequency": 70130,
-    "question": "死ぬ（不定詞）"
+    "question": "死ぬ"
   },
   {
     "rank": 403,
@@ -2832,35 +2832,35 @@
     "source_rank": 423,
     "answer": "jouer",
     "frequency": 69516,
-    "question": "遊ぶ・演奏する（不定詞）"
+    "question": "遊ぶ"
   },
   {
     "rank": 406,
     "source_rank": 424,
     "answer": "demander",
     "frequency": 69293,
-    "question": "尋ねる・頼む（不定詞）"
+    "question": "尋ねる"
   },
   {
     "rank": 407,
     "source_rank": 425,
     "answer": "celui",
     "frequency": 69179,
-    "question": "その人・そのもの（男性単数の指示代名詞）"
+    "question": "その人"
   },
   {
     "rank": 408,
     "source_rank": 426,
     "answer": "voulait",
     "frequency": 68950,
-    "question": "彼・彼女は欲しかった（半過去）"
+    "question": "欲しかった"
   },
   {
     "rank": 409,
     "source_rank": 427,
     "answer": "beau",
     "frequency": 67782,
-    "question": "美しい（男性単数・子音の前）"
+    "question": "美しい"
   },
   {
     "rank": 410,
@@ -2874,7 +2874,7 @@
     "source_rank": 429,
     "answer": "euh",
     "frequency": 67392,
-    "question": "ええと（ためらいの言葉）"
+    "question": "ええと"
   },
   {
     "rank": 412,
@@ -2888,28 +2888,28 @@
     "source_rank": 431,
     "answer": "docteur",
     "frequency": 67286,
-    "question": "医者・博士（略さずに）"
+    "question": "医者"
   },
   {
     "rank": 414,
     "source_rank": 433,
     "answer": "confiance",
     "frequency": 67045,
-    "question": "信頼・自信"
+    "question": "信頼"
   },
   {
     "rank": 415,
     "source_rank": 434,
     "answer": "appeler",
     "frequency": 67001,
-    "question": "呼ぶ・電話する（不定詞）"
+    "question": "呼ぶ"
   },
   {
     "rank": 416,
     "source_rank": 435,
     "answer": "années",
     "frequency": 66836,
-    "question": "年々・年月（複数形）"
+    "question": "年々"
   },
   {
     "rank": 417,
@@ -2930,21 +2930,21 @@
     "source_rank": 438,
     "answer": "chef",
     "frequency": 66020,
-    "question": "長・責任者・料理長"
+    "question": "長"
   },
   {
     "rank": 420,
     "source_rank": 439,
     "answer": "femmes",
     "frequency": 66013,
-    "question": "女性たち・妻たち"
+    "question": "女性たち"
   },
   {
     "rank": 421,
     "source_rank": 440,
     "answer": "propos",
     "frequency": 65929,
-    "question": "発言・話題"
+    "question": "発言"
   },
   {
     "rank": 422,
@@ -2958,14 +2958,14 @@
     "source_rank": 442,
     "answer": "vivre",
     "frequency": 64664,
-    "question": "生きる・暮らす（不定詞）"
+    "question": "生きる"
   },
   {
     "rank": 424,
     "source_rank": 443,
     "answer": "regardez",
     "frequency": 64586,
-    "question": "見てください（vousへの命令形）"
+    "question": "見て"
   },
   {
     "rank": 425,
@@ -2979,14 +2979,14 @@
     "source_rank": 445,
     "answer": "journée",
     "frequency": 63963,
-    "question": "一日（日中の時間）"
+    "question": "一日"
   },
   {
     "rank": 427,
     "source_rank": 446,
     "answer": "madame",
     "frequency": 63463,
-    "question": "女性への敬称（略さずに）"
+    "question": "夫人"
   },
   {
     "rank": 428,
@@ -3007,49 +3007,49 @@
     "source_rank": 450,
     "answer": "affaires",
     "frequency": 62509,
-    "question": "事柄・商売・持ち物（複数形）"
+    "question": "事柄"
   },
   {
     "rank": 431,
     "source_rank": 451,
     "answer": "meilleur",
     "frequency": 62322,
-    "question": "より良い・最良の（男性単数形）"
+    "question": "より良い"
   },
   {
     "rank": 432,
     "source_rank": 452,
     "answer": "devez",
     "frequency": 62051,
-    "question": "あなたは〜しなければならない（現在形）"
+    "question": "〜すべき"
   },
   {
     "rank": 433,
     "source_rank": 453,
     "answer": "dessus",
     "frequency": 62027,
-    "question": "その上に（副詞）"
+    "question": "その上に"
   },
   {
     "rank": 434,
     "source_rank": 454,
     "answer": "mains",
     "frequency": 61954,
-    "question": "手（複数形）"
+    "question": "手"
   },
   {
     "rank": 435,
     "source_rank": 455,
     "answer": "penses",
     "frequency": 61741,
-    "question": "君は考える（現在形）"
+    "question": "考える"
   },
   {
     "rank": 436,
     "source_rank": 456,
     "answer": "prie",
     "frequency": 61306,
-    "question": "私は祈る・懇願する（現在形）"
+    "question": "祈る"
   },
   {
     "rank": 437,
@@ -3063,28 +3063,28 @@
     "source_rank": 459,
     "answer": "grande",
     "frequency": 61118,
-    "question": "大きい・背が高い（女性単数形）"
+    "question": "大きい"
   },
   {
     "rank": 439,
     "source_rank": 460,
     "answer": "manger",
     "frequency": 60951,
-    "question": "食べる（不定詞）"
+    "question": "食べる"
   },
   {
     "rank": 440,
     "source_rank": 461,
     "answer": "arriver",
     "frequency": 60824,
-    "question": "到着する（不定詞）"
+    "question": "到着する"
   },
   {
     "rank": 441,
     "source_rank": 462,
     "answer": "dur",
     "frequency": 60815,
-    "question": "硬い・困難な（男性単数形）"
+    "question": "硬い"
   },
   {
     "rank": 442,
@@ -3098,21 +3098,21 @@
     "source_rank": 464,
     "answer": "ait",
     "frequency": 60333,
-    "question": "持つように（avoirの接続法現在・三人称単数）"
+    "question": "持つ"
   },
   {
     "rank": 444,
     "source_rank": 465,
     "answer": "appelé",
     "frequency": 60257,
-    "question": "呼んだ（過去分詞・男性単数）"
+    "question": "呼んだ"
   },
   {
     "rank": 445,
     "source_rank": 466,
     "answer": "marche",
     "frequency": 60060,
-    "question": "歩行／私は歩く"
+    "question": "歩行"
   },
   {
     "rank": 446,
@@ -3133,56 +3133,56 @@
     "source_rank": 469,
     "answer": "essaie",
     "frequency": 59674,
-    "question": "私は試す（現在形）"
+    "question": "試す"
   },
   {
     "rank": 449,
     "source_rank": 470,
     "answer": "important",
     "frequency": 59641,
-    "question": "重要な（男性単数形）"
+    "question": "重要な"
   },
   {
     "rank": 450,
     "source_rank": 471,
     "answer": "dites",
     "frequency": 59498,
-    "question": "あなたは言う（現在形）"
+    "question": "言う"
   },
   {
     "rank": 451,
     "source_rank": 472,
     "answer": "exactement",
     "frequency": 59442,
-    "question": "正確に・まさに"
+    "question": "正確に"
   },
   {
     "rank": 452,
     "source_rank": 473,
     "answer": "font",
     "frequency": 59434,
-    "question": "彼ら・彼女らはする（現在形）"
+    "question": "する"
   },
   {
     "rank": 453,
     "source_rank": 474,
     "answer": "fort",
     "frequency": 59357,
-    "question": "強い（男性単数形）"
+    "question": "強い"
   },
   {
     "rank": 454,
     "source_rank": 475,
     "answer": "presque",
     "frequency": 59183,
-    "question": "ほとんど・もう少しで"
+    "question": "ほとんど"
   },
   {
     "rank": 455,
     "source_rank": 476,
     "answer": "plein",
     "frequency": 59129,
-    "question": "いっぱいの（男性単数形）"
+    "question": "いっぱいの"
   },
   {
     "rank": 456,
@@ -3196,7 +3196,7 @@
     "source_rank": 478,
     "answer": "ben",
     "frequency": 59042,
-    "question": "ええと・まあ（くだけた言い方）"
+    "question": "ええと"
   },
   {
     "rank": 458,
@@ -3217,91 +3217,91 @@
     "source_rank": 481,
     "answer": "capitaine",
     "frequency": 58413,
-    "question": "船長・隊長"
+    "question": "船長"
   },
   {
     "rank": 461,
     "source_rank": 482,
     "answer": "dernier",
     "frequency": 58399,
-    "question": "最後の・前回の（男性単数形）"
+    "question": "最後の"
   },
   {
     "rank": 462,
     "source_rank": 483,
     "answer": "fou",
     "frequency": 58314,
-    "question": "正気でない・夢中の（男性単数形）"
+    "question": "正気でない"
   },
   {
     "rank": 463,
     "source_rank": 484,
     "answer": "ceux",
     "frequency": 58210,
-    "question": "それら・その人たち（男性複数の指示代名詞）"
+    "question": "それら"
   },
   {
     "rank": 464,
     "source_rank": 485,
     "answer": "tomber",
     "frequency": 57627,
-    "question": "落ちる・転ぶ（不定詞）"
+    "question": "落ちる"
   },
   {
     "rank": 465,
     "source_rank": 486,
     "answer": "attendre",
     "frequency": 57610,
-    "question": "待つ（不定詞）"
+    "question": "待つ"
   },
   {
     "rank": 466,
     "source_rank": 487,
     "answer": "vue",
     "frequency": 57392,
-    "question": "視界・眺め"
+    "question": "視界"
   },
   {
     "rank": 467,
     "source_rank": 488,
     "answer": "pensé",
     "frequency": 57366,
-    "question": "考えた（過去分詞）"
+    "question": "考えた"
   },
   {
     "rank": 468,
     "source_rank": 489,
     "answer": "souviens",
     "frequency": 57155,
-    "question": "私は・君は覚えている（se souvenirの現在形の動詞部分）"
+    "question": "覚えている"
   },
   {
     "rank": 469,
     "source_rank": 490,
     "answer": "envie",
     "frequency": 56862,
-    "question": "欲求・〜したい気持ち"
+    "question": "欲求"
   },
   {
     "rank": 470,
     "source_rank": 491,
     "answer": "fête",
     "frequency": 56661,
-    "question": "祭り・パーティー"
+    "question": "祭り"
   },
   {
     "rank": 471,
     "source_rank": 492,
     "answer": "jeu",
     "frequency": 56566,
-    "question": "遊び・ゲーム"
+    "question": "遊び"
   },
   {
     "rank": 472,
     "source_rank": 493,
     "answer": "génial",
     "frequency": 56189,
-    "question": "素晴らしい（男性単数形）"
+    "question": "素晴らしい"
   },
   {
     "rank": 473,
@@ -3315,14 +3315,14 @@
     "source_rank": 495,
     "answer": "garde",
     "frequency": 55293,
-    "question": "見張り・警備／私は保管する"
+    "question": "見張り"
   },
   {
     "rank": 475,
     "source_rank": 496,
     "answer": "cours",
     "frequency": 54886,
-    "question": "授業・講座"
+    "question": "授業"
   },
   {
     "rank": 476,
@@ -3343,35 +3343,35 @@
     "source_rank": 500,
     "answer": "personnes",
     "frequency": 54104,
-    "question": "人々（personneの複数形）"
+    "question": "人々"
   },
   {
     "rank": 479,
     "source_rank": 501,
     "answer": "cinq",
     "frequency": 54092,
-    "question": "五つ・五"
+    "question": "五つ"
   },
   {
     "rank": 480,
     "source_rank": 502,
     "answer": "parfait",
     "frequency": 53772,
-    "question": "完璧な（男性単数形）"
+    "question": "完璧な"
   },
   {
     "rank": 481,
     "source_rank": 503,
     "answer": "excusez-moi",
     "frequency": 53742,
-    "question": "すみません（丁寧に呼びかける表現）"
+    "question": "すみません"
   },
   {
     "rank": 482,
     "source_rank": 504,
     "answer": "laissé",
     "frequency": 53626,
-    "question": "残した（過去分詞・男性単数）"
+    "question": "残した"
   },
   {
     "rank": 483,
@@ -3385,63 +3385,63 @@
     "source_rank": 506,
     "answer": "retour",
     "frequency": 53349,
-    "question": "帰り・帰還"
+    "question": "帰り"
   },
   {
     "rank": 485,
     "source_rank": 507,
     "answer": "semble",
     "frequency": 53159,
-    "question": "〜のように見える（現在形・三人称単数）"
+    "question": "〜らしい"
   },
   {
     "rank": 486,
     "source_rank": 508,
     "answer": "autant",
     "frequency": 53097,
-    "question": "同じくらい多く"
+    "question": "同じくらい"
   },
   {
     "rank": 487,
     "source_rank": 509,
     "answer": "peine",
     "frequency": 53089,
-    "question": "苦労・悲しみ・刑罰"
+    "question": "苦労"
   },
   {
     "rank": 488,
     "source_rank": 510,
     "answer": "minute",
     "frequency": 53057,
-    "question": "分（時間の単位・単数形）"
+    "question": "分"
   },
   {
     "rank": 489,
     "source_rank": 511,
     "answer": "essayé",
     "frequency": 52897,
-    "question": "試した（過去分詞・男性単数）"
+    "question": "試した"
   },
   {
     "rank": 490,
     "source_rank": 512,
     "answer": "plan",
     "frequency": 52873,
-    "question": "計画・地図"
+    "question": "計画"
   },
   {
     "rank": 491,
     "source_rank": 513,
     "answer": "instant",
     "frequency": 52720,
-    "question": "瞬間（一瞬）"
+    "question": "瞬間"
   },
   {
     "rank": 492,
     "source_rank": 514,
     "answer": "serai",
     "frequency": 52686,
-    "question": "私は〜になるだろう（単純未来）"
+    "question": "〜になる"
   },
   {
     "rank": 493,
@@ -3455,21 +3455,21 @@
     "source_rank": 516,
     "answer": "penser",
     "frequency": 52612,
-    "question": "考える（不定詞）"
+    "question": "考える"
   },
   {
     "rank": 495,
     "source_rank": 517,
     "answer": "essayer",
     "frequency": 52345,
-    "question": "試す（不定詞）"
+    "question": "試す"
   },
   {
     "rank": 496,
     "source_rank": 518,
     "answer": "prend",
     "frequency": 52147,
-    "question": "彼・彼女は取る（現在形）"
+    "question": "取る"
   },
   {
     "rank": 497,
@@ -3483,20 +3483,20 @@
     "source_rank": 520,
     "answer": "mauvais",
     "frequency": 52116,
-    "question": "悪い（男性形）"
+    "question": "悪い"
   },
   {
     "rank": 499,
     "source_rank": 521,
     "answer": "mot",
     "frequency": 52103,
-    "question": "単語・言葉"
+    "question": "単語"
   },
   {
     "rank": 500,
     "source_rank": 522,
     "answer": "travailler",
     "frequency": 51814,
-    "question": "働く（不定詞）"
+    "question": "働く"
   }
 ]
