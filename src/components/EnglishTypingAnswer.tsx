@@ -147,7 +147,7 @@ export default function EnglishTypingAnswer({
                     <div
                         key={ai}
                         className="flex flex-wrap justify-center items-end gap-1.5 sm:gap-2"
-                        aria-label="Type the English translation"
+                        aria-label="Type the answer"
                     >
                         {alt.chars.map((targetCh, i) => {
                             if (targetCh === ' ') {

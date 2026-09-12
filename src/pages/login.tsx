@@ -17,7 +17,7 @@ import {
 
 function LoginPage() {
     const router = useRouter()
-    const redirectTo = typeof router.query.redirect === 'string' ? router.query.redirect : '/jalingo'
+    const redirectTo = typeof router.query.redirect === 'string' && router.query.redirect.startsWith('/') && !router.query.redirect.startsWith('//') ? router.query.redirect : '/home'
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -47,7 +47,7 @@ function LoginPage() {
     return (
         <AuthShell
             title="Welcome back"
-            subtitle="Sign in to continue your Japanese practice."
+            subtitle="Sign in to continue your practice."
             footer={
                 <>
                     Don&apos;t have an account?{' '}
@@ -76,9 +76,7 @@ function LoginPage() {
                         <label htmlFor="password" className="text-sm font-medium text-[#E5E5E5]">
                             Password
                         </label>
-                        <Link href="/forgot-password" className="text-sm text-[#FF0054] hover:text-[#e0004a]">
-                            Forgot password?
-                        </Link>
+
                     </div>
                     <PasswordField
                         id="password"

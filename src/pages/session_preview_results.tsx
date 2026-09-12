@@ -86,9 +86,9 @@ export default function SessionPreviewResults() {
         return new URLSearchParams(window.location.search).get('content') === 'sentences' ? 'sentences' : 'words';
     });
     const [typingLang, setTypingLang] = useState<TypingLang>(() => {
-        if (typeof window === 'undefined') return 'japanese';
+        if (typeof window === 'undefined') return 'english';
         const stored = window.localStorage.getItem('typingLang');
-        return stored === 'japanese' || stored === 'english' || stored === 'mix' ? stored : 'japanese';
+        return 'english';
     });
 
     const handleTypingLangChange = useCallback((lang: TypingLang) => {
@@ -116,7 +116,7 @@ export default function SessionPreviewResults() {
     // so the answer-language pills don't apply and are hidden. For words they
     // apply to a forward quiz of either mode (typing: what you type;
     // multiple-choice: what the options show), but never in reverse.
-    const showLangPills = contentMode === 'words'
+    const showLangPills = false && contentMode === 'words'
         && (quizMode === 'typing' || quizMode === 'multiple-choice')
         && quizDirection !== 'reverse';
     const langPillVariant = quizMode === 'typing' ? 'typing' : 'choice';
@@ -127,8 +127,8 @@ export default function SessionPreviewResults() {
 
     // Get props from URL query
     const title = router.query.title as string || "Study Session";
-    const subtitle = router.query.subtitle as string || "Words in this session";
-    const description = router.query.description as string || "These are the words you'll practice in this session.";
+    const subtitle = router.query.subtitle as string || "Items in this session";
+    const description = router.query.description as string || "These are the items you'll practice in this session.";
     const practicedWordIds = router.query.practicedWordIds as string;
     const showResultsButton = router.query.showResultsButton === 'true';
 
@@ -497,8 +497,8 @@ export default function SessionPreviewResults() {
             section: section as string,
             step: step as string,
             title: 'Study Session',
-            subtitle: 'Words in this session',
-            description: 'These are the words you\'ll practice in this session.'
+            subtitle: 'Items in this session',
+            description: 'These are the items you\'ll practice in this session.'
         });
         if (content === 'kanji_primitives') params.set('content', 'kanji_primitives');
         else if (content === 'kanji_freq') params.set('content', 'kanji_freq');
@@ -698,9 +698,6 @@ export default function SessionPreviewResults() {
                                         activeTab={activeTab}
                                         onTabChange={setActiveTab}
                                     />
-                                    {!showResultsButton && !isPrimitives && (
-                                        <ContentPills value={contentMode} onChange={handleContentModeChange} />
-                                    )}
                                     {!showResultsButton && !isPrimitives && contentMode === 'words' && (
                                         <QuizModePills value={quizMode as QuizMode} onChange={handleQuizModeChange} />
                                     )}
