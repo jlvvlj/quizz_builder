@@ -7,7 +7,7 @@ in private Supabase tables behind verified server sessions.
 The 500 pairs are loaded in the separate `quizz` Supabase project
 (`fruozdtzduszjrbutzwa`), in the original app's `words10k` table:
 
-- `japanese_word`: Japanese prompt, including short grammar cues when needed
+- `japanese_word`: short Japanese word or equivalent, without grammar explanations
 - `english`: French answer (the original field name is deliberately preserved)
 - `japanese_reading`: empty, so French answers are not shown as reading hints
 - `section_1`, `step_1` through `step_5`: 100 words per step
@@ -33,7 +33,8 @@ Entries ending in apostrophes, punctuation-only tokens, and selected tokenizatio
 artifacts/inverted multiword forms were skipped. Specifically excluded:
 ca, ii, hey, ok, est-ce, avez-vous, est-il, as-tu, a-t-il, vas-y.
 The source rank and count are preserved in questions.json for reproducibility.
-The final selected word is travailler. Each answer has its own Japanese cue.
+The final selected word is travailler. Prompts use short Japanese equivalents without parenthetical grammar hints.
+Related French word forms can share a Japanese equivalent.
 
 ## Running and verification
 
