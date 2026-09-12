@@ -256,7 +256,7 @@ export default function FlashcardApp() {
     // translation, or a per-word mix of both. Toggled live via a pill on the
     // session; persisted client-side. Has no bearing on progress — any correct
     // completion counts the same.
-    const [typingLang, setTypingLang] = useState<TypingLang>('japanese')
+    const [typingLang, setTypingLang] = useState<TypingLang>('english')
     const quizStartedRef = useRef(false)
     const quizCompletedRef = useRef(false)
 
@@ -546,7 +546,7 @@ export default function FlashcardApp() {
                         ? window.localStorage.getItem('typingLang')
                         : null;
                     const optionLang: TypingLang =
-                        storedLang === 'english' || storedLang === 'mix' ? storedLang : 'japanese';
+                        'english';
                     quizCards = applyMcOptionLang(quizCards, optionLang);
                 }
 
@@ -630,7 +630,7 @@ export default function FlashcardApp() {
                     if (stored === 'typing' || stored === 'multiple-choice') quizMode = stored;
                     const storedLang = window.localStorage.getItem('typingLang');
                     if (storedLang === 'japanese' || storedLang === 'english' || storedLang === 'mix') {
-                        setTypingLang(storedLang);
+                        setTypingLang('english');
                     }
                     const ks = window.localStorage.getItem('keyboardSound');
                     if (ks) keyboardSound = ks;
@@ -1830,7 +1830,7 @@ export default function FlashcardApp() {
                                                             onComplete={() => handleAnswerSelect(currentCard.correctAnswer)}
                                                         />
                                                         <p className="text-center text-sm text-[#A1A1A1] mt-6">
-                                                            Type the English translation
+                                                            Type the answer
                                                         </p>
                                                     </>
                                                 )}
