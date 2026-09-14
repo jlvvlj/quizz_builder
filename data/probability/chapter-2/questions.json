@@ -1,0 +1,1438 @@
+{
+  "status": "approved",
+  "title": "Discrete Random Variables",
+  "language": "English",
+  "source": "Dimitri P. Bertsekas and John N. Tsitsiklis, Introduction to Probability, MIT course 6.041–6.431, Fall 2000 lecture notes",
+  "source_pdf_pages": "55–98",
+  "source_printed_pages": "1–44",
+  "proposed_mode": "multiple_choice",
+  "choice_count": 4,
+  "steps": [
+    {
+      "number": 1,
+      "title": "Notation",
+      "source": "§§2.1–2.7",
+      "printed_pages": "2–40",
+      "objective": "Read the symbols used for discrete random variables, PMFs, moments, joint models, and conditioning.",
+      "question_count": 16
+    },
+    {
+      "number": 2,
+      "title": "Random variables and PMFs",
+      "source": "§§2.1–2.2",
+      "printed_pages": "2–6",
+      "objective": "Connect outcomes to numerical values and construct or interpret a valid PMF.",
+      "question_count": 8
+    },
+    {
+      "number": 3,
+      "title": "Standard discrete distributions",
+      "source": "§2.2",
+      "printed_pages": "5–9",
+      "objective": "Recognize and calculate with Bernoulli, binomial, geometric, and Poisson random variables.",
+      "question_count": 8
+    },
+    {
+      "number": 4,
+      "title": "Functions of random variables",
+      "source": "§2.3",
+      "printed_pages": "9–11",
+      "objective": "Find the PMF of a transformed random variable by collecting all inputs that produce each output.",
+      "question_count": 8
+    },
+    {
+      "number": 5,
+      "title": "Expectation, mean, and variance",
+      "source": "§2.4",
+      "printed_pages": "11–21",
+      "objective": "Compute and interpret means, moments, variances, standard deviations, and linear transformations.",
+      "question_count": 14
+    },
+    {
+      "number": 6,
+      "title": "Joint PMFs and multiple variables",
+      "source": "§2.5",
+      "printed_pages": "22–26",
+      "objective": "Use joint PMFs to obtain marginals, probabilities, functions, and expected values.",
+      "question_count": 8
+    },
+    {
+      "number": 7,
+      "title": "Conditioning and conditional expectation",
+      "source": "§2.6",
+      "printed_pages": "27–35",
+      "objective": "Condition on events or variables and use multiplication, total probability, and total expectation.",
+      "question_count": 8
+    },
+    {
+      "number": 8,
+      "title": "Independence, sums, and estimation",
+      "source": "§2.7",
+      "printed_pages": "36–42",
+      "objective": "Test independence and use it to analyze products, sums, binomial counts, sample means, and simulation estimates.",
+      "question_count": 10
+    }
+  ],
+  "questions": [
+    {
+      "id": "C2-N01",
+      "step": 1,
+      "group": "Notation",
+      "question": "X",
+      "options": [
+        "A random variable",
+        "A fixed numerical value",
+        "A sample space",
+        "An event"
+      ],
+      "correct_answer": "A random variable",
+      "explanation": "Uppercase letters such as X conventionally name random variables.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-N02",
+      "step": 1,
+      "group": "Notation",
+      "question": "x",
+      "options": [
+        "The random variable itself",
+        "The probability of X",
+        "The sample space",
+        "A possible numerical value of X"
+      ],
+      "correct_answer": "A possible numerical value of X",
+      "explanation": "Lowercase letters such as x conventionally denote numerical values a random variable can take.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-N03",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_X(x)",
+      "options": [
+        "The expected value of X",
+        "The variance of X",
+        "The probability that X equals x",
+        "The probability that X is not x"
+      ],
+      "correct_answer": "The probability that X equals x",
+      "explanation": "The PMF assigns probability mass p_X(x) to the value x.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 58
+    },
+    {
+      "id": "C2-N04",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_X(x) = P(X = x)",
+      "options": [
+        "A formula for variance",
+        "The definition of the PMF at x",
+        "The definition of the mean",
+        "A test for independence"
+      ],
+      "correct_answer": "The definition of the PMF at x",
+      "explanation": "Both sides are the probability of the event that X takes the value x.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 58
+    },
+    {
+      "id": "C2-N05",
+      "step": 1,
+      "group": "Notation",
+      "question": "Σ_x p_X(x) = 1",
+      "options": [
+        "All probability masses add to 1",
+        "Every value of X has probability 1",
+        "The mean of X is 1",
+        "X can take only one value"
+      ],
+      "correct_answer": "All probability masses add to 1",
+      "explanation": "The events {X = x} partition the sample space, so their probabilities sum to 1.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-N06",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(X ∈ S) = Σ_{x ∈ S} p_X(x)",
+      "options": [
+        "Multiply the masses of the values in S",
+        "Average all values in S",
+        "Add the values in S without their probabilities",
+        "Add the masses of the values in S"
+      ],
+      "correct_answer": "Add the masses of the values in S",
+      "explanation": "An event defined by a set of values is evaluated by summing the PMF over those values.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-N07",
+      "step": 1,
+      "group": "Notation",
+      "question": "E[X]",
+      "options": [
+        "The range of X",
+        "The standard deviation of X",
+        "The expected value or mean of X",
+        "The event that X occurs"
+      ],
+      "correct_answer": "The expected value or mean of X",
+      "explanation": "E[X] is the probability-weighted average of the possible values of X.",
+      "difficulty": "Notation",
+      "source_printed_page": 12,
+      "source_pdf_page": 66
+    },
+    {
+      "id": "C2-N08",
+      "step": 1,
+      "group": "Notation",
+      "question": "E[g(X)] = Σ_x g(x)p_X(x)",
+      "options": [
+        "The independence test for X and Y",
+        "The expected value rule for a function of X",
+        "The PMF normalization rule",
+        "The definition of conditional probability"
+      ],
+      "correct_answer": "The expected value rule for a function of X",
+      "explanation": "The expectation of g(X) can be computed directly from the PMF of X.",
+      "difficulty": "Notation",
+      "source_printed_page": 15,
+      "source_pdf_page": 69
+    },
+    {
+      "id": "C2-N09",
+      "step": 1,
+      "group": "Notation",
+      "question": "var(X)",
+      "options": [
+        "The variance of X",
+        "The range of X",
+        "The mean of X",
+        "The PMF of X"
+      ],
+      "correct_answer": "The variance of X",
+      "explanation": "Variance measures the expected squared distance from the mean.",
+      "difficulty": "Notation",
+      "source_printed_page": 16,
+      "source_pdf_page": 70
+    },
+    {
+      "id": "C2-N10",
+      "step": 1,
+      "group": "Notation",
+      "question": "σ_X = √var(X)",
+      "options": [
+        "The second moment of X",
+        "The mean of X",
+        "The conditional variance of X",
+        "The standard deviation of X"
+      ],
+      "correct_answer": "The standard deviation of X",
+      "explanation": "Standard deviation is the nonnegative square root of variance.",
+      "difficulty": "Notation",
+      "source_printed_page": 16,
+      "source_pdf_page": 70
+    },
+    {
+      "id": "C2-N11",
+      "step": 1,
+      "group": "Notation",
+      "question": "var(X) = E[X²] − (E[X])²",
+      "options": [
+        "The mean of a product",
+        "The total expectation theorem",
+        "Variance expressed using moments",
+        "The PMF of X"
+      ],
+      "correct_answer": "Variance expressed using moments",
+      "explanation": "Variance equals the second moment minus the square of the first moment.",
+      "difficulty": "Notation",
+      "source_printed_page": 17,
+      "source_pdf_page": 71
+    },
+    {
+      "id": "C2-N12",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_{X,Y}(x,y)",
+      "options": [
+        "The conditional mean of X given Y",
+        "The joint PMF of X and Y",
+        "The product of X and Y",
+        "The PMF of X only"
+      ],
+      "correct_answer": "The joint PMF of X and Y",
+      "explanation": "It is the probability that X = x and Y = y simultaneously.",
+      "difficulty": "Notation",
+      "source_printed_page": 22,
+      "source_pdf_page": 76
+    },
+    {
+      "id": "C2-N13",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_X(x) = Σ_y p_{X,Y}(x,y)",
+      "options": [
+        "Marginalize the joint PMF over y",
+        "Condition X on Y",
+        "Prove X and Y are independent",
+        "Calculate the variance of X"
+      ],
+      "correct_answer": "Marginalize the joint PMF over y",
+      "explanation": "Summing a joint PMF over all possible y values leaves the marginal PMF of X.",
+      "difficulty": "Notation",
+      "source_printed_page": 23,
+      "source_pdf_page": 77
+    },
+    {
+      "id": "C2-N14",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_{X|A}(x)",
+      "options": [
+        "The joint PMF of X and A",
+        "The probability of A given X",
+        "The PMF of X outside A",
+        "The conditional PMF of X given event A"
+      ],
+      "correct_answer": "The conditional PMF of X given event A",
+      "explanation": "The vertical bar indicates that the probability model has been conditioned on event A.",
+      "difficulty": "Notation",
+      "source_printed_page": 27,
+      "source_pdf_page": 81
+    },
+    {
+      "id": "C2-N15",
+      "step": 1,
+      "group": "Notation",
+      "question": "p_{X|Y}(x|y)",
+      "options": [
+        "The joint PMF at (x,y)",
+        "The product of the marginal PMFs",
+        "The conditional PMF of X given Y = y",
+        "The conditional PMF of Y given X = x"
+      ],
+      "correct_answer": "The conditional PMF of X given Y = y",
+      "explanation": "It describes the distribution of X after the value Y = y is known.",
+      "difficulty": "Notation",
+      "source_printed_page": 28,
+      "source_pdf_page": 82
+    },
+    {
+      "id": "C2-N16",
+      "step": 1,
+      "group": "Notation",
+      "question": "E[X | Y = y]",
+      "options": [
+        "The expectation of Y given X",
+        "The conditional expectation of X given Y = y",
+        "The probability that X equals y",
+        "The joint expectation of X and Y"
+      ],
+      "correct_answer": "The conditional expectation of X given Y = y",
+      "explanation": "It is the mean of X calculated using the conditional PMF p_{X|Y}(x|y).",
+      "difficulty": "Notation",
+      "source_printed_page": 33,
+      "source_pdf_page": 87
+    },
+    {
+      "id": "C2-01",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "Which statement defines a random variable?",
+      "options": [
+        "A real-valued function of an experimental outcome",
+        "A randomly selected event",
+        "A probability assigned to the sample space",
+        "A list of outcomes in time order"
+      ],
+      "correct_answer": "A real-valued function of an experimental outcome",
+      "explanation": "A random variable maps each outcome in the sample space to one real number.",
+      "difficulty": "Foundation",
+      "source_printed_page": 2,
+      "source_pdf_page": 56
+    },
+    {
+      "id": "C2-02",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "Which is a random variable for five coin tosses?",
+      "options": [
+        "The sequence HHTHT",
+        "The set {H,T}",
+        "The instruction to toss five times",
+        "The number of heads"
+      ],
+      "correct_answer": "The number of heads",
+      "explanation": "The number of heads is numerical. A raw heads-and-tails sequence has no explicit numerical value.",
+      "difficulty": "Foundation",
+      "source_printed_page": 2,
+      "source_pdf_page": 56
+    },
+    {
+      "id": "C2-03",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "When is a random variable discrete?",
+      "options": [
+        "Every outcome has the same probability",
+        "It can take only positive values",
+        "Its range is finite or countably infinite",
+        "Its range contains every real number"
+      ],
+      "correct_answer": "Its range is finite or countably infinite",
+      "explanation": "Discreteness concerns the set of possible numerical values, not whether their probabilities are equal or their signs are positive.",
+      "difficulty": "Foundation",
+      "source_printed_page": 3,
+      "source_pdf_page": 57
+    },
+    {
+      "id": "C2-04",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "A point a is selected from [−1,1], and X = sgn(a). Why is X discrete?",
+      "options": [
+        "X is always positive",
+        "X can take only −1, 0, or 1",
+        "The interval [−1,1] is finite",
+        "Every value of a is equally likely"
+      ],
+      "correct_answer": "X can take only −1, 0, or 1",
+      "explanation": "Although the underlying outcome can vary continuously, the range of X has only three values.",
+      "difficulty": "Application",
+      "source_printed_page": 3,
+      "source_pdf_page": 57
+    },
+    {
+      "id": "C2-05",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "Which pair of conditions must every PMF satisfy?",
+      "options": [
+        "p_X(x) ≥ 0 and Σ_x p_X(x) = 1",
+        "p_X(x) > 0 and Σ_x p_X(x) = 0",
+        "p_X(x) ≤ 1 and Σ_x x = 1",
+        "p_X(x) = x and Σ_x x = 0"
+      ],
+      "correct_answer": "p_X(x) ≥ 0 and Σ_x p_X(x) = 1",
+      "explanation": "Probability masses are nonnegative and must sum to one across all possible values.",
+      "difficulty": "Foundation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-06",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "Two fair coins are tossed and X is the number of heads. What is p_X(1)?",
+      "options": [
+        "1/4",
+        "3/4",
+        "1",
+        "1/2"
+      ],
+      "correct_answer": "1/2",
+      "explanation": "Exactly one head occurs for HT or TH, two of the four equally likely outcomes.",
+      "difficulty": "Application",
+      "source_printed_page": 4,
+      "source_pdf_page": 58
+    },
+    {
+      "id": "C2-07",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "If p_X(−1)=0.2, p_X(0)=0.5, and p_X(1)=0.3, what is P(X ≥ 0)?",
+      "options": [
+        "0.3",
+        "1.0",
+        "0.8",
+        "0.5"
+      ],
+      "correct_answer": "0.8",
+      "explanation": "Add the masses at 0 and 1: 0.5 + 0.3 = 0.8.",
+      "difficulty": "Application",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-08",
+      "step": 2,
+      "group": "Random variables and PMFs",
+      "question": "Two fair 4-sided dice are rolled and X is their maximum. What is p_X(2)?",
+      "options": [
+        "7/16",
+        "3/16",
+        "1/16",
+        "4/16"
+      ],
+      "correct_answer": "3/16",
+      "explanation": "The outcomes (1,2), (2,1), and (2,2) have maximum 2, each with probability 1/16.",
+      "difficulty": "Challenge",
+      "source_printed_page": 6,
+      "source_pdf_page": 60
+    },
+    {
+      "id": "C2-09",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "A Bernoulli random variable uses which two numerical values?",
+      "options": [
+        "0 and 1",
+        "−1 and 1",
+        "0 and n",
+        "Any two consecutive integers"
+      ],
+      "correct_answer": "0 and 1",
+      "explanation": "A Bernoulli variable encodes failure as 0 and success as 1.",
+      "difficulty": "Foundation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-10",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "For a Bernoulli variable with success probability p, what is p_X(0)?",
+      "options": [
+        "p",
+        "p²",
+        "0",
+        "1 − p"
+      ],
+      "correct_answer": "1 − p",
+      "explanation": "The two outcomes exhaust the sample space, so the failure probability is 1 − p.",
+      "difficulty": "Foundation",
+      "source_printed_page": 5,
+      "source_pdf_page": 59
+    },
+    {
+      "id": "C2-11",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "Which experiment produces a binomial random variable with parameters n and p?",
+      "options": [
+        "Count events in a fixed interval with rate p",
+        "Record one success or failure only",
+        "Count successes in n independent trials with success probability p",
+        "Count trials until the first success"
+      ],
+      "correct_answer": "Count successes in n independent trials with success probability p",
+      "explanation": "A binomial variable counts successes across a fixed number of independent Bernoulli trials.",
+      "difficulty": "Foundation",
+      "source_printed_page": 7,
+      "source_pdf_page": 61
+    },
+    {
+      "id": "C2-12",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "Three fair coins are tossed. What is the probability of exactly two heads?",
+      "options": [
+        "3/4",
+        "3/8",
+        "1/8",
+        "1/2"
+      ],
+      "correct_answer": "3/8",
+      "explanation": "There are C(3,2)=3 sequences with two heads, and each has probability 1/8.",
+      "difficulty": "Application",
+      "source_printed_page": 7,
+      "source_pdf_page": 61
+    },
+    {
+      "id": "C2-13",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "A geometric random variable counts:",
+      "options": [
+        "Trials up to and including the first success",
+        "Successes in a fixed number of trials",
+        "Failures after the first success",
+        "Events in a fixed time interval"
+      ],
+      "correct_answer": "Trials up to and including the first success",
+      "explanation": "Its possible values are 1,2,… because at least one trial is required.",
+      "difficulty": "Foundation",
+      "source_printed_page": 7,
+      "source_pdf_page": 61
+    },
+    {
+      "id": "C2-14",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "Independent trials succeed with probability 0.2. What is P(the first success occurs on trial 3)?",
+      "options": [
+        "0.032",
+        "0.160",
+        "0.512",
+        "0.128"
+      ],
+      "correct_answer": "0.128",
+      "explanation": "Two failures followed by success has probability (0.8)²(0.2)=0.128.",
+      "difficulty": "Application",
+      "source_printed_page": 7,
+      "source_pdf_page": 61
+    },
+    {
+      "id": "C2-15",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "What is the PMF of a Poisson random variable with parameter λ?",
+      "options": [
+        "p_X(k)=C(n,k)λ^k(1−λ)^(n−k)",
+        "p_X(k)=1/λ for k=1,…,λ",
+        "p_X(k)=e^(−λ)λ^k/k!, k=0,1,…",
+        "p_X(k)=(1−λ)^(k−1)λ, k=1,2,…"
+      ],
+      "correct_answer": "p_X(k)=e^(−λ)λ^k/k!, k=0,1,…",
+      "explanation": "The Poisson PMF assigns mass e^(−λ)λ^k/k! to each nonnegative integer k.",
+      "difficulty": "Foundation",
+      "source_printed_page": 8,
+      "source_pdf_page": 62
+    },
+    {
+      "id": "C2-16",
+      "step": 3,
+      "group": "Standard discrete distributions",
+      "question": "When is a Poisson(λ) model a useful approximation to Binomial(n,p)?",
+      "options": [
+        "p=1/2 and λ=n²",
+        "n is large, p is small, and λ=np",
+        "n is small, p is near 1, and λ=n+p",
+        "n=p and λ=1"
+      ],
+      "correct_answer": "n is large, p is small, and λ=np",
+      "explanation": "Rare successes across many trials lead to the Poisson approximation with the same mean np.",
+      "difficulty": "Application",
+      "source_printed_page": 9,
+      "source_pdf_page": 63
+    },
+    {
+      "id": "C2-17",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "If Y=g(X), how is p_Y(y) obtained from p_X?",
+      "options": [
+        "Sum p_X(x) over every x with g(x)=y",
+        "Use only the smallest x with g(x)=y",
+        "Multiply p_X(x) over every x with g(x)=y",
+        "Replace every x in p_X(x) by y"
+      ],
+      "correct_answer": "Sum p_X(x) over every x with g(x)=y",
+      "explanation": "All input values that map to the same output y contribute their probability mass.",
+      "difficulty": "Foundation",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-18",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "X is uniform on {−2,−1,0,1,2} and Y=|X|. What is P(Y=1)?",
+      "options": [
+        "1/5",
+        "3/5",
+        "4/5",
+        "2/5"
+      ],
+      "correct_answer": "2/5",
+      "explanation": "Y=1 arises from X=−1 or X=1, so the two masses add to 2/5.",
+      "difficulty": "Application",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-19",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "If Y=X², which X values contribute to p_Y(9)?",
+      "options": [
+        "X=−9 and X=9",
+        "X=9 only",
+        "X=−3 and X=3",
+        "X=3 only"
+      ],
+      "correct_answer": "X=−3 and X=3",
+      "explanation": "Both −3 and 3 square to 9, so both preimages contribute.",
+      "difficulty": "Foundation",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-20",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "If p_X(−3)=0.2 and p_X(3)=0.5, and Y=X², what is p_Y(9)?",
+      "options": [
+        "0.5",
+        "0.7",
+        "0.3",
+        "0.1"
+      ],
+      "correct_answer": "0.7",
+      "explanation": "The event {Y=9} is the union of {X=−3} and {X=3}, so 0.2+0.5=0.7.",
+      "difficulty": "Application",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-21",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "X takes values 1,2,3 and Y=2X+1. What is the range of Y?",
+      "options": [
+        "{3,5,7}",
+        "{2,4,6}",
+        "{1,2,3}",
+        "{3,4,5}"
+      ],
+      "correct_answer": "{3,5,7}",
+      "explanation": "Apply the function 2x+1 to each possible input value.",
+      "difficulty": "Application",
+      "source_printed_page": 9,
+      "source_pdf_page": 63
+    },
+    {
+      "id": "C2-22",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "If g is one-to-one on the range of X and y=g(x), then:",
+      "options": [
+        "p_Y(y)=1−p_X(x)",
+        "p_Y(y)=p_X(x)²",
+        "p_Y(y)=0",
+        "p_Y(y)=p_X(x)"
+      ],
+      "correct_answer": "p_Y(y)=p_X(x)",
+      "explanation": "A one-to-one mapping gives y exactly one preimage, so its mass is carried over unchanged.",
+      "difficulty": "Application",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-23",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "X has p_X(0)=0.25 and p_X(1)=0.75. If Y=5 for both X values, what is p_Y(5)?",
+      "options": [
+        "0.25",
+        "0.1875",
+        "1",
+        "0.75"
+      ],
+      "correct_answer": "1",
+      "explanation": "Every possible value of X maps to 5, so all probability mass is collected at Y=5.",
+      "difficulty": "Application",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-24",
+      "step": 4,
+      "group": "Functions of random variables",
+      "question": "Why can distinct X values have the same transformed value Y=g(X)?",
+      "options": [
+        "Y must have a larger range than X",
+        "A function need not be one-to-one",
+        "A PMF may contain negative values",
+        "Random variables cannot share outcomes"
+      ],
+      "correct_answer": "A function need not be one-to-one",
+      "explanation": "Many-to-one transformations combine the probability masses of several X values.",
+      "difficulty": "Foundation",
+      "source_printed_page": 10,
+      "source_pdf_page": 64
+    },
+    {
+      "id": "C2-25",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X takes 0 with probability 0.4 and 10 with probability 0.6. What is E[X]?",
+      "options": [
+        "6",
+        "4",
+        "5",
+        "10"
+      ],
+      "correct_answer": "6",
+      "explanation": "The probability-weighted average is 0(0.4)+10(0.6)=6.",
+      "difficulty": "Application",
+      "source_printed_page": 12,
+      "source_pdf_page": 66
+    },
+    {
+      "id": "C2-26",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "Which description best matches E[X]?",
+      "options": [
+        "The most likely value of X",
+        "The largest value of X",
+        "The probability that X is positive",
+        "A probability-weighted average of X's possible values"
+      ],
+      "correct_answer": "A probability-weighted average of X's possible values",
+      "explanation": "The mean need not be a possible value or the most likely value.",
+      "difficulty": "Foundation",
+      "source_printed_page": 12,
+      "source_pdf_page": 66
+    },
+    {
+      "id": "C2-27",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X takes −1 and 1 with equal probability. What are E[X] and E[X²]?",
+      "options": [
+        "E[X]=0 and E[X²]=0",
+        "E[X]=−1 and E[X²]=1",
+        "E[X]=0 and E[X²]=1",
+        "E[X]=1 and E[X²]=1"
+      ],
+      "correct_answer": "E[X]=0 and E[X²]=1",
+      "explanation": "The signs cancel in E[X], while both squared values equal 1.",
+      "difficulty": "Application",
+      "source_printed_page": 15,
+      "source_pdf_page": 69
+    },
+    {
+      "id": "C2-28",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X has E[X]=3 and E[X²]=13. What is var(X)?",
+      "options": [
+        "22",
+        "4",
+        "10",
+        "16"
+      ],
+      "correct_answer": "4",
+      "explanation": "Use var(X)=E[X²]−(E[X])²=13−9=4.",
+      "difficulty": "Application",
+      "source_printed_page": 17,
+      "source_pdf_page": 71
+    },
+    {
+      "id": "C2-29",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "Why is variance always nonnegative?",
+      "options": [
+        "It is an expectation of squared deviations",
+        "Every random variable is nonnegative",
+        "The mean is always zero",
+        "Probabilities can be negative"
+      ],
+      "correct_answer": "It is an expectation of squared deviations",
+      "explanation": "Each squared distance (X−E[X])² is nonnegative, so its expectation is nonnegative.",
+      "difficulty": "Foundation",
+      "source_printed_page": 16,
+      "source_pdf_page": 70
+    },
+    {
+      "id": "C2-30",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "Which measure has the same physical units as X?",
+      "options": [
+        "Variance",
+        "Second moment",
+        "Squared deviation",
+        "Standard deviation"
+      ],
+      "correct_answer": "Standard deviation",
+      "explanation": "Variance has squared units; taking its square root restores the units of X.",
+      "difficulty": "Foundation",
+      "source_printed_page": 16,
+      "source_pdf_page": 70
+    },
+    {
+      "id": "C2-31",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "If Y=4X−3 and E[X]=2, what is E[Y]?",
+      "options": [
+        "11",
+        "−4",
+        "5",
+        "8"
+      ],
+      "correct_answer": "5",
+      "explanation": "Linearity gives E[Y]=4E[X]−3=8−3=5.",
+      "difficulty": "Application",
+      "source_printed_page": 16,
+      "source_pdf_page": 70
+    },
+    {
+      "id": "C2-32",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "If Y=4X−3 and var(X)=2, what is var(Y)?",
+      "options": [
+        "2",
+        "32",
+        "8",
+        "5"
+      ],
+      "correct_answer": "32",
+      "explanation": "Adding a constant does not change variance, while scaling by 4 multiplies variance by 4².",
+      "difficulty": "Application",
+      "source_printed_page": 17,
+      "source_pdf_page": 71
+    },
+    {
+      "id": "C2-33",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "For a Bernoulli(p) random variable, which mean and variance are correct?",
+      "options": [
+        "E[X]=p and var(X)=p(1−p)",
+        "E[X]=1−p and var(X)=p",
+        "E[X]=p² and var(X)=1−p",
+        "E[X]=0 and var(X)=p²"
+      ],
+      "correct_answer": "E[X]=p and var(X)=p(1−p)",
+      "explanation": "A Bernoulli variable is 1 with probability p and 0 otherwise.",
+      "difficulty": "Foundation",
+      "source_printed_page": 17,
+      "source_pdf_page": 71
+    },
+    {
+      "id": "C2-34",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X is discrete uniform on the integers from 2 through 8. What is E[X]?",
+      "options": [
+        "4",
+        "6",
+        "10",
+        "5"
+      ],
+      "correct_answer": "5",
+      "explanation": "For a discrete uniform variable on consecutive integers a through b, the mean is (a+b)/2.",
+      "difficulty": "Application",
+      "source_printed_page": 18,
+      "source_pdf_page": 72
+    },
+    {
+      "id": "C2-35",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X is discrete uniform on the integers from 2 through 8. What is var(X)?",
+      "options": [
+        "7/12",
+        "16",
+        "4",
+        "5"
+      ],
+      "correct_answer": "4",
+      "explanation": "For consecutive integers a through b, var(X)=(b−a)(b−a+2)/12=(6·8)/12=4.",
+      "difficulty": "Challenge",
+      "source_printed_page": 19,
+      "source_pdf_page": 73
+    },
+    {
+      "id": "C2-36",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "For a Poisson(λ) random variable, which mean and variance are correct?",
+      "options": [
+        "E[X]=λ and var(X)=λ²",
+        "E[X]=λ and var(X)=λ",
+        "E[X]=1/λ and var(X)=1/λ²",
+        "E[X]=λ² and var(X)=λ"
+      ],
+      "correct_answer": "E[X]=λ and var(X)=λ",
+      "explanation": "Both the mean and variance of a Poisson random variable equal its parameter λ.",
+      "difficulty": "Foundation",
+      "source_printed_page": 20,
+      "source_pdf_page": 74
+    },
+    {
+      "id": "C2-37",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "A geometric random variable has success probability p=0.25. What are its mean and variance?",
+      "options": [
+        "E[X]=4 and var(X)=12",
+        "E[X]=4 and var(X)=4",
+        "E[X]=0.25 and var(X)=0.1875",
+        "E[X]=3 and var(X)=4"
+      ],
+      "correct_answer": "E[X]=4 and var(X)=12",
+      "explanation": "For the trial count through first success, E[X]=1/p=4 and var(X)=(1−p)/p²=12.",
+      "difficulty": "Application",
+      "source_printed_page": 35,
+      "source_pdf_page": 89
+    },
+    {
+      "id": "C2-38",
+      "step": 5,
+      "group": "Expectation, mean, and variance",
+      "question": "X takes −1 with probability 0.25 and 2 with probability 0.75. What is E[X²]?",
+      "options": [
+        "1.25",
+        "2.5",
+        "4",
+        "3.25"
+      ],
+      "correct_answer": "3.25",
+      "explanation": "Use the expected value rule: E[X²]=(−1)²(0.25)+2²(0.75)=0.25+3=3.25.",
+      "difficulty": "Application",
+      "source_printed_page": 15,
+      "source_pdf_page": 69
+    },
+    {
+      "id": "C2-39",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "What does p_{X,Y}(x,y) equal?",
+      "options": [
+        "P(X=x) + P(Y=y)",
+        "P(X=x | Y=y)",
+        "P(X=x and Y=y)",
+        "P(X=x or Y=y)"
+      ],
+      "correct_answer": "P(X=x and Y=y)",
+      "explanation": "A joint PMF assigns probability to simultaneous pairs of values.",
+      "difficulty": "Foundation",
+      "source_printed_page": 22,
+      "source_pdf_page": 76
+    },
+    {
+      "id": "C2-40",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "What must the sum of p_{X,Y}(x,y) over all x and y equal?",
+      "options": [
+        "p_X(x)p_Y(y)",
+        "1",
+        "0",
+        "E[X]+E[Y]"
+      ],
+      "correct_answer": "1",
+      "explanation": "All possible value pairs partition the sample space.",
+      "difficulty": "Foundation",
+      "source_printed_page": 22,
+      "source_pdf_page": 76
+    },
+    {
+      "id": "C2-41",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "A joint PMF has p(0,0)=0.1, p(0,1)=0.2, p(1,0)=0.3, p(1,1)=0.4. What is p_X(1)?",
+      "options": [
+        "0.7",
+        "0.4",
+        "0.3",
+        "0.6"
+      ],
+      "correct_answer": "0.7",
+      "explanation": "Sum across both Y values in the X=1 row: 0.3+0.4=0.7.",
+      "difficulty": "Application",
+      "source_printed_page": 23,
+      "source_pdf_page": 77
+    },
+    {
+      "id": "C2-42",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "Using the same joint PMF, what is P(X=Y)?",
+      "options": [
+        "0.7",
+        "0.3",
+        "1.0",
+        "0.5"
+      ],
+      "correct_answer": "0.5",
+      "explanation": "The equal pairs are (0,0) and (1,1), with masses 0.1+0.4=0.5.",
+      "difficulty": "Application",
+      "source_printed_page": 23,
+      "source_pdf_page": 77
+    },
+    {
+      "id": "C2-43",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "How is E[g(X,Y)] computed from a joint PMF?",
+      "options": [
+        "g(E[X],E[Y]) in every case",
+        "Σ_x Σ_y p_X(x)p_Y(y) without g",
+        "Σ_x Σ_y g(x,y)p_{X,Y}(x,y)",
+        "Σ_x g(x,x)p_X(x)"
+      ],
+      "correct_answer": "Σ_x Σ_y g(x,y)p_{X,Y}(x,y)",
+      "explanation": "Weight g(x,y) by the probability of every possible pair and add.",
+      "difficulty": "Foundation",
+      "source_printed_page": 24,
+      "source_pdf_page": 78
+    },
+    {
+      "id": "C2-44",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "Does E[X+Y]=E[X]+E[Y] require X and Y to be independent?",
+      "options": [
+        "Only if X and Y have the same PMF",
+        "No",
+        "Yes",
+        "Only if X and Y are Bernoulli"
+      ],
+      "correct_answer": "No",
+      "explanation": "Linearity of expectation holds for any jointly distributed X and Y.",
+      "difficulty": "Foundation",
+      "source_printed_page": 24,
+      "source_pdf_page": 78
+    },
+    {
+      "id": "C2-45",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "Let X_i indicate whether student i succeeds, with P(X_i=1)=p. For X=Σ_i X_i over n students, what is E[X]?",
+      "options": [
+        "np",
+        "p/n",
+        "n+p",
+        "p^n"
+      ],
+      "correct_answer": "np",
+      "explanation": "Each indicator has mean p, and linearity gives E[X]=Σ_i E[X_i]=np.",
+      "difficulty": "Application",
+      "source_printed_page": 25,
+      "source_pdf_page": 79
+    },
+    {
+      "id": "C2-46",
+      "step": 6,
+      "group": "Joint PMFs and multiple variables",
+      "question": "n people randomly retrieve hats. Let X be the number who get their own hat. What is E[X]?",
+      "options": [
+        "n",
+        "1/n",
+        "0",
+        "1"
+      ],
+      "correct_answer": "1",
+      "explanation": "Each person has probability 1/n of getting their own hat; summing n indicator means gives n(1/n)=1.",
+      "difficulty": "Challenge",
+      "source_printed_page": 25,
+      "source_pdf_page": 79
+    },
+    {
+      "id": "C2-47",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "For P(A)>0, which formula gives the conditional PMF of X given A?",
+      "options": [
+        "p_{X|A}(x)=P(A)/p_X(x)",
+        "p_{X|A}(x)=p_X(x)+P(A)",
+        "p_{X|A}(x)=P(X=x and A)/P(A)",
+        "p_{X|A}(x)=p_X(x)P(A)"
+      ],
+      "correct_answer": "p_{X|A}(x)=P(X=x and A)/P(A)",
+      "explanation": "Conditioning restricts the probability model to A and renormalizes by P(A).",
+      "difficulty": "Foundation",
+      "source_printed_page": 27,
+      "source_pdf_page": 81
+    },
+    {
+      "id": "C2-48",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "What must Σ_x p_{X|A}(x) equal?",
+      "options": [
+        "E[X|A]",
+        "1",
+        "P(A)",
+        "0"
+      ],
+      "correct_answer": "1",
+      "explanation": "For a fixed conditioning event with positive probability, a conditional PMF is an ordinary normalized PMF.",
+      "difficulty": "Foundation",
+      "source_printed_page": 27,
+      "source_pdf_page": 81
+    },
+    {
+      "id": "C2-49",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "Which formula relates a conditional PMF to a joint PMF?",
+      "options": [
+        "p_{X|Y}(x|y)=p_{X,Y}(x,y)/p_Y(y)",
+        "p_{X|Y}(x|y)=p_X(x)/p_Y(y)",
+        "p_{X|Y}(x|y)=p_{X,Y}(x,y)p_Y(y)",
+        "p_{X|Y}(x|y)=p_Y(y)/p_X(x)"
+      ],
+      "correct_answer": "p_{X|Y}(x|y)=p_{X,Y}(x,y)/p_Y(y)",
+      "explanation": "The formula applies when p_Y(y)>0.",
+      "difficulty": "Foundation",
+      "source_printed_page": 28,
+      "source_pdf_page": 82
+    },
+    {
+      "id": "C2-50",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "Which multiplication rule reconstructs the joint PMF?",
+      "options": [
+        "p_{X,Y}(x,y)=p_X(x)+p_Y(y)",
+        "p_{X,Y}(x,y)=p_{X|Y}(x|y)/p_Y(y)",
+        "p_{X,Y}(x,y)=p_X(x)−p_Y(y)",
+        "p_{X,Y}(x,y)=p_Y(y)p_{X|Y}(x|y)"
+      ],
+      "correct_answer": "p_{X,Y}(x,y)=p_Y(y)p_{X|Y}(x|y)",
+      "explanation": "Multiply the probability of the conditioning value by the conditional probability of X.",
+      "difficulty": "Foundation",
+      "source_printed_page": 29,
+      "source_pdf_page": 83
+    },
+    {
+      "id": "C2-51",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "Y equals 0 or 1 with probability 1/2 each. If P(X=1|Y=0)=0.2 and P(X=1|Y=1)=0.8, what is P(X=1)?",
+      "options": [
+        "0.8",
+        "1.0",
+        "0.5",
+        "0.4"
+      ],
+      "correct_answer": "0.5",
+      "explanation": "Total probability gives 0.5(0.2)+0.5(0.8)=0.5.",
+      "difficulty": "Application",
+      "source_printed_page": 31,
+      "source_pdf_page": 85
+    },
+    {
+      "id": "C2-52",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "How is E[X|Y=y] calculated?",
+      "options": [
+        "E[X]/p_Y(y)",
+        "Σ_x x p_{X|Y}(x|y)",
+        "Σ_y y p_Y(y)",
+        "Σ_x p_X(x)"
+      ],
+      "correct_answer": "Σ_x x p_{X|Y}(x|y)",
+      "explanation": "Conditional expectation is the mean under the conditional PMF for the specified y.",
+      "difficulty": "Foundation",
+      "source_printed_page": 33,
+      "source_pdf_page": 87
+    },
+    {
+      "id": "C2-53",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "Y is equally likely to be 0 or 1. If E[X|Y=0]=2 and E[X|Y=1]=6, what is E[X]?",
+      "options": [
+        "4",
+        "8",
+        "3",
+        "2"
+      ],
+      "correct_answer": "4",
+      "explanation": "Total expectation gives 0.5(2)+0.5(6)=4.",
+      "difficulty": "Application",
+      "source_printed_page": 34,
+      "source_pdf_page": 88
+    },
+    {
+      "id": "C2-54",
+      "step": 7,
+      "group": "Conditioning and conditional expectation",
+      "question": "For a geometric random variable counting trials until first success with success probability p, what is E[X]?",
+      "options": [
+        "p",
+        "1−p",
+        "p/(1−p)",
+        "1/p"
+      ],
+      "correct_answer": "1/p",
+      "explanation": "After a failed first trial the process restarts, yielding E[X]=p·1+(1−p)(1+E[X])=1/p.",
+      "difficulty": "Challenge",
+      "source_printed_page": 35,
+      "source_pdf_page": 89
+    },
+    {
+      "id": "C2-55",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "X is independent of event A with P(A)>0 when:",
+      "options": [
+        "X can take only one value",
+        "A has probability 1",
+        "p_{X|A}(x)=p_X(x) for every x",
+        "p_{X|A}(x)=P(A) for every x"
+      ],
+      "correct_answer": "p_{X|A}(x)=p_X(x) for every x",
+      "explanation": "Knowing that A occurred must leave the entire PMF of X unchanged.",
+      "difficulty": "Foundation",
+      "source_printed_page": 36,
+      "source_pdf_page": 90
+    },
+    {
+      "id": "C2-56",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "Which identity defines independence of X and Y?",
+      "options": [
+        "E[X]=E[Y]",
+        "p_{X,Y}(x,y)=p_X(x)p_Y(y) for all x,y",
+        "p_{X,Y}(x,y)=p_X(x)+p_Y(y) for all x,y",
+        "p_X(x)=p_Y(y) for all x,y"
+      ],
+      "correct_answer": "p_{X,Y}(x,y)=p_X(x)p_Y(y) for all x,y",
+      "explanation": "The joint mass must factor into the two marginal masses at every pair.",
+      "difficulty": "Foundation",
+      "source_printed_page": 37,
+      "source_pdf_page": 91
+    },
+    {
+      "id": "C2-57",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "If X and Y are independent and p_Y(y)>0, what is p_{X|Y}(x|y)?",
+      "options": [
+        "p_X(x)",
+        "p_Y(y)",
+        "p_X(x)p_Y(y)",
+        "p_X(x)/p_Y(y)"
+      ],
+      "correct_answer": "p_X(x)",
+      "explanation": "Observing Y=y gives no information about X, so its PMF does not change.",
+      "difficulty": "Foundation",
+      "source_printed_page": 37,
+      "source_pdf_page": 91
+    },
+    {
+      "id": "C2-58",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "If X and Y are independent, which expectation identity is guaranteed?",
+      "options": [
+        "E[XY]=E[X]+E[Y]",
+        "E[X/Y]=E[X]/E[Y] in every case",
+        "E[X]=E[Y]",
+        "E[XY]=E[X]E[Y]"
+      ],
+      "correct_answer": "E[XY]=E[X]E[Y]",
+      "explanation": "Factorization of the joint PMF lets the double sum split into a product of expectations.",
+      "difficulty": "Foundation",
+      "source_printed_page": 37,
+      "source_pdf_page": 91
+    },
+    {
+      "id": "C2-59",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "If X and Y are independent, what can be said about g(X) and h(Y)?",
+      "options": [
+        "They always have the same PMF",
+        "They must have zero variance",
+        "They are independent",
+        "They are always equal"
+      ],
+      "correct_answer": "They are independent",
+      "explanation": "Applying separate functions does not introduce interaction between independent variables.",
+      "difficulty": "Foundation",
+      "source_printed_page": 38,
+      "source_pdf_page": 92
+    },
+    {
+      "id": "C2-60",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "Which statement about conditional and unconditional independence is correct?",
+      "options": [
+        "They are equivalent for every conditioning event",
+        "Neither one implies the other in general",
+        "Conditional independence always implies independence",
+        "Independence always implies conditional independence"
+      ],
+      "correct_answer": "Neither one implies the other in general",
+      "explanation": "Conditioning can create or remove dependence, so each property must be checked in its own probability model.",
+      "difficulty": "Challenge",
+      "source_printed_page": 37,
+      "source_pdf_page": 91
+    },
+    {
+      "id": "C2-61",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "For any jointly distributed X and Y, which identity always holds?",
+      "options": [
+        "E[X+Y]=E[X]+E[Y]",
+        "var(X+Y)=var(X)+var(Y)",
+        "E[XY]=E[X]E[Y]",
+        "p_{X,Y}(x,y)=p_X(x)p_Y(y)"
+      ],
+      "correct_answer": "E[X+Y]=E[X]+E[Y]",
+      "explanation": "Means add without an independence assumption; the other identities generally require independence.",
+      "difficulty": "Foundation",
+      "source_printed_page": 39,
+      "source_pdf_page": 93
+    },
+    {
+      "id": "C2-62",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "If X and Y are independent with variances 3 and 5, what is var(X+Y)?",
+      "options": [
+        "15",
+        "2",
+        "64",
+        "8"
+      ],
+      "correct_answer": "8",
+      "explanation": "For independent variables, the variance of a sum is the sum of variances: 3+5=8.",
+      "difficulty": "Application",
+      "source_printed_page": 39,
+      "source_pdf_page": 93
+    },
+    {
+      "id": "C2-63",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "X counts successes in n independent Bernoulli(p) trials. What is var(X)?",
+      "options": [
+        "p(1−p)/n",
+        "n²p²",
+        "np(1−p)",
+        "np"
+      ],
+      "correct_answer": "np(1−p)",
+      "explanation": "Write X as a sum of n independent Bernoulli variables and add their variances.",
+      "difficulty": "Application",
+      "source_printed_page": 40,
+      "source_pdf_page": 94
+    },
+    {
+      "id": "C2-64",
+      "step": 8,
+      "group": "Independence, sums, and estimation",
+      "question": "X_1,…,X_n are independent with common mean μ and variance σ². For S_n=(X_1+⋯+X_n)/n, which pair is correct?",
+      "options": [
+        "E[S_n]=μ and var(S_n)=σ²",
+        "E[S_n]=μ and var(S_n)=σ²/n",
+        "E[S_n]=nμ and var(S_n)=nσ²",
+        "E[S_n]=μ/n and var(S_n)=σ²"
+      ],
+      "correct_answer": "E[S_n]=μ and var(S_n)=σ²/n",
+      "explanation": "Averaging preserves the common mean while shrinking the variance by a factor of n.",
+      "difficulty": "Challenge",
+      "source_printed_page": 41,
+      "source_pdf_page": 95
+    }
+  ]
+}
