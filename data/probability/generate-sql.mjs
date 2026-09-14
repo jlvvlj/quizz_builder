@@ -28,7 +28,7 @@ const sql = `INSERT INTO public.learning_decks (
 ) VALUES (
   'probability-chapter-1',
   'Probability · Sample Space and Probability',
-  '102 questions following Chapter 1 of Bertsekas and Tsitsiklis. Start with Notation, then learn sets, probability models, conditioning, Bayes, independence and counting.',
+  'Learn probability notation, sample spaces, events, probability models, conditioning, Bayes’ rule, independence, reliability and counting.',
   'Question',
   'Answer',
   'multiple_choice'

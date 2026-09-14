@@ -12,7 +12,7 @@
       "title": "Notation",
       "source": "§§1.1–1.6; continuous-model footnote",
       "printed_pages": "3–46",
-      "objective": "Read the symbols used in the chapter before working with probability concepts.",
+      "objective": "Read the symbols used in probability before working with the concepts.",
       "question_count": 38
     },
     {
@@ -86,7 +86,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "Ω",
-      "question": "What does Ω denote in a probability model?",
+      "question": "Ω",
       "options": [
         "The sample space",
         "The probability law",
@@ -104,7 +104,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "∅",
-      "question": "What does ∅ denote?",
+      "question": "∅",
       "options": [
         "The empty set",
         "A set containing the number 0",
@@ -112,7 +112,7 @@
         "The entire sample space"
       ],
       "correct_answer": "The empty set",
-      "explanation": "∅ has no elements. The book also prints the empty-set symbol as Ø.",
+      "explanation": "∅ has no elements. The symbol Ø is also sometimes used for the empty set.",
       "difficulty": "Notation",
       "source_printed_page": 3,
       "source_pdf_page": 8
@@ -122,7 +122,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "{…}",
-      "question": "What do the braces in {1, 2, 3} indicate?",
+      "question": "{1, 2, 3}",
       "options": [
         "A set containing 1, 2 and 3",
         "The sum 1 + 2 + 3",
@@ -140,7 +140,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "∈",
-      "question": "What does x ∈ A mean?",
+      "question": "x ∈ A",
       "options": [
         "x is outside A",
         "x is a subset of A",
@@ -158,7 +158,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "∉",
-      "question": "What does x ∉ A mean?",
+      "question": "x ∉ A",
       "options": [
         "A is empty",
         "x is a subset of A",
@@ -175,8 +175,8 @@
       "id": "N-06",
       "step": 1,
       "group": "Sets and events",
-      "symbol": "⊂, ⊆",
-      "question": "In this book, what does A ⊂ B mean?",
+      "symbol": "⊆",
+      "question": "A ⊆ B",
       "options": [
         "A and B have no common elements",
         "Every element of A is also in B; equality is allowed",
@@ -184,7 +184,7 @@
         "A is one element of B"
       ],
       "correct_answer": "Every element of A is also in B; equality is allowed",
-      "explanation": "This edition uses ⊂ for inclusive containment. Modern texts often use ⊆ for this meaning and reserve ⊂ for strict containment.",
+      "explanation": "Every element of A is in B, and equality is allowed.",
       "difficulty": "Notation",
       "source_printed_page": 4,
       "source_pdf_page": 9
@@ -193,8 +193,8 @@
       "id": "N-07",
       "step": 1,
       "group": "Sets and events",
-      "symbol": "⊃",
-      "question": "In this book, what does B ⊃ A mean?",
+      "symbol": "⊇",
+      "question": "B ⊇ A",
       "options": [
         "B has strictly more elements than A",
         "B contains every element of A",
@@ -202,7 +202,7 @@
         "B belongs to A as one element"
       ],
       "correct_answer": "B contains every element of A",
-      "explanation": "It is the reverse way to write A ⊂ B; the book allows equality.",
+      "explanation": "This is the reverse way to write A ⊆ B; equality is allowed.",
       "difficulty": "Notation",
       "source_printed_page": 4,
       "source_pdf_page": 9
@@ -212,7 +212,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "∪",
-      "question": "What does A ∪ B mean?",
+      "question": "A ∪ B",
       "options": [
         "Only outcomes in both A and B",
         "Outcomes in A or B, including those in both",
@@ -230,7 +230,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "∩",
-      "question": "What does A ∩ B mean?",
+      "question": "A ∩ B",
       "options": [
         "Outcomes in at least one of A and B",
         "Outcomes in both A and B",
@@ -248,7 +248,7 @@
       "step": 1,
       "group": "Sets and events",
       "symbol": "Aᶜ",
-      "question": "What does Aᶜ denote?",
+      "question": "Aᶜ",
       "options": [
         "A raised to the power c",
         "The intersection of A and an event named c",
@@ -266,7 +266,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "P(A)",
-      "question": "What does P(A) denote?",
+      "question": "P(A)",
       "options": [
         "The probability that event A occurs",
         "The probability law’s sample space",
@@ -284,7 +284,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "P(A | B)",
-      "question": "How do you read P(A | B)?",
+      "question": "P(A | B)",
       "options": [
         "The probability of A or B",
         "The probability of A divided by the probability of B",
@@ -292,7 +292,7 @@
         "The probability of B given A"
       ],
       "correct_answer": "The probability of A given B",
-      "explanation": "The vertical bar means “given” here. Under the chapter’s ratio definition, P(B) must be positive.",
+      "explanation": "The vertical bar means “given”. The ratio P(A ∩ B) / P(B) requires P(B) > 0.",
       "difficulty": "Notation",
       "source_printed_page": 17,
       "source_pdf_page": 22
@@ -302,7 +302,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "|A|",
-      "question": "For a finite set A, what does |A| mean in our questions?",
+      "question": "|A|, for a finite set A",
       "options": [
         "The complement of A",
         "The length of every event A",
@@ -310,7 +310,7 @@
         "The probability of A"
       ],
       "correct_answer": "The number of elements in A",
-      "explanation": "This is cardinality notation used in the draft. The chapter usually writes “number of elements” in words; geometric length is a different concept.",
+      "explanation": "Bars around a finite set denote cardinality: the number of elements in the set.",
       "difficulty": "Notation",
       "source_printed_page": 11,
       "source_pdf_page": 16
@@ -320,7 +320,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "{x | …}",
-      "question": "How do you read the bar in {x | 0 ≤ x ≤ 1}?",
+      "question": "{x | 0 ≤ x ≤ 1}",
       "options": [
         "Given that event x occurred",
         "Or",
@@ -338,7 +338,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "[a, b]",
-      "question": "What does the interval [a, b] contain, assuming a ≤ b?",
+      "question": "[a, b], with a ≤ b",
       "options": [
         "All real numbers strictly between a and b",
         "Only the integers from a to b",
@@ -356,7 +356,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "ℝ / ℜ",
-      "question": "What does ℝ denote (printed ℜ in this book)?",
+      "question": "ℝ",
       "options": [
         "The set of real numbers",
         "The set of all probability laws",
@@ -364,7 +364,7 @@
         "A randomly selected event"
       ],
       "correct_answer": "The set of real numbers",
-      "explanation": "The chapter calls real numbers scalars and uses ℜ for their set.",
+      "explanation": "ℝ is the standard symbol for the set of real numbers.",
       "difficulty": "Notation",
       "source_printed_page": 5,
       "source_pdf_page": 10
@@ -374,7 +374,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "ℝ², ℝ³",
-      "question": "What does ℝ² denote?",
+      "question": "ℝ²",
       "options": [
         "The probability of two independent events",
         "The set of all ordered pairs of real numbers",
@@ -392,7 +392,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "(x, y)",
-      "question": "In an outcome written as the ordered pair (x, y), does order matter?",
+      "question": "(x, y)",
       "options": [
         "Only if x and y are integers",
         "Only if x and y have equal probability",
@@ -410,7 +410,7 @@
       "step": 1,
       "group": "Probability and set descriptions",
       "symbol": "× between sets",
-      "question": "What does [0, 1] × [0, 1] denote?",
+      "question": "[0, 1] × [0, 1]",
       "options": [
         "Two independent events, by notation alone",
         "All pairs (x, y) with both coordinates in [0, 1]",
@@ -428,7 +428,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "Aᵢ",
-      "question": "In a collection A₁, A₂, …, Aₙ, what does the subscript i in Aᵢ indicate?",
+      "question": "Aᵢ in A₁, A₂, …, Aₙ",
       "options": [
         "The complement of A",
         "A raised to the power i",
@@ -446,7 +446,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "⋃",
-      "question": "What does ⋃ᵢ₌₁ⁿ Aᵢ mean?",
+      "question": "⋃ᵢ₌₁ⁿ Aᵢ",
       "options": [
         "The intersection of A₁ through Aₙ",
         "The set containing only the event Aₙ",
@@ -464,7 +464,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "⋂",
-      "question": "What does ⋂ᵢ₌₁ⁿ Aᵢ mean?",
+      "question": "⋂ᵢ₌₁ⁿ Aᵢ",
       "options": [
         "The product of their probabilities",
         "The complement of Aₙ",
@@ -482,7 +482,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "Σ",
-      "question": "What does Σᵢ₌₁³ pᵢ mean?",
+      "question": "Σᵢ₌₁³ pᵢ",
       "options": [
         "p₁ + p₂ + p₃",
         "p₁ × p₂ × p₃",
@@ -500,7 +500,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "∏",
-      "question": "What does ∏ᵢ₌₁³ pᵢ mean?",
+      "question": "∏ᵢ₌₁³ pᵢ",
       "options": [
         "p₁ × p₂ × p₃",
         "The union of three events",
@@ -518,7 +518,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "∞",
-      "question": "In ⋃ᵢ₌₁^∞ Aᵢ, what does the upper limit ∞ tell you?",
+      "question": "⋃ᵢ₌₁^∞ Aᵢ",
       "options": [
         "The union has probability greater than 1",
         "There is one final event called A∞",
@@ -536,7 +536,7 @@
       "step": 1,
       "group": "Indices and operations",
       "symbol": "…",
-      "question": "What do the dots mean in {1, 2, 3, …}?",
+      "question": "{1, 2, 3, …}",
       "options": [
         "One element has been lost",
         "The set contains every real number",
@@ -554,7 +554,7 @@
       "step": 1,
       "group": "Counting notation",
       "symbol": "n!",
-      "question": "For a positive integer n, what does n! mean?",
+      "question": "n!",
       "options": [
         "The sum 1 + 2 + … + n",
         "n divided by n − 1",
@@ -572,7 +572,7 @@
       "step": 1,
       "group": "Counting notation",
       "symbol": "0!",
-      "question": "What is 0! ?",
+      "question": "0!",
       "options": [
         "Undefined",
         "Infinity",
@@ -590,7 +590,7 @@
       "step": 1,
       "group": "Counting notation",
       "symbol": "C(n, k), binomial coefficient",
-      "question": "The book places k below n inside parentheses, read “n choose k”. What does this count?",
+      "question": "C(n, k)",
       "options": [
         "Unordered selections of k distinct objects from n distinct objects",
         "All subsets of an n-element set, regardless of size",
@@ -598,7 +598,7 @@
         "Ordered selections of k distinct objects from n distinct objects"
       ],
       "correct_answer": "Unordered selections of k distinct objects from n distinct objects",
-      "explanation": "The draft writes the same binomial coefficient as C(n, k). It equals n!/[k!(n − k)!] for 0 ≤ k ≤ n.",
+      "explanation": "This binomial coefficient equals n!/[k!(n − k)!] for 0 ≤ k ≤ n.",
       "difficulty": "Notation",
       "source_printed_page": 45,
       "source_pdf_page": 50
@@ -608,7 +608,7 @@
       "step": 1,
       "group": "Counting notation",
       "symbol": "Multinomial coefficient",
-      "question": "The book places n above n₁, …, nᵣ inside parentheses. What does this coefficient count?",
+      "question": "n! / (n₁! ··· nᵣ!)",
       "options": [
         "Only the ways to choose the first group",
         "Partitions where every ordering inside each group counts separately",
@@ -624,9 +624,9 @@
     {
       "id": "N-31",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "|x − y|",
-      "question": "For real numbers x and y, what does |x − y| mean?",
+      "question": "|x − y|",
       "options": [
         "The difference x − y, even when negative",
         "The nonnegative distance between x and y",
@@ -634,7 +634,7 @@
         "The number of elements in a set named x − y"
       ],
       "correct_answer": "The nonnegative distance between x and y",
-      "explanation": "Bars around a number indicate absolute value. This differs from bars around a finite set, which denote cardinality in the draft.",
+      "explanation": "Bars around a number indicate absolute value, which gives the nonnegative distance between x and y.",
       "difficulty": "Notation",
       "source_printed_page": 14,
       "source_pdf_page": 19
@@ -642,9 +642,9 @@
     {
       "id": "N-32",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "≤, ≥, <, >",
-      "question": "What does 0 ≤ x ≤ 1 mean?",
+      "question": "0 ≤ x ≤ 1",
       "options": [
         "x must equal 0 or 1",
         "x is between 0 and 1, including the endpoints",
@@ -660,9 +660,9 @@
     {
       "id": "N-33",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "≠",
-      "question": "What does P(A ∩ B) ≠ P(A)P(B) assert?",
+      "question": "P(A ∩ B) ≠ P(A)P(B)",
       "options": [
         "The quantities are approximately equal",
         "The two quantities are not equal",
@@ -678,9 +678,9 @@
     {
       "id": "N-34",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "≈",
-      "question": "What does the symbol ≈ mean in a calculated probability?",
+      "question": "≈",
       "options": [
         "Approximately equal to",
         "Exactly equal to",
@@ -688,7 +688,7 @@
         "Less than or equal to"
       ],
       "correct_answer": "Approximately equal to",
-      "explanation": "The book uses ≈ when reporting rounded numerical results.",
+      "explanation": "≈ indicates an approximate numerical equality.",
       "difficulty": "Notation",
       "source_printed_page": 31,
       "source_pdf_page": 36
@@ -696,9 +696,9 @@
     {
       "id": "N-35",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "pᵏ",
-      "question": "For positive integer k, what does pᵏ mean?",
+      "question": "pᵏ",
       "options": [
         "p multiplied by itself k times",
         "p divided by k",
@@ -714,9 +714,9 @@
     {
       "id": "N-36",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "min, max",
-      "question": "If X = 2 and Y = 4, what are min(X, Y) and max(X, Y)?",
+      "question": "min(2, 4), max(2, 4)",
       "options": [
         "4 and 2, respectively",
         "2 and 4, respectively",
@@ -724,7 +724,7 @@
         "6 and 8, respectively"
       ],
       "correct_answer": "2 and 4, respectively",
-      "explanation": "min selects the smaller value and max the larger. These operators appear in the chapter’s dice examples.",
+      "explanation": "min selects the smaller value and max selects the larger value.",
       "difficulty": "Notation",
       "source_printed_page": 19,
       "source_pdf_page": 24
@@ -732,9 +732,9 @@
     {
       "id": "N-37",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "p versus p(k)",
-      "question": "In the chapter’s n-toss model, p is the probability of heads on one toss. What does p(k) denote?",
+      "question": "p(k)",
       "options": [
         "p multiplied by k",
         "The probability of exactly k heads in all n tosses",
@@ -742,7 +742,7 @@
         "The probability of the kth toss being heads"
       ],
       "correct_answer": "The probability of exactly k heads in all n tosses",
-      "explanation": "Parentheses indicate a function evaluated at k. Here the chapter defines p(k) as a binomial probability, which counts all qualifying sequences.",
+      "explanation": "Parentheses indicate a function evaluated at k. This binomial probability counts all sequences containing exactly k heads.",
       "difficulty": "Notation",
       "source_printed_page": 40,
       "source_pdf_page": 45
@@ -750,9 +750,9 @@
     {
       "id": "N-38",
       "step": 1,
-      "group": "Other notation used in the chapter",
+      "group": "Additional notation",
       "symbol": "∫ₛ dt",
-      "question": "In the chapter’s footnote on continuous models, what does ∫ₛ dt represent for a suitable set S ⊆ [0, 1]?",
+      "question": "∫ₛ dt, for S ⊆ [0, 1]",
       "options": [
         "The probability of each individual point in S",
         "The number of individual points in S",
@@ -760,7 +760,7 @@
         "The length of S"
       ],
       "correct_answer": "The length of S",
-      "explanation": "It integrates the constant 1 over S. In that specific uniform model, this length is P(S). This is recognition only; integration techniques are not required for this deck.",
+      "explanation": "This integrates the constant 1 over S. In a uniform model on [0, 1], the result is both the length of S and P(S).",
       "difficulty": "Notation",
       "source_printed_page": 13,
       "source_pdf_page": 18
@@ -1168,7 +1168,7 @@
     {
       "id": "P1-26",
       "step": 5,
-      "question": "If P(B) = 0, what does the chapter’s ratio definition say about P(A | B)?",
+      "question": "If P(B) = 0, is P(A | B) = P(A ∩ B) / P(B) defined?",
       "options": [
         "It is undefined",
         "It is P(A)",
@@ -1176,7 +1176,7 @@
         "It is 1"
       ],
       "correct_answer": "It is undefined",
-      "explanation": "The ratio would divide by zero. More advanced forms of conditioning are outside this chapter.",
+      "explanation": "The ratio would divide by zero, so this expression is undefined.",
       "difficulty": "Foundation",
       "source_printed_page": 17,
       "source_pdf_page": 22
@@ -1544,7 +1544,7 @@
         "Independent trials that must each have success probability 1/2"
       ],
       "correct_answer": "Independent two-outcome trials with the same success probability",
-      "explanation": "The chapter considers identical independent stages, each labeled success or failure.",
+      "explanation": "A Bernoulli sequence consists of identical independent stages, each labeled success or failure.",
       "difficulty": "Foundation",
       "source_printed_page": 39,
       "source_pdf_page": 44

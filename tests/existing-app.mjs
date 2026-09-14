@@ -23,6 +23,8 @@ try{
  assert.ifError((await db.from('words10k').delete().eq('deck_id',fixtureDeck)).error);assert.ifError((await db.from('learning_decks').delete().eq('id',fixtureDeck)).error);
  const probability=cat.data.sections.find(s=>s.deck.id==='probability-chapter-1');assert.equal(probability.count,102);assert.equal(probability.steps[0].title,'Notation');assert.deepEqual(probability.steps.map(s=>s.items),[38,8,8,8,8,8,8,8,8]);
  const expected=JSON.parse(readFileSync('data/probability/questions.json','utf8')).questions;
+ const notation=expected.filter(q=>q.step===1);assert.equal(notation.length,38);assert.ok(notation.every(q=>!q.question.includes('?')));
+ const sourceReference=/\b(book|edition|chapter|textbook|draft|footnote|bertsekas|tsitsiklis)\b/i;for(const q of expected)assert.doesNotMatch([q.question,q.correct_answer,q.explanation].join(' '),sourceReference);
  const stored=await db.from('words10k').select('*').eq('deck_id','probability-chapter-1');assert.ifError(stored.error);assert.equal(stored.data.length,102);
  for(const q of expected){const row=stored.data.find(r=>r.source_id===q.id);assert.equal(row.japanese_word,q.question);assert.equal(row.english,q.correct_answer);assert.deepEqual(row.authored_options,q.options);assert.equal(row.explanation,q.explanation);}
  const probabilityId=stored.data[0].id;

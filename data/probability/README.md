@@ -10,7 +10,7 @@ Each question includes a stable source ID, four authored choices, the correct an
 The checked-in data migration is generated from this JSON:
 
 ```sh
-node data/probability/generate-sql.mjs supabase/migrations/20260914023541_probability_chapter_one_questions.sql
+node data/probability/generate-sql.mjs supabase/migrations/20260914031438_streamline_probability_copy.sql
 ```
 
 `import.mjs` can reapply the JSON directly to a configured development project and verifies that all 102 questions were saved with four choices. Normal deployments should use the Supabase migrations.
