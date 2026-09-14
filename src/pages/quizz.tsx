@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import { useCatalog } from '@/utils/catalog'
 import LoadingState from '@/components/LoadingState'
 import { useState, useEffect, useCallback, useRef } from "react"
 import { Pause, Play, Settings, X } from "lucide-react"
@@ -56,6 +57,7 @@ interface WordDifficulty {
 }
 
 interface QuizCard {
+    explanation?: string | null;
     id: number;
     question: string;
     kanjiEntryId?: number;
@@ -204,6 +206,9 @@ function applyMcOptionLang(cards: QuizCard[], lang: TypingLang): QuizCard[] {
 
 export default function FlashcardApp() {
     const router = useRouter()
+    const {sections: catalogSections, error: catalogError} = useCatalog();
+    const course = catalogSections?.find(s => s.id === router.query.section);
+    const isStructured = course?.deck.question_format === 'multiple_choice';
     // `flashcards` holds the unique cards for the session, one per word, in order.
     const [flashcards, setFlashcards] = useState<QuizCard[]>([])
     const [originalLength, setOriginalLength] = useState(0)
@@ -242,13 +247,14 @@ export default function FlashcardApp() {
     const [isSaving, setIsSaving] = useState(false)
     const { openSettings } = useSettingsModal()
     const [showingPhrase, setShowingPhrase] = useState(false)
-    const [appSettings, setAppSettings] = useState<AppSettings>({
+    const [storedSettings, setAppSettings] = useState<AppSettings>({
         showPhrase: false,
         audioAutoPlay: true,
         playCorrectAnswerAudio: false,
         timerDuration: 3,
         answerChoices: 3
     })
+    const appSettings = isStructured ? {...storedSettings, quizMode: 'multiple-choice', quizDirection: 'forward', answerChoices: 4, timerDuration: Math.max(60, storedSettings.timerDuration)} : storedSettings;
     const [wordAudio, setWordAudio] = useState<AudioBufferSourceNode | null>(null)
     const [phraseAudio, setPhraseAudio] = useState<AudioBufferSourceNode | null>(null)
     const [isPaused, setIsPaused] = useState(false)
@@ -293,7 +299,7 @@ export default function FlashcardApp() {
     const readyAtRef = useRef(0)
     const endShownAtRef = useRef(0)
 
-    const sectionLabel = (() => {
+    const sectionLabel = course?.steps.find(step => step.key === router.query.step)?.title || (() => {
         const s = router.query.section
         if (typeof s !== 'string') return undefined
         const n = s.split('_').pop()
@@ -434,7 +440,7 @@ export default function FlashcardApp() {
                             }
                         }
 
-                        const wrongAnswers = wrongCards
+                        const wrongAnswers = card.authored_options?.filter(answer => answer !== card.english) ?? wrongCards
                             .map(w => isReverse ? w.japanese_word : w.english)
                             .filter((s): s is string => !!s);
                         // Readings of the same wrong cards, for the Japanese option
@@ -446,6 +452,7 @@ export default function FlashcardApp() {
                         // Swap question/answer based on quiz direction
                         return {
                             id: card.id,
+                            explanation: card.explanation,
                             question: isReverse ? card.english : card.japanese_word,
                             reading: isReverse ? undefined : card.japanese_reading,
                             correctAnswer: isReverse ? card.japanese_word : card.english,
@@ -600,10 +607,10 @@ export default function FlashcardApp() {
         };
 
         // Only load flashcards when router is ready and we have settings
-        if (router.isReady && appSettings.sessionSize && appSettings.sessionSize > 0) {
+        if (catalogSections && router.isReady && appSettings.sessionSize && appSettings.sessionSize > 0) {
             loadFlashcards();
         }
-    }, [router.isReady, router.query, appSettings.sessionSize, appSettings.quizDirection, appSettings.answerChoices, appSettings.quizMode, isPrimitives, isKanji, isTubelex, isSentences]);
+    }, [catalogSections, router.isReady, router.query, appSettings.sessionSize, appSettings.quizDirection, appSettings.answerChoices, appSettings.quizMode, isPrimitives, isKanji, isTubelex, isSentences]);
 
     // Load settings from database on mount
     useEffect(() => {
@@ -1255,7 +1262,9 @@ export default function FlashcardApp() {
                         section: section as string,
                         title: 'Review Session Results',
                         subtitle: 'Results for this review session',
-                        description: 'These are the words you reviewed in this session.',
+                        description: isStructured
+                            ? 'These are the questions you reviewed in this session.'
+                            : 'These are the words you reviewed in this session.',
                         practicedWordIds: practicedWordIdsString,
                         showResultsButton: 'true'
                     });
@@ -1268,7 +1277,9 @@ export default function FlashcardApp() {
                         step: step as string,
                         title: 'Session Results',
                         subtitle: 'Results for this session',
-                        description: 'These are the words you practiced in this session.',
+                        description: isStructured
+                            ? 'These are the questions you practiced in this session.'
+                            : 'These are the words you practiced in this session.',
                         practicedWordIds: practicedWordIdsString,
                         showResultsButton: 'true'
                     });
@@ -1292,7 +1303,7 @@ export default function FlashcardApp() {
         };
 
         save();
-    }, [progress, router, wordDifficulties, flashcards, originalLength, appSettings.timerDuration, appSettings.quizMode, isPrimitives, isSentences, isKanji, isTubelex]);
+    }, [progress, router, wordDifficulties, flashcards, originalLength, appSettings.timerDuration, appSettings.quizMode, isStructured, isPrimitives, isSentences, isKanji, isTubelex]);
 
     // While the end screen is up, auto-continue to detailed results once the save
     // has produced the URL; space (or the in-screen button) skips the wait.
@@ -1604,10 +1615,10 @@ export default function FlashcardApp() {
     // main return below), with the session data loading behind it.
 
     // Early return for error state
-    if (error) {
+    if (error || catalogError) {
         return (
             <div className="min-h-screen bg-[#1A1A1A] flex items-center justify-center p-4">
-                <div className="text-white text-2xl">{error}</div>
+                <div className="text-white text-2xl">{error || catalogError}</div>
             </div>
         )
     }
@@ -1728,10 +1739,10 @@ export default function FlashcardApp() {
                                 <div className="pt-2 sm:pt-4 flex-shrink-0">
                                     <h2 className="text-base sm:text-2xl mb-4 sm:mb-8 text-[#A1A1A1]">
                                         {isLearningPhase
-                                            ? (isSentences ? 'Learn this sentence' : 'Learn this word')
+                                            ? (isSentences ? 'Learn this sentence' : (isStructured ? 'Learn this concept' : 'Learn this word'))
                                             : (!showingPhrase ? (isSentences ? 'Type the reading of this sentence' : 'Do you know this?') : '\u00A0')}
                                     </h2>
-                                    <div className={`${isSentences ? 'text-3xl sm:text-4xl md:text-5xl leading-snug' : 'text-5xl sm:text-6xl md:text-7xl'} font-bold break-words`}>
+                                    <div className={`${isStructured ? 'text-xl sm:text-2xl md:text-3xl leading-snug' : isSentences ? 'text-3xl sm:text-4xl md:text-5xl leading-snug' : 'text-5xl sm:text-6xl md:text-7xl'} font-bold break-words`}>
                                         {/* In forward MC the reading is suppressed here (it would
                                             duplicate the English-mode hint, or leak the answer in
                                             Japanese mode). Furigana ruby is kept only outside MC. */}
@@ -1780,9 +1791,10 @@ export default function FlashcardApp() {
                                                     {introReadings.length > 0 && (
                                                         <div className={`${isSentences ? 'text-lg sm:text-xl md:text-2xl leading-snug break-words' : 'text-2xl sm:text-3xl'} text-[#A1A1A1]`}>{introReadings.join('、')}</div>
                                                     )}
-                                                    <div className={`${isSentences ? 'text-xl sm:text-2xl md:text-3xl' : 'text-3xl sm:text-4xl md:text-5xl'} font-semibold break-words text-white`}>
+                                                    <div className={`${isStructured ? 'text-lg sm:text-xl md:text-2xl' : isSentences ? 'text-xl sm:text-2xl md:text-3xl' : 'text-3xl sm:text-4xl md:text-5xl'} font-semibold break-words text-white`}>
                                                         {introMeaning}
                                                     </div>
+                                                    {isStructured && currentCard.explanation && <p className="text-sm sm:text-base text-[#A1A1A1] leading-relaxed">{currentCard.explanation}</p>}
                                                     {currentCard.mnemonic && (
                                                         <div className="max-w-3xl max-h-40 overflow-y-auto px-2 text-sm sm:text-base md:text-lg leading-relaxed text-white whitespace-pre-line">
                                                             <KanjiMnemonic
@@ -1927,6 +1939,7 @@ export default function FlashcardApp() {
                             </div>
                             {!isLearningPhase && awaitingContinue && (
                                 <div className="absolute inset-x-4 bottom-4 z-20 sm:inset-x-8 sm:bottom-8 md:inset-x-12 md:bottom-12">
+                                    <>{isStructured && currentCard.explanation && <p className="mb-3 text-sm sm:text-base text-[#A1A1A1]">{currentCard.explanation}</p>}
                                     <QuizFeedbackBanner
                                         status={isCorrect === true ? 'correct' : 'incorrect'}
                                         correctSolution={
@@ -1944,7 +1957,7 @@ export default function FlashcardApp() {
                                                 : undefined
                                         }
                                         onContinue={handleContinue}
-                                    />
+                                    /></>
                                 </div>
                             )}
                         </div>

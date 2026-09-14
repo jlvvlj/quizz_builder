@@ -1,0 +1,14 @@
+import { readFileSync } from 'node:fs';
+import { createClient } from '@supabase/supabase-js';
+const env = Object.fromEntries(readFileSync('.env.local','utf8').split('\n').filter(l=>l.includes('=')&&!l.startsWith('#')).map(l=>{const i=l.indexOf('=');return [l.slice(0,i),l.slice(i+1).trim().replace(/^['"]|['"]$/g,'')];}));
+const db=createClient(env.NEXT_PUBLIC_SUPABASE_URL,env.SUPABASE_SERVICE_ROLE_KEY);
+const course=JSON.parse(readFileSync(new URL('./questions.json',import.meta.url),'utf8'));
+const deck='probability-chapter-1';
+const {error}=await db.from('learning_decks').upsert({id:deck,title:'Probability · Sample Space and Probability',description:'102 questions following Chapter 1 of Bertsekas and Tsitsiklis. Start with Notation, then learn sets, probability models, conditioning, Bayes, independence and counting.',question_label:'Question',answer_label:'Answer',question_format:'multiple_choice'});
+if(error)throw error;
+const rows=course.questions.map(q=>({deck_id:deck,source_id:q.id,source_page:q.source_pdf_page,section:'section_2',step:`step_${q.step}`,step_title:course.steps.find(s=>s.number===q.step).title,japanese_word:q.question,english:q.correct_answer,authored_options:q.options,explanation:q.explanation}));
+for(const q of rows)if(new Set(q.authored_options).size!==4||!q.authored_options.includes(q.english))throw Error('Invalid choices');
+const saved=await db.from('words10k').upsert(rows,{onConflict:'deck_id,source_id'}).select('id,source_id,japanese_word,english,authored_options,step');
+if(saved.error)throw saved.error;
+if(saved.data.length!==102)throw Error('Incomplete import');
+console.log(`Verified ${saved.data.length} imported questions with four choices each.`);

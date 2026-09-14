@@ -1,0 +1,1793 @@
+{
+  "status": "approved_and_implemented",
+  "title": "Sample Space and Probability",
+  "language": "English",
+  "source": "Bertsekas and Tsitsiklis, Introduction to Probability, MIT course 6.041–6.431, Fall 2000 lecture notes",
+  "source_pdf_pages": "6–54",
+  "source_printed_pages": "1–49",
+  "mode": "multiple_choice",
+  "steps": [
+    {
+      "number": 1,
+      "title": "Notation",
+      "source": "§§1.1–1.6; continuous-model footnote",
+      "printed_pages": "3–46",
+      "objective": "Read the symbols used in the chapter before working with probability concepts.",
+      "question_count": 38
+    },
+    {
+      "number": 2,
+      "title": "Sets and events",
+      "source": "§1.1; §1.2, definition of events",
+      "printed_pages": "3–7",
+      "objective": "Recognize events and translate “and”, “or” and “not” into sets.",
+      "question_count": 8
+    },
+    {
+      "number": 3,
+      "title": "Building a probability model",
+      "source": "§1.1–1.2",
+      "printed_pages": "4–11",
+      "objective": "Choose a suitable sample space and apply the probability axioms.",
+      "question_count": 8
+    },
+    {
+      "number": 4,
+      "title": "Calculating event probabilities",
+      "source": "§1.2",
+      "printed_pages": "10–16",
+      "objective": "Use counting, complements, overlap corrections and geometric probability.",
+      "question_count": 8
+    },
+    {
+      "number": 5,
+      "title": "Conditional probability",
+      "source": "§1.3",
+      "printed_pages": "16–25",
+      "objective": "Restrict the sample space and multiply conditional probabilities.",
+      "question_count": 8
+    },
+    {
+      "number": 6,
+      "title": "Total probability and Bayes’ rule",
+      "source": "§1.4",
+      "printed_pages": "25–31",
+      "objective": "Combine scenarios and update their probabilities after observing evidence.",
+      "question_count": 8
+    },
+    {
+      "number": 7,
+      "title": "Independence",
+      "source": "§1.5",
+      "printed_pages": "31–37",
+      "objective": "Distinguish independence, disjointness and conditional independence.",
+      "question_count": 8
+    },
+    {
+      "number": 8,
+      "title": "Independent trials and reliability",
+      "source": "§1.5",
+      "printed_pages": "37–41",
+      "objective": "Calculate sequence, binomial and simple system probabilities.",
+      "question_count": 8
+    },
+    {
+      "number": 9,
+      "title": "Counting",
+      "source": "§1.6; synthesis §1.7",
+      "printed_pages": "41–49",
+      "objective": "Choose the right count for ordered selections, groups and repeated objects.",
+      "question_count": 8
+    }
+  ],
+  "questions": [
+    {
+      "id": "N-01",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "Ω",
+      "question": "What does Ω denote in a probability model?",
+      "options": [
+        "The sample space",
+        "The probability law",
+        "The empty event",
+        "The number of outcomes"
+      ],
+      "correct_answer": "The sample space",
+      "explanation": "Ω is the set of all possible outcomes; it is the universal set for the model.",
+      "difficulty": "Notation",
+      "source_printed_page": 6,
+      "source_pdf_page": 11
+    },
+    {
+      "id": "N-02",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "∅",
+      "question": "What does ∅ denote?",
+      "options": [
+        "The empty set",
+        "A set containing the number 0",
+        "An unknown probability",
+        "The entire sample space"
+      ],
+      "correct_answer": "The empty set",
+      "explanation": "∅ has no elements. The book also prints the empty-set symbol as Ø.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 8
+    },
+    {
+      "id": "N-03",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "{…}",
+      "question": "What do the braces in {1, 2, 3} indicate?",
+      "options": [
+        "A set containing 1, 2 and 3",
+        "The sum 1 + 2 + 3",
+        "An ordered sequence that must occur in that order",
+        "Every real number between 1 and 3"
+      ],
+      "correct_answer": "A set containing 1, 2 and 3",
+      "explanation": "Braces list set elements; their order does not matter.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 8
+    },
+    {
+      "id": "N-04",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "∈",
+      "question": "What does x ∈ A mean?",
+      "options": [
+        "x is outside A",
+        "x is a subset of A",
+        "x equals the probability of A",
+        "x is an element of A"
+      ],
+      "correct_answer": "x is an element of A",
+      "explanation": "∈ expresses membership of an element in a set.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 8
+    },
+    {
+      "id": "N-05",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "∉",
+      "question": "What does x ∉ A mean?",
+      "options": [
+        "A is empty",
+        "x is a subset of A",
+        "A has probability zero",
+        "x is not an element of A"
+      ],
+      "correct_answer": "x is not an element of A",
+      "explanation": "∉ negates membership; it says nothing about whether A is empty.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 8
+    },
+    {
+      "id": "N-06",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "⊂, ⊆",
+      "question": "In this book, what does A ⊂ B mean?",
+      "options": [
+        "A and B have no common elements",
+        "Every element of A is also in B; equality is allowed",
+        "A and B must be different sets",
+        "A is one element of B"
+      ],
+      "correct_answer": "Every element of A is also in B; equality is allowed",
+      "explanation": "This edition uses ⊂ for inclusive containment. Modern texts often use ⊆ for this meaning and reserve ⊂ for strict containment.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-07",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "⊃",
+      "question": "In this book, what does B ⊃ A mean?",
+      "options": [
+        "B has strictly more elements than A",
+        "B contains every element of A",
+        "B contains no element of A",
+        "B belongs to A as one element"
+      ],
+      "correct_answer": "B contains every element of A",
+      "explanation": "It is the reverse way to write A ⊂ B; the book allows equality.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-08",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "∪",
+      "question": "What does A ∪ B mean?",
+      "options": [
+        "Only outcomes in both A and B",
+        "Outcomes in A or B, including those in both",
+        "Outcomes in neither A nor B",
+        "Outcomes in exactly one of A and B"
+      ],
+      "correct_answer": "Outcomes in A or B, including those in both",
+      "explanation": "Union uses inclusive “or”: shared outcomes are included.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-09",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "∩",
+      "question": "What does A ∩ B mean?",
+      "options": [
+        "Outcomes in at least one of A and B",
+        "Outcomes in both A and B",
+        "Outcomes in A but not B",
+        "Outcomes in neither A nor B"
+      ],
+      "correct_answer": "Outcomes in both A and B",
+      "explanation": "Intersection corresponds to “and”.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-10",
+      "step": 1,
+      "group": "Sets and events",
+      "symbol": "Aᶜ",
+      "question": "What does Aᶜ denote?",
+      "options": [
+        "A raised to the power c",
+        "The intersection of A and an event named c",
+        "All outcomes in Ω that are not in A",
+        "The number of outcomes in A"
+      ],
+      "correct_answer": "All outcomes in Ω that are not in A",
+      "explanation": "The superscript c denotes complement relative to the chosen universe Ω.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-11",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "P(A)",
+      "question": "What does P(A) denote?",
+      "options": [
+        "The probability that event A occurs",
+        "The probability law’s sample space",
+        "The complement of A",
+        "The number of elements in A"
+      ],
+      "correct_answer": "The probability that event A occurs",
+      "explanation": "P maps an event to its probability.",
+      "difficulty": "Notation",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "N-12",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "P(A | B)",
+      "question": "How do you read P(A | B)?",
+      "options": [
+        "The probability of A or B",
+        "The probability of A divided by the probability of B",
+        "The probability of A given B",
+        "The probability of B given A"
+      ],
+      "correct_answer": "The probability of A given B",
+      "explanation": "The vertical bar means “given” here. Under the chapter’s ratio definition, P(B) must be positive.",
+      "difficulty": "Notation",
+      "source_printed_page": 17,
+      "source_pdf_page": 22
+    },
+    {
+      "id": "N-13",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "|A|",
+      "question": "For a finite set A, what does |A| mean in our questions?",
+      "options": [
+        "The complement of A",
+        "The length of every event A",
+        "The number of elements in A",
+        "The probability of A"
+      ],
+      "correct_answer": "The number of elements in A",
+      "explanation": "This is cardinality notation used in the draft. The chapter usually writes “number of elements” in words; geometric length is a different concept.",
+      "difficulty": "Notation",
+      "source_printed_page": 11,
+      "source_pdf_page": 16
+    },
+    {
+      "id": "N-14",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "{x | …}",
+      "question": "How do you read the bar in {x | 0 ≤ x ≤ 1}?",
+      "options": [
+        "Given that event x occurred",
+        "Or",
+        "Such that",
+        "Divided by"
+      ],
+      "correct_answer": "Such that",
+      "explanation": "This describes the set of x such that the stated condition holds. It is set-builder notation, not conditional probability.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-15",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "[a, b]",
+      "question": "What does the interval [a, b] contain, assuming a ≤ b?",
+      "options": [
+        "All real numbers strictly between a and b",
+        "Only the integers from a to b",
+        "Only a and b",
+        "All real numbers from a to b, including both endpoints"
+      ],
+      "correct_answer": "All real numbers from a to b, including both endpoints",
+      "explanation": "Square brackets include the endpoints; braces {a, b} instead list just the endpoints.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-16",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "ℝ / ℜ",
+      "question": "What does ℝ denote (printed ℜ in this book)?",
+      "options": [
+        "The set of real numbers",
+        "The set of all probability laws",
+        "The set of positive integers",
+        "A randomly selected event"
+      ],
+      "correct_answer": "The set of real numbers",
+      "explanation": "The chapter calls real numbers scalars and uses ℜ for their set.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 10
+    },
+    {
+      "id": "N-17",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "ℝ², ℝ³",
+      "question": "What does ℝ² denote?",
+      "options": [
+        "The probability of two independent events",
+        "The set of all ordered pairs of real numbers",
+        "A set containing exactly two numbers",
+        "The set of squares of real numbers"
+      ],
+      "correct_answer": "The set of all ordered pairs of real numbers",
+      "explanation": "ℝ² is the real plane. Similarly, ℝ³ consists of triples and describes three-dimensional space.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 10
+    },
+    {
+      "id": "N-18",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "(x, y)",
+      "question": "In an outcome written as the ordered pair (x, y), does order matter?",
+      "options": [
+        "Only if x and y are integers",
+        "Only if x and y have equal probability",
+        "No: it means the same set as {x, y}",
+        "Yes: the first and second positions have different roles"
+      ],
+      "correct_answer": "Yes: the first and second positions have different roles",
+      "explanation": "For two rolls, the first coordinate can record the first roll and the second the second roll.",
+      "difficulty": "Notation",
+      "source_printed_page": 5,
+      "source_pdf_page": 10
+    },
+    {
+      "id": "N-19",
+      "step": 1,
+      "group": "Probability and set descriptions",
+      "symbol": "× between sets",
+      "question": "What does [0, 1] × [0, 1] denote?",
+      "options": [
+        "Two independent events, by notation alone",
+        "All pairs (x, y) with both coordinates in [0, 1]",
+        "Only numbers obtained by multiplying the endpoints",
+        "Only the diagonal pairs with x = y"
+      ],
+      "correct_answer": "All pairs (x, y) with both coordinates in [0, 1]",
+      "explanation": "This is a Cartesian product: the unit square. The symbol does not itself impose a probability law or independence.",
+      "difficulty": "Notation",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "N-20",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "Aᵢ",
+      "question": "In a collection A₁, A₂, …, Aₙ, what does the subscript i in Aᵢ indicate?",
+      "options": [
+        "The complement of A",
+        "A raised to the power i",
+        "Which event in the collection is meant",
+        "The probability of A multiplied by i"
+      ],
+      "correct_answer": "Which event in the collection is meant",
+      "explanation": "A subscript labels an indexed event; it is not an exponent.",
+      "difficulty": "Notation",
+      "source_printed_page": 22,
+      "source_pdf_page": 27
+    },
+    {
+      "id": "N-21",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "⋃",
+      "question": "What does ⋃ᵢ₌₁ⁿ Aᵢ mean?",
+      "options": [
+        "The intersection of A₁ through Aₙ",
+        "The set containing only the event Aₙ",
+        "The sum of the probabilities of A₁ through Aₙ",
+        "The union of A₁ through Aₙ"
+      ],
+      "correct_answer": "The union of A₁ through Aₙ",
+      "explanation": "An outcome belongs to this union if it belongs to at least one indexed event.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-22",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "⋂",
+      "question": "What does ⋂ᵢ₌₁ⁿ Aᵢ mean?",
+      "options": [
+        "The product of their probabilities",
+        "The complement of Aₙ",
+        "The union of A₁ through Aₙ",
+        "The intersection of A₁ through Aₙ"
+      ],
+      "correct_answer": "The intersection of A₁ through Aₙ",
+      "explanation": "An outcome belongs to this intersection if it belongs to every indexed event.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-23",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "Σ",
+      "question": "What does Σᵢ₌₁³ pᵢ mean?",
+      "options": [
+        "p₁ + p₂ + p₃",
+        "p₁ × p₂ × p₃",
+        "3 × p₁ in every case",
+        "p₃ alone"
+      ],
+      "correct_answer": "p₁ + p₂ + p₃",
+      "explanation": "The lower and upper limits specify the included indices; Σ means add the terms.",
+      "difficulty": "Notation",
+      "source_printed_page": 14,
+      "source_pdf_page": 19
+    },
+    {
+      "id": "N-24",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "∏",
+      "question": "What does ∏ᵢ₌₁³ pᵢ mean?",
+      "options": [
+        "p₁ × p₂ × p₃",
+        "The union of three events",
+        "p₁ + p₂ + p₃",
+        "p₁ raised to p₃"
+      ],
+      "correct_answer": "p₁ × p₂ × p₃",
+      "explanation": "∏ means multiply the indexed terms. Multiplication of numbers is distinct from intersection of events.",
+      "difficulty": "Notation",
+      "source_printed_page": 36,
+      "source_pdf_page": 41
+    },
+    {
+      "id": "N-25",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "∞",
+      "question": "In ⋃ᵢ₌₁^∞ Aᵢ, what does the upper limit ∞ tell you?",
+      "options": [
+        "The union has probability greater than 1",
+        "There is one final event called A∞",
+        "Include every positive-integer index, without a finite last index",
+        "The events are indexed by every real number"
+      ],
+      "correct_answer": "Include every positive-integer index, without a finite last index",
+      "explanation": "The notation specifies a countably infinite collection A₁, A₂, … . It does not specify its probability.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-26",
+      "step": 1,
+      "group": "Indices and operations",
+      "symbol": "…",
+      "question": "What do the dots mean in {1, 2, 3, …}?",
+      "options": [
+        "One element has been lost",
+        "The set contains every real number",
+        "The displayed pattern continues",
+        "The set stops at 3"
+      ],
+      "correct_answer": "The displayed pattern continues",
+      "explanation": "An ellipsis abbreviates the continuing pattern; here it lists the positive integers.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 8
+    },
+    {
+      "id": "N-27",
+      "step": 1,
+      "group": "Counting notation",
+      "symbol": "n!",
+      "question": "For a positive integer n, what does n! mean?",
+      "options": [
+        "The sum 1 + 2 + … + n",
+        "n divided by n − 1",
+        "n multiplied by itself n times",
+        "The product 1 × 2 × … × n"
+      ],
+      "correct_answer": "The product 1 × 2 × … × n",
+      "explanation": "The exclamation mark denotes factorial.",
+      "difficulty": "Notation",
+      "source_printed_page": 40,
+      "source_pdf_page": 45
+    },
+    {
+      "id": "N-28",
+      "step": 1,
+      "group": "Counting notation",
+      "symbol": "0!",
+      "question": "What is 0! ?",
+      "options": [
+        "Undefined",
+        "Infinity",
+        "1",
+        "0"
+      ],
+      "correct_answer": "1",
+      "explanation": "The convention 0! = 1 makes the counting formulas apply at boundary cases.",
+      "difficulty": "Notation",
+      "source_printed_page": 41,
+      "source_pdf_page": 46
+    },
+    {
+      "id": "N-29",
+      "step": 1,
+      "group": "Counting notation",
+      "symbol": "C(n, k), binomial coefficient",
+      "question": "The book places k below n inside parentheses, read “n choose k”. What does this count?",
+      "options": [
+        "Unordered selections of k distinct objects from n distinct objects",
+        "All subsets of an n-element set, regardless of size",
+        "Selections of k objects allowing repeated choices",
+        "Ordered selections of k distinct objects from n distinct objects"
+      ],
+      "correct_answer": "Unordered selections of k distinct objects from n distinct objects",
+      "explanation": "The draft writes the same binomial coefficient as C(n, k). It equals n!/[k!(n − k)!] for 0 ≤ k ≤ n.",
+      "difficulty": "Notation",
+      "source_printed_page": 45,
+      "source_pdf_page": 50
+    },
+    {
+      "id": "N-30",
+      "step": 1,
+      "group": "Counting notation",
+      "symbol": "Multinomial coefficient",
+      "question": "The book places n above n₁, …, nᵣ inside parentheses. What does this coefficient count?",
+      "options": [
+        "Only the ways to choose the first group",
+        "Partitions where every ordering inside each group counts separately",
+        "All ordered arrangements of n objects without grouping",
+        "Ways to assign n distinct objects to labeled groups of sizes n₁, …, nᵣ"
+      ],
+      "correct_answer": "Ways to assign n distinct objects to labeled groups of sizes n₁, …, nᵣ",
+      "explanation": "With nonnegative group sizes summing to n, the multinomial coefficient is n!/(n₁!…nᵣ!). Group labels matter; order within a group does not.",
+      "difficulty": "Notation",
+      "source_printed_page": 46,
+      "source_pdf_page": 51
+    },
+    {
+      "id": "N-31",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "|x − y|",
+      "question": "For real numbers x and y, what does |x − y| mean?",
+      "options": [
+        "The difference x − y, even when negative",
+        "The nonnegative distance between x and y",
+        "The probability of x given y",
+        "The number of elements in a set named x − y"
+      ],
+      "correct_answer": "The nonnegative distance between x and y",
+      "explanation": "Bars around a number indicate absolute value. This differs from bars around a finite set, which denote cardinality in the draft.",
+      "difficulty": "Notation",
+      "source_printed_page": 14,
+      "source_pdf_page": 19
+    },
+    {
+      "id": "N-32",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "≤, ≥, <, >",
+      "question": "What does 0 ≤ x ≤ 1 mean?",
+      "options": [
+        "x must equal 0 or 1",
+        "x is between 0 and 1, including the endpoints",
+        "x is strictly between 0 and 1",
+        "x must be an integer"
+      ],
+      "correct_answer": "x is between 0 and 1, including the endpoints",
+      "explanation": "≤ means less than or equal to; ≥ means greater than or equal to. The signs < and > exclude equality.",
+      "difficulty": "Notation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "N-33",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "≠",
+      "question": "What does P(A ∩ B) ≠ P(A)P(B) assert?",
+      "options": [
+        "The quantities are approximately equal",
+        "The two quantities are not equal",
+        "One of the probabilities is undefined",
+        "The left side is always larger"
+      ],
+      "correct_answer": "The two quantities are not equal",
+      "explanation": "≠ states inequality without specifying which side is larger.",
+      "difficulty": "Notation",
+      "source_printed_page": 33,
+      "source_pdf_page": 38
+    },
+    {
+      "id": "N-34",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "≈",
+      "question": "What does the symbol ≈ mean in a calculated probability?",
+      "options": [
+        "Approximately equal to",
+        "Exactly equal to",
+        "Not equal to",
+        "Less than or equal to"
+      ],
+      "correct_answer": "Approximately equal to",
+      "explanation": "The book uses ≈ when reporting rounded numerical results.",
+      "difficulty": "Notation",
+      "source_printed_page": 31,
+      "source_pdf_page": 36
+    },
+    {
+      "id": "N-35",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "pᵏ",
+      "question": "For positive integer k, what does pᵏ mean?",
+      "options": [
+        "p multiplied by itself k times",
+        "p divided by k",
+        "The kth member of a collection p₁, p₂, …",
+        "p multiplied by k"
+      ],
+      "correct_answer": "p multiplied by itself k times",
+      "explanation": "A superscript k is an exponent here; a subscript k would instead label a term.",
+      "difficulty": "Notation",
+      "source_printed_page": 39,
+      "source_pdf_page": 44
+    },
+    {
+      "id": "N-36",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "min, max",
+      "question": "If X = 2 and Y = 4, what are min(X, Y) and max(X, Y)?",
+      "options": [
+        "4 and 2, respectively",
+        "2 and 4, respectively",
+        "3 and 3, respectively",
+        "6 and 8, respectively"
+      ],
+      "correct_answer": "2 and 4, respectively",
+      "explanation": "min selects the smaller value and max the larger. These operators appear in the chapter’s dice examples.",
+      "difficulty": "Notation",
+      "source_printed_page": 19,
+      "source_pdf_page": 24
+    },
+    {
+      "id": "N-37",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "p versus p(k)",
+      "question": "In the chapter’s n-toss model, p is the probability of heads on one toss. What does p(k) denote?",
+      "options": [
+        "p multiplied by k",
+        "The probability of exactly k heads in all n tosses",
+        "The probability of a particular sequence with k heads",
+        "The probability of the kth toss being heads"
+      ],
+      "correct_answer": "The probability of exactly k heads in all n tosses",
+      "explanation": "Parentheses indicate a function evaluated at k. Here the chapter defines p(k) as a binomial probability, which counts all qualifying sequences.",
+      "difficulty": "Notation",
+      "source_printed_page": 40,
+      "source_pdf_page": 45
+    },
+    {
+      "id": "N-38",
+      "step": 1,
+      "group": "Other notation used in the chapter",
+      "symbol": "∫ₛ dt",
+      "question": "In the chapter’s footnote on continuous models, what does ∫ₛ dt represent for a suitable set S ⊆ [0, 1]?",
+      "options": [
+        "The probability of each individual point in S",
+        "The number of individual points in S",
+        "The largest point of S",
+        "The length of S"
+      ],
+      "correct_answer": "The length of S",
+      "explanation": "It integrates the constant 1 over S. In that specific uniform model, this length is P(S). This is recognition only; integration techniques are not required for this deck.",
+      "difficulty": "Notation",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "P1-01",
+      "step": 2,
+      "question": "What is a sample space?",
+      "options": [
+        "The set of equally likely outcomes",
+        "Only outcomes with positive probability",
+        "The set of all possible outcomes",
+        "The set of outcomes already observed"
+      ],
+      "correct_answer": "The set of all possible outcomes",
+      "explanation": "A sample space lists what can happen. Equal likelihood is an extra assumption.",
+      "difficulty": "Foundation",
+      "source_printed_page": 6,
+      "source_pdf_page": 11
+    },
+    {
+      "id": "P1-02",
+      "step": 2,
+      "question": "What is an event?",
+      "options": [
+        "The number of times an experiment is repeated",
+        "A probability between 0 and 1",
+        "A subset of the sample space",
+        "Always exactly one outcome"
+      ],
+      "correct_answer": "A subset of the sample space",
+      "explanation": "An event is a collection of outcomes; its probability is a separate quantity.",
+      "difficulty": "Foundation",
+      "source_printed_page": 7,
+      "source_pdf_page": 12
+    },
+    {
+      "id": "P1-03",
+      "step": 2,
+      "question": "A = {1, 2} and B = {2, 3}. What is A ∪ B?",
+      "options": [
+        "{1, 2, 3}",
+        "{1, 2}",
+        "{1, 3}",
+        "{2}"
+      ],
+      "correct_answer": "{1, 2, 3}",
+      "explanation": "Union includes outcomes in either set, counting shared elements only once.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-04",
+      "step": 2,
+      "question": "A = {1, 2} and B = {2, 3}. What is A ∩ B?",
+      "options": [
+        "{1, 2, 3}",
+        "{1, 3}",
+        "{2}",
+        "∅"
+      ],
+      "correct_answer": "{2}",
+      "explanation": "Intersection keeps only the outcomes shared by both sets.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-05",
+      "step": 2,
+      "question": "Ω = {1, 2, 3, 4} and A = {1, 4}. What is Aᶜ?",
+      "options": [
+        "{2, 3}",
+        "∅",
+        "{1, 2, 3, 4}",
+        "{1, 4}"
+      ],
+      "correct_answer": "{2, 3}",
+      "explanation": "The complement contains the outcomes in Ω that are not in A.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-06",
+      "step": 2,
+      "question": "When are A and B disjoint?",
+      "options": [
+        "When A ∩ B = ∅",
+        "When P(A) = P(B)",
+        "When A ∪ B = Ω",
+        "When neither event is a subset of the other"
+      ],
+      "correct_answer": "When A ∩ B = ∅",
+      "explanation": "Disjoint events have no outcomes in common.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-07",
+      "step": 2,
+      "question": "Which collection partitions Ω = {1, 2, 3, 4}?",
+      "options": [
+        "{1, 2} and {2, 3, 4}",
+        "{1, 2, 3, 4} and {4}",
+        "{1, 2} and {3, 4}",
+        "{1} and {2, 3}"
+      ],
+      "correct_answer": "{1, 2} and {3, 4}",
+      "explanation": "A partition covers all of Ω with nonoverlapping sets.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-08",
+      "step": 2,
+      "question": "Which expression equals (A ∪ B)ᶜ?",
+      "options": [
+        "A ∪ B",
+        "Aᶜ ∩ Bᶜ",
+        "A ∩ B",
+        "Aᶜ ∪ Bᶜ"
+      ],
+      "correct_answer": "Aᶜ ∩ Bᶜ",
+      "explanation": "Not being in either event means being outside both: de Morgan’s law.",
+      "difficulty": "Foundation",
+      "source_printed_page": 5,
+      "source_pdf_page": 10
+    },
+    {
+      "id": "P1-09",
+      "step": 3,
+      "question": "What two ingredients specify a probabilistic model?",
+      "options": [
+        "A sample space and a probability law",
+        "A list of events and their observed counts",
+        "A mean and a variance",
+        "A sample space and equal probabilities for all outcomes"
+      ],
+      "correct_answer": "A sample space and a probability law",
+      "explanation": "The sample space describes outcomes; the probability law assigns event probabilities.",
+      "difficulty": "Foundation",
+      "source_printed_page": 6,
+      "source_pdf_page": 11
+    },
+    {
+      "id": "P1-10",
+      "step": 3,
+      "question": "What must the outcomes in a sample space be?",
+      "options": [
+        "Independent and equally likely",
+        "Equally likely and finite",
+        "Distinct but not necessarily exhaustive",
+        "Mutually exclusive and collectively exhaustive"
+      ],
+      "correct_answer": "Mutually exclusive and collectively exhaustive",
+      "explanation": "Exactly one listed outcome must occur whenever the experiment is performed.",
+      "difficulty": "Foundation",
+      "source_printed_page": 7,
+      "source_pdf_page": 12
+    },
+    {
+      "id": "P1-11",
+      "step": 3,
+      "question": "You toss a coin three times and want to know whether the first toss is heads. Is recording only the total number of heads sufficient?",
+      "options": [
+        "Yes, if the coin is fair",
+        "No: the order is lost",
+        "No: a coin-toss sample space must be infinite",
+        "Yes: the total determines the first toss"
+      ],
+      "correct_answer": "No: the order is lost",
+      "explanation": "For example, HTT and THT have the same number of heads but different first tosses.",
+      "difficulty": "Application",
+      "source_printed_page": 8,
+      "source_pdf_page": 13
+    },
+    {
+      "id": "P1-12",
+      "step": 3,
+      "question": "Which sample space is countably infinite?",
+      "options": [
+        "{1, 2, 3, …}",
+        "The points inside a unit square",
+        "The real interval [0, 1]",
+        "{heads, tails}"
+      ],
+      "correct_answer": "{1, 2, 3, …}",
+      "explanation": "The positive integers can be listed one by one. The real interval cannot; the coin space is finite.",
+      "difficulty": "Foundation",
+      "source_printed_page": 4,
+      "source_pdf_page": 9
+    },
+    {
+      "id": "P1-13",
+      "step": 3,
+      "question": "Which proposed outcome probabilities violate nonnegativity?",
+      "options": [
+        "0.2, 0.3, 0.5",
+        "0, 0, 1",
+        "−0.1, 0.5, 0.6",
+        "0, 0.4, 0.6"
+      ],
+      "correct_answer": "−0.1, 0.5, 0.6",
+      "explanation": "A negative probability is invalid even when the numbers sum to 1.",
+      "difficulty": "Foundation",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "P1-14",
+      "step": 3,
+      "question": "What is P(Ω)?",
+      "options": [
+        "1 divided by the number of outcomes",
+        "1",
+        "0",
+        "The number of outcomes"
+      ],
+      "correct_answer": "1",
+      "explanation": "Normalization assigns probability 1 to the entire sample space.",
+      "difficulty": "Foundation",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "P1-15",
+      "step": 3,
+      "question": "A and B are disjoint, with P(A) = 0.2 and P(B) = 0.3. What is P(A ∪ B)?",
+      "options": [
+        "0.06",
+        "0.3",
+        "0.5",
+        "0.1"
+      ],
+      "correct_answer": "0.5",
+      "explanation": "Additivity lets us add the probabilities of disjoint events.",
+      "difficulty": "Application",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "P1-16",
+      "step": 3,
+      "question": "For a countably infinite sequence of disjoint events A₁, A₂, …, what is P(∪ᵢ Aᵢ)?",
+      "options": [
+        "∏ᵢ P(Aᵢ)",
+        "Σᵢ P(Aᵢ)",
+        "Always 1",
+        "The largest individual P(Aᵢ)"
+      ],
+      "correct_answer": "Σᵢ P(Aᵢ)",
+      "explanation": "Countable additivity extends the disjoint-union rule to countably many events; their union need not be all of Ω.",
+      "difficulty": "Foundation",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "P1-17",
+      "step": 4,
+      "question": "When does P(A) = |A| / |Ω| apply?",
+      "options": [
+        "Whenever Ω is finite",
+        "When Ω is finite and all its outcomes are equally likely",
+        "Whenever A and Aᶜ are disjoint",
+        "Whenever A contains more than one outcome"
+      ],
+      "correct_answer": "When Ω is finite and all its outcomes are equally likely",
+      "explanation": "Counting outcomes is sufficient only under the discrete uniform law.",
+      "difficulty": "Foundation",
+      "source_printed_page": 11,
+      "source_pdf_page": 16
+    },
+    {
+      "id": "P1-18",
+      "step": 4,
+      "question": "If P(A) = 0.35, what is P(Aᶜ)?",
+      "options": [
+        "0.35",
+        "0.1225",
+        "0.65",
+        "1.35"
+      ],
+      "correct_answer": "0.65",
+      "explanation": "A and its complement partition Ω, so their probabilities sum to 1.",
+      "difficulty": "Application",
+      "source_printed_page": 9,
+      "source_pdf_page": 14
+    },
+    {
+      "id": "P1-19",
+      "step": 4,
+      "question": "P(A) = 0.6, P(B) = 0.5 and P(A ∩ B) = 0.2. What is P(A ∪ B)?",
+      "options": [
+        "0.7",
+        "0.3",
+        "0.9",
+        "1.1"
+      ],
+      "correct_answer": "0.9",
+      "explanation": "Add 0.6 and 0.5, then subtract the overlap 0.2 that was counted twice.",
+      "difficulty": "Application",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "P1-20",
+      "step": 4,
+      "question": "Given only P(A) = 0.2 and P(B) = 0.3, what is the smallest guaranteed upper bound for P(A ∪ B)?",
+      "options": [
+        "0.06",
+        "1",
+        "0.3",
+        "0.5"
+      ],
+      "correct_answer": "0.5",
+      "explanation": "The union bound gives at most 0.2 + 0.3. Disjoint events attain this bound.",
+      "difficulty": "Application",
+      "source_printed_page": 14,
+      "source_pdf_page": 19
+    },
+    {
+      "id": "P1-21",
+      "step": 4,
+      "question": "Ω = {a, b, c}, with probabilities 0.1, 0.3 and 0.6. What is P({a, c})?",
+      "options": [
+        "2/3",
+        "0.6",
+        "0.06",
+        "0.7"
+      ],
+      "correct_answer": "0.7",
+      "explanation": "Add the probabilities of a and c; these outcomes are not equally likely.",
+      "difficulty": "Application",
+      "source_printed_page": 11,
+      "source_pdf_page": 16
+    },
+    {
+      "id": "P1-22",
+      "step": 4,
+      "question": "A point is chosen uniformly from [0, 1]. What is the probability that it lies in [0.2, 0.5]?",
+      "options": [
+        "0.3",
+        "0.15",
+        "0.5",
+        "0.7"
+      ],
+      "correct_answer": "0.3",
+      "explanation": "For this uniform model, interval probability equals its length: 0.5 − 0.2.",
+      "difficulty": "Application",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "P1-23",
+      "step": 4,
+      "question": "A point is chosen uniformly from [0, 1]. What is the probability of choosing exactly 0.5?",
+      "options": [
+        "0",
+        "1",
+        "It cannot be assigned in this model",
+        "0.5"
+      ],
+      "correct_answer": "0",
+      "explanation": "A single point has zero length. In a continuous model, probability zero does not necessarily mean an empty event.",
+      "difficulty": "Foundation",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "P1-24",
+      "step": 4,
+      "question": "A point (x, y) is chosen uniformly from the unit square. What is P(x + y ≤ 1)?",
+      "options": [
+        "1/2",
+        "1/4",
+        "3/4",
+        "1"
+      ],
+      "correct_answer": "1/2",
+      "explanation": "The diagonal divides the square into two equal-area triangles; the event occupies one of them.",
+      "difficulty": "Application",
+      "source_printed_page": 13,
+      "source_pdf_page": 18
+    },
+    {
+      "id": "P1-25",
+      "step": 5,
+      "question": "For P(B) > 0, which formula defines P(A | B)?",
+      "options": [
+        "P(A) / P(B)",
+        "P(A ∪ B) / P(B)",
+        "P(A ∩ B) / P(A)",
+        "P(A ∩ B) / P(B)"
+      ],
+      "correct_answer": "P(A ∩ B) / P(B)",
+      "explanation": "Conditioning retains the probability mass in B and renormalizes it to 1.",
+      "difficulty": "Foundation",
+      "source_printed_page": 17,
+      "source_pdf_page": 22
+    },
+    {
+      "id": "P1-26",
+      "step": 5,
+      "question": "If P(B) = 0, what does the chapter’s ratio definition say about P(A | B)?",
+      "options": [
+        "It is undefined",
+        "It is P(A)",
+        "It is 0",
+        "It is 1"
+      ],
+      "correct_answer": "It is undefined",
+      "explanation": "The ratio would divide by zero. More advanced forms of conditioning are outside this chapter.",
+      "difficulty": "Foundation",
+      "source_printed_page": 17,
+      "source_pdf_page": 22
+    },
+    {
+      "id": "P1-27",
+      "step": 5,
+      "question": "A fair six-sided die shows an even number. What is the probability it shows 6?",
+      "options": [
+        "1/3",
+        "1/2",
+        "2/3",
+        "1/6"
+      ],
+      "correct_answer": "1/3",
+      "explanation": "Only 2, 4 and 6 remain possible, and they are equally likely.",
+      "difficulty": "Application",
+      "source_printed_page": 17,
+      "source_pdf_page": 22
+    },
+    {
+      "id": "P1-28",
+      "step": 5,
+      "question": "Two independent fair coins are tossed. Given at least one head, what is the probability of two heads?",
+      "options": [
+        "2/3",
+        "1/2",
+        "1/4",
+        "1/3"
+      ],
+      "correct_answer": "1/3",
+      "explanation": "The remaining equally likely outcomes are HH, HT and TH; only HH has two heads.",
+      "difficulty": "Application",
+      "source_printed_page": 19,
+      "source_pdf_page": 24
+    },
+    {
+      "id": "P1-29",
+      "step": 5,
+      "question": "A bag contains 3 red and 2 blue balls. Two balls are drawn uniformly without replacement. What is the probability both are red?",
+      "options": [
+        "3/5",
+        "3/10",
+        "1/5",
+        "9/25"
+      ],
+      "correct_answer": "3/10",
+      "explanation": "Multiply 3/5 for the first red by 2/4 for the second red after the first is removed.",
+      "difficulty": "Application",
+      "source_printed_page": 23,
+      "source_pdf_page": 28
+    },
+    {
+      "id": "P1-30",
+      "step": 5,
+      "question": "A tree branch has probability 0.4. A following branch has conditional probability 0.3 given the first. What is the probability of the full path?",
+      "options": [
+        "0.12",
+        "0.7",
+        "0.1",
+        "0.3"
+      ],
+      "correct_answer": "0.12",
+      "explanation": "Multiply the probabilities along the path: 0.4 × 0.3.",
+      "difficulty": "Application",
+      "source_printed_page": 21,
+      "source_pdf_page": 26
+    },
+    {
+      "id": "P1-31",
+      "step": 5,
+      "question": "When all conditioning events have positive probability, which formula always gives P(A ∩ B ∩ C)?",
+      "options": [
+        "P(A)P(B | A)P(C | B)",
+        "P(A)P(B)P(C)",
+        "P(A)P(B | A)P(C | A ∩ B)",
+        "P(A) + P(B | A) + P(C | B)"
+      ],
+      "correct_answer": "P(A)P(B | A)P(C | A ∩ B)",
+      "explanation": "The chain rule conditions each stage on the entire preceding path; independence is not required.",
+      "difficulty": "Foundation",
+      "source_printed_page": 22,
+      "source_pdf_page": 27
+    },
+    {
+      "id": "P1-32",
+      "step": 5,
+      "question": "If P(A | B) = 0.7 and P(B) > 0, what is P(Aᶜ | B)?",
+      "options": [
+        "Cannot be determined",
+        "1",
+        "0.7",
+        "0.3"
+      ],
+      "correct_answer": "0.3",
+      "explanation": "A conditional probability law also obeys the complement rule.",
+      "difficulty": "Application",
+      "source_printed_page": 18,
+      "source_pdf_page": 23
+    },
+    {
+      "id": "P1-33",
+      "step": 6,
+      "question": "A₁ and A₂ partition Ω and both have positive probability. Which expression gives P(B)?",
+      "options": [
+        "P(A₁ | B) + P(A₂ | B)",
+        "P(A₁)P(B | A₁) + P(A₂)P(B | A₂)",
+        "P(A₁)P(A₂)P(B)",
+        "P(B | A₁) + P(B | A₂)"
+      ],
+      "correct_answer": "P(A₁)P(B | A₁) + P(A₂)P(B | A₂)",
+      "explanation": "Weight each conditional probability by the probability of its scenario.",
+      "difficulty": "Foundation",
+      "source_printed_page": 26,
+      "source_pdf_page": 31
+    },
+    {
+      "id": "P1-34",
+      "step": 6,
+      "question": "You face a beginner with probability 0.75 and an expert otherwise. Your win probabilities are 0.8 and 0.2 respectively. What is your overall win probability?",
+      "options": [
+        "0.5",
+        "0.8",
+        "0.65",
+        "0.6"
+      ],
+      "correct_answer": "0.65",
+      "explanation": "Use total probability: 0.75 × 0.8 + 0.25 × 0.2 = 0.65.",
+      "difficulty": "Application",
+      "source_printed_page": 26,
+      "source_pdf_page": 31
+    },
+    {
+      "id": "P1-35",
+      "step": 6,
+      "question": "Machine A makes 60% of items and defects occur in 2% of its output. Machine B makes the rest with a 5% defect rate. What fraction of all items are defective?",
+      "options": [
+        "2%",
+        "3.5%",
+        "3.2%",
+        "7%"
+      ],
+      "correct_answer": "3.2%",
+      "explanation": "The weighted defect rate is 0.6 × 0.02 + 0.4 × 0.05 = 0.032.",
+      "difficulty": "Application",
+      "source_printed_page": 26,
+      "source_pdf_page": 31
+    },
+    {
+      "id": "P1-36",
+      "step": 6,
+      "question": "Machine A makes 60% of items with a 2% defect rate; B makes 40% with a 5% defect rate. Given a defective item, what is the probability it came from B?",
+      "options": [
+        "1/20",
+        "2/5",
+        "3/8",
+        "5/8"
+      ],
+      "correct_answer": "5/8",
+      "explanation": "B contributes 0.4 × 0.05 = 0.02; all defects have probability 0.032. The ratio is 0.02/0.032 = 5/8.",
+      "difficulty": "Application",
+      "source_printed_page": 29,
+      "source_pdf_page": 34
+    },
+    {
+      "id": "P1-37",
+      "step": 6,
+      "question": "Does P(A | B) generally equal P(B | A)?",
+      "options": [
+        "No: they condition on different events",
+        "Only when A and B are disjoint",
+        "Yes: intersection is symmetric",
+        "Yes, whenever both probabilities are defined"
+      ],
+      "correct_answer": "No: they condition on different events",
+      "explanation": "The numerators agree, but the denominators P(B) and P(A) can differ.",
+      "difficulty": "Foundation",
+      "source_printed_page": 29,
+      "source_pdf_page": 34
+    },
+    {
+      "id": "P1-38",
+      "step": 6,
+      "question": "A faulty device is selected with probability 0.01. An alarm sounds with probability 0.9 for faulty devices and 0.1 for working devices. Given an alarm, what is the probability the device is faulty?",
+      "options": [
+        "1/100",
+        "1/12",
+        "1/10",
+        "9/10"
+      ],
+      "correct_answer": "1/12",
+      "explanation": "Fault-and-alarm probability is 0.009; total alarm probability is 0.009 + 0.099 = 0.108. Their ratio is 1/12.",
+      "difficulty": "Challenge",
+      "source_printed_page": 30,
+      "source_pdf_page": 35
+    },
+    {
+      "id": "P1-39",
+      "step": 6,
+      "question": "Assume P(A) > 0 and P(B) > 0. Which expression gives P(A | B) using Bayes’ rule?",
+      "options": [
+        "P(B | A)P(A) / P(B)",
+        "P(A)P(B) / P(B | A)",
+        "P(B | A)P(B) / P(A)",
+        "P(B | A) / P(A)"
+      ],
+      "correct_answer": "P(B | A)P(A) / P(B)",
+      "explanation": "Bayes’ rule reverses the conditioning using the prior P(A) and the evidence probability P(B).",
+      "difficulty": "Foundation",
+      "source_printed_page": 29,
+      "source_pdf_page": 34
+    },
+    {
+      "id": "P1-40",
+      "step": 6,
+      "question": "You know how common each cause is and how often each cause produces an observed signal. Which rule updates the probabilities of the causes after seeing the signal?",
+      "options": [
+        "The permutation formula",
+        "The counting principle",
+        "The disjoint-addition rule alone",
+        "Bayes’ rule"
+      ],
+      "correct_answer": "Bayes’ rule",
+      "explanation": "The task is to infer a cause from evidence, which reverses the known conditional probabilities.",
+      "difficulty": "Foundation",
+      "source_printed_page": 30,
+      "source_pdf_page": 35
+    },
+    {
+      "id": "P1-41",
+      "step": 7,
+      "question": "Which equality defines independence of A and B?",
+      "options": [
+        "P(A ∪ B) = P(A) + P(B)",
+        "P(A ∩ B) = 0",
+        "P(A) = P(B)",
+        "P(A ∩ B) = P(A)P(B)"
+      ],
+      "correct_answer": "P(A ∩ B) = P(A)P(B)",
+      "explanation": "Independence is a factorization of the intersection probability, not a statement about overlap or equal probabilities.",
+      "difficulty": "Foundation",
+      "source_printed_page": 32,
+      "source_pdf_page": 37
+    },
+    {
+      "id": "P1-42",
+      "step": 7,
+      "question": "P(A) = 0.4, P(B) = 0.5 and P(A ∩ B) = 0.2. Are A and B independent?",
+      "options": [
+        "No, since their probabilities differ",
+        "Cannot be decided without knowing P(A ∪ B)",
+        "Yes, since 0.2 = 0.4 × 0.5",
+        "No, since the events overlap"
+      ],
+      "correct_answer": "Yes, since 0.2 = 0.4 × 0.5",
+      "explanation": "The product criterion holds exactly.",
+      "difficulty": "Application",
+      "source_printed_page": 32,
+      "source_pdf_page": 37
+    },
+    {
+      "id": "P1-43",
+      "step": 7,
+      "question": "A and B are disjoint and both have positive probability. Can they be independent?",
+      "options": [
+        "Only if P(A) + P(B) = 1",
+        "No",
+        "Yes, always",
+        "Only if P(A) = P(B)"
+      ],
+      "correct_answer": "No",
+      "explanation": "Their intersection has probability 0, but P(A)P(B) is positive.",
+      "difficulty": "Foundation",
+      "source_printed_page": 32,
+      "source_pdf_page": 37
+    },
+    {
+      "id": "P1-44",
+      "step": 7,
+      "question": "A and B are independent, P(A) = 0.3 and P(B) = 0.4. What is P(A ∩ Bᶜ)?",
+      "options": [
+        "0.7",
+        "0.12",
+        "0.42",
+        "0.18"
+      ],
+      "correct_answer": "0.18",
+      "explanation": "A is also independent of Bᶜ, so the probability is 0.3 × 0.6.",
+      "difficulty": "Application",
+      "source_printed_page": 35,
+      "source_pdf_page": 40
+    },
+    {
+      "id": "P1-45",
+      "step": 7,
+      "question": "For P(C) > 0, which equality defines independence of A and B conditional on C?",
+      "options": [
+        "P(A | C) = P(B | C)",
+        "P(A ∩ B | C) = P(A)P(B)",
+        "P(A ∩ B | C) = P(A | C) + P(B | C)",
+        "P(A ∩ B | C) = P(A | C)P(B | C)"
+      ],
+      "correct_answer": "P(A ∩ B | C) = P(A | C)P(B | C)",
+      "explanation": "Conditional independence uses probabilities under the same conditional law.",
+      "difficulty": "Foundation",
+      "source_printed_page": 33,
+      "source_pdf_page": 38
+    },
+    {
+      "id": "P1-46",
+      "step": 7,
+      "question": "How are independence and conditional independence related in general?",
+      "options": [
+        "Neither implies the other",
+        "Independence always implies conditional independence",
+        "Conditional independence always implies independence",
+        "They are equivalent whenever the conditioning event has positive probability"
+      ],
+      "correct_answer": "Neither implies the other",
+      "explanation": "Learning additional information can create or remove dependence; both directions have counterexamples.",
+      "difficulty": "Challenge",
+      "source_printed_page": 34,
+      "source_pdf_page": 39
+    },
+    {
+      "id": "P1-47",
+      "step": 7,
+      "question": "Is pairwise independence of three events enough to guarantee mutual independence?",
+      "options": [
+        "Only when all three have probability 1/2",
+        "Yes",
+        "No",
+        "Only when their probabilities add to 1"
+      ],
+      "correct_answer": "No",
+      "explanation": "Mutual independence also requires the three-event intersection to factor.",
+      "difficulty": "Foundation",
+      "source_printed_page": 36,
+      "source_pdf_page": 41
+    },
+    {
+      "id": "P1-48",
+      "step": 7,
+      "question": "Two independent fair coins are tossed. Let A = first toss is heads, B = second toss is heads, and C = tosses differ. Are A, B and C mutually independent?",
+      "options": [
+        "Yes: every pair is independent",
+        "No: mutual independence requires the events to be disjoint",
+        "No: the triple intersection has probability 0, not 1/8",
+        "Yes: each event has probability 1/2"
+      ],
+      "correct_answer": "No: the triple intersection has probability 0, not 1/8",
+      "explanation": "Each event has probability 1/2, but A ∩ B ∩ C is empty. Pairwise independence is insufficient.",
+      "difficulty": "Challenge",
+      "source_printed_page": 36,
+      "source_pdf_page": 41
+    },
+    {
+      "id": "P1-49",
+      "step": 8,
+      "question": "What describes a sequence of independent Bernoulli trials?",
+      "options": [
+        "Any repeated experiment, even if outcomes affect later trials",
+        "Independent two-outcome trials with the same success probability",
+        "Trials with exactly one success overall",
+        "Independent trials that must each have success probability 1/2"
+      ],
+      "correct_answer": "Independent two-outcome trials with the same success probability",
+      "explanation": "The chapter considers identical independent stages, each labeled success or failure.",
+      "difficulty": "Foundation",
+      "source_printed_page": 39,
+      "source_pdf_page": 44
+    },
+    {
+      "id": "P1-50",
+      "step": 8,
+      "question": "A coin has P(H) = 0.6 on each independent toss. What is the probability of the specific sequence HHT?",
+      "options": [
+        "0.144",
+        "0.432",
+        "0.216",
+        "0.096"
+      ],
+      "correct_answer": "0.144",
+      "explanation": "A specific sequence has probability 0.6 × 0.6 × 0.4. Do not multiply by the number of other sequences.",
+      "difficulty": "Application",
+      "source_printed_page": 39,
+      "source_pdf_page": 44
+    },
+    {
+      "id": "P1-51",
+      "step": 8,
+      "question": "How many sequences of four coin tosses contain exactly two heads?",
+      "options": [
+        "16",
+        "6",
+        "4",
+        "8"
+      ],
+      "correct_answer": "6",
+      "explanation": "Choose the two head positions: C(4, 2) = 6. The order of heads and tails distinguishes sequences.",
+      "difficulty": "Application",
+      "source_printed_page": 40,
+      "source_pdf_page": 45
+    },
+    {
+      "id": "P1-52",
+      "step": 8,
+      "question": "For four independent fair coin tosses, what is the probability of exactly two heads?",
+      "options": [
+        "1/4",
+        "3/8",
+        "1/16",
+        "1/2"
+      ],
+      "correct_answer": "3/8",
+      "explanation": "There are 6 qualifying sequences, each with probability 1/16, giving 6/16 = 3/8.",
+      "difficulty": "Application",
+      "source_printed_page": 40,
+      "source_pdf_page": 45
+    },
+    {
+      "id": "P1-53",
+      "step": 8,
+      "question": "A trial succeeds with probability 0.2. Across three independent trials, what is the probability of at least one success?",
+      "options": [
+        "0.512",
+        "0.488",
+        "0.6",
+        "0.008"
+      ],
+      "correct_answer": "0.488",
+      "explanation": "Subtract the probability of no successes: 1 − 0.8³ = 0.488.",
+      "difficulty": "Application",
+      "source_printed_page": 39,
+      "source_pdf_page": 44
+    },
+    {
+      "id": "P1-54",
+      "step": 8,
+      "question": "Each of three users independently needs a connection with probability 1/2. A system has two connections. What is the probability demand exceeds capacity?",
+      "options": [
+        "1/8",
+        "1/2",
+        "7/8",
+        "3/8"
+      ],
+      "correct_answer": "1/8",
+      "explanation": "Demand exceeds two only when all three need a connection: (1/2)³.",
+      "difficulty": "Application",
+      "source_printed_page": 41,
+      "source_pdf_page": 46
+    },
+    {
+      "id": "P1-55",
+      "step": 8,
+      "question": "Two independent components work with probabilities 0.9 and 0.8. A system needs both to work. What is its success probability?",
+      "options": [
+        "0.02",
+        "0.85",
+        "0.72",
+        "0.98"
+      ],
+      "correct_answer": "0.72",
+      "explanation": "For a series system, multiply the component success probabilities.",
+      "difficulty": "Application",
+      "source_printed_page": 38,
+      "source_pdf_page": 43
+    },
+    {
+      "id": "P1-56",
+      "step": 8,
+      "question": "Two independent components work with probabilities 0.9 and 0.8. A system needs at least one to work. What is its success probability?",
+      "options": [
+        "0.17",
+        "0.02",
+        "0.98",
+        "0.72"
+      ],
+      "correct_answer": "0.98",
+      "explanation": "A parallel system fails only if both fail: success probability is 1 − 0.1 × 0.2.",
+      "difficulty": "Application",
+      "source_printed_page": 38,
+      "source_pdf_page": 43
+    },
+    {
+      "id": "P1-57",
+      "step": 9,
+      "question": "A code has one of 3 letters followed by one of 4 digits. How many codes are possible?",
+      "options": [
+        "81",
+        "12",
+        "7",
+        "64"
+      ],
+      "correct_answer": "12",
+      "explanation": "The choices form two stages: 3 × 4 = 12.",
+      "difficulty": "Application",
+      "source_printed_page": 43,
+      "source_pdf_page": 48
+    },
+    {
+      "id": "P1-58",
+      "step": 9,
+      "question": "How many subsets does a set with 5 elements have, including ∅ and the whole set?",
+      "options": [
+        "10",
+        "25",
+        "120",
+        "32"
+      ],
+      "correct_answer": "32",
+      "explanation": "Each of the five elements is either included or excluded, giving 2⁵ subsets.",
+      "difficulty": "Application",
+      "source_printed_page": 43,
+      "source_pdf_page": 48
+    },
+    {
+      "id": "P1-59",
+      "step": 9,
+      "question": "In how many orders can 4 distinct books be arranged in a row?",
+      "options": [
+        "24",
+        "12",
+        "4",
+        "16"
+      ],
+      "correct_answer": "24",
+      "explanation": "Arrange all four distinct objects: 4! = 24.",
+      "difficulty": "Application",
+      "source_printed_page": 44,
+      "source_pdf_page": 49
+    },
+    {
+      "id": "P1-60",
+      "step": 9,
+      "question": "From 5 people, choose a president and a different secretary. How many assignments are possible?",
+      "options": [
+        "20",
+        "10",
+        "25",
+        "120"
+      ],
+      "correct_answer": "20",
+      "explanation": "The roles are distinct and no person fills both: 5 × 4 = 20.",
+      "difficulty": "Application",
+      "source_printed_page": 44,
+      "source_pdf_page": 49
+    },
+    {
+      "id": "P1-61",
+      "step": 9,
+      "question": "How many unordered teams of 2 can be chosen from 5 people?",
+      "options": [
+        "10",
+        "25",
+        "20",
+        "5"
+      ],
+      "correct_answer": "10",
+      "explanation": "Order does not matter: C(5, 2) = 5!/(2!3!) = 10.",
+      "difficulty": "Application",
+      "source_printed_page": 45,
+      "source_pdf_page": 50
+    },
+    {
+      "id": "P1-62",
+      "step": 9,
+      "question": "Which formula counts ordered selections of k distinct objects from n distinct objects, without replacement (0 ≤ k ≤ n)?",
+      "options": [
+        "k! / (n − k)!",
+        "nᵏ",
+        "n! / [k!(n − k)!]",
+        "n! / (n − k)!"
+      ],
+      "correct_answer": "n! / (n − k)!",
+      "explanation": "Ordering matters and repetitions are forbidden, so use k-permutations.",
+      "difficulty": "Foundation",
+      "source_printed_page": 44,
+      "source_pdf_page": 49
+    },
+    {
+      "id": "P1-63",
+      "step": 9,
+      "question": "Six distinct people are assigned to labeled groups A, B and C, with 2 people per group. How many assignments are possible?",
+      "options": [
+        "90",
+        "15",
+        "216",
+        "720"
+      ],
+      "correct_answer": "90",
+      "explanation": "Use the multinomial count 6!/(2!2!2!) = 90. The group labels matter; within-group order does not.",
+      "difficulty": "Challenge",
+      "source_printed_page": 46,
+      "source_pdf_page": 51
+    },
+    {
+      "id": "P1-64",
+      "step": 9,
+      "question": "How many distinct letter sequences can be formed by rearranging LEVEL?",
+      "options": [
+        "10",
+        "60",
+        "30",
+        "120"
+      ],
+      "correct_answer": "30",
+      "explanation": "There are five letters, with L repeated twice and E twice: 5!/(2!2!) = 30.",
+      "difficulty": "Application",
+      "source_printed_page": 47,
+      "source_pdf_page": 52
+    }
+  ]
+}

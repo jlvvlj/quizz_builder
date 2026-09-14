@@ -1,5 +1,6 @@
 "use client"
 
+import { useCatalog } from '@/utils/catalog'
 import { useRouter } from 'next/router'
 import LoadingState from '@/components/LoadingState'
 import { useState, useEffect, useRef, useCallback } from 'react'
@@ -44,6 +45,9 @@ export default function SessionPreviewResults() {
     console.log('SessionPreviewResults component mounted');
 
     const router = useRouter()
+    const {sections: catalogSections, error: catalogError} = useCatalog();
+    const course = catalogSections?.find(s => s.id === router.query.section);
+    const isStructured = course?.deck.question_format === 'multiple_choice';
     const [words, setWords] = useState<SessionWord[]>([])
     const [allWords, setAllWords] = useState<SessionWord[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -102,7 +106,7 @@ export default function SessionPreviewResults() {
     // Sentences are always typed, so they read/select against the 'typing'
     // progress dimension just like the typing word quiz.
     const quizType: 'typing' | 'multiple_choice' =
-        (quizMode === 'typing' || contentMode === 'sentences') ? 'typing' : 'multiple_choice';
+        !isStructured && (quizMode === 'typing' || contentMode === 'sentences') ? 'typing' : 'multiple_choice';
 
     // Switch the answer mode for the upcoming quiz right here on the session page.
     // persistQuizMode writes localStorage and fires the quizModeChange event so
@@ -142,7 +146,7 @@ export default function SessionPreviewResults() {
     // Extract section and step numbers for display
     const sectionNumber = router.query.section?.toString().replace('section_', '') || '';
     const stepNumber = router.query.step?.toString().replace('step_', '') || '';
-    const displayTitle = isPrimitives ? 'Primitives' : `Section ${sectionNumber} - Step ${stepNumber}`;
+    const displayTitle = course?.steps.find(s => s.key === router.query.step)?.title || (isPrimitives ? 'Primitives' : `Section ${sectionNumber} - Step ${stepNumber}`);
 
     // Load all words at once
     useEffect(() => {
@@ -248,10 +252,10 @@ export default function SessionPreviewResults() {
                 setIsLoadingAllWords(false);
             }
         }
-        if (router.isReady) {
+        if (catalogSections && router.isReady) {
             loadAllWords();
         }
-    }, [router.isReady, router.query, quizType, isPrimitives, isKanji, isTubelex]);
+    }, [catalogSections, router.isReady, router.query, quizType, isPrimitives, isKanji, isTubelex]);
 
     // Load settings from database on mount
     useEffect(() => {
@@ -473,7 +477,7 @@ export default function SessionPreviewResults() {
             step: router.query.step
         });
 
-        if (!router.isReady || !router.query.section || !router.query.step) {
+        if (!catalogSections || !router.isReady || !router.query.section || !router.query.step) {
             console.log(`[${effectId}] Skipping loadCards - conditions not met`);
             return;
         }
@@ -488,7 +492,7 @@ export default function SessionPreviewResults() {
         } else if (settings) {
             loadCards();
         }
-    }, [router.isReady, loadCards, settings, router.query.section, router.query.step, router.query.practicedWordIds]);
+    }, [catalogSections, router.isReady, loadCards, settings, router.query.section, router.query.step, router.query.practicedWordIds]);
 
     // Memoize the navigation functions
     const startNextSession = useCallback(() => {
@@ -631,7 +635,7 @@ export default function SessionPreviewResults() {
     // (e.g. flipping the quiz-mode toggle, which re-orders words by that type's
     // progress) keeps the existing content + chrome mounted and shows a light
     // inline state on just the list, so it never feels like a full page reload.
-    const isInitialLoad = (isLoading || (activeTab === "all" && isLoadingAllWords))
+    const isInitialLoad = !catalogError && (isLoading || (activeTab === "all" && isLoadingAllWords))
         && words.length === 0 && allWords.length === 0;
     // Refresh in flight for the currently visible list.
     const isRefreshing = activeTab === "all" ? isLoadingAllWords : isLoading;
@@ -643,11 +647,11 @@ export default function SessionPreviewResults() {
             )
         }
 
-        if (error) {
+        if (error || catalogError) {
             return (
                 <div className="flex items-center justify-center flex-1 flex-col gap-4">
                     <div className="text-white text-2xl">Error loading session</div>
-                    <div className="text-red-400">{error}</div>
+                    <div className="text-red-400">{error || catalogError}</div>
                     <button
                         onClick={() => window.location.reload()}
                         className="bg-[#2F2F2F] border border-[#4F4F4F] text-white px-4 py-2 rounded hover:bg-[#363636] transition-colors"
@@ -661,7 +665,7 @@ export default function SessionPreviewResults() {
         if ((!words || words.length === 0) && activeTab !== "all") {
             return (
                 <LoadingState
-                    text={isPrimitives ? 'Preparing your primitives' : 'Preparing your words'}
+                    text={isPrimitives ? 'Preparing your primitives' : isStructured ? 'Preparing your questions' : 'Preparing your words'}
                     subText={isPrimitives ? 'Gathering this primitive session.' : "Gathering this session's results."}
                 />
             )
@@ -679,10 +683,10 @@ export default function SessionPreviewResults() {
                             <div className="flex items-start justify-between gap-3">
                                 <div className="min-w-0">
                                     <h2 className="text-white text-base sm:text-lg font-medium mb-1 sm:mb-2">
-                                        {activeTab === "all" ? (isPrimitives ? "Complete Primitive List" : "Complete Word List") : subtitle}
+                                        {activeTab === "all" ? (isPrimitives ? "Complete Primitive List" : isStructured ? "Complete Question List" : "Complete Word List") : subtitle}
                                     </h2>
                                     <p className="text-[#A1A1A1] text-xs sm:text-sm">
-                                        {activeTab === "all" ? (isPrimitives ? "Browse through all available primitives." : "Browse through all available words.") : description}
+                                        {activeTab === "all" ? (isPrimitives ? "Browse through all available primitives." : isStructured ? "Browse through all available questions." : "Browse through all available words.") : description}
                                     </p>
                                 </div>
                                 <CircularProgress
@@ -699,7 +703,7 @@ export default function SessionPreviewResults() {
                                         onTabChange={setActiveTab}
                                     />
                                     {!showResultsButton && !isPrimitives && contentMode === 'words' && (
-                                        <QuizModePills value={quizMode as QuizMode} onChange={handleQuizModeChange} />
+                                        isStructured ? <p className="text-sm text-[#A1A1A1]">Multiple choice · 4 choices</p> : <QuizModePills value={quizMode as QuizMode} onChange={handleQuizModeChange} />
                                     )}
                                     {showLangPills && !showResultsButton && (
                                         <TypingLangPills value={typingLang} onChange={handleTypingLangChange} variant={langPillVariant} />

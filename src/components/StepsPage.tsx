@@ -16,7 +16,7 @@ interface StepsPageProps {
     content?: 'words' | 'kanji_freq' | 'words_tubelex'
     // The last kanji section is partial, so it may have fewer than 10 steps.
     numSteps?: number
-    actualSteps?: {id:number;items:number}[]
+    actualSteps?: {id:number;items:number;title?:string}[]
     deckTitle?: string
     deckDescription?: string
 }
@@ -51,6 +51,7 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
         actualSteps ? actualSteps.map(s => ({...s,sentences:0,users:'',image:''})) : Array.from({ length: numSteps }, (_, i) => ({
             id: i + 1,
             items: 100,
+            title: undefined as string | undefined,
             sentences: 100,
             users: (3000 + (parseInt(sectionNumber) * 100) + (i * 50)).toLocaleString(),
             image: `https://placehold.co/80x80/e2e8f0/1e293b?text=Step+${i + 1}`,
@@ -172,7 +173,7 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
                             >
                                 <div className="flex items-start justify-between gap-3">
                                     <div className="min-w-0">
-                                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">Step {step.id}</h3>
+                                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">{step.title || `Step ${step.id}`}</h3>
                                         <div className="space-y-1 sm:space-y-2">
                                             <p className="text-[#A1A1A1] text-sm sm:text-base">{step.items} {itemNoun}</p>
                                             {!deckTitle && !isKanji && (

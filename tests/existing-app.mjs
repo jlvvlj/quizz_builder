@@ -15,12 +15,19 @@ try{
  const a=accounts[0],b=accounts[1];
  assert.ok(a.cookie);assert.notEqual(a.cookie,b.cookie);
  assert.equal((await call('/api/session/init',{method:'POST',cookie:a.cookie})).data.userId,a.data.user.id);
- const cat=await call('/api/catalog',{cookie:a.cookie});assert.equal(cat.data.total,500);assert.equal(cat.data.sections.length,1);assert.deepEqual(cat.data.sections[0].steps.map(s=>s.items),[100,100,100,100,100]);
+ const cat=await call('/api/catalog',{cookie:a.cookie});assert.equal(cat.data.total,602);assert.equal(cat.data.sections.length,2);assert.deepEqual(cat.data.sections[0].steps.map(s=>s.items),[100,100,100,100,100]);
  // A partial step must come from actual content, never an assumed 100 items.
  const fixture=await db.from('learning_decks').insert({id:fixtureDeck,title:'Temporary count test',description:'Test fixture',question_label:'Question',answer_label:'Answer'});assert.ifError(fixture.error);
  const fixtureItems=await db.from('words10k').insert([1,2,3].map(n=>({deck_id:fixtureDeck,japanese_word:`Test prompt ${n}`,english:`Test answer ${n}`,section:'section_9001',step:n<3?'step_1':'step_2'})));assert.ifError(fixtureItems.error);
  const partial=(await call('/api/catalog',{cookie:a.cookie})).data.sections.find(s=>s.id==='section_9001');assert.equal(partial.count,3);assert.deepEqual(partial.steps.map(s=>s.items),[2,1]);
  assert.ifError((await db.from('words10k').delete().eq('deck_id',fixtureDeck)).error);assert.ifError((await db.from('learning_decks').delete().eq('id',fixtureDeck)).error);
+ const probability=cat.data.sections.find(s=>s.deck.id==='probability-chapter-1');assert.equal(probability.count,102);assert.equal(probability.steps[0].title,'Notation');assert.deepEqual(probability.steps.map(s=>s.items),[38,8,8,8,8,8,8,8,8]);
+ const expected=JSON.parse(readFileSync('data/probability/questions.json','utf8')).questions;
+ const stored=await db.from('words10k').select('*').eq('deck_id','probability-chapter-1');assert.ifError(stored.error);assert.equal(stored.data.length,102);
+ for(const q of expected){const row=stored.data.find(r=>r.source_id===q.id);assert.equal(row.japanese_word,q.question);assert.equal(row.english,q.correct_answer);assert.deepEqual(row.authored_options,q.options);assert.equal(row.explanation,q.explanation);}
+ const probabilityId=stored.data[0].id;
+ assert.equal((await call('/api/progress/save',{method:'POST',cookie:a.cookie,body:{wordDifficulties:{[probabilityId]:{progress:10,timeToAnswer:2,totalMisses:0,correctAnswers:1}},quizType:'multiple_choice'}})).status,200);
+ assert.equal((await call(`/api/progress/get-batch?cardIds=${probabilityId}&quizType=multiple_choice`,{cookie:a.cookie})).data[probabilityId].progress,10);
  const settings=(await call('/api/settings/get',{cookie:a.cookie})).data;
  const savedSettings=await call('/api/settings/update',{method:'POST',cookie:a.cookie,body:{...settings,sessionSize:3,quizDirection:'forward'}});assert.equal(savedSettings.status,200);assert.equal(savedSettings.data.sessionSize,3);
  assert.equal((await call('/api/settings/get',{cookie:b.cookie})).data.sessionSize,7);
@@ -38,5 +45,5 @@ try{
  assert.equal((await call('/api/auth/me',{cookie:a.cookie+'; userId='+b.data.user.id})).data.user.id,a.data.user.id);
  for(const table of ['users','app_sessions','user_progress','user_daily_activity']){const r=await fetch(`${env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/${table}?select=*`,{headers:{apikey:env.NEXT_PUBLIC_SUPABASE_ANON_KEY,Authorization:`Bearer ${env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`}});assert.ok([401,403].includes(r.status),table);assert.equal((await r.json()).code,'42501',table);}
  assert.equal((await call('/api/auth/logout',{method:'POST',cookie:a.cookie})).status,200);assert.equal((await call('/api/auth/me',{cookie:a.cookie})).status,401);
- console.log('PASS: signup, session verification, catalog counts, settings, CSRF, progress, separate quiz modes, account isolation, marking, activity, RLS and logout');
+ console.log('PASS: authentication, probability content and choices, catalog counts, progress, settings, account isolation, CSRF, RLS and logout');
 }finally{assert.ifError((await db.from('words10k').delete().eq('deck_id',fixtureDeck)).error);assert.ifError((await db.from('learning_decks').delete().eq('id',fixtureDeck)).error);for(const id of created){const {error}=await db.from('users').delete().eq('id',id);if(error)throw error;}}
