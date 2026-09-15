@@ -191,21 +191,21 @@
         },
         {
           "title": "Partitions",
-          "explanation": "A partition splits the sample space into separate groups. The groups must cover every possible outcome, and no outcome can belong to two groups. In other words, every outcome has exactly one place.",
-          "formula": "A₁ ∪ A₂ ∪ ··· ∪ Aₙ = Ω   and   Aᵢ ∩ Aⱼ = ∅ when i ≠ j",
+          "explanation": "A partition divides the whole sample space into groups. Every possible outcome must belong to exactly one group: no outcome is left out, and no outcome appears in more than one group.",
+          "formula": "Every outcome appears exactly once.",
           "example": {
-            "title": "Classifying deliveries",
-            "situation": "A shop records every delivery as early, on time, or late. Each delivery receives exactly one label.",
+            "title": "Partition versus non-partition",
+            "situation": "A shop wants to sort all of its deliveries by arrival time. Let Ω be the set of all deliveries, E the early deliveries, T the on-time deliveries, and L the late deliveries. Compare two ways of grouping them.",
             "walkthrough": [
-              "Let E be early deliveries, T be on-time deliveries, and L be late deliveries.",
-              "E, T, and L cover all deliveries: E ∪ T ∪ L = Ω.",
-              "A delivery cannot have two labels, so every pair has an empty intersection.",
-              "Because the groups cover Ω without overlapping, {E, T, L} is a partition."
+              "Partition: {E, T, L}, where E = early, T = on time, and L = late.",
+              "Every delivery is early, on time, or late, and no delivery can be in two of these groups. Each delivery appears exactly once.",
+              "Non-partition: {N, T, L}, where N = not late, T = on time, and L = late.",
+              "An on-time delivery belongs to both N and T. The groups overlap, so some deliveries appear twice. Therefore {N, T, L} is not a partition."
             ],
-            "result": "To test a proposed partition, ask two questions: Is every outcome included? Is each outcome included only once?"
+            "result": "{E, T, L} is a partition because every delivery appears exactly once. {N, T, L} is not a partition because on-time deliveries appear in two groups."
           },
-          "remember": "Partition means exactly one group per outcome: all outcomes are covered, with no overlap.",
-          "commonMistake": "Separate groups are not enough if some outcomes are missing. Covering all outcomes is not enough if the groups overlap. A partition needs both rules."
+          "remember": "For every outcome, count how many groups contain it. A partition requires the answer to be exactly one every time.",
+          "commonMistake": "Groups can have different names and still overlap. “Not late” already contains every on-time delivery, so “not late” and “on time” cannot be separate parts of a partition."
         },
         {
           "title": "De Morgan’s laws",
