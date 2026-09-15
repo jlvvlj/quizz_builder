@@ -129,12 +129,13 @@
       "step": "step_2",
       "title": "Sets and events",
       "subtitle": "Describe uncertain situations precisely",
-      "durationMinutes": 10,
+      "durationMinutes": 12,
       "introduction": "Before assigning probabilities, describe what can happen and which outcomes answer the question. Set operations turn everyday words such as “and,” “or,” and “not” into precise events.",
       "objectives": [
         "Build a sample space and events from a situation.",
         "Combine events with union, intersection, and complement.",
-        "Recognize disjoint events and partitions."
+        "Recognize disjoint events and partitions.",
+        "Use De Morgan’s laws to negate combined events."
       ],
       "concepts": [
         {
@@ -189,34 +190,53 @@
           "commonMistake": "Disjoint does not mean equally likely, and it does not usually mean independent."
         },
         {
-          "title": "Partitions and De Morgan’s laws",
-          "explanation": "A partition divides Ω into nonoverlapping events that cover every outcome. De Morgan’s laws help negate combined conditions.",
-          "formula": "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ   ·   (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ",
+          "title": "Partitions",
+          "explanation": "A partition splits the sample space into separate groups. The groups must cover every possible outcome, and no outcome can belong to two groups. In other words, every outcome has exactly one place.",
+          "formula": "A₁ ∪ A₂ ∪ ··· ∪ Aₙ = Ω   and   Aᵢ ∩ Aⱼ = ∅ when i ≠ j",
           "example": {
-            "title": "Sorting support tickets",
-            "situation": "Every ticket is labeled low, medium, or high priority, with exactly one label.",
+            "title": "Classifying deliveries",
+            "situation": "A shop records every delivery as early, on time, or late. Each delivery receives exactly one label.",
             "walkthrough": [
-              "The three priority events do not overlap.",
-              "Together they include every ticket.",
-              "They form a partition, so a later calculation can handle one priority group at a time."
+              "Let E be early deliveries, T be on-time deliveries, and L be late deliveries.",
+              "E, T, and L cover all deliveries: E ∪ T ∪ L = Ω.",
+              "A delivery cannot have two labels, so every pair has an empty intersection.",
+              "Because the groups cover Ω without overlapping, {E, T, L} is a partition."
             ],
-            "result": "A good partition gives each outcome exactly one place."
+            "result": "To test a proposed partition, ask two questions: Is every outcome included? Is each outcome included only once?"
           },
-          "remember": "A partition is both exhaustive and nonoverlapping.",
-          "commonMistake": "A collection that covers Ω but overlaps is not a partition."
+          "remember": "Partition means exactly one group per outcome: all outcomes are covered, with no overlap.",
+          "commonMistake": "Separate groups are not enough if some outcomes are missing. Covering all outcomes is not enough if the groups overlap. A partition needs both rules."
+        },
+        {
+          "title": "De Morgan’s laws",
+          "explanation": "De Morgan’s laws tell us how to negate a statement joined by “or” or “and.” Move “not” inside the statement, negate each event, and switch “or” to “and” or “and” to “or.”",
+          "formula": "not (A or B) = (not A) and (not B)   ·   not (A and B) = (not A) or (not B)",
+          "example": {
+            "title": "Rain and strong wind",
+            "situation": "Let A mean “it rains” and B mean “there is strong wind.”",
+            "walkthrough": [
+              "A ∪ B means there is rain, strong wind, or both.",
+              "To make A ∪ B false, rain must be absent and strong wind must also be absent.",
+              "Therefore (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ: “no rain and no strong wind.”",
+              "A ∩ B means both hazards occur. Its complement allows any case where at least one hazard is absent: (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ."
+            ],
+            "result": "“Not either” means neither one. “Not both” means at least one is absent."
+          },
+          "remember": "When the complement moves inside parentheses, negate each event and flip ∪ to ∩ or ∩ to ∪.",
+          "commonMistake": "“Not rain or wind” is ambiguous in ordinary speech. Use parentheses first, then translate: not (rain or wind) means no rain and no wind."
         }
       ],
       "quickChecks": [
         {
-          "prompt": "A customer buys exactly one size: small, medium, or large. Which pair is disjoint?",
+          "prompt": "Every order has exactly one size: small, medium, or large. Why do these three groups form a partition?",
           "options": [
-            "Small and medium",
-            "Small and not large",
-            "Medium and not small",
-            "Small or large"
+            "Every order is in exactly one group",
+            "All three groups are equally likely",
+            "An order can be in several groups",
+            "The groups exclude some orders"
           ],
-          "correctAnswer": "Small and medium",
-          "explanation": "One item cannot have both sizes at once."
+          "correctAnswer": "Every order is in exactly one group",
+          "explanation": "The groups cover all orders and do not overlap, which are the two requirements for a partition."
         },
         {
           "prompt": "What is the complement of “rain or strong wind”?",
