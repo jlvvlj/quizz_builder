@@ -199,13 +199,13 @@
             "walkthrough": [
               "Partition: {E, T, L}, where E = early, T = on time, and L = late.",
               "Every delivery is early, on time, or late, and no delivery can be in two of these groups. Each delivery appears exactly once.",
-              "Non-partition: {N, T, L}, where N = not late, T = on time, and L = late.",
-              "An on-time delivery belongs to both N and T. The groups overlap, so some deliveries appear twice. Therefore {N, T, L} is not a partition."
+              "Non-partition: {E, T, L, F}, where F is the set of fragile deliveries.",
+              "A fragile delivery is also early, on time, or late. It belongs to F and to one of the other three groups, so it appears twice. Therefore {E, T, L, F} is not a partition."
             ],
-            "result": "{E, T, L} is a partition because every delivery appears exactly once. {N, T, L} is not a partition because on-time deliveries appear in two groups."
+            "result": "{E, T, L} is a partition because every delivery appears exactly once. {E, T, L, F} is not a partition because every fragile delivery appears in two groups."
           },
           "remember": "For every outcome, count how many groups contain it. A partition requires the answer to be exactly one every time.",
-          "commonMistake": "Groups can have different names and still overlap. “Not late” already contains every on-time delivery, so “not late” and “on time” cannot be separate parts of a partition."
+          "commonMistake": "Groups can have different names and still overlap. Arrival status and package type describe different properties, so a fragile delivery can also be early, on time, or late."
         },
         {
           "title": "De Morgan’s laws",
