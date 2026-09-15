@@ -1,10 +1,11 @@
 "use client"
 
-import { Play } from "lucide-react"
+import { BookOpen, Play } from "lucide-react"
 import CircularProgress from './CircularProgress'
 import { calculateStepProgress } from '../utils/progress-calculator'
 import { useQuizType } from '../utils/quiz-mode'
 import { useState, useEffect, useMemo } from 'react'
+import { hasLesson } from '../utils/lessons'
 
 interface StepsPageProps {
     onCourseSelect: (stepId: number, section: string, step: string) => void
@@ -16,7 +17,8 @@ interface StepsPageProps {
     content?: 'words' | 'kanji_freq' | 'words_tubelex'
     // The last kanji section is partial, so it may have fewer than 10 steps.
     numSteps?: number
-    actualSteps?: {id:number;items:number;title?:string}[]
+    actualSteps?: {key:string;id:number;items:number;title?:string}[]
+    deckId?: string
     deckTitle?: string
     deckDescription?: string
 }
@@ -25,7 +27,7 @@ interface StepProgress {
     [key: string]: number;
 }
 
-export default function StepsPage({ onCourseSelect, onSettingsClick, currentSection, content = 'words', numSteps = 10, actualSteps, deckTitle, deckDescription }: StepsPageProps) {
+export default function StepsPage({ onCourseSelect, onSettingsClick, currentSection, content = 'words', numSteps = 10, actualSteps, deckId, deckTitle, deckDescription }: StepsPageProps) {
     const [stepProgress, setStepProgress] = useState<StepProgress>({});
     // Show the progress for the input mode the user is currently in: typing and
     // multiple-choice each track their own score. Reactive so changing Quiz Mode
@@ -120,6 +122,16 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
         window.location.href = `/session_preview_results?${params.toString()}`;
     };
 
+    const handleLessonClick = (stepId: number) => {
+        if (!deckId) return;
+        const params = new URLSearchParams({
+            section: currentSection,
+            deck: deckId,
+            step: `step_${stepId}`,
+        });
+        window.location.href = `/lesson?${params.toString()}`;
+    };
+
     return (
         <div className="min-h-screen bg-[#181818] flex flex-col">
 
@@ -165,44 +177,61 @@ export default function StepsPage({ onCourseSelect, onSettingsClick, currentSect
 
                     {/* Steps Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-                        {steps.map((step) => (
-                            <div
-                                key={step.id}
-                                onClick={() => handleStepClick(step.id)}
-                                className="bg-[#181818] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors"
-                            >
-                                <div className="flex items-start justify-between gap-3">
-                                    <div className="min-w-0">
-                                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">{step.title || `Step ${step.id}`}</h3>
-                                        <div className="space-y-1 sm:space-y-2">
-                                            <p className="text-[#A1A1A1] text-sm sm:text-base">{step.items} {itemNoun}</p>
-                                            {!deckTitle && !isKanji && (
-                                                <p className="text-[#A1A1A1] text-sm sm:text-base">{step.sentences} example sentences</p>
-                                            )}
+                        {steps.map((step) => {
+                            const lessonAvailable = Boolean(deckId && hasLesson(deckId, `step_${step.id}`));
+                            return (
+                                <div
+                                    key={step.id}
+                                    onClick={() => lessonAvailable ? handleLessonClick(step.id) : handleStepClick(step.id)}
+                                    className="bg-[#181818] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors"
+                                >
+                                    <div className="flex items-start justify-between gap-3">
+                                        <div className="min-w-0">
+                                            <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">{step.title || `Step ${step.id}`}</h3>
+                                            <div className="space-y-1 sm:space-y-2">
+                                                <p className="text-[#A1A1A1] text-sm sm:text-base">{step.items} {itemNoun}</p>
+                                                {!deckTitle && !isKanji && (
+                                                    <p className="text-[#A1A1A1] text-sm sm:text-base">{step.sentences} example sentences</p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col items-end gap-3 sm:gap-4 shrink-0">
+                                            <CircularProgress
+                                                progress={stepProgress[`step_${step.id}`] || 0}
+                                                size={50}
+                                                strokeWidth={6}
+                                                progressColor="#FF0054"
+                                                backgroundColor="#262626"
+                                            />
                                         </div>
                                     </div>
-                                    <div className="flex flex-col items-end gap-3 sm:gap-4 shrink-0">
-                                        <CircularProgress
-                                            progress={stepProgress[`step_${step.id}`] || 0}
-                                            size={50}
-                                            strokeWidth={6}
-                                            progressColor="#FF0054"
-                                            backgroundColor="#262626"
-                                        />
+                                    <div className="mt-5 flex gap-2">
+                                        {lessonAvailable && (
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleLessonClick(step.id);
+                                                }}
+                                                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#FF0054] px-3 py-2 font-semibold text-white transition-colors hover:bg-[#e6004c]"
+                                            >
+                                                <BookOpen className="h-4 w-4" />
+                                                Learn
+                                            </button>
+                                        )}
                                         <button
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleStepClick(step.id);
                                             }}
-                                            className="bg-[#262626] border border-[#4F4F4F] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-[#2F2F2F] transition-colors flex items-center gap-1 sm:gap-2 text-sm sm:text-base"
+                                            className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#4F4F4F] bg-[#262626] px-3 py-2 font-medium text-white transition-colors hover:bg-[#333333]"
                                         >
-                                            <Play className="w-4 h-4" />
-                                            Start
+                                            <Play className="h-4 w-4" />
+                                            {lessonAvailable ? 'Quiz' : 'Start'}
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </main>

@@ -8,5 +8,5 @@ export default function Steps(){
  if(!router.isReady||!sections)return <LoadingState text="Loading steps"/>;
  const section=sections.find(s=>s.id===router.query.section);
  if(!section)return <p className="p-6 text-white">This section has no learning content.</p>;
- return <StepsPage onCourseSelect={()=>{}} onSettingsClick={()=>{}} currentSection={section.id} numSteps={section.steps.length} actualSteps={section.steps} deckTitle={section.deck.title} deckDescription={section.deck.description}/>;
+ return <StepsPage onCourseSelect={()=>{}} onSettingsClick={()=>{}} currentSection={section.id} numSteps={section.steps.length} actualSteps={section.steps} deckId={section.deck.id} deckTitle={section.deck.title} deckDescription={section.deck.description}/>;
 }
