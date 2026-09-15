@@ -1,0 +1,1093 @@
+{
+  "deckId": "probability-chapter-2",
+  "deckTitle": "Probability · Discrete Random Variables",
+  "lessons": [
+    {
+      "step": "step_1",
+      "title": "Notation",
+      "subtitle": "Read the symbols before using the formulas",
+      "durationMinutes": 12,
+      "introduction": "Random variables turn uncertain outcomes into numbers. Learn how to read the symbols for those numbers, their probabilities, and their averages.",
+      "objectives": [
+        "Distinguish a random variable from one of its values.",
+        "Read single, joint, and conditional probabilities.",
+        "Recognize means, moments, and measures of spread."
+      ],
+      "concepts": [
+        {
+          "title": "X and x",
+          "explanation": "A capital letter names a random variable: a rule that assigns a number to each outcome. A lowercase letter names a particular value it can take.",
+          "formula": "X: the random variable · x: a numerical value",
+          "example": {
+            "title": "Tomorrow’s parcels",
+            "situation": "Let X be the number of parcels arriving at your home tomorrow.",
+            "walkthrough": [
+              "Before tomorrow, X could be 0, 1, 2, or another whole number.",
+              "If three parcels arrive, the observed value is x = 3.",
+              "The statement X = 3 describes all outcomes in which three parcels arrive."
+            ],
+            "result": "X names what you count; 3 is one possible answer."
+          },
+          "remember": "A random variable has a fixed definition even though its observed value is uncertain.",
+          "commonMistake": "X is not the probability of receiving a parcel. It is the number received."
+        },
+        {
+          "title": "p_X(x)",
+          "explanation": "The probability mass function, abbreviated PMF, gives the probability of each numerical value. The subscript identifies the variable; the input identifies the value.",
+          "formula": "p_X(x) = P(X = x)",
+          "example": {
+            "title": "Exactly two parcels",
+            "situation": "Let X count tomorrow’s parcels. Suppose p_X(2) = 0.30.",
+            "walkthrough": [
+              "The subscript X tells us we are looking at the parcel count.",
+              "The input 2 asks about exactly two parcels.",
+              "The output 0.30 is a 30% chance."
+            ],
+            "result": "p_X(2) means the chance of exactly two parcels."
+          },
+          "remember": "Read a PMF as “the chance that this variable equals this value.”",
+          "commonMistake": "p_X(2) does not mean the chance of at most two parcels."
+        },
+        {
+          "title": "Y = g(X)",
+          "explanation": "A function g is a rule that transforms a value. Applying it to a random variable creates another random variable.",
+          "formula": "Y = g(X)",
+          "example": {
+            "title": "A delivery charge",
+            "situation": "Let X be the number of parcels. A courier charges ¥200 per parcel plus a ¥100 collection fee; Y is the total charge.",
+            "walkthrough": [
+              "The rule is g(x) = 200x + 100.",
+              "For X = 2, the charge is Y = 200 × 2 + 100 = ¥500.",
+              "For X = 3, the same rule gives Y = ¥700."
+            ],
+            "result": "X and Y describe the same delivery in different ways: a count and a charge."
+          },
+          "remember": "g is the rule; g(x) is the result of applying the rule to x.",
+          "commonMistake": "A transformation changes the values. Do not apply the price formula to their probabilities."
+        },
+        {
+          "title": "E[X], E[X²], and (E[X])²",
+          "explanation": "E means expected value, or probability-weighted average. The placement of the square matters: E[X²] averages squared values, whereas (E[X])² squares the average.",
+          "formula": "μ = E[X] · E[X²]: second moment · (E[X])²: squared mean",
+          "example": {
+            "title": "A small prize draw",
+            "situation": "A game gives 0 or 2 tokens with equal probability. Let X be the token prize.",
+            "walkthrough": [
+              "E[X] = 0 × 0.5 + 2 × 0.5 = 1.",
+              "E[X²] = 0² × 0.5 + 2² × 0.5 = 2.",
+              "(E[X])² = 1² = 1."
+            ],
+            "result": "E[X²] is 2, but (E[X])² is 1."
+          },
+          "remember": "Read what is inside the brackets before taking the average.",
+          "commonMistake": "The mean need not be a possible prize: this game never pays exactly 1 token."
+        },
+        {
+          "title": "var(X) and σ_X",
+          "explanation": "Variance measures spread using squared distances from the mean. Standard deviation is the square root of variance, so it uses the same units as the original variable.",
+          "formula": "var(X) = E[(X − E[X])²] · σ_X = √var(X)",
+          "example": {
+            "title": "Two commute options",
+            "situation": "Route A always takes 10 minutes. Route B takes 8 or 12 minutes with equal probability.",
+            "walkthrough": [
+              "Both routes have a mean travel time of 10 minutes.",
+              "For B, both possible times are 2 minutes from the mean; variance is 4 minutes².",
+              "The standard deviation is √4 = 2 minutes. Route A has zero variance."
+            ],
+            "result": "The two means match, but Route B has more variation."
+          },
+          "remember": "Variance uses squared units; standard deviation uses the original units.",
+          "commonMistake": "The symbol σ_X is standard deviation. Its square, σ_X², is variance."
+        },
+        {
+          "title": "Joint and conditional notation",
+          "explanation": "A joint PMF gives the chance of two values occurring together. A conditional PMF gives the chance of one value after another is known. A conditional expectation is an average with that same information.",
+          "formula": "p_{X,Y}(x,y) = P(X = x and Y = y) · p_{X|Y}(x|y) = P(X = x | Y = y)",
+          "example": {
+            "title": "A café order",
+            "situation": "Let X be the number of drinks and Y the number of cakes in a customer’s order.",
+            "walkthrough": [
+              "p_{X,Y}(2,1) asks for the chance of two drinks and one cake together.",
+              "p_{X|Y}(2|1) asks: among orders with one cake, what fraction have two drinks?",
+              "E[X | Y = 1] asks for the average number of drinks among one-cake orders."
+            ],
+            "result": "A comma joins two values; a vertical bar introduces information already known."
+          },
+          "remember": "In Σ_x Σ_y, add over all x values and all y values: every possible pair.",
+          "commonMistake": "p_{X|Y}(x|y) and p_{Y|X}(y|x) select different groups of orders."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "p_X(3)",
+          "options": [
+            "P(X = 3)",
+            "E[X]",
+            "P(X ≤ 3)",
+            "The value of X"
+          ],
+          "correctAnswer": "P(X = 3)",
+          "explanation": "A PMF evaluated at 3 gives the chance of exactly 3."
+        },
+        {
+          "prompt": "E[X | Y = 1]",
+          "options": [
+            "The chance that Y equals 1",
+            "The mean of Y",
+            "The mean of X among cases where Y = 1",
+            "E[X] multiplied by 1"
+          ],
+          "correctAnswer": "The mean of X among cases where Y = 1",
+          "explanation": "The condition restricts which cases contribute to the average."
+        }
+      ]
+    },
+    {
+      "step": "step_2",
+      "title": "Random variables and PMFs",
+      "subtitle": "Turn outcomes into numbers and probabilities",
+      "durationMinutes": 10,
+      "introduction": "A detailed outcome can contain more information than you need. A random variable extracts a number, and its PMF tells you how likely each number is.",
+      "objectives": [
+        "Define a numerical rule for every outcome.",
+        "Build a PMF by grouping outcomes.",
+        "Check a PMF and add probabilities for an event."
+      ],
+      "concepts": [
+        {
+          "title": "A numerical rule for outcomes",
+          "explanation": "A random variable assigns one real number to every outcome. Different outcomes may receive the same number. The rule must be clear enough that the number is determined once the outcome is known.",
+          "formula": "Outcome → numerical value",
+          "example": {
+            "title": "Two online orders",
+            "situation": "Each of two orders either arrives today or is delayed. Let X count how many arrive today.",
+            "walkthrough": [
+              "Both arrive → X = 2. Neither arrives → X = 0.",
+              "First arrives, second delayed → X = 1.",
+              "First delayed, second arrives → X = 1 as well."
+            ],
+            "result": "Four delivery outcomes give only three possible counts: 0, 1, and 2."
+          },
+          "remember": "One outcome gets one value; several outcomes can share a value.",
+          "commonMistake": "The detailed outcome “first arrives, second delayed” is not the same thing as the numerical value 1."
+        },
+        {
+          "title": "What makes a variable discrete?",
+          "explanation": "A random variable is discrete when its possible values can be listed, either in a finite list or a countably infinite sequence. The values need not be consecutive integers.",
+          "formula": "Finite: 0, 1, 2 · Countably infinite: 1, 2, 3, …",
+          "example": {
+            "title": "Counting orders and retries",
+            "situation": "Compare three measurements made by a delivery app.",
+            "walkthrough": [
+              "The number of today’s arrivals out of two orders has the finite list 0, 1, 2.",
+              "The number of upload attempts until success has the list 1, 2, 3, … if there is no fixed retry limit.",
+              "A fee taking only ¥0, ¥150, or ¥400 is also discrete, despite the gaps."
+            ],
+            "result": "A discrete list can be short, infinite, or unevenly spaced."
+          },
+          "remember": "Discrete means listable values, not necessarily a small number of values.",
+          "commonMistake": "An exact waiting time that may be any real number in an interval is not discrete; a rounded whole-minute measurement is."
+        },
+        {
+          "title": "Building a PMF",
+          "explanation": "To find the probability of a value, collect all outcomes that produce it and add their probabilities. Those groups are disjoint because one outcome cannot give two different values of the same variable.",
+          "formula": "p_X(x) = sum of probabilities of outcomes giving X = x",
+          "example": {
+            "title": "Two equally likely arrivals",
+            "situation": "Each of two orders independently has a 50% chance of arriving today. Let X count today’s arrivals.",
+            "walkthrough": [
+              "Both arrive, neither arrives, and the two mixed outcomes each have probability 0.25.",
+              "X = 0 has one outcome, so p_X(0) = 0.25. X = 2 also has probability 0.25.",
+              "X = 1 has two outcomes, so p_X(1) = 0.25 + 0.25 = 0.50."
+            ],
+            "result": "The PMF is 0 → 0.25, 1 → 0.50, 2 → 0.25."
+          },
+          "remember": "Count outcomes with their probabilities, not just their names.",
+          "commonMistake": "Three possible values do not automatically mean probability 1/3 each."
+        },
+        {
+          "title": "Checking and using a PMF",
+          "explanation": "A valid PMF has nonnegative probabilities that sum to 1. To find the probability of an event about X, add the masses of all values that satisfy it.",
+          "formula": "p_X(x) ≥ 0 · Σ_x p_X(x) = 1 · P(X ∈ S) = Σ_{x∈S} p_X(x)",
+          "example": {
+            "title": "At least one order arrives",
+            "situation": "Let X have probabilities p_X(0) = 0.25, p_X(1) = 0.50, and p_X(2) = 0.25.",
+            "walkthrough": [
+              "All probabilities are nonnegative and 0.25 + 0.50 + 0.25 = 1.",
+              "“At least one” includes X = 1 and X = 2.",
+              "P(X ≥ 1) = 0.50 + 0.25 = 0.75."
+            ],
+            "result": "There is a 75% chance that at least one order arrives."
+          },
+          "remember": "Values outside the possible range have mass 0.",
+          "commonMistake": "For X > 1, include only 2. For X ≥ 1, include both 1 and 2."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Two independent orders each arrive today with probability 0.5. What is the chance exactly one arrives?",
+          "options": [
+            "0.25",
+            "0.5",
+            "0.75",
+            "1"
+          ],
+          "correctAnswer": "0.5",
+          "explanation": "Either the first alone or the second alone arrives: 0.25 + 0.25 = 0.5."
+        },
+        {
+          "prompt": "X takes 0, 1, and 2 with probabilities 0.2, 0.3, and 0.5. What is P(X ≥ 1)?",
+          "options": [
+            "0.3",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "correctAnswer": "0.8",
+          "explanation": "Add the masses at 1 and 2: 0.3 + 0.5 = 0.8."
+        }
+      ]
+    },
+    {
+      "step": "step_3",
+      "title": "Standard discrete distributions",
+      "subtitle": "Choose a model that matches what you count",
+      "durationMinutes": 14,
+      "introduction": "A distribution is a pattern of probabilities. These five models answer different questions: one success, a fixed number of attempts, waiting for success, rare counts, or equally likely integers.",
+      "objectives": [
+        "Match a counting question to a distribution.",
+        "Identify the assumptions behind each model.",
+        "Calculate a probability with a small example."
+      ],
+      "concepts": [
+        {
+          "title": "Bernoulli: one yes-or-no result",
+          "explanation": "A Bernoulli variable records whether one event occurs. It is 1 for success and 0 otherwise. The parameter p is the probability of success. “Success” simply names the event being counted.",
+          "formula": "P(X = 1) = p · P(X = 0) = 1 − p",
+          "example": {
+            "title": "One customer uses a coupon",
+            "situation": "Suppose a customer uses a coupon with probability 0.30. Set X = 1 when a coupon is used, and X = 0 otherwise.",
+            "walkthrough": [
+              "The possible values are 0 and 1.",
+              "p_X(1) = 0.30 and p_X(0) = 0.70.",
+              "The probabilities add to 1."
+            ],
+            "result": "X is Bernoulli with p = 0.30."
+          },
+          "remember": "A 0-or-1 variable that marks an event is also called an indicator.",
+          "commonMistake": "The value 1 marks the event; it does not mean the event is certain."
+        },
+        {
+          "title": "Binomial: successes in a fixed number of trials",
+          "explanation": "A binomial variable counts successes in n independent trials, each with the same success probability p. The number of trials is fixed before observing the results.",
+          "formula": "P(X = k) = C(n,k)pᵏ(1 − p)ⁿ⁻ᵏ, k = 0, …, n",
+          "example": {
+            "title": "Two coupon users among three customers",
+            "situation": "Assume three customers independently use a coupon with probability 0.5 each. Let X be the number who use one.",
+            "walkthrough": [
+              "Exactly two users can be customers 1 and 2, 1 and 3, or 2 and 3: C(3,2) = 3 arrangements.",
+              "Each arrangement has probability 0.5 × 0.5 × 0.5 = 0.125.",
+              "P(X = 2) = 3 × 0.125 = 0.375."
+            ],
+            "result": "The chance of exactly two coupon users is 37.5%."
+          },
+          "remember": "Fixed n, independent trials, same p.",
+          "commonMistake": "The probability of one particular success pattern must be multiplied by the number of such patterns."
+        },
+        {
+          "title": "Geometric: trials until the first success",
+          "explanation": "A geometric variable counts independent trials up to and including the first success. Each trial has the same success probability p. The smallest possible count is 1.",
+          "formula": "P(X = k) = (1 − p)ᵏ⁻¹p, k = 1, 2, …",
+          "example": {
+            "title": "An upload succeeds on attempt three",
+            "situation": "Suppose each upload attempt independently succeeds with probability 0.5. Let X be the number of attempts until it works.",
+            "walkthrough": [
+              "X = 3 requires failure, failure, then success.",
+              "The probability is 0.5 × 0.5 × 0.5 = 0.125.",
+              "There is only one relevant ordering because the first success must be last."
+            ],
+            "result": "The chance that the first success is on attempt three is 12.5%."
+          },
+          "remember": "Count the successful attempt too.",
+          "commonMistake": "A binomial count fixes the number of attempts; a geometric count stops at the first success."
+        },
+        {
+          "title": "Poisson: a count of rare occurrences",
+          "explanation": "A Poisson variable takes the values 0, 1, 2, and so on. Its parameter λ is the mean count for the interval or batch being modeled. It can approximate a binomial count when n is large, p is small, and λ = np.",
+          "formula": "P(X = k) = e⁻λ λᵏ/k!, k = 0, 1, 2, …",
+          "example": {
+            "title": "Misprinted labels in a batch",
+            "situation": "A batch has 1,000 labels. Suppose each independently has probability 0.001 of a misprint. Approximate the total misprints by a Poisson variable.",
+            "walkthrough": [
+              "Set λ = np = 1,000 × 0.001 = 1 misprint per batch.",
+              "The Poisson chance of zero is e⁻¹ × 1⁰/0! = e⁻¹ ≈ 0.368.",
+              "The exact binomial probability is 0.999¹⁰⁰⁰ ≈ 0.368, close to the approximation."
+            ],
+            "result": "About 36.8% of batches have no misprints under this model."
+          },
+          "remember": "λ describes the whole batch or interval. Here it is 1, not 0.001.",
+          "commonMistake": "An average count alone does not prove that the Poisson model fits. Check how occurrences are generated."
+        },
+        {
+          "title": "Discrete uniform: equally likely integers",
+          "explanation": "A discrete uniform variable gives equal probability to each integer from a through b, including both endpoints. There are b − a + 1 possible values.",
+          "formula": "P(X = k) = 1/(b − a + 1), k = a, a+1, …, b",
+          "example": {
+            "title": "A numbered discount draw",
+            "situation": "A shop draws one of seven equally likely tickets numbered 2 through 8. X is the number of discount points awarded.",
+            "walkthrough": [
+              "The possible values are 2, 3, 4, 5, 6, 7, and 8.",
+              "Each value has probability 1/7.",
+              "At least 6 points means 6, 7, or 8, so P(X ≥ 6) = 3/7."
+            ],
+            "result": "Equal chances let us count favorable values and divide by seven."
+          },
+          "remember": "Include both endpoints when counting consecutive integers.",
+          "commonMistake": "Do not assume uniformity just because a list of values is given; equal probabilities must be part of the model."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "You count independent attempts up to and including the first successful upload. Which model fits if the success chance stays constant?",
+          "options": [
+            "Binomial",
+            "Poisson",
+            "Geometric",
+            "Discrete uniform"
+          ],
+          "correctAnswer": "Geometric",
+          "explanation": "The stopping rule is the first success, so the number of attempts is geometric."
+        },
+        {
+          "prompt": "Three independent customers each use a coupon with probability 0.5. What is the chance exactly two do?",
+          "options": [
+            "0.125",
+            "0.25",
+            "0.5",
+            "0.375"
+          ],
+          "correctAnswer": "0.375",
+          "explanation": "There are three arrangements with two users, each of probability 0.125."
+        }
+      ]
+    },
+    {
+      "step": "step_4",
+      "title": "Functions of random variables",
+      "subtitle": "Follow the values, then collect their probabilities",
+      "durationMinutes": 9,
+      "introduction": "A cost, a score, or an absolute error can be calculated from an uncertain input. The resulting quantity is another random variable. Its probabilities come from the inputs that lead to each output.",
+      "objectives": [
+        "Transform each possible input value.",
+        "Combine probabilities when inputs share an output.",
+        "Check that the transformed probabilities still sum to 1."
+      ],
+      "concepts": [
+        {
+          "title": "Transforming values",
+          "explanation": "If X is a random variable and g is a fixed numerical rule, Y = g(X) is also a random variable. Once X is known, the value of Y is determined.",
+          "formula": "Y = g(X)",
+          "example": {
+            "title": "A parcel fee",
+            "situation": "Let X be the number of parcels, with probabilities 0 → 0.2, 1 → 0.5, 2 → 0.3. The charge is Y = 200X + 100 yen.",
+            "walkthrough": [
+              "X = 0 gives Y = ¥100 with probability 0.2.",
+              "X = 1 gives Y = ¥300 with probability 0.5.",
+              "X = 2 gives Y = ¥500 with probability 0.3."
+            ],
+            "result": "The values change from counts to prices; their probabilities move with them."
+          },
+          "remember": "List every input, output, and probability before simplifying.",
+          "commonMistake": "Do not calculate g(0.2) or g(0.5): those are probabilities, not parcel counts."
+        },
+        {
+          "title": "Several inputs, one output",
+          "explanation": "A transformation may send different inputs to the same output. The output occurs whenever any of those inputs occurs, so add their probabilities.",
+          "formula": "p_Y(y) = Σ_{x: g(x)=y} p_X(x)",
+          "example": {
+            "title": "How far from the delivery target?",
+            "situation": "Let X be signed delivery error in minutes: −2 has probability 0.2, 0 has probability 0.5, and +2 has probability 0.3. Let Y = |X| measure distance from the target time.",
+            "walkthrough": [
+              "Both −2 minutes and +2 minutes give Y = 2.",
+              "P(Y = 2) = 0.2 + 0.3 = 0.5.",
+              "Only X = 0 gives Y = 0, with probability 0.5."
+            ],
+            "result": "Y takes 0 or 2 minutes, each with probability 0.5."
+          },
+          "remember": "Gather every input that gives the output you are asking about.",
+          "commonMistake": "Do not keep only the positive input: an early arrival can be just as far from the target as a late one."
+        },
+        {
+          "title": "A constant transformation",
+          "explanation": "If a rule returns the same output for every possible input, the output variable is constant. All probability mass is collected at that single value.",
+          "formula": "If g(x) = c for every possible x, then P(Y = c) = 1",
+          "example": {
+            "title": "A flat delivery fee",
+            "situation": "A courier replaces per-parcel pricing with a flat ¥500 fee. X is the uncertain number of parcels and Y is the fee.",
+            "walkthrough": [
+              "One parcel gives Y = ¥500. Two parcels also give Y = ¥500.",
+              "Every other allowed parcel count gives the same fee.",
+              "Add the probabilities of all parcel counts: they sum to 1."
+            ],
+            "result": "The parcel count is uncertain, but the fee is certainly ¥500."
+          },
+          "remember": "A constant is still a valid random variable.",
+          "commonMistake": "A function of an uncertain input does not have to remain uncertain."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "X takes −2, 0, and 2 with probabilities 0.2, 0.5, and 0.3. For Y = |X|, what is P(Y = 2)?",
+          "options": [
+            "0.2",
+            "0.3",
+            "0.5",
+            "1"
+          ],
+          "correctAnswer": "0.5",
+          "explanation": "Both −2 and 2 map to 2, so add 0.2 + 0.3."
+        },
+        {
+          "prompt": "A fee is Y = 200X + 100. If P(X = 2) = 0.3, what is P(Y = 500)?",
+          "options": [
+            "0.3",
+            "60.1",
+            "0.6",
+            "1"
+          ],
+          "correctAnswer": "0.3",
+          "explanation": "Only X = 2 produces ¥500. The probability stays 0.3."
+        }
+      ]
+    },
+    {
+      "step": "step_5",
+      "title": "Expectation, mean, and variance",
+      "subtitle": "Describe the average and the amount of variation",
+      "durationMinutes": 22,
+      "introduction": "Two uncertain quantities can have the same average and very different behavior. Expected value describes their center; variance and standard deviation describe how spread out their values are.",
+      "objectives": [
+        "Calculate a probability-weighted mean and moments.",
+        "Explain variance and standard deviation with units.",
+        "Apply changes of scale and standard distribution formulas."
+      ],
+      "concepts": [
+        {
+          "title": "Expected value: a weighted average",
+          "explanation": "Expected value, also called the mean, weights each possible value by its probability and adds the results. It describes the average over many repetitions under the model, not a promise about one observation.",
+          "formula": "E[X] = Σ_x x p_X(x)",
+          "example": {
+            "title": "A prize machine",
+            "situation": "A machine pays 0 tokens with probability 0.5, 2 with probability 0.3, and 5 with probability 0.2. X is one payout.",
+            "walkthrough": [
+              "Weight each payout: 0 × 0.5 = 0, 2 × 0.3 = 0.6, and 5 × 0.2 = 1.",
+              "Add the contributions: E[X] = 0 + 0.6 + 1 = 1.6 tokens.",
+              "Over many independent plays, the average payout tends toward 1.6 tokens per play."
+            ],
+            "result": "The mean is 1.6 tokens even though a single play never pays 1.6."
+          },
+          "remember": "Use probabilities as weights. For infinitely many values, a finite mean requires Σ_x |x|p_X(x) < ∞.",
+          "commonMistake": "Do not average 0, 2, and 5 equally unless their probabilities are equal."
+        },
+        {
+          "title": "Expected value of a function and moments",
+          "explanation": "To average a function of X, apply the function to each value first, then weight by its original probability. A moment uses the function xⁿ; the first moment is the mean and the second is the mean square.",
+          "formula": "E[g(X)] = Σ_x g(x)p_X(x) · E[Xⁿ] = Σ_x xⁿp_X(x)",
+          "example": {
+            "title": "A bonus based on squared points",
+            "situation": "A game awards X = 1 or X = 3 points with equal probability. A bonus pays Y = X² tokens.",
+            "walkthrough": [
+              "The possible bonuses are 1² = 1 and 3² = 9.",
+              "E[Y] = E[X²] = 1 × 0.5 + 9 × 0.5 = 5 tokens.",
+              "E[X] = 2, so (E[X])² = 4, which is a different quantity."
+            ],
+            "result": "The average bonus is 5 tokens, not 4."
+          },
+          "remember": "You can compute E[g(X)] directly without first building a new PMF.",
+          "commonMistake": "For a general nonlinear function, E[g(X)] is not necessarily g(E[X])."
+        },
+        {
+          "title": "Variance: squared distance from the mean",
+          "explanation": "Variance is the probability-weighted average of squared distances from the mean. Squaring prevents positive and negative deviations from canceling. Variance is nonnegative and is zero exactly when the variable equals a constant with probability 1.",
+          "formula": "var(X) = E[(X − E[X])²]",
+          "example": {
+            "title": "Two commute routes",
+            "situation": "Route A always takes 10 minutes. Route B takes 8 or 12 minutes with equal probability.",
+            "walkthrough": [
+              "Both means are 10 minutes.",
+              "For Route B, the deviations are −2 and +2; both square to 4.",
+              "var(B) = 4 × 0.5 + 4 × 0.5 = 4 minutes². Route A has variance 0."
+            ],
+            "result": "Route B varies around the same average time that Route A always takes."
+          },
+          "remember": "Measure distance from the mean, square it, then average.",
+          "commonMistake": "Averaging the signed deviations gives zero and does not measure spread."
+        },
+        {
+          "title": "Standard deviation: spread in familiar units",
+          "explanation": "Standard deviation is the square root of variance. It restores the original units, making the scale of variation easier to interpret. It is not a maximum distance or a guaranteed range.",
+          "formula": "σ_X = √var(X)",
+          "example": {
+            "title": "Reading commute statistics",
+            "situation": "A route has mean travel time 10 minutes and variance 4 minutes².",
+            "walkthrough": [
+              "Take the square root: σ_X = √4 = 2 minutes.",
+              "The mean gives the center: 10 minutes.",
+              "The standard deviation gives a scale for the variation: 2 minutes."
+            ],
+            "result": "Report the spread as 2 minutes of standard deviation."
+          },
+          "remember": "If X is in minutes, its variance is in minutes² and its standard deviation is in minutes.",
+          "commonMistake": "A standard deviation of 2 does not mean every journey is within 2 minutes of the mean."
+        },
+        {
+          "title": "A shortcut for variance",
+          "explanation": "Variance can also be found by subtracting the squared mean from the second moment. This is useful when those two quantities are easy to calculate.",
+          "formula": "var(X) = E[X²] − (E[X])²",
+          "example": {
+            "title": "Checking the commute calculation",
+            "situation": "Travel time X is 8 or 12 minutes with equal probability.",
+            "walkthrough": [
+              "E[X] = 8 × 0.5 + 12 × 0.5 = 10.",
+              "E[X²] = 64 × 0.5 + 144 × 0.5 = 104.",
+              "var(X) = 104 − 10² = 4 minutes²."
+            ],
+            "result": "The shortcut gives the same variance as averaging squared deviations."
+          },
+          "remember": "Compute E[X²] and (E[X])² separately.",
+          "commonMistake": "Subtract in the correct order; variance cannot be negative."
+        },
+        {
+          "title": "Shifting and scaling",
+          "explanation": "Adding a fixed amount shifts every value and the mean equally. Multiplying by a scales all distances by |a|, so variance is multiplied by a². These rules apply when the relevant moments are finite.",
+          "formula": "E[aX + b] = aE[X] + b · var(aX + b) = a²var(X)",
+          "example": {
+            "title": "A points promotion",
+            "situation": "A game’s score X has mean 3 points and variance 2 points². A promotion replaces each score with Y = 2X + 5.",
+            "walkthrough": [
+              "The new mean is 2 × 3 + 5 = 11 points.",
+              "Adding 5 creates no extra spread because every score gets the same addition.",
+              "Doubling distances multiplies variance by 4: var(Y) = 4 × 2 = 8 points²."
+            ],
+            "result": "The mean becomes 11 and the variance becomes 8."
+          },
+          "remember": "A fixed shift changes the center; scaling changes both center and spread.",
+          "commonMistake": "Do not add b to the variance or multiply variance by a instead of a²."
+        },
+        {
+          "title": "Mean and variance of a discrete uniform variable",
+          "explanation": "For equally likely consecutive integers, the mean is the midpoint. The variance depends on the width of the integer range, not its location.",
+          "formula": "E[X] = (a + b)/2 · var(X) = (b − a)(b − a + 2)/12",
+          "example": {
+            "title": "A discount ticket from 2 through 8",
+            "situation": "Seven equally likely tickets award 2, 3, 4, 5, 6, 7, or 8 points.",
+            "walkthrough": [
+              "The mean is (2 + 8)/2 = 5 points.",
+              "The variance is (8 − 2)(8 − 2 + 2)/12 = 6 × 8/12 = 4 points².",
+              "The standard deviation is √4 = 2 points."
+            ],
+            "result": "The draw is centered at 5 points with standard deviation 2 points."
+          },
+          "remember": "The formula includes every integer from a through b.",
+          "commonMistake": "These formulas do not apply to an arbitrary unevenly spaced or unequally weighted list."
+        },
+        {
+          "title": "Mean and variance of a Bernoulli variable",
+          "explanation": "A Bernoulli variable has mean p and variance p(1 − p). The mean is the event’s probability because the only nonzero value is 1.",
+          "formula": "E[X] = p · var(X) = p(1 − p)",
+          "example": {
+            "title": "Whether a coupon is used",
+            "situation": "Let X = 1 when a customer uses a coupon and 0 otherwise, with p = 0.30.",
+            "walkthrough": [
+              "E[X] = 1 × 0.30 + 0 × 0.70 = 0.30.",
+              "Since 0² = 0 and 1² = 1, E[X²] = 0.30 too.",
+              "var(X) = 0.30 − 0.30² = 0.21."
+            ],
+            "result": "The mean indicator value is the 30% coupon-use rate."
+          },
+          "remember": "For an indicator, X² = X.",
+          "commonMistake": "A mean of 0.30 does not mean one customer uses 0.30 of a coupon."
+        },
+        {
+          "title": "Mean and variance of a Poisson variable",
+          "explanation": "For a Poisson variable, the mean and variance both have numerical value λ. Standard deviation is √λ. The model links the expected count and its spread.",
+          "formula": "E[X] = λ · var(X) = λ · σ_X = √λ",
+          "example": {
+            "title": "Calls during a ten-minute interval",
+            "situation": "Suppose the number of calls in ten minutes is modeled as Poisson with λ = 4.",
+            "walkthrough": [
+              "The expected count is 4 calls per interval.",
+              "The variance is 4 calls².",
+              "The standard deviation is √4 = 2 calls."
+            ],
+            "result": "The expected count and variance are both numerically 4, but use different units."
+          },
+          "remember": "Use λ for the same interval as the variable you are studying.",
+          "commonMistake": "Four expected calls does not mean exactly four calls will arrive."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "A prize is 0 tokens with probability 0.5, 2 with probability 0.3, and 5 with probability 0.2. What is its mean?",
+          "options": [
+            "2.33",
+            "1.6",
+            "3.5",
+            "7"
+          ],
+          "correctAnswer": "1.6",
+          "explanation": "Weight the payouts: 0 × 0.5 + 2 × 0.3 + 5 × 0.2 = 1.6."
+        },
+        {
+          "prompt": "X has variance 2. If Y = 2X + 5, what is var(Y)?",
+          "options": [
+            "4",
+            "7",
+            "8",
+            "13"
+          ],
+          "correctAnswer": "8",
+          "explanation": "The multiplier is squared: 2² × 2 = 8. The fixed addition changes no distances from the mean."
+        }
+      ]
+    },
+    {
+      "step": "step_6",
+      "title": "Joint PMFs and multiple variables",
+      "subtitle": "Describe two measurements from the same outcome",
+      "durationMinutes": 12,
+      "introduction": "A customer’s order can include both drinks and cakes. A joint PMF describes the combination, so you can answer questions about either measurement or about both together.",
+      "objectives": [
+        "Read a joint PMF and recover single-variable probabilities.",
+        "Calculate probabilities and costs from pairs of values.",
+        "Add expectations, including when variables depend on each other."
+      ],
+      "concepts": [
+        {
+          "title": "A joint PMF",
+          "explanation": "A joint PMF assigns a probability to each combination of values of two random variables. Each mass is nonnegative, and the masses of all possible pairs sum to 1.",
+          "formula": "p_{X,Y}(x,y) = P(X = x and Y = y)",
+          "example": {
+            "title": "One drink and one cake, or neither",
+            "situation": "Let X indicate buying a drink and Y indicate buying a cake. Suppose (X,Y) has masses (0,0): 0.1, (0,1): 0.2, (1,0): 0.3, (1,1): 0.4.",
+            "walkthrough": [
+              "The pair (1,0) means a drink and no cake; its probability is 0.3.",
+              "The pair (1,1) means both; its probability is 0.4.",
+              "All masses are nonnegative and 0.1 + 0.2 + 0.3 + 0.4 = 1."
+            ],
+            "result": "The joint PMF accounts for every drink-and-cake combination."
+          },
+          "remember": "A pair describes one combined outcome, not two separate probabilities.",
+          "commonMistake": "P(X = 1 and Y = 1) is not found by adding the probabilities of buying each item."
+        },
+        {
+          "title": "Marginal PMFs",
+          "explanation": "A marginal PMF describes one variable on its own. Recover it from the joint PMF by adding over every possible value of the other variable.",
+          "formula": "p_X(x) = Σ_y p_{X,Y}(x,y) · p_Y(y) = Σ_x p_{X,Y}(x,y)",
+          "example": {
+            "title": "How many customers buy a drink?",
+            "situation": "Let X indicate a drink and Y a cake, with masses (0,0): 0.1, (0,1): 0.2, (1,0): 0.3, (1,1): 0.4.",
+            "walkthrough": [
+              "For X = 1, include both Y = 0 and Y = 1.",
+              "P(X = 1) = 0.3 + 0.4 = 0.7.",
+              "Similarly, P(Y = 1) = 0.2 + 0.4 = 0.6."
+            ],
+            "result": "70% buy a drink and 60% buy a cake."
+          },
+          "remember": "Keep the variable you want fixed; sum over the other one.",
+          "commonMistake": "A marginal probability includes all cases, not only those where the other variable equals zero."
+        },
+        {
+          "title": "Events and functions of a pair",
+          "explanation": "An event can select several pairs. A function can turn each pair into a total, cost, or other number. Add the selected pair probabilities, or weight the function value by each pair probability to find its mean.",
+          "formula": "P((X,Y) ∈ S) = Σ_{(x,y)∈S} p_{X,Y}(x,y) · E[g(X,Y)] = Σ_x Σ_y g(x,y)p_{X,Y}(x,y)",
+          "example": {
+            "title": "Total items in a café order",
+            "situation": "Let X indicate a drink and Y a cake, with masses (0,0): 0.1, (0,1): 0.2, (1,0): 0.3, (1,1): 0.4. Let Z = X + Y.",
+            "walkthrough": [
+              "Z = 0 has probability 0.1. Z = 1 has probability 0.2 + 0.3 = 0.5. Z = 2 has probability 0.4.",
+              "The chance of exactly one item is therefore 0.5.",
+              "E[Z] = 0 × 0.1 + 1 × 0.5 + 2 × 0.4 = 1.3 items."
+            ],
+            "result": "Different pairs can contribute to the same total."
+          },
+          "remember": "Evaluate a function for each pair before collecting equal results.",
+          "commonMistake": "The pairs (0,1) and (1,0) differ, but both give a total of one item."
+        },
+        {
+          "title": "Linearity and counting with indicators",
+          "explanation": "The mean of a sum is the sum of the means, even if the variables depend on each other. This makes indicators useful: write a count as a sum of 0-or-1 variables and add their event probabilities. Assume the expectations are finite.",
+          "formula": "E[aX + bY + c] = aE[X] + bE[Y] + c",
+          "example": {
+            "title": "Guests arriving at a party",
+            "situation": "Ten invited guests each have a 0.8 chance of attending. Some travel together, so attendance may be dependent. Let I_i be 1 if guest i attends and 0 otherwise.",
+            "walkthrough": [
+              "Total attendance is X = I_1 + ··· + I_10.",
+              "Each indicator has mean 0.8.",
+              "E[X] = 10 × 0.8 = 8 guests, regardless of the dependence."
+            ],
+            "result": "The expected attendance is 8; this alone does not tell us the variance."
+          },
+          "remember": "Means add without an independence assumption.",
+          "commonMistake": "Do not use the independent binomial variance formula just because the expected count is np."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "A joint PMF is (0,0): 0.1, (0,1): 0.2, (1,0): 0.3, (1,1): 0.4. What is P(X = 1)?",
+          "options": [
+            "0.4",
+            "0.6",
+            "0.7",
+            "0.3"
+          ],
+          "correctAnswer": "0.7",
+          "explanation": "Sum both pairs with X = 1: 0.3 + 0.4 = 0.7."
+        },
+        {
+          "prompt": "Ten guests each have a 0.8 chance of attending, and some travel together. What is expected attendance?",
+          "options": [
+            "8",
+            "Cannot be determined without independence",
+            "10",
+            "0.8"
+          ],
+          "correctAnswer": "8",
+          "explanation": "Attendance is a sum of indicators. Their means add even when the indicators are dependent."
+        }
+      ]
+    },
+    {
+      "step": "step_7",
+      "title": "Conditioning and conditional expectation",
+      "subtitle": "Update probabilities and averages when you learn more",
+      "durationMinutes": 18,
+      "introduction": "Knowing something about an outcome changes which cases are relevant. Conditioning keeps those cases and rescales their probabilities. The same idea gives averages for a subgroup and, from those, the overall average.",
+      "objectives": [
+        "Build a conditional PMF from an event or another variable.",
+        "Use multiplication and total probability.",
+        "Calculate conditional means and combine them with total expectation."
+      ],
+      "concepts": [
+        {
+          "title": "Conditioning on an event",
+          "explanation": "A conditional PMF describes X among outcomes where an event A occurs. Keep only those outcomes, then divide by P(A) so their probabilities sum to 1. This requires P(A) > 0.",
+          "formula": "p_{X|A}(x) = P(X = x and A)/P(A)",
+          "example": {
+            "title": "A shop has received at least one order",
+            "situation": "The daily order count X is 0, 1, or 2 with probabilities 0.2, 0.5, and 0.3. You learn that at least one order arrived: A = {X ≥ 1}.",
+            "walkthrough": [
+              "The retained probability is P(A) = 0.5 + 0.3 = 0.8.",
+              "Within A, P(X = 1 | A) = 0.5/0.8 = 0.625.",
+              "P(X = 2 | A) = 0.3/0.8 = 0.375; these two probabilities sum to 1."
+            ],
+            "result": "Given at least one order, the chance of exactly two is 37.5%."
+          },
+          "remember": "Conditioning changes the denominator to the probability of the retained group.",
+          "commonMistake": "Deleting impossible cases without rescaling the remaining probabilities does not produce a normalized PMF."
+        },
+        {
+          "title": "Conditioning on another variable",
+          "explanation": "To condition on Y = y, keep the joint-PMF entries with that y and divide by their total p_Y(y). The resulting probabilities describe X within that group. The total must be positive.",
+          "formula": "p_{X|Y}(x|y) = p_{X,Y}(x,y)/p_Y(y), when p_Y(y) > 0",
+          "example": {
+            "title": "Drinks among cake buyers",
+            "situation": "Let X indicate a drink and Y a cake. The joint masses are (0,0): 0.1, (0,1): 0.2, (1,0): 0.3, (1,1): 0.4.",
+            "walkthrough": [
+              "Cake buyers have Y = 1, so their total probability is 0.2 + 0.4 = 0.6.",
+              "Among that group, the chance of a drink is 0.4/0.6 = 2/3.",
+              "The chance of no drink is 0.2/0.6 = 1/3."
+            ],
+            "result": "Two thirds of cake buyers also buy a drink under this model."
+          },
+          "remember": "Use the marginal of the variable after the bar as the denominator.",
+          "commonMistake": "The reverse probability is 0.4/0.7 = 4/7: cake buying among drink buyers asks a different question."
+        },
+        {
+          "title": "The multiplication rule",
+          "explanation": "A joint probability can be built in stages: the probability of the first condition, multiplied by the conditional probability of the next value. For more variables, keep earlier information in each later condition.",
+          "formula": "p_{X,Y}(x,y) = p_Y(y)p_{X|Y}(x|y)",
+          "example": {
+            "title": "A cake order with a drink",
+            "situation": "Suppose 60% of café customers buy a cake. Among cake buyers, two thirds buy a drink.",
+            "walkthrough": [
+              "The chance of entering the cake-buyer group is 0.6.",
+              "Within that group, the drink probability is 2/3.",
+              "The chance of both is 0.6 × 2/3 = 0.4."
+            ],
+            "result": "40% of all customers buy both."
+          },
+          "remember": "For three stages: p(x,y,z) = p_X(x)p_{Y|X}(y|x)p_{Z|X,Y}(z|x,y).",
+          "commonMistake": "Do not replace a conditional probability with a marginal probability unless independence justifies it."
+        },
+        {
+          "title": "Total probability for a random variable",
+          "explanation": "If cases are divided into disjoint groups that cover every possibility, an overall probability is the weighted sum of its probability within each group. Use each group’s probability as its weight.",
+          "formula": "p_X(x) = Σ_y p_Y(y)p_{X|Y}(x|y)",
+          "example": {
+            "title": "Late deliveries by shipping method",
+            "situation": "A shop sends 75% of orders by standard shipping and 25% by express. Suppose 20% of standard orders and 4% of express orders arrive late.",
+            "walkthrough": [
+              "Standard-and-late has probability 0.75 × 0.20 = 0.15.",
+              "Express-and-late has probability 0.25 × 0.04 = 0.01.",
+              "The overall late probability is 0.15 + 0.01 = 0.16."
+            ],
+            "result": "16% of all deliveries arrive late under this model."
+          },
+          "remember": "Weight by how often each group occurs.",
+          "commonMistake": "A plain average of 20% and 4% is incorrect because the two shipping groups are not equally common."
+        },
+        {
+          "title": "Conditional expectation",
+          "explanation": "Conditional expectation is the probability-weighted mean inside a specified group. Calculate it with the conditional PMF. The same rule works for a function of X by replacing x with g(x).",
+          "formula": "E[X | Y = y] = Σ_x x p_{X|Y}(x|y)",
+          "example": {
+            "title": "Orders on days with at least one sale",
+            "situation": "Daily order count X has probabilities 0 → 0.2, 1 → 0.5, 2 → 0.3. Let A mean at least one order. Within A, the probabilities are 1 → 0.625 and 2 → 0.375.",
+            "walkthrough": [
+              "Only the retained values 1 and 2 contribute.",
+              "E[X | A] = 1 × 0.625 + 2 × 0.375.",
+              "The result is 1.375 orders per day with at least one sale."
+            ],
+            "result": "The conditional average is 1.375 orders; the overall average is 1.1."
+          },
+          "remember": "A conditional mean describes the selected group, not the entire population.",
+          "commonMistake": "Do not keep the original weights 0.5 and 0.3 when averaging only days with sales."
+        },
+        {
+          "title": "Total expectation",
+          "explanation": "An overall mean can be calculated by averaging subgroup means. Weight each subgroup mean by the probability of that subgroup. The groups must cover all cases without overlap.",
+          "formula": "E[X] = Σ_y p_Y(y)E[X | Y = y]",
+          "example": {
+            "title": "Average delivery time",
+            "situation": "A shop sends 75% of orders by standard shipping, with mean delivery time 4 days. The other 25% use express, with mean 2 days.",
+            "walkthrough": [
+              "Standard shipping contributes 0.75 × 4 = 3 days to the weighted mean.",
+              "Express contributes 0.25 × 2 = 0.5 days.",
+              "E[X] = 3 + 0.5 = 3.5 days."
+            ],
+            "result": "The average across all orders is 3.5 days."
+          },
+          "remember": "You can combine group means without knowing every group’s full PMF.",
+          "commonMistake": "Averaging 4 and 2 to obtain 3 days would incorrectly give equal weight to the two groups."
+        },
+        {
+          "title": "Geometric mean and variance",
+          "explanation": "For independent attempts with success probability p, a failed attempt leaves a fresh waiting problem with the same mean. Conditioning on the first attempt gives a short way to find the expected number of attempts, including the successful one.",
+          "formula": "E[X] = 1/p · var(X) = (1 − p)/p²",
+          "example": {
+            "title": "Uploads with a 25% success chance",
+            "situation": "Suppose each upload attempt independently succeeds with p = 0.25. Let m be the mean number of attempts until success.",
+            "walkthrough": [
+              "The first attempt always costs one try. With probability 0.75 it fails, leaving another m attempts on average.",
+              "So m = 1 + 0.75m, giving 0.25m = 1 and m = 4.",
+              "For the second moment s, the same restart gives s = 0.25 × 1 + 0.75(1 + 2m + s). With m = 4, this yields s = 28.",
+              "Variance is s − m² = 28 − 16 = 12 attempts²."
+            ],
+            "result": "The mean is 4 attempts and the variance is 12 attempts²."
+          },
+          "remember": "The restart argument needs independent attempts with unchanged success probability.",
+          "commonMistake": "Four attempts on average does not guarantee success by the fourth attempt."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Daily orders are 0, 1, or 2 with probabilities 0.2, 0.5, and 0.3. Given at least one order, what is the chance of two?",
+          "options": [
+            "0.3",
+            "0.375",
+            "0.5",
+            "0.8"
+          ],
+          "correctAnswer": "0.375",
+          "explanation": "Restrict to X ≥ 1 and divide: 0.3/(0.5 + 0.3) = 0.375."
+        },
+        {
+          "prompt": "75% of orders have a mean delivery time of 4 days, and 25% have a mean of 2 days. What is the overall mean?",
+          "options": [
+            "3",
+            "4",
+            "2.5",
+            "3.5"
+          ],
+          "correctAnswer": "3.5",
+          "explanation": "Weight the group means: 0.75 × 4 + 0.25 × 2 = 3.5 days."
+        }
+      ]
+    },
+    {
+      "step": "step_8",
+      "title": "Independence, sums, and estimation",
+      "subtitle": "Know which shortcuts independence allows",
+      "durationMinutes": 20,
+      "introduction": "Independence means learning one result leaves the distribution of the other unchanged. It allows useful rules for products, variances, and averages, but it must be checked in the model being used.",
+      "objectives": [
+        "Recognize independence and the effects of conditioning.",
+        "Calculate means and variances of independent counts.",
+        "Explain how repeated sampling improves an estimate."
+      ],
+      "concepts": [
+        {
+          "title": "Independence from an event",
+          "explanation": "X is independent of an event A if knowing that A occurred leaves every probability in the PMF of X unchanged. When P(A) > 0, compare the conditional PMF with the original one.",
+          "formula": "p_{X|A}(x) = p_X(x) for every x",
+          "example": {
+            "title": "A discount draw and a coin",
+            "situation": "A shop draws a ticket uniformly numbered 1 through 6 and separately flips a fair coin. The two actions are independent. X is the ticket number and A is the event that the coin shows heads.",
+            "walkthrough": [
+              "Before seeing the coin, P(X = 6) = 1/6.",
+              "After learning that the coin shows heads, the chance stays 1/6.",
+              "The same is true for every other ticket number."
+            ],
+            "result": "X is independent of the event that the coin shows heads."
+          },
+          "remember": "The entire PMF must stay unchanged.",
+          "commonMistake": "Matching one probability is not enough if another value becomes more or less likely."
+        },
+        {
+          "title": "Independence of two variables",
+          "explanation": "Two random variables are independent when their joint PMF equals the product of their marginal PMFs for every pair of values. Equivalently, knowing one value leaves the other variable’s PMF unchanged.",
+          "formula": "p_{X,Y}(x,y) = p_X(x)p_Y(y) for all x,y",
+          "example": {
+            "title": "Two independent coupon draws",
+            "situation": "Two customers each draw a 0-or-1-point coupon independently, with both values equally likely. X and Y are their respective points.",
+            "walkthrough": [
+              "Each marginal gives probability 0.5 to 0 and to 1.",
+              "The four pairs (0,0), (0,1), (1,0), and (1,1) each have probability 0.25.",
+              "Every joint mass equals 0.5 × 0.5, so the product rule holds everywhere."
+            ],
+            "result": "Knowing one customer’s coupon gives no information about the other’s."
+          },
+          "remember": "For several independent variables, the full joint PMF must factor into all the marginal PMFs.",
+          "commonMistake": "The same marginal distribution does not imply independence: copying someone’s coupon value would give the same marginal but complete dependence."
+        },
+        {
+          "title": "Conditioning can change independence",
+          "explanation": "Conditional independence is independence inside a specified event. Restricting the sample space can create or remove dependence, so independence must be assessed again after conditioning. Neither form implies the other in general.",
+          "formula": "P(X = x, Y = y | A) = P(X = x | A)P(Y = y | A)",
+          "example": {
+            "title": "Two coupons, then extra information",
+            "situation": "Two customers independently draw 0-or-1-point coupons, with both values equally likely. Now you learn that their total is exactly 1.",
+            "walkthrough": [
+              "Originally, knowing X does not change Y’s probabilities.",
+              "Given X + Y = 1, only the pairs (0,1) and (1,0) remain.",
+              "If you now learn X = 1, you know Y = 0 for certain. The conditional variables are dependent."
+            ],
+            "result": "The coupons were independent before the extra information, but dependent within the selected group."
+          },
+          "remember": "Always specify what information is already known when claiming independence.",
+          "commonMistake": "Conditional independence can also occur without overall independence: customer purchases may be independent within each weather type yet related overall because weather affects both."
+        },
+        {
+          "title": "Functions and products of independent variables",
+          "explanation": "Applying separate functions to independent variables preserves independence. Their product expectation then factors into the product of their expectations, provided the needed expectations are finite.",
+          "formula": "E[g(X)h(Y)] = E[g(X)]E[h(Y)] for independent X and Y",
+          "example": {
+            "title": "A game with two independent wheels",
+            "situation": "One wheel gives X = 1 or 3 base points, equally likely. An independent wheel gives multiplier Y = 1 or 2, equally likely. The prize is XY.",
+            "walkthrough": [
+              "E[X] = 2 and E[Y] = 1.5.",
+              "Independence gives E[XY] = 2 × 1.5 = 3 points.",
+              "The four equally likely prizes are 1, 2, 3, and 6, whose average is also 3."
+            ],
+            "result": "The expected prize is 3 points."
+          },
+          "remember": "For several independent sources, functions of disjoint groups of sources also remain independent.",
+          "commonMistake": "Functions that share an input can be dependent: X + Y and Y both change when Y changes."
+        },
+        {
+          "title": "Variance of an independent sum",
+          "explanation": "The variance of a sum of independent variables is the sum of their variances. For a weighted sum, square each weight before multiplying its variance. Means add even without independence, but this variance shortcut generally does not.",
+          "formula": "var(aX + bY) = a²var(X) + b²var(Y) for independent X,Y",
+          "example": {
+            "title": "Two stages of processing",
+            "situation": "A parcel goes through two independent processing stages. Their times have means 3 and 5 minutes, and variances 1 and 4 minutes².",
+            "walkthrough": [
+              "Total mean time is 3 + 5 = 8 minutes.",
+              "Independence gives total variance 1 + 4 = 5 minutes².",
+              "Total standard deviation is √5 ≈ 2.24 minutes."
+            ],
+            "result": "Add variances, then take the square root to find the standard deviation."
+          },
+          "remember": "A fixed added delay changes the mean but adds zero variance.",
+          "commonMistake": "Do not add standard deviations. Do not add variances without checking the dependence assumptions."
+        },
+        {
+          "title": "Binomial mean and variance",
+          "explanation": "A binomial count is the sum of n independent Bernoulli indicators with common success probability p. Add their means and variances to obtain the formulas for the total count.",
+          "formula": "E[X] = np · var(X) = np(1 − p)",
+          "example": {
+            "title": "Coupon use by ten customers",
+            "situation": "Assume ten customers independently use a coupon with probability 0.30 each. X counts the coupon users.",
+            "walkthrough": [
+              "Each 0-or-1 indicator has mean 0.30 and variance 0.30 × 0.70 = 0.21.",
+              "The count’s mean is 10 × 0.30 = 3 users.",
+              "Its variance is 10 × 0.21 = 2.1 users²."
+            ],
+            "result": "Expect 3 coupon users on average, with variance 2.1."
+          },
+          "remember": "The mean counts expected successes; the variance measures how that count varies.",
+          "commonMistake": "If customers coordinate their coupon use, the binomial variance formula may not apply."
+        },
+        {
+          "title": "Sample means",
+          "explanation": "A sample mean averages repeated observations. For independent observations with common mean μ and finite variance σ², the sample mean has mean μ and variance σ²/n. Averaging reduces variation without changing the target mean.",
+          "formula": "S_n = (X_1 + ··· + X_n)/n · E[S_n] = μ · var(S_n) = σ²/n",
+          "example": {
+            "title": "Estimating average packing time",
+            "situation": "Suppose independent packing times have mean 10 minutes and variance 9 minutes². You average 9 observations.",
+            "walkthrough": [
+              "The sample mean still has expected value 10 minutes.",
+              "Its variance is 9/9 = 1 minute² and its standard deviation is 1 minute.",
+              "With 36 observations, the standard deviation is √(9/36) = 0.5 minute."
+            ],
+            "result": "Four times as many observations halves the standard deviation of the average."
+          },
+          "remember": "The variance of the average shrinks; individual packing times are just as variable as before.",
+          "commonMistake": "More observations do not remove systematic bias or justify assuming dependent observations are independent."
+        },
+        {
+          "title": "Estimating a probability by simulation",
+          "explanation": "A simulation estimates an event’s probability by repeatedly generating outcomes from a probability model and counting how often the event occurs. With independent runs, this is an average of Bernoulli indicators.",
+          "formula": "Estimated probability = m/n · var(estimate) = p(1 − p)/n",
+          "example": {
+            "title": "Late deliveries in a simulation",
+            "situation": "An independent delivery simulation runs 1,000 times and produces 160 late deliveries. Let the target event be “delivery arrives late.”",
+            "walkthrough": [
+              "Record 1 for each late delivery and 0 for each other delivery.",
+              "The observed proportion is 160/1,000 = 0.16.",
+              "Using 0.16 as an estimate of p gives an estimated standard deviation √(0.16 × 0.84/1,000) ≈ 0.0116."
+            ],
+            "result": "The estimated late-delivery probability is 16%, with estimated sampling standard deviation about 1.16 percentage points."
+          },
+          "remember": "The simulation estimates the probability in its model; the model must also represent the situation well.",
+          "commonMistake": "A result of 16% is an estimate, not proof that the true probability is exactly 16%."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Independent stage times have variances 1 and 4 minutes². What is the standard deviation of their total?",
+          "options": [
+            "5 minutes",
+            "3 minutes",
+            "√5 minutes",
+            "1 minute"
+          ],
+          "correctAnswer": "√5 minutes",
+          "explanation": "Add the variances to obtain 5 minutes², then take the square root."
+        },
+        {
+          "prompt": "Independent observations each have variance 9. What is the variance of their average over 9 observations?",
+          "options": [
+            "9",
+            "81",
+            "3",
+            "1"
+          ],
+          "correctAnswer": "1",
+          "explanation": "The variance of the sample mean is σ²/n = 9/9 = 1."
+        }
+      ]
+    }
+  ]
+}

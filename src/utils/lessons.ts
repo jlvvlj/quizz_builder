@@ -1,4 +1,5 @@
 import probabilityChapterOne from '@/data/probability-chapter-1-lessons.json';
+import probabilityChapterTwo from '@/data/probability-chapter-2-lessons.json';
 
 export interface LessonExample {
     title: string;
@@ -42,6 +43,7 @@ export interface LessonDeck {
 
 const lessonDecks: Record<string, LessonDeck> = {
     [probabilityChapterOne.deckId]: probabilityChapterOne as LessonDeck,
+    [probabilityChapterTwo.deckId]: probabilityChapterTwo as LessonDeck,
 };
 
 export function getLesson(deckId: string, step: string): Lesson | undefined {
@@ -51,4 +53,3 @@ export function getLesson(deckId: string, step: string): Lesson | undefined {
 export function hasLesson(deckId: string, step: string): boolean {
     return Boolean(getLesson(deckId, step));
 }
-

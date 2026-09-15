@@ -132,8 +132,8 @@ export default function LessonPage() {
                         </div>
                     </header>
 
-                    <div className="grid lg:grid-cols-[260px_minmax(0,1fr)]">
-                        <aside className="border-b border-[#4F4F4F] p-4 lg:border-b-0 lg:border-r">
+                    <div className="grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)]">
+                        <aside className="min-w-0 border-b border-[#4F4F4F] p-4 lg:border-b-0 lg:border-r">
                             <p className="mb-3 px-2 text-xs font-bold uppercase tracking-wider text-[#7F7F7F]">Lesson map</p>
                             <nav aria-label="Lesson concepts" className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible">
                                 {lesson.concepts.map((item, index) => (
@@ -164,7 +164,7 @@ export default function LessonPage() {
                             </nav>
                         </aside>
 
-                        <div className="p-5 sm:p-8 lg:p-10">
+                        <div className="min-w-0 p-5 sm:p-8 lg:p-10">
                             {!isCheckScreen ? (
                                 <article key={concept.title} className="animate-overlay-in">
                                     <h2 className="text-2xl font-bold sm:text-3xl">{concept.title}</h2>
