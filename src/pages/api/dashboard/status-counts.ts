@@ -4,7 +4,7 @@ import { effectiveProgressStatus } from '@/utils/progress-status';
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
 );
 
 type Status = 'new' | 'learning' | 'mastered' | 'to_review';
@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: rows, error } = await supabase
             .from('user_progress')
             .select('progress_status, marked_as')
-            .eq('user_id', userId);
+            .eq('user_id', userId).eq('quiz_type', req.query.quizType === 'typing' ? 'typing' : 'multiple_choice');
         if (error) throw error;
 
         const counts: Record<Status, number> = { new: 0, learning: 0, mastered: 0, to_review: 0 };

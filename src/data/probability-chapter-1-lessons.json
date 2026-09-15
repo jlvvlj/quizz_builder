@@ -1,0 +1,1014 @@
+{
+  "deckId": "probability-chapter-1",
+  "deckTitle": "Probability · Sample Space and Probability",
+  "lessons": [
+    {
+      "step": "step_1",
+      "title": "Notation",
+      "subtitle": "Read probability symbols like short sentences",
+      "durationMinutes": 12,
+      "introduction": "Probability notation is a compact language. The symbols become much easier when each one is tied to an ordinary situation.",
+      "objectives": [
+        "Recognize the symbols for outcomes, events, and set operations.",
+        "Read probability, conditional probability, sums, and products aloud.",
+        "Distinguish counting notation from probability notation."
+      ],
+      "concepts": [
+        {
+          "title": "Outcomes, sample spaces, and events",
+          "explanation": "An outcome is one possible result. The sample space Ω collects every possible outcome, while an event is a set of outcomes we care about.",
+          "formula": "x ∈ A means “outcome x belongs to event A.”  A ⊆ B means every outcome in A is also in B.",
+          "example": {
+            "title": "Tomorrow’s weather",
+            "situation": "Suppose tomorrow can be sunny, cloudy, or rainy.",
+            "walkthrough": [
+              "Write Ω = {sunny, cloudy, rainy}.",
+              "Let A = {cloudy, rainy}, the event “the sky is not clear.”",
+              "The statement rainy ∈ A is true because rainy appears in that set."
+            ],
+            "result": "Ω is the complete list; A is the smaller collection that answers the question we care about."
+          },
+          "remember": "Ω contains possibilities. An event selects some of them.",
+          "commonMistake": "Do not confuse ∅ with {0}. The empty set has no outcomes; {0} contains one outcome named 0."
+        },
+        {
+          "title": "Or, and, and not",
+          "explanation": "Union combines events, intersection keeps their overlap, and complement keeps everything outside an event.",
+          "formula": "A ∪ B: A or B (including both)   ·   A ∩ B: A and B   ·   Aᶜ: not A",
+          "example": {
+            "title": "Choosing a café",
+            "situation": "You list cafés that are nearby and cafés that are open late.",
+            "walkthrough": [
+              "A = cafés nearby.",
+              "B = cafés open late.",
+              "A ∩ B contains cafés that satisfy both needs. A ∪ B also includes cafés that satisfy only one."
+            ],
+            "result": "Use intersection when every requirement must be satisfied; use union when either requirement is enough."
+          },
+          "remember": "The word “or” is inclusive unless the situation explicitly says “exactly one.”",
+          "commonMistake": "A ∪ B is not just the part unique to each event; it also includes the overlap."
+        },
+        {
+          "title": "Probability and conditioning",
+          "explanation": "P(A) is the chance that event A occurs. P(A | B) changes the question: among situations where B is known to have occurred, how often does A also occur?",
+          "formula": "P(A | B) is read “the probability of A given B.”",
+          "example": {
+            "title": "A train during rush hour",
+            "situation": "Let A be “the train is crowded” and B be “you travel at 8:00 a.m.”",
+            "walkthrough": [
+              "P(A) uses trips at every time of day.",
+              "P(A | B) keeps only trips made at 8:00 a.m.",
+              "The two probabilities can differ because the second question uses a narrower group of trips."
+            ],
+            "result": "The vertical bar means that the information after it is already known."
+          },
+          "remember": "Read the condition first: given B, ask about A.",
+          "commonMistake": "P(A | B) and P(B | A) ask different questions and usually have different values."
+        },
+        {
+          "title": "Lists, sums, and products",
+          "explanation": "Subscripts label members of a list. A summation adds terms, while a product multiplies them.",
+          "formula": "Σᵢ₌₁ⁿ pᵢ = p₁ + ··· + pₙ   ·   ∏ᵢ₌₁ⁿ pᵢ = p₁ × ··· × pₙ",
+          "example": {
+            "title": "Three delivery stages",
+            "situation": "A parcel must pass sorting, transport, and final delivery.",
+            "walkthrough": [
+              "Label the success probabilities p₁, p₂, and p₃.",
+              "Σᵢ₌₁³ pᵢ adds the three numbers; it does not describe all stages succeeding.",
+              "When the stages are independent, ∏ᵢ₌₁³ pᵢ gives the probability that all three succeed."
+            ],
+            "result": "The shape of the symbol tells you whether to add or multiply."
+          },
+          "remember": "Σ means add; ∏ means multiply.",
+          "commonMistake": "Do not use a product merely because several probabilities are present. Multiplication needs the right event structure and, often, independence."
+        },
+        {
+          "title": "Counting symbols",
+          "explanation": "Factorials count arrangements of distinct items. C(n,k), read “n choose k,” counts groups when order does not matter.",
+          "formula": "n! = n(n−1)···1, with 0! = 1   ·   C(n,k) = n! / (k!(n−k)!)",
+          "example": {
+            "title": "Choosing two lunch representatives",
+            "situation": "Five coworkers will choose two people to collect lunch.",
+            "walkthrough": [
+              "There are 5 choices for the first name and 4 for the second.",
+              "Each pair was counted twice because Alex–Sam and Sam–Alex are the same team.",
+              "C(5,2) = 5!/(2!3!) = 10."
+            ],
+            "result": "Use combinations for an unordered team and factorial-based arrangements when positions matter."
+          },
+          "remember": "Ask whether changing the order creates a new result before choosing a counting formula.",
+          "commonMistake": "Using 5×4=20 for an unordered pair counts every pair twice."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Which expression means “A and B”?",
+          "options": [
+            "A ∪ B",
+            "A ∩ B",
+            "Aᶜ",
+            "P(A | B)"
+          ],
+          "correctAnswer": "A ∩ B",
+          "explanation": "Intersection keeps the outcomes shared by both events."
+        },
+        {
+          "prompt": "Which symbol tells you to multiply a sequence of terms?",
+          "options": [
+            "Σ",
+            "∏",
+            "∪",
+            "∅"
+          ],
+          "correctAnswer": "∏",
+          "explanation": "Capital pi, ∏, is product notation."
+        }
+      ]
+    },
+    {
+      "step": "step_2",
+      "title": "Sets and events",
+      "subtitle": "Describe uncertain situations precisely",
+      "durationMinutes": 12,
+      "introduction": "Before assigning probabilities, describe what can happen and which outcomes answer the question. Set operations turn everyday words such as “and,” “or,” and “not” into precise events.",
+      "objectives": [
+        "Build a sample space and events from a situation.",
+        "Combine events with union, intersection, and complement.",
+        "Recognize disjoint events and partitions.",
+        "Use De Morgan’s laws to negate combined events."
+      ],
+      "concepts": [
+        {
+          "title": "Sample spaces and events",
+          "explanation": "The sample space lists all possible outcomes at the level of detail needed for the question. An event is any subset of that space.",
+          "formula": "A ⊆ Ω",
+          "example": {
+            "title": "A takeaway order",
+            "situation": "A customer chooses one drink: tea, coffee, or water.",
+            "walkthrough": [
+              "Set Ω = {tea, coffee, water}.",
+              "Let A be “the drink contains caffeine,” so A = {tea, coffee}.",
+              "When the customer chooses water, event A does not occur."
+            ],
+            "result": "The outcome is one selected drink; the event groups the outcomes with the property we care about."
+          },
+          "remember": "An event can contain one outcome, several outcomes, all outcomes, or none.",
+          "commonMistake": "Do not list probabilities inside Ω. The sample space lists outcomes; the probability law assigns their chances."
+        },
+        {
+          "title": "Combining events",
+          "explanation": "Union answers “at least one,” intersection answers “both,” and complement answers “not.”",
+          "formula": "A ∪ B, A ∩ B, Aᶜ",
+          "example": {
+            "title": "Weekend plans",
+            "situation": "Let A be “visit a park” and B be “meet a friend.”",
+            "walkthrough": [
+              "A ∪ B occurs if you do either activity or both.",
+              "A ∩ B occurs only if you do both.",
+              "Aᶜ occurs if you do not visit a park, regardless of whether you meet a friend."
+            ],
+            "result": "Translate the sentence first, then apply the matching set operation."
+          },
+          "remember": "“At least one” almost always signals a union.",
+          "commonMistake": "Complement applies to the whole event immediately before the superscript, so parentheses matter."
+        },
+        {
+          "title": "Disjoint events",
+          "explanation": "Two events are disjoint when they cannot happen in the same outcome. Their intersection is empty.",
+          "formula": "A ∩ B = ∅",
+          "example": {
+            "title": "One bus arrival time",
+            "situation": "A bus is classified as early, on time, or late.",
+            "walkthrough": [
+              "Let A be “early” and B be “late.”",
+              "A single arrival cannot be both early and late.",
+              "Therefore A ∩ B = ∅."
+            ],
+            "result": "Disjointness is about impossibility of simultaneous occurrence."
+          },
+          "remember": "Disjoint events have no shared outcomes.",
+          "commonMistake": "Disjoint does not mean equally likely, and it does not usually mean independent."
+        },
+        {
+          "title": "Partitions",
+          "explanation": "A partition divides the whole sample space into groups. Every possible outcome must belong to exactly one group: no outcome is left out, and no outcome appears in more than one group.",
+          "formula": "Every outcome appears exactly once.",
+          "example": {
+            "title": "Partition versus non-partition",
+            "situation": "A shop wants to sort all of its deliveries by arrival time. Let Ω be the set of all deliveries, E the early deliveries, T the on-time deliveries, and L the late deliveries. Compare two ways of grouping them.",
+            "walkthrough": [
+              "Partition: {E, T, L}, where E = early, T = on time, and L = late.",
+              "Every delivery is early, on time, or late, and no delivery can be in two of these groups. Each delivery appears exactly once.",
+              "Non-partition: {E, T, L, F}, where F is the set of fragile deliveries.",
+              "A fragile delivery is also early, on time, or late. It belongs to F and to one of the other three groups, so it appears twice. Therefore {E, T, L, F} is not a partition."
+            ],
+            "result": "{E, T, L} is a partition because every delivery appears exactly once. {E, T, L, F} is not a partition because every fragile delivery appears in two groups."
+          },
+          "remember": "For every outcome, count how many groups contain it. A partition requires the answer to be exactly one every time.",
+          "commonMistake": "Groups can have different names and still overlap. Arrival status and package type describe different properties, so a fragile delivery can also be early, on time, or late."
+        },
+        {
+          "title": "De Morgan’s laws",
+          "explanation": "De Morgan’s laws tell us how to negate a statement joined by “or” or “and.” Move “not” inside the statement, negate each event, and switch “or” to “and” or “and” to “or.”",
+          "formula": "not (A or B) = (not A) and (not B)   ·   not (A and B) = (not A) or (not B)",
+          "example": {
+            "title": "Rain and strong wind",
+            "situation": "Let A mean “it rains” and B mean “there is strong wind.”",
+            "walkthrough": [
+              "A ∪ B means there is rain, strong wind, or both.",
+              "To make A ∪ B false, rain must be absent and strong wind must also be absent.",
+              "Therefore (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ: “no rain and no strong wind.”",
+              "A ∩ B means both hazards occur. Its complement allows any case where at least one hazard is absent: (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ."
+            ],
+            "result": "“Not either” means neither one. “Not both” means at least one is absent."
+          },
+          "remember": "When the complement moves inside parentheses, negate each event and flip ∪ to ∩ or ∩ to ∪.",
+          "commonMistake": "“Not rain or wind” is ambiguous in ordinary speech. Use parentheses first, then translate: not (rain or wind) means no rain and no wind."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Every order has exactly one size: small, medium, or large. Why do these three groups form a partition?",
+          "options": [
+            "Every order is in exactly one group",
+            "All three groups are equally likely",
+            "An order can be in several groups",
+            "The groups exclude some orders"
+          ],
+          "correctAnswer": "Every order is in exactly one group",
+          "explanation": "The groups cover all orders and do not overlap, which are the two requirements for a partition."
+        },
+        {
+          "prompt": "What is the complement of “rain or strong wind”?",
+          "options": [
+            "No rain or no strong wind",
+            "No rain and no strong wind",
+            "Rain and strong wind",
+            "Rain but no strong wind"
+          ],
+          "correctAnswer": "No rain and no strong wind",
+          "explanation": "By De Morgan’s law, the complement of a union is the intersection of the complements."
+        }
+      ]
+    },
+    {
+      "step": "step_3",
+      "title": "Building a probability model",
+      "subtitle": "Choose outcomes and assign valid probabilities",
+      "durationMinutes": 11,
+      "introduction": "A probability model is a simplified description of uncertainty. It must preserve enough detail to answer the question and assign probabilities consistently.",
+      "objectives": [
+        "Choose a useful sample space for a question.",
+        "Apply nonnegativity, normalization, and additivity.",
+        "Handle finite and countably infinite outcome sets."
+      ],
+      "concepts": [
+        {
+          "title": "The two parts of a model",
+          "explanation": "A model needs a sample space and a probability law. The first says what can happen; the second says how likely each event is.",
+          "formula": "Model = sample space Ω + probability law P",
+          "example": {
+            "title": "A delivery window",
+            "situation": "A parcel can arrive in the morning, afternoon, or evening.",
+            "walkthrough": [
+              "Choose Ω = {morning, afternoon, evening}.",
+              "Assign probabilities such as 0.3, 0.5, and 0.2.",
+              "Check that every number is nonnegative and that 0.3+0.5+0.2=1."
+            ],
+            "result": "The outcomes describe the possibilities; the probabilities describe your uncertainty about them."
+          },
+          "remember": "Always state both what can happen and how likely it is.",
+          "commonMistake": "A list of outcomes alone is not yet a complete probability model."
+        },
+        {
+          "title": "Choose enough detail",
+          "explanation": "A sample space is useful only if its outcomes preserve the information needed by the question. A coarse model can lose important distinctions.",
+          "formula": null,
+          "example": {
+            "title": "Three coin tosses",
+            "situation": "You want to know whether the first toss was heads.",
+            "walkthrough": [
+              "Recording only the total number of heads loses their positions.",
+              "For example, HHT and THH both have two heads but different first tosses.",
+              "Use full sequences such as HHT, THH, and TTT as outcomes."
+            ],
+            "result": "The right sample space depends on the question you plan to ask."
+          },
+          "remember": "Keep every distinction that can change the event of interest.",
+          "commonMistake": "The smallest-looking sample space is not always the most useful one."
+        },
+        {
+          "title": "The probability axioms",
+          "explanation": "Valid probabilities are never negative, the entire sample space has probability 1, and probabilities add across disjoint events.",
+          "formula": "P(A) ≥ 0   ·   P(Ω)=1   ·   if A∩B=∅, P(A∪B)=P(A)+P(B)",
+          "example": {
+            "title": "Payment outcomes",
+            "situation": "A checkout is successful, declined, or abandoned with probabilities 0.72, 0.18, and 0.10.",
+            "walkthrough": [
+              "All three probabilities are nonnegative.",
+              "The outcomes are disjoint.",
+              "Their probabilities total 1, so the assignment is valid."
+            ],
+            "result": "The probability of “not successful” is 0.18+0.10=0.28."
+          },
+          "remember": "Disjoint probabilities add because the same outcome is never counted twice.",
+          "commonMistake": "Adding probabilities of overlapping events double-counts their shared outcomes."
+        },
+        {
+          "title": "Finite and countably infinite models",
+          "explanation": "A model may have finitely many outcomes or an endless sequence that can still be listed one by one.",
+          "formula": "For disjoint A₁,A₂,…: P(⋃ᵢ Aᵢ)=Σᵢ P(Aᵢ)",
+          "example": {
+            "title": "Attempts until a login succeeds",
+            "situation": "A user may succeed on attempt 1, 2, 3, and so on.",
+            "walkthrough": [
+              "The possible attempt counts are {1,2,3,…}.",
+              "This set is infinite but listable, so it is countably infinite.",
+              "The events “first success on attempt i” are disjoint and their probabilities must sum to 1 when eventual success is certain."
+            ],
+            "result": "Infinite does not automatically mean continuous."
+          },
+          "remember": "Countably infinite outcomes can be indexed as a sequence.",
+          "commonMistake": "Do not assume an infinite sample space gives each individual outcome probability zero; that is a feature of many continuous models, not every infinite model."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Which assignment is a valid probability law for three disjoint outcomes?",
+          "options": [
+            "0.2, 0.3, 0.4",
+            "0.2, 0.3, 0.5",
+            "−0.1, 0.5, 0.6",
+            "0.4, 0.7, 0.1"
+          ],
+          "correctAnswer": "0.2, 0.3, 0.5",
+          "explanation": "The values are nonnegative and sum to 1."
+        },
+        {
+          "prompt": "Why is recording only the number of heads insufficient when asking whether the first toss was heads?",
+          "options": [
+            "The count is never random",
+            "The count loses the order of tosses",
+            "The count can exceed three",
+            "The first toss has probability zero"
+          ],
+          "correctAnswer": "The count loses the order of tosses",
+          "explanation": "Different sequences can have the same total number of heads."
+        }
+      ]
+    },
+    {
+      "step": "step_4",
+      "title": "Calculating event probabilities",
+      "subtitle": "Count outcomes, avoid double-counting, and use geometry",
+      "durationMinutes": 12,
+      "introduction": "Once a model is defined, event probabilities often come from four reusable moves: counting, complements, correcting overlap, and measuring length or area.",
+      "objectives": [
+        "Use favorable outcomes over total outcomes when outcomes are equally likely.",
+        "Apply complements and inclusion–exclusion.",
+        "Interpret uniform continuous probability as length or area."
+      ],
+      "concepts": [
+        {
+          "title": "Equally likely outcomes",
+          "explanation": "When a finite sample space has equally likely outcomes, probability is the fraction of outcomes that belong to the event.",
+          "formula": "P(A)=|A|/|Ω|",
+          "example": {
+            "title": "Picking a weekday",
+            "situation": "One of the five workdays is selected uniformly for a meeting.",
+            "walkthrough": [
+              "There are |Ω|=5 possible days.",
+              "The event “Monday or Friday” has |A|=2 outcomes.",
+              "P(A)=2/5."
+            ],
+            "result": "Count only after confirming that every listed outcome is equally likely."
+          },
+          "remember": "The counting shortcut depends on equal likelihood.",
+          "commonMistake": "Do not use favorable divided by total when outcomes have different probabilities."
+        },
+        {
+          "title": "Use the complement for “at least one”",
+          "explanation": "Sometimes it is easier to calculate the opposite event and subtract from 1.",
+          "formula": "P(Aᶜ)=1−P(A)",
+          "example": {
+            "title": "At least one delayed train",
+            "situation": "Two independent trains are each on time with probability 0.9.",
+            "walkthrough": [
+              "The opposite of “at least one delay” is “both trains are on time.”",
+              "P(both on time)=0.9×0.9=0.81.",
+              "P(at least one delay)=1−0.81=0.19."
+            ],
+            "result": "The complement turns several cases into one simple case."
+          },
+          "remember": "For “at least one,” first check whether “none” is easier.",
+          "commonMistake": "Subtract the probability of the exact complement, not merely one unwanted case."
+        },
+        {
+          "title": "Correct for overlap",
+          "explanation": "Adding P(A) and P(B) counts outcomes in both events twice. Subtract the overlap once.",
+          "formula": "P(A∪B)=P(A)+P(B)−P(A∩B)",
+          "example": {
+            "title": "Customers using two features",
+            "situation": "60% use search, 50% use filters, and 20% use both.",
+            "walkthrough": [
+              "Adding 0.60+0.50 gives 1.10 because shared users appear twice.",
+              "Subtract the overlap 0.20 once.",
+              "P(search or filters)=0.60+0.50−0.20=0.90."
+            ],
+            "result": "Inclusion–exclusion removes double-counting."
+          },
+          "remember": "If the overlap is unknown, P(A∪B)≤P(A)+P(B) is still a useful upper bound.",
+          "commonMistake": "Probabilities above 1 are a strong sign that overlap was not handled correctly."
+        },
+        {
+          "title": "Uniform length and area",
+          "explanation": "For a point chosen uniformly from a line segment or region, probability is the fraction of length or area occupied by the event.",
+          "formula": "Probability = favorable length or area ÷ total length or area",
+          "example": {
+            "title": "A random arrival time",
+            "situation": "A visitor arrives uniformly between 2:00 and 3:00 p.m.",
+            "walkthrough": [
+              "The full interval is 60 minutes long.",
+              "The event 2:15–2:30 is 15 minutes long.",
+              "Its probability is 15/60=1/4."
+            ],
+            "result": "A single exact instant has zero length, so its probability is zero in this model."
+          },
+          "remember": "Uniform probability follows relative size: count, length, area, or volume.",
+          "commonMistake": "Probability zero does not mean logically impossible in a continuous model; an exact point can occur even though it has zero length."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "P(A)=0.7, P(B)=0.4, and P(A∩B)=0.2. What is P(A∪B)?",
+          "options": [
+            "0.9",
+            "1.1",
+            "0.5",
+            "0.28"
+          ],
+          "correctAnswer": "0.9",
+          "explanation": "Use 0.7+0.4−0.2=0.9."
+        },
+        {
+          "prompt": "A time is chosen uniformly from a 40-minute window. What is the probability it falls in a specified 10-minute subwindow?",
+          "options": [
+            "1/2",
+            "1/4",
+            "1/10",
+            "3/4"
+          ],
+          "correctAnswer": "1/4",
+          "explanation": "The favorable length is 10 out of 40 minutes."
+        }
+      ]
+    },
+    {
+      "step": "step_5",
+      "title": "Conditional probability",
+      "subtitle": "Update the sample space when new information arrives",
+      "durationMinutes": 12,
+      "introduction": "Conditional probability does not change the past. It changes the group of possibilities you compare after learning something new.",
+      "objectives": [
+        "Interpret conditioning as restricting the sample space.",
+        "Calculate conditional probabilities and path probabilities.",
+        "Model sequential choices with and without replacement."
+      ],
+      "concepts": [
+        {
+          "title": "Conditioning narrows the world",
+          "explanation": "Given B, discard outcomes outside B and renormalize the outcomes that remain. Then ask how much of this smaller world also belongs to A.",
+          "formula": "P(A | B)=P(A∩B)/P(B), when P(B)>0",
+          "example": {
+            "title": "A die known to be even",
+            "situation": "A fair die was rolled and you learn that the result is even.",
+            "walkthrough": [
+              "The original outcomes are {1,2,3,4,5,6}.",
+              "Given an even result, only {2,4,6} remain.",
+              "Exactly one remaining outcome is 6, so P(6 | even)=1/3."
+            ],
+            "result": "Conditioning replaces the original comparison group with the outcomes compatible with the evidence."
+          },
+          "remember": "After “given,” rebuild the denominator from the remaining possibilities.",
+          "commonMistake": "Keeping the original denominator would ignore the information you were given."
+        },
+        {
+          "title": "The order of the condition matters",
+          "explanation": "P(A | B) asks about A among B cases. Reversing the symbols asks about B among A cases, which is a different population.",
+          "formula": "P(A | B) generally ≠ P(B | A)",
+          "example": {
+            "title": "Umbrellas and rain",
+            "situation": "Most rainy days have umbrellas outside, but umbrellas may also appear on sunny days for shade.",
+            "walkthrough": [
+              "P(umbrella | rain) asks how often rain leads to an umbrella.",
+              "P(rain | umbrella) asks how often an observed umbrella means it is raining.",
+              "The second probability also depends on how common sunny umbrella use is."
+            ],
+            "result": "Read conditional probability from right to left: first assume the condition, then evaluate the event."
+          },
+          "remember": "Say “among B cases, the fraction that are A” when interpreting P(A | B).",
+          "commonMistake": "A strong effect of B on A does not automatically make A strong evidence for B."
+        },
+        {
+          "title": "Multiply along a sequence",
+          "explanation": "A joint path probability equals the probability of the first step times the probability of each next step given everything already observed.",
+          "formula": "P(A∩B∩C)=P(A)P(B | A)P(C | A∩B)",
+          "example": {
+            "title": "A two-stage application",
+            "situation": "40% of applications pass screening; among those, 30% pass the interview.",
+            "walkthrough": [
+              "P(screening)=0.40.",
+              "P(interview | screening)=0.30.",
+              "P(pass both)=0.40×0.30=0.12."
+            ],
+            "result": "Conditional branches multiply along a path."
+          },
+          "remember": "Use the probability written on each branch after the history leading to it.",
+          "commonMistake": "Adding branch probabilities along a single path is incorrect; addition combines alternative paths."
+        },
+        {
+          "title": "Without replacement changes the next probability",
+          "explanation": "When an item is not returned, the contents of the group change. Later probabilities must use the smaller, updated group.",
+          "formula": null,
+          "example": {
+            "title": "Two red markers",
+            "situation": "A box contains 3 red and 2 blue markers. Two are chosen without replacement.",
+            "walkthrough": [
+              "P(first red)=3/5.",
+              "After a red is removed, 2 red markers remain among 4 total, so P(second red | first red)=2/4.",
+              "P(both red)=(3/5)(2/4)=3/10."
+            ],
+            "result": "The second fraction changes because the first draw changes the box."
+          },
+          "remember": "Update both the favorable count and the total count after every draw without replacement.",
+          "commonMistake": "Using 3/5 for both draws silently treats the draws as if the marker were replaced."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "A fair die is known to show a number greater than 3. What is P(6 | greater than 3)?",
+          "options": [
+            "1/6",
+            "1/3",
+            "1/2",
+            "2/3"
+          ],
+          "correctAnswer": "1/3",
+          "explanation": "The remaining equally likely outcomes are {4,5,6}."
+        },
+        {
+          "prompt": "50% pass stage one and 20% of those pass stage two. What fraction pass both?",
+          "options": [
+            "0.70",
+            "0.30",
+            "0.10",
+            "0.20"
+          ],
+          "correctAnswer": "0.10",
+          "explanation": "Multiply along the path: 0.50×0.20=0.10."
+        }
+      ]
+    },
+    {
+      "step": "step_6",
+      "title": "Total probability and Bayes’ rule",
+      "subtitle": "Combine possible causes, then reason backward from evidence",
+      "durationMinutes": 13,
+      "introduction": "Many probabilities are mixtures of several situations. Total probability combines those situations; Bayes’ rule reverses the direction and asks which situation most likely produced what you observed.",
+      "objectives": [
+        "Break a problem into disjoint cases and combine them.",
+        "Use Bayes’ rule to infer a cause from an observation.",
+        "Account for base rates when interpreting evidence."
+      ],
+      "concepts": [
+        {
+          "title": "Divide the world into cases",
+          "explanation": "Choose a partition A₁,…,Aₙ so exactly one case occurs. Calculate the event B inside each case, weight by how common the case is, and add.",
+          "formula": "P(B)=Σᵢ P(Aᵢ)P(B | Aᵢ)",
+          "example": {
+            "title": "Commuting by train or bicycle",
+            "situation": "You take the train 70% of days and cycle 30%. You arrive late on 10% of train days and 5% of cycling days.",
+            "walkthrough": [
+              "Late by train: 0.70×0.10=0.070.",
+              "Late by bicycle: 0.30×0.05=0.015.",
+              "Overall P(late)=0.070+0.015=0.085."
+            ],
+            "result": "The weighted average uses how often each commuting method occurs."
+          },
+          "remember": "Multiply within each case, then add across alternative cases.",
+          "commonMistake": "A simple average of 10% and 5% would be wrong because the two commuting methods are not equally common."
+        },
+        {
+          "title": "Bayes’ rule reverses a conditional",
+          "explanation": "Bayes’ rule starts with how often each cause produces evidence and calculates how likely each cause is after the evidence appears.",
+          "formula": "P(Aᵢ | B)=P(Aᵢ)P(B | Aᵢ)/P(B)",
+          "example": {
+            "title": "A late parcel",
+            "situation": "Warehouse A handles 80% of parcels and is late 2% of the time. Warehouse B handles 20% and is late 8% of the time.",
+            "walkthrough": [
+              "Late from A: 0.80×0.02=0.016.",
+              "Late from B: 0.20×0.08=0.016.",
+              "Among all late parcels, B’s share is 0.016/(0.016+0.016)=1/2."
+            ],
+            "result": "B handles fewer parcels, but its higher late rate makes the two causes equally likely after observing a delay."
+          },
+          "remember": "Posterior probability is proportional to prior probability × likelihood.",
+          "commonMistake": "Choosing the cause with the largest error rate ignores how common that cause is."
+        },
+        {
+          "title": "Base rates matter",
+          "explanation": "Rare causes can remain unlikely even when they often trigger a signal, because common causes may produce many more signals in total.",
+          "formula": null,
+          "example": {
+            "title": "A device alarm",
+            "situation": "Only 1% of devices are faulty. An alarm sounds for 90% of faulty devices and 10% of working devices.",
+            "walkthrough": [
+              "Out of 10,000 devices, expect 100 faulty and 9,900 working.",
+              "About 90 faulty devices and 990 working devices trigger alarms.",
+              "Among 1,080 alarms, only 90 indicate a fault: 90/1,080≈8.3%."
+            ],
+            "result": "The alarm is informative, but false alarms from the much larger working group dominate."
+          },
+          "remember": "Translate percentages into expected counts when Bayes calculations feel unintuitive.",
+          "commonMistake": "Accuracy within the rare group is not the same as the probability of the rare cause after a positive signal."
+        },
+        {
+          "title": "Build a cause-and-evidence tree",
+          "explanation": "A tree makes the direction clear: causes branch first, evidence branches second. Bayes’ rule then compares the paths that end in the observed evidence.",
+          "formula": null,
+          "example": {
+            "title": "Choosing an opponent",
+            "situation": "You face a beginner 75% of the time and an expert 25%. You win 80% against beginners and 20% against experts.",
+            "walkthrough": [
+              "Beginner-and-win path: 0.75×0.80=0.60.",
+              "Expert-and-win path: 0.25×0.20=0.05.",
+              "Given that you won, P(beginner)=0.60/(0.60+0.05)=12/13."
+            ],
+            "result": "Only paths compatible with the observed win belong in the final denominator."
+          },
+          "remember": "Label every branch with a conditional probability appropriate to the path leading to it.",
+          "commonMistake": "Do not place P(cause | evidence) on the forward tree before it has been calculated."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "A shop uses supplier A for 60% of items with a 2% defect rate and B for 40% with a 5% defect rate. What fraction are defective?",
+          "options": [
+            "0.020",
+            "0.032",
+            "0.050",
+            "0.070"
+          ],
+          "correctAnswer": "0.032",
+          "explanation": "Compute 0.60×0.02+0.40×0.05=0.012+0.020=0.032."
+        },
+        {
+          "prompt": "What quantity does Bayes’ rule produce after observing evidence B?",
+          "options": [
+            "P(B | A)",
+            "P(A | B)",
+            "P(A∩Bᶜ)",
+            "P(A)+P(B)"
+          ],
+          "correctAnswer": "P(A | B)",
+          "explanation": "Bayes’ rule updates the probability of a cause or hypothesis A after observing B."
+        }
+      ]
+    },
+    {
+      "step": "step_7",
+      "title": "Independence",
+      "subtitle": "Recognize when one event gives no information about another",
+      "durationMinutes": 12,
+      "introduction": "Independence is a precise claim: learning that one event occurred does not change the probability of the other. It is stronger and less intuitive than simply having two different events.",
+      "objectives": [
+        "Test independence using products or conditional probabilities.",
+        "Distinguish independence from disjointness.",
+        "Separate pairwise, mutual, and conditional independence."
+      ],
+      "concepts": [
+        {
+          "title": "Testing independence",
+          "explanation": "Events A and B are independent when their overlap is exactly what separate occurrence rates predict.",
+          "formula": "P(A∩B)=P(A)P(B)",
+          "example": {
+            "title": "Two separate coin tosses",
+            "situation": "A is “the first toss is heads” and B is “the second toss is heads.”",
+            "walkthrough": [
+              "P(A)=1/2 and P(B)=1/2.",
+              "P(A∩B)=P(HH)=1/4.",
+              "Because 1/4=(1/2)(1/2), the events are independent."
+            ],
+            "result": "Knowing the first toss does not change the chance of heads on the second toss."
+          },
+          "remember": "Independence can be checked with either P(A∩B)=P(A)P(B) or P(A | B)=P(A) when the condition is defined.",
+          "commonMistake": "Similar-looking probabilities are not enough; test the defining equality."
+        },
+        {
+          "title": "Disjoint is different from independent",
+          "explanation": "Disjoint events cannot happen together. Independent events can happen together, and one does not affect the chance of the other.",
+          "formula": "Disjoint: P(A∩B)=0   ·   Independent: P(A∩B)=P(A)P(B)",
+          "example": {
+            "title": "One restaurant order",
+            "situation": "A is “the main dish is pasta” and B is “the main dish is curry.”",
+            "walkthrough": [
+              "A and B are disjoint because one main dish cannot be both.",
+              "If both dishes have positive probability, P(A)P(B)>0.",
+              "But P(A∩B)=0, so the events are not independent."
+            ],
+            "result": "Learning that pasta was ordered makes curry impossible, so the events strongly affect each other."
+          },
+          "remember": "Positive-probability disjoint events are dependent.",
+          "commonMistake": "Everyday speech sometimes uses “independent” to mean separate; probability uses a strict mathematical definition."
+        },
+        {
+          "title": "Conditional independence",
+          "explanation": "Two events can become independent after a relevant condition is fixed, or become dependent after conditioning on a shared result.",
+          "formula": "P(A∩B | C)=P(A | C)P(B | C)",
+          "example": {
+            "title": "Purchases within customer groups",
+            "situation": "Coffee and commuter-pass purchases may both be more common among office workers than remote workers.",
+            "walkthrough": [
+              "Across everyone, the purchases can appear related because job type influences both.",
+              "Within office workers alone, buying coffee may give no further information about buying a pass.",
+              "The events can be conditionally independent given work style even if they are dependent overall."
+            ],
+            "result": "Conditioning changes the population in which independence is evaluated."
+          },
+          "remember": "Always state the conditioning event when claiming conditional independence.",
+          "commonMistake": "Unconditional independence and conditional independence do not imply each other in general."
+        },
+        {
+          "title": "Pairwise versus mutual independence",
+          "explanation": "For three or more events, every pair can be independent while the whole collection is not. Mutual independence also tests intersections of larger subcollections.",
+          "formula": "For A,B,C: also require P(A∩B∩C)=P(A)P(B)P(C)",
+          "example": {
+            "title": "Two coin tosses and whether they match",
+            "situation": "A is “first toss is heads,” B is “second toss is heads,” and C is “the tosses match.”",
+            "walkthrough": [
+              "Each pair is independent.",
+              "If A and B both occur, the result is HH, so C must occur.",
+              "P(A∩B∩C)=1/4, while P(A)P(B)P(C)=1/8."
+            ],
+            "result": "The three events are pairwise independent but not mutually independent."
+          },
+          "remember": "For several events, pairwise checks are necessary but may not be sufficient.",
+          "commonMistake": "Do not stop after checking only pairs when a problem asks whether the entire collection is independent."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "P(A)=0.4, P(B)=0.5, and P(A∩B)=0.2. Are A and B independent?",
+          "options": [
+            "Yes",
+            "No",
+            "Only if they are disjoint",
+            "There is not enough information"
+          ],
+          "correctAnswer": "Yes",
+          "explanation": "The product 0.4×0.5 equals the observed overlap 0.2."
+        },
+        {
+          "prompt": "Two disjoint events both have positive probability. What must be true?",
+          "options": [
+            "They are independent",
+            "They are dependent",
+            "They are complements",
+            "They have equal probability"
+          ],
+          "correctAnswer": "They are dependent",
+          "explanation": "Occurrence of either event makes the other impossible."
+        }
+      ]
+    },
+    {
+      "step": "step_8",
+      "title": "Independent trials and reliability",
+      "subtitle": "Model repeated attempts and systems made from components",
+      "durationMinutes": 12,
+      "introduction": "Repeated independent trials produce reusable formulas for exact counts and “at least one” events. The same ideas describe whether multi-part systems succeed or fail.",
+      "objectives": [
+        "Recognize independent Bernoulli trials.",
+        "Calculate exact success counts with binomial probabilities.",
+        "Analyze series and parallel reliability systems."
+      ],
+      "concepts": [
+        {
+          "title": "Independent Bernoulli trials",
+          "explanation": "Each trial has two outcomes, success or failure, with the same success probability p. Independence means earlier results do not change later probabilities.",
+          "formula": "P(a specific sequence with k successes in n trials)=pᵏ(1−p)ⁿ⁻ᵏ",
+          "example": {
+            "title": "Three notification deliveries",
+            "situation": "Each notification arrives with probability 0.8, independently.",
+            "walkthrough": [
+              "The specific pattern success, success, failure has two successes and one failure.",
+              "Multiply along the pattern: 0.8×0.8×0.2.",
+              "Its probability is 0.128."
+            ],
+            "result": "A specific pattern uses multiplication; an unspecified count also needs the number of matching patterns."
+          },
+          "remember": "In a specific sequence, use one factor for each trial.",
+          "commonMistake": "The formula assumes the same p on every trial and independence across trials."
+        },
+        {
+          "title": "Exactly k successes",
+          "explanation": "There are C(n,k) different positions for k successes. Every such sequence has the same probability, so multiply sequence probability by the number of sequences.",
+          "formula": "P(k successes)=C(n,k)pᵏ(1−p)ⁿ⁻ᵏ",
+          "example": {
+            "title": "Exactly two replies",
+            "situation": "Four customers independently reply with probability 1/2.",
+            "walkthrough": [
+              "Choose which two customers reply: C(4,2)=6 choices.",
+              "Each exact reply pattern has probability (1/2)⁴=1/16.",
+              "P(exactly two replies)=6/16=3/8."
+            ],
+            "result": "The combination factor accounts for every ordering of the successes."
+          },
+          "remember": "“Exactly k” means count all sequences with k successes.",
+          "commonMistake": "Using only pᵏ(1−p)ⁿ⁻ᵏ gives one specific ordering, not all possible orderings."
+        },
+        {
+          "title": "At least one success",
+          "explanation": "The complement of at least one success is zero successes, which is usually a single easy pattern.",
+          "formula": "P(at least one success)=1−(1−p)ⁿ",
+          "example": {
+            "title": "Reaching a server",
+            "situation": "Each of three independent attempts succeeds with probability 0.2.",
+            "walkthrough": [
+              "P(one attempt fails)=0.8.",
+              "P(all three fail)=0.8³=0.512.",
+              "P(at least one succeeds)=1−0.512=0.488."
+            ],
+            "result": "A complement avoids adding the cases of exactly one, two, and three successes."
+          },
+          "remember": "For “at least one,” calculate “none” first.",
+          "commonMistake": "Do not multiply p three times; p³ is the probability that all three succeed."
+        },
+        {
+          "title": "Series and parallel systems",
+          "explanation": "A series system needs every component to work. A parallel system works when at least one component works.",
+          "formula": "Series: ∏ᵢ pᵢ   ·   Parallel: 1−∏ᵢ(1−pᵢ), for independent components",
+          "example": {
+            "title": "Two backup internet links",
+            "situation": "Links work independently with probabilities 0.9 and 0.8, and either one can keep the office online.",
+            "walkthrough": [
+              "The system fails only when both links fail.",
+              "P(both fail)=(0.1)(0.2)=0.02.",
+              "P(system works)=1−0.02=0.98."
+            ],
+            "result": "Parallel redundancy raises reliability by making total failure harder."
+          },
+          "remember": "Translate the system rule into “all” or “at least one” before calculating.",
+          "commonMistake": "Do not add component reliability directly; the components’ working events can overlap."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "Four fair coin tosses produce exactly two heads with what probability?",
+          "options": [
+            "1/16",
+            "1/4",
+            "3/8",
+            "1/2"
+          ],
+          "correctAnswer": "3/8",
+          "explanation": "There are C(4,2)=6 matching sequences, each with probability 1/16."
+        },
+        {
+          "prompt": "Two independent components work with probabilities 0.9 and 0.8. If both are required, what is system reliability?",
+          "options": [
+            "0.98",
+            "0.72",
+            "0.90",
+            "0.70"
+          ],
+          "correctAnswer": "0.72",
+          "explanation": "A series system needs both, so multiply 0.9×0.8."
+        }
+      ]
+    },
+    {
+      "step": "step_9",
+      "title": "Counting",
+      "subtitle": "Count possibilities before assigning probabilities",
+      "durationMinutes": 13,
+      "introduction": "Counting turns a large list of equally likely outcomes into a manageable calculation. The main decision is whether choices are sequential, ordered, grouped, or repeated.",
+      "objectives": [
+        "Apply the multiplication principle to sequential choices.",
+        "Distinguish permutations, ordered selections, and combinations.",
+        "Count group assignments and arrangements with repeated items."
+      ],
+      "concepts": [
+        {
+          "title": "The multiplication principle",
+          "explanation": "If a process has m choices at one stage and n choices at the next, every first-stage choice can pair with every second-stage choice, giving mn results.",
+          "formula": "Total choices = choices at stage 1 × choices at stage 2 × ···",
+          "example": {
+            "title": "Creating a short access code",
+            "situation": "A code uses one of 3 letters followed by one of 4 digits.",
+            "walkthrough": [
+              "Choose the letter in 3 ways.",
+              "For each letter, choose the digit in 4 ways.",
+              "There are 3×4=12 codes."
+            ],
+            "result": "Multiply when every option at one stage can be followed by every option at the next."
+          },
+          "remember": "Draw a few branches if you are unsure whether stages multiply.",
+          "commonMistake": "Addition is for alternative cases; multiplication is for successive choices within one construction."
+        },
+        {
+          "title": "Subsets",
+          "explanation": "For each of n distinct elements, a subset either includes it or leaves it out. Those two choices occur independently for every element.",
+          "formula": "Number of subsets of an n-element set = 2ⁿ",
+          "example": {
+            "title": "Optional pizza toppings",
+            "situation": "Five toppings can each be included or excluded.",
+            "walkthrough": [
+              "Every topping gives 2 choices.",
+              "Multiply across five toppings: 2×2×2×2×2.",
+              "There are 2⁵=32 possible topping sets, including none and all five."
+            ],
+            "result": "A subset problem is often a sequence of yes/no choices."
+          },
+          "remember": "The empty subset and the full set count unless the question excludes them.",
+          "commonMistake": "Counting only nonempty choices changes 2ⁿ to 2ⁿ−1."
+        },
+        {
+          "title": "Permutations",
+          "explanation": "A permutation arranges all n distinct objects in order. After each choice, one fewer object remains.",
+          "formula": "Number of orders of n distinct objects = n!",
+          "example": {
+            "title": "Books on a shelf",
+            "situation": "Four different books are arranged in one row.",
+            "walkthrough": [
+              "There are 4 choices for the first position.",
+              "Then 3, 2, and 1 choices remain.",
+              "The number of arrangements is 4!=4×3×2×1=24."
+            ],
+            "result": "Changing the order creates a new arrangement."
+          },
+          "remember": "Use n! when all n distinct objects are placed into ordered positions.",
+          "commonMistake": "Do not use n! for an unordered group; most of those orders represent the same group."
+        },
+        {
+          "title": "Ordered selections versus combinations",
+          "explanation": "Selecting people for different roles is ordered because the roles matter. Selecting an unlabeled team is unordered.",
+          "formula": "Ordered: n!/(n−k)!   ·   Unordered: C(n,k)=n!/(k!(n−k)!)",
+          "example": {
+            "title": "President and secretary versus a two-person team",
+            "situation": "Five people are available.",
+            "walkthrough": [
+              "President and secretary: 5×4=20 assignments because swapping roles changes the result.",
+              "A two-person team: C(5,2)=10 because swapping names does not create a new team.",
+              "The ordered count is 2!=2 times the unordered count."
+            ],
+            "result": "Ask whether the selected positions have different labels."
+          },
+          "remember": "If swapping selected objects changes the outcome, order matters.",
+          "commonMistake": "Words such as “choose” do not guarantee a combination; named roles make the selection ordered."
+        },
+        {
+          "title": "Groups and repeated items",
+          "explanation": "Factorials overcount when some positions or objects are interchangeable. Divide by the factorial of each repeated group size.",
+          "formula": "n!/(n₁!···nᵣ!) when group sizes or repetition counts are n₁,…,nᵣ",
+          "example": {
+            "title": "Rearranging LEVEL",
+            "situation": "The five letters include two Ls and two Es.",
+            "walkthrough": [
+              "Treating every letter as distinct gives 5!=120 orders.",
+              "Swapping the two Ls changes nothing, so divide by 2!. Do the same for the two Es.",
+              "Distinct arrangements = 5!/(2!2!)=30."
+            ],
+            "result": "Divide out the internal reorderings that do not create a visible change."
+          },
+          "remember": "Repeated objects and unlabeled positions reduce the number of distinct arrangements.",
+          "commonMistake": "Using n! without correcting for repetitions counts identical results several times."
+        }
+      ],
+      "quickChecks": [
+        {
+          "prompt": "From five people, how many ways can you choose an unordered team of two?",
+          "options": [
+            "10",
+            "20",
+            "25",
+            "120"
+          ],
+          "correctAnswer": "10",
+          "explanation": "Use C(5,2)=10 because the two positions are not labeled."
+        },
+        {
+          "prompt": "How many distinct arrangements does AAB have?",
+          "options": [
+            "6",
+            "3",
+            "2",
+            "1"
+          ],
+          "correctAnswer": "3",
+          "explanation": "Start with 3!=6 and divide by 2! for the repeated A: 6/2=3."
+        }
+      ]
+    }
+  ]
+}

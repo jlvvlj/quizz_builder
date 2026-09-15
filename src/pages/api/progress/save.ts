@@ -3,7 +3,7 @@ import { createClient, PostgrestError } from '@supabase/supabase-js';
 
 // Initialize Supabase client - use environment variables
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 console.log('Supabase URL configured:', supabaseUrl ? 'Yes' : 'No');
 console.log('Supabase Key configured:', supabaseKey ? 'Yes (length: ' + supabaseKey.length + ')' : 'No');
