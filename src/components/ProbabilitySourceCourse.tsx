@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { AnnotatedSourceImage, LessonMathText } from './FormulaExplorer';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import {
@@ -15,36 +15,17 @@ function materialCounts(unit: SourceUnit) {
         .map(([count, noun]) => `${count} ${noun}${count === 1 ? '' : 's'}`).join(' · ');
 }
 
-function Excerpts({ images, title, priority = false }: { images: SourceImage[]; title: string; priority?: boolean }) {
-    return <div className="space-y-3">
-        {images.map((image, index) => (
-            <figure key={image.src} className="overflow-hidden rounded-lg border border-[#4F4F4F] bg-white">
-                <a href={image.src} target="_blank" rel="noreferrer" aria-label={`Open ${title}, page ${image.printedPage}, at full size`}>
-                    <Image
-                        src={image.src}
-                        alt={`${title}. Exact excerpt from page ${image.printedPage}${images.length > 1 ? `, part ${index + 1} of ${images.length}` : ''}.`}
-                        width={image.width}
-                        height={image.height}
-                        unoptimized
-                        priority={priority && index === 0}
-                        className="h-auto w-full"
-                    />
-                </a>
-                <figcaption className="border-t border-gray-200 bg-gray-50 px-4 py-2 text-xs text-gray-600">
-                    Page {image.printedPage} · PDF page {image.pdfPage} · Select the excerpt to enlarge
-                </figcaption>
-            </figure>
-        ))}
-    </div>;
+function Excerpts({ images, title, context = '' }: { images: SourceImage[]; title: string; context?: string; priority?: boolean }) {
+    return <div className="space-y-3">{images.map(image => <AnnotatedSourceImage key={image.src} image={image} title={title} context={context || title} />)}</div>;
 }
 
-function AssetList({ title, assets, collapsible = false }: { title: string; assets: SourceAsset[]; collapsible?: boolean }) {
+function AssetList({ title, assets, collapsible = false, context = '' }: { title: string; assets: SourceAsset[]; collapsible?: boolean; context?: string }) {
     if (assets.length === 0) return null;
     return <section className="space-y-5" aria-label={title}>
         <h2 className="text-xl font-semibold text-white">{title} <span className="ml-1 text-sm font-normal text-[#A1A1A1]">{assets.length}</span></h2>
         {assets.length === 0 ? <p className="text-sm text-[#A1A1A1]">None in this passage.</p> : assets.map(asset => {
             const content = <>
-                <Excerpts images={asset.images} title={asset.title} />
+                <Excerpts images={asset.images} title={asset.title} context={context} />
                 {asset.note && <p className="mt-3 text-sm leading-6 text-[#C8C8C8]">{asset.note}</p>}
             </>;
             return collapsible ? (
@@ -73,18 +54,18 @@ function LessonMaterial({ unit }: { unit: SourceUnit }) {
         return first.pdfPage - second.pdfPage || first.bounds[1] - second.bounds[1];
     });
     const summary = <div className="space-y-4 text-base leading-7 text-[#D1D1D1]">
-        {unit.summary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        {unit.summary.map(paragraph => <LessonMathText key={paragraph} text={paragraph} context={unit.id} />)}
     </div>;
     return <div className="space-y-8">
-        <blockquote className="whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">{unit.openingText}</blockquote>
+        <blockquote className="whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg"><LessonMathText text={unit.openingText} context={unit.id} /></blockquote>
         {unit.mathPassages.length === 0 && summary}
         {material.map(item => {
             if (item.kind === 'passage') {
                 return item.asset.text ? <div key={item.asset.id} className="space-y-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">
-                    {item.asset.text.split('\n\n').map((paragraph, index) => <p key={index} className="whitespace-pre-line break-words">{paragraph}</p>)}
-                </div> : <Excerpts key={item.asset.id} images={item.asset.images} title={`Explanation and formulas: ${unit.title}`} />;
+                    {item.asset.text.split('\n\n').map((paragraph, index) => <LessonMathText key={index} text={paragraph} context={unit.id} />)}
+                </div> : <Excerpts key={item.asset.id} images={item.asset.images} title={`Explanation and formulas: ${unit.title}`} context={unit.id} />;
             }
-            return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} collapsible={item.kind === 'example'} />;
+            return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} context={unit.id} collapsible={item.kind === 'example'} />;
         })}
         {unit.mathPassages.length > 0 && <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
@@ -94,7 +75,7 @@ function LessonMaterial({ unit }: { unit: SourceUnit }) {
             <summary className="cursor-pointer text-sm text-[#A1A1A1]">View the original wording and notation</summary>
             <div className="mt-4 space-y-5">
                 <Excerpts images={unit.opening.images} title={unit.title} />
-                {unit.mathPassages.map(passage => <Excerpts key={passage.id} images={passage.images} title={`Explanation and formulas: ${unit.title}`} />)}
+                {unit.mathPassages.map(passage => <Excerpts key={passage.id} images={passage.images} title={`Explanation and formulas: ${unit.title}`} context={unit.id} />)}
             </div>
         </details>
         <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">

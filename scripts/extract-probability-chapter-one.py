@@ -8,6 +8,8 @@ The manifest is editorial data: exact headings, manually reviewed paragraph
 boundaries, asset ownership, summaries, and crop coordinates in PDF points.
 No OCR or generated reconstruction is used for the original source excerpts.
 """
+import subprocess
+import sys
 import argparse
 import copy
 import hashlib
@@ -66,3 +68,6 @@ data['lessonCount'] = len(data['units'])
 (ROOT / 'src/data/probability-chapter-1-source.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n')
 (ROOT / 'docs/probability-chapter-1-extraction-inventory.json').write_text(json.dumps(images, indent=2)+'\n')
 print('Extracted %d images; %d lesson items including %d section introductions.' % (len(images), data['lessonCount'], sum(u['kind'] == 'introduction' for u in data['units'])))
+
+# Rebuild interactive notation whenever the original excerpts change.
+subprocess.run([sys.executable, str(ROOT / 'scripts/extract-formula-annotations.py'), '--pdf', str(args.pdf)], check=True)

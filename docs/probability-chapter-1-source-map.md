@@ -62,3 +62,27 @@ Both scripts require `pdfplumber` and its rendering dependencies; validation als
 ## App integration
 
 Chapter 1 uses `/steps?section=section_2` and `/lesson?section=section_2&deck=probability-chapter-1&item=<subsection-id>`. Its home card shows 7 sections and 27 lessons. Legacy Chapter 1 lesson links with only `step` open the new outline, rather than presenting an unrelated subsection. The old custom Chapter 1 lesson data is retired. Chapter 2, the existing quiz data, and quiz routes are unchanged.
+
+### Interactive formula presentation
+
+Chapter 1 now uses `FormulaExplorer` for displayed equations and inline notation.
+Display equations use KaTeX, semantic colors, and a show/hide control. The expanded
+view connects highlighted symbols to short definitions with measured curved paths.
+Symbol chips reveal further groups of definitions; inline notation opens the same
+keyboard-accessible explorer.
+
+Original cards, examples, and figures retain their exact artwork. A generated
+`formulaRegions` layer locates and colors the original mathematical glyphs and
+opens a focused explanation when selected. Fraction bars join numerator and
+denominator regions. Custom PDF glyph codes and overprinted non-membership signs
+are normalized only in annotation labels, never in the source artwork.
+`extract-probability-chapter-one.py` regenerates this layer automatically by calling
+`extract-formula-annotations.py`.
+
+Validation commands:
+
+```sh
+node scripts/test-formula-notation.cjs
+python3 scripts/validate-formula-coverage.py --pdf '/path/to/Introduction to Probability (1).pdf'
+python3 scripts/validate-probability-chapter-one.py --pdf '/path/to/Introduction to Probability (1).pdf'
+```

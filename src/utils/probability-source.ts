@@ -7,6 +7,7 @@ export interface SourceImage {
     pdfPage: number;
     printedPage: number;
     bounds: number[];
+    formulaRegions?: {bounds: number[]; terms: {symbol: string; bounds: number[]}[]}[];
 }
 
 export interface SourceAsset {
