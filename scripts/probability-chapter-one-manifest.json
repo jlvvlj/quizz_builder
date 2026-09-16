@@ -1,0 +1,1722 @@
+{
+  "deckId": "probability-chapter-1",
+  "title": "Sample Space and Probability",
+  "sections": [
+    {
+      "id": "1.1",
+      "title": "SETS"
+    },
+    {
+      "id": "1.2",
+      "title": "PROBABILISTIC MODELS"
+    },
+    {
+      "id": "1.3",
+      "title": "CONDITIONAL PROBABILITY"
+    },
+    {
+      "id": "1.4",
+      "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE"
+    },
+    {
+      "id": "1.5",
+      "title": "INDEPENDENCE"
+    },
+    {
+      "id": "1.6",
+      "title": "COUNTING"
+    },
+    {
+      "id": "1.7",
+      "title": "SUMMARY AND DISCUSSION"
+    }
+  ],
+  "units": [
+    {
+      "id": "sets-introduction",
+      "section": "1.1",
+      "title": "SETS",
+      "kind": "introduction",
+      "opening": [
+        [
+          8,
+          432,
+          458
+        ]
+      ],
+      "summary": [
+        "A set is a collection of elements. Membership is written x ∈ S; nonmembership is x ∉ S. The empty set has no elements.",
+        "Finite sets can be listed in braces. Countably infinite sets have a list indexed by positive integers, such as the even integers. An interval of real numbers is uncountable and cannot be written as such a list.",
+        "A set can also be specified by a property of its elements. Here the bar means “such that.” A subset contains only elements of the larger set; two sets are equal if each is a subset of the other. A chosen universe Ω limits which objects are under consideration."
+      ],
+      "formulas": [
+        "S = {x₁, x₂, …, xₙ}; S = {x₁, x₂, …}",
+        "{x | x satisfies P}; {k | k/2 is integer}; {x | 0 ≤ x ≤ 1}",
+        "S ⊂ T and T ⊂ S ⇔ S = T; S ⊂ Ω"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 8,
+        "startY": 432,
+        "endPdfPage": 9,
+        "endY": 328
+      },
+      "openingText": "Probability makes extensive use of set operations, so let us introduce at the outset the relevant notation and terminology."
+    },
+    {
+      "id": "set-operations",
+      "section": "1.1",
+      "title": "Set Operations",
+      "kind": "subsection",
+      "opening": [
+        [
+          9,
+          351,
+          390
+        ]
+      ],
+      "summary": [
+        "The union contains elements in either set, including their overlap; the intersection contains elements in both. These operations extend to an infinite collection of sets.",
+        "Two sets are disjoint when they share no element. A collection is disjoint when every pair is disjoint. A partition of S is a collection of disjoint sets whose union is S.",
+        "An ordered pair (x, y) records two objects in a specified order. ℝ denotes real scalars, while ℝ² and ℝ³ denote pairs and triples. Figure 1.1 shows the set operations, containment, disjointness, and a partition as Venn diagrams."
+      ],
+      "formulas": [
+        "Sᶜ = {x ∈ Ω | x ∉ S}; Ωᶜ = ∅",
+        "S ∪ T = {x | x ∈ S or x ∈ T}",
+        "S ∩ T = {x | x ∈ S and x ∈ T}",
+        "⋃ₙ₌₁^∞ Sₙ = S₁ ∪ S₂ ∪ ⋯ = {x | x ∈ Sₙ for some n}",
+        "⋂ₙ₌₁^∞ Sₙ = S₁ ∩ S₂ ∩ ⋯ = {x | x ∈ Sₙ for all n}"
+      ],
+      "cards": [],
+      "figures": [
+        {
+          "id": "figures-1",
+          "title": "Figure 1.1",
+          "parts": [
+            [
+              10,
+              193,
+              441
+            ]
+          ]
+        }
+      ],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 9,
+        "startY": 351,
+        "endPdfPage": 10,
+        "endY": 460
+      },
+      "openingText": "The complement of a set S, with respect to the universe Ω, is the set {x ∈ Ω | x ∉ S} of all elements of Ω that do not belong to S, and is denoted by Sᶜ. Note that Ωᶜ = ∅."
+    },
+    {
+      "id": "algebra-of-sets",
+      "section": "1.1",
+      "title": "The Algebra of Sets",
+      "kind": "subsection",
+      "opening": [
+        [
+          10,
+          484,
+          562
+        ]
+      ],
+      "summary": [
+        "Set identities follow by checking which elements belong to each side. The opening identities describe commutativity, associativity, distributivity, complements, and the universal set.",
+        "De Morgan’s laws turn the complement of a union into an intersection of complements, and the complement of an intersection into a union of complements.",
+        "To prove the first law, take an element outside the union. It is outside every individual set, hence in every complement. Reversing the argument establishes the opposite inclusion. The second law is proved in the same way."
+      ],
+      "formulas": [
+        "S ∪ T = T ∪ S; S ∪ (T ∪ U) = (S ∪ T) ∪ U",
+        "S ∩ (T ∪ U) = (S ∩ T) ∪ (S ∩ U)",
+        "S ∪ (T ∩ U) = (S ∪ T) ∩ (S ∪ U)",
+        "(Sᶜ)ᶜ = S; S ∩ Sᶜ = ∅; S ∪ Ω = Ω; S ∩ Ω = S",
+        "(⋃ₙ Sₙ)ᶜ = ⋂ₙ Sₙᶜ; (⋂ₙ Sₙ)ᶜ = ⋃ₙ Sₙᶜ"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 10,
+        "startY": 484,
+        "endPdfPage": 11,
+        "endY": 149
+      },
+      "openingText": "Set operations have several properties, which are elementary consequences of the definitions. Some examples are:\nS ∪ T = T ∪ S,     S ∪ (T ∪ U) = (S ∪ T) ∪ U,\nS ∩ (T ∪ U) = (S ∩ T) ∪ (S ∩ U),     S ∪ (T ∩ U) = (S ∪ T) ∩ (S ∪ U),\n(Sᶜ)ᶜ = S,     S ∩ Sᶜ = ∅,\nS ∪ Ω = Ω,     S ∩ Ω = S."
+    },
+    {
+      "id": "models-introduction",
+      "section": "1.2",
+      "title": "PROBABILISTIC MODELS",
+      "kind": "introduction",
+      "opening": [
+        [
+          11,
+          209,
+          247
+        ]
+      ],
+      "summary": [
+        "A probabilistic model has two ingredients: the sample space, which specifies possible outcomes, and the probability law, which assigns probabilities to events. The boxed statement defines these ingredients and Figure 1.2 shows their relationship."
+      ],
+      "formulas": [
+        "Ω = set of possible outcomes; A ⊂ Ω; P(A) ≥ 0"
+      ],
+      "cards": [
+        {
+          "id": "cards-1",
+          "title": "Elements of a Probabilistic Model",
+          "parts": [
+            [
+              11,
+              259,
+              385
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-2",
+          "title": "Figure 1.2",
+          "parts": [
+            [
+              11,
+              411,
+              549
+            ]
+          ]
+        }
+      ],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 11,
+        "startY": 209,
+        "endPdfPage": 11,
+        "endY": 574
+      },
+      "openingText": "A probabilistic model is a mathematical description of an uncertain situation. It must be in accordance with a fundamental framework that we discuss in this section. Its two main ingredients are listed below and are visualized in Fig. 1.2."
+    },
+    {
+      "id": "sample-spaces-and-events",
+      "section": "1.2",
+      "title": "Sample Spaces and Events",
+      "kind": "subsection",
+      "opening": [
+        [
+          11,
+          600,
+          650
+        ],
+        [
+          12,
+          100,
+          169
+        ]
+      ],
+      "summary": [
+        "A sample space may be finite or infinite. Finite spaces are simpler, but infinite spaces occur naturally: the point where a dart hits a square target is one example.",
+        "The experiment is the whole process under study. Thus a sequence of three tosses can be one experiment, with each complete sequence as an outcome. An event collects outcomes.",
+        "The source footnote allows Ω and the empty set as events and notes a technical limitation for unusual subsets of uncountable spaces; those measure-theoretic cases are outside the treatment here."
+      ],
+      "formulas": [
+        "A ⊂ Ω; Ω is an event; ∅ is an event"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 11,
+        "startY": 600,
+        "endPdfPage": 12,
+        "endY": 245
+      },
+      "openingText": "Every probabilistic model involves an underlying process, called the experiment, that will produce exactly one out of several possible outcomes. The set of all possible outcomes is called the sample space of the experiment, and is denoted by Ω. A subset of the sample space, that is, a collection of possible outcomes, is called an event.† There is no restriction on what constitutes an experiment. For example, it could be a single toss of a coin, or three tosses, or an infinite sequence of tosses. However, it is important to note that in our formulation of a probabilistic model, there is only one experiment. So, three tosses of a coin constitute a single experiment, rather than three experiments."
+    },
+    {
+      "id": "choosing-a-sample-space",
+      "section": "1.2",
+      "title": "Choosing an Appropriate Sample Space",
+      "kind": "subsection",
+      "opening": [
+        [
+          12,
+          276,
+          349
+        ]
+      ],
+      "summary": [
+        "The sample space must be collectively exhaustive: whatever happens must correspond to an included outcome. It must also distinguish everything needed to answer the intended questions while leaving out irrelevant detail.",
+        "Example 1.1 compares two ten-toss games. A count of heads is enough when the reward is $1 per head. When the amount paid per toss changes after each head, the order matters and the complete sequence is needed."
+      ],
+      "formulas": [
+        "Count-only space: Ω = {0, 1, …, 10}",
+        "Sequence space: Ω = {H, T}¹⁰"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-1",
+          "title": "Example 1.1",
+          "parts": [
+            [
+              12,
+              456,
+              545
+            ],
+            [
+              13,
+              109,
+              177
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 12,
+        "startY": 276,
+        "endPdfPage": 13,
+        "endY": 196
+      },
+      "openingText": "Regardless of their number, different elements of the sample space should be distinct and mutually exclusive so that when the experiment is carried out, there is a unique outcome. For example, the sample space associated with the roll of a die cannot contain “1 or 3” as a possible outcome and also “1 or 4” as another possible outcome. When the roll is a 1, the outcome of the experiment would not be unique."
+    },
+    {
+      "id": "sequential-models",
+      "section": "1.2",
+      "title": "Sequential Models",
+      "kind": "subsection",
+      "opening": [
+        [
+          13,
+          219,
+          281
+        ]
+      ],
+      "summary": [
+        "A sequential tree is another representation of the sample space. A complete outcome is a leaf and has a unique path from the root.",
+        "Figure 1.3 compares a grid of ordered pairs with a tree for two rolls of a four-sided die. The event that the second roll is 4 selects four grid points or four leaves. Each intermediate node also represents an event: all leaves downstream from it."
+      ],
+      "formulas": [
+        "Ω = {(i, j) | i, j ∈ {1, 2, 3, 4}}",
+        "{second roll is 4} = {(1,4), (2,4), (3,4), (4,4)}"
+      ],
+      "cards": [],
+      "figures": [
+        {
+          "id": "figures-3",
+          "title": "Figure 1.3",
+          "parts": [
+            [
+              13,
+              292,
+              599
+            ]
+          ]
+        }
+      ],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 13,
+        "startY": 219,
+        "endPdfPage": 13,
+        "endY": 612
+      },
+      "openingText": "Many experiments have an inherently sequential character, such as for example tossing a coin three times, or observing the value of a stock on five successive days, or receiving eight successive digits at a communication receiver. It is then often useful to describe the experiment and the associated sample space by means of a tree-based sequential description, as in Fig. 1.3."
+    },
+    {
+      "id": "probability-laws",
+      "section": "1.2",
+      "title": "Probability Laws",
+      "kind": "subsection",
+      "opening": [
+        [
+          13,
+          636,
+          650
+        ],
+        [
+          14,
+          108,
+          170
+        ]
+      ],
+      "summary": [
+        "The Probability Axioms card requires nonnegativity, additivity for disjoint events (including countable disjoint unions), and normalization.",
+        "One interpretation spreads a unit of mass across the sample space: an event’s probability is the mass it receives. Relative frequencies can also help intuition, although that interpretation is not appropriate in every situation.",
+        "Other rules follow from the axioms. The empty event has probability zero. Repeated application of additivity gives the probability of a finite disjoint union as the sum of its event probabilities."
+      ],
+      "formulas": [
+        "P(A) ≥ 0; P(Ω) = 1",
+        "A ∩ B = ∅ ⇒ P(A ∪ B) = P(A) + P(B)",
+        "P(A₁ ∪ A₂ ∪ ⋯) = P(A₁) + P(A₂) + ⋯, for disjoint events",
+        "1 = P(Ω ∪ ∅) = P(Ω) + P(∅) = 1 + P(∅) ⇒ P(∅) = 0",
+        "P(A₁ ∪ A₂ ∪ A₃) = P(A₁) + P(A₂ ∪ A₃) = P(A₁) + P(A₂) + P(A₃), for disjoint events"
+      ],
+      "cards": [
+        {
+          "id": "cards-2",
+          "title": "Probability Axioms",
+          "parts": [
+            [
+              14,
+              181,
+              402
+            ]
+          ]
+        }
+      ],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 13,
+        "startY": 636,
+        "endPdfPage": 15,
+        "endY": 247
+      },
+      "openingText": "Suppose we have settled on the sample space Ω associated with an experiment. Then, to complete the probabilistic model, we must introduce a probability law. Intuitively, this specifies the “likelihood” of any outcome, or of any set of possible outcomes (an event, as we have called it earlier). More precisely, the probability law assigns to every event A, a number P(A), called the probability of A, satisfying the following axioms."
+    },
+    {
+      "id": "discrete-models",
+      "section": "1.2",
+      "title": "Discrete Models",
+      "kind": "subsection",
+      "opening": [
+        [
+          15,
+          273,
+          299
+        ]
+      ],
+      "summary": [
+        "Example 1.2 builds a law for one fair coin toss and then for three tosses. Giving each of the eight three-toss outcomes mass 1/8 makes the event of exactly two heads have probability 3/8.",
+        "In a finite sample space, specify the mass of each individual outcome and add these masses for any event. When all outcomes are equally likely, each has probability 1/n, so an event’s probability is its number of outcomes divided by n.",
+        "Example 1.3 and Figure 1.4 apply this construction to two fair four-sided dice. Outcomes are ordered pairs; different sums contain different numbers of pairs and therefore need not be equally likely."
+      ],
+      "formulas": [
+        "P({H}) = P({T}) = 1/2",
+        "P({HHT, HTH, THH}) = 1/8 + 1/8 + 1/8 = 3/8",
+        "P({s₁, …, sₙ}) = P({s₁}) + ⋯ + P({sₙ})",
+        "Uniform finite law: P(A) = |A|/|Ω|"
+      ],
+      "cards": [
+        {
+          "id": "cards-3",
+          "title": "Discrete Probability Law",
+          "parts": [
+            [
+              16,
+              274,
+              397
+            ]
+          ]
+        },
+        {
+          "id": "cards-4",
+          "title": "Discrete Uniform Probability Law",
+          "parts": [
+            [
+              16,
+              459,
+              578
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-4",
+          "title": "Figure 1.4",
+          "parts": [
+            [
+              17,
+              291,
+              545
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-2",
+          "title": "Example 1.2",
+          "parts": [
+            [
+              15,
+              322,
+              651
+            ],
+            [
+              16,
+              109,
+              227
+            ]
+          ]
+        },
+        {
+          "id": "examples-3",
+          "title": "Example 1.3",
+          "parts": [
+            [
+              16,
+              626,
+              651
+            ],
+            [
+              17,
+              109,
+              250
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 15,
+        "startY": 273,
+        "endPdfPage": 17,
+        "endY": 556
+      },
+      "openingText": "Here is an illustration of how to construct a probability law starting from some common sense assumptions about a model."
+    },
+    {
+      "id": "continuous-models",
+      "section": "1.2",
+      "title": "Continuous Models",
+      "kind": "subsection",
+      "opening": [
+        [
+          17,
+          588,
+          650
+        ]
+      ],
+      "summary": [
+        "Knowing every singleton probability may not determine a continuous probability law. In Example 1.4, a uniform wheel on [0,1] gives every single point probability zero, while an interval [a,b] has probability equal to its length.",
+        "Example 1.5 represents two arrival delays by a point in the unit square. Uniform probability is area. The two people meet if their delays differ by at most 1/4 hour; Figure 1.5 shows the region with probability 7/16.",
+        "The source footnote defines the length of a suitable set by an integral and notes that pathological sets require a more advanced treatment."
+      ],
+      "formulas": [
+        "P({x}) = 0; P([a,b]) = b − a, for 0 ≤ a ≤ b ≤ 1",
+        "Ω = [0,1] × [0,1]; P(A) = area(A) under the uniform square model",
+        "P(|x − y| ≤ 1/4) = 1 − 2(1/2)(3/4)(3/4) = 7/16",
+        "length(S) = ∫ₛ dt"
+      ],
+      "cards": [],
+      "figures": [
+        {
+          "id": "figures-5",
+          "title": "Figure 1.5",
+          "parts": [
+            [
+              19,
+              106,
+              367
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-4",
+          "title": "Example 1.4",
+          "parts": [
+            [
+              18,
+              109,
+              246
+            ]
+          ]
+        },
+        {
+          "id": "examples-5",
+          "title": "Example 1.5",
+          "parts": [
+            [
+              18,
+              279,
+              393
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 17,
+        "startY": 588,
+        "endPdfPage": 18,
+        "endY": 414
+      },
+      "openingText": "Probabilistic models with continuous sample spaces differ from their discrete counterparts in that the probabilities of the single-element events may not be sufficient to characterize the probability law. This is illustrated in the following examples, which also illustrate how to generalize the uniform probability law to the case of a continuous sample space."
+    },
+    {
+      "id": "properties-of-probability-laws",
+      "section": "1.2",
+      "title": "Properties of Probability Laws",
+      "kind": "subsection",
+      "opening": [
+        [
+          18,
+          438,
+          465
+        ]
+      ],
+      "summary": [
+        "The boxed properties derive monotonicity, the two-event union formula, a union bound, and a decomposition of three events into disjoint pieces.",
+        "Figure 1.6 explains the identities with Venn diagrams. Adding P(A) and P(B) double-counts the overlap, which must be subtracted once.",
+        "Applying the two-event union bound repeatedly yields the bound for n events. This does not require independence and remains useful when the overlaps are unknown."
+      ],
+      "formulas": [
+        "A ⊂ B ⇒ P(A) ≤ P(B)",
+        "P(A ∪ B) = P(A) + P(B) − P(A ∩ B)",
+        "P(A ∪ B) ≤ P(A) + P(B)",
+        "P(A ∪ B ∪ C) = P(A) + P(Aᶜ ∩ B) + P(Aᶜ ∩ Bᶜ ∩ C)",
+        "P(A₁ ∪ ⋯ ∪ Aₙ) ≤ P(A₁) + ⋯ + P(Aₙ)"
+      ],
+      "cards": [
+        {
+          "id": "cards-5",
+          "title": "Some Properties of Probability Laws",
+          "parts": [
+            [
+              18,
+              474,
+              592
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-6",
+          "title": "Figure 1.6",
+          "parts": [
+            [
+              20,
+              106,
+              649
+            ]
+          ]
+        }
+      ],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 18,
+        "startY": 438,
+        "endPdfPage": 19,
+        "endY": 571
+      },
+      "openingText": "Probability laws have a number of properties, which can be deduced from the axioms. Some of them are summarized below."
+    },
+    {
+      "id": "models-and-reality",
+      "section": "1.2",
+      "title": "Models and Reality",
+      "kind": "subsection",
+      "opening": [
+        [
+          19,
+          595,
+          621
+        ]
+      ],
+      "summary": [
+        "The first stage is modelling: specify a probability law consistent with the probability axioms and suitable for the real situation. Facts, symmetry, experience, and data can inform that choice. Statistics provides methods for relating observations to models.",
+        "The second stage is deduction inside a fully specified model. This is a mathematical task, distinct from deciding whether the model describes reality well.",
+        "Apparent paradoxes or incompatible answers often arise from different or ambiguous modelling assumptions. A calculation cannot resolve an unspecified model."
+      ],
+      "formulas": [],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 19,
+        "startY": 595,
+        "endPdfPage": 21,
+        "endY": 398
+      },
+      "openingText": "Using the framework of probability theory to analyze a physical but uncertain situation, involves two distinct stages."
+    },
+    {
+      "id": "conditioning-introduction",
+      "section": "1.3",
+      "title": "CONDITIONAL PROBABILITY",
+      "kind": "introduction",
+      "opening": [
+        [
+          21,
+          456,
+          494
+        ]
+      ],
+      "summary": [
+        "The opening examples involve partial information: one of two die rolls is 6, a guessed word begins with “t,” a medical test is positive, or a radar shows a spot.",
+        "Given that B occurred, define a new law for A. In an equally likely finite model, count outcomes in A ∩ B relative to those in B. The general definition uses the same ratio of probabilities.",
+        "The conditioning event must have positive probability. The ratio says what fraction of the probability mass in B belongs to outcomes that also satisfy A."
+      ],
+      "formulas": [
+        "P(6 | even result on a fair die) = 1/3",
+        "P(A | B) = |A ∩ B|/|B|, in an equally likely finite model",
+        "P(A | B) = P(A ∩ B)/P(B), for P(B) > 0"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 21,
+        "startY": 456,
+        "endPdfPage": 22,
+        "endY": 488
+      },
+      "openingText": "Conditional probability provides us with a way to reason about the outcome of an experiment, based on partial information. Here are some examples of situations we have in mind:"
+    },
+    {
+      "id": "conditional-probability-law",
+      "section": "1.3",
+      "title": "Conditional Probabilities Specify a Probability Law",
+      "kind": "subsection",
+      "opening": [
+        [
+          22,
+          511,
+          650
+        ]
+      ],
+      "summary": [
+        "Nonnegativity, normalization, and additivity remain valid after conditioning on a fixed positive-probability event B. For additivity, the sets A₁ ∩ B and A₂ ∩ B remain disjoint when A₁ and A₂ are disjoint, so the ordinary additivity rule can be divided by P(B).",
+        "Every general probability-law property therefore applies to the conditional law. In particular, a union bound can be written with B after every conditioning bar.",
+        "The Properties of Conditional Probability card collects the definition, the finite equally likely case, and the restriction-to-B procedure. Examples 1.6–1.8 apply these ideas to coin tosses, dice, and two design teams; Figure 1.7 shows the restricted dice sample space."
+      ],
+      "formulas": [
+        "P(Ω | B) = P(Ω ∩ B)/P(B) = 1; P(B | B) = 1",
+        "P(A₁ ∪ A₂ | B) = [P(A₁ ∩ B) + P(A₂ ∩ B)]/P(B) = P(A₁ | B) + P(A₂ | B), when A₁ ∩ A₂ = ∅",
+        "P(A ∪ C | B) ≤ P(A | B) + P(C | B)",
+        "P(A | B) = P(A ∩ B)/P(B)"
+      ],
+      "cards": [
+        {
+          "id": "cards-6",
+          "title": "Properties of Conditional Probability",
+          "parts": [
+            [
+              23,
+              386,
+              652
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-7",
+          "title": "Figure 1.7",
+          "parts": [
+            [
+              25,
+              106,
+              367
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-6",
+          "title": "Example 1.6",
+          "parts": [
+            [
+              24,
+              109,
+              413
+            ]
+          ]
+        },
+        {
+          "id": "examples-7",
+          "title": "Example 1.7",
+          "parts": [
+            [
+              24,
+              446,
+              566
+            ]
+          ]
+        },
+        {
+          "id": "examples-8",
+          "title": "Example 1.8",
+          "parts": [
+            [
+              24,
+              599,
+              651
+            ],
+            [
+              25,
+              385,
+              637
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 22,
+        "startY": 511,
+        "endPdfPage": 25,
+        "endY": 655
+      },
+      "openingText": "For a fixed event B, it can be verified that the conditional probabilities P(A | B) form a legitimate probability law that satisfies the three axioms. Indeed, nonnegativity is clear. Furthermore,\nP(Ω | B) = P(Ω ∩ B)/P(B) = P(B)/P(B) = 1,\nand the normalization axiom is also satisfied. In fact, since we have P(B | B) = P(B)/P(B) = 1, all of the conditional probability is concentrated on B. Thus, we might as well discard all possible outcomes outside B and treat the conditional probabilities as a probability law defined on the new universe B."
+    },
+    {
+      "id": "conditional-probability-modeling",
+      "section": "1.3",
+      "title": "Using Conditional Probability for Modeling",
+      "kind": "subsection",
+      "opening": [
+        [
+          26,
+          131,
+          193
+        ]
+      ],
+      "summary": [
+        "For a sequential experiment, conditional branch probabilities are often easier to specify than the complete probability law. Multiply probabilities along a root-to-leaf path to obtain the probability of that outcome.",
+        "The Multiplication Rule card extends this to n events: each factor conditions on every preceding event in the intersection. The derivation works by substituting conditional-probability ratios and cancelling intermediate intersection probabilities.",
+        "Example 1.9 models radar detections; Example 1.10 samples three cards without replacement; Example 1.11 allocates students to groups. Figures 1.8–1.11 show the corresponding trees. Conditional probabilities change when previous selections change what remains."
+      ],
+      "formulas": [
+        "P(A ∩ B) = P(B)P(A | B)",
+        "P(A₁ ∩ ⋯ ∩ Aₙ) = P(A₁)P(A₂ | A₁) ⋯ P(Aₙ | A₁ ∩ ⋯ ∩ Aₙ₋₁)",
+        "P(A₁ ∩ A₂ ∩ A₃) = P(A₁) · [P(A₁ ∩ A₂)/P(A₁)] · [P(A₁ ∩ A₂ ∩ A₃)/P(A₁ ∩ A₂)]"
+      ],
+      "cards": [
+        {
+          "id": "cards-7",
+          "title": "Multiplication Rule",
+          "parts": [
+            [
+              27,
+              445,
+              544
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-8",
+          "title": "Figure 1.8",
+          "parts": [
+            [
+              27,
+              106,
+              348
+            ]
+          ]
+        },
+        {
+          "id": "figures-9",
+          "title": "Figure 1.9",
+          "parts": [
+            [
+              28,
+              106,
+              398
+            ]
+          ],
+          "note": "The original caption names the total probability theorem; the diagram and formulas illustrate the multiplication rule."
+        },
+        {
+          "id": "figures-10",
+          "title": "Figure 1.10",
+          "parts": [
+            [
+              29,
+              471,
+              655
+            ]
+          ]
+        },
+        {
+          "id": "figures-11",
+          "title": "Figure 1.11",
+          "parts": [
+            [
+              31,
+              106,
+              293
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-9",
+          "title": "Example 1.9",
+          "parts": [
+            [
+              26,
+              215,
+              498
+            ]
+          ]
+        },
+        {
+          "id": "examples-10",
+          "title": "Example 1.10",
+          "parts": [
+            [
+              28,
+              469,
+              651
+            ],
+            [
+              29,
+              109,
+              436
+            ]
+          ]
+        },
+        {
+          "id": "examples-11",
+          "title": "Example 1.11",
+          "parts": [
+            [
+              30,
+              109,
+              544
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 26,
+        "startY": 131,
+        "endPdfPage": 30,
+        "endY": 587
+      },
+      "openingText": "When constructing probabilistic models for experiments that have a sequential character, it is often natural and convenient to first specify conditional probabilities and then use them to determine unconditional probabilities. The rule P(A∩B) = P(B)P(A | B), which is a restatement of the definition of conditional probability, is often helpful in this process."
+    },
+    {
+      "id": "total-probability-and-bayes",
+      "section": "1.4",
+      "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+      "kind": "section",
+      "opening": [
+        [
+          30,
+          611,
+          650
+        ]
+      ],
+      "summary": [
+        "The total probability theorem partitions the sample space into disjoint, exhaustive scenarios Aᵢ. Find B’s probability within each scenario, multiply by that scenario’s probability, and add. Figure 1.12 gives the set and tree interpretations and the proof.",
+        "Examples 1.12 and 1.13 use this method for a chess tournament and a die experiment. Example 1.14 applies it repeatedly to Alice’s changing understanding of a course, giving two coupled recursions for successive weeks. Here Uᵢ means up-to-date after week i and Bᵢ means behind after week i.",
+        "Bayes’ rule reverses a conditional probability. A cause Aᵢ has prior probability P(Aᵢ), and P(B | Aᵢ) describes its likelihood of producing evidence B. Dividing their product by P(B) gives the cause’s probability after the evidence. All denominators must be positive.",
+        "Figure 1.13 shows inference among alternative causes. Example 1.15 revisits radar detection and Example 1.16 revisits the chess tournament. Both distinguish the chance of an observation given a cause from the chance of the cause given the observation."
+      ],
+      "formulas": [
+        "B = (A₁ ∩ B) ∪ ⋯ ∪ (Aₙ ∩ B), a disjoint union",
+        "P(B) = Σᵢ P(Aᵢ ∩ B) = Σᵢ P(Aᵢ)P(B | Aᵢ)",
+        "P(Aᵢ | B) = P(Aᵢ)P(B | Aᵢ)/P(B)",
+        "P(Aᵢ | B) = P(Aᵢ)P(B | Aᵢ) / Σⱼ P(Aⱼ)P(B | Aⱼ)",
+        "P(Uᵢ₊₁) = 0.8P(Uᵢ) + 0.4P(Bᵢ); P(Bᵢ₊₁) = 0.2P(Uᵢ) + 0.6P(Bᵢ)",
+        "For Alice: P(U₁) = 0.8; P(B₁) = 0.2"
+      ],
+      "cards": [
+        {
+          "id": "cards-8",
+          "title": "Total Probability Theorem",
+          "parts": [
+            [
+              31,
+              304,
+              422
+            ]
+          ]
+        },
+        {
+          "id": "cards-9",
+          "title": "Bayes’ Rule",
+          "parts": [
+            [
+              34,
+              414,
+              565
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-12",
+          "title": "Figure 1.12",
+          "parts": [
+            [
+              32,
+              106,
+              461
+            ]
+          ]
+        },
+        {
+          "id": "figures-13",
+          "title": "Figure 1.13",
+          "parts": [
+            [
+              35,
+              182,
+              510
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-12",
+          "title": "Example 1.12",
+          "parts": [
+            [
+              31,
+              553,
+              651
+            ],
+            [
+              32,
+              475,
+              576
+            ]
+          ]
+        },
+        {
+          "id": "examples-13",
+          "title": "Example 1.13",
+          "parts": [
+            [
+              32,
+              615,
+              651
+            ],
+            [
+              33,
+              109,
+              260
+            ]
+          ]
+        },
+        {
+          "id": "examples-14",
+          "title": "Example 1.14",
+          "parts": [
+            [
+              33,
+              335,
+              651
+            ],
+            [
+              34,
+              109,
+              345
+            ]
+          ]
+        },
+        {
+          "id": "examples-15",
+          "title": "Example 1.15",
+          "parts": [
+            [
+              35,
+              544,
+              651
+            ],
+            [
+              36,
+              107,
+              237
+            ]
+          ]
+        },
+        {
+          "id": "examples-16",
+          "title": "Example 1.16",
+          "parts": [
+            [
+              36,
+              281,
+              495
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 30,
+        "startY": 611,
+        "endPdfPage": 36,
+        "endY": 550
+      },
+      "openingText": "In this section, we explore some applications of conditional probability. We start with the following theorem, which is often useful for computing the probabilities of various events, using a “divide-and-conquer” approach."
+    },
+    {
+      "id": "independence-introduction",
+      "section": "1.5",
+      "title": "INDEPENDENCE",
+      "kind": "introduction",
+      "opening": [
+        [
+          36,
+          573,
+          650
+        ]
+      ],
+      "summary": [
+        "A and B are independent when P(A ∩ B) = P(A)P(B). This symmetric definition also handles zero-probability events, for which a conditional ratio may be undefined.",
+        "For P(B) > 0, independence is equivalent to P(A | B) = P(A): learning B gives no information about A. Independent physical processes can motivate this assumption, but it is a property of the probability law.",
+        "Disjoint positive-probability events are never independent because their intersection has probability zero while the product of their probabilities is positive. Example 1.17 tests independence and dependence using pairs of four-sided die rolls."
+      ],
+      "formulas": [
+        "P(A | B) = P(A), when P(B) > 0",
+        "P(A ∩ B) = P(A)P(B)",
+        "A ∩ B = ∅ and P(A), P(B) > 0 ⇒ P(A ∩ B) = 0 ≠ P(A)P(B)"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-17",
+          "title": "Example 1.17",
+          "parts": [
+            [
+              37,
+              329,
+              653
+            ],
+            [
+              38,
+              109,
+              434
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 36,
+        "startY": 573,
+        "endPdfPage": 38,
+        "endY": 453
+      },
+      "openingText": "We have introduced the conditional probability P(A | B) to capture the partial information that event B provides about event A. An interesting and important special case arises when the occurrence of B provides no information and does not alter the probability that A has occurred, i.e.,\nP(A | B) = P(A)."
+    },
+    {
+      "id": "conditional-independence",
+      "section": "1.5",
+      "title": "Conditional Independence",
+      "kind": "subsection",
+      "opening": [
+        [
+          38,
+          478,
+          553
+        ]
+      ],
+      "summary": [
+        "Given C, conditional independence uses the conditional probability law throughout. Combining the conditional definition with the multiplication rule shows that, when the necessary probabilities are positive, the additional knowledge of B does not change the chance of A within C.",
+        "Unconditional independence does not imply conditional independence, and the reverse implication also fails. Example 1.18 conditions two independent coin tosses on a shared event; Example 1.19 mixes tosses of two differently biased coins.",
+        "If A and B are independent, A is also independent of Bᶜ. The Independence card collects the unconditional definition, conditional definition, and equivalent formulations."
+      ],
+      "formulas": [
+        "P(A ∩ B | C) = P(A | C)P(B | C)",
+        "P(A ∩ B | C) = P(A ∩ B ∩ C)/P(C) = P(B | C)P(A | B ∩ C)",
+        "P(A | B ∩ C) = P(A | C), when the conditioning probabilities are positive",
+        "A independent of B ⇒ A independent of Bᶜ"
+      ],
+      "cards": [
+        {
+          "id": "cards-10",
+          "title": "Independence",
+          "parts": [
+            [
+              40,
+              311,
+              587
+            ]
+          ]
+        }
+      ],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-18",
+          "title": "Example 1.18",
+          "parts": [
+            [
+              39,
+              255,
+              428
+            ]
+          ]
+        },
+        {
+          "id": "examples-19",
+          "title": "Example 1.19",
+          "parts": [
+            [
+              39,
+              460,
+              655
+            ],
+            [
+              40,
+              109,
+              220
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 38,
+        "startY": 478,
+        "endPdfPage": 40,
+        "endY": 607
+      },
+      "openingText": "We noted earlier that the conditional probabilities of events, conditioned on a particular event, form a legitimate probability law. We can thus talk about independence of various events with respect to this conditional law. In particular, given an event C, the events A and B are called conditionally independent if\nP(A ∩ B | C) = P(A | C)P(B | C)."
+    },
+    {
+      "id": "independence-of-events",
+      "section": "1.5",
+      "title": "Independence of a Collection of Events",
+      "kind": "subsection",
+      "opening": [
+        [
+          40,
+          636,
+          650
+        ]
+      ],
+      "summary": [
+        "Independence of a collection requires the intersection/product identity for every subset of the event indices. For three events, this requires three pairwise conditions and one triple condition.",
+        "Pairwise independence alone does not imply the triple condition; Example 1.20 supplies a counterexample. Conversely, the triple condition alone does not imply pairwise independence; Example 1.21 supplies the reverse counterexample.",
+        "For a mutually independent collection, knowing that any selected events occurred or did not occur gives no information about the remaining events or their complements."
+      ],
+      "formulas": [
+        "P(⋂ᵢ∈S Aᵢ) = ∏ᵢ∈S P(Aᵢ), for every S ⊂ {1, …, n}",
+        "P(A₁ ∩ A₂) = P(A₁)P(A₂); P(A₁ ∩ A₃) = P(A₁)P(A₃); P(A₂ ∩ A₃) = P(A₂)P(A₃)",
+        "P(A₁ ∩ A₂ ∩ A₃) = P(A₁)P(A₂)P(A₃)",
+        "P(A₁ ∪ A₂ | A₃ ∩ A₄) = P(A₁ ∪ A₂)",
+        "P(A₁ ∪ A₂ᶜ | A₃ᶜ ∩ A₄) = P(A₁ ∪ A₂ᶜ), when the conditioning events have positive probability"
+      ],
+      "cards": [
+        {
+          "id": "cards-11",
+          "title": "Definition of Independence of Several Events",
+          "parts": [
+            [
+              41,
+              106,
+              212
+            ]
+          ]
+        }
+      ],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-20",
+          "title": "Example 1.20",
+          "parts": [
+            [
+              41,
+              391,
+              594
+            ]
+          ]
+        },
+        {
+          "id": "examples-21",
+          "title": "Example 1.21",
+          "parts": [
+            [
+              41,
+              624,
+              651
+            ],
+            [
+              42,
+              109,
+              330
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 40,
+        "startY": 636,
+        "endPdfPage": 42,
+        "endY": 505
+      },
+      "openingText": "The definition of independence can be extended to multiple events."
+    },
+    {
+      "id": "reliability",
+      "section": "1.5",
+      "title": "Reliability",
+      "kind": "subsection",
+      "opening": [
+        [
+          42,
+          531,
+          581
+        ]
+      ],
+      "summary": [
+        "Example 1.22 models independent failures of network links and asks whether a path connects two nodes. Figure 1.14 shows the network and its series and parallel building blocks.",
+        "A series connection succeeds only if every component succeeds, so multiply success probabilities. A parallel connection fails only if every component fails, so subtract the product of failure probabilities from 1.",
+        "Reduce the network from the end by combining its independent subsystems. The example computes the probability of a connection from A to B as approximately 0.957. Independence of the link failures is essential to these product calculations."
+      ],
+      "formulas": [
+        "P(series succeeds) = p₁p₂⋯pₘ",
+        "P(parallel succeeds) = 1 − (1 − p₁)(1 − p₂)⋯(1 − pₘ)",
+        "P(C → B) = 1 − (1 − pCE·pEB)(1 − pCF·pFB)",
+        "P(A → B) = 1 − [1 − pAC·P(C → B)][1 − pAD·pDB] ≈ 0.957"
+      ],
+      "cards": [],
+      "figures": [
+        {
+          "id": "figures-14",
+          "title": "Figure 1.14",
+          "parts": [
+            [
+              43,
+              106,
+              352
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-22",
+          "title": "Example 1.22",
+          "parts": [
+            [
+              42,
+              604,
+              651
+            ],
+            [
+              43,
+              367,
+              651
+            ],
+            [
+              44,
+              109,
+              315
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 42,
+        "startY": 531,
+        "endPdfPage": 44,
+        "endY": 347
+      },
+      "openingText": "In probabilistic models of complex systems involving several components, it is often convenient to assume that the components behave “independently” of each other. This typically simplifies the calculations and the analysis, as illustrated in the following example."
+    },
+    {
+      "id": "independent-trials",
+      "section": "1.5",
+      "title": "Independent Trials and the Binomial Probabilities",
+      "kind": "subsection",
+      "opening": [
+        [
+          44,
+          372,
+          446
+        ]
+      ],
+      "summary": [
+        "Independent identical stages are independent trials; two possible results at each stage give Bernoulli trials. For n tosses with common head probability p, a specified sequence containing k heads has probability pᵏ(1 − p)ⁿ⁻ᵏ.",
+        "The event of exactly k heads includes C(n,k) different sequences. Multiplying this count by the probability of each sequence gives the binomial probability. Figure 1.15 shows the tree and path probabilities for three tosses.",
+        "The binomial coefficients count choices of head positions and equal n!/[k!(n − k)!], with 0! = 1. Summing the binomial probabilities over k gives 1. Example 1.23 uses a binomial count of active users to calculate whether modem capacity is sufficient."
+      ],
+      "formulas": [
+        "P(a specified sequence with k heads) = pᵏ(1 − p)ⁿ⁻ᵏ",
+        "p(k) = P(k heads in n tosses) = C(n,k)pᵏ(1 − p)ⁿ⁻ᵏ",
+        "C(n,k) = n!/[k!(n − k)!]; i! = 1·2⋯i; 0! = 1",
+        "Σₖ₌₀ⁿ C(n,k)pᵏ(1 − p)ⁿ⁻ᵏ = 1",
+        "P(no user left unserved) = Σₖ₌₀ᶜ C(n,k)pᵏ(1 − p)ⁿ⁻ᵏ, for c ≤ n"
+      ],
+      "cards": [],
+      "figures": [
+        {
+          "id": "figures-15",
+          "title": "Figure 1.15",
+          "parts": [
+            [
+              45,
+              106,
+              364
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-23",
+          "title": "Example 1.23",
+          "parts": [
+            [
+              46,
+              199,
+              414
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 44,
+        "startY": 372,
+        "endPdfPage": 46,
+        "endY": 443
+      },
+      "openingText": "If an experiment involves a sequence of independent but identical stages, we say that we have a sequence of independent trials. In the special case where there are only two possible results at each stage, we say that we have a sequence of independent Bernoulli trials. The two possible results can be anything, e.g., “it rains” or “it doesn’t rain,” but we will often think in terms of coin tosses and refer to the two results as “heads” (H) and “tails” (T)."
+    },
+    {
+      "id": "counting-introduction",
+      "section": "1.6",
+      "title": "COUNTING",
+      "kind": "introduction",
+      "opening": [
+        [
+          46,
+          466,
+          505
+        ]
+      ],
+      "summary": [
+        "Counting enters probability in two settings: a uniform finite sample space, and a finite event whose individual outcomes all have the same probability p.",
+        "The second setting allows the larger sample space to be infinite or nonuniform, provided equal mass p holds for the outcomes in the event being counted. Counting methods form part of combinatorics; the following subsections develop staged counting and selection formulas."
+      ],
+      "formulas": [
+        "P(A) = (number of elements of A)/(number of elements of Ω), for a finite uniform space",
+        "P(A) = p·(number of elements of A), when each outcome in finite A has mass p"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 46,
+        "startY": 466,
+        "endPdfPage": 47,
+        "endY": 241
+      },
+      "openingText": "The calculation of probabilities often involves counting of the number of outcomes in various events. We have already seen two contexts where such counting arises."
+    },
+    {
+      "id": "counting-principle",
+      "section": "1.6",
+      "title": "The Counting Principle",
+      "kind": "subsection",
+      "opening": [
+        [
+          47,
+          274,
+          372
+        ]
+      ],
+      "summary": [
+        "For an r-stage construction, if each partial result has nᵢ continuations at stage i, multiply n₁⋯nᵣ. Figure 1.16 displays the tree, and the boxed Counting Principle states the rule.",
+        "Example 1.24 counts seven-digit telephone numbers with eight allowed first digits and ten choices for each later digit, giving 8·10⁶. Example 1.25 treats inclusion or exclusion of each element as a binary stage, giving 2ⁿ subsets.",
+        "The available choices may depend on previous selections; what must stay fixed is their number at each stage. Selections with order are permutations, unordered selections are combinations, and allocation into multiple subsets leads to partitions."
+      ],
+      "formulas": [
+        "Two stages: m·n ordered pairs (aᵢ, bⱼ)",
+        "r stages: n₁n₂⋯nᵣ",
+        "Telephone numbers: 8·10·10·10·10·10·10 = 8·10⁶",
+        "Subsets of an n-element set: 2·2⋯2 = 2ⁿ"
+      ],
+      "cards": [
+        {
+          "id": "cards-12",
+          "title": "The Counting Principle",
+          "parts": [
+            [
+              48,
+              106,
+              283
+            ]
+          ]
+        }
+      ],
+      "figures": [
+        {
+          "id": "figures-16",
+          "title": "Figure 1.16",
+          "parts": [
+            [
+              47,
+              384,
+              653
+            ]
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "id": "examples-24",
+          "title": "Example 1.24",
+          "parts": [
+            [
+              48,
+              313,
+              428
+            ]
+          ]
+        },
+        {
+          "id": "examples-25",
+          "title": "Example 1.25",
+          "parts": [
+            [
+              48,
+              458,
+              556
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 47,
+        "startY": 274,
+        "endPdfPage": 49,
+        "endY": 143
+      },
+      "openingText": "The counting principle is based on a divide-and-conquer approach, whereby the counting is broken down into stages through the use of a tree. For example, consider an experiment that consists of two consecutive stages. The possible results of the first stage are a₁, a₂, …, aₘ; the possible results of the second stage are b₁, b₂, …, bₙ. Then, the possible results of the two-stage experiment are all possible ordered pairs (aᵢ, bⱼ), i = 1, …, m, j = 1, …, n. Note that the number of such ordered pairs is equal to mn. This observation can be generalized as follows (see also Fig. 1.16)."
+    },
+    {
+      "id": "k-permutations",
+      "section": "1.6",
+      "title": "k-permutations",
+      "kind": "subsection",
+      "opening": [
+        [
+          49,
+          166,
+          340
+        ]
+      ],
+      "summary": [
+        "When k = n, every object is used and the count becomes n!. The convention 0! = 1 keeps the same formula valid for that case.",
+        "Example 1.26 counts four-letter sequences using distinct letters: 26!/(26 − 4)! = 358,800.",
+        "Ordered-selection counts can be combined with the Counting Principle. Example 1.27 first orders three music genres, then orders the CDs within each genre, giving 3!n₁!n₂!n₃! arrangements when each genre must stay contiguous."
+      ],
+      "formulas": [
+        "n(n − 1)⋯(n − k + 1) = n!/(n − k)!",
+        "n(n − 1)⋯2·1 = n!; 0! = 1",
+        "26!/22! = 26·25·24·23 = 358,800",
+        "Contiguous genre groups: 3!n₁!n₂!n₃!"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-26",
+          "title": "Example 1.26",
+          "parts": [
+            [
+              49,
+              434,
+              511
+            ]
+          ]
+        },
+        {
+          "id": "examples-27",
+          "title": "Example 1.27",
+          "parts": [
+            [
+              49,
+              571,
+              651
+            ],
+            [
+              50,
+              109,
+              135
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 49,
+        "startY": 166,
+        "endPdfPage": 50,
+        "endY": 153
+      },
+      "openingText": "We start with n distinct objects, and let k be some positive integer, with k ≤ n. We wish to count the number of different ways that we can pick k out of these n objects and arrange them in a sequence, i.e., the number of distinct k-object sequences. We can choose any of the n objects to be the first one. Having chosen the first, there are only n − 1 possible choices for the second; given the choice of the first two, there only remain n − 2 available objects for the third stage, etc. When we are ready to select the last (the kth) object, we have already chosen k − 1 objects, which leaves us with n − (k − 1) choices for the last one. By the Counting Principle, the number of possible sequences, called k-permutations, is\nn(n − 1)⋯(n − k + 1) = [n(n − 1)⋯(n − k + 1)(n − k)⋯2·1]/[(n − k)⋯2·1]\n= n!/(n − k)!."
+    },
+    {
+      "id": "combinations",
+      "section": "1.6",
+      "title": "Combinations",
+      "kind": "subsection",
+      "opening": [
+        [
+          50,
+          176,
+          311
+        ]
+      ],
+      "summary": [
+        "Choosing k elements from n is equivalent to choosing the locations of k heads in an n-toss sequence, so the number of combinations is the binomial coefficient C(n,k).",
+        "An ordered selection can be formed by first choosing an unordered group and then arranging its k elements in k! ways. Divide the k-permutation count by k! to obtain the combination formula.",
+        "Example 1.28 evaluates C(4,2) = 6. Counting subsets by their size gives Σₖ C(n,k) = 2ⁿ. The binomial probability identity also has a counting interpretation."
+      ],
+      "formulas": [
+        "C(n,k) = [n!/(n − k)!]/k! = n!/[k!(n − k)!]",
+        "C(4,2) = 4!/(2!2!) = 6",
+        "Σₖ₌₀ⁿ C(n,k)pᵏ(1 − p)ⁿ⁻ᵏ = 1",
+        "Σₖ₌₀ⁿ C(n,k) = 2ⁿ"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-28",
+          "title": "Example 1.28",
+          "parts": [
+            [
+              50,
+              504,
+              578
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 50,
+        "startY": 176,
+        "endPdfPage": 51,
+        "endY": 217
+      },
+      "openingText": "There are n people and we are interested in forming a committee of k. How many different committees are there? More abstractly, this is the same as the problem of counting the number of k-element subsets of a given n-element set. Notice that forming a combination is different than forming a k-permutation, because in a combination there is no ordering of the selected elements. Thus for example, whereas the 2-permutations of the letters A, B, C, and D are\nAB, AC, AD, BA, BC, BD, CA, CB, CD, DA, DB, DC,\nthe combinations of two out four of these letters are\nAB, AC, AD, BC, BD, CD."
+    },
+    {
+      "id": "partitions",
+      "section": "1.6",
+      "title": "Partitions",
+      "kind": "subsection",
+      "opening": [
+        [
+          51,
+          241,
+          291
+        ]
+      ],
+      "summary": [
+        "To split n distinct objects into r labelled groups with specified sizes n₁,…,nᵣ, form one group at a time from the objects still available. The sizes are nonnegative and sum to n.",
+        "Multiply the successive combination counts. Cancelling factorials gives n!/(n₁!⋯nᵣ!), the multinomial coefficient.",
+        "Example 1.29 applies the formula to rearrangements of TATTOO, where repeated letters make some permutations indistinguishable. Example 1.30 counts assignments of four graduate and twelve undergraduate students to four groups and agrees with the earlier sequential calculation. The Summary of Counting Results card closes the section."
+      ],
+      "formulas": [
+        "n₁ + n₂ + ⋯ + nᵣ = n",
+        "C(n,n₁) C(n − n₁,n₂) ⋯ C(n − n₁ − ⋯ − nᵣ₋₁,nᵣ)",
+        "C(n; n₁,…,nᵣ) = n!/(n₁!n₂!⋯nᵣ!)",
+        "TATTOO: 6!/(3!1!2!) = 60",
+        "Student grouping probability: [4!·12!/(3!3!3!3!)] / [16!/(4!4!4!4!)] = (12/15)(8/14)(4/13)"
+      ],
+      "cards": [
+        {
+          "id": "cards-13",
+          "title": "Summary of Counting Results",
+          "parts": [
+            [
+              53,
+              235,
+              397
+            ]
+          ]
+        }
+      ],
+      "figures": [],
+      "examples": [
+        {
+          "id": "examples-29",
+          "title": "Example 1.29",
+          "parts": [
+            [
+              51,
+              626,
+              651
+            ],
+            [
+              52,
+              109,
+              282
+            ]
+          ]
+        },
+        {
+          "id": "examples-30",
+          "title": "Example 1.30",
+          "parts": [
+            [
+              52,
+              314,
+              655
+            ],
+            [
+              53,
+              109,
+              206
+            ]
+          ]
+        }
+      ],
+      "sourceRange": {
+        "startPdfPage": 51,
+        "startY": 241,
+        "endPdfPage": 53,
+        "endY": 437
+      },
+      "openingText": "Recall that a combination is a choice of k elements out of an n-element set without regard to order. This is the same as partitioning the set in two: one part contains k elements and the other contains the remaining n − k. We now generalize by considering partitions in more than two subsets."
+    },
+    {
+      "id": "summary-and-discussion",
+      "section": "1.7",
+      "title": "SUMMARY AND DISCUSSION",
+      "kind": "section",
+      "opening": [
+        [
+          53,
+          461,
+          563
+        ]
+      ],
+      "summary": [
+        "A model specifies a sample space and a probability law; the task then is to calculate event and conditional probabilities. Nonnegativity, additivity, and normalization govern the law. In a finite space, outcome masses determine event probabilities.",
+        "Conditioning creates another probability law, which may be viewed on the original space or restricted to the conditioning event. Conversely, conditional probabilities can be specified first and combined through multiplication and total probability to determine unconditional probabilities.",
+        "Three main calculation methods are reviewed: counting equally likely outcomes, multiplying along sequential paths, and dividing the sample space into scenarios before combining conditional probabilities. Bayes’ rule supports inference, and combinatorics supports counting."
+      ],
+      "formulas": [
+        "P(A) ≥ 0; P(Ω) = 1; P(A ∪ B) = P(A) + P(B) for disjoint A, B",
+        "P(A | B) = P(A ∩ B)/P(B), for P(B) > 0",
+        "Counting: P(A) = |A|/|Ω| for a finite uniform space",
+        "Sequential: P(A₁ ∩ ⋯ ∩ Aₙ) = P(A₁)∏ᵢ₌₂ⁿ P(Aᵢ | A₁ ∩ ⋯ ∩ Aᵢ₋₁)",
+        "Divide and conquer: P(B) = Σᵢ P(Aᵢ)P(B | Aᵢ)"
+      ],
+      "cards": [],
+      "figures": [],
+      "examples": [],
+      "sourceRange": {
+        "startPdfPage": 53,
+        "startY": 461,
+        "endPdfPage": 54,
+        "endY": 470
+      },
+      "openingText": "A probability problem can usually be broken down into a few basic steps:\n1. The description of the sample space, that is, the set of possible outcomes of a given experiment.\n2. The (possibly indirect) specification of the probability law (the probability of each event).\n3. The calculation of probabilities and conditional probabilities of various events of interest."
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-import probabilityChapterOne from '@/data/probability-chapter-1-lessons.json';
 import probabilityChapterTwo from '@/data/probability-chapter-2-lessons.json';
 
 export interface LessonExample {
@@ -45,7 +44,6 @@ export interface LessonDeck {
 }
 
 const lessonDecks: Record<string, LessonDeck> = {
-    [probabilityChapterOne.deckId]: probabilityChapterOne as LessonDeck,
     [probabilityChapterTwo.deckId]: probabilityChapterTwo as LessonDeck,
 };
 

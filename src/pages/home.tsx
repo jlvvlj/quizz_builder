@@ -5,6 +5,7 @@ import { useEffect,useState } from 'react';
 import LoadingState from '@/components/LoadingState';
 import CircularProgress from '@/components/CircularProgress';
 import { useCatalog } from '@/utils/catalog';
+import { probabilityChapterOne } from '@/utils/probability-source';
 import { useQuizType } from '@/utils/quiz-mode';
 import { calculateSectionProgress } from '@/utils/progress-calculator';
 export default function HomeRoute(){
@@ -16,7 +17,7 @@ export default function HomeRoute(){
  {!error&&!sections&&<LoadingState text="Loading decks"/>}
  {sections?.length===0&&<p className="text-[#A1A1A1]">No learning content has been added yet.</p>}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">{sections?.map(s=><div key={s.id} onClick={()=>router.push(`/steps?section=${s.id}`)} className="bg-[#262626] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors">
- <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">{s.deck.title}</h2><p className="text-[#A1A1A1] text-sm">{s.deck.question_label} → {s.deck.answer_label}</p><p className="text-[#A1A1A1] text-sm mt-2">{s.count} items · {s.steps.length} steps</p>{sections.filter(x=>x.deck.id===s.deck.id).length>1&&<p className="text-[#A1A1A1] text-sm">Section {s.id.replace('section_','')}</p>}</div>
- <div className="flex flex-col items-end gap-4 shrink-0"><CircularProgress progress={progress[s.id]||0} size={50} strokeWidth={6} progressColor="#FF0054" backgroundColor="#181818"/><button onClick={e=>{e.stopPropagation();router.push(`/steps?section=${s.id}`);}} className="bg-[#181818] border border-[#4F4F4F] text-white px-3 py-2 rounded-lg hover:bg-[#2F2F2F] flex items-center gap-2 text-sm"><Play className="w-4 h-4"/>Start</button></div></div>
+ <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">{s.deck.title}</h2><p className="text-[#A1A1A1] text-sm">{s.deck.id===probabilityChapterOne.deckId ? 'Chapter 1 lessons' : `${s.deck.question_label} → ${s.deck.answer_label}`}</p><p className="text-[#A1A1A1] text-sm mt-2">{s.deck.id===probabilityChapterOne.deckId ? `7 sections · ${probabilityChapterOne.lessonCount} lessons` : `${s.count} items · ${s.steps.length} steps`}</p>{sections.filter(x=>x.deck.id===s.deck.id).length>1&&<p className="text-[#A1A1A1] text-sm">Section {s.id.replace('section_','')}</p>}</div>
+ <div className="flex flex-col items-end gap-4 shrink-0">{s.deck.id!==probabilityChapterOne.deckId&&<CircularProgress progress={progress[s.id]||0} size={50} strokeWidth={6} progressColor="#FF0054" backgroundColor="#181818"/>}<button onClick={e=>{e.stopPropagation();router.push(`/steps?section=${s.id}`);}} className="bg-[#181818] border border-[#4F4F4F] text-white px-3 py-2 rounded-lg hover:bg-[#2F2F2F] flex items-center gap-2 text-sm"><Play className="w-4 h-4"/>Start</button></div></div>
  </div>)}</div></div></div></div>;
 }
