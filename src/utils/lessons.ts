@@ -4,6 +4,7 @@ import probabilityChapterTwo from '@/data/probability-chapter-2-lessons.json';
 export interface LessonExample {
     title: string;
     situation: string;
+    table?: { columns: string[]; rows: string[][] };
     walkthrough: string[];
     result: string;
 }
@@ -11,6 +12,8 @@ export interface LessonExample {
 export interface LessonConcept {
     title: string;
     explanation: string;
+    definition?: string;
+    source?: { chapter: number; section: string; pdfPage: number };
     formula?: string | null;
     example: LessonExample;
     remember: string;

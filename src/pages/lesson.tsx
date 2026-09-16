@@ -168,6 +168,11 @@ export default function LessonPage() {
                             {!isCheckScreen ? (
                                 <article key={concept.title} className="animate-overlay-in">
                                     <h2 className="text-2xl font-bold sm:text-3xl">{concept.title}</h2>
+                                    {concept.definition && (
+                                        <blockquote className="mt-5 border-l-2 border-[#FF0054] pl-4 text-base font-medium leading-7 text-white sm:text-lg">
+                                            {concept.definition}
+                                        </blockquote>
+                                    )}
                                     <p className="mt-4 max-w-3xl text-base leading-7 text-[#D1D1D1] sm:text-lg">{concept.explanation}</p>
 
                                     {concept.formula && (
@@ -187,6 +192,25 @@ export default function LessonPage() {
                                             </div>
                                         </div>
                                         <p className="mt-4 leading-7 text-[#C8C8C8]">{concept.example.situation}</p>
+                                        {concept.example.table && (
+                                            <div className="mt-5 overflow-x-auto rounded-lg border border-[#4F4F4F]">
+                                                <table className="w-full text-left text-sm leading-6">
+                                                    <caption className="sr-only">{concept.example.title}: values used in the example</caption>
+                                                    <thead className="bg-[#303030] text-white">
+                                                        <tr>{concept.example.table.columns.map((column) => (
+                                                            <th key={column} scope="col" className="px-4 py-3 font-semibold">{column}</th>
+                                                        ))}</tr>
+                                                    </thead>
+                                                    <tbody className="divide-y divide-[#4F4F4F] text-[#D8D8D8]">
+                                                        {concept.example.table.rows.map((row, rowIndex) => (
+                                                            <tr key={rowIndex}>{row.map((cell, cellIndex) => (
+                                                                <td key={cellIndex} className="px-4 py-3">{cell}</td>
+                                                            ))}</tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        )}
                                         <ol className="mt-5 space-y-3">
                                             {concept.example.walkthrough.map((step, index) => (
                                                 <li key={step} className="flex gap-3 text-[#D8D8D8]">
