@@ -1,4 +1,6 @@
-import { AnnotatedSourceImage, LessonMathText } from './FormulaExplorer';
+import { AnnotatedSourceImage, FormulaDiagram, LessonMathText } from './FormulaExplorer';
+import nativeContent from '@/data/probability-chapter-1-native.json';
+import diagramHeights from '@/data/probability-chapter-1-diagrams.json';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import {
@@ -16,25 +18,34 @@ function materialCounts(unit: SourceUnit) {
 }
 
 function Excerpts({ images, title, context = '' }: { images: SourceImage[]; title: string; context?: string; priority?: boolean }) {
-    return <div className="space-y-3">{images.map(image => <AnnotatedSourceImage key={image.src} image={image} title={title} context={context || title} />)}</div>;
+    return <div className="mb-5 space-y-3">{images.map(image => {
+        const diagramHeight = (diagramHeights as Record<string, number>)[image.src];
+        const diagram = {...image, diagramHeight, formulaRegions: image.formulaRegions?.filter(region => region.bounds[1] + region.bounds[3] <= diagramHeight)};
+        return <AnnotatedSourceImage key={image.src} image={diagram} title={title} context={context || title} />;
+    })}</div>;
 }
 
-function AssetList({ title, assets, collapsible = false, context = '' }: { title: string; assets: SourceAsset[]; collapsible?: boolean; context?: string }) {
+function NativeContent({ id, context }: { id: string; context: string }) {
+    const blocks = (nativeContent as Record<string, {kind: string; text: string}[]>)[id];
+    return <div className="native-lesson-content space-y-5 text-base leading-8 text-[#E5E5E5] sm:text-lg" data-native-asset={id}>
+        {blocks.map((block, index) => block.kind === 'formula'
+            ? <FormulaDiagram key={index} source={block.text} context={context} latex />
+            : <LessonMathText key={index} text={block.text} context={context} />)}
+    </div>;
+}
+
+function AssetList({ title, assets, context = '' }: { title: string; assets: SourceAsset[]; context?: string }) {
     if (assets.length === 0) return null;
     return <section className="space-y-5" aria-label={title}>
         <h2 className="text-xl font-semibold text-white">{title} <span className="ml-1 text-sm font-normal text-[#A1A1A1]">{assets.length}</span></h2>
         {assets.length === 0 ? <p className="text-sm text-[#A1A1A1]">None in this passage.</p> : assets.map(asset => {
             const content = <>
-                <Excerpts images={asset.images} title={asset.title} context={context} />
+                {title === 'Figures' && <Excerpts images={asset.images} title={asset.title} context={context} />}
+                <NativeContent id={asset.id} context={context} />
                 {asset.note && <p className="mt-3 text-sm leading-6 text-[#C8C8C8]">{asset.note}</p>}
             </>;
-            return collapsible ? (
-                <details key={asset.id} className="rounded-xl border border-[#4F4F4F] bg-[#202020] p-4 sm:p-5">
-                    <summary className="cursor-pointer text-lg font-medium text-white">{asset.title} <span className="ml-2 text-sm font-normal text-[#A1A1A1]">Read the complete example</span></summary>
-                    <div className="mt-5">{content}</div>
-                </details>
-            ) : <div key={asset.id}>
-                <h3 className="mb-3 font-medium text-[#D8D8D8]">{asset.title}</h3>
+            return <div key={asset.id}>
+                <h3 className="mb-4 text-lg font-semibold text-[#D8D8D8]">{asset.title}</h3>
                 {content}
             </div>;
         })}
@@ -63,26 +74,14 @@ function LessonMaterial({ unit }: { unit: SourceUnit }) {
             if (item.kind === 'passage') {
                 return item.asset.text ? <div key={item.asset.id} className="space-y-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">
                     {item.asset.text.split('\n\n').map((paragraph, index) => <LessonMathText key={index} text={paragraph} context={unit.id} />)}
-                </div> : <Excerpts key={item.asset.id} images={item.asset.images} title={`Explanation and formulas: ${unit.title}`} context={unit.id} />;
+                </div> : <NativeContent key={item.asset.id} id={item.asset.id} context={unit.id} />;
             }
-            return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} context={unit.id} collapsible={item.kind === 'example'} />;
+            return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} context={unit.id} />;
         })}
         {unit.mathPassages.length > 0 && <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
             <div className="mt-4">{summary}</div>
         </details>}
-        <details className="rounded-lg border border-[#4F4F4F] p-4">
-            <summary className="cursor-pointer text-sm text-[#A1A1A1]">View the original wording and notation</summary>
-            <div className="mt-4 space-y-5">
-                <Excerpts images={unit.opening.images} title={unit.title} />
-                {unit.mathPassages.map(passage => <Excerpts key={passage.id} images={passage.images} title={`Explanation and formulas: ${unit.title}`} context={unit.id} />)}
-            </div>
-        </details>
-        <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
-            <summary className="cursor-pointer font-medium text-[#D1D1D1]">Complete original passage</summary>
-            <p className="my-4 text-sm leading-6 text-[#A1A1A1]">Read every derivation and inline formula in its original layout. Figures that continue onto another page are also collected above with their full captions.</p>
-            <Excerpts images={unit.sourcePages} title={unit.title} />
-        </details>
     </div>;
 }
 

@@ -4,6 +4,7 @@ import katex from 'katex';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { formulaModel, FormulaTerm, makeTerm, splitMath } from '@/utils/formula-notation';
 import { SourceImage } from '@/utils/probability-source';
+import { latexFormulaModel } from '@/utils/latex-formula';
 
 export function mathHtml(source: string, context = '', displayMode = false) {
     return katex.renderToString(formulaModel(source, context).latex, {
@@ -13,10 +14,10 @@ export function mathHtml(source: string, context = '', displayMode = false) {
 }
 
 type Connector = { d: string; color: string; x: number; y: number };
-export function FormulaDiagram({ source, context = '', children, terms: suppliedTerms, initiallyOpen = false }: {
-    source: string; context?: string; children?: React.ReactNode; terms?: FormulaTerm[]; initiallyOpen?: boolean;
+export function FormulaDiagram({ source, context = '', children, terms: suppliedTerms, initiallyOpen = false, latex = false }: {
+    source: string; context?: string; children?: React.ReactNode; terms?: FormulaTerm[]; initiallyOpen?: boolean; latex?: boolean;
 }) {
-    const model = useMemo(() => formulaModel(source, context), [source, context]);
+    const model = useMemo(() => latex ? latexFormulaModel(source, context) : formulaModel(source, context), [source, context, latex]);
     const terms = suppliedTerms || model.terms;
     const [open, setOpen] = useState(initiallyOpen);
     const [group, setGroup] = useState(0);
@@ -77,7 +78,7 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
         <div ref={root} id={`diagram-${id}`} className="formula-diagram" data-active-term={active}>
             {open && labels(true)}
             <div className="formula-scroll" onMouseOver={e => { const el = (e.target as HTMLElement).closest('[data-formula-term]'); if (el) setActive(el.getAttribute('data-formula-term') || undefined); }} onMouseLeave={() => setActive(undefined)}>
-                {children || <div className="formula-typeset" aria-label={source} dangerouslySetInnerHTML={{ __html: mathHtml(source, context, true) }} />}
+                {children || <div className="formula-typeset" aria-label={source} dangerouslySetInnerHTML={{ __html: katex.renderToString(model.latex, { displayMode: true, throwOnError: false, strict: false, trust: ({command}) => command === '\\htmlData' }) }} />}
             </div>
             {open && <>
                 <svg className="formula-connectors" aria-hidden="true">{paths.map((p, i) => <g key={i}><path d={p.d} fill="none" stroke={p.color} strokeWidth="1.6" /><circle cx={p.x} cy={p.y} r="3" fill={p.color} /></g>)}</svg>
@@ -114,7 +115,7 @@ function SourceMathArt({ image, context, regionIndex, interactive = false, onSel
     const region = regionIndex === undefined ? undefined : regions[regionIndex];
     const cropLeft = region ? Math.max(0,Math.min(...region.terms.filter(t=>![')',']','}',',','.',';'].includes(t.symbol)).map(t=>t.bounds[0]))-1) : 0;
     const cropWidth = region ? region.bounds[0]+region.bounds[2]+1-(Number.isFinite(cropLeft)?cropLeft:region.bounds[0]) : w;
-    const viewBox = region ? `${Number.isFinite(cropLeft)?cropLeft:region.bounds[0]} ${Math.max(0, region.bounds[1] - 4)} ${cropWidth} ${region.bounds[3] + 8}` : `0 0 ${w} ${h}`;
+    const viewBox = region ? `${Number.isFinite(cropLeft)?cropLeft:region.bounds[0]} ${Math.max(0, region.bounds[1] - 4)} ${cropWidth} ${region.bounds[3] + 8}` : `0 0 ${w} ${image.diagramHeight ?? h}`;
     const visible = region ? [{region, index: regionIndex!}] : regions.map((region,index) => ({region,index}));
     return <svg style={region ? {width: Math.max(120,(region.bounds[2]+8)*2.4), height: Math.max(52,(region.bounds[3]+8)*2.4)} : undefined} viewBox={viewBox} role="img" aria-label={region ? region.terms.map(t => t.symbol).join(' ') : 'Original excerpt with color-coded mathematical notation'} className={region ? 'source-formula-detail' : 'source-math-art'}>
         <defs>{region && <clipPath id={`${id}-crop`}><rect x={Number.isFinite(cropLeft)?cropLeft:region.bounds[0]} y={Math.max(0,region.bounds[1]-4)} width={cropWidth} height={region.bounds[3]+8}/></clipPath>}<filter id={`${id}-invert`}><feColorMatrix type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter><mask id={`${id}-ink`} maskUnits="userSpaceOnUse" x="0" y="0" width={w} height={h}><image href={image.src} width={w} height={h} filter={`url(#${id}-invert)`} /></mask></defs>

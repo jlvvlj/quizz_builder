@@ -37,3 +37,11 @@ No unresolved visual blockers for this change.
 - Checked both native typeset mathematics and original extracted mathematics at the default viewport and 389 CSS pixels. Narrow expressions scroll inside their formula area without page overflow; pointers to offscreen symbols are hidden.
 - Verified symbol-group selection and show/hide. The temporary viewport override was reset.
 - TypeScript and the 462-expression/2,801-region formula suite passed after the layout change. The PDF coverage and complete route checks above are from the preceding implementation; extraction data is unchanged.
+
+## Native content conversion
+
+- Replaced all image-only prose: 7 mathematical passages, 13 key-point sections, 30 examples, and 16 figure captions. The 165 newly typeset equations are selectable mathematical content with the same colored annotation controls.
+- Examples appear directly in the lesson. Removed duplicate screenshot appendices. Original diagram artwork remains, cropped above its caption; captions and their proofs are native text.
+- Compared the conditional-probability proof and key points against the supplied images and PDF page 18. Native paragraphs now match surrounding lesson typography. The multi-line derivation retains all five equalities and its surrounding explanation.
+- Browser checked all 27 routes at 320 CSS pixels: zero KaTeX errors, zero non-figure images, no page overflow, all 66 converted assets present. Desktop proof and key-point layout inspected; above/below labels and toggles verified. Temporary viewport override reset.
+- Automated native-content tests compare the mathematical tokens and structural elements before and after annotation for all 165 equations; all pass. Source transcription corrections are recorded in `docs/probability-chapter-1-native-content.md`.
