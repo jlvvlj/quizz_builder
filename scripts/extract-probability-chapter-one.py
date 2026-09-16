@@ -45,7 +45,7 @@ def extract(name, parts):
 
 for unit in data['units']:
     unit['opening'] = dict(images=extract(unit['id']+'-opening', unit['opening']))
-    for kind in ('cards', 'figures', 'examples'):
+    for kind in ('cards', 'figures', 'examples', 'mathPassages'):
         for asset in unit[kind]:
             asset['images'] = extract(asset['id'], asset.pop('parts'))
     # Original full passages allow every derivation and inline formula to be checked.

@@ -61,23 +61,41 @@ function AssetList({ title, assets, collapsible = false }: { title: string; asse
 }
 
 function LessonMaterial({ unit }: { unit: SourceUnit }) {
-    return <div className="space-y-10">
-        <section aria-label={unit.title}>
-            <blockquote className="whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">{unit.openingText}</blockquote>
-            <div className="mt-6 space-y-4 text-base leading-7 text-[#D1D1D1]">
-                {unit.summary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-            {unit.formulas.length > 0 && <div className="mt-6 space-y-3">
-                <h3 className="font-semibold text-white">Formulas</h3>
-                {unit.formulas.map(formula => <div key={formula} className="overflow-x-auto rounded-lg border border-[#FF0054]/30 bg-[#181818] p-4 font-mono text-sm leading-7 text-[#FF9BBB] sm:text-base">{formula}</div>)}
-            </div>}
-        </section>
-        <AssetList title="Key points" assets={unit.cards} />
-        <AssetList title="Figures" assets={unit.figures} />
-        <AssetList title="Examples" assets={unit.examples} collapsible />
+    // Keep introductions to equations beside their statements, in source order.
+    const material = [
+        ...unit.mathPassages.map(asset => ({ kind: 'passage' as const, asset })),
+        ...unit.cards.map(asset => ({ kind: 'card' as const, asset })),
+        ...unit.figures.map(asset => ({ kind: 'figure' as const, asset })),
+        ...unit.examples.map(asset => ({ kind: 'example' as const, asset })),
+    ].sort((a, b) => {
+        const first = a.asset.images[0];
+        const second = b.asset.images[0];
+        return first.pdfPage - second.pdfPage || first.bounds[1] - second.bounds[1];
+    });
+    const summary = <div className="space-y-4 text-base leading-7 text-[#D1D1D1]">
+        {unit.summary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+    </div>;
+    return <div className="space-y-8">
+        <blockquote className="whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">{unit.openingText}</blockquote>
+        {unit.mathPassages.length === 0 && summary}
+        {material.map(item => {
+            if (item.kind === 'passage') {
+                return item.asset.text ? <div key={item.asset.id} className="space-y-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">
+                    {item.asset.text.split('\n\n').map((paragraph, index) => <p key={index} className="whitespace-pre-line break-words">{paragraph}</p>)}
+                </div> : <Excerpts key={item.asset.id} images={item.asset.images} title={`Explanation and formulas: ${unit.title}`} />;
+            }
+            return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} collapsible={item.kind === 'example'} />;
+        })}
+        {unit.mathPassages.length > 0 && <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
+            <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
+            <div className="mt-4">{summary}</div>
+        </details>}
         <details className="rounded-lg border border-[#4F4F4F] p-4">
             <summary className="cursor-pointer text-sm text-[#A1A1A1]">View the original wording and notation</summary>
-            <div className="mt-4"><Excerpts images={unit.opening.images} title={unit.title} /></div>
+            <div className="mt-4 space-y-5">
+                <Excerpts images={unit.opening.images} title={unit.title} />
+                {unit.mathPassages.map(passage => <Excerpts key={passage.id} images={passage.images} title={`Explanation and formulas: ${unit.title}`} />)}
+            </div>
         </details>
         <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Complete original passage</summary>

@@ -73,6 +73,122 @@
         "endPdfPage": 9,
         "endY": 328
       },
+      "openingText": "Probability makes extensive use of set operations, so let us introduce at the outset the relevant notation and terminology.",
+      "mathPassages": [
+        {
+          "id": "sets-introduction-math-1",
+          "title": "SETS",
+          "text": "A set is a collection of objects, which are the elements of the set. If S is a set and x is an element of S, we write x ∈ S. If x is not an element of S, we write x ∉ S. A set can have no elements, in which case it is called the empty set, denoted by Ø.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-1-1.webp",
+              "width": 1093,
+              "height": 140,
+              "pdfPage": 8,
+              "printedPage": 3,
+              "bounds": [
+                128,
+                458.0,
+                486,
+                503.9
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sets-introduction-math-2",
+          "title": "SETS",
+          "text": "Sets can be specified in a variety of ways. If S contains a finite number of elements, say x₁, x₂, …, xₙ, we write it as a list of the elements, in braces:\n\nS = {x₁, x₂, …, xₙ}.\n\nFor example, the set of possible outcomes of a die roll is {1, 2, 3, 4, 5, 6}, and the set of possible outcomes of a coin toss is {H, T}, where H stands for “heads” and T stands for “tails.”",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-2-1.webp",
+              "width": 1093,
+              "height": 288,
+              "pdfPage": 8,
+              "printedPage": 3,
+              "bounds": [
+                128,
+                505.8,
+                486,
+                600.2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sets-introduction-math-3",
+          "title": "SETS",
+          "text": "If S contains infinitely many elements x₁, x₂, …, which can be enumerated in a list (so that there are as many elements as there are positive integers) we write\n\nS = {x₁, x₂, …},\n\nand we say that S is countably infinite. For example, the set of even integers can be written as {0, 2, −2, 4, −4, …}, and is countably infinite.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-3-1.webp",
+              "width": 1093,
+              "height": 142,
+              "pdfPage": 8,
+              "printedPage": 3,
+              "bounds": [
+                128,
+                602.1,
+                486,
+                648.9
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-3-2.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 9,
+              "printedPage": 4,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                132.3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sets-introduction-math-4",
+          "title": "SETS",
+          "text": "Alternatively, we can consider the set of all x that have a certain property P, and denote it by\n\n{x | x satisfies P}.\n\n(The symbol “|” is to be read as “such that.”) For example the set of even integers can be written as {k | k/2 is integer}. Similarly, the set of all scalars x in the interval [0, 1] can be written as {x | 0 ≤ x ≤ 1}. Note that the elements x of the latter set take a continuous range of values, and cannot be written down in a list (a proof is sketched in the theoretical problems); such a set is said to be uncountable.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-4-1.webp",
+              "width": 1093,
+              "height": 343,
+              "pdfPage": 9,
+              "printedPage": 4,
+              "bounds": [
+                128,
+                134.2,
+                486,
+                246.5
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sets-introduction-math-5",
+          "title": "SETS",
+          "text": "If every element of a set S is also an element of a set T, we say that S is a subset of T, and we write S ⊂ T or T ⊃ S. If S ⊂ T and T ⊂ S, the two sets are equal, and we write S = T. It is also expedient to introduce a universal set, denoted by Ω, which contains all objects that could conceivably be of interest in a particular context. Having specified the context in terms of a universal set Ω, we only consider sets S that are subsets of Ω.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sets-introduction-math-5-1.webp",
+              "width": 1093,
+              "height": 213,
+              "pdfPage": 9,
+              "printedPage": 4,
+              "bounds": [
+                128,
+                248.4,
+                486,
+                318.2
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/sets-introduction-source-1.webp",
@@ -100,8 +216,7 @@
             328
           ]
         }
-      ],
-      "openingText": "Probability makes extensive use of set operations, so let us introduce at the outset the relevant notation and terminology."
+      ]
     },
     {
       "id": "set-operations",
@@ -166,6 +281,49 @@
         "endPdfPage": 10,
         "endY": 460
       },
+      "openingText": "The complement of a set S, with respect to the universe Ω, is the set {x ∈ Ω | x ∉ S} of all elements of Ω that do not belong to S, and is denoted by Sᶜ. Note that Ωᶜ = ∅.",
+      "mathPassages": [
+        {
+          "id": "set-operations-math-1",
+          "title": "Set Operations",
+          "text": "The union of two sets S and T is the set of all elements that belong to S or T (or both), and is denoted by S ∪ T. The intersection of two sets S and T is the set of all elements that belong to both S and T, and is denoted by S ∩ T. Thus,\n\nS ∪ T = {x | x ∈ S or x ∈ T},\nS ∩ T = {x | x ∈ S and x ∈ T}.\n\nIn some cases, we will have to consider the union or the intersection of several, even infinitely many sets, defined in the obvious way. For example, if for every positive integer n, we are given a set Sₙ, then\n\n⋃ₙ₌₁^∞ Sₙ = S₁ ∪ S₂ ∪ ⋯ = {x | x ∈ Sₙ for some n},\n\nand\n\n⋂ₙ₌₁^∞ Sₙ = S₁ ∩ S₂ ∩ ⋯ = {x | x ∈ Sₙ for all n}.\n\nTwo sets are said to be disjoint if their intersection is empty. More generally, several sets are said to be disjoint if no two of them have a common element. A collection of sets is said to be a partition of a set S if the sets in the collection are disjoint and their union is S.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/set-operations-math-1-1.webp",
+              "width": 1093,
+              "height": 784,
+              "pdfPage": 9,
+              "printedPage": 4,
+              "bounds": [
+                128,
+                391.5,
+                486,
+                648.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "set-operations-math-2",
+          "title": "Set Operations",
+          "text": "If x and y are two objects, we use (x, y) to denote the ordered pair of x and y. The set of scalars (real numbers) is denoted by ℝ; the set of pairs (or triplets) of scalars, i.e., the two-dimensional plane (or three-dimensional space, respectively) is denoted by ℝ² (or ℝ³, respectively).",
+          "images": [
+            {
+              "src": "/probability/chapter-1/set-operations-math-2-1.webp",
+              "width": 1093,
+              "height": 140,
+              "pdfPage": 10,
+              "printedPage": 5,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                156.2
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/set-operations-source-1.webp",
@@ -193,8 +351,7 @@
             460
           ]
         }
-      ],
-      "openingText": "The complement of a set S, with respect to the universe Ω, is the set {x ∈ Ω | x ∉ S} of all elements of Ω that do not belong to S, and is denoted by Sᶜ. Note that Ωᶜ = ∅."
+      ]
     },
     {
       "id": "algebra-of-sets",
@@ -239,6 +396,42 @@
         "endPdfPage": 11,
         "endY": 149
       },
+      "openingText": "Set operations have several properties, which are elementary consequences of the definitions. Some examples are:\nS ∪ T = T ∪ S,     S ∪ (T ∪ U) = (S ∪ T) ∪ U,\nS ∩ (T ∪ U) = (S ∩ T) ∪ (S ∩ U),     S ∪ (T ∩ U) = (S ∪ T) ∩ (S ∪ U),\n(Sᶜ)ᶜ = S,     S ∩ Sᶜ = ∅,\nS ∪ Ω = Ω,     S ∩ Ω = S.",
+      "mathPassages": [
+        {
+          "id": "algebra-of-sets-math-1",
+          "title": "The Algebra of Sets",
+          "text": "Two particularly useful properties are given by de Morgan’s laws which state that\n\n(⋃ₙ Sₙ)ᶜ = ⋂ₙ Sₙᶜ,     (⋂ₙ Sₙ)ᶜ = ⋃ₙ Sₙᶜ.\n\nTo establish the first law, suppose that x ∈ (∪ₙ Sₙ)ᶜ. Then, x ∉ ∪ₙ Sₙ, which implies that for every n, we have x ∉ Sₙ. Thus, x belongs to the complement of every Sₙ, and x ∈ ∩ₙ Sₙᶜ. This shows that (∪ₙ Sₙ)ᶜ ⊂ ∩ₙ Sₙᶜ. The converse inclusion is established by reversing the above argument, and the first law follows. The argument for the second law is similar.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/algebra-of-sets-math-1-1.webp",
+              "width": 1093,
+              "height": 241,
+              "pdfPage": 10,
+              "printedPage": 5,
+              "bounds": [
+                128,
+                569.8,
+                486,
+                648.9
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/algebra-of-sets-math-1-2.webp",
+              "width": 1093,
+              "height": 110,
+              "pdfPage": 11,
+              "printedPage": 6,
+              "bounds": [
+                128,
+                108.0,
+                486,
+                144.2
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/algebra-of-sets-source-1.webp",
@@ -266,8 +459,7 @@
             149
           ]
         }
-      ],
-      "openingText": "Set operations have several properties, which are elementary consequences of the definitions. Some examples are:\nS ∪ T = T ∪ S,     S ∪ (T ∪ U) = (S ∪ T) ∪ U,\nS ∩ (T ∪ U) = (S ∩ T) ∪ (S ∩ U),     S ∪ (T ∩ U) = (S ∪ T) ∩ (S ∪ U),\n(Sᶜ)ᶜ = S,     S ∩ Sᶜ = ∅,\nS ∪ Ω = Ω,     S ∩ Ω = S."
+      ]
     },
     {
       "id": "models-introduction",
@@ -346,6 +538,8 @@
         "endPdfPage": 11,
         "endY": 574
       },
+      "openingText": "A probabilistic model is a mathematical description of an uncertain situation. It must be in accordance with a fundamental framework that we discuss in this section. Its two main ingredients are listed below and are visualized in Fig. 1.2.",
+      "mathPassages": [],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/models-introduction-source-1.webp",
@@ -360,8 +554,7 @@
             574
           ]
         }
-      ],
-      "openingText": "A probabilistic model is a mathematical description of an uncertain situation. It must be in accordance with a fundamental framework that we discuss in this section. Its two main ingredients are listed below and are visualized in Fig. 1.2."
+      ]
     },
     {
       "id": "sample-spaces-and-events",
@@ -415,6 +608,29 @@
         "endPdfPage": 12,
         "endY": 245
       },
+      "openingText": "Every probabilistic model involves an underlying process, called the experiment, that will produce exactly one out of several possible outcomes. The set of all possible outcomes is called the sample space of the experiment, and is denoted by Ω. A subset of the sample space, that is, a collection of possible outcomes, is called an event.† There is no restriction on what constitutes an experiment. For example, it could be a single toss of a coin, or three tosses, or an infinite sequence of tosses. However, it is important to note that in our formulation of a probabilistic model, there is only one experiment. So, three tosses of a coin constitute a single experiment, rather than three experiments.",
+      "mathPassages": [
+        {
+          "id": "sample-spaces-and-events-math-1",
+          "title": "Choosing an Appropriate Sample Space",
+          "text": "Any collection of possible outcomes, including the entire sample space Ω and its complement, the empty set Ø, may qualify as an event. Strictly speaking, however, some sets have to be excluded. In particular, when dealing with probabilistic models involving an uncountably infinite sample space, there are certain unusual subsets for which one cannot associate meaningful probabilities. This is an intricate technical issue, involving the mathematics of measure theory. Fortunately, such pathological subsets do not arise in the problems considered in this text or in practice, and the issue can be safely ignored.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/sample-spaces-and-events-math-1-1.webp",
+              "width": 1093,
+              "height": 268,
+              "pdfPage": 12,
+              "printedPage": 7,
+              "bounds": [
+                128,
+                560.3,
+                486,
+                648.1
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/sample-spaces-and-events-source-1.webp",
@@ -442,8 +658,7 @@
             245
           ]
         }
-      ],
-      "openingText": "Every probabilistic model involves an underlying process, called the experiment, that will produce exactly one out of several possible outcomes. The set of all possible outcomes is called the sample space of the experiment, and is denoted by Ω. A subset of the sample space, that is, a collection of possible outcomes, is called an event.† There is no restriction on what constitutes an experiment. For example, it could be a single toss of a coin, or three tosses, or an infinite sequence of tosses. However, it is important to note that in our formulation of a probabilistic model, there is only one experiment. So, three tosses of a coin constitute a single experiment, rather than three experiments."
+      ]
     },
     {
       "id": "choosing-a-sample-space",
@@ -517,6 +732,8 @@
         "endPdfPage": 13,
         "endY": 196
       },
+      "openingText": "Regardless of their number, different elements of the sample space should be distinct and mutually exclusive so that when the experiment is carried out, there is a unique outcome. For example, the sample space associated with the roll of a die cannot contain “1 or 3” as a possible outcome and also “1 or 4” as another possible outcome. When the roll is a 1, the outcome of the experiment would not be unique.",
+      "mathPassages": [],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/choosing-a-sample-space-source-1.webp",
@@ -544,8 +761,7 @@
             196
           ]
         }
-      ],
-      "openingText": "Regardless of their number, different elements of the sample space should be distinct and mutually exclusive so that when the experiment is carried out, there is a unique outcome. For example, the sample space associated with the roll of a die cannot contain “1 or 3” as a possible outcome and also “1 or 4” as another possible outcome. When the roll is a 1, the outcome of the experiment would not be unique."
+      ]
     },
     {
       "id": "sequential-models",
@@ -606,6 +822,8 @@
         "endPdfPage": 13,
         "endY": 612
       },
+      "openingText": "Many experiments have an inherently sequential character, such as for example tossing a coin three times, or observing the value of a stock on five successive days, or receiving eight successive digits at a communication receiver. It is then often useful to describe the experiment and the associated sample space by means of a tree-based sequential description, as in Fig. 1.3.",
+      "mathPassages": [],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/sequential-models-source-1.webp",
@@ -620,8 +838,7 @@
             612
           ]
         }
-      ],
-      "openingText": "Many experiments have an inherently sequential character, such as for example tossing a coin three times, or observing the value of a stock on five successive days, or receiving eight successive digits at a communication receiver. It is then often useful to describe the experiment and the associated sample space by means of a tree-based sequential description, as in Fig. 1.3."
+      ]
     },
     {
       "id": "probability-laws",
@@ -699,6 +916,81 @@
         "endPdfPage": 15,
         "endY": 247
       },
+      "openingText": "Suppose we have settled on the sample space Ω associated with an experiment. Then, to complete the probabilistic model, we must introduce a probability law. Intuitively, this specifies the “likelihood” of any outcome, or of any set of possible outcomes (an event, as we have called it earlier). More precisely, the probability law assigns to every event A, a number P(A), called the probability of A, satisfying the following axioms.",
+      "mathPassages": [
+        {
+          "id": "probability-laws-math-1",
+          "title": "Probability Laws",
+          "text": "In order to visualize a probability law, consider a unit of mass which is to be “spread” over the sample space. Then, P(A) is simply the total mass that was assigned collectively to the elements of A. In terms of this analogy, the additivity axiom becomes quite intuitive: the total mass in a sequence of disjoint events is the sum of their individual masses.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/probability-laws-math-1-1.webp",
+              "width": 1093,
+              "height": 176,
+              "pdfPage": 14,
+              "printedPage": 9,
+              "bounds": [
+                128,
+                415.5,
+                486,
+                473.3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "probability-laws-math-2",
+          "title": "Probability Laws",
+          "text": "A more concrete interpretation of probabilities is in terms of relative frequencies: a statement such as P(A) = 2/3 often represents a belief that event A will materialize in about two thirds out of a large number of repetitions of the experiment. Such an interpretation, though not always appropriate, can sometimes facilitate our intuitive understanding. It will be revisited in Chapter 7, in our study of limit theorems.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/probability-laws-math-2-1.webp",
+              "width": 1093,
+              "height": 213,
+              "pdfPage": 14,
+              "printedPage": 9,
+              "bounds": [
+                128,
+                475.2,
+                486,
+                545.1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "probability-laws-math-3",
+          "title": "Probability Laws",
+          "images": [
+            {
+              "src": "/probability/chapter-1/probability-laws-math-3-1.webp",
+              "width": 1093,
+              "height": 309,
+              "pdfPage": 14,
+              "printedPage": 9,
+              "bounds": [
+                128,
+                547.0,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/probability-laws-math-3-2.webp",
+              "width": 1093,
+              "height": 382,
+              "pdfPage": 15,
+              "printedPage": 10,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                235.5
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/probability-laws-source-1.webp",
@@ -739,8 +1031,7 @@
             247
           ]
         }
-      ],
-      "openingText": "Suppose we have settled on the sample space Ω associated with an experiment. Then, to complete the probabilistic model, we must introduce a probability law. Intuitively, this specifies the “likelihood” of any outcome, or of any set of possible outcomes (an event, as we have called it earlier). More precisely, the probability law assigns to every event A, a number P(A), called the probability of A, satisfying the following axioms."
+      ]
     },
     {
       "id": "discrete-models",
@@ -908,6 +1199,49 @@
         "endPdfPage": 17,
         "endY": 556
       },
+      "openingText": "Here is an illustration of how to construct a probability law starting from some common sense assumptions about a model.",
+      "mathPassages": [
+        {
+          "id": "discrete-models-formula-leadin",
+          "title": "Discrete Models",
+          "text": "By using the additivity axiom and by generalizing the reasoning in the preceding example, we reach the following conclusion.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/discrete-models-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 16,
+              "printedPage": 11,
+              "bounds": [
+                128,
+                238.5,
+                486,
+                260.6
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Discrete Models",
+          "id": "discrete-models-math-1",
+          "text": "In the special case where the probabilities P({s₁}), …, P({sₙ}) are all the same (by necessity equal to 1/n, in view of the normalization axiom), we obtain the following.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/discrete-models-math-1-1.webp",
+              "width": 1093,
+              "height": 135,
+              "pdfPage": 16,
+              "printedPage": 11,
+              "bounds": [
+                128,
+                401.4,
+                486,
+                445.8
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/discrete-models-source-1.webp",
@@ -948,8 +1282,7 @@
             556
           ]
         }
-      ],
-      "openingText": "Here is an illustration of how to construct a probability law starting from some common sense assumptions about a model."
+      ]
     },
     {
       "id": "continuous-models",
@@ -1052,6 +1385,29 @@
         "endPdfPage": 18,
         "endY": 414
       },
+      "openingText": "Probabilistic models with continuous sample spaces differ from their discrete counterparts in that the probabilities of the single-element events may not be sufficient to characterize the probability law. This is illustrated in the following examples, which also illustrate how to generalize the uniform probability law to the case of a continuous sample space.",
+      "mathPassages": [
+        {
+          "id": "continuous-models-math-1",
+          "title": "Properties of Probability Laws",
+          "text": "The “length” of a subset S of [0, 1] is the integral ∫ₛ dt, which is defined, for “nice” sets S, in the usual calculus sense. For unusual sets, this integral may not be well defined mathematically, but such issues belong to a more advanced treatment of the subject.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/continuous-models-math-1-1.webp",
+              "width": 1093,
+              "height": 161,
+              "pdfPage": 18,
+              "printedPage": 13,
+              "bounds": [
+                128,
+                595.3,
+                486,
+                648.1
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/continuous-models-source-1.webp",
@@ -1079,8 +1435,7 @@
             414
           ]
         }
-      ],
-      "openingText": "Probabilistic models with continuous sample spaces differ from their discrete counterparts in that the probabilities of the single-element events may not be sufficient to characterize the probability law. This is illustrated in the following examples, which also illustrate how to generalize the uniform probability law to the case of a continuous sample space."
+      ]
     },
     {
       "id": "properties-of-probability-laws",
@@ -1165,6 +1520,29 @@
         "endPdfPage": 19,
         "endY": 571
       },
+      "openingText": "Probability laws have a number of properties, which can be deduced from the axioms. Some of them are summarized below.",
+      "mathPassages": [
+        {
+          "id": "properties-of-probability-laws-math-1",
+          "title": "Properties of Probability Laws",
+          "text": "These properties, and other similar ones, can be visualized and verified graphically using Venn diagrams, as in Fig. 1.6. For a further example, note that we can apply property (c) repeatedly and obtain the inequality\n\nP(A₁ ∪ A₂ ∪ ⋯ ∪ Aₙ) ≤ ∑ᵢ₌₁ⁿ P(Aᵢ).\n\nIn more detail, let us apply property (c) to the sets A₁ and A₂ ∪ ⋯ ∪ Aₙ, to obtain\n\nP(A₁ ∪ A₂ ∪ ⋯ ∪ Aₙ) ≤ P(A₁) + P(A₂ ∪ ⋯ ∪ Aₙ).\n\nWe also apply property (c) to the sets A₂ and A₃ ∪ ⋯ ∪ Aₙ to obtain\n\nP(A₂ ∪ ⋯ ∪ Aₙ) ≤ P(A₂) + P(A₃ ∪ ⋯ ∪ Aₙ),\n\ncontinue similarly, and finally add.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/properties-of-probability-laws-math-1-1.webp",
+              "width": 1093,
+              "height": 553,
+              "pdfPage": 19,
+              "printedPage": 14,
+              "bounds": [
+                128,
+                379.2,
+                486,
+                560.5
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/properties-of-probability-laws-source-1.webp",
@@ -1192,8 +1570,7 @@
             571
           ]
         }
-      ],
-      "openingText": "Probability laws have a number of properties, which can be deduced from the axioms. Some of them are summarized below."
+      ]
     },
     {
       "id": "models-and-reality",
@@ -1232,6 +1609,8 @@
         "endPdfPage": 21,
         "endY": 398
       },
+      "openingText": "Using the framework of probability theory to analyze a physical but uncertain situation, involves two distinct stages.",
+      "mathPassages": [],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/models-and-reality-source-1.webp",
@@ -1272,8 +1651,7 @@
             398
           ]
         }
-      ],
-      "openingText": "Using the framework of probability theory to analyze a physical but uncertain situation, involves two distinct stages."
+      ]
     },
     {
       "id": "conditioning-introduction",
@@ -1298,7 +1676,7 @@
         ]
       },
       "summary": [
-        "The opening examples involve partial information: one of two die rolls is 6, a guessed word begins with “t,” a medical test is positive, or a radar shows a spot.",
+        "The opening examples involve partial information: two die rolls sum to 9, a guessed word begins with “t,” a medical test is negative, or a radar shows a spot.",
         "Given that B occurred, define a new law for A. In an equally likely finite model, count outcomes in A ∩ B relative to those in B. The general definition uses the same ratio of probabilities.",
         "The conditioning event must have positive probability. The ratio says what fraction of the probability mass in B belongs to outcomes that also satisfy A."
       ],
@@ -1316,6 +1694,82 @@
         "endPdfPage": 22,
         "endY": 488
       },
+      "openingText": "Conditional probability provides us with a way to reason about the outcome of an experiment, based on partial information. Here are some examples of situations we have in mind:",
+      "mathPassages": [
+        {
+          "id": "conditioning-introduction-formula-leadin",
+          "title": "CONDITIONAL PROBABILITY",
+          "text": "(a) In an experiment involving two successive rolls of a die, you are told that the sum of the two rolls is 9. How likely is it that the first roll was a 6?\n\n(b) In a word guessing game, the first letter of the word is a “t”. What is the likelihood that the second letter is an “h”?\n\n(c) How likely is it that a person has a disease given that a medical test was negative?\n\n(d) A spot shows up on a radar screen. How likely is it that it corresponds to an aircraft?",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditioning-introduction-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 332,
+              "pdfPage": 21,
+              "printedPage": 16,
+              "bounds": [
+                128,
+                498.8,
+                486,
+                607.6
+              ]
+            }
+          ]
+        },
+        {
+          "title": "CONDITIONAL PROBABILITY",
+          "id": "conditioning-introduction-math-1",
+          "text": "In more precise terms, given an experiment, a corresponding sample space, and a probability law, suppose that we know that the outcome is within some given event B. We wish to quantify the likelihood that the outcome also belongs to some other given event A. We thus seek to construct a new probability law, which takes into account this knowledge and which, for any event A, gives us the conditional probability of A given B, denoted by P(A | B).\n\nWe would like the conditional probabilities P(A | B) of different events A to constitute a legitimate probability law, that satisfies the probability axioms. They should also be consistent with our intuition in important special cases, e.g., when all possible outcomes of the experiment are equally likely. For example, suppose that all six possible outcomes of a fair die roll are equally likely. If we are told that the outcome is even, we are left with only three possible outcomes, namely, 2, 4, and 6. These three outcomes were equally likely to start with, and so they should remain equally likely given the additional knowledge that the outcome was even. Thus, it is reasonable to let\n\nP(the outcome is 6 | the outcome is even) = 1/3.\n\nThis argument suggests that an appropriate definition of conditional probability when all outcomes are equally likely, is given by\n\nP(A | B) = (number of elements of A ∩ B)/(number of elements of B).",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditioning-introduction-math-1-1.webp",
+              "width": 1093,
+              "height": 103,
+              "pdfPage": 21,
+              "printedPage": 16,
+              "bounds": [
+                128,
+                614.4,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/conditioning-introduction-math-1-2.webp",
+              "width": 1093,
+              "height": 760,
+              "pdfPage": 22,
+              "printedPage": 17,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                359.1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditioning-introduction-math-2",
+          "title": "CONDITIONAL PROBABILITY",
+          "text": "Generalizing the argument, we introduce the following definition of conditional probability:\n\nP(A | B) = P(A ∩ B)/P(B),\n\nwhere we assume that P(B) > 0; the conditional probability is undefined if the conditioning event has zero probability. In words, out of the total probability of the elements of B, P(A | B) is the fraction that is assigned to possible outcomes that also belong to A.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditioning-introduction-math-2-1.webp",
+              "width": 1093,
+              "height": 315,
+              "pdfPage": 22,
+              "printedPage": 17,
+              "bounds": [
+                128,
+                370.6,
+                486,
+                473.9
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/conditioning-introduction-source-1.webp",
@@ -1343,8 +1797,7 @@
             488
           ]
         }
-      ],
-      "openingText": "Conditional probability provides us with a way to reason about the outcome of an experiment, based on partial information. Here are some examples of situations we have in mind:"
+      ]
     },
     {
       "id": "conditional-probability-law",
@@ -1499,6 +1952,68 @@
         "endPdfPage": 25,
         "endY": 655
       },
+      "openingText": "For a fixed event B, it can be verified that the conditional probabilities P(A | B) form a legitimate probability law that satisfies the three axioms. Indeed, nonnegativity is clear. Furthermore,\nP(Ω | B) = P(Ω ∩ B)/P(B) = P(B)/P(B) = 1,\nand the normalization axiom is also satisfied. In fact, since we have P(B | B) = P(B)/P(B) = 1, all of the conditional probability is concentrated on B. Thus, we might as well discard all possible outcomes outside B and treat the conditional probabilities as a probability law defined on the new universe B.",
+      "mathPassages": [
+        {
+          "id": "conditional-probability-law-math-1",
+          "title": "Conditional Probabilities Specify a Probability Law",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-law-math-1-1.webp",
+              "width": 1093,
+              "height": 599,
+              "pdfPage": 23,
+              "printedPage": 18,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                306.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-probability-law-math-2",
+          "title": "Conditional Probabilities Specify a Probability Law",
+          "text": "Since conditional probabilities constitute a legitimate probability law, all general properties of probability laws remain valid. For example, a fact such as P(A ∪ C) ≤ P(A) + P(C) translates to the new fact\n\nP(A ∪ C | B) ≤ P(A | B) + P(C | B).",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-law-math-2-1.webp",
+              "width": 1093,
+              "height": 154,
+              "pdfPage": 23,
+              "printedPage": 18,
+              "bounds": [
+                128,
+                308.3,
+                486,
+                358.8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-probability-law-formula-leadin",
+          "title": "Conditional Probabilities Specify a Probability Law",
+          "text": "Let us summarize the conclusions reached so far.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-law-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 30,
+              "pdfPage": 23,
+              "printedPage": 18,
+              "bounds": [
+                128,
+                365.2,
+                486,
+                375.3
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/conditional-probability-law-source-1.webp",
@@ -1552,8 +2067,7 @@
             655
           ]
         }
-      ],
-      "openingText": "For a fixed event B, it can be verified that the conditional probabilities P(A | B) form a legitimate probability law that satisfies the three axioms. Indeed, nonnegativity is clear. Furthermore,\nP(Ω | B) = P(Ω ∩ B)/P(B) = P(B)/P(B) = 1,\nand the normalization axiom is also satisfied. In fact, since we have P(B | B) = P(B)/P(B) = 1, all of the conditional probability is concentrated on B. Thus, we might as well discard all possible outcomes outside B and treat the conditional probabilities as a probability law defined on the new universe B."
+      ]
     },
     {
       "id": "conditional-probability-modeling",
@@ -1765,6 +2279,88 @@
         "endPdfPage": 30,
         "endY": 587
       },
+      "openingText": "When constructing probabilistic models for experiments that have a sequential character, it is often natural and convenient to first specify conditional probabilities and then use them to determine unconditional probabilities. The rule P(A∩B) = P(B)P(A | B), which is a restatement of the definition of conditional probability, is often helpful in this process.",
+      "mathPassages": [
+        {
+          "id": "conditional-probability-modeling-formula-leadin",
+          "title": "Using Conditional Probability for Modeling",
+          "text": "Extending the preceding example, we have a general rule for calculating various probabilities in conjunction with a tree-based sequential description of an experiment. In particular:\n\n(a) We set up the tree so that an event of interest is associated with a leaf. We view the occurrence of the event as a sequence of steps, namely, the traversals of the branches along the path from the root to the leaf.\n\n(b) We record the conditional probabilities associated with the branches of the tree.\n\n(c) We obtain the probability of a leaf by multiplying the probabilities recorded along the corresponding path of the tree.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-modeling-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 405,
+              "pdfPage": 26,
+              "printedPage": 21,
+              "bounds": [
+                128,
+                515.7,
+                486,
+                648.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-probability-modeling-math-1",
+          "title": "Using Conditional Probability for Modeling",
+          "text": "In mathematical terms, we are dealing with an event A which occurs if and only if each one of several events A₁, …, Aₙ has occurred, i.e., A = A₁ ∩ A₂ ∩ ⋯ ∩ Aₙ. The occurrence of A is viewed as an occurrence of A₁, followed by the occurrence of A₂, then of A₃, etc, and it is visualized as a path on the tree with n branches, corresponding to the events A₁, …, Aₙ. The probability of A is given by the following rule (see also Fig. 1.9).",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-modeling-math-1-1.webp",
+              "width": 1093,
+              "height": 213,
+              "pdfPage": 27,
+              "printedPage": 22,
+              "bounds": [
+                128,
+                361.1,
+                486,
+                431.0
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-probability-modeling-math-2",
+          "title": "Using Conditional Probability for Modeling",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-modeling-math-2-1.webp",
+              "width": 1093,
+              "height": 284,
+              "pdfPage": 27,
+              "printedPage": 22,
+              "bounds": [
+                128,
+                557.3,
+                486,
+                650.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-probability-modeling-math-3",
+          "title": "Using Conditional Probability for Modeling",
+          "text": "For the case of just two events, A₁ and A₂, the multiplication rule is simply the definition of conditional probability.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-probability-modeling-math-3-1.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 28,
+              "printedPage": 23,
+              "bounds": [
+                128,
+                422.7,
+                486,
+                444.7
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/conditional-probability-modeling-source-1.webp",
@@ -1831,8 +2427,7 @@
             587
           ]
         }
-      ],
-      "openingText": "When constructing probabilistic models for experiments that have a sequential character, it is often natural and convenient to first specify conditional probabilities and then use them to determine unconditional probabilities. The rule P(A∩B) = P(B)P(A | B), which is a restatement of the definition of conditional probability, is often helpful in this process."
+      ]
     },
     {
       "id": "total-probability-and-bayes",
@@ -2105,6 +2700,122 @@
         "endPdfPage": 36,
         "endY": 550
       },
+      "openingText": "In this section, we explore some applications of conditional probability. We start with the following theorem, which is often useful for computing the probabilities of various events, using a “divide-and-conquer” approach.",
+      "mathPassages": [
+        {
+          "id": "total-probability-and-bayes-math-1",
+          "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+          "text": "The theorem is visualized and proved in Fig. 1.12. Intuitively, we are partitioning the sample space into a number of scenarios (events) Aᵢ. Then, the probability that B occurs is a weighted average of its conditional probability under each scenario, where each scenario is weighted according to its (unconditional) probability. One of the uses of the theorem is to compute the probability of various events B for which the conditional probabilities P(B | Aᵢ) are known or easy to derive. The key is to choose appropriately the partition A₁, …, Aₙ, and this choice is often suggested by the problem structure. Here are some examples.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-math-1-1.webp",
+              "width": 1093,
+              "height": 286,
+              "pdfPage": 31,
+              "printedPage": 26,
+              "bounds": [
+                128,
+                435.5,
+                486,
+                529.2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "total-probability-and-bayes-formula-leadin",
+          "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+          "text": "The total probability theorem can be applied repeatedly to calculate probabilities in experiments that have a sequential character, as shown in the following example.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 104,
+              "pdfPage": 33,
+              "printedPage": 28,
+              "bounds": [
+                128,
+                276.5,
+                486,
+                310.6
+              ]
+            }
+          ]
+        },
+        {
+          "id": "total-probability-and-bayes-math-2",
+          "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+          "text": "The total probability theorem is often used in conjunction with the following celebrated theorem, which relates conditional probabilities of the form P(A | B) with conditional probabilities of the form P(B | A), in which the order of the conditioning is reversed.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-math-2-1.webp",
+              "width": 1093,
+              "height": 140,
+              "pdfPage": 34,
+              "printedPage": 29,
+              "bounds": [
+                128,
+                355.2,
+                486,
+                401.1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "total-probability-and-bayes-math-3",
+          "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+          "text": "To verify Bayes’ rule, note that P(Aᵢ)P(B | Aᵢ) and P(Aᵢ | B)P(B) are equal, because they are both equal to P(Aᵢ ∩ B). This yields the first equality. The second equality follows from the first by using the total probability theorem to rewrite P(B).",
+          "images": [
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-math-3-1.webp",
+              "width": 1093,
+              "height": 147,
+              "pdfPage": 34,
+              "printedPage": 29,
+              "bounds": [
+                128,
+                576.2,
+                486,
+                624.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "total-probability-and-bayes-math-4",
+          "title": "TOTAL PROBABILITY THEOREM AND BAYES’ RULE",
+          "text": "Bayes’ rule is often used for inference. There are a number of “causes” that may result in a certain “effect.” We observe the effect, and we wish to infer the cause. The events A₁, …, Aₙ are associated with the causes and the event B represents the effect. The probability P(B | Aᵢ) that the effect will be observed when the cause Aᵢ is present amounts to a probabilistic model of the cause-effect relation (cf. Fig. 1.13). Given that the effect B has been observed, we wish to evaluate the (conditional) probability P(Aᵢ | B) that the cause Aᵢ is present.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-math-4-1.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 34,
+              "printedPage": 29,
+              "bounds": [
+                128,
+                626.3,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/total-probability-and-bayes-math-4-2.webp",
+              "width": 1093,
+              "height": 178,
+              "pdfPage": 35,
+              "printedPage": 30,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                168.7
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/total-probability-and-bayes-source-1.webp",
@@ -2197,8 +2908,7 @@
             550
           ]
         }
-      ],
-      "openingText": "In this section, we explore some applications of conditional probability. We start with the following theorem, which is often useful for computing the probabilities of various events, using a “divide-and-conquer” approach."
+      ]
     },
     {
       "id": "independence-introduction",
@@ -2274,6 +2984,49 @@
         "endPdfPage": 38,
         "endY": 453
       },
+      "openingText": "We have introduced the conditional probability P(A | B) to capture the partial information that event B provides about event A. An interesting and important special case arises when the occurrence of B provides no information and does not alter the probability that A has occurred, i.e.,\nP(A | B) = P(A).",
+      "mathPassages": [
+        {
+          "id": "independence-introduction-math-1",
+          "title": "INDEPENDENCE",
+          "text": "When the above equality holds, we say that A is independent of B. Note that by the definition P(A | B) = P(A ∩ B)/P(B), this is equivalent to\n\nP(A ∩ B) = P(A)P(B).\n\nWe adopt this latter relation as the definition of independence because it can be used even if P(B) = 0, in which case P(A | B) is undefined. The symmetry of this relation also implies that independence is a symmetric property; that is, if A is independent of B, then B is independent of A, and we can unambiguously say that A and B are independent events.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independence-introduction-math-1-1.webp",
+              "width": 1093,
+              "height": 339,
+              "pdfPage": 37,
+              "printedPage": 32,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                221.5
+              ]
+            }
+          ]
+        },
+        {
+          "id": "independence-introduction-math-2",
+          "title": "INDEPENDENCE",
+          "text": "Independence is often easy to grasp intuitively. For example, if the occurrence of two events is governed by distinct and noninteracting physical processes, such events will turn out to be independent. On the other hand, independence is not easily visualized in terms of the sample space. A common first thought is that two events are independent if they are disjoint, but in fact the opposite is true: two disjoint events A and B with P(A) > 0 and P(B) > 0 are never independent, since their intersection A ∩ B is empty and has probability 0.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independence-introduction-math-2-1.webp",
+              "width": 1093,
+              "height": 249,
+              "pdfPage": 37,
+              "printedPage": 32,
+              "bounds": [
+                128,
+                223.4,
+                486,
+                305.1
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/independence-introduction-source-1.webp",
@@ -2314,8 +3067,7 @@
             453
           ]
         }
-      ],
-      "openingText": "We have introduced the conditional probability P(A | B) to capture the partial information that event B provides about event A. An interesting and important special case arises when the occurrence of B provides no information and does not alter the probability that A has occurred, i.e.,\nP(A | B) = P(A)."
+      ]
     },
     {
       "id": "conditional-independence",
@@ -2431,6 +3183,81 @@
         "endPdfPage": 40,
         "endY": 607
       },
+      "openingText": "We noted earlier that the conditional probabilities of events, conditioned on a particular event, form a legitimate probability law. We can thus talk about independence of various events with respect to this conditional law. In particular, given an event C, the events A and B are called conditionally independent if\nP(A ∩ B | C) = P(A | C)P(B | C).",
+      "mathPassages": [
+        {
+          "id": "conditional-independence-math-1",
+          "title": "Conditional Independence",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-independence-math-1-1.webp",
+              "width": 1093,
+              "height": 271,
+              "pdfPage": 38,
+              "printedPage": 33,
+              "bounds": [
+                128,
+                559.9,
+                486,
+                648.9
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/conditional-independence-math-1-2.webp",
+              "width": 1093,
+              "height": 264,
+              "pdfPage": 39,
+              "printedPage": 34,
+              "bounds": [
+                128,
+                108.0,
+                486,
+                194.6
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-independence-math-2",
+          "title": "Conditional Independence",
+          "text": "Interestingly, independence of two events A and B with respect to the unconditional probability law, does not imply conditional independence, and vice versa, as illustrated by the next two examples.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-independence-math-2-1.webp",
+              "width": 1093,
+              "height": 103,
+              "pdfPage": 39,
+              "printedPage": 34,
+              "bounds": [
+                128,
+                196.5,
+                486,
+                230.4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conditional-independence-math-3",
+          "title": "Conditional Independence",
+          "text": "As mentioned earlier, if A and B are independent, the occurrence of B does not provide any new information on the probability of A occurring. It is then intuitive that the non-occurrence of B should also provide no information on the probability of A. Indeed, it can be verified that if A and B are independent, the same holds true for A and Bᶜ (see the theoretical problems).\n\nWe now summarize.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/conditional-independence-math-3-1.webp",
+              "width": 1093,
+              "height": 213,
+              "pdfPage": 40,
+              "printedPage": 35,
+              "bounds": [
+                128,
+                230.3,
+                486,
+                300.1
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/conditional-independence-source-1.webp",
@@ -2471,8 +3298,7 @@
             607
           ]
         }
-      ],
-      "openingText": "We noted earlier that the conditional probabilities of events, conditioned on a particular event, form a legitimate probability law. We can thus talk about independence of various events with respect to this conditional law. In particular, given an event C, the events A and B are called conditionally independent if\nP(A ∩ B | C) = P(A | C)P(B | C)."
+      ]
     },
     {
       "id": "independence-of-events",
@@ -2589,6 +3415,49 @@
         "endPdfPage": 42,
         "endY": 505
       },
+      "openingText": "The definition of independence can be extended to multiple events.",
+      "mathPassages": [
+        {
+          "id": "independence-of-events-math-1",
+          "title": "Independence of a Collection of Events",
+          "text": "If we have a collection of three events, A₁, A₂, and A₃, independence amounts to satisfying the four conditions\n\nP(A₁ ∩ A₂) = P(A₁)P(A₂),\nP(A₁ ∩ A₃) = P(A₁)P(A₃),\nP(A₂ ∩ A₃) = P(A₂)P(A₃),\nP(A₁ ∩ A₂ ∩ A₃) = P(A₁)P(A₂)P(A₃).\n\nThe first three conditions simply assert that any two events are independent, a property known as pairwise independence. But the fourth condition is also important and does not follow from the first three. Conversely, the fourth condition does not imply the first three; see the two examples that follow.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independence-of-events-math-1-1.webp",
+              "width": 1093,
+              "height": 436,
+              "pdfPage": 41,
+              "printedPage": 36,
+              "bounds": [
+                128,
+                224.7,
+                486,
+                367.5
+              ]
+            }
+          ]
+        },
+        {
+          "id": "independence-of-events-math-2",
+          "title": "Independence of a Collection of Events",
+          "text": "The intuition behind the independence of a collection of events is analogous to the case of two events. Independence means that the occurrence or non-occurrence of any number of the events from that collection carries no information on the remaining events or their complements. For example, if the events A₁, A₂, A₃, A₄ are independent, one obtains relations such as\n\nP(A₁ ∪ A₂ | A₃ ∩ A₄) = P(A₁ ∪ A₂)\n\nor\n\nP(A₁ ∪ A₂ᶜ | A₃ᶜ ∩ A₄) = P(A₁ ∪ A₂ᶜ);\n\nsee the theoretical problems.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independence-of-events-math-2-1.webp",
+              "width": 1093,
+              "height": 436,
+              "pdfPage": 42,
+              "printedPage": 37,
+              "bounds": [
+                128,
+                348.8,
+                486,
+                491.7
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/independence-of-events-source-1.webp",
@@ -2629,8 +3498,7 @@
             505
           ]
         }
-      ],
-      "openingText": "The definition of independence can be extended to multiple events."
+      ]
     },
     {
       "id": "reliability",
@@ -2740,6 +3608,8 @@
         "endPdfPage": 44,
         "endY": 347
       },
+      "openingText": "In probabilistic models of complex systems involving several components, it is often convenient to assume that the components behave “independently” of each other. This typically simplifies the calculations and the analysis, as illustrated in the following example.",
+      "mathPassages": [],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/reliability-source-1.webp",
@@ -2780,8 +3650,7 @@
             347
           ]
         }
-      ],
-      "openingText": "In probabilistic models of complex systems involving several components, it is often convenient to assume that the components behave “independently” of each other. This typically simplifies the calculations and the analysis, as illustrated in the following example."
+      ]
     },
     {
       "id": "independent-trials",
@@ -2826,14 +3695,14 @@
             {
               "src": "/probability/chapter-1/figures-15-1.webp",
               "width": 1093,
-              "height": 788,
+              "height": 818,
               "pdfPage": 45,
               "printedPage": 40,
               "bounds": [
                 128,
                 106,
                 486,
-                364
+                374
               ]
             }
           ]
@@ -2866,6 +3735,94 @@
         "endPdfPage": 46,
         "endY": 443
       },
+      "openingText": "If an experiment involves a sequence of independent but identical stages, we say that we have a sequence of independent trials. In the special case where there are only two possible results at each stage, we say that we have a sequence of independent Bernoulli trials. The two possible results can be anything, e.g., “it rains” or “it doesn’t rain,” but we will often think in terms of coin tosses and refer to the two results as “heads” (H) and “tails” (T).",
+      "mathPassages": [
+        {
+          "id": "independent-trials-math-1",
+          "title": "Independent Trials and the Binomial Probabilities",
+          "text": "Consider an experiment that consists of n independent tosses of a biased coin, in which the probability of “heads” is p, where p is some number between 0 and 1. In this context, independence means that the events A₁, A₂, …, Aₙ are independent, where Aᵢ = {ith toss is a head}.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independent-trials-math-1-1.webp",
+              "width": 1093,
+              "height": 142,
+              "pdfPage": 44,
+              "printedPage": 39,
+              "bounds": [
+                128,
+                446.3,
+                486,
+                492.8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "independent-trials-math-2",
+          "title": "Independent Trials and the Binomial Probabilities",
+          "text": "We can visualize independent Bernoulli trials by means of a sequential description, as shown in Fig. 1.15 for the case where n = 3. The conditional probability of any toss being a head, conditioned on the results of any preceding tosses is p, because of independence. Thus, by multiplying the conditional probabilities along the corresponding path of the tree, we see that any particular outcome (3-long sequence of heads and tails) that involves k heads and 3 − k tails has probability pᵏ(1 − p)³⁻ᵏ. This formula extends to the case of a general number n of tosses. We obtain that the probability of any particular n-long sequence that contains k heads and n − k tails is pᵏ(1 − p)ⁿ⁻ᵏ, for all k from 0 to n.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independent-trials-math-2-1.webp",
+              "width": 1093,
+              "height": 359,
+              "pdfPage": 44,
+              "printedPage": 39,
+              "bounds": [
+                128,
+                494.2,
+                486,
+                611.8
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Independent Trials and the Binomial Probabilities",
+          "id": "independent-trials-math-3",
+          "images": [
+            {
+              "src": "/probability/chapter-1/independent-trials-math-3-1.webp",
+              "width": 1093,
+              "height": 106,
+              "pdfPage": 44,
+              "printedPage": 39,
+              "bounds": [
+                128,
+                613.7,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/independent-trials-math-3-2.webp",
+              "width": 1093,
+              "height": 791,
+              "pdfPage": 45,
+              "printedPage": 40,
+              "bounds": [
+                128,
+                389.4,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/independent-trials-math-3-3.webp",
+              "width": 1093,
+              "height": 218,
+              "pdfPage": 46,
+              "printedPage": 41,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                181.8
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/independent-trials-source-1.webp",
@@ -2906,8 +3863,7 @@
             443
           ]
         }
-      ],
-      "openingText": "If an experiment involves a sequence of independent but identical stages, we say that we have a sequence of independent trials. In the special case where there are only two possible results at each stage, we say that we have a sequence of independent Bernoulli trials. The two possible results can be anything, e.g., “it rains” or “it doesn’t rain,” but we will often think in terms of coin tosses and refer to the two results as “heads” (H) and “tails” (T)."
+      ]
     },
     {
       "id": "counting-introduction",
@@ -2948,6 +3904,62 @@
         "endPdfPage": 47,
         "endY": 241
       },
+      "openingText": "The calculation of probabilities often involves counting of the number of outcomes in various events. We have already seen two contexts where such counting arises.",
+      "mathPassages": [
+        {
+          "title": "COUNTING",
+          "id": "counting-introduction-math-1",
+          "text": "(a) When the sample space Ω has a finite number of equally likely outcomes, so that the discrete uniform probability law applies. Then, the probability of any event A is given by\n\nP(A) = (Number of elements of A)/(Number of elements of Ω),\n\nand involves counting the elements of A and of Ω.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/counting-introduction-math-1-1.webp",
+              "width": 1093,
+              "height": 241,
+              "pdfPage": 46,
+              "printedPage": 41,
+              "bounds": [
+                128,
+                509.6,
+                486,
+                588.7
+              ]
+            }
+          ]
+        },
+        {
+          "title": "COUNTING",
+          "id": "counting-introduction-math-2",
+          "text": "(b) When we want to calculate the probability of an event A with a finite number of equally likely outcomes, each of which has an already known probability p. Then the probability of A is given by\n\nP(A) = p · (Number of elements of A),\n\nand involves counting of the number of elements of A. An example of this type is the calculation of the probability of k heads in n coin tosses (the binomial probabilities). We saw there that the probability of each distinct sequence involving k heads is easily obtained, but the calculation of the number of all such sequences is somewhat intricate, as will be seen shortly.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/counting-introduction-math-2-1.webp",
+              "width": 1093,
+              "height": 161,
+              "pdfPage": 46,
+              "printedPage": 41,
+              "bounds": [
+                128,
+                595.6,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/counting-introduction-math-2-2.webp",
+              "width": 1093,
+              "height": 176,
+              "pdfPage": 47,
+              "printedPage": 42,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                168.2
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/counting-introduction-source-1.webp",
@@ -2975,8 +3987,7 @@
             241
           ]
         }
-      ],
-      "openingText": "The calculation of probabilities often involves counting of the number of outcomes in various events. We have already seen two contexts where such counting arises."
+      ]
     },
     {
       "id": "counting-principle",
@@ -3099,6 +4110,42 @@
         "endPdfPage": 49,
         "endY": 143
       },
+      "openingText": "The counting principle is based on a divide-and-conquer approach, whereby the counting is broken down into stages through the use of a tree. For example, consider an experiment that consists of two consecutive stages. The possible results of the first stage are a₁, a₂, …, aₘ; the possible results of the second stage are b₁, b₂, …, bₙ. Then, the possible results of the two-stage experiment are all possible ordered pairs (aᵢ, bⱼ), i = 1, …, m, j = 1, …, n. Note that the number of such ordered pairs is equal to mn. This observation can be generalized as follows (see also Fig. 1.16).",
+      "mathPassages": [
+        {
+          "id": "counting-principle-math-1",
+          "title": "The Counting Principle",
+          "text": "In what follows, we will focus primarily on two types of counting arguments that involve the selection of k objects out of a collection of n objects. If the order of selection matters, the selection is called a permutation, and otherwise, it is called a combination. We will then discuss a more general type of counting, involving a partition of a collection of n objects into multiple subsets.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/counting-principle-math-1-1.webp",
+              "width": 1093,
+              "height": 103,
+              "pdfPage": 48,
+              "printedPage": 43,
+              "bounds": [
+                128,
+                614.4,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/counting-principle-math-1-2.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 49,
+              "printedPage": 44,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                132.3
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/counting-principle-source-1.webp",
@@ -3139,8 +4186,7 @@
             143
           ]
         }
-      ],
-      "openingText": "The counting principle is based on a divide-and-conquer approach, whereby the counting is broken down into stages through the use of a tree. For example, consider an experiment that consists of two consecutive stages. The possible results of the first stage are a₁, a₂, …, aₘ; the possible results of the second stage are b₁, b₂, …, bₙ. Then, the possible results of the two-stage experiment are all possible ordered pairs (aᵢ, bⱼ), i = 1, …, m, j = 1, …, n. Note that the number of such ordered pairs is equal to mn. This observation can be generalized as follows (see also Fig. 1.16)."
+      ]
     },
     {
       "id": "k-permutations",
@@ -3236,6 +4282,49 @@
         "endPdfPage": 50,
         "endY": 153
       },
+      "openingText": "We start with n distinct objects, and let k be some positive integer, with k ≤ n. We wish to count the number of different ways that we can pick k out of these n objects and arrange them in a sequence, i.e., the number of distinct k-object sequences. We can choose any of the n objects to be the first one. Having chosen the first, there are only n − 1 possible choices for the second; given the choice of the first two, there only remain n − 2 available objects for the third stage, etc. When we are ready to select the last (the kth) object, we have already chosen k − 1 objects, which leaves us with n − (k − 1) choices for the last one. By the Counting Principle, the number of possible sequences, called k-permutations, is\nn(n − 1)⋯(n − k + 1) = [n(n − 1)⋯(n − k + 1)(n − k)⋯2·1]/[(n − k)⋯2·1]\n= n!/(n − k)!.",
+      "mathPassages": [
+        {
+          "id": "k-permutations-math-1",
+          "title": "k-permutations",
+          "text": "In the special case where k = n, the number of possible sequences, simply called permutations, is\n\nn · (n − 1) · (n − 2) ⋯ 2 · 1 = n!.\n\n(Let k = n in the formula for the number of k-permutations, and recall the convention 0! = 1.)",
+          "images": [
+            {
+              "src": "/probability/chapter-1/k-permutations-math-1-1.webp",
+              "width": 1093,
+              "height": 198,
+              "pdfPage": 49,
+              "printedPage": 44,
+              "bounds": [
+                128,
+                344.7,
+                486,
+                409.8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "k-permutations-formula-leadin",
+          "title": "k-permutations",
+          "text": "The count for permutations can be combined with the Counting Principle to solve more complicated counting problems.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/k-permutations-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 49,
+              "printedPage": 44,
+              "bounds": [
+                128,
+                524.7,
+                486,
+                546.8
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/k-permutations-source-1.webp",
@@ -3263,8 +4352,7 @@
             153
           ]
         }
-      ],
-      "openingText": "We start with n distinct objects, and let k be some positive integer, with k ≤ n. We wish to count the number of different ways that we can pick k out of these n objects and arrange them in a sequence, i.e., the number of distinct k-object sequences. We can choose any of the n objects to be the first one. Having chosen the first, there are only n − 1 possible choices for the second; given the choice of the first two, there only remain n − 2 available objects for the third stage, etc. When we are ready to select the last (the kth) object, we have already chosen k − 1 objects, which leaves us with n − (k − 1) choices for the last one. By the Counting Principle, the number of possible sequences, called k-permutations, is\nn(n − 1)⋯(n − k + 1) = [n(n − 1)⋯(n − k + 1)(n − k)⋯2·1]/[(n − k)⋯2·1]\n= n!/(n − k)!."
+      ]
     },
     {
       "id": "combinations",
@@ -3328,6 +4416,81 @@
         "endPdfPage": 51,
         "endY": 217
       },
+      "openingText": "There are n people and we are interested in forming a committee of k. How many different committees are there? More abstractly, this is the same as the problem of counting the number of k-element subsets of a given n-element set. Notice that forming a combination is different than forming a k-permutation, because in a combination there is no ordering of the selected elements. Thus for example, whereas the 2-permutations of the letters A, B, C, and D are\nAB, AC, AD, BA, BC, BD, CA, CB, CD, DA, DB, DC,\nthe combinations of two out four of these letters are\nAB, AC, AD, BC, BD, CD.",
+      "mathPassages": [
+        {
+          "id": "combinations-math-1",
+          "title": "Combinations",
+          "text": "There is a close connection between the number of combinations and the binomial coefficient that was introduced in Section 1.5. To see this note that specifying an n-toss sequence with k heads is the same as picking k elements (those that correspond to heads) out of the n-element set of tosses. Thus, the number of combinations is the same as the binomial coefficient C(n, k) introduced in Section 1.5.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/combinations-math-1-1.webp",
+              "width": 1093,
+              "height": 213,
+              "pdfPage": 50,
+              "printedPage": 45,
+              "bounds": [
+                128,
+                313.5,
+                486,
+                383.3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "combinations-math-2",
+          "title": "Combinations",
+          "text": "To count the number of combinations, note that selecting a k-permutation is the same as first selecting a combination of k items and then ordering them. Since there are k! ways of ordering the k selected items, we see that the number of k-permutations is equal to the number of combinations times k!. Hence, the number of possible combinations, is given by\n\nC(n, k) = n!/[k!(n − k)!].",
+          "images": [
+            {
+              "src": "/probability/chapter-1/combinations-math-2-1.webp",
+              "width": 1093,
+              "height": 271,
+              "pdfPage": 50,
+              "printedPage": 45,
+              "bounds": [
+                128,
+                385.2,
+                486,
+                474.1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "combinations-math-3",
+          "title": "Combinations",
+          "images": [
+            {
+              "src": "/probability/chapter-1/combinations-math-3-1.webp",
+              "width": 1093,
+              "height": 191,
+              "pdfPage": 50,
+              "printedPage": 45,
+              "bounds": [
+                128,
+                587.9,
+                486,
+                650.6
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/combinations-math-3-2.webp",
+              "width": 1093,
+              "height": 300,
+              "pdfPage": 51,
+              "printedPage": 46,
+              "bounds": [
+                128,
+                100,
+                486,
+                198.3
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/combinations-source-1.webp",
@@ -3355,8 +4518,7 @@
             217
           ]
         }
-      ],
-      "openingText": "There are n people and we are interested in forming a committee of k. How many different committees are there? More abstractly, this is the same as the problem of counting the number of k-element subsets of a given n-element set. Notice that forming a combination is different than forming a k-permutation, because in a combination there is no ordering of the selected elements. Thus for example, whereas the 2-permutations of the letters A, B, C, and D are\nAB, AC, AD, BA, BC, BD, CA, CB, CD, DA, DB, DC,\nthe combinations of two out four of these letters are\nAB, AC, AD, BC, BD, CD."
+      ]
     },
     {
       "id": "partitions",
@@ -3486,6 +4648,48 @@
         "endPdfPage": 53,
         "endY": 437
       },
+      "openingText": "Recall that a combination is a choice of k elements out of an n-element set without regard to order. This is the same as partitioning the set in two: one part contains k elements and the other contains the remaining n − k. We now generalize by considering partitions in more than two subsets.",
+      "mathPassages": [
+        {
+          "title": "Partitions",
+          "id": "partitions-math-1",
+          "images": [
+            {
+              "src": "/probability/chapter-1/partitions-math-1-1.webp",
+              "width": 1093,
+              "height": 920,
+              "pdfPage": 51,
+              "printedPage": 46,
+              "bounds": [
+                128,
+                291.3,
+                486,
+                592.7
+              ]
+            }
+          ]
+        },
+        {
+          "id": "partitions-formula-leadin",
+          "title": "Partitions",
+          "text": "Here is a summary of all the counting results we have developed.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/partitions-formula-leadin-1.webp",
+              "width": 1093,
+              "height": 30,
+              "pdfPage": 53,
+              "printedPage": 48,
+              "bounds": [
+                128,
+                216.8,
+                486,
+                226.9
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/partitions-source-1.webp",
@@ -3526,8 +4730,7 @@
             437
           ]
         }
-      ],
-      "openingText": "Recall that a combination is a choice of k elements out of an n-element set without regard to order. This is the same as partitioning the set in two: one part contains k elements and the other contains the remaining n − k. We now generalize by considering partitions in more than two subsets."
+      ]
     },
     {
       "id": "summary-and-discussion",
@@ -3572,6 +4775,62 @@
         "endPdfPage": 54,
         "endY": 470
       },
+      "openingText": "A probability problem can usually be broken down into a few basic steps:\n1. The description of the sample space, that is, the set of possible outcomes of a given experiment.\n2. The (possibly indirect) specification of the probability law (the probability of each event).\n3. The calculation of probabilities and conditional probabilities of various events of interest.",
+      "mathPassages": [
+        {
+          "id": "summary-and-discussion-math-1",
+          "title": "SUMMARY AND DISCUSSION",
+          "text": "Conditional probabilities can be viewed as probability laws on the same sample space. We can also view the conditioning event as a new universe, because only outcomes contained in the conditioning event can have positive conditional probability. Conditional probabilities are derived from the (unconditional) probability law using the definition P(A | B) = P(A ∩ B)/P(B). However, the reverse process is often convenient, that is, first specify some conditional probabilities that are natural for the real situation that we wish to model, and then use them to derive the (unconditional) probability law. Two important tools in this context are the multiplication rule and the total probability theorem.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/summary-and-discussion-math-1-1.webp",
+              "width": 1093,
+              "height": 67,
+              "pdfPage": 53,
+              "printedPage": 48,
+              "bounds": [
+                128,
+                626.3,
+                486,
+                648.4
+              ]
+            },
+            {
+              "src": "/probability/chapter-1/summary-and-discussion-math-1-2.webp",
+              "width": 1093,
+              "height": 249,
+              "pdfPage": 54,
+              "printedPage": 49,
+              "bounds": [
+                128,
+                110.3,
+                486,
+                192.1
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SUMMARY AND DISCUSSION",
+          "id": "summary-and-discussion-math-2",
+          "text": "We have illustrated through examples three methods of specifying probability laws in probabilistic models:\n\n(1) The counting method. This method applies to the case where the number of possible outcomes is finite, and all outcomes are equally likely. To calculate the probability of an event, we count the number of elements in the event and divide by the number of elements of the sample space.\n\n(2) The sequential method. This method applies when the experiment has a sequential character, and suitable conditional probabilities are specified or calculated along the branches of the corresponding tree (perhaps using the counting method). The probabilities of various events are then obtained by multiplying conditional probabilities along the corresponding paths of the tree, using the multiplication rule.\n\n(3) The divide-and-conquer method. Here, the probabilities P(B) of various events B are obtained from conditional probabilities P(B | Aᵢ), where the Aᵢ are suitable events that form a partition of the sample space and have known probabilities P(Aᵢ). The probabilities P(B) are then obtained by using the total probability theorem.",
+          "images": [
+            {
+              "src": "/probability/chapter-1/summary-and-discussion-math-2-1.webp",
+              "width": 1093,
+              "height": 660,
+              "pdfPage": 54,
+              "printedPage": 49,
+              "bounds": [
+                128,
+                194,
+                486,
+                410.2
+              ]
+            }
+          ]
+        }
+      ],
       "sourcePages": [
         {
           "src": "/probability/chapter-1/summary-and-discussion-source-1.webp",
@@ -3599,8 +4858,7 @@
             470
           ]
         }
-      ],
-      "openingText": "A probability problem can usually be broken down into a few basic steps:\n1. The description of the sample space, that is, the set of possible outcomes of a given experiment.\n2. The (possibly indirect) specification of the probability law (the probability of each event).\n3. The calculation of probabilities and conditional probabilities of various events of interest."
+      ]
     }
   ],
   "source": {

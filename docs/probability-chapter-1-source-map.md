@@ -39,7 +39,9 @@ Twenty named subsections become twenty lesson items. Sections 1.4 and 1.7 have n
 ## Extraction rules
 
 - Opening paragraphs are transcribed verbatim. Line wrapping, ligatures, subscripts, set symbols, and fraction layout are normalized for HTML; the unmodified original paragraph image is available alongside every transcription. A display equation or list belonging to the paragraph stays with it.
-- The summary and formula list are editorial text, separate from the opening quotation.
+- Each lesson now includes the full original paragraphs containing inline mathematics or introducing displayed formulas, plus the lead-ins needed for the following cards/examples. There are 53 additional contextual passages. Forty-six have readable HTML transcriptions; seven longer derivations use their complete original image layout directly. Whitespace, ligatures, Unicode math glyphs, linear fractions, and C(n, k) for a stacked binomial coefficient are normalized in HTML; every unmodified original remains available.
+- Passages, cards, figures, and examples follow source order, keeping formula introductions beside their statements. The separate unexplained formula list is no longer rendered. Editorial summaries remain available as Key ideas.
+- Mathematical footnotes stay with the subsection they explain: the events footnote with Sample Spaces and Events, and the length/integral footnote with Continuous Models.
 - Boxed statements, all numbered figures with their complete captions, and all numbered examples with solutions are original lossless PDF-region images. Multipage examples retain every part in reading order.
 - The complete original passage is also available so all intermediate derivations, inline formulas, and footnotes remain inspectable.
 - The inventory has 13 boxed statements, Figures 1.1–1.16, and Examples 1.1–1.30, without gaps or duplicate assignments.
@@ -55,7 +57,7 @@ python3 scripts/extract-probability-chapter-one.py --pdf /path/to/Introduction-t
 python3 scripts/validate-probability-chapter-one.py --pdf /path/to/Introduction-to-Probability.pdf
 ```
 
-Both scripts require `pdfplumber` and its rendering dependencies; validation also uses Pillow. The extraction manifest records exact headings, reviewed crop coordinates in PDF points, paragraph transcriptions, summaries, formulas, and asset ownership. The generated inventory records dimensions and source locations for every image. Validation checks the PDF hash, heading presence, inventory completeness, rectangle bounds, image dimensions, clipped glyphs, and orphan assets.
+Both scripts require `pdfplumber` and its rendering dependencies; validation also uses Pillow. The extraction manifest records exact headings, reviewed crop coordinates in PDF points, paragraph transcriptions, summaries, formulas, and asset ownership. The generated inventory records dimensions and source locations for every image. Validation checks the PDF hash, heading presence, inventory completeness, rectangle bounds, image dimensions, clipped glyphs, and orphan assets. It also checks that every mathematical glyph in each source range is covered by an opening, contextual passage, card, figure, or example, and that the Sets intro contains the full membership and finite-set explanations.
 
 ## App integration
 

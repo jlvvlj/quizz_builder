@@ -16,6 +16,10 @@ export interface SourceAsset {
     images: SourceImage[];
 }
 
+export interface SourcePassage extends SourceAsset {
+    text?: string;
+}
+
 export interface SourceUnit {
     id: string;
     section: string;
@@ -28,6 +32,7 @@ export interface SourceUnit {
     cards: SourceAsset[];
     figures: SourceAsset[];
     examples: SourceAsset[];
+    mathPassages: SourcePassage[];
     sourcePages: SourceImage[];
 }
 

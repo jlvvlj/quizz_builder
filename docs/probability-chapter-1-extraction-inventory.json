@@ -12,6 +12,84 @@
       458
     ]
   },
+  "sets-introduction-math-1-1.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-1-1.webp",
+    "width": 1093,
+    "height": 140,
+    "pdfPage": 8,
+    "printedPage": 3,
+    "bounds": [
+      128,
+      458.0,
+      486,
+      503.9
+    ]
+  },
+  "sets-introduction-math-2-1.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-2-1.webp",
+    "width": 1093,
+    "height": 288,
+    "pdfPage": 8,
+    "printedPage": 3,
+    "bounds": [
+      128,
+      505.8,
+      486,
+      600.2
+    ]
+  },
+  "sets-introduction-math-3-1.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-3-1.webp",
+    "width": 1093,
+    "height": 142,
+    "pdfPage": 8,
+    "printedPage": 3,
+    "bounds": [
+      128,
+      602.1,
+      486,
+      648.9
+    ]
+  },
+  "sets-introduction-math-3-2.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-3-2.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 9,
+    "printedPage": 4,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      132.3
+    ]
+  },
+  "sets-introduction-math-4-1.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-4-1.webp",
+    "width": 1093,
+    "height": 343,
+    "pdfPage": 9,
+    "printedPage": 4,
+    "bounds": [
+      128,
+      134.2,
+      486,
+      246.5
+    ]
+  },
+  "sets-introduction-math-5-1.webp": {
+    "src": "/probability/chapter-1/sets-introduction-math-5-1.webp",
+    "width": 1093,
+    "height": 213,
+    "pdfPage": 9,
+    "printedPage": 4,
+    "bounds": [
+      128,
+      248.4,
+      486,
+      318.2
+    ]
+  },
   "sets-introduction-source-1.webp": {
     "src": "/probability/chapter-1/sets-introduction-source-1.webp",
     "width": 1093,
@@ -64,6 +142,32 @@
       441
     ]
   },
+  "set-operations-math-1-1.webp": {
+    "src": "/probability/chapter-1/set-operations-math-1-1.webp",
+    "width": 1093,
+    "height": 784,
+    "pdfPage": 9,
+    "printedPage": 4,
+    "bounds": [
+      128,
+      391.5,
+      486,
+      648.4
+    ]
+  },
+  "set-operations-math-2-1.webp": {
+    "src": "/probability/chapter-1/set-operations-math-2-1.webp",
+    "width": 1093,
+    "height": 140,
+    "pdfPage": 10,
+    "printedPage": 5,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      156.2
+    ]
+  },
   "set-operations-source-1.webp": {
     "src": "/probability/chapter-1/set-operations-source-1.webp",
     "width": 1093,
@@ -101,6 +205,32 @@
       484,
       486,
       562
+    ]
+  },
+  "algebra-of-sets-math-1-1.webp": {
+    "src": "/probability/chapter-1/algebra-of-sets-math-1-1.webp",
+    "width": 1093,
+    "height": 241,
+    "pdfPage": 10,
+    "printedPage": 5,
+    "bounds": [
+      128,
+      569.8,
+      486,
+      648.9
+    ]
+  },
+  "algebra-of-sets-math-1-2.webp": {
+    "src": "/probability/chapter-1/algebra-of-sets-math-1-2.webp",
+    "width": 1093,
+    "height": 110,
+    "pdfPage": 11,
+    "printedPage": 6,
+    "bounds": [
+      128,
+      108.0,
+      486,
+      144.2
     ]
   },
   "algebra-of-sets-source-1.webp": {
@@ -205,6 +335,19 @@
       100,
       486,
       169
+    ]
+  },
+  "sample-spaces-and-events-math-1-1.webp": {
+    "src": "/probability/chapter-1/sample-spaces-and-events-math-1-1.webp",
+    "width": 1093,
+    "height": 268,
+    "pdfPage": 12,
+    "printedPage": 7,
+    "bounds": [
+      128,
+      560.3,
+      486,
+      648.1
     ]
   },
   "sample-spaces-and-events-source-1.webp": {
@@ -376,6 +519,58 @@
       402
     ]
   },
+  "probability-laws-math-1-1.webp": {
+    "src": "/probability/chapter-1/probability-laws-math-1-1.webp",
+    "width": 1093,
+    "height": 176,
+    "pdfPage": 14,
+    "printedPage": 9,
+    "bounds": [
+      128,
+      415.5,
+      486,
+      473.3
+    ]
+  },
+  "probability-laws-math-2-1.webp": {
+    "src": "/probability/chapter-1/probability-laws-math-2-1.webp",
+    "width": 1093,
+    "height": 213,
+    "pdfPage": 14,
+    "printedPage": 9,
+    "bounds": [
+      128,
+      475.2,
+      486,
+      545.1
+    ]
+  },
+  "probability-laws-math-3-1.webp": {
+    "src": "/probability/chapter-1/probability-laws-math-3-1.webp",
+    "width": 1093,
+    "height": 309,
+    "pdfPage": 14,
+    "printedPage": 9,
+    "bounds": [
+      128,
+      547.0,
+      486,
+      648.4
+    ]
+  },
+  "probability-laws-math-3-2.webp": {
+    "src": "/probability/chapter-1/probability-laws-math-3-2.webp",
+    "width": 1093,
+    "height": 382,
+    "pdfPage": 15,
+    "printedPage": 10,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      235.5
+    ]
+  },
   "probability-laws-source-1.webp": {
     "src": "/probability/chapter-1/probability-laws-source-1.webp",
     "width": 1093,
@@ -519,6 +714,32 @@
       250
     ]
   },
+  "discrete-models-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/discrete-models-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 16,
+    "printedPage": 11,
+    "bounds": [
+      128,
+      238.5,
+      486,
+      260.6
+    ]
+  },
+  "discrete-models-math-1-1.webp": {
+    "src": "/probability/chapter-1/discrete-models-math-1-1.webp",
+    "width": 1093,
+    "height": 135,
+    "pdfPage": 16,
+    "printedPage": 11,
+    "bounds": [
+      128,
+      401.4,
+      486,
+      445.8
+    ]
+  },
   "discrete-models-source-1.webp": {
     "src": "/probability/chapter-1/discrete-models-source-1.webp",
     "width": 1093,
@@ -610,6 +831,19 @@
       393
     ]
   },
+  "continuous-models-math-1-1.webp": {
+    "src": "/probability/chapter-1/continuous-models-math-1-1.webp",
+    "width": 1093,
+    "height": 161,
+    "pdfPage": 18,
+    "printedPage": 13,
+    "bounds": [
+      128,
+      595.3,
+      486,
+      648.1
+    ]
+  },
   "continuous-models-source-1.webp": {
     "src": "/probability/chapter-1/continuous-models-source-1.webp",
     "width": 1093,
@@ -673,6 +907,19 @@
       106,
       486,
       649
+    ]
+  },
+  "properties-of-probability-laws-math-1-1.webp": {
+    "src": "/probability/chapter-1/properties-of-probability-laws-math-1-1.webp",
+    "width": 1093,
+    "height": 553,
+    "pdfPage": 19,
+    "printedPage": 14,
+    "bounds": [
+      128,
+      379.2,
+      486,
+      560.5
     ]
   },
   "properties-of-probability-laws-source-1.webp": {
@@ -764,6 +1011,58 @@
       456,
       486,
       494
+    ]
+  },
+  "conditioning-introduction-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/conditioning-introduction-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 332,
+    "pdfPage": 21,
+    "printedPage": 16,
+    "bounds": [
+      128,
+      498.8,
+      486,
+      607.6
+    ]
+  },
+  "conditioning-introduction-math-1-1.webp": {
+    "src": "/probability/chapter-1/conditioning-introduction-math-1-1.webp",
+    "width": 1093,
+    "height": 103,
+    "pdfPage": 21,
+    "printedPage": 16,
+    "bounds": [
+      128,
+      614.4,
+      486,
+      648.4
+    ]
+  },
+  "conditioning-introduction-math-1-2.webp": {
+    "src": "/probability/chapter-1/conditioning-introduction-math-1-2.webp",
+    "width": 1093,
+    "height": 760,
+    "pdfPage": 22,
+    "printedPage": 17,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      359.1
+    ]
+  },
+  "conditioning-introduction-math-2-1.webp": {
+    "src": "/probability/chapter-1/conditioning-introduction-math-2-1.webp",
+    "width": 1093,
+    "height": 315,
+    "pdfPage": 22,
+    "printedPage": 17,
+    "bounds": [
+      128,
+      370.6,
+      486,
+      473.9
     ]
   },
   "conditioning-introduction-source-1.webp": {
@@ -881,6 +1180,45 @@
       385,
       486,
       637
+    ]
+  },
+  "conditional-probability-law-math-1-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-law-math-1-1.webp",
+    "width": 1093,
+    "height": 599,
+    "pdfPage": 23,
+    "printedPage": 18,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      306.4
+    ]
+  },
+  "conditional-probability-law-math-2-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-law-math-2-1.webp",
+    "width": 1093,
+    "height": 154,
+    "pdfPage": 23,
+    "printedPage": 18,
+    "bounds": [
+      128,
+      308.3,
+      486,
+      358.8
+    ]
+  },
+  "conditional-probability-law-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-law-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 30,
+    "pdfPage": 23,
+    "printedPage": 18,
+    "bounds": [
+      128,
+      365.2,
+      486,
+      375.3
     ]
   },
   "conditional-probability-law-source-1.webp": {
@@ -1063,6 +1401,58 @@
       109,
       486,
       544
+    ]
+  },
+  "conditional-probability-modeling-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-modeling-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 405,
+    "pdfPage": 26,
+    "printedPage": 21,
+    "bounds": [
+      128,
+      515.7,
+      486,
+      648.4
+    ]
+  },
+  "conditional-probability-modeling-math-1-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-modeling-math-1-1.webp",
+    "width": 1093,
+    "height": 213,
+    "pdfPage": 27,
+    "printedPage": 22,
+    "bounds": [
+      128,
+      361.1,
+      486,
+      431.0
+    ]
+  },
+  "conditional-probability-modeling-math-2-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-modeling-math-2-1.webp",
+    "width": 1093,
+    "height": 284,
+    "pdfPage": 27,
+    "printedPage": 22,
+    "bounds": [
+      128,
+      557.3,
+      486,
+      650.4
+    ]
+  },
+  "conditional-probability-modeling-math-3-1.webp": {
+    "src": "/probability/chapter-1/conditional-probability-modeling-math-3-1.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 28,
+    "printedPage": 23,
+    "bounds": [
+      128,
+      422.7,
+      486,
+      444.7
     ]
   },
   "conditional-probability-modeling-source-1.webp": {
@@ -1312,6 +1702,84 @@
       495
     ]
   },
+  "total-probability-and-bayes-math-1-1.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-math-1-1.webp",
+    "width": 1093,
+    "height": 286,
+    "pdfPage": 31,
+    "printedPage": 26,
+    "bounds": [
+      128,
+      435.5,
+      486,
+      529.2
+    ]
+  },
+  "total-probability-and-bayes-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 104,
+    "pdfPage": 33,
+    "printedPage": 28,
+    "bounds": [
+      128,
+      276.5,
+      486,
+      310.6
+    ]
+  },
+  "total-probability-and-bayes-math-2-1.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-math-2-1.webp",
+    "width": 1093,
+    "height": 140,
+    "pdfPage": 34,
+    "printedPage": 29,
+    "bounds": [
+      128,
+      355.2,
+      486,
+      401.1
+    ]
+  },
+  "total-probability-and-bayes-math-3-1.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-math-3-1.webp",
+    "width": 1093,
+    "height": 147,
+    "pdfPage": 34,
+    "printedPage": 29,
+    "bounds": [
+      128,
+      576.2,
+      486,
+      624.4
+    ]
+  },
+  "total-probability-and-bayes-math-4-1.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-math-4-1.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 34,
+    "printedPage": 29,
+    "bounds": [
+      128,
+      626.3,
+      486,
+      648.4
+    ]
+  },
+  "total-probability-and-bayes-math-4-2.webp": {
+    "src": "/probability/chapter-1/total-probability-and-bayes-math-4-2.webp",
+    "width": 1093,
+    "height": 178,
+    "pdfPage": 35,
+    "printedPage": 30,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      168.7
+    ]
+  },
   "total-probability-and-bayes-source-1.webp": {
     "src": "/probability/chapter-1/total-probability-and-bayes-source-1.webp",
     "width": 1093,
@@ -1442,6 +1910,32 @@
       434
     ]
   },
+  "independence-introduction-math-1-1.webp": {
+    "src": "/probability/chapter-1/independence-introduction-math-1-1.webp",
+    "width": 1093,
+    "height": 339,
+    "pdfPage": 37,
+    "printedPage": 32,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      221.5
+    ]
+  },
+  "independence-introduction-math-2-1.webp": {
+    "src": "/probability/chapter-1/independence-introduction-math-2-1.webp",
+    "width": 1093,
+    "height": 249,
+    "pdfPage": 37,
+    "printedPage": 32,
+    "bounds": [
+      128,
+      223.4,
+      486,
+      305.1
+    ]
+  },
   "independence-introduction-source-1.webp": {
     "src": "/probability/chapter-1/independence-introduction-source-1.webp",
     "width": 1093,
@@ -1546,6 +2040,58 @@
       220
     ]
   },
+  "conditional-independence-math-1-1.webp": {
+    "src": "/probability/chapter-1/conditional-independence-math-1-1.webp",
+    "width": 1093,
+    "height": 271,
+    "pdfPage": 38,
+    "printedPage": 33,
+    "bounds": [
+      128,
+      559.9,
+      486,
+      648.9
+    ]
+  },
+  "conditional-independence-math-1-2.webp": {
+    "src": "/probability/chapter-1/conditional-independence-math-1-2.webp",
+    "width": 1093,
+    "height": 264,
+    "pdfPage": 39,
+    "printedPage": 34,
+    "bounds": [
+      128,
+      108.0,
+      486,
+      194.6
+    ]
+  },
+  "conditional-independence-math-2-1.webp": {
+    "src": "/probability/chapter-1/conditional-independence-math-2-1.webp",
+    "width": 1093,
+    "height": 103,
+    "pdfPage": 39,
+    "printedPage": 34,
+    "bounds": [
+      128,
+      196.5,
+      486,
+      230.4
+    ]
+  },
+  "conditional-independence-math-3-1.webp": {
+    "src": "/probability/chapter-1/conditional-independence-math-3-1.webp",
+    "width": 1093,
+    "height": 213,
+    "pdfPage": 40,
+    "printedPage": 35,
+    "bounds": [
+      128,
+      230.3,
+      486,
+      300.1
+    ]
+  },
   "conditional-independence-source-1.webp": {
     "src": "/probability/chapter-1/conditional-independence-source-1.webp",
     "width": 1093,
@@ -1648,6 +2194,32 @@
       109,
       486,
       330
+    ]
+  },
+  "independence-of-events-math-1-1.webp": {
+    "src": "/probability/chapter-1/independence-of-events-math-1-1.webp",
+    "width": 1093,
+    "height": 436,
+    "pdfPage": 41,
+    "printedPage": 36,
+    "bounds": [
+      128,
+      224.7,
+      486,
+      367.5
+    ]
+  },
+  "independence-of-events-math-2-1.webp": {
+    "src": "/probability/chapter-1/independence-of-events-math-2-1.webp",
+    "width": 1093,
+    "height": 436,
+    "pdfPage": 42,
+    "printedPage": 37,
+    "bounds": [
+      128,
+      348.8,
+      486,
+      491.7
     ]
   },
   "independence-of-events-source-1.webp": {
@@ -1809,14 +2381,14 @@
   "figures-15-1.webp": {
     "src": "/probability/chapter-1/figures-15-1.webp",
     "width": 1093,
-    "height": 788,
+    "height": 818,
     "pdfPage": 45,
     "printedPage": 40,
     "bounds": [
       128,
       106,
       486,
-      364
+      374
     ]
   },
   "examples-23-1.webp": {
@@ -1830,6 +2402,71 @@
       199,
       486,
       414
+    ]
+  },
+  "independent-trials-math-1-1.webp": {
+    "src": "/probability/chapter-1/independent-trials-math-1-1.webp",
+    "width": 1093,
+    "height": 142,
+    "pdfPage": 44,
+    "printedPage": 39,
+    "bounds": [
+      128,
+      446.3,
+      486,
+      492.8
+    ]
+  },
+  "independent-trials-math-2-1.webp": {
+    "src": "/probability/chapter-1/independent-trials-math-2-1.webp",
+    "width": 1093,
+    "height": 359,
+    "pdfPage": 44,
+    "printedPage": 39,
+    "bounds": [
+      128,
+      494.2,
+      486,
+      611.8
+    ]
+  },
+  "independent-trials-math-3-1.webp": {
+    "src": "/probability/chapter-1/independent-trials-math-3-1.webp",
+    "width": 1093,
+    "height": 106,
+    "pdfPage": 44,
+    "printedPage": 39,
+    "bounds": [
+      128,
+      613.7,
+      486,
+      648.4
+    ]
+  },
+  "independent-trials-math-3-2.webp": {
+    "src": "/probability/chapter-1/independent-trials-math-3-2.webp",
+    "width": 1093,
+    "height": 791,
+    "pdfPage": 45,
+    "printedPage": 40,
+    "bounds": [
+      128,
+      389.4,
+      486,
+      648.4
+    ]
+  },
+  "independent-trials-math-3-3.webp": {
+    "src": "/probability/chapter-1/independent-trials-math-3-3.webp",
+    "width": 1093,
+    "height": 218,
+    "pdfPage": 46,
+    "printedPage": 41,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      181.8
     ]
   },
   "independent-trials-source-1.webp": {
@@ -1882,6 +2519,45 @@
       466,
       486,
       505
+    ]
+  },
+  "counting-introduction-math-1-1.webp": {
+    "src": "/probability/chapter-1/counting-introduction-math-1-1.webp",
+    "width": 1093,
+    "height": 241,
+    "pdfPage": 46,
+    "printedPage": 41,
+    "bounds": [
+      128,
+      509.6,
+      486,
+      588.7
+    ]
+  },
+  "counting-introduction-math-2-1.webp": {
+    "src": "/probability/chapter-1/counting-introduction-math-2-1.webp",
+    "width": 1093,
+    "height": 161,
+    "pdfPage": 46,
+    "printedPage": 41,
+    "bounds": [
+      128,
+      595.6,
+      486,
+      648.4
+    ]
+  },
+  "counting-introduction-math-2-2.webp": {
+    "src": "/probability/chapter-1/counting-introduction-math-2-2.webp",
+    "width": 1093,
+    "height": 176,
+    "pdfPage": 47,
+    "printedPage": 42,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      168.2
     ]
   },
   "counting-introduction-source-1.webp": {
@@ -1975,6 +2651,32 @@
       556
     ]
   },
+  "counting-principle-math-1-1.webp": {
+    "src": "/probability/chapter-1/counting-principle-math-1-1.webp",
+    "width": 1093,
+    "height": 103,
+    "pdfPage": 48,
+    "printedPage": 43,
+    "bounds": [
+      128,
+      614.4,
+      486,
+      648.4
+    ]
+  },
+  "counting-principle-math-1-2.webp": {
+    "src": "/probability/chapter-1/counting-principle-math-1-2.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 49,
+    "printedPage": 44,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      132.3
+    ]
+  },
   "counting-principle-source-1.webp": {
     "src": "/probability/chapter-1/counting-principle-source-1.webp",
     "width": 1093,
@@ -2066,6 +2768,32 @@
       135
     ]
   },
+  "k-permutations-math-1-1.webp": {
+    "src": "/probability/chapter-1/k-permutations-math-1-1.webp",
+    "width": 1093,
+    "height": 198,
+    "pdfPage": 49,
+    "printedPage": 44,
+    "bounds": [
+      128,
+      344.7,
+      486,
+      409.8
+    ]
+  },
+  "k-permutations-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/k-permutations-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 49,
+    "printedPage": 44,
+    "bounds": [
+      128,
+      524.7,
+      486,
+      546.8
+    ]
+  },
   "k-permutations-source-1.webp": {
     "src": "/probability/chapter-1/k-permutations-source-1.webp",
     "width": 1093,
@@ -2116,6 +2844,58 @@
       504,
       486,
       578
+    ]
+  },
+  "combinations-math-1-1.webp": {
+    "src": "/probability/chapter-1/combinations-math-1-1.webp",
+    "width": 1093,
+    "height": 213,
+    "pdfPage": 50,
+    "printedPage": 45,
+    "bounds": [
+      128,
+      313.5,
+      486,
+      383.3
+    ]
+  },
+  "combinations-math-2-1.webp": {
+    "src": "/probability/chapter-1/combinations-math-2-1.webp",
+    "width": 1093,
+    "height": 271,
+    "pdfPage": 50,
+    "printedPage": 45,
+    "bounds": [
+      128,
+      385.2,
+      486,
+      474.1
+    ]
+  },
+  "combinations-math-3-1.webp": {
+    "src": "/probability/chapter-1/combinations-math-3-1.webp",
+    "width": 1093,
+    "height": 191,
+    "pdfPage": 50,
+    "printedPage": 45,
+    "bounds": [
+      128,
+      587.9,
+      486,
+      650.6
+    ]
+  },
+  "combinations-math-3-2.webp": {
+    "src": "/probability/chapter-1/combinations-math-3-2.webp",
+    "width": 1093,
+    "height": 300,
+    "pdfPage": 51,
+    "printedPage": 46,
+    "bounds": [
+      128,
+      100,
+      486,
+      198.3
     ]
   },
   "combinations-source-1.webp": {
@@ -2222,6 +3002,32 @@
       206
     ]
   },
+  "partitions-math-1-1.webp": {
+    "src": "/probability/chapter-1/partitions-math-1-1.webp",
+    "width": 1093,
+    "height": 920,
+    "pdfPage": 51,
+    "printedPage": 46,
+    "bounds": [
+      128,
+      291.3,
+      486,
+      592.7
+    ]
+  },
+  "partitions-formula-leadin-1.webp": {
+    "src": "/probability/chapter-1/partitions-formula-leadin-1.webp",
+    "width": 1093,
+    "height": 30,
+    "pdfPage": 53,
+    "printedPage": 48,
+    "bounds": [
+      128,
+      216.8,
+      486,
+      226.9
+    ]
+  },
   "partitions-source-1.webp": {
     "src": "/probability/chapter-1/partitions-source-1.webp",
     "width": 1093,
@@ -2272,6 +3078,45 @@
       461,
       486,
       563
+    ]
+  },
+  "summary-and-discussion-math-1-1.webp": {
+    "src": "/probability/chapter-1/summary-and-discussion-math-1-1.webp",
+    "width": 1093,
+    "height": 67,
+    "pdfPage": 53,
+    "printedPage": 48,
+    "bounds": [
+      128,
+      626.3,
+      486,
+      648.4
+    ]
+  },
+  "summary-and-discussion-math-1-2.webp": {
+    "src": "/probability/chapter-1/summary-and-discussion-math-1-2.webp",
+    "width": 1093,
+    "height": 249,
+    "pdfPage": 54,
+    "printedPage": 49,
+    "bounds": [
+      128,
+      110.3,
+      486,
+      192.1
+    ]
+  },
+  "summary-and-discussion-math-2-1.webp": {
+    "src": "/probability/chapter-1/summary-and-discussion-math-2-1.webp",
+    "width": 1093,
+    "height": 660,
+    "pdfPage": 54,
+    "printedPage": 49,
+    "bounds": [
+      128,
+      194,
+      486,
+      410.2
     ]
   },
   "summary-and-discussion-source-1.webp": {
