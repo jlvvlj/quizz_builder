@@ -96,15 +96,13 @@ export function ProbabilitySourceOutline({ sectionId }: { sectionId: string }) {
         <div className="mt-8 space-y-8">
             {chapter.sections.map(section => {
                 const items = chapterOneLessons.filter(item => item.section === section.id);
-                const introduction = chapter.units.find(item => item.section === section.id && item.kind === 'introduction');
                 return <section key={section.id} aria-label={`${section.id} ${section.title}`} className="rounded-xl border border-[#4F4F4F] bg-[#262626] p-5 sm:p-6">
                     <h2 className="text-lg font-bold sm:text-xl">{section.id} {section.title}</h2>
                     <p className="mt-2 text-sm text-[#A1A1A1]">{items.length} {items.length === 1 ? 'lesson' : 'lessons'}{items[0]?.kind === 'section' ? ' · No separate subsection headings' : ''}</p>
-                    {introduction && <Link className="mt-4 inline-block text-sm text-[#FF80AA] underline-offset-4 hover:underline" href={sourceLessonUrl(sectionId, introduction.id)}>Read the section introduction</Link>}
                     <ol className="mt-5 grid gap-3 md:grid-cols-2">
                         {items.map(item => <li key={item.id}>
                             <Link href={sourceLessonUrl(sectionId, item.id)} className="flex h-full items-center justify-between gap-4 rounded-lg border border-[#4F4F4F] bg-[#181818] p-4 transition-colors hover:border-[#FF0054] hover:bg-[#242424]">
-                                <span><span className="block font-semibold">{item.title}</span><span className="mt-2 block text-xs leading-5 text-[#A1A1A1]">{materialCounts(item)}</span></span>
+                                <span><span className="block font-semibold">{item.kind === 'introduction' ? 'Intro' : item.title}</span><span className="mt-2 block text-xs leading-5 text-[#A1A1A1]">{materialCounts(item)}</span></span>
                                 <ArrowRight className="h-4 w-4 shrink-0 text-[#FF4B86]" />
                             </Link>
                         </li>)}
@@ -126,7 +124,7 @@ export function ProbabilitySourceLesson({ sectionId, itemId }: { sectionId: stri
         <Link href={`/steps?section=${encodeURIComponent(sectionId)}`} className="mb-6 inline-flex items-center gap-2 text-sm text-[#B8B8B8] hover:text-white"><ArrowLeft className="h-4 w-4" />Chapter 1 lessons</Link>
         <header className="mb-8 border-b border-[#4F4F4F] pb-6">
             <p className="mb-3 text-sm font-semibold tracking-wide text-[#FF80AA]">{section.id} {section.title}</p>
-            <h1 className="text-3xl font-bold sm:text-4xl">{unit.kind === 'introduction' ? 'Section introduction' : unit.title}</h1>
+            <h1 className="text-3xl font-bold sm:text-4xl">{unit.kind === 'introduction' ? 'Intro' : unit.title}</h1>
             <p className="mt-4 flex items-center gap-2 text-sm text-[#A1A1A1]"><BookOpen className="h-4 w-4" />{materialCounts(unit)}</p>
         </header>
         <LessonMaterial key={unit.id} unit={unit} />

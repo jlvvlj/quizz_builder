@@ -62,7 +62,7 @@ for stale in output.glob('*.webp'):
 data['source'] = dict(filename=args.pdf.name, sha256=hashlib.sha256(args.pdf.read_bytes()).hexdigest(),
                       chapter=1, firstPdfPage=8, lastPdfPage=54,
                       extraction='Original PDF regions rendered losslessly; summaries and formula lists are separate editorial text.')
-data['lessonCount'] = sum(u['kind'] != 'introduction' for u in data['units'])
+data['lessonCount'] = len(data['units'])
 (ROOT / 'src/data/probability-chapter-1-source.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n')
 (ROOT / 'docs/probability-chapter-1-extraction-inventory.json').write_text(json.dumps(images, indent=2)+'\n')
-print('Extracted %d images; %d lesson items; %d section introductions.' % (len(images), data['lessonCount'], len(data['units'])-data['lessonCount']))
+print('Extracted %d images; %d lesson items including %d section introductions.' % (len(images), data['lessonCount'], sum(u['kind'] == 'introduction' for u in data['units'])))

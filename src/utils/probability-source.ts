@@ -39,7 +39,7 @@ export const probabilityChapterOne = chapterOne as {
     units: SourceUnit[];
 };
 
-export const chapterOneLessons = probabilityChapterOne.units.filter(unit => unit.kind !== 'introduction');
+export const chapterOneLessons = probabilityChapterOne.units;
 
 export function sourceLessonUrl(sectionId: string, itemId: string): string {
     return `/lesson?${new URLSearchParams({ section: sectionId, deck: probabilityChapterOne.deckId, item: itemId })}`;

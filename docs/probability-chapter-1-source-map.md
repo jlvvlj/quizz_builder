@@ -4,12 +4,14 @@ Source: `Introduction to Probability (1).pdf`, sections 1.1–1.7 (printed pp. 3
 
 ## Structure
 
-Twenty named subsections become twenty lesson items. Sections 1.4 and 1.7 have no named subsections; each is one lesson under its exact section heading. The other five sections retain their unheaded introductory material as separately accessible section introductions, outside the 22-lesson count.
+Twenty named subsections become twenty lesson items. Sections 1.4 and 1.7 have no named subsections; each is one lesson under its exact section heading. The five sections with subsections each begin with an Intro lesson containing all material before the first named subsection. These introductions are included in the 27-lesson count.
 
 | Section | Exact lesson heading | Cards | Figures | Examples |
 |---|---|---|---|---|
+| 1.1 | Intro | 0 | 0 | 0 |
 | 1.1 | Set Operations | 0 | 1 | 0 |
 | 1.1 | The Algebra of Sets | 0 | 0 | 0 |
+| 1.2 | Intro | 1 | 1 | 0 |
 | 1.2 | Sample Spaces and Events | 0 | 0 | 0 |
 | 1.2 | Choosing an Appropriate Sample Space | 0 | 0 | 1 |
 | 1.2 | Sequential Models | 0 | 1 | 0 |
@@ -18,13 +20,16 @@ Twenty named subsections become twenty lesson items. Sections 1.4 and 1.7 have n
 | 1.2 | Continuous Models | 0 | 1 | 2 |
 | 1.2 | Properties of Probability Laws | 1 | 1 | 0 |
 | 1.2 | Models and Reality | 0 | 0 | 0 |
+| 1.3 | Intro | 0 | 0 | 0 |
 | 1.3 | Conditional Probabilities Specify a Probability Law | 1 | 1 | 3 |
 | 1.3 | Using Conditional Probability for Modeling | 1 | 4 | 3 |
 | 1.4 | TOTAL PROBABILITY THEOREM AND BAYES’ RULE | 2 | 2 | 5 |
+| 1.5 | Intro | 0 | 0 | 1 |
 | 1.5 | Conditional Independence | 1 | 0 | 2 |
 | 1.5 | Independence of a Collection of Events | 1 | 0 | 2 |
 | 1.5 | Reliability | 0 | 1 | 1 |
 | 1.5 | Independent Trials and the Binomial Probabilities | 0 | 1 | 1 |
+| 1.6 | Intro | 0 | 0 | 0 |
 | 1.6 | The Counting Principle | 1 | 1 | 2 |
 | 1.6 | k-permutations | 0 | 0 | 2 |
 | 1.6 | Combinations | 0 | 0 | 1 |
@@ -54,4 +59,4 @@ Both scripts require `pdfplumber` and its rendering dependencies; validation als
 
 ## App integration
 
-Chapter 1 uses `/steps?section=section_2` and `/lesson?section=section_2&deck=probability-chapter-1&item=<subsection-id>`. Its home card shows 7 sections and 22 lessons. Legacy Chapter 1 lesson links with only `step` open the new outline, rather than presenting an unrelated subsection. The old custom Chapter 1 lesson data is retired. Chapter 2, the existing quiz data, and quiz routes are unchanged.
+Chapter 1 uses `/steps?section=section_2` and `/lesson?section=section_2&deck=probability-chapter-1&item=<subsection-id>`. Its home card shows 7 sections and 27 lessons. Legacy Chapter 1 lesson links with only `step` open the new outline, rather than presenting an unrelated subsection. The old custom Chapter 1 lesson data is retired. Chapter 2, the existing quiz data, and quiz routes are unchanged.
