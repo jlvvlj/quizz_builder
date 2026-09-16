@@ -25,22 +25,26 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
     const root = useRef<HTMLDivElement>(null);
     const id = useId().replace(/:/g, '');
     const visible = terms.slice(group * 3, group * 3 + 3);
+    const isAbove = (index: number) => (index + group) % 2 === 0;
     useEffect(() => {
         const el = root.current;
         if (!el || !open) { setPaths([]); return; }
         const measure = () => {
             const box = el.getBoundingClientRect();
             const lines: Connector[] = [];
-            visible.forEach(term => {
+            visible.forEach((term, index) => {
                 const anchor = el.querySelector(`[data-formula-term="${term.id}"]`);
                 const label = el.querySelector(`[data-definition="${term.id}"]`);
                 if (!anchor || !label) return;
                 const a = anchor.getBoundingClientRect(), b = label.getBoundingClientRect();
-                const x = a.left + a.width / 2 - box.left, y = a.bottom - box.top + 5;
-                const tx = b.left + b.width / 2 - box.left, ty = b.top - box.top - 5;
+                const above = isAbove(index);
+                const x = a.left + a.width / 2 - box.left;
+                const y = (above ? a.top - 6 : a.bottom + 6) - box.top;
+                const tx = b.left + b.width / 2 - box.left;
+                const ty = (above ? b.bottom + 7 : b.top - 7) - box.top;
                 const scrollBox = anchor.closest('.formula-scroll')?.getBoundingClientRect();
                 if (scrollBox && (x + box.left < scrollBox.left || x + box.left > scrollBox.right)) return;
-                lines.push({d: `M ${x} ${y} C ${x} ${y + (ty-y)*.52}, ${tx} ${ty-24}, ${tx} ${ty}`, color: term.color, x, y});
+                lines.push({d: `M ${x} ${y} C ${x} ${y + (ty-y)*.52}, ${tx} ${ty + (above ? 22 : -22)}, ${tx} ${ty}`, color: term.color, x, y});
             });
             setPaths(lines);
         };
@@ -53,19 +57,31 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
     // The visible terms are determined by these values.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open, group, source, suppliedTerms]);
+    const labels = (above: boolean) => {
+        const placed = visible.filter((_, index) => isAbove(index) === above);
+        if (!placed.length) return null;
+        return <div className={`formula-label-band formula-labels-${above ? 'above' : 'below'} ${placed.length === 1 ? 'single-label' : ''}`}>
+            {placed.map(term => <button type="button" key={term.id} data-definition={term.id}
+                aria-label={`${term.symbol}: ${term.definition}`}
+                className={`formula-definition ${active === term.id ? 'is-active' : ''}`}
+                style={{ '--term-color': term.color } as React.CSSProperties}
+                onFocus={() => setActive(term.id)} onBlur={() => setActive(undefined)}
+                onMouseEnter={() => setActive(term.id)} onMouseLeave={() => setActive(undefined)}
+                onClick={() => root.current?.querySelector(`[data-formula-term="${term.id}"]`)?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })}>
+                {term.definition}
+            </button>)}
+        </div>;
+    };
     return <div className={`formula-card ${open ? 'formula-open' : ''}`}>
-        <div className="formula-toolbar"><span>Explore the notation</span><button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>{open ? 'Hide explanations' : 'Show explanations'}</button></div>
+        <div className="formula-toolbar"><span>Explore the notation</span><button type="button" aria-expanded={open} aria-controls={`diagram-${id}`} onClick={() => setOpen(!open)}>{open ? 'Hide explanations' : 'Show explanations'}</button></div>
         <div ref={root} id={`diagram-${id}`} className="formula-diagram" data-active-term={active}>
+            {open && labels(true)}
             <div className="formula-scroll" onMouseOver={e => { const el = (e.target as HTMLElement).closest('[data-formula-term]'); if (el) setActive(el.getAttribute('data-formula-term') || undefined); }} onMouseLeave={() => setActive(undefined)}>
                 {children || <div className="formula-typeset" aria-label={source} dangerouslySetInnerHTML={{ __html: mathHtml(source, context, true) }} />}
             </div>
             {open && <>
                 <svg className="formula-connectors" aria-hidden="true">{paths.map((p, i) => <g key={i}><path d={p.d} fill="none" stroke={p.color} strokeWidth="1.6" /><circle cx={p.x} cy={p.y} r="3" fill={p.color} /></g>)}</svg>
-                <div id={id} className="formula-definitions">
-                    {visible.map(term => <button type="button" key={term.id} data-definition={term.id} className={`formula-definition ${active === term.id ? 'is-active' : ''}`} style={{ '--term-color': term.color } as React.CSSProperties} onFocus={() => setActive(term.id)} onBlur={() => setActive(undefined)} onMouseEnter={() => setActive(term.id)} onMouseLeave={() => setActive(undefined)} onClick={() => {
-                        root.current?.querySelector(`[data-formula-term="${term.id}"]`)?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-                    }}><strong>{term.symbol}</strong><span>{term.definition}</span></button>)}
-                </div>
+                {labels(false)}
             </>}
         </div>
         {open && <div className="formula-term-navigation" aria-label="Formula elements">

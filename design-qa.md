@@ -7,7 +7,7 @@ Compared the two supplied references and the implemented Set Operations screen t
 ## Visual checks
 
 - Reference 1: matching outlines, curved connectors anchored to actual formula elements, and concise definitions. The implementation recalculates connectors when the formula scrolls or its layout changes.
-- Reference 2: cream formula surface, mathematical serif typography, consistent semantic colors, and matching symbol chips and definition surfaces. The existing lesson navigation and surrounding dark page remain intact.
+- Reference 2: cream formula surface, mathematical serif typography, consistent semantic colors, and matching symbol chips. The existing lesson navigation and surrounding dark page remain intact.
 - Native fractions, powers, indexed unions/intersections, and binomial notation render correctly. Original excerpt mathematics retains its source typesetting and gains glyph-aligned colors and explanations.
 - Expanded annotations show three definitions at a time. Symbol chips expose every remaining element without crossing a large number of pointers.
 - Source formula crops exclude neighboring prose. Checked the Probability Axioms card, original figure, native conditional-probability fraction, and union formula.
@@ -29,3 +29,11 @@ Compared the two supplied references and the implemented Set Operations screen t
 - `git diff --check`: passed.
 
 No unresolved visual blockers for this change.
+
+## Annotation layout correction
+
+- Recompared the hand-drawn reference with the conditional-probability formula in the browser. Definitions are now plain colored, italic labels with transparent backgrounds and zero borders, positioned above and below the expression.
+- Curved pointers connect each label to its highlighted element. Alternating symbol groups reverse the above/below arrangement.
+- Checked both native typeset mathematics and original extracted mathematics at the default viewport and 389 CSS pixels. Narrow expressions scroll inside their formula area without page overflow; pointers to offscreen symbols are hidden.
+- Verified symbol-group selection and show/hide. The temporary viewport override was reset.
+- TypeScript and the 462-expression/2,801-region formula suite passed after the layout change. The PDF coverage and complete route checks above are from the preceding implementation; extraction data is unchanged.
