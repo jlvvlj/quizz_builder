@@ -39,6 +39,7 @@ function Excerpts({ images, title, priority = false }: { images: SourceImage[]; 
 }
 
 function AssetList({ title, assets, collapsible = false }: { title: string; assets: SourceAsset[]; collapsible?: boolean }) {
+    if (assets.length === 0) return null;
     return <section className="space-y-5" aria-label={title}>
         <h2 className="text-xl font-semibold text-white">{title} <span className="ml-1 text-sm font-normal text-[#A1A1A1]">{assets.length}</span></h2>
         {assets.length === 0 ? <p className="text-sm text-[#A1A1A1]">None in this passage.</p> : assets.map(asset => {
@@ -61,17 +62,9 @@ function AssetList({ title, assets, collapsible = false }: { title: string; asse
 
 function LessonMaterial({ unit }: { unit: SourceUnit }) {
     return <div className="space-y-10">
-        <section aria-label="Opening paragraph">
-            <h2 className="mb-2 text-xl font-semibold text-white">Opening paragraph</h2>
-            <blockquote className="mt-4 whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">{unit.openingText}</blockquote>
-            <details className="mt-5 rounded-lg border border-[#4F4F4F] p-4">
-                <summary className="cursor-pointer text-sm text-[#A1A1A1]">View the original paragraph and formula layout</summary>
-                <div className="mt-4"><Excerpts images={unit.opening.images} title={`Opening paragraph: ${unit.title}`} /></div>
-            </details>
-        </section>
-        <section aria-label="Summary of the remaining content">
-            <h2 className="mb-4 text-xl font-semibold text-white">Summary of the remaining content</h2>
-            <div className="space-y-4 text-base leading-7 text-[#D1D1D1]">
+        <section aria-label={unit.title}>
+            <blockquote className="whitespace-pre-line break-words border-l-2 border-[#FF0054] pl-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">{unit.openingText}</blockquote>
+            <div className="mt-6 space-y-4 text-base leading-7 text-[#D1D1D1]">
                 {unit.summary.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
             </div>
             {unit.formulas.length > 0 && <div className="mt-6 space-y-3">
@@ -79,9 +72,13 @@ function LessonMaterial({ unit }: { unit: SourceUnit }) {
                 {unit.formulas.map(formula => <div key={formula} className="overflow-x-auto rounded-lg border border-[#FF0054]/30 bg-[#181818] p-4 font-mono text-sm leading-7 text-[#FF9BBB] sm:text-base">{formula}</div>)}
             </div>}
         </section>
-        <AssetList title="Important point cards" assets={unit.cards} />
+        <AssetList title="Key points" assets={unit.cards} />
         <AssetList title="Figures" assets={unit.figures} />
         <AssetList title="Examples" assets={unit.examples} collapsible />
+        <details className="rounded-lg border border-[#4F4F4F] p-4">
+            <summary className="cursor-pointer text-sm text-[#A1A1A1]">View the original wording and notation</summary>
+            <div className="mt-4"><Excerpts images={unit.opening.images} title={unit.title} /></div>
+        </details>
         <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Complete original passage</summary>
             <p className="my-4 text-sm leading-6 text-[#A1A1A1]">Read every derivation and inline formula in its original layout. Figures that continue onto another page are also collected above with their full captions.</p>
@@ -95,7 +92,7 @@ export function ProbabilitySourceOutline({ sectionId }: { sectionId: string }) {
         <Link href="/home" className="mb-6 inline-flex items-center gap-2 text-sm text-[#B8B8B8] hover:text-white"><ArrowLeft className="h-4 w-4" />Learning decks</Link>
         <h1 className="text-3xl font-bold">1. {chapter.title}</h1>
         <p className="mt-3 text-[#B8B8B8]">7 sections · {chapter.lessonCount} lessons</p>
-        <p className="mt-3 max-w-3xl leading-7 text-[#B8B8B8]">Follow the original subsection order. Each lesson contains its opening paragraph, a summary with formulas, and the original cards, figures, and examples.</p>
+        <p className="mt-3 max-w-3xl leading-7 text-[#B8B8B8]">Explore probability through definitions, formulas, diagrams, and worked examples.</p>
         <div className="mt-8 space-y-8">
             {chapter.sections.map(section => {
                 const items = chapterOneLessons.filter(item => item.section === section.id);
