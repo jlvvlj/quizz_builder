@@ -45,3 +45,11 @@ No unresolved visual blockers for this change.
 - Compared the conditional-probability proof and key points against the supplied images and PDF page 18. Native paragraphs now match surrounding lesson typography. The multi-line derivation retains all five equalities and its surrounding explanation.
 - Browser checked all 27 routes at 320 CSS pixels: zero KaTeX errors, zero non-figure images, no page overflow, all 66 converted assets present. Desktop proof and key-point layout inspected; above/below labels and toggles verified. Temporary viewport override reset.
 - Automated native-content tests compare the mathematical tokens and structural elements before and after annotation for all 165 equations; all pass. Source transcription corrections are recorded in `docs/probability-chapter-1-native-content.md`.
+
+## Formulas on the lesson background
+
+- Removed formula surface backgrounds, borders, shadows, and the “Explore the notation” heading. Inline math and formula dialogs use the dark palette too; diagram artwork is unchanged.
+- The icon-only lightbulb button starts collapsed; its “Show explanation” / “Hide explanation” label appears visually only as a hover/focus tooltip.
+- Terms have short pointer/focus tooltips while annotations are hidden. Tooltips render outside the horizontal scroller, are clamped to the viewport, and dismiss on Escape, scroll, resize, or leaving the equation. The expanded state keeps the existing above/below labels and curved pointers.
+- Inspected Discrete Models in the browser: 13 formula blocks all initially collapsed, transparent formula backgrounds, no old heading, no KaTeX errors. Verified term definition, Escape dismissal, keyboard navigation, and toggle expansion/collapse. The updated colors remain readable on the lesson background.
+- TypeScript, native mathematical structure comparisons, and existing notation tests passed.

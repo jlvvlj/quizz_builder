@@ -1,10 +1,11 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import katex from 'katex';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Lightbulb, X } from 'lucide-react';
 import { formulaModel, FormulaTerm, makeTerm, splitMath } from '@/utils/formula-notation';
 import { SourceImage } from '@/utils/probability-source';
 import { latexFormulaModel } from '@/utils/latex-formula';
+import { useFormulaTermTooltip } from './FormulaTermTooltip';
 
 export function mathHtml(source: string, context = '', displayMode = false) {
     return katex.renderToString(formulaModel(source, context).latex, {
@@ -20,6 +21,7 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
     const model = useMemo(() => latex ? latexFormulaModel(source, context) : formulaModel(source, context), [source, context, latex]);
     const terms = suppliedTerms || model.terms;
     const [open, setOpen] = useState(initiallyOpen);
+    const hover = useFormulaTermTooltip(terms, open);
     const [group, setGroup] = useState(0);
     const [active, setActive] = useState<string>();
     const [paths, setPaths] = useState<Connector[]>([]);
@@ -73,11 +75,14 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
             </button>)}
         </div>;
     };
-    return <div className={`formula-card ${open ? 'formula-open' : ''}`}>
-        <div className="formula-toolbar"><span>Explore the notation</span><button type="button" aria-expanded={open} aria-controls={`diagram-${id}`} onClick={() => setOpen(!open)}>{open ? 'Hide explanations' : 'Show explanations'}</button></div>
+    return <div className={`formula-block ${open ? 'formula-open' : ''}`}>
+        <div className="formula-toolbar"><button className="formula-toggle" type="button" aria-label={open ? 'Hide explanation' : 'Show explanation'} aria-expanded={open} aria-controls={`diagram-${id}`} onClick={() => setOpen(!open)}>
+            <Lightbulb size={18} aria-hidden="true" />
+            <span className="formula-toggle-tip" role="tooltip">{open ? 'Hide explanation' : 'Show explanation'}</span>
+        </button></div>
         <div ref={root} id={`diagram-${id}`} className="formula-diagram" data-active-term={active}>
             {open && labels(true)}
-            <div className="formula-scroll" onMouseOver={e => { const el = (e.target as HTMLElement).closest('[data-formula-term]'); if (el) setActive(el.getAttribute('data-formula-term') || undefined); }} onMouseLeave={() => setActive(undefined)}>
+            <div ref={hover.ref} className="formula-scroll" onMouseOver={e => { const el = (e.target as HTMLElement).closest('[data-formula-term]'); if (el) setActive(el.getAttribute('data-formula-term') || undefined); }} onMouseLeave={() => setActive(undefined)}>
                 {children || <div className="formula-typeset" aria-label={source} dangerouslySetInnerHTML={{ __html: katex.renderToString(model.latex, { displayMode: true, throwOnError: false, strict: false, trust: ({command}) => command === '\\htmlData' }) }} />}
             </div>
             {open && <>
@@ -85,6 +90,7 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
                 {labels(false)}
             </>}
         </div>
+        {hover.tooltip}
         {open && <div className="formula-term-navigation" aria-label="Formula elements">
             {terms.map((term, index) => <button key={term.id} type="button" title={term.definition} aria-pressed={Math.floor(index / 3) === group} style={{ '--term-color': term.color } as React.CSSProperties} onClick={() => { setGroup(Math.floor(index / 3)); setActive(term.id); }}>{term.symbol}</button>)}
             {terms.length > 3 && <span>Select a symbol to explore its meaning.</span>}
@@ -92,6 +98,17 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
         {open && model.meaning && !children && <p className="formula-meaning">{model.meaning}</p>}
         <style>{open ? visible.map(term => `#diagram-${id} [data-formula-term="${term.id}"] { background: ${term.color}10; outline: 1px solid ${term.color}80; border-radius: 3px; }`).join('\n') : ''}</style>
     </div>;
+}
+
+function InlineFormula({ source, context }: { source: string; context: string }) {
+    const model = useMemo(() => formulaModel(source, context), [source, context]);
+    const hover = useFormulaTermTooltip(model.terms, false, false);
+    return <span className="inline-formula-wrap" ref={hover.ref}>
+        <FormulaModal trigger={<button type="button" className="inline-formula" aria-label={`Explain ${source}`} dangerouslySetInnerHTML={{ __html: mathHtml(source, context) }} />}>
+            <FormulaDiagram source={source} context={context} initiallyOpen />
+        </FormulaModal>
+        {hover.tooltip}
+    </span>;
 }
 
 function FormulaModal({ children, trigger, title = 'Formula explained' }: { children: React.ReactNode; trigger: React.ReactNode; title?: string }) {
@@ -104,7 +121,7 @@ export function LessonMathText({ text, context = '' }: { text: string; context?:
         const parts = splitMath(line);
         const mathLength = parts.filter(p => p.math).reduce((sum, p) => sum + p.text.length, 0);
         if (mathLength > line.length * .72 && line.length > 5) return <FormulaDiagram key={lineIndex} source={line.trim().replace(/[.,]$/, '')} context={context} />;
-        return <p key={lineIndex} className="lesson-math-paragraph">{parts.map((part, i) => part.math ? <FormulaModal key={i} trigger={<button type="button" className="inline-formula" aria-label={`Explain ${part.text}`} dangerouslySetInnerHTML={{ __html: mathHtml(part.text, context) }} />}><FormulaDiagram source={part.text} context={context} initiallyOpen /></FormulaModal> : <span key={i}>{part.text}</span>)}</p>;
+        return <p key={lineIndex} className="lesson-math-paragraph">{parts.map((part, i) => part.math ? <InlineFormula key={i} source={part.text} context={context} /> : <span key={i}>{part.text}</span>)}</p>;
     })}</>;
 }
 
