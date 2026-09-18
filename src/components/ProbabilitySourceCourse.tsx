@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ChapterContents from './ChapterContents';
 import ChapterPracticeLinks from './ChapterPracticeLinks';
 import NativeChapterContent from './NativeChapterContent';
+import { lessonFigures } from './interactive/registry';
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react';
 import {
     getSourceChapter,
@@ -54,9 +55,11 @@ function AssetList({ title, assets, context = '' }: { title: string; assets: Sou
     </section>;
 }
 
-function LessonMaterial({ unit }: { unit: SourceUnit }) {
+function LessonMaterial({ unit, deckId }: { unit: SourceUnit; deckId: string }) {
+    const figures = lessonFigures(deckId, unit.id);
     if (unit.content) return <>
         <NativeChapterContent blocks={unit.content} context={`chapter-2/${unit.id}`} />
+        {figures}
         <details className="mt-8 rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
             <div className="mt-4 space-y-3 leading-7 text-[#D1D1D1]">{unit.summary.map(text=><p key={text}>{text}</p>)}</div>
@@ -87,6 +90,7 @@ function LessonMaterial({ unit }: { unit: SourceUnit }) {
             }
             return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} context={unit.id} />;
         })}
+        {figures}
         {unit.mathPassages.length > 0 && <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
             <div className="mt-4">{summary}</div>
@@ -140,7 +144,7 @@ export function ProbabilitySourceLesson({ sectionId, itemId, deckId = 'probabili
             <h1 className="text-3xl font-bold sm:text-4xl">{unit.kind === 'introduction' ? 'Intro' : unit.title}</h1>
             <p className="mt-4 flex items-center gap-2 text-sm text-[#A1A1A1]"><BookOpen className="h-4 w-4" />{materialCounts(unit)}</p>
         </header>
-        <LessonMaterial key={unit.id} unit={unit} />
+        <LessonMaterial key={unit.id} unit={unit} deckId={deckId} />
         <nav aria-label="Lesson navigation" className="mt-10 flex flex-wrap justify-between gap-4 border-t border-[#4F4F4F] pt-6">
             {previous ? <Link className="inline-flex items-center gap-2 rounded-lg border border-[#4F4F4F] px-4 py-3 text-sm hover:bg-[#303030]" href={sourceLessonUrl(sectionId, previous.id, deckId)}><ArrowLeft className="h-4 w-4" />Previous: {previous.kind === 'introduction' ? `${previous.section} introduction` : previous.title}</Link> : <span />}
             {next ? <Link className="inline-flex items-center gap-2 rounded-lg bg-[#FF0054] px-4 py-3 text-sm font-semibold hover:bg-[#e6004c]" href={sourceLessonUrl(sectionId, next.id, deckId)}>Next: {next.kind === 'introduction' ? `${next.section} introduction` : next.title}<ArrowRight className="h-4 w-4" /></Link> : <Link className="rounded-lg bg-[#FF0054] px-4 py-3 text-sm font-semibold" href={`/steps?section=${encodeURIComponent(sectionId)}`}>Back to Chapter {number}</Link>}

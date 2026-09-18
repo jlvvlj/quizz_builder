@@ -1,6 +1,7 @@
 import 'katex/dist/katex.min.css';
 import '../styles/globals.css';
 import '@/styles/formulas.css';
+import '@/styles/interactive.css';
 import Head from 'next/head';
 import type { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
