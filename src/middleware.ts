@@ -1,6 +1,12 @@
 import { NextResponse, type NextRequest } from 'next/server';
 const API_PATHS = new Set(['/api/auth/login', '/api/auth/signup', '/api/auth/logout', '/api/auth/me', '/api/catalog', '/api/flashcards', '/api/session/init', '/api/session/increment', '/api/settings/get', '/api/settings/update', '/api/dashboard/streak', '/api/dashboard/status-counts', '/api/dashboard/in-progress-steps', '/api/progress/get-batch', '/api/progress/last-word', '/api/progress/introduced', '/api/progress/save', '/api/progress/step-progress', '/api/progress/section-progress', '/api/progress/update-marked-status']);
 const PUBLIC = new Set(['/login','/signup','/api/auth/login','/api/auth/signup']);
+// Dev-only auth bypass. Gated on NODE_ENV so a production build can never take
+// this path, and on an explicit flag so it is never on by accident. Remove the
+// env vars (or set DEV_BYPASS_AUTH=false) to restore the real login flow.
+const DEV_BYPASS_AUTH = process.env.NODE_ENV !== 'production' && process.env.DEV_BYPASS_AUTH === 'true';
+const DEV_BYPASS_USER_ID = process.env.DEV_BYPASS_USER_ID;
+const DEV_BYPASS_LANDING = '/home';
 export async function middleware(req: NextRequest) {
  const path=req.nextUrl.pathname;
  const api=path.startsWith('/api/');
@@ -11,6 +17,19 @@ export async function middleware(req: NextRequest) {
  if (api && !['GET','HEAD','OPTIONS'].includes(req.method)) {
   const origin=req.headers.get('origin');
   if(origin && origin!==req.nextUrl.origin) return NextResponse.json({error:'Invalid request origin'},{status:403});
+ }
+ if (DEV_BYPASS_AUTH) {
+  // Fail loudly rather than silently serving an unauthenticated request: every
+  // downstream handler reads req.cookies.userId and queries users by it.
+  if (!DEV_BYPASS_USER_ID) {
+   const msg='DEV_BYPASS_AUTH is enabled but DEV_BYPASS_USER_ID is not set.';
+   return api ? NextResponse.json({error:msg},{status:500}) : new NextResponse(msg,{status:500});
+  }
+  if(!api && (path==='/'||path==='/login'||path==='/signup')) return NextResponse.redirect(new URL(DEV_BYPASS_LANDING,req.url));
+  const headers=new Headers(req.headers);
+  const cookies=req.cookies.getAll().filter(c=>c.name!=='userId').map(c=>`${c.name}=${c.value}`);
+  cookies.push(`userId=${DEV_BYPASS_USER_ID}`);headers.set('cookie',cookies.join('; '));
+  const res=NextResponse.next({request:{headers}});if(api)res.headers.set('Cache-Control','no-store');return res;
  }
  if(PUBLIC.has(path)) return NextResponse.next();
  const token=req.cookies.get('quiz_session')?.value;
