@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import katex from 'katex';
 import { ChevronLeft, ChevronRight, Lightbulb, X } from 'lucide-react';
-import { formulaModel, FormulaTerm, makeTerm, splitMath } from '@/utils/formula-notation';
+import { formulaModel, FormulaTerm, makeTerm, splitMath, shouldExplainTerm, probabilityCallAt, probabilityTerms } from '@/utils/formula-notation';
 import { SourceImage } from '@/utils/probability-source';
 import { latexFormulaModel } from '@/utils/latex-formula';
 import { useFormulaTermTooltip } from './FormulaTermTooltip';
@@ -76,10 +76,10 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
         </div>;
     };
     return <div className={`formula-block ${open ? 'formula-open' : ''}`}>
-        <div className="formula-toolbar"><button className="formula-toggle" type="button" aria-label={open ? 'Hide explanation' : 'Show explanation'} aria-expanded={open} aria-controls={`diagram-${id}`} onClick={() => setOpen(!open)}>
+        {terms.length > 0 && <div className="formula-toolbar"><button className="formula-toggle" type="button" aria-label={open ? 'Hide explanation' : 'Show explanation'} aria-expanded={open} aria-controls={`diagram-${id}`} onClick={() => setOpen(!open)}>
             <Lightbulb size={18} aria-hidden="true" />
             <span className="formula-toggle-tip" role="tooltip">{open ? 'Hide explanation' : 'Show explanation'}</span>
-        </button></div>
+        </button></div>}
         <div ref={root} id={`diagram-${id}`} className="formula-diagram" data-active-term={active}>
             {open && labels(true)}
             <div ref={hover.ref} className="formula-scroll" onMouseOver={e => { const el = (e.target as HTMLElement).closest('[data-formula-term]'); if (el) setActive(el.getAttribute('data-formula-term') || undefined); }} onMouseLeave={() => setActive(undefined)}>
@@ -91,9 +91,9 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
             </>}
         </div>
         {hover.tooltip}
-        {open && <div className="formula-term-navigation" aria-label="Formula elements">
+        {open && terms.length > 0 && <div className="formula-term-navigation" aria-label="Formula elements">
             {terms.map((term, index) => <button key={term.id} type="button" title={term.definition} aria-pressed={Math.floor(index / 3) === group} style={{ '--term-color': term.color } as React.CSSProperties} onClick={() => { setGroup(Math.floor(index / 3)); setActive(term.id); }}>{term.symbol}</button>)}
-            {terms.length > 3 && <span>Select a symbol to explore its meaning.</span>}
+            {terms.length > 3 && <span>Select an expression to see its meaning.</span>}
         </div>}
         {open && model.meaning && !children && <p className="formula-meaning">{model.meaning}</p>}
         <style>{open ? visible.map(term => `#diagram-${id} [data-formula-term="${term.id}"] { background: ${term.color}10; outline: 1px solid ${term.color}80; border-radius: 3px; }`).join('\n') : ''}</style>
@@ -103,6 +103,7 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
 function InlineFormula({ source, context, latex = false }: { source: string; context: string; latex?: boolean }) {
     const model = useMemo(() => latex ? latexFormulaModel(source, context) : formulaModel(source, context), [source, context, latex]);
     const hover = useFormulaTermTooltip(model.terms, false, false);
+    if (!model.terms.length) return <span className="inline-formula-wrap"><span className="inline-formula inline-formula-static" dangerouslySetInnerHTML={{__html:katex.renderToString(model.latex,{throwOnError:false,strict:false})}} /></span>;
     return <span className="inline-formula-wrap" ref={hover.ref}>
         <FormulaModal trigger={<button type="button" className="inline-formula" aria-label={`Explain ${source}`} dangerouslySetInnerHTML={{ __html: katex.renderToString(model.latex, {throwOnError: false, strict: false, trust: ({command}) => command === '\\htmlData'}) }} />}>
             <FormulaDiagram source={source} context={context} latex={latex} initiallyOpen />
@@ -111,10 +112,36 @@ function InlineFormula({ source, context, latex = false }: { source: string; con
     </span>;
 }
 
+type SourceRegion = NonNullable<SourceImage['formulaRegions']>[number];
+function sourceFormulaTerms(region: SourceRegion, context: string) {
+    const source = region.terms.map(t => t.symbol).join('');
+    let offset = 0;
+    const ranges = region.terms.map(t => { const start=offset; offset+=t.symbol.length; return {...t,start,end:offset}; });
+    const result: {term:FormulaTerm; bounds:number[]}[] = [];
+    const bounds = (start:number,end:number) => {
+        const boxes=ranges.filter(t=>t.end>start && t.start<end).map(t=>t.bounds);
+        const left=Math.min(...boxes.map(b=>b[0])),top=Math.min(...boxes.map(b=>b[1]));
+        return [left,top,Math.max(...boxes.map(b=>b[0]+b[2]))-left,Math.max(...boxes.map(b=>b[1]+b[3]))-top];
+    };
+    for(let i=0;i<ranges.length;i++) {
+        const t=ranges[i],call=context==='sets-introduction'?undefined:probabilityCallAt(source,t.start);
+        if(call) {
+            const grouped=probabilityTerms(call.body,context);
+            result.push({term:grouped.whole,bounds:bounds(call.start,call.end)},{term:grouped.event,bounds:bounds(call.bodyStart,call.bodyEnd)});
+            while(i+1<ranges.length && ranges[i+1].start<call.end)i++;
+        } else if(shouldExplainTerm(t.symbol))result.push({term:makeTerm(t.symbol,context,source),bounds:t.bounds});
+    }
+    return result;
+}
+
+// $…$ delimits math; a literal dollar sign is authored as \$ so prose about money
+// ("we receive \$1") is never parsed as an expression.
+const MATH_SPAN = /((?<!\\)\$(?:\\\$|[^$])+?(?<!\\)\$)/g;
+const literalDollars = (text: string) => text.replace(/\\\$/g, '$');
 export function LessonLatexText({text, context}: {text: string; context: string}) {
-    return <p className="lesson-math-paragraph">{text.split(/(\$[^$]+\$)/g).map((part, index) => part.startsWith('$') && part.endsWith('$')
-        ? <InlineFormula key={index} source={part.slice(1, -1)} context={context} latex />
-        : <span key={index}>{part}</span>)}</p>;
+    return <p className="lesson-math-paragraph">{text.split(MATH_SPAN).map((part, index) => part.startsWith('$') && part.endsWith('$') && part.length > 2
+        ? <InlineFormula key={index} source={literalDollars(part.slice(1, -1))} context={context} latex />
+        : <span key={index}>{literalDollars(part)}</span>)}</p>;
 }
 
 function FormulaModal({ children, trigger, title = 'Formula explained' }: { children: React.ReactNode; trigger: React.ReactNode; title?: string }) {
@@ -144,7 +171,8 @@ function SourceMathArt({ image, context, regionIndex, interactive = false, onSel
         <defs>{region && <clipPath id={`${id}-crop`}><rect x={Number.isFinite(cropLeft)?cropLeft:region.bounds[0]} y={Math.max(0,region.bounds[1]-4)} width={cropWidth} height={region.bounds[3]+8}/></clipPath>}<filter id={`${id}-invert`}><feColorMatrix type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter><mask id={`${id}-ink`} maskUnits="userSpaceOnUse" x="0" y="0" width={w} height={h}><image href={image.src} width={w} height={h} filter={`url(#${id}-invert)`} /></mask></defs>
         <g clipPath={region ? `url(#${id}-crop)` : undefined}><image href={image.src} width={w} height={h} />
         {visible.map(({region:r,index}) => <g key={index}>
-            {r.terms.map((t,i) => { const term = makeTerm(t.symbol,context,r.terms.map(t=>t.symbol).join('')); const [x,y,width,height] = t.bounds;return <g key={i} data-formula-term={term.id}><rect x={x} y={y} width={width} height={height} fill="white" /><rect x={x} y={y} width={width} height={height} fill={term.color} mask={`url(#${id}-ink)`} /></g>; })}
+            {r.terms.filter(t=>shouldExplainTerm(t.symbol)).map((t,i) => { const term = makeTerm(t.symbol,context,r.terms.map(t=>t.symbol).join('')); const [x,y,width,height] = t.bounds;return <g key={i}><rect x={x} y={y} width={width} height={height} fill="white" /><rect x={x} y={y} width={width} height={height} fill={term.color} mask={`url(#${id}-ink)`} /></g>; })}
+            {sourceFormulaTerms(r,context).map(({term,bounds:[x,y,width,height]},i)=><rect key={`term-${i}`} data-formula-term={term.id} x={x} y={y} width={width} height={height} fill="transparent" />)}
             {interactive && <rect x={r.bounds[0]} y={r.bounds[1]} width={r.bounds[2]} height={r.bounds[3]} fill="transparent" className="source-formula-hit" tabIndex={0} role="button" aria-label={`Explain ${r.terms.map(t=>t.symbol).join(' ')}`} onClick={() => onSelect?.(index)} onKeyDown={e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();onSelect?.(index);} }}><title>Explore this formula</title></rect>}
         </g>)}</g>
     </svg>;
@@ -154,7 +182,7 @@ export function AnnotatedSourceImage({ image, title, context }: { image: SourceI
     const [selected, setSelected] = useState<number | null>(null);
     const regions = image.formulaRegions || [];
     const r = regions[selected ?? 0];
-    const terms = useMemo(() => r ? [...new Map(r.terms.filter(t=>!['.',',',';',')',']','}'].includes(t.symbol)).sort((a,b)=>Number(['(','[','{'].includes(a.symbol))-Number(['(','[','{'].includes(b.symbol))).map(t => {const term=makeTerm(t.symbol,context,r.terms.map(t=>t.symbol).join(''));return [term.id,term] as const;})).values()] : [], [r, context]);
+    const terms = useMemo(() => r ? [...new Map(sourceFormulaTerms(r,context).map(({term})=>[term.id,term] as const)).values()] : [], [r, context]);
     return <figure className="source-annotated">
         <SourceMathArt image={image} context={context} interactive onSelect={setSelected} />
         <figcaption><span>Page {image.printedPage}</span>{regions.length > 0 && <button type="button" onClick={() => setSelected(Math.max(0,regions.findIndex(r=>r.terms.length>=4)))}>Explain formulas</button>}<a href={image.src} target="_blank" rel="noreferrer">View original</a></figcaption>

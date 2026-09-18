@@ -24,7 +24,7 @@ for(const unit of chapter.units) for(const kind of ['mathPassages','cards','exam
    const tokens=html=>[...html.matchAll(/<(mi|mn|mo|mtext)(?:\s[^>]*)?>(.*?)<\/\1>/g)].map(m=>m[2]).filter(s=>s.trim());
    assert.equal(tokens(annotated).join(''),tokens(original).join(''),`Changed math: ${asset.id}`);
    for (const tag of ['mfrac','msub','msup','msubsup','munder','munderover']) assert.equal((annotated.match(new RegExp('<'+tag+'[ >]','g'))||[]).length,(original.match(new RegExp('<'+tag+'[ >]','g'))||[]).length,`Changed structure ${tag}: ${asset.id}`);
-   assert.ok(model.terms.length);
+   assert.ok(model.terms.every(t=>notation.shouldExplainTerm(t.symbol)));
   }catch(e){throw Error(`${asset.id}: ${block.text}\n${e.message}`);}
  }
 }

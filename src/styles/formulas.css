@@ -28,3 +28,4 @@
 /* Keep a long inline expression inside the reading column on narrow screens. */
 .inline-formula-wrap{display:inline-block;max-width:100%;vertical-align:middle}
 .inline-formula-wrap .inline-formula{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;padding:2px 3px}
+.inline-formula-static{cursor:default}.inline-formula-static:hover{background:transparent}

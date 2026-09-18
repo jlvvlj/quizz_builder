@@ -6,6 +6,122 @@ const sub = '₀₁₂₃₄₅₆₇₈₉ₙₖᵢⱼₛ₌₋₊ᵣ';
 const sup = '⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵏᶦᶜ⁻⁺';
 const normal = (s: string) => [...s].map(c => ({ ...Object.fromEntries([...sub].map((v,i)=>[v,'0123456789nkijs=-+r'[i]])), ...Object.fromEntries([...sup].map((v,i)=>[v,'0123456789nkic-+'[i]])) }[c] || c)).join('');
 const esc = (s: string) => s.replace(/[\\{}%&#_$]/g, '\\$&');
+const supers: Record<string,string> = {'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹',n:'ⁿ',k:'ᵏ',i:'ᶦ',c:'ᶜ','-':'⁻','−':'⁻','+':'⁺'};
+/** Superscript an exponent for display, falling back to ^(…) when a glyph has no form. */
+const superscript = (body: string) => [...body].every(c => supers[c]) ? [...body].map(c => supers[c]).join('') : `^(${body})`;
+// Keep arithmetic and punctuation readable without turning every glyph into a lesson.
+// A single operator, a bare P, or a plain number carries no notation to teach, so it
+// gets no tooltip; grouped atoms such as P(A∣B) are explained as a whole instead.
+const BASIC_GLYPH = /^(?:P|[=+−\-×·/<>≤≥≠≈()[\]{},.;:]|[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)$/;
+// Digits, decimal points, signs and a numeric exponent are arithmetic, not notation:
+// "10", "0.25.", "10^{-2}" and "1²" all teach nothing.
+const PURE_NUMBER = /^[-−+]?\d+(?:\.\d+)?(?:\^\s*\{?\s*[-−+]?\d+\s*\}?|[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+)?[.,;:]*$/;
+export function shouldExplainTerm(symbol: string): boolean {
+ const s = symbol.trim();
+ return !!s && !BASIC_GLYPH.test(s) && !PURE_NUMBER.test(s);
+}
+
+const subs: Record<string,string> = {'0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉',n:'ₙ',i:'ᵢ',j:'ⱼ',k:'ₖ',r:'ᵣ'};
+const subscript = (body: string) => [...body].map(c => subs[c] || c).join('');
+/** A readable label for authored TeX; this never changes the rendered formula. */
+export function mathLabel(source: string): string {
+ const commands: Record<string,string> = {cup:'∪',cap:'∩',mid:'|',vert:'|',Omega:'Ω',varnothing:'∅',in:'∈',notin:'∉',le:'≤',leq:'≤',ge:'≥',geq:'≥',ne:'≠',neq:'≠',ldots:'…',cdots:'…',infty:'∞',lambda:'λ',sigma:'σ',times:'×',cdot:'·'};
+ let out = source.replace(/\\(?:left|right|bigl|bigr|Bigl|Bigr|big|Big)\b/g,'')
+  .replace(/\\(?:text|mathrm|operatorname)\{([^{}]*)\}/g,'$1')
+  .replace(/\\([A-Za-z]+)/g,(all,name)=>commands[name] || name)
+  .replace(/\\[,;! ]/g,' ').replace(/\\([{}])/g,'$1');
+ // Nested scripts such as p_{X_{i}} only collapse innermost-first, so repeat until stable.
+ for (let pass = 0; pass < 4; pass++) {
+  const next = out
+   .replace(/_\{([^{}]*)\}|_([A-Za-z0-9])/g,(_,a,b)=>subscript(a??b))
+   .replace(/\^\{c\}|\^c/g,'ᶜ')
+   .replace(/\^\{([^{}]*)\}|\^([A-Za-z0-9])/g,(_,a,b)=>superscript(a??b));
+  if (next === out) break;
+  out = next;
+ }
+ // Operators bind tightly in a label: "A∩B" and "pX|Y", not "A∩ B" and "pX| Y".
+ return out.replace(/\s*([|∣∪∩])\s*/g,'$1').replace(/\s+/g,' ').trim();
+}
+
+// Split only at the current nesting level: (A ∪ B) ∩ C is not A ∪ (B ∩ C).
+function splitEvent(source: string, separators: string): string[] {
+ let depth=0, start=0; const parts:string[]=[];
+ for(let i=0;i<source.length;i++) {
+  if('([{'.includes(source[i]))depth++;
+  else if(')]}'.includes(source[i]))depth--;
+  else if(depth===0 && separators.includes(source[i])){parts.push(source.slice(start,i).trim());start=i+1;}
+ }
+ parts.push(source.slice(start).trim()); return parts;
+}
+function unwrapEvent(source:string):string {
+ let s=source.trim();
+ while('({['.includes(s[0]||' ') && s.length>1) {
+  const closing=({'(':')','{':'}','[':']'} as Record<string,string>)[s[0]];
+  let depth=0,end=-1;
+  for(let i=0;i<s.length;i++){if(s[i]===s[0])depth++;if(s[i]===closing)depth--;if(depth===0){end=i;break;}}
+  if(end!==s.length-1)break;
+  s=s.slice(1,-1).trim();
+ }
+ return s;
+}
+function joinEvents(parts:string[], conjunction:string):string {
+ return parts.length===2 ? parts.join(` ${conjunction} `) : parts.slice(0,-1).join(', ')+`, ${conjunction} `+parts[parts.length-1];
+}
+export function describeEvent(source:string):string {
+ const s=unwrapEvent(mathLabel(source));
+ const given=splitEvent(s,'|∣');
+ if(given.length===2)return `${describeEvent(given[0])}, given that ${describeEvent(given[1])}`;
+ const union=splitEvent(s,'∪');
+ if(union.length>1) {
+  if(union.every(p=>/^[A-Z][₀-₉ₙᵢⱼₖ]*$/.test(p)))return `${joinEvents(union,'or')} occurs (including overlaps)`;
+  if(union.length===2)return `${describeEvent(union[0])} or ${describeEvent(union[1])}`;
+  return `at least one of these holds: ${joinEvents(union.map(p=>`(${describeEvent(p)})`),'or')}`;
+ }
+ const intersection=splitEvent(s,'∩');
+ if(intersection.length>1) {
+  if(intersection.every(p=>/^[A-Z][₀-₉ₙᵢⱼₖ]*$/.test(p)))return intersection.length===2 ? `both ${joinEvents(intersection,'and')} occur` : `${joinEvents(intersection,'and')} all occur`;
+  if(intersection.length===2)return `${describeEvent(intersection[0])} and ${describeEvent(intersection[1])}`;
+  return `all of these hold: ${joinEvents(intersection.map(p=>`(${describeEvent(p)})`),'and')}`;
+ }
+ const joint=splitEvent(s,',');
+ if(joint.length>1)return joinEvents(joint.map(describeEvent),'and');
+ if(s.endsWith('ᶜ')){const inner=s.slice(0,-1);return /^[A-Z][₀-₉ₙᵢⱼₖ]*$/.test(inner) ? `${inner} does not occur` : `the event “${describeEvent(inner)}” does not occur`;}
+ if(s==='Ω')return 'any outcome in the sample space occurs';
+ if(s==='∅')return 'the impossible event occurs';
+ const relation=s.match(/^(.+?)\s*(∈|∉|≤|≥|≠|=|<|>)\s*(.+)$/);
+ if(relation) {
+  const words:Record<string,string>={'=':'equals','≠':'does not equal','>':'is greater than','<':'is less than','≤':'is at most','≥':'is at least','∈':'belongs to','∉':'does not belong to'};
+  return `${relation[1].trim()} ${words[relation[2]]} ${relation[3].trim()}`;
+ }
+ return /^[A-Z][₀-₉ₙᵢⱼₖ]*$/.test(s) ? `${s} occurs` : s;
+}
+
+export function probabilityTerms(body:string, context=''): {whole:FormulaTerm; event:FormulaTerm} {
+ const label=mathLabel(body);
+ const event=makeTerm(label,context);
+ event.id='event-'+event.id;
+ event.definition=`The event that ${describeEvent(label)}.`;
+ const whole=makeTerm(`P(${label})`,context);
+ whole.definition=`The probability that ${describeEvent(label)}.`;
+ return {whole,event};
+}
+
+/** Locate a complete P(...) atom, including nested event parentheses and sized TeX delimiters. */
+export function probabilityCallAt(source:string,start:number) {
+ if(start>0 && /[A-Za-z]/.test(source[start-1]))return;
+ const prefix=source.slice(start).match(/^(?:P|\\mathrm\{P\})\s*(?:\\(?:left|bigl|Bigl|big|Big)\s*)?\(/);
+ if(!prefix)return;
+ const bodyStart=start+prefix[0].length;
+ let depth=1;
+ for(let i=bodyStart;i<source.length;i++) {
+  if(source[i]==='(')depth++;
+  if(source[i]===')' && --depth===0) {
+   const suffix=source.slice(bodyStart,i).match(/\s*\\(?:right|bigr|Bigr|big|Big)\s*$/);
+   const bodyEnd=suffix ? i-suffix[0].length : i;
+   return {start,end:i+1,bodyStart,bodyEnd,body:source.slice(bodyStart,bodyEnd)};
+  }
+ }
+}
 const fixed: Record<string, [string,string]> = {
  'Ω':['Sample space: all possible outcomes.','\\Omega'], 'Ω':['Sample space: all possible outcomes.','\\Omega'],
  '∅':['Empty set: no elements or outcomes.','\\varnothing'], 'Ø':['Empty set: no elements or outcomes.','\\varnothing'],
@@ -44,7 +160,8 @@ export function describeTerm(symbol: string, context = '', expression = ''): str
  if ((s==='Ω'||s==='Ω')&&/sets-introduction|set-operations|algebra-of-sets/.test(context)) return 'Universe: all elements under consideration.';
  if(s==='|' && (expression.match(/\|/g)||[]).length>=2 && !expression.includes('{')) return /[xyz]/.test(expression) ? 'Absolute value: distance from zero, regardless of sign.' : 'Cardinality: the number of elements in the enclosed set.';
  if (s==='c' && /independent-trials/.test(context)) return 'Capacity: the maximum number of users that can be served at once.';
- if (s === '|') return expression.includes('{') && !expression.includes('P(') ? 'Such that: the condition after this bar selects the elements.' : 'Given: use the event on the right as the known information.';
+ // Set-builder braces mean "such that"; a subscript's braces (p_{X∣Y}) do not.
+ if (s === '|') return expression.replace(/[_^]\{[^{}]*\}/g,'').includes('{') && !expression.includes('P(') ? 'Such that: the condition after this bar selects the elements.' : 'Given: use the event on the right as the known information.';
  if (s==='≈') return 'Approximately equal to: the value has been rounded.';
  if (s==='→') return 'Tends to: the expression approaches the value on the right.';
  if (s==='⏟') return 'The brace groups the factors counted together.';
@@ -62,6 +179,9 @@ export function describeTerm(symbol: string, context = '', expression = ''): str
  if (s === 'T' && (/trials/.test(context) || expression.includes('H'))) return 'Tails: the outcome of a coin toss.';
  if (s === 'c' || s === 'ᶜ') return 'Complement: outcomes outside the set or event.';
  if (s === '²' || s === '³') return `Power ${normal(s)}: multiply the base by itself ${normal(s)} times.`;
+ // A raised expression is about the exponent, not the base: pᵏ is not "a probability".
+ const power = s.match(/^(.+?)(?:\^\((.+)\)|([⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵏᶦ⁻⁺]+))$/);
+ if (power) return `${s}: ${power[1]} raised to the power ${power[2] ?? normal(power[3]!)}.`;
  if (/^[STU]/.test(s)) return `Set ${s}${s.length>1 ? ': the subscript identifies which set in the collection' : ': a collection of elements'}.`;
  if (/^[ABCDEFHD]/.test(s)) return /sets|counting|permutations|combinations|partitions/.test(context) ? `${s}: the named set or collection used in this expression.` : `Event ${s}: a set of possible outcomes.`;
  if (/^[xyz]/.test(s)) return `${s}: an element or numerical value${s.length>1 ? '; its index identifies its position' : ''}.`;
@@ -76,6 +196,8 @@ export function describeTerm(symbol: string, context = '', expression = ''): str
  if (s==='and') return 'Both conditions must hold.';
  if (/^[a-zA-Z]$/.test(s)) return `${s}: a named quantity in this example; its value is specified in the accompanying statement.`;
  if (/^[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵏᶦ⁻⁺]+$/.test(s)) return `Exponent ${normal(s)}: the power to which the preceding expression is raised.`;
+ const indexed = s.match(/^([a-zA-Z])[₀-₉ₙₖᵢⱼₛᵣ]+$/);
+ if (indexed) return `${s}: a named quantity in this example; the subscript identifies which one.`;
  return `${s}: the condition stated here selects which outcomes to include.`;
 }
 function colorFor(symbol:string) {
@@ -129,7 +251,10 @@ export function splitMath(text:string):TextPart[] {
  if(plain<text.length)out.push({text:text.slice(plain)});return out;
 }
 export function formulaModel(source:string,context=''):FormulaModel {
- const terms:FormulaTerm[]=[];const add=(s:string,t:string)=>{const term=makeTerm(s,context,source);if(!terms.some(v=>v.id===term.id))terms.push(term);return `\\htmlData{formula-term=${term.id}}{\\textcolor{${term.color}}{${t}}}`;};
+ const terms:FormulaTerm[]=[];
+ let insideProbability=false;
+ const mark=(term:FormulaTerm,t:string)=>{if(!terms.some(v=>v.id===term.id))terms.push(term);return `\\htmlData{formula-term=${term.id}}{\\textcolor{${term.color}}{${t}}}`;};
+ const add=(s:string,t:string)=> insideProbability || !shouldExplainTerm(s) ? t : mark(makeTerm(s,context,source),t);
  const tokens=source.match(/[A-Za-z]{2,}|[⋃⋂Σ∑∏∪∩∫][₀-₉ₙₖᵢⱼₛ₌₋₊]*(?:\^?∞|[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵏᶦ⁻⁺]+)?|[A-Za-zΩΩℝ][₀-₉ₙₖᵢⱼₛᵣ]*[⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵏᶦᶜ⁻⁺]*|\d+(?:\.\d+)?|[A-Za-z]{2,}|[^\s]/g)||[];
  let at=0;
  function sequence(close?:string):string {
@@ -144,7 +269,16 @@ export function formulaModel(source:string,context=''):FormulaModel {
  function one():string {
   const s=tokens[at++]||'';
   if('([{'.includes(s)&&s){const closing=s==='('?')':s==='['?']':'}';const body=sequence(closing);const left=s==='{'?'\\{':s;const right=closing==='}'?'\\}':closing;return `${add(s,left)} ${body} ${add(closing,right)}`;}
-  if(s==='P' && tokens[at]==='('){return add('P','\\mathrm{P}')+' '+one();}
+  if(s==='P' && tokens[at]==='('){
+   const start=at+1; let end=start,depth=1;
+   for(;end<tokens.length;end++){if(tokens[end]==='(')depth++;if(tokens[end]===')' && --depth===0)break;}
+   if(depth===0 && !insideProbability && context!=='sets-introduction') {
+    const grouped=probabilityTerms(tokens.slice(start,end).join(''),context);
+    at++; insideProbability=true; const body=sequence(')'); insideProbability=false;
+    return mark(grouped.whole,`\\mathrm{P}(${mark(grouped.event,body)})`);
+   }
+   return '\\mathrm{P} '+one();
+  }
   if(s==='C' && tokens[at]==='('){at++;let n='';while(at<tokens.length&&tokens[at]!==',')n+=tokens[at++];at++;let k='';while(at<tokens.length&&tokens[at]!==')')k+=tokens[at++];at++;return add('C',`\\binom{${add(n,esc(normal(n)))}}{${add(k,esc(normal(k)))}}`);}
   if(/[⋃⋂Σ∑∏∪∩∫]/.test(s[0]||'')){const low=[...s.slice(1)].filter(c=>sub.includes(c)).join('');const high=s.slice(1+low.length).replace('^','');return add(s,`${fixed[s[0]][1]}${low?`_{${normal(low)}}`:''}${high?`^{${high==='∞'?'\\infty':normal(high)}}`:''}`);}
   if(fixed[s])return add(s,fixed[s][1]);

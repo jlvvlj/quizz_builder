@@ -1,4 +1,4 @@
-import { FormulaModel, FormulaTerm, makeTerm } from './formula-notation';
+import { FormulaModel, FormulaTerm, makeTerm, mathLabel, shouldExplainTerm, probabilityCallAt, probabilityTerms } from './formula-notation';
 
 // Preserve authored TeX structure while attaching the same interactive term markers
 // used by the lesson's inline notation. Text inside \text stays ordinary prose.
@@ -10,12 +10,11 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
         sum: '∑', prod: '∏', bigcap: '⋂', bigcup: '⋃', infty: '∞', to: '→', ldots: '…', cdots: '…',
         lambda: 'λ', sigma: 'σ',
     };
-    const add = (symbol: string, latex: string) => {
-        const term = makeTerm(symbol, context, source);
+    const mark = (term: FormulaTerm, latex: string) => {
         if (!terms.some(t => t.id === term.id)) terms.push(term);
         return `\\htmlData{formula-term=${term.id}}{\\textcolor{${term.color}}{${latex}}}`;
     };
-    const scriptSymbol = (s: string) => s.replace(/_\{([^}]+)\}|_([A-Za-z0-9])/g, (_, a, b) => [...(a || b)].map(c => '₀₁₂₃₄₅₆₇₈₉'['0123456789'.indexOf(c)] || ({n:'ₙ',i:'ᵢ',j:'ⱼ',k:'ₖ',r:'ᵣ'} as Record<string,string>)[c] || c).join('')).replace(/\^\{c\}|\^c/g, 'ᶜ');
+    const add = (symbol: string, latex: string) => shouldExplainTerm(symbol) ? mark(makeTerm(symbol, context, source), latex) : latex;
     let i = 0;
     let result = '';
     const group = () => {
@@ -26,6 +25,13 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
         return source.slice(start, i);
     };
     while (i < source.length) {
+        const call = context === 'sets-introduction' ? undefined : probabilityCallAt(source, i);
+        if (call) {
+            const grouped = probabilityTerms(call.body, context);
+            result += mark(grouped.whole, source.slice(i, call.bodyStart) + mark(grouped.event, call.body) + source.slice(call.bodyEnd, call.end));
+            i = call.end;
+            continue;
+        }
         if (source[i] === '\\') {
             const command = source.slice(i).match(/^\\([A-Za-z]+|.)/)![0];
             i += command.length;
@@ -43,7 +49,7 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             let atom = source[i++];
             if (/\d/.test(atom)) while (/[\d.]/.test(source[i] || ' ') && i < source.length) atom += source[i++];
             while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }
-            result += add(scriptSymbol(atom), atom);
+            result += add(mathLabel(atom), atom);
         } else result += source[i++];
     }
     return {source, latex: result, terms};

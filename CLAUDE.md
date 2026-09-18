@@ -173,3 +173,38 @@ kanji path. Concretely:
   engine is what scopes something to words-only.
 - For kanji, the "Japanese" answer is the **on'yomi reading**; for words it's the
   hiragana reading. English is the meaning/translation in both.
+
+## Formula hover explanations (chapters 1, 2 and every chapter after)
+
+Tooltips exist to teach notation, not to label glyphs. Two rules, enforced by
+`node scripts/test-formula-tooltips.cjs`:
+
+**1. Never explain ultra-basic notation.** No tooltip on `+`, `-`, `=`, `×`,
+`/`, comparison signs, brackets, punctuation, a bare `P`, or a plain number
+(including a number with a trailing period or a numeric power such as
+`10^{-2}`). A reader who needs `+` explained is not reading this chapter.
+`shouldExplainTerm()` in `src/utils/formula-notation.ts` is the single gate —
+both the inline-notation path (`formulaModel`) and the authored-TeX path
+(`latexFormulaModel`) route through it, as does the scanned-source path in
+`FormulaExplorer.tsx`. Widen the rule there, never per call site.
+
+**2. Explain a compound atom as a whole, plus what is inside its brackets.**
+`P(A∣B)` gets exactly two tooltips — "The probability that A occurs, given
+that B occurs." on the whole atom and "The event that A occurs, given that B
+occurs." on `A∣B` — and none on `P`, the parentheses or the bar.
+`P(A₁∪A₂∪A₃)` reads "The probability that A₁, A₂, or A₃ occurs (including
+overlaps)." `probabilityTerms()` + `describeEvent()` build these; extend
+`describeEvent` for new event shapes rather than annotating symbols
+individually.
+
+Two supporting invariants:
+
+- **A label never shows authored TeX.** `mathLabel()` turns `p_{X\mid Y}` into
+  `pX|Y` and `X^{2}` into `X²`. Use it for any new label; never hand-roll
+  subscript or superscript mapping.
+- **A literal dollar sign in prose is authored as `\$`.** `$…$` delimits math,
+  so unescaped currency ("we receive $1") swallows the sentence into an
+  expression and produces a pile of junk tooltips.
+
+Run `node scripts/test-formula-tooltips.cjs` after touching any of this, and
+add each new chapter's data file to that script's `CHAPTERS` list.

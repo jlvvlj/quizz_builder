@@ -16,11 +16,11 @@
     },
     {
       "kind": "paragraph",
-      "text": "Game 1: We receive $1 each time a head comes up."
+      "text": "Game 1: We receive \\$1 each time a head comes up."
     },
     {
       "kind": "paragraph",
-      "text": "Game 2: We receive $1 for every coin toss, up to and including the first time a head comes up. Then, we receive $2 for every coin toss, up to the second time a head comes up. More generally, the dollar amount per toss is doubled each time a head comes up."
+      "text": "Game 2: We receive \\$1 for every coin toss, up to and including the first time a head comes up. Then, we receive \\$2 for every coin toss, up to the second time a head comes up. More generally, the dollar amount per toss is doubled each time a head comes up."
     },
     {
       "kind": "paragraph",
