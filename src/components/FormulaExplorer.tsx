@@ -100,15 +100,21 @@ export function FormulaDiagram({ source, context = '', children, terms: supplied
     </div>;
 }
 
-function InlineFormula({ source, context }: { source: string; context: string }) {
-    const model = useMemo(() => formulaModel(source, context), [source, context]);
+function InlineFormula({ source, context, latex = false }: { source: string; context: string; latex?: boolean }) {
+    const model = useMemo(() => latex ? latexFormulaModel(source, context) : formulaModel(source, context), [source, context, latex]);
     const hover = useFormulaTermTooltip(model.terms, false, false);
     return <span className="inline-formula-wrap" ref={hover.ref}>
-        <FormulaModal trigger={<button type="button" className="inline-formula" aria-label={`Explain ${source}`} dangerouslySetInnerHTML={{ __html: mathHtml(source, context) }} />}>
-            <FormulaDiagram source={source} context={context} initiallyOpen />
+        <FormulaModal trigger={<button type="button" className="inline-formula" aria-label={`Explain ${source}`} dangerouslySetInnerHTML={{ __html: katex.renderToString(model.latex, {throwOnError: false, strict: false, trust: ({command}) => command === '\\htmlData'}) }} />}>
+            <FormulaDiagram source={source} context={context} latex={latex} initiallyOpen />
         </FormulaModal>
         {hover.tooltip}
     </span>;
+}
+
+export function LessonLatexText({text, context}: {text: string; context: string}) {
+    return <p className="lesson-math-paragraph">{text.split(/(\$[^$]+\$)/g).map((part, index) => part.startsWith('$') && part.endsWith('$')
+        ? <InlineFormula key={index} source={part.slice(1, -1)} context={context} latex />
+        : <span key={index}>{part}</span>)}</p>;
 }
 
 function FormulaModal({ children, trigger, title = 'Formula explained' }: { children: React.ReactNode; trigger: React.ReactNode; title?: string }) {

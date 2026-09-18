@@ -1,5 +1,8 @@
 # Probability lesson sources
 
-Chapter 1 now follows the exact subsection structure. See [Chapter 1 extraction](probability-chapter-1-source-map.md) and its machine-readable inventory. The previous custom Chapter 1 topic-to-lesson map is superseded.
+Both chapters use the source-course renderer and in-lesson chapter navigation.
 
-Chapter 2 retains the existing guided lessons in `src/data/probability-chapter-2-lessons.json`. Its definitions carry source section and PDF page metadata; PDF page 55 is printed Chapter 2 page 1. This change does not revise Chapter 2.
+- Chapter 1: sections 1.1–1.7, 27 lessons. See [Chapter 1 structure](probability-chapter-1-source-map.md) and [native content](probability-chapter-1-native-content.md).
+- Chapter 2: sections 2.1–2.8, 20 lessons. See [Chapter 2 structure, source coverage, and corrections](probability-chapter-2-source-map.md).
+
+The former Chapter 2 guided lessons remain in the repository for historical reference. Lesson and outline routes use the new native Chapter 2 content. Existing quiz topics are preserved and are accessible through Practice quizzes on the chapter outline and lesson pages.

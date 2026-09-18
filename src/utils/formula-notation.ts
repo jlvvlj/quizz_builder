@@ -27,6 +27,20 @@ const fixed: Record<string, [string,string]> = {
 };
 export function describeTerm(symbol: string, context = '', expression = ''): string {
  const s = symbol.trim();
+ if (context.startsWith('chapter-2/')) {
+  if(s==='E') return 'Expected value: average the possible values using their probabilities as weights.';
+  if(s==='var') return 'Variance: the expected squared distance from the mean.';
+  if(s==='λ') return 'Lambda: the positive parameter of a Poisson distribution; equal to its mean and variance.';
+  if(s==='σ') return 'Standard deviation: the square root of variance, in the original units.';
+  if(s==='e') return 'Euler’s number (about 2.71828), the base of the natural exponential.';
+  if(s==='k') return /geometric/.test(context) ? 'k: the trial number of the first success, starting at one.' : 'k: a possible integer value of the random variable.';
+  if(s==='p' && /poisson/.test(context)) return 'Success probability in the binomial model being approximated.';
+  if(/^p[A-Z]/.test(s)) return /\\mid|\|/.test(s) ? 'Conditional PMF: probability of the values on the left, given the information on the right.' : s.includes(',') ? 'Joint PMF: probability that all the indicated random variables take these values together.' : 'Probability mass function: probability that the named random variable takes the specified value.';
+  if(/^S/.test(s) && /several/.test(context)) return 'Sample mean: the sum of the observations divided by the sample size.';
+  if(/^[XYZVTM](?:[₀-₉ᵢₙ]|[0-9]|\^|$)/.test(s)) return `${s}: a random variable (a number determined by the outcome); its role is defined in the accompanying example.`;
+  if(s==='c' || s==='a' || s==='b' || s==='d') return `${s}: a fixed constant or endpoint defined in the accompanying formula.`;
+  if(s==='g' || s==='h' || s==='f') return `${s}: a function that transforms the random variable’s value.`;
+ }
  if ((s==='Ω'||s==='Ω')&&/sets-introduction|set-operations|algebra-of-sets/.test(context)) return 'Universe: all elements under consideration.';
  if(s==='|' && (expression.match(/\|/g)||[]).length>=2 && !expression.includes('{')) return /[xyz]/.test(expression) ? 'Absolute value: distance from zero, regardless of sign.' : 'Cardinality: the number of elements in the enclosed set.';
  if (s==='c' && /independent-trials/.test(context)) return 'Capacity: the maximum number of users that can be served at once.';

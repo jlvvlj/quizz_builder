@@ -1,4 +1,12 @@
 import chapterOne from '@/data/probability-chapter-1-source.json';
+import chapterTwo from '@/data/probability-chapter-2-source.json';
+
+export interface LessonBlock {
+    kind: 'paragraph' | 'formula' | 'heading' | 'keypoint' | 'cardEnd' | 'figure';
+    text: string;
+    pdfPage: number;
+    src?: string;
+}
 
 export interface SourceImage {
     src: string;
@@ -23,6 +31,7 @@ export interface SourcePassage extends SourceAsset {
 }
 
 export interface SourceUnit {
+    content?: LessonBlock[];
     id: string;
     section: string;
     title: string;
@@ -38,16 +47,22 @@ export interface SourceUnit {
     sourcePages: SourceImage[];
 }
 
-export const probabilityChapterOne = chapterOne as {
+export interface SourceChapter {
     deckId: string;
     title: string;
     lessonCount: number;
     sections: { id: string; title: string }[];
     units: SourceUnit[];
-};
+}
+
+export const probabilityChapterOne = chapterOne as SourceChapter;
+export const probabilityChapterTwo = chapterTwo as SourceChapter;
+export function getSourceChapter(deckId: string): SourceChapter | undefined {
+    return [probabilityChapterOne, probabilityChapterTwo].find(chapter => chapter.deckId === deckId);
+}
 
 export const chapterOneLessons = probabilityChapterOne.units;
 
-export function sourceLessonUrl(sectionId: string, itemId: string): string {
-    return `/lesson?${new URLSearchParams({ section: sectionId, deck: probabilityChapterOne.deckId, item: itemId })}`;
+export function sourceLessonUrl(sectionId: string, itemId: string, deckId = probabilityChapterOne.deckId): string {
+    return `/lesson?${new URLSearchParams({ section: sectionId, deck: deckId, item: itemId })}`;
 }

@@ -8,6 +8,7 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
         Omega: 'Ω', varnothing: '∅', cup: '∪', cap: '∩', in: '∈', notin: '∉', subset: '⊂',
         le: '≤', ge: '≥', ne: '≠', approx: '≈', mid: '|', cdot: '·', times: '×',
         sum: '∑', prod: '∏', bigcap: '⋂', bigcup: '⋃', infty: '∞', to: '→', ldots: '…', cdots: '…',
+        lambda: 'λ', sigma: 'σ',
     };
     const add = (symbol: string, latex: string) => {
         const term = makeTerm(symbol, context, source);
@@ -31,7 +32,8 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             const name = command.slice(1);
             if (['text', 'mathrm', 'operatorname', 'begin', 'end'].includes(name)) {
                 const body = group();
-                result += name === 'mathrm' && body === '{P}' ? add('P', '\\mathrm{P}') : command + body;
+                result += name === 'mathrm' && body === '{P}' ? add('P', '\\mathrm{P}')
+                    : name === 'operatorname' && body === '{var}' ? add('var', command + body) : command + body;
             } else if (symbols[name]) {
                 let atom = command;
                 while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }

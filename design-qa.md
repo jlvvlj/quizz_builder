@@ -53,3 +53,13 @@ No unresolved visual blockers for this change.
 - Terms have short pointer/focus tooltips while annotations are hidden. Tooltips render outside the horizontal scroller, are clamped to the viewport, and dismiss on Escape, scroll, resize, or leaving the equation. The expanded state keeps the existing above/below labels and curved pointers.
 - Inspected Discrete Models in the browser: 13 formula blocks all initially collapsed, transparent formula backgrounds, no old heading, no KaTeX errors. Verified term definition, Escape dismissal, keyboard navigation, and toggle expansion/collapse. The updated colors remain readable on the lesson background.
 - TypeScript, native mathematical structure comparisons, and existing notation tests passed.
+
+## Chapter 2 and chapter navigation
+
+- Rebuilt Chapter 2 as 20 native lessons across eight exact source sections, including introductory items before named subsections.
+- All 19 numbered examples, 13 boxed statements, and 14 actual figures are represented. The source has no Figure 2.6. Diagram-only crops were visually reviewed as a contact sheet; captions and all prose/equations are native.
+- Both chapters now show section/lesson selectors and an expandable full contents list, with current-page state and previous/next navigation. Quiz topic links remain available.
+- Key-point cards in both chapters use #292929 backgrounds and neutral borders against the #181818 lesson. Formula blocks remain transparent.
+- Browser checks visited all 20 Chapter 2 lessons: no KaTeX errors, all annotations initially collapsed. Section and lesson selectors navigated successfully in both chapters; the Chapter 1 contents map contains all 27 links.
+- Narrow-viewport checks found four long inline expressions overflowing; inline expressions now remain inside independently scrollable wrappers. All four affected routes passed on recheck. Display equations scroll inside their own containers.
+- Visually checked Chapter 2 expectation card and Poisson annotations, plus Chapter 1 conditional-probability card. Annotation labels remain plain text with curved pointers above/below.
