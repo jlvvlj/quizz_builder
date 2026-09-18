@@ -4,7 +4,7 @@ import { effectiveProgressStatus } from '@/utils/progress-status';
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
 );
 
 interface ProgressRow {
@@ -42,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { data: progressRows, error: progressErr } = await supabase
             .from('user_progress')
             .select('word_id, progress_status, marked_as, progress, correct_answers, total_misses, time_to_answer')
-            .eq('user_id', userId);
+            .eq('user_id', userId).eq('quiz_type', req.query.quizType === 'typing' ? 'typing' : 'multiple_choice');
         if (progressErr) throw progressErr;
 
         const rows = ((progressRows || []) as ProgressRow[])
@@ -109,7 +109,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     step: b.step,
                     sectionNumber: sectionNum,
                     stepNumber: stepNum,
-                    sectionLabel: `Japanese Core ${sectionNum}000`,
+                    sectionLabel: `Section ${sectionNum}`,
                     stepLabel: `Step ${stepNum}`,
                     totalWords: total,
                     startedWords: b.startedWords,

@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 
 # Local environment
 .env
@@ -23,3 +23,6 @@ data/jpdb/
 .vercel
 tsconfig.tsbuildinfo
 data/kanjidic/
+
+# Supabase CLI local state
+supabase/.temp/
