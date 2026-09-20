@@ -1,6 +1,9 @@
 import { AnnotatedSourceImage, FormulaDiagram, LessonMathText } from './FormulaExplorer';
 import nativeContent from '@/data/probability-chapter-1-native.json';
 import diagramHeights from '@/data/probability-chapter-1-diagrams.json';
+import chapterOneEveryday from '@/data/probability-chapter-1-everyday.json';
+import chapterTwoEveryday from '@/data/probability-chapter-2-everyday.json';
+import everydayContent from '@/data/probability-everyday-content.json';
 import Link from 'next/link';
 import ChapterContents from './ChapterContents';
 import ChapterPracticeLinks from './ChapterPracticeLinks';
@@ -55,10 +58,31 @@ function AssetList({ title, assets, context = '' }: { title: string; assets: Sou
     </section>;
 }
 
+function EverydayExamples({ deckId, unitId, context }: { deckId: string; unitId: string; context: string }) {
+    const manifest = (deckId === 'probability-chapter-2' ? chapterTwoEveryday : chapterOneEveryday) as Record<string, {id: string; scenario: string; title: string}[]>;
+    const entries = manifest[unitId];
+    if (!entries?.length) return null;
+    const blocks = everydayContent as Record<string, {kind: string; text: string}[]>;
+    return <section className="space-y-5" aria-label="Everyday examples">
+        <h2 className="text-xl font-semibold text-white">Everyday examples <span className="ml-1 text-sm font-normal text-[#A1A1A1]">{entries.length}</span></h2>
+        {entries.map(entry => <div key={entry.id} className="rounded-xl border border-[#3A3A3A] bg-[#202020] p-4 sm:p-5" data-everyday-asset={entry.id}>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-[#FF80AA]">{entry.scenario}</p>
+            <h3 className="mb-3 text-lg font-semibold text-[#D8D8D8]">{entry.title}</h3>
+            <div className="native-lesson-content space-y-5 text-base leading-8 text-[#E5E5E5] sm:text-lg">
+                {blocks[entry.id].map((block, index) => block.kind === 'formula'
+                    ? <FormulaDiagram key={index} source={block.text} context={context} latex />
+                    : <LessonMathText key={index} text={block.text} context={context} />)}
+            </div>
+        </div>)}
+    </section>;
+}
+
 function LessonMaterial({ unit, deckId }: { unit: SourceUnit; deckId: string }) {
     const figures = lessonFigures(deckId, unit.id);
+    const context = `${deckId.replace('probability-', '')}/${unit.id}`;
     if (unit.content) return <>
-        <NativeChapterContent blocks={unit.content} context={`chapter-2/${unit.id}`} />
+        <NativeChapterContent blocks={unit.content} context={context} />
+        <EverydayExamples deckId={deckId} unitId={unit.id} context={context} />
         {figures}
         <details className="mt-8 rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>
@@ -90,6 +114,7 @@ function LessonMaterial({ unit, deckId }: { unit: SourceUnit; deckId: string }) 
             }
             return <AssetList key={item.asset.id} title={item.kind === 'card' ? 'Key points' : item.kind === 'figure' ? 'Figures' : 'Examples'} assets={[item.asset]} context={unit.id} />;
         })}
+        <EverydayExamples deckId={deckId} unitId={unit.id} context={unit.id} />
         {figures}
         {unit.mathPassages.length > 0 && <details className="rounded-xl border border-[#4F4F4F] p-4 sm:p-5">
             <summary className="cursor-pointer font-medium text-[#D1D1D1]">Key ideas</summary>

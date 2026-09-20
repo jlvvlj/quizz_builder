@@ -1,0 +1,515 @@
+{
+  "basic-concepts": [
+    {
+      "id": "everyday-c2-basic-concepts-a",
+      "scenario": "Meridian Air",
+      "title": "The manifest is the outcome; the count is the variable"
+    },
+    {
+      "id": "everyday-c2-basic-concepts-b",
+      "scenario": "Tally",
+      "title": "From a week of trials to a single number"
+    },
+    {
+      "id": "everyday-c2-basic-concepts-c",
+      "scenario": "The Forecast Market",
+      "title": "The scoreline is the outcome, the difference is the variable"
+    },
+    {
+      "id": "everyday-c2-basic-concepts-d",
+      "scenario": "The Warm Intro",
+      "title": "Replies out of a wave"
+    },
+    {
+      "id": "everyday-c2-basic-concepts-e",
+      "scenario": "One Cell",
+      "title": "Transcript count as a function of the cell’s history"
+    }
+  ],
+  "pmf-introduction": [
+    {
+      "id": "everyday-c2-pmf-introduction-a",
+      "scenario": "Meridian Air",
+      "title": "Three standby passengers, two seats"
+    },
+    {
+      "id": "everyday-c2-pmf-introduction-b",
+      "scenario": "Tally",
+      "title": "Four referral trials"
+    },
+    {
+      "id": "everyday-c2-pmf-introduction-c",
+      "scenario": "The Forecast Market",
+      "title": "A three-way race priced as a PMF"
+    },
+    {
+      "id": "everyday-c2-pmf-introduction-d",
+      "scenario": "The Warm Intro",
+      "title": "Three tier-one asks"
+    },
+    {
+      "id": "everyday-c2-pmf-introduction-e",
+      "scenario": "One Cell",
+      "title": "Two alleles, one window"
+    }
+  ],
+  "bernoulli": [
+    {
+      "id": "everyday-c2-bernoulli-a",
+      "scenario": "Meridian Air",
+      "title": "One passenger, one indicator"
+    },
+    {
+      "id": "everyday-c2-bernoulli-b",
+      "scenario": "Tally",
+      "title": "Did this trial convert"
+    },
+    {
+      "id": "everyday-c2-bernoulli-c",
+      "scenario": "The Forecast Market",
+      "title": "The contract is the random variable"
+    },
+    {
+      "id": "everyday-c2-bernoulli-d",
+      "scenario": "The Warm Intro",
+      "title": "One contact, one answer"
+    },
+    {
+      "id": "everyday-c2-bernoulli-e",
+      "scenario": "One Cell",
+      "title": "The promoter, on or off"
+    }
+  ],
+  "binomial": [
+    {
+      "id": "everyday-c2-binomial-a",
+      "scenario": "Meridian Air",
+      "title": "How many of 190 show"
+    },
+    {
+      "id": "everyday-c2-binomial-b",
+      "scenario": "Tally",
+      "title": "Conversions in a week of fifty trials"
+    },
+    {
+      "id": "everyday-c2-binomial-c",
+      "scenario": "The Forecast Market",
+      "title": "Twenty positions on the book"
+    },
+    {
+      "id": "everyday-c2-binomial-d",
+      "scenario": "The Warm Intro",
+      "title": "Twelve emails to familiar contacts"
+    },
+    {
+      "id": "everyday-c2-binomial-e",
+      "scenario": "One Cell",
+      "title": "A hundred identical cells"
+    }
+  ],
+  "geometric": [
+    {
+      "id": "everyday-c2-geometric-a",
+      "scenario": "Meridian Air",
+      "title": "Waiting on the standby list"
+    },
+    {
+      "id": "everyday-c2-geometric-b",
+      "scenario": "Tally",
+      "title": "Calls until the first close"
+    },
+    {
+      "id": "everyday-c2-geometric-c",
+      "scenario": "The Forecast Market",
+      "title": "Bets until the first winner"
+    },
+    {
+      "id": "everyday-c2-geometric-d",
+      "scenario": "The Warm Intro",
+      "title": "Follow-ups until a response"
+    },
+    {
+      "id": "everyday-c2-geometric-e",
+      "scenario": "One Cell",
+      "title": "Generations until a mutation"
+    }
+  ],
+  "poisson": [
+    {
+      "id": "everyday-c2-poisson-a",
+      "scenario": "Meridian Air",
+      "title": "Passengers reaching the desk"
+    },
+    {
+      "id": "everyday-c2-poisson-b",
+      "scenario": "Tally",
+      "title": "Signups per day"
+    },
+    {
+      "id": "everyday-c2-poisson-c",
+      "scenario": "The Forecast Market",
+      "title": "Goals in a match"
+    },
+    {
+      "id": "everyday-c2-poisson-d",
+      "scenario": "The Warm Intro",
+      "title": "Inbound introductions"
+    },
+    {
+      "id": "everyday-c2-poisson-e",
+      "scenario": "One Cell",
+      "title": "Transcripts per cell"
+    }
+  ],
+  "functions-of-random-variables": [
+    {
+      "id": "everyday-c2-functions-of-random-variables-a",
+      "scenario": "Meridian Air",
+      "title": "Compensation, and a fare band that is not linear"
+    },
+    {
+      "id": "everyday-c2-functions-of-random-variables-b",
+      "scenario": "Tally",
+      "title": "Revenue, and commission with a cliff"
+    },
+    {
+      "id": "everyday-c2-functions-of-random-variables-c",
+      "scenario": "The Forecast Market",
+      "title": "Payoff as a function of outcome"
+    },
+    {
+      "id": "everyday-c2-functions-of-random-variables-d",
+      "scenario": "The Warm Intro",
+      "title": "Meetings from replies"
+    },
+    {
+      "id": "everyday-c2-functions-of-random-variables-e",
+      "scenario": "One Cell",
+      "title": "Protein from transcripts"
+    }
+  ],
+  "expectation-mean-variance": [
+    {
+      "id": "everyday-c2-expectation-mean-variance-a",
+      "scenario": "Meridian Air",
+      "title": "What the overbooking trade is worth"
+    },
+    {
+      "id": "everyday-c2-expectation-mean-variance-b",
+      "scenario": "Tally",
+      "title": "Expected revenue per trial, and the spread behind it"
+    },
+    {
+      "id": "everyday-c2-expectation-mean-variance-c",
+      "scenario": "The Forecast Market",
+      "title": "Expected value is the whole discipline"
+    },
+    {
+      "id": "everyday-c2-expectation-mean-variance-d",
+      "scenario": "The Warm Intro",
+      "title": "What a wave is worth"
+    },
+    {
+      "id": "everyday-c2-expectation-mean-variance-e",
+      "scenario": "One Cell",
+      "title": "Mean, variance, and the Fano factor"
+    }
+  ],
+  "joint-pmf-introduction": [
+    {
+      "id": "everyday-c2-joint-pmf-introduction-a",
+      "scenario": "Meridian Air",
+      "title": "Two connections from one inbound"
+    },
+    {
+      "id": "everyday-c2-joint-pmf-introduction-b",
+      "scenario": "Tally",
+      "title": "Deals closed and what they were worth"
+    },
+    {
+      "id": "everyday-c2-joint-pmf-introduction-c",
+      "scenario": "The Forecast Market",
+      "title": "Home goals and away goals"
+    },
+    {
+      "id": "everyday-c2-joint-pmf-introduction-d",
+      "scenario": "The Warm Intro",
+      "title": "Opens and replies"
+    },
+    {
+      "id": "everyday-c2-joint-pmf-introduction-e",
+      "scenario": "One Cell",
+      "title": "Transcripts and protein in the same cell"
+    }
+  ],
+  "functions-of-multiple-random-variables": [
+    {
+      "id": "everyday-c2-functions-of-multiple-random-variables-a",
+      "scenario": "Meridian Air",
+      "title": "Total connectors, and the worst of the two"
+    },
+    {
+      "id": "everyday-c2-functions-of-multiple-random-variables-b",
+      "scenario": "Tally",
+      "title": "Quarterly revenue as a product"
+    },
+    {
+      "id": "everyday-c2-functions-of-multiple-random-variables-c",
+      "scenario": "The Forecast Market",
+      "title": "Goal difference and total goals"
+    },
+    {
+      "id": "everyday-c2-functions-of-multiple-random-variables-d",
+      "scenario": "The Warm Intro",
+      "title": "Meetings from two waves"
+    },
+    {
+      "id": "everyday-c2-functions-of-multiple-random-variables-e",
+      "scenario": "One Cell",
+      "title": "Total output from two alleles"
+    }
+  ],
+  "more-than-two-random-variables": [
+    {
+      "id": "everyday-c2-more-than-two-random-variables-a",
+      "scenario": "Meridian Air",
+      "title": "Indicators that add"
+    },
+    {
+      "id": "everyday-c2-more-than-two-random-variables-b",
+      "scenario": "Tally",
+      "title": "Pipeline as a sum of indicators"
+    },
+    {
+      "id": "everyday-c2-more-than-two-random-variables-c",
+      "scenario": "The Forecast Market",
+      "title": "A book of positions"
+    },
+    {
+      "id": "everyday-c2-more-than-two-random-variables-d",
+      "scenario": "The Warm Intro",
+      "title": "Replies across three waves"
+    },
+    {
+      "id": "everyday-c2-more-than-two-random-variables-e",
+      "scenario": "One Cell",
+      "title": "A colony as a sum"
+    }
+  ],
+  "conditioning-introduction": [
+    {
+      "id": "everyday-c2-conditioning-introduction-a",
+      "scenario": "Meridian Air",
+      "title": "The load sheet arrives"
+    },
+    {
+      "id": "everyday-c2-conditioning-introduction-b",
+      "scenario": "Tally",
+      "title": "Halfway through the quarter"
+    },
+    {
+      "id": "everyday-c2-conditioning-introduction-c",
+      "scenario": "The Forecast Market",
+      "title": "Half-time"
+    },
+    {
+      "id": "everyday-c2-conditioning-introduction-d",
+      "scenario": "The Warm Intro",
+      "title": "After the first wave"
+    },
+    {
+      "id": "everyday-c2-conditioning-introduction-e",
+      "scenario": "One Cell",
+      "title": "Given that the promoter fired"
+    }
+  ],
+  "conditioning-on-an-event": [
+    {
+      "id": "everyday-c2-conditioning-on-an-event-a",
+      "scenario": "Meridian Air",
+      "title": "Given the inbound is late"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-an-event-b",
+      "scenario": "Tally",
+      "title": "Given the account invited teammates"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-an-event-c",
+      "scenario": "The Forecast Market",
+      "title": "Given a red card before half-time"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-an-event-d",
+      "scenario": "The Warm Intro",
+      "title": "Given the message was opened"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-an-event-e",
+      "scenario": "One Cell",
+      "title": "Given at least one transcript"
+    }
+  ],
+  "conditioning-on-another-variable": [
+    {
+      "id": "everyday-c2-conditioning-on-another-variable-a",
+      "scenario": "Meridian Air",
+      "title": "Missed connections given the delay"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-another-variable-b",
+      "scenario": "Tally",
+      "title": "Conversions given the channel"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-another-variable-c",
+      "scenario": "The Forecast Market",
+      "title": "Away goals given home goals"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-another-variable-d",
+      "scenario": "The Warm Intro",
+      "title": "Replies given tier"
+    },
+    {
+      "id": "everyday-c2-conditioning-on-another-variable-e",
+      "scenario": "One Cell",
+      "title": "Protein given transcript count"
+    }
+  ],
+  "conditional-expectation": [
+    {
+      "id": "everyday-c2-conditional-expectation-a",
+      "scenario": "Meridian Air",
+      "title": "Expected misconnects, averaged over delay"
+    },
+    {
+      "id": "everyday-c2-conditional-expectation-b",
+      "scenario": "Tally",
+      "title": "Blended conversion, derived rather than measured"
+    },
+    {
+      "id": "everyday-c2-conditional-expectation-c",
+      "scenario": "The Forecast Market",
+      "title": "Expected goals, conditioned on the state of the match"
+    },
+    {
+      "id": "everyday-c2-conditional-expectation-d",
+      "scenario": "The Warm Intro",
+      "title": "Expected replies across the tiers"
+    },
+    {
+      "id": "everyday-c2-conditional-expectation-e",
+      "scenario": "One Cell",
+      "title": "Expected transcripts, averaged over promoter state"
+    }
+  ],
+  "independence-introduction": [
+    {
+      "id": "everyday-c2-independence-introduction-a",
+      "scenario": "Meridian Air",
+      "title": "Two passengers, independent by assumption"
+    },
+    {
+      "id": "everyday-c2-independence-introduction-b",
+      "scenario": "Tally",
+      "title": "Two accounts at different firms"
+    },
+    {
+      "id": "everyday-c2-independence-introduction-c",
+      "scenario": "The Forecast Market",
+      "title": "Two matches, two leagues"
+    },
+    {
+      "id": "everyday-c2-independence-introduction-d",
+      "scenario": "The Warm Intro",
+      "title": "Two contacts who do not know each other"
+    },
+    {
+      "id": "everyday-c2-independence-introduction-e",
+      "scenario": "One Cell",
+      "title": "Two cells, one dish"
+    }
+  ],
+  "independence-from-an-event": [
+    {
+      "id": "everyday-c2-independence-from-an-event-a",
+      "scenario": "Meridian Air",
+      "title": "Does knowing about the strike change the count"
+    },
+    {
+      "id": "everyday-c2-independence-from-an-event-b",
+      "scenario": "Tally",
+      "title": "An event that tells you nothing"
+    },
+    {
+      "id": "everyday-c2-independence-from-an-event-c",
+      "scenario": "The Forecast Market",
+      "title": "News that moves nothing"
+    },
+    {
+      "id": "everyday-c2-independence-from-an-event-d",
+      "scenario": "The Warm Intro",
+      "title": "A holiday week"
+    },
+    {
+      "id": "everyday-c2-independence-from-an-event-e",
+      "scenario": "One Cell",
+      "title": "Independent of the imaging session"
+    }
+  ],
+  "independence-of-random-variables": [
+    {
+      "id": "everyday-c2-independence-of-random-variables-a",
+      "scenario": "Meridian Air",
+      "title": "When the joint PMF factors"
+    },
+    {
+      "id": "everyday-c2-independence-of-random-variables-b",
+      "scenario": "Tally",
+      "title": "Conversions and contract value"
+    },
+    {
+      "id": "everyday-c2-independence-of-random-variables-c",
+      "scenario": "The Forecast Market",
+      "title": "Two legs of an accumulator"
+    },
+    {
+      "id": "everyday-c2-independence-of-random-variables-d",
+      "scenario": "The Warm Intro",
+      "title": "Replies from two disjoint tiers"
+    },
+    {
+      "id": "everyday-c2-independence-of-random-variables-e",
+      "scenario": "One Cell",
+      "title": "Two alleles in one cell"
+    }
+  ],
+  "independence-of-several-variables": [
+    {
+      "id": "everyday-c2-independence-of-several-variables-a",
+      "scenario": "Meridian Air",
+      "title": "Variance of the total, and the sample mean"
+    },
+    {
+      "id": "everyday-c2-independence-of-several-variables-b",
+      "scenario": "Tally",
+      "title": "Averaging across cohorts"
+    },
+    {
+      "id": "everyday-c2-independence-of-several-variables-c",
+      "scenario": "The Forecast Market",
+      "title": "Why a calibrated trader still has bad weeks"
+    },
+    {
+      "id": "everyday-c2-independence-of-several-variables-d",
+      "scenario": "The Warm Intro",
+      "title": "Why a small campaign is noisy"
+    },
+    {
+      "id": "everyday-c2-independence-of-several-variables-e",
+      "scenario": "One Cell",
+      "title": "Why a bulk assay looks deterministic"
+    }
+  ]
+}

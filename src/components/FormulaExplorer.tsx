@@ -149,8 +149,10 @@ function FormulaModal({ children, trigger, title = 'Formula explained' }: { chil
 }
 
 export function LessonMathText({ text, context = '' }: { text: string; context?: string }) {
-    return <>{text.split('\n').map((line, lineIndex) => {
-        if (!line.trim()) return <div key={lineIndex} className="h-3" />;
+    return <>{text.split('\n').map((raw, lineIndex) => {
+        if (!raw.trim()) return <div key={lineIndex} className="h-3" />;
+        // Literal dollars reach here escaped, by the same convention LessonLatexText follows.
+        const line = literalDollars(raw);
         const parts = splitMath(line);
         const mathLength = parts.filter(p => p.math).reduce((sum, p) => sum + p.text.length, 0);
         if (mathLength > line.length * .72 && line.length > 5) return <FormulaDiagram key={lineIndex} source={line.trim().replace(/[.,]$/, '')} context={context} />;

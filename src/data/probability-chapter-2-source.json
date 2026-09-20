@@ -157,16 +157,6 @@
           "kind": "cardEnd",
           "text": "",
           "pdfPage": 58
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: counting deliveries",
-          "pdfPage": 58
-        },
-        {
-          "kind": "paragraph",
-          "text": "A courier's daily log contains addresses, delivery times, and customer names. Define $X$ as the number of late deliveries in that log. Each possible log produces exactly one number: $0,1,2,\\ldots$. The log is the outcome; the count is the value of the random variable. Defining $Y=5X$ makes the total compensation, at five dollars per late delivery, another random variable.",
-          "pdfPage": 58
         }
       ],
       "sourceRange": {
@@ -297,16 +287,6 @@
           "kind": "paragraph",
           "text": "Figure 2.2: (a) To calculate the PMF, group together the outcomes that produce the same value of $X$. (b) For the maximum of two independent fair 4-sided die rolls, there are four possible values. The outcomes $(1,2),(2,2),(2,1)$ all produce $X=2$. Each has probability $1/16$, so $p_{X}(2)=3/16$. Similarly the masses at $1,3,4$ are $1/16,5/16,7/16$.",
           "pdfPage": 59
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: orders per minute",
-          "pdfPage": 59
-        },
-        {
-          "kind": "paragraph",
-          "text": "Suppose a café receives zero orders with probability $0.2$, one with probability $0.5$, and two with probability $0.3$. This is a valid PMF because the probabilities are nonnegative and sum to one. The probability of at least one order is $0.5+0.3=0.8$. Add probabilities for values satisfying the event; do not add the order counts themselves.",
-          "pdfPage": 59
         }
       ],
       "sourceRange": {
@@ -348,16 +328,6 @@
         {
           "kind": "paragraph",
           "text": "For all its simplicity, the Bernoulli random variable is very important. In practice, it is used to model generic probabilistic situations with just two outcomes, such as a telephone that can be free or busy; a person who can be healthy or sick with a certain disease; or a preference for or against a political candidate. Combining multiple Bernoulli random variables produces more complicated random variables.",
-          "pdfPage": 59
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: a successful payment",
-          "pdfPage": 59
-        },
-        {
-          "kind": "paragraph",
-          "text": "Define $X=1$ when a card payment succeeds and $X=0$ when it fails. If a payment succeeds with probability $p=0.98$, then $p_{X}(1)=0.98$ and $p_{X}(0)=0.02$. These numbers describe a single attempt. Counting successful payments across several attempts requires another model.",
           "pdfPage": 59
         }
       ],
@@ -435,16 +405,6 @@
         {
           "kind": "paragraph",
           "text": "Figure 2.3: The PMF of a binomial random variable. If $p=1/2$, the PMF is symmetric around $n/2$. Otherwise, the PMF is skewed towards $0$ if $p<1/2$, and towards $n$ if $p>1/2$.",
-          "pdfPage": 61
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: five deliveries",
-          "pdfPage": 61
-        },
-        {
-          "kind": "paragraph",
-          "text": "Five deliveries each arrive on time with probability $0.8$, independently. Let $X$ count the on-time deliveries. Exactly four arrive on time with probability",
           "pdfPage": 61
         },
         {
@@ -531,16 +491,6 @@
         {
           "kind": "paragraph",
           "text": "Figure 2.4: The PMF $p_{X}(k)=(1-p)^{k-1}p$, for $k=1,2,\\ldots$, of a geometric random variable. It decreases as a geometric progression with parameter $1-p$.",
-          "pdfPage": 61
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: retrying a connection",
-          "pdfPage": 61
-        },
-        {
-          "kind": "paragraph",
-          "text": "A connection succeeds independently with probability $0.8$ on each attempt. To succeed for the first time on attempt three, the first two must fail and the third must succeed: $P(X=3)=(0.2)^{2}(0.8)=0.032$. The count includes the successful attempt, so the smallest possible value is one, not zero.",
           "pdfPage": 61
         }
       ],
@@ -650,16 +600,6 @@
         {
           "kind": "formula",
           "text": "e^{-1}\\frac{1}{5!}\\approx0.00306.",
-          "pdfPage": 62
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: support requests",
-          "pdfPage": 62
-        },
-        {
-          "kind": "paragraph",
-          "text": "If requests in a short time interval are reasonably modeled by a Poisson count with $\\lambda=3$, the chance of receiving no requests is $e^{-3}\\approx0.0498$. The parameter describes the average count in the chosen interval; changing the interval changes the appropriate parameter.",
           "pdfPage": 62
         }
       ],
@@ -791,16 +731,6 @@
         {
           "kind": "paragraph",
           "text": "Figure 2.7: The PMFs of $X$ and $Y=|X|$ in Example 2.1. Opposite values merge into one absolute value, so their probabilities add.",
-          "pdfPage": 64
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: a parking fee",
-          "pdfPage": 64
-        },
-        {
-          "kind": "paragraph",
-          "text": "Parking lasts one, two, or three hours with probabilities $0.5,0.3,0.2$. A fee rule charges five dollars for up to two hours and eight dollars for three hours. Both one-hour and two-hour stays produce the same fee, so $P(Y=5)=0.5+0.3=0.8$ and $P(Y=8)=0.2$.",
           "pdfPage": 64
         }
       ],
@@ -1540,16 +1470,6 @@
           "kind": "formula",
           "text": "E\\left[\\frac{2}{V}\\right]\\ne\\frac{2}{E[V]}.",
           "pdfPage": 75
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: reliable arrival times",
-          "pdfPage": 75
-        },
-        {
-          "kind": "paragraph",
-          "text": "Two buses both take an average of ten minutes to arrive. One takes nine or eleven minutes with equal probability; the other takes five or fifteen. Both means are ten, but their variances are one and twenty-five square minutes. Their standard deviations are one and five minutes. The first bus is more predictable even though neither has a smaller mean wait.",
-          "pdfPage": 75
         }
       ],
       "sourceRange": {
@@ -1658,16 +1578,6 @@
           "kind": "paragraph",
           "text": "Figure 2.11: The joint PMF is represented by a table where each square gives $p_{X,Y}(x,y)$. Sum a column to get $p_{X}(x)$; sum a row to get $p_{Y}(y)$. In the displayed table, $p_{X}(2)=6/20$ and $p_{Y}(2)=7/20$.",
           "pdfPage": 76
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: an order with a drink",
-          "pdfPage": 76
-        },
-        {
-          "kind": "paragraph",
-          "text": "Let $X$ indicate whether an order includes a sandwich and $Y$ indicate whether it includes a drink. Suppose the four probabilities for $(X,Y)=(0,0),(1,0),(0,1),(1,1)$ are $0.1,0.2,0.3,0.4$. The probability of a sandwich is $0.2+0.4=0.6$; the probability of a drink is $0.3+0.4=0.7$. The joint entry $0.4$ describes both together, which cannot in general be recovered from the two marginal probabilities alone.",
-          "pdfPage": 76
         }
       ],
       "sourceRange": {
@@ -1726,16 +1636,6 @@
         {
           "kind": "formula",
           "text": "E[aX+bY+c]=aE[X]+bE[Y]+c.",
-          "pdfPage": 77
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: the total bill",
-          "pdfPage": 77
-        },
-        {
-          "kind": "paragraph",
-          "text": "Let $X$ and $Y$ indicate a sandwich and a drink, with joint probabilities $0.1,0.2,0.3,0.4$ for $(0,0),(1,0),(0,1),(1,1)$. A sandwich costs six dollars and a drink costs three, so $Z=6X+3Y$. The bill takes values $0,6,3,9$ with those probabilities. Its mean is $6(0.6)+3(0.7)=5.7$ dollars. Linearity works even when sandwich and drink choices are dependent.",
           "pdfPage": 77
         }
       ],
@@ -1925,16 +1825,6 @@
           "kind": "cardEnd",
           "text": "",
           "pdfPage": 80
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: total daily sales",
-          "pdfPage": 80
-        },
-        {
-          "kind": "paragraph",
-          "text": "Three shops expect to sell 20, 30, and 15 items. The expected total is 65 even if the same weather affects all three. To calculate the distribution or variance of the total, their dependence can matter; to add their expected sales, it does not.",
-          "pdfPage": 80
         }
       ],
       "sourceRange": {
@@ -1969,16 +1859,6 @@
         {
           "kind": "paragraph",
           "text": "Conditioning changes the information available. The random variable still assigns numbers to outcomes, but the probabilities used to describe those numbers now reflect the known event. Conditional PMFs, their averages, and their normalization use the same principles as ordinary PMFs.",
-          "pdfPage": 80
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: a delivery update",
-          "pdfPage": 80
-        },
-        {
-          "kind": "paragraph",
-          "text": "Before a parcel leaves the depot, its arrival time may span the whole afternoon. Once you learn it is already on your street, the arrival-time distribution changes. You have not defined a new parcel or a new measurement; you have updated the probabilities using the information received.",
           "pdfPage": 80
         }
       ],
@@ -2082,16 +1962,6 @@
         {
           "kind": "paragraph",
           "text": "Figure 2.12: Visualization and calculation of the conditional PMF. For each $x$, add the probabilities in the intersection $\\{X=x\\}\\cap A$ and normalize by dividing by $P(A)$.",
-          "pdfPage": 81
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: only express parcels",
-          "pdfPage": 81
-        },
-        {
-          "kind": "paragraph",
-          "text": "Let $X$ be delivery time and $A$ the event that the parcel uses express service. To find the probability of next-day delivery for express parcels, divide the probability of a parcel being both express and next-day by the probability of express service. If those probabilities are $0.24$ and $0.3$, the conditional probability is $0.24/0.3=0.8$.",
           "pdfPage": 81
         }
       ],
@@ -2434,16 +2304,6 @@
           "kind": "cardEnd",
           "text": "",
           "pdfPage": 86
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: delivery service tiers",
-          "pdfPage": 86
-        },
-        {
-          "kind": "paragraph",
-          "text": "Let $Y$ identify standard or express service, and $X$ the delivery time. The overall chance of next-day arrival is the express share times its next-day rate, plus the standard share times its next-day rate. An unweighted average of the two rates is wrong unless the service shares are equal.",
-          "pdfPage": 86
         }
       ],
       "sourceRange": {
@@ -2660,16 +2520,6 @@
           "kind": "formula",
           "text": "\\operatorname{var}(X)=E[X^{2}]-(E[X])^{2}=\\frac{2}{p^{2}}-\\frac{1}{p}-\\frac{1}{p^{2}}=\\frac{1-p}{p^{2}}.",
           "pdfPage": 88
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: weekday and weekend waiting",
-          "pdfPage": 88
-        },
-        {
-          "kind": "paragraph",
-          "text": "A help desk's mean wait is four minutes on weekdays and ten minutes on weekends. If calls arrive with shares $0.8$ and $0.2$, the overall mean is $0.8(4)+0.2(10)=5.2$ minutes. Weight by the share of calls, not automatically by the number of days.",
-          "pdfPage": 88
         }
       ],
       "sourceRange": {
@@ -2704,16 +2554,6 @@
         {
           "kind": "paragraph",
           "text": "Independence is a statement about the full distribution. Knowing the event or the other variable must leave all the probabilities unchanged. Having the same average alone is not enough to establish independence.",
-          "pdfPage": 90
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: separate random draws",
-          "pdfPage": 90
-        },
-        {
-          "kind": "paragraph",
-          "text": "Two separate bags each contain numbered tokens. Draw once from each bag without letting either draw affect the other. Learning the number from the first bag gives no information about the second. Drawing twice from the same bag without replacement is different: the first draw changes what remains.",
           "pdfPage": 90
         }
       ],
@@ -2794,16 +2634,6 @@
         {
           "kind": "paragraph",
           "text": "Now let $Z=0$ if the first toss is a head and $Z=1$ if it is a tail. Conditional on an even number of heads, the outcomes are HH and TT with equal probability. Thus $Z$ is still equally likely to be zero or one, and it is independent of $A$.",
-          "pdfPage": 90
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: a promotion and order size",
-          "pdfPage": 90
-        },
-        {
-          "kind": "paragraph",
-          "text": "Let $X$ count items in an order and $A$ mean that the shopper saw a promotion. If the entire item-count PMF among shoppers who saw it is identical to the overall PMF, then $X$ is independent of $A$. An unchanged average item count by itself does not establish that.",
           "pdfPage": 90
         }
       ],
@@ -3027,16 +2857,6 @@
           "kind": "cardEnd",
           "text": "",
           "pdfPage": 93
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: two independent delays",
-          "pdfPage": 93
-        },
-        {
-          "kind": "paragraph",
-          "text": "A trip has a bus delay $X$ and a train delay $Y$. If independent, with variances four and nine square minutes, the total delay has variance thirteen and standard deviation $\\sqrt{13}$ minutes. Add variances, not standard deviations. Shared bad weather could make independence inappropriate.",
-          "pdfPage": 93
         }
       ],
       "sourceRange": {
@@ -3228,16 +3048,6 @@
         {
           "kind": "paragraph",
           "text": "Increasing the number of independent simulations reduces variance. It does not correct a simulation that uses the wrong probability model.",
-          "pdfPage": 94
-        },
-        {
-          "kind": "heading",
-          "text": "Everyday example: a satisfaction survey",
-          "pdfPage": 94
-        },
-        {
-          "kind": "paragraph",
-          "text": "For independent yes-or-no responses with $p=0.6$, a sample of 100 has variance $0.6(0.4)/100=0.0024$ for the approval fraction. A sample of 400 reduces this variance to $0.0006$ and halves the standard deviation. Four times as many independent responses halves this measure of uncertainty.",
           "pdfPage": 94
         }
       ],

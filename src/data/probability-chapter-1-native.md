@@ -6,9 +6,9 @@ The probability law, which assigns to a set A of possible outcomes (also called 
 @@ examples-1
 Consider two alternative games, both involving ten successive coin tosses:
 
-Game 1: We receive $1 each time a head comes up.
+Game 1: We receive \$1 each time a head comes up.
 
-Game 2: We receive $1 for every coin toss, up to and including the first time a head comes up. Then, we receive $2 for every coin toss, up to the second time a head comes up. More generally, the dollar amount per toss is doubled each time a head comes up.
+Game 2: We receive \$1 for every coin toss, up to and including the first time a head comes up. Then, we receive \$2 for every coin toss, up to the second time a head comes up. More generally, the dollar amount per toss is doubled each time a head comes up.
 
 In game 1, it is only the total number of heads in the ten-toss sequence that matters, while in game 2, the order of heads and tails is also important. Thus, in a probabilistic model for game 1, we can work with a sample space consisting of eleven possible outcomes, namely, 0, 1, …, 10. In game 2, a finer grain description of the experiment is called for, and it is more appropriate to let the sample space consist of every possible ten-long sequence of heads and tails.
 

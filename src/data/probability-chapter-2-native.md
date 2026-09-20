@@ -35,10 +35,6 @@ A discrete random variable is a real-valued function of the outcome of the exper
 
 @endcard
 
-### Everyday example: counting deliveries
-
-A courier's daily log contains addresses, delivery times, and customer names. Define $X$ as the number of late deliveries in that log. Each possible log produces exactly one number: $0,1,2,\ldots$. The log is the outcome; the count is the value of the random variable. Defining $Y=5X$ makes the total compensation, at five dollars per late delivery, another random variable.
-
 @summary A random variable assigns a number to an outcome. Discrete describes its possible numerical values, not necessarily the underlying sample space.
 
 @@ pmf-introduction | 2.2 | Intro | introduction | 58-60
@@ -76,10 +72,6 @@ For each possible value $x$ of $X$: collect all the possible outcomes that give 
 
 Figure 2.2: (a) To calculate the PMF, group together the outcomes that produce the same value of $X$. (b) For the maximum of two independent fair 4-sided die rolls, there are four possible values. The outcomes $(1,2),(2,2),(2,1)$ all produce $X=2$. Each has probability $1/16$, so $p_{X}(2)=3/16$. Similarly the masses at $1,3,4$ are $1/16,5/16,7/16$.
 
-### Everyday example: orders per minute
-
-Suppose a café receives zero orders with probability $0.2$, one with probability $0.5$, and two with probability $0.3$. This is a valid PMF because the probabilities are nonnegative and sum to one. The probability of at least one order is $0.5+0.3=0.8$. Add probabilities for values satisfying the event; do not add the order counts themselves.
-
 @summary The PMF assigns a probability to each possible value. Add its entries over the values of interest to find an event probability.
 
 @@ bernoulli | 2.2 | The Bernoulli Random Variable | subsection | 59-60
@@ -88,10 +80,6 @@ Consider the toss of a biased coin, which comes up a head with probability $p$, 
 $$p_{X}(k)=\begin{cases}p&\text{if }k=1,\\1-p&\text{if }k=0,\\0&\text{otherwise.}\end{cases}$$
 
 For all its simplicity, the Bernoulli random variable is very important. In practice, it is used to model generic probabilistic situations with just two outcomes, such as a telephone that can be free or busy; a person who can be healthy or sick with a certain disease; or a preference for or against a political candidate. Combining multiple Bernoulli random variables produces more complicated random variables.
-
-### Everyday example: a successful payment
-
-Define $X=1$ when a card payment succeeds and $X=0$ when it fails. If a payment succeeds with probability $p=0.98$, then $p_{X}(1)=0.98$ and $p_{X}(0)=0.02$. These numbers describe a single attempt. Counting successful payments across several attempts requires another model.
 
 @summary Bernoulli models one success-or-failure trial, with success encoded as one and failure as zero.
 
@@ -109,10 +97,6 @@ $$\sum_{k=0}^{n}\binom{n}{k} p^{k}(1-p)^{n-k}=1.$$
 @figure 3
 
 Figure 2.3: The PMF of a binomial random variable. If $p=1/2$, the PMF is symmetric around $n/2$. Otherwise, the PMF is skewed towards $0$ if $p<1/2$, and towards $n$ if $p>1/2$.
-
-### Everyday example: five deliveries
-
-Five deliveries each arrive on time with probability $0.8$, independently. Let $X$ count the on-time deliveries. Exactly four arrive on time with probability
 
 $$P(X=4)=\binom{5}{4}(0.8)^{4}(0.2)=0.4096.$$
 
@@ -134,10 +118,6 @@ More generally, we can interpret the geometric random variable in terms of repea
 @figure 4
 
 Figure 2.4: The PMF $p_{X}(k)=(1-p)^{k-1}p$, for $k=1,2,\ldots$, of a geometric random variable. It decreases as a geometric progression with parameter $1-p$.
-
-### Everyday example: retrying a connection
-
-A connection succeeds independently with probability $0.8$ on each attempt. To succeed for the first time on attempt three, the first two must fail and the third must succeed: $P(X=3)=(0.2)^{2}(0.8)=0.032$. The count includes the successful attempt, so the smallest possible value is one, not zero.
 
 @summary Geometric counts trials through the first success. A value of k requires k−1 failures followed by one success.
 
@@ -167,10 +147,6 @@ $$\frac{100!}{95!5!}(0.01)^{5}(0.99)^{95}\approx0.00290.$$
 Using the Poisson PMF with $\lambda=np=1$, this probability is approximated by
 
 $$e^{-1}\frac{1}{5!}\approx0.00306.$$
-
-### Everyday example: support requests
-
-If requests in a short time interval are reasonably modeled by a Poisson count with $\lambda=3$, the chance of receiving no requests is $e^{-3}\approx0.0498$. The parameter describes the average count in the chosen interval; changing the interval changes the appropriate parameter.
 
 @summary Poisson models nonnegative counts and approximates binomial counts for many independent trials with small success probabilities and λ=np.
 
@@ -208,10 +184,6 @@ $$p_{Z}(z)=\sum_{\{x\mid x^{2}=z\}}p_{X}(x)=\sum_{\{y\mid y^{2}=z\}}p_{Y}(y)=\be
 @figure 7
 
 Figure 2.7: The PMFs of $X$ and $Y=|X|$ in Example 2.1. Opposite values merge into one absolute value, so their probabilities add.
-
-### Everyday example: a parking fee
-
-Parking lasts one, two, or three hours with probabilities $0.5,0.3,0.2$. A fee rule charges five dollars for up to two hours and eight dollars for three hours. Both one-hour and two-hour stays produce the same fee, so $P(Y=5)=0.5+0.3=0.8$ and $P(Y=8)=0.2$.
 
 @summary Transform the values, then collect probabilities of all original values that produce the same new value.
 
@@ -466,10 +438,6 @@ But $E[V]=0.6(5)+0.4(30)=15$ miles per hour, and dividing distance by this avera
 
 $$E\left[\frac{2}{V}\right]\ne\frac{2}{E[V]}.$$
 
-### Everyday example: reliable arrival times
-
-Two buses both take an average of ten minutes to arrive. One takes nine or eleven minutes with equal probability; the other takes five or fifteen. Both means are ten, but their variances are one and twenty-five square minutes. Their standard deviations are one and five minutes. The first bus is more predictable even though neither has a smaller mean wait.
-
 @summary Expectation is a probability-weighted average; variance measures squared spread. Transform values before averaging. Adding a constant shifts the mean but leaves variance unchanged; multiplying by a scales variance by a².
 
 @@ joint-pmf-introduction | 2.5 | Intro | introduction | 76-78
@@ -499,10 +467,6 @@ where the second equality follows because $\{X=x\}$ is the union of the disjoint
 
 Figure 2.11: The joint PMF is represented by a table where each square gives $p_{X,Y}(x,y)$. Sum a column to get $p_{X}(x)$; sum a row to get $p_{Y}(y)$. In the displayed table, $p_{X}(2)=6/20$ and $p_{Y}(2)=7/20$.
 
-### Everyday example: an order with a drink
-
-Let $X$ indicate whether an order includes a sandwich and $Y$ indicate whether it includes a drink. Suppose the four probabilities for $(X,Y)=(0,0),(1,0),(0,1),(1,1)$ are $0.1,0.2,0.3,0.4$. The probability of a sandwich is $0.2+0.4=0.6$; the probability of a drink is $0.3+0.4=0.7$. The joint entry $0.4$ describes both together, which cannot in general be recovered from the two marginal probabilities alone.
-
 @summary Joint PMFs describe pairs of values. Sum over the other variable to obtain a marginal PMF.
 
 @@ functions-of-multiple-random-variables | 2.5 | Functions of Multiple Random Variables | subsection | 77-77
@@ -517,10 +481,6 @@ $$E[g(X,Y)]=\sum_{x,y}g(x,y)p_{X,Y}(x,y).$$
 In the special case where $g$ is linear and of the form $aX+bY+c$, where $a,b,c$ are given scalars, we have
 
 $$E[aX+bY+c]=aE[X]+bE[Y]+c.$$
-
-### Everyday example: the total bill
-
-Let $X$ and $Y$ indicate a sandwich and a drink, with joint probabilities $0.1,0.2,0.3,0.4$ for $(0,0),(1,0),(0,1),(1,1)$. A sandwich costs six dollars and a drink costs three, so $Z=6X+3Y$. The bill takes values $0,6,3,9$ with those probabilities. Its mean is $6(0.6)+3(0.7)=5.7$ dollars. Linearity works even when sandwich and drink choices are dependent.
 
 @summary To transform several random variables, group pairs producing the same result. For a mean, weight the transformed value by the joint probability. Linearity does not require independence.
 
@@ -583,20 +543,12 @@ If $g$ is linear, then $E[aX+bY+c]=aE[X]+bE[Y]+c$. These facts extend to more th
 
 @endcard
 
-### Everyday example: total daily sales
-
-Three shops expect to sell 20, 30, and 15 items. The expected total is 65 even if the same weather affects all three. To calculate the distribution or variance of the total, their dependence can matter; to add their expected sales, it does not.
-
 @summary Marginalization and expected-value rules extend to any finite number of variables. Indicator variables turn counts into sums, often avoiding a difficult full-PMF calculation.
 
 @@ conditioning-introduction | 2.6 | Intro | introduction | 80-81
 If we have a probabilistic model and we are also told that a certain event $A$ has occurred, we can capture this knowledge by employing the conditional instead of the original (unconditional) probabilities. Conditional probabilities are like ordinary probabilities (satisfy the three axioms) except that they refer to a new universe in which event $A$ is known to have occurred. In the same spirit, we can talk about conditional PMFs which provide the probabilities of the possible values of a random variable, conditioned on the occurrence of some event.
 
 Conditioning changes the information available. The random variable still assigns numbers to outcomes, but the probabilities used to describe those numbers now reflect the known event. Conditional PMFs, their averages, and their normalization use the same principles as ordinary PMFs.
-
-### Everyday example: a delivery update
-
-Before a parcel leaves the depot, its arrival time may span the whole afternoon. Once you learn it is already on your street, the arrival-time distribution changes. You have not defined a new parcel or a new measurement; you have updated the probabilities using the information received.
 
 @summary Conditioning updates a distribution to reflect known information. Work within that conditional distribution using the usual probability rules.
 
@@ -624,10 +576,6 @@ The conditional PMF is calculated similarly to its unconditional counterpart: to
 @figure 12
 
 Figure 2.12: Visualization and calculation of the conditional PMF. For each $x$, add the probabilities in the intersection $\{X=x\}\cap A$ and normalize by dividing by $P(A)$.
-
-### Everyday example: only express parcels
-
-Let $X$ be delivery time and $A$ the event that the parcel uses express service. To find the probability of next-day delivery for express parcels, divide the probability of a parcel being both express and next-day by the probability of express service. If those probabilities are $0.24$ and $0.3$, the conditional probability is $0.24/0.3=0.8$.
 
 @summary Keep outcomes in the known event and divide their probabilities by that event’s probability. The resulting masses sum to one.
 
@@ -740,10 +688,6 @@ These rules extend naturally to more than two random variables.
 
 @endcard
 
-### Everyday example: delivery service tiers
-
-Let $Y$ identify standard or express service, and $X$ the delivery time. The overall chance of next-day arrival is the express share times its next-day rate, plus the standard share times its next-day rate. An unweighted average of the two rates is wrong unless the service shares are equal.
-
 @summary Normalize a slice of a joint PMF to condition. Multiply a conditional PMF by the conditioning variable’s marginal to recover the joint. Sum these products to recover a marginal.
 
 @@ conditional-expectation | 2.6 | Conditional Expectation | subsection | 86-89
@@ -815,20 +759,12 @@ Consequently,
 
 $$\operatorname{var}(X)=E[X^{2}]-(E[X])^{2}=\frac{2}{p^{2}}-\frac{1}{p}-\frac{1}{p^{2}}=\frac{1-p}{p^{2}}.$$
 
-### Everyday example: weekday and weekend waiting
-
-A help desk's mean wait is four minutes on weekdays and ten minutes on weekends. If calls arrive with shares $0.8$ and $0.2$, the overall mean is $0.8(4)+0.2(10)=5.2$ minutes. Weight by the share of calls, not automatically by the number of days.
-
 @summary A conditional expectation averages within a known group. Total expectation averages those group means using the groups’ probabilities.
 
 @@ independence-introduction | 2.7 | Intro | introduction | 90-90
 We now discuss concepts of independence related to random variables. These concepts are analogous to the concepts of independence between events. They are developed by simply introducing suitable events involving the possible values of various random variables, and by considering their independence.
 
 Independence is a statement about the full distribution. Knowing the event or the other variable must leave all the probabilities unchanged. Having the same average alone is not enough to establish independence.
-
-### Everyday example: separate random draws
-
-Two separate bags each contain numbered tokens. Draw once from each bag without letting either draw affect the other. Learning the number from the first bag gives no information about the second. Drawing twice from the same bag without replacement is different: the first draw changes what remains.
 
 @summary Independence means that learning one piece of information does not change the probabilities of the other variable’s values.
 
@@ -850,10 +786,6 @@ $$p_{X}(x)=\begin{cases}1/4&x=0,\\1/2&x=1,\\1/4&x=2,\end{cases}\qquad p_{X\mid A
 Here $P(A)=1/2$. The two PMFs differ, so $X$ and $A$ are not independent. Interestingly, their means are both one; this shows why comparing means alone is insufficient.
 
 Now let $Z=0$ if the first toss is a head and $Z=1$ if it is a tail. Conditional on an even number of heads, the outcomes are HH and TT with equal probability. Thus $Z$ is still equally likely to be zero or one, and it is independent of $A$.
-
-### Everyday example: a promotion and order size
-
-Let $X$ count items in an order and $A$ mean that the shopper saw a promotion. If the entire item-count PMF among shoppers who saw it is identical to the overall PMF, then $X$ is independent of $A$. An unchanged average item count by itself does not establish that.
 
 @summary For a positive-probability event, compare the conditional and unconditional PMFs at every possible value, not just their means.
 
@@ -926,10 +858,6 @@ $$\operatorname{var}(X+Y)=\operatorname{var}(X)+\operatorname{var}(Y).$$
 
 @endcard
 
-### Everyday example: two independent delays
-
-A trip has a bus delay $X$ and a train delay $Y$. If independent, with variances four and nine square minutes, the total delay has variance thirteen and standard deviation $\sqrt{13}$ minutes. Add variances, not standard deviations. Shared bad weather could make independence inappropriate.
-
 @summary Independence factors the joint PMF. It allows products of expectations and addition of variances; conditional independence must be assessed separately.
 
 @@ independence-of-several-variables | 2.7 | Independence of Several Random Variables | subsection | 94-96
@@ -988,10 +916,6 @@ with
 $$E[S_{n}]=P(A),\qquad\operatorname{var}(S_{n})=\frac{P(A)(1-P(A))}{n}.$$
 
 Increasing the number of independent simulations reduces variance. It does not correct a simulation that uses the wrong probability model.
-
-### Everyday example: a satisfaction survey
-
-For independent yes-or-no responses with $p=0.6$, a sample of 100 has variance $0.6(0.4)/100=0.0024$ for the approval fraction. A sample of 400 reduces this variance to $0.0006$ and halves the standard deviation. Four times as many independent responses halves this measure of uncertainty.
 
 @summary Independence allows variances to add. An average of n independent observations has variance equal to an individual observation’s variance divided by n.
 
