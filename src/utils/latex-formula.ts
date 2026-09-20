@@ -8,13 +8,15 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
         Omega: 'Ω', varnothing: '∅', cup: '∪', cap: '∩', in: '∈', notin: '∉', subset: '⊂',
         le: '≤', ge: '≥', ne: '≠', approx: '≈', mid: '|', cdot: '·', times: '×',
         sum: '∑', prod: '∏', bigcap: '⋂', bigcup: '⋃', infty: '∞', to: '→', ldots: '…', cdots: '…',
-        lambda: 'λ', sigma: 'σ',
+        int: '∫', iint: '∬', iiint: '∭',
+        lambda: 'λ', sigma: 'σ', mu: 'μ', delta: 'δ', Phi: 'Φ', Theta: 'Θ', theta: 'θ',
     };
     const mark = (term: FormulaTerm, latex: string) => {
         if (!terms.some(t => t.id === term.id)) terms.push(term);
         return `\\htmlData{formula-term=${term.id}}{\\textcolor{${term.color}}{${latex}}}`;
     };
-    const add = (symbol: string, latex: string) => shouldExplainTerm(symbol) ? mark(makeTerm(symbol, context, source), latex) : latex;
+    // A big operator's scripts travel with it: its index is what its explanation is about.
+    const add = (symbol: string, latex: string, detail = '') => shouldExplainTerm(symbol) ? mark(makeTerm(symbol, context, source, detail), latex) : latex;
     let i = 0;
     let result = '';
     const group = () => {
@@ -43,9 +45,11 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             } else if (symbols[name]) {
                 let atom = command;
                 while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }
-                result += add(symbols[name], atom);
+                result += add(symbols[name], atom, atom);
             } else result += command;
         } else if (/[A-Za-z0-9=+!<>|−-]/.test(source[i])) {
+            // A d glued to what follows is a differential (dx, d\theta, dF_X), not a quantity of its own.
+            if (source[i] === 'd' && /[A-Za-z\\(]/.test(source[i + 1] || '')) { result += source[i++]; continue; }
             let atom = source[i++];
             if (/\d/.test(atom)) while (/[\d.]/.test(source[i] || ' ') && i < source.length) atom += source[i++];
             while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }

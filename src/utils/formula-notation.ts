@@ -137,12 +137,105 @@ const fixed: Record<string, [string,string]> = {
  '…':['Continue the same pattern.','\\ldots'], '⋯':['Continue the same pattern.','\\cdots'], '∞':['Infinity: no finite upper limit.','\\infty'],
  '⇒':['The statement on the left implies the one on the right.','\\Rightarrow'], '⇔':['Each statement implies the other.','\\Leftrightarrow'],
  'ℝ':['The set of all real numbers.','\\mathbb{R}'], '∫':['Integrate: accumulate over the indicated set or interval.','\\int'],
+ '∬':['Integrate over a region of the plane.','\\iint'], '∭':['Integrate over a region of space.','\\iiint'],
  'Σ':['Sum: add the indexed terms.','\\sum'], '∑':['Sum: add the indexed terms.','\\sum'],
  '∏':['Product: multiply the indexed terms.','\\prod'], '⋃':['Union over the indexed collection of sets.','\\bigcup'],
  '⋂':['Intersection over the indexed collection of sets.','\\bigcap'],
 };
-export function describeTerm(symbol: string, context = '', expression = ''): string {
+
+/** Reads the balanced group (or single command/character) that follows a script marker. */
+function readGroup(text: string, start: number): [string, number] {
+ if (text[start] !== '{') {
+  const command = text.slice(start).match(/^\\[A-Za-z]+/);
+  return command ? [command[0], start + command[0].length] : [text[start] || '', start + 1];
+ }
+ let depth = 0, i = start;
+ for (; i < text.length; i++) {
+  if (text[i] === '\\') { i++; continue; }            // \{ and \} are literal braces, not nesting
+  if (text[i] === '{') depth++;
+  else if (text[i] === '}' && --depth === 0) { i++; break; }
+ }
+ return [text.slice(start + 1, i - 1), i];
+}
+
+/** Index text is read aloud in the definition, so give its operators room to breathe. */
+const spaced = (text: string) => text.replace(/\s*([=<>≤≥≠∈|])\s*/g, ' $1 ').replace(/\s*,\s*/g, ', ').replace(/\s+/g, ' ').trim();
+
+/** The lower and upper scripts of a big operator, from authored TeX or from unicode scripts. */
+function operatorScripts(symbol: string, detail: string): {lower: string; upper: string} {
+ if (detail) {
+  let lower = '', upper = '';
+  for (let i = 0; i < detail.length; i++) {
+   if (detail[i] === '\\') { i++; continue; }
+   if (detail[i] !== '_' && detail[i] !== '^') continue;
+   const [body, next] = readGroup(detail, i + 1);
+   if (detail[i] === '_') lower = body; else upper = body;
+   i = next - 1;
+  }
+  return {lower: spaced(mathLabel(lower)), upper: spaced(mathLabel(upper))};
+ }
+ const rest = symbol.slice(1);
+ const low = [...rest].filter(c => sub.includes(c)).join('');
+ const high = rest.slice(low.length).replace('^', '');
+ return {lower: spaced(normal(low)), upper: spaced(high === '∞' ? '∞' : normal(high))};
+}
+
+// A big operator is read by its index: the index says which terms are included and which are
+// not, so that — not the operator glyph — is what the explanation has to describe.
+const BIG_OPERATOR: Record<string, (range: string) => string> = {
+ 'Σ': range => `Adds one term for ${range}`, '∑': range => `Adds one term for ${range}`,
+ '∏': range => `Multiplies one factor for ${range}`,
+ '⋃': range => `Unions the sets indexed by ${range}`,
+ '⋂': range => `Intersects the sets indexed by ${range}`,
+ '∫': range => `Integrates over ${range}`,
+ '∬': range => `Integrates over ${range}`, '∭': range => `Integrates over ${range}`,
+};
+
+/** Turns an index such as "x", "k=1"…"n", "x>0" or "{x ∣ g(x)=y}" into words. */
+function indexPhrase(lower: string, upper: string): {range: string; caveat?: string} {
+ const builder = lower.match(/^\{\s*(.+?)\s*\|\s*(.+?)\s*\}$/);
+ if (builder) return {range: `every ${builder[1]} satisfying ${builder[2]}`, caveat: 'values that fail that condition contribute nothing'};
+ const range = lower.match(/^([A-Za-zλσ])\s*=\s*(.+)$/);
+ if (range && upper === '∞') return {range: `each value of ${range[1]} from ${range[2]} upward, continuing without end`};
+ if (range && upper) return {range: `each whole-number value of ${range[1]} from ${range[2]} up to ${upper}`};
+ if (range) return {range: `each value of ${range[1]} from ${range[2]} onward`};
+ const member = lower.match(/^(.+?)\s*∈\s*(.+)$/);
+ if (member) return {range: `every ${member[1]} in ${member[2]}`, caveat: `anything outside ${member[2]} is left out`};
+ const condition = lower.match(/^(.+?)\s*([<>≤≥≠])\s*.+$/);
+ if (condition) return {range: `every value of ${condition[1]} that satisfies ${lower}`, caveat: 'the values that fail that condition are left out'};
+ const list = lower.split(',').map(part => part.trim()).filter(Boolean);
+ if (list.length > 1) return {range: `every combination of ${list.slice(0, -1).join(', ')} and ${list[list.length - 1]}`};
+ return {range: `every possible value of ${lower}`};
+}
+
+/** An integral's scripts are limits or a region, not an index: read them as the area being accumulated over. */
+function integralRange(lower: string, upper: string): {range: string; caveat?: string} {
+ if (!upper) {
+  const builder = lower.match(/^\{\s*(.+?)\s*\|\s*(.+?)\s*\}$/);
+  if (builder) return {range: `every ${builder[1]} satisfying ${builder[2]}`, caveat: 'values outside it contribute nothing'};
+  const member = lower.match(/^(.+?)\s*∈\s*(.+)$/);
+  if (member) return {range: `every ${member[1]} in ${member[2]}`, caveat: `anything outside ${member[2]} contributes nothing`};
+  const condition = lower.match(/^(.+?)\s*([<>≤≥])\s*.+$/);
+  if (condition) return {range: `the region where ${lower} holds`};
+  return {range: `the set ${lower}`};
+ }
+ const negativeInfinity = /^[-−]\s*∞$/.test(lower);
+ if (negativeInfinity && upper === '∞') return {range: 'the whole real line'};
+ if (upper === '∞') return {range: `everything from ${lower} upward`};
+ if (negativeInfinity) return {range: `everything up to ${upper}`};
+ return {range: `the interval from ${lower} to ${upper}`};
+}
+
+function describeBigOperator(glyph: string, symbol: string, detail: string): string {
+ const {lower, upper} = operatorScripts(symbol, detail);
+ if (!lower) return fixed[glyph][0];
+ const {range, caveat} = '∫∬∭'.includes(glyph) ? integralRange(lower, upper) : indexPhrase(lower, upper);
+ return `${BIG_OPERATOR[glyph](range)}${caveat ? `; ${caveat}` : ''}.`;
+}
+
+export function describeTerm(symbol: string, context = '', expression = '', detail = ''): string {
  const s = symbol.trim();
+ if (BIG_OPERATOR[s[0]] && (detail || s.length > 1 || fixed[s])) return describeBigOperator(s[0], s, detail);
  if (context.startsWith('chapter-2/')) {
   if(s==='E') return 'Expected value: average the possible values using their probabilities as weights.';
   if(s==='var') return 'Variance: the expected squared distance from the mean.';
@@ -157,6 +250,28 @@ export function describeTerm(symbol: string, context = '', expression = ''): str
   if(s==='c' || s==='a' || s==='b' || s==='d') return `${s}: a fixed constant or endpoint defined in the accompanying formula.`;
   if(s==='g' || s==='h' || s==='f') return `${s}: a function that transforms the random variable’s value.`;
  }
+ if (context.startsWith('chapter-3/')) {
+  if(s==='E') return 'Expected value: average the possible values, weighting each by the density there.';
+  if(s==='var') return 'Variance: the expected squared distance from the mean.';
+  if(s==='λ') return 'Lambda: the positive parameter of an exponential PDF; the mean is 1/λ.';
+  if(s==='μ') return 'Mu: the mean of a normal distribution, the value its bell curve is centred on.';
+  if(s.startsWith('σ')) return 'Sigma: the standard deviation, in the original units; σ² is the variance.';
+  if(s==='Φ') return 'Standard normal CDF: the probability that a standard normal random variable is at most this value, read from the normal table.';
+  if(s==='δ') return 'Delta: the length of a small interval, thought of as close to zero.';
+  if(s==='e') return 'Euler’s number (about 2.71828), the base of the natural exponential.';
+  if(s==='θ'||s==='Θ') return 'Theta: the angle in the accompanying model, measured in radians.';
+  if(/^f[-A-Z]/.test(s)) return /\\mid|\|/.test(s) ? 'Conditional PDF: the density of the variable on the left, given the information on the right.'
+   : s.includes(',') ? 'Joint PDF: the density of the listed random variables together; its integral over a region gives the probability of that region.'
+   : 'Probability density function: its area over an interval is the probability of that interval; the value itself is not a probability.';
+  if(/^F[A-Z]/.test(s)||/^F\^/.test(s)) return s.includes(',') ? 'Joint CDF: the probability that every listed random variable is at most its listed value.' : 'Cumulative distribution function: the probability that the random variable is at most this value.';
+  if(/^p[A-Z]/.test(s)) return 'Probability mass function: probability that the discrete random variable takes the specified value.';
+  if(/^[XYZTNSΘ](?:[₀-₉ᵢₙ]|[0-9]|\^|$)/.test(s)) return `${s}: a random variable (a number determined by the outcome); its role is defined in the accompanying statement.`;
+  if(s==='g') return 'g: the function applied to the random variable, as in Y = g(X).';
+  if(s==='h') return 'h: the inverse function; it returns the value of X that g sends to y.';
+  if(s==='I') return 'I: the interval of values the random variable is confined to.';
+  if(/^[abcdrls](?:[₀-₉ᵢₙ]|\+|$)/.test(s)) return `${s}: a fixed constant or endpoint defined in the accompanying statement.`;
+  if(/^[xyzt](?:[₀-₉]|$)/.test(s)) return `${s}: a numerical value the corresponding random variable can take.`;
+ }
  if ((s==='Ω'||s==='Ω')&&/sets-introduction|set-operations|algebra-of-sets/.test(context)) return 'Universe: all elements under consideration.';
  if(s==='|' && (expression.match(/\|/g)||[]).length>=2 && !expression.includes('{')) return /[xyz]/.test(expression) ? 'Absolute value: distance from zero, regardless of sign.' : 'Cardinality: the number of elements in the enclosed set.';
  if (s==='c' && /independent-trials/.test(context)) return 'Capacity: the maximum number of users that can be served at once.';
@@ -168,7 +283,6 @@ export function describeTerm(symbol: string, context = '', expression = ''): str
  if (s==='ℝ²') return 'The plane: ordered pairs of real numbers.';
  if (s==='ℝ³') return 'Space: ordered triples of real numbers.';
  if (fixed[s]) return fixed[s][0];
- if (/^[⋃⋂Σ∑∏]/.test(s)) return `${fixed[s[0]][0]} ${s.slice(1) ? 'The lower index gives the starting value; the upper index gives the limit.' : ''}`;
  if (s === '{' || s === '}') return 'Braces enclose the elements or defining condition of a set.';
  if (s === '(' || s === ')') return 'Parentheses group the enclosed expression.';
  if (s === '[' || s === ']') return 'Brackets delimit an interval or group an expression.';
@@ -205,8 +319,9 @@ function colorFor(symbol:string) {
  const map:Record<string,number>={S:0,T:1,U:5,x:2,y:4,P:0,A:1,B:5,C:4,'∪':3,'∩':3,'∈':3,'∉':4,'Ω':0,'Ω':0,n:1,k:2,p:0,'=':5,'|':2};
  return palette[map[key] ?? ([...key].reduce((a,c)=>a+c.charCodeAt(0),0)%palette.length)];
 }
-export function makeTerm(symbol:string,context='',expression=''):FormulaTerm {
- return {id:'t'+[...symbol].map(c=>c.codePointAt(0)!.toString(16)).join('-'),symbol,definition:describeTerm(symbol,context,expression),color:colorFor(symbol)};
+export function makeTerm(symbol:string,context='',expression='',detail=''):FormulaTerm {
+ const suffix=detail?'-'+[...detail].reduce((hash,c)=>(hash*33^c.codePointAt(0)!)>>>0,5381).toString(36):'';
+ return {id:'t'+[...symbol].map(c=>c.codePointAt(0)!.toString(16)).join('-')+suffix,symbol,definition:describeTerm(symbol,context,expression,detail),color:colorFor(symbol)};
 }
 const mathOp = /[=≠≤≥<>∈∉⊂⊃⊆∪∩+−·×/⇒⇔]/;
 function atomEnd(text:string,start:number):number {

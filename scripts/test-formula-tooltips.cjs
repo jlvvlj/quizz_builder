@@ -41,7 +41,9 @@ const CHAPTERS=[
 ];
 const MATH_SPAN=/(?<!\\)\$((?:\\\$|[^$])+?)(?<!\\)\$/g;
 const GENERIC=/the condition stated here selects which outcomes to include/;
-let checked=0;
+// A big operator is read by its index, so the index-free wording is a bug, not a default.
+const INDEX_FREE=/^(?:Sum: add|Product: multiply|Union over|Intersection over)/;
+let checked=0,indexed=0;
 const sweep=(expr,context,where)=>{
  for(const term of latexFormulaModel(expr,context).terms){
   checked++;
@@ -49,6 +51,9 @@ const sweep=(expr,context,where)=>{
   assert.ok(!/\\[A-Za-z]|\^\{|_\{/.test(term.symbol),`${where}: raw TeX in label: ${term.symbol} (${expr})`);
   assert.ok(!GENERIC.test(term.definition),`${where}: generic catch-all definition for ${term.symbol} (${expr})`);
   assert.ok(term.definition.trim().length>2,`${where}: empty definition for ${term.symbol}`);
+  if(!/^[\u2211\u220f\u22c3\u22c2\u03a3]/.test(term.symbol))continue;
+  indexed++;
+  assert.ok(!INDEX_FREE.test(term.definition),`${where}: big operator explained without its index: ${term.symbol} (${expr})`);
  }
 };
 for(const chapter of CHAPTERS){
@@ -69,4 +74,25 @@ for(const chapter of CHAPTERS){
   for(const match of block.text.matchAll(MATH_SPAN))sweep(match[1],context,unit);
  }
 }
-console.log(`Passed: ${checked} tooltips across ${CHAPTERS.length} chapters; basic notation suppressed, P(...) grouped, labels free of raw TeX.`);
+// 4. Each shape of index is explained as what it selects, not as "the indexed terms".
+const bigOperator=(expr,context='chapter-2/u')=>latexFormulaModel(expr,context).terms.filter(t=>/^[\u2211\u220f\u22c3\u22c2]/.test(t.symbol)).map(t=>t.definition);
+assert.deepEqual(bigOperator('\\sum_{x} p_X(x)'),['Adds one term for every possible value of x.']);
+assert.deepEqual(bigOperator('\\sum_{x>0} p_X(x)'),['Adds one term for every value of x that satisfies x > 0; the values that fail that condition are left out.']);
+assert.deepEqual(bigOperator('\\sum_{k=1}^{n} a_k'),['Adds one term for each whole-number value of k from 1 up to n.']);
+assert.deepEqual(bigOperator('\\sum_{k=0}^{\\infty} a_k'),['Adds one term for each value of k from 0 upward, continuing without end.']);
+assert.deepEqual(bigOperator('\\sum_{x\\in S} p'),['Adds one term for every x in S; anything outside S is left out.']);
+assert.deepEqual(bigOperator('\\sum_{x,y} p'),['Adds one term for every combination of x and y.']);
+assert.deepEqual(bigOperator('\\sum_{\\{x\\mid g(x)=y\\}} p'),['Adds one term for every x satisfying g(x) = y; values that fail that condition contribute nothing.']);
+assert.deepEqual(bigOperator('\\bigcup_{n=1}^{\\infty} A_n'),['Unions the sets indexed by each value of n from 1 upward, continuing without end.']);
+assert.deepEqual(bigOperator('\\bigcap_{i=1}^{n} A_i'),['Intersects the sets indexed by each whole-number value of i from 1 up to n.']);
+assert.deepEqual(bigOperator('\\prod_{i=1}^{n} p_i'),['Multiplies one factor for each whole-number value of i from 1 up to n.']);
+// The unicode inline path reaches the same explanations.
+assert.equal(notation.describeTerm('\u03a3\u1d62\u208c\u2081\u207f'),'Adds one term for each whole-number value of i from 1 up to n.');
+// Two sums in one formula are two different terms, because their indices differ.
+const doubleSum=latexFormulaModel('\\sum_{x}\\sum_{y} p_{XY}(x,y)','chapter-2/joint-pmf-introduction').terms.filter(t=>t.symbol==='\u2211');
+assert.equal(doubleSum.length,2,'A double sum must explain each index separately');
+assert.notEqual(doubleSum[0].id,doubleSum[1].id);
+assert.match(doubleSum[0].definition,/value of x\./);
+assert.match(doubleSum[1].definition,/value of y\./);
+
+console.log(`Passed: ${checked} tooltips across ${CHAPTERS.length} chapters (${indexed} indexed big operators); basic notation suppressed, P(...) grouped, labels free of raw TeX.`);

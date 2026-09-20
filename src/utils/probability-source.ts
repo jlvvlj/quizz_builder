@@ -1,5 +1,6 @@
 import chapterOne from '@/data/probability-chapter-1-source.json';
 import chapterTwo from '@/data/probability-chapter-2-source.json';
+import chapterThree from '@/data/probability-chapter-3-source.json';
 
 export interface LessonBlock {
     kind: 'paragraph' | 'formula' | 'heading' | 'keypoint' | 'cardEnd' | 'figure';
@@ -57,8 +58,9 @@ export interface SourceChapter {
 
 export const probabilityChapterOne = chapterOne as SourceChapter;
 export const probabilityChapterTwo = chapterTwo as SourceChapter;
+export const probabilityChapterThree = chapterThree as SourceChapter;
 export function getSourceChapter(deckId: string): SourceChapter | undefined {
-    return [probabilityChapterOne, probabilityChapterTwo].find(chapter => chapter.deckId === deckId);
+    return [probabilityChapterOne, probabilityChapterTwo, probabilityChapterThree].find(chapter => chapter.deckId === deckId);
 }
 
 export const chapterOneLessons = probabilityChapterOne.units;
