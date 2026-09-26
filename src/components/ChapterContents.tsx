@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { SourceChapter, SourceUnit, sourceLessonUrl } from '@/utils/probability-source';
+import { plainTitle, SourceChapter, SourceUnit, sourceLessonUrl } from '@/utils/probability-source';
 
 /** The same chapter map stays available on every lesson, including on phones. */
 export default function ChapterContents({chapter, sectionId, unit}: {chapter: SourceChapter; sectionId: string; unit: SourceUnit}) {
@@ -15,7 +15,7 @@ export default function ChapterContents({chapter, sectionId, unit}: {chapter: So
             </label>
             <label className="min-w-0 text-sm font-medium text-[#B8B8B8]">Lesson
                 <select aria-label="Section lesson" value={unit.id} onChange={e=>navigate(e.target.value)} className="mt-2 block w-full min-w-0 rounded-lg border border-[#505050] bg-[#181818] px-3 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#FF0054]">
-                    {chapter.units.filter(item=>item.section===unit.section).map(item=><option key={item.id} value={item.id}>{item.kind==='introduction'?'Intro':item.title}</option>)}
+                    {chapter.units.filter(item=>item.section===unit.section).map(item=><option key={item.id} value={item.id}>{item.kind==='introduction'?'Intro':plainTitle(item.title)}</option>)}
                 </select>
             </label>
         </div>
@@ -25,7 +25,7 @@ export default function ChapterContents({chapter, sectionId, unit}: {chapter: So
                 {chapter.sections.map(section=><section key={section.id} className="min-w-0">
                     <h2 className="mb-2 text-sm font-semibold text-[#FF80AA]">{section.id} {section.title}</h2>
                     <ol className="space-y-1">{chapter.units.filter(item=>item.section===section.id).map(item=><li key={item.id}>
-                        <Link href={sourceLessonUrl(sectionId,item.id,chapter.deckId)} aria-current={item.id===unit.id?'page':undefined} className={`block rounded-md px-2 py-2 text-sm ${item.id===unit.id?'bg-[#FF0054] font-semibold text-white':'text-[#B8B8B8] hover:bg-[#333333] hover:text-white'}`}>{item.kind==='introduction'?'Intro':item.title}</Link>
+                        <Link href={sourceLessonUrl(sectionId,item.id,chapter.deckId)} aria-current={item.id===unit.id?'page':undefined} className={`block rounded-md px-2 py-2 text-sm ${item.id===unit.id?'bg-[#FF0054] font-semibold text-white':'text-[#B8B8B8] hover:bg-[#333333] hover:text-white'}`}>{item.kind==='introduction'?'Intro':plainTitle(item.title)}</Link>
                     </li>)}</ol>
                 </section>)}
             </div>

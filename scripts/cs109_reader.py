@@ -1,5 +1,5 @@
 """Shared helpers for building CS109 reader chapters into this app's lesson format."""
-import json, re
+import hashlib, json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,3 +40,8 @@ def expressions(node):
         if node.get('type') == 'math_inline': yield attrs.get('value', '')
         if node.get('type') == 'block-tex': yield attrs.get('rawTex', '')
         for child in node.get('content') or []: yield from expressions(child)
+
+
+def image_id(attrs: dict) -> str:
+    """The reader's id for an image, or, for an image embedded as data with no id, one from its content."""
+    return attrs.get('id') or 'embedded-' + hashlib.sha256(attrs['src'].encode()).hexdigest()[:16]

@@ -7,14 +7,14 @@ import LoadingState from '@/components/LoadingState';
 import CircularProgress from '@/components/CircularProgress';
 import { CatalogSection, useCatalog } from '@/utils/catalog';
 import { courses, CoursePart } from '@/utils/courses';
-import { getSourceChapter } from '@/utils/probability-source';
+import { deckName, getSourceChapter } from '@/utils/probability-source';
 import { useQuizType } from '@/utils/quiz-mode';
 import { calculateSectionProgress } from '@/utils/progress-calculator';
 
 function DeckCard({s,sections,progress}:{s:CatalogSection;sections:CatalogSection[];progress:Record<string,number>}){
  const router=useRouter();const chapter=getSourceChapter(s.deck.id);
  return <div onClick={()=>router.push(`/steps?section=${s.id}`)} className="bg-[#262626] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors">
- <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">{s.deck.title}</h2><p className="text-[#A1A1A1] text-sm">{chapter ? `Chapter ${chapter.sections[0].id.split('.')[0]} lessons` : `${s.deck.question_label} → ${s.deck.answer_label}`}</p><p className="text-[#A1A1A1] text-sm mt-2">{chapter ? ` ${chapter.sections.length} sections · ${chapter.lessonCount} lessons` : `${s.count} items · ${s.steps.length} steps`}</p>{sections.filter(x=>x.deck.id===s.deck.id).length>1&&<p className="text-[#A1A1A1] text-sm">Section {s.id.replace('section_','')}</p>}</div>
+ <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">{s.deck.title}</h2><p className="text-[#A1A1A1] text-sm">{chapter ? `${deckName(chapter)} lessons` : `${s.deck.question_label} → ${s.deck.answer_label}`}</p><p className="text-[#A1A1A1] text-sm mt-2">{chapter ? ` ${chapter.sections.length} sections · ${chapter.lessonCount} lessons` : `${s.count} items · ${s.steps.length} steps`}</p>{sections.filter(x=>x.deck.id===s.deck.id).length>1&&<p className="text-[#A1A1A1] text-sm">Section {s.id.replace('section_','')}</p>}</div>
  <div className="flex flex-col items-end gap-4 shrink-0">{!chapter&&<CircularProgress progress={progress[s.id]||0} size={50} strokeWidth={6} progressColor="#FF0054" backgroundColor="#181818"/>}<button onClick={e=>{e.stopPropagation();router.push(`/steps?section=${s.id}`);}} className="bg-[#181818] border border-[#4F4F4F] text-white px-3 py-2 rounded-lg hover:bg-[#2F2F2F] flex items-center gap-2 text-sm"><Play className="w-4 h-4"/>Start</button></div></div>
  </div>;
 }

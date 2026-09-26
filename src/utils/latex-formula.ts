@@ -26,6 +26,9 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
         do { if (source[i] === '{') depth++; if (source[i] === '}') depth--; i++; } while (i < source.length && depth);
         return source.slice(start, i);
     };
+    // A marked term used as a bare script, as in (A \cup B)^C, needs braces: KaTeX takes a command
+    // after ^ or _ as the whole script only when it is grouped.
+    const emit = (piece: string) => { result += /[\^_]\s*$/.test(result) && piece.startsWith('\\htmlData') ? `{${piece}}` : piece; };
     while (i < source.length) {
         const call = context === 'sets-introduction' ? undefined : probabilityCallAt(source, i);
         if (call) {
@@ -35,7 +38,7 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             continue;
         }
         if (source[i] === '\\') {
-            const command = source.slice(i).match(/^\\([A-Za-z]+|.)/)![0];
+            const command = source.slice(i).match(/^\\([A-Za-z]+|[\s\S])/)![0];
             i += command.length;
             const name = command.slice(1);
             if (['text', 'mathrm', 'operatorname', 'begin', 'end'].includes(name)) {
@@ -44,8 +47,11 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
                     : name === 'operatorname' && body === '{var}' ? add('var', command + body) : command + body;
             } else if (symbols[name]) {
                 let atom = command;
+                // \limits and \nolimits must stay directly after their operator, inside the same mark.
+                const limits = source.slice(i).match(/^\\(?:no)?limits(?![A-Za-z])/);
+                if (limits) { atom += limits[0]; i += limits[0].length; }
                 while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }
-                result += add(symbols[name], atom, atom);
+                emit(add(symbols[name], atom, atom));
             } else result += command;
         } else if (/[A-Za-z0-9=+!<>|−-]/.test(source[i])) {
             // A d glued to what follows is a differential (dx, d\theta, dF_X), not a quantity of its own.
@@ -53,7 +59,7 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             let atom = source[i++];
             if (/\d/.test(atom)) while (/[\d.]/.test(source[i] || ' ') && i < source.length) atom += source[i++];
             while (source[i] === '_' || source[i] === '^') { atom += source[i++]; atom += group(); }
-            result += add(mathLabel(atom), atom);
+            emit(add(mathLabel(atom), atom));
         } else result += source[i++];
     }
     return {source, latex: result, terms};

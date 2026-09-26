@@ -96,13 +96,19 @@ export function describeEvent(source:string):string {
  return /^[A-Z][₀-₉ₙᵢⱼₖ]*$/.test(s) ? `${s} occurs` : s;
 }
 
+/** CS109 writes events with words and an upper-case complement: "E and F", "E or F", "E^C". */
+export function cs109Event(label:string):string {
+ return label.replace(/\s+and\s+/g,'∩').replace(/\s+or\s+/g,'∪').replace(/\^\(C\)|\^C(?![A-Za-z])/g,'ᶜ');
+}
+
 export function probabilityTerms(body:string, context=''): {whole:FormulaTerm; event:FormulaTerm} {
  const label=mathLabel(body);
+ const described=describeEvent(context.startsWith('cs109-') ? cs109Event(label) : label);
  const event=makeTerm(label,context);
  event.id='event-'+event.id;
- event.definition=`The event that ${describeEvent(label)}.`;
+ event.definition=`The event that ${described}.`;
  const whole=makeTerm(`P(${label})`,context);
- whole.definition=`The probability that ${describeEvent(label)}.`;
+ whole.definition=`The probability that ${described}.`;
  return {whole,event};
 }
 
@@ -118,6 +124,8 @@ export function probabilityCallAt(source:string,start:number) {
   if(source[i]===')' && --depth===0) {
    const suffix=source.slice(bodyStart,i).match(/\s*\\(?:right|bigr|Bigr|big|Big)\s*$/);
    const bodyEnd=suffix ? i-suffix[0].length : i;
+   // A call split across alignment columns or rows cannot become one marked group.
+   if(/&|\\\\/.test(source.slice(bodyStart,bodyEnd)))return;
    return {start,end:i+1,bodyStart,bodyEnd,body:source.slice(bodyStart,bodyEnd)};
   }
  }
@@ -249,6 +257,28 @@ export function describeTerm(symbol: string, context = '', expression = '', deta
   if(/^[XYZVTM](?:[₀-₉ᵢₙ]|[0-9]|\^|$)/.test(s)) return `${s}: a random variable (a number determined by the outcome); its role is defined in the accompanying example.`;
   if(s==='c' || s==='a' || s==='b' || s==='d') return `${s}: a fixed constant or endpoint defined in the accompanying formula.`;
   if(s==='g' || s==='h' || s==='f') return `${s}: a function that transforms the random variable’s value.`;
+ }
+ if (context.startsWith('cs109-')) {
+  const flips=/many-flips|binomial-diff-p|random-walks|independence-generalized/.test(context);
+  const counting=/counting|combinatorics|poker/.test(context);
+  const inclusion=/prob-or-inclusion-exclusion/.test(context);
+  if(s==='S') return 'Sample space S: the set of every possible outcome of the experiment.';
+  if(/^(.+)(\^\(C\)|ᶜ)$/.test(s)) return `Complement of ${s.replace(/(\^\(C\)|ᶜ)$/,'')}: every outcome in the sample space that is not in it.`;
+  if(/random-walks/.test(context) && /^[ACGT][₀-₉ᵢₙ]+$/.test(s)) return `${s}: the event that the DNA letter after mutation step ${s.slice(1).replace(/[₀-₉]/g,d=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(d).toString()).replace('ᵢ','i').replace('ₙ','n')} is ${s[0]}.`;
+  if(/random-walks/.test(context) && /^N[₀-₉ᵢₙ+]+$/.test(s)) return `${s}: the event that the DNA letter at this step is N, which stands for any of A, C, G, or T.`;
+  if(/inclusion-exclusion/.test(context) && /^Y/.test(s)) return `${s}: the sum of the probabilities of every intersection of exactly r of the events.`;
+  if(/^E[ᵢₙ]_/.test(s)) return `${s}: one of the events in a chosen subset of the events.`;
+  if(/^[EFGHUBAMDLR](?:[₀-₉ᵢₙⱼₖ]+)?$/.test(s)) return `${s}: an event, a subset of the sample space S.`;
+  if(s==='e') return /log-probabilities/.test(context) ? 'Euler’s number (about 2.71828), the base of the natural logarithm.' : 'Euler’s number (about 2.71828).';
+  if(s==='n') return flips ? 'n: the number of coin flips, or steps, in the experiment.' : counting ? 'n: the number of distinct objects to arrange or choose from.' : inclusion ? 'n: the number of events being combined.' : 'n: the number of trials, objects, or events in this statement.';
+  if(s==='k') return flips ? 'k: the number of heads (successes) being counted.' : 'k: the number of objects chosen, or the number of outcomes counted.';
+  if(s==='r') return inclusion ? 'r: how many events each intersection in the sum combines.' : 'r: the number of objects chosen, or of steps, in this count.';
+  if(/^p(?:[₀-₉ᵢₙ]+)?$/.test(s)) return flips ? `${s}: the probability that a flip lands heads (a step goes right).` : `${s}: a probability, a number between 0 and 1.`;
+  if(/^[ijm]$/.test(s)) return `${s}: an index that counts through the terms, events, or steps.`;
+  if(s==='N') return 'N: the number of distinct orderings being counted.';
+  if(s==='x') return 'x: a single outcome, a member of the set it is drawn from.';
+  if(/^[a-d]$/.test(s)) return `${s}: a fixed number given in the statement.`;
+  if(s==='C' || s==='c') return 'C: a named set or event from the statement.';
  }
  if (context.startsWith('chapter-3/')) {
   if(s==='E') return 'Expected value: average the possible values, weighting each by the density there.';
