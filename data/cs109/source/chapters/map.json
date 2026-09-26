@@ -1,0 +1,652 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "MLE is great, but it is not the only way to estimate parameters! This section introduces an alternate algorithm, Maximum A Posteriori (MAP). The paradigm of MAP is that we should choose the value for our parameters that is the most likely given the data. At first blush this might seem the same as MLE, however notice that MLE chooses the value of parameters that makes the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "data",
+     "type": "text"
+    },
+    {
+     "text": " most likely. Formally, for IID random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1, \\dots, X_n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\theta_{\\text{MAP}} =& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } f(\\Theta = \\theta | X_1=x_1, X_2=x_2, \\dots X_n=x_n) \\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the equation above we are trying to calculate the conditional probability of unobserved random variables given observed random variables. When that is the case, think Bayes Theorem! Expand the function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the continuous version of Bayes Theorem.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\theta_{\\text{MAP}} =& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } f(\\Theta = \\theta | X_1=x_1, X_2=x_2, \\dots X_n=x_n) \\\\ \n=& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } \\frac{f(X_1=x_1, X_2=x_2, \\dots, X_n=x_n |\\Theta = \\theta) f(\\Theta = \\theta)}{f(X_1=x_1, X_2=x_2, \\dots X_n=x_n)} && \\text{Bayes}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are all probability densities or probability mass functions. Now we are going to leverage two observations. First, the data is assumed to be IID so we can decompose the density of the data given ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Second, the denominator is a constant with respect to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". As such its value does not affect the argmax and we can drop that term. Mathematically:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\theta_{\\text{MAP}} =& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } \\frac{f(\\Theta = \\theta) \\cdot \\prod_{i=1}^n f(X_i =x_i| \\Theta = \\theta) }{f(X_1 = x_1, X_2 = x_2, \\dots X_n = x_n)} && \\text{Since the samples are IID}\\\\\n=& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } f(\\Theta = \\theta) \\cdot\\prod_{i=1}^n f(X_i =x_i |\\Theta =  \\theta)  && \\text{Denom. is constant with respect to }\\theta\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As before, it will be more convenient to find the argmax of the log of the MAP function, which gives us the final form for MAP estimation of parameters.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\theta_{\\text{MAP}} =& \\underset{\\theta}{\\operatorname{argmax }} \\text{ } \\left( \\log f(\\Theta = \\theta) + \\sum_{i=1}^n \\log(f(X_i =x_i|\\Theta = \\theta)) \\right)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using Bayesian terminology, the MAP estimate is the mode of the \"posterior\" distribution for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If you look at this equation side by side with the MLE equation you will notice that MAP is the argmax of the exact same function plus a term for the log of the prior.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "parameter-priors",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Parameter Priors",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In order to get ready for the world of MAP estimation, we are going to need to brush up on our distributions. We will need reasonable distributions for each of our different parameters. For example, if you are predicting a Poisson distribution, what is the right random variable type for the prior of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A desideratum for prior distributions is that the resulting posterior distribution has the same functional form. We call these \"conjugate\" priors. In the case where you are updating your belief many times, conjugate priors makes programming in the math equations much easier.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a list of different parameters and the distributions most often used for their priors:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n&\\text{Parameter }&& \\text{Distribution}\\\\\n&\\text{Bernoulli } p && \\text{Beta}\\\\\n&\\text{Binomial } p && \\text{Beta}\\\\\n&\\text{Poisson } \\lambda && \\text{Gamma}\\\\\n&\\text{Exponential } \\lambda && \\text{Gamma}\\\\\n&\\text{Multinomial } p_i && \\text{Dirichlet}\\\\\n&\\text{Normal } \\mu && \\text{Normal}\\\\\n&\\text{Normal } \\sigma^2 && \\text{Inverse Gamma}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You are only expected to know the new distributions on a high level. You do not need to know Inverse Gamma. I included it for completeness.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The distributions used to represent your \"prior\" belief about a random variable will often have their own parameters. For example, a Beta distribution is defined using two parameters ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(a, b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Do we have to use parameter estimation to evaluate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " too? No. Those parameters are called \"hyperparameters\". That is a term we reserve for parameters in our model that we fix before running parameter estimate. Before you run MAP you decide on the values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(a, b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "dirichlet",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Dirichlet",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Dirichlet distribution generalizes Beta in the same way Multinomial generalizes Bernoulli. A random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that is Dirichlet is parametrized as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Dirichlet}(a_1, a_2, \\dots, a_m)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The PDF of the distribution is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nf(X_1 = x_1, X_2 = x_2, \\dots, X_m = x_m) = K \\prod_{i=1}^m x_i^{a_i - 1}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "K"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a normalizing constant.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You can intuitively understand the hyperparameters of a Dirichlet distribution: imagine you have seen ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sum_{i=1}^m a_i - m"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " imaginary trials. In those trials you had ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(a_i - 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " outcomes of value i. As an example consider estimating the probability of getting different numbers on a six-sided Skewed Dice (where each side is a different shape). We will estimate the probabilities of rolling each side of this dice by repeatedly rolling the dice ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " times. This will produce ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " IID samples. For the MAP paradigm, we are going to need a prior on our belief of each of the parameters ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_1 \\dots p_6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We want to express that we lightly believe that each roll is equally likely.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Before you roll, let's imagine you had rolled the dice six times and had gotten one of each possible value. Thus the \"prior\" distribution would be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Dirichlet}(2, 2, 2, 2, 2, 2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". After observing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n_1 + n_2 + \\dots + n_6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " new trials with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " results of outcome i, the \"posterior\" distribution is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Dirichlet}(2 + n_1, \\dots 2 + n_6)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Using a prior which represents one imagined observation of each outcome is called \"Laplace smoothing\" and it guarantees that none of your probabilities are 0 or 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "gamma",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Gamma",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Gamma}(k, \\theta)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " distribution is the conjugate prior for the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " parameter of the Poisson distribution (It is also the conjugate for Exponential, but we won't delve into that).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The hyperparameters can be interpreted as: you saw ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " total imaginary events during ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " imaginary time periods. After observing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " events during the next ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " time periods the posterior distribution is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Gamma}(k + n, \\theta + t)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Gamma}(10, 5)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " would represent having seen 10 imaginary events in 5 time periods. It is like imagining a rate of 2 with some degree of confidence. If we start with that Gamma as a prior and then see 11 events in the next 2 time periods our posterior is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Gamma}(21,7)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which is equivalent to an updated rate of 3.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

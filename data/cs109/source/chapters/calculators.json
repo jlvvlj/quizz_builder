@@ -1,0 +1,447 @@
+{
+ "content": [
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "factorial-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Factorial Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n!"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 1429,
+      "sourceSha256": "5220bc625795dfc3d4fd30f610109da9f7a0ed2acac58cda32c186142af57d17"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "combinations-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Combinations Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\binom{n}{r}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the number of ways to ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./combinatorics#comb_distinct",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "choose",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "r"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " items from a set of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " distinct items.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 1806,
+      "sourceSha256": "2b623e58b252dc8d17d148490e3083379688f3024936ec8ce4e54a874b7ea9e9"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "phi-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Phi Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\Phi(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the CDF of the Standard Normal",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 1357,
+      "sourceSha256": "c110b2ee6f783cd5d030788322db070af69ddb7fd8967206fb2ad0b2f54b9c8d"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "inverse-phi-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Inverse Phi Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\Phi^{-1}(p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the inverse of the CDF of the Standard Normal. Also known as the Standard Normal quantile function.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 1423,
+      "sourceSha256": "2bc2f7f40dc0196e92355aaace24dde02060fbc88011fca77e75fc248aeed148"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "normal-cdf-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Normal CDF Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X \\le x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim N(\\mu, \\sigma^2)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2183,
+      "sourceSha256": "834d36afd2684e5eac66675dbc0c0e7e9318b106ac6d633b8bb85654d2450de5"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "beta-cdf-calculator",
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Beta CDF Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X \\leq x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Beta(a, b)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2315,
+      "sourceSha256": "bf2f9095ba954a4dd5a3a2632e3ff3f3d425bf84dde8b59823b85a260fb4074a"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": null,
+      "level": "3",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Sigmoid Calculator",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the sigmoid function, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma(x)=\\frac{1}{1 + e^{-x}}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 1715,
+      "sourceSha256": "6f01ccae18f44f354b81f50bb27feb475befc18efc9dc23129b4aebcda34ab0e"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

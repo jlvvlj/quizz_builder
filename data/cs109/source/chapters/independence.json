@@ -1,0 +1,1146 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "So far we have talked about mutual exclusion as an important \"property\" that two or more events can have. In this chapter we will introduce you to a second property: independence. Independence is perhaps one of the most important properties to consider! Like for mutual exclusion, if you can establish that this property applies (either by logic, or by declaring it as an assumption) it will make analytic probability calculations much easier!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " Independence",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Two events are said to be independent if knowing the outcome of one event does not change your belief about whether or not the other event will occur. For example, you might say that two separate dice rolls are independent of one another: the outcome of the first dice gives you no information about the outcome of the second -- and vice versa.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\p(E|F) = \\p(E)"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "alternative-definition",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Alternative Definition",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Another definition of independence can be derived by using an equation called the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/fall25/prob_and",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "chain rule",
+     "type": "text"
+    },
+    {
+     "text": ", which we will learn about later, in the context where two events are independent. Consider two independent events A and B:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(A,B)\\\n&= \\p(A) \\cdot \\p(B|A) && \\text{Chain Rule} \\\\\n&= \\p(A) \\cdot \\p(B) && \\text{Independence}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "independence-is-symmetric",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Independence is Symmetric",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This definition is ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/symmetric_relation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "symmetric",
+     "type": "text"
+    },
+    {
+     "text": ". If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Proof",
+       "type": "text"
+      },
+      {
+       "text": ": Independence is Symmetric",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We can prove that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(F | E) = \\p(F)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " implies ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(E | F) = \\p(E)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " starting with a law called ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "bayes_theorem",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "Bayes' Theorem",
+       "type": "text"
+      },
+      {
+       "text": " which we will cover shortly:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p&(E | F) \\\\ \n&= \\frac{\\p(F|E) \\cdot \\p(E)}{\\p(F)} && \\text{Bayes Theorem} \\\\\n&= \\frac{\\p(F) \\cdot \\p(E)}{\\p(F)} && \\p(F | E) = \\p(F) \\\\\n&= \\p(E) && \\text{Cancel}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "independence-and-complements",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Independence and Complements",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If you are told that two events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are independent, the independence property is preserved when considering any complements of the events. As such:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nA &\\text{ is independent of } B^C \\\\\nA^C &\\text{ is independent of } B \\\\\nA^C &\\text{ is independent of } B^C\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Proof",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "text": "Independence of Complements",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If events A and B are independent, we can prove that A and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "B^C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are also independent. Formally we want to show that: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(A B^C) = \\P(A)\\cdot\\P(B^C)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". This starts with a rule called the ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./law_total",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "Law of Total Probability",
+       "type": "text"
+      },
+      {
+       "text": " (LOTP) that states: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(A) = \\P(AB) + \\P(AB^C)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P (AB^C ) &= \\P (A) - \\P (AB) && \\text{LOTP} \\\\\n&= \\P (A) - \\P (A)\\P (B) &&\\text{Independence}\\\\\n&= \\P (A)[1 - \\P (B)]&&\\text{Algebra}\\\\\n&= \\P (A)\\P(B^C)&&\\text{Identity 1}\\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This logic can be extended to also prove that if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "A"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "B"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "A^C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "B^C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are also independent.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "generalized-independence",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Generalized Independence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " , … , ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are independent if for every subset of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " events that you can select from the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " events (where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r ≤ n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), the events in that subset are independent. In other words the joint probability of the events (the probability of the \"and\" of each of the events), is the product of the probability of the events. Formally, for every subset ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_{i_1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_{i_2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\dots"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " , ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_{i_r}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\p(E_{i_1}, E_{i_2}, \\dots, E_{i_r}) = \\prod_{j=1}^r \\p(E_{i_j})"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If you are told that a set of events are independent, the the probability of the \"and\" of any subset can be computed using multiplication. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example",
+       "type": "text"
+      },
+      {
+       "text": ": consider the probability of getting 5 heads on 5 coin flips where we assume that each coin flip is independent of one another. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Solution",
+       "type": "text"
+      },
+      {
+       "text": ": Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event of getting a heads on the ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "th coin flip.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Parallel Networks Example",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Networks, such as the internet, are used to send information. Often there are multiple paths (mediated by routers) between two computers and as long as one path is functional, information can be sent. Consider a parallel network with n ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "independent",
+     "type": "text"
+    },
+    {
+     "text": " routers, each with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of functioning (where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1 ≤ i ≤ n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that there is a functional path. What is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "b41edceb-99b0-4ea3-92e5-1ac49913df51",
+    "naturalHeight": "806",
+    "naturalWidth": "1553",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fb41edceb-99b0-4ea3-92e5-1ac49913df51?alt=media&token=2d5b93d7-d0d4-488f-9df8-cdb964b84233",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "A simple network that connects two computers, A and B.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Solution",
+       "type": "text"
+      },
+      {
+       "text": ": Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that router ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " fails. Note that the problem states that routers are independent, and as such we assume that the events ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are all independent of one another.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E) \\\n&= \\p(\\text{At least one router works}) \\\\\n&= 1 - \\p(\\text{All routers fail}) \\\\\n&= 1 - \\p(F_1 \\text{ and } F_2 \\text{ and } \\dots \\text{ and } F_n) \\\\\n&= 1 - \\prod_{i=1}^n \\p(F_i) && \\text{Independence of } F_i\\\\\n&= 1 - \\prod_{i=1}^n [1 - p_i]\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is the probability that router ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is functional. A critical part of this solution was to change the problem from being the probability that at least one router works, into one minus the probability that all routers fail. That technique has a formal name called ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./demorgans",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "De Morgan's Law",
+       "type": "text"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "how-to-establish-independence",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How to Establish Independence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How can you show that two or more events are independent? The default option is to show it mathematically. If you can show that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E | F) = \\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then you have proven that the two events are independent. When working with probabilities that come from data, very few things will exactly match the mathematical definition of independence. That can happen for two reasons: first, events that are calculated from data or simulation are not perfectly precise and it can be impossible to know if a discrepancy between ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E|F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is due to inaccuracy in estimating probabilities, or dependence of events. Second, in our complex world many things actually influence each other, even if just a tiny amount. Despite that we often make the wrong, but useful, independence assumption. Since independence makes it so much easier for humans and machines to calculate composite probabilities, you may declare the events to be independent. It could mean your resulting calculation is slightly incorrect — but this \"modeling assumption\" might make it feasible to come up with a result.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Independence is a property which is often \"assumed\" if you think it is reasonable that one event is unlikely to influence your belief that the other will occur (or if the influence is negligible). Let's work through an example to better understand.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "conditional-independence",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conditional Independence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We saw earlier that the laws of probability still held if you consistently conditioned on an event. As such, the definition of independence also transfers to the universe of conditioned events. We use the terminology \"conditional independence\" to refer to events that are independent when consistently conditioned. For example if someone claims that events E₁, E₂, E₃ are conditionally independent given event F. This implies that",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\p(E_1, E_2, E_3 | F) = \\p(E_1|F) \\cdot \\p(E_2|F) \\cdot \\p(E_3|F)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Which can be written more succinctly in product notation",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\p(E_1, E_2, E_3 | F) = \\prod_{i=1}^3 \\p(E_i|F)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Warning:",
+       "type": "text"
+      },
+      {
+       "text": " While the rules of probability stay the same when conditioning on an event, the independence ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "property",
+       "type": "text"
+      },
+      {
+       "text": " between events might change. Events that were dependent can become independent when conditioning on an event. Events that were independent can become dependent. For example, if events E₁, E₂, E₃ are conditionally independent given event F it is not necessarily true that",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\p(E_1,E_2,E_3) = \\prod_{i=1}^3 \\p(E_i)"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "As we are no longer conditioning on F.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

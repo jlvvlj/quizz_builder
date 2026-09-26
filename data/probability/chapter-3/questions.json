@@ -1,0 +1,1472 @@
+{
+  "status": "approved",
+  "title": "General Random Variables",
+  "language": "English",
+  "source": "Dimitri P. Bertsekas and John N. Tsitsiklis, Introduction to Probability, MIT course 6.041–6.431, Fall 2000 lecture notes",
+  "source_pdf_pages": "99–150",
+  "source_printed_pages": "1–52",
+  "proposed_mode": "multiple_choice",
+  "choice_count": 4,
+  "steps": [
+    {
+      "number": 1,
+      "title": "Notation",
+      "source": "§§3.1–3.6",
+      "printed_pages": "2–48",
+      "objective": "Read the symbols used for densities, distribution functions, the normal law, joint models, and conditioning.",
+      "question_count": 16
+    },
+    {
+      "number": 2,
+      "title": "Continuous random variables and PDFs",
+      "source": "§3.1",
+      "printed_pages": "2–6",
+      "objective": "Recognise what a PDF is, what it is not, and how areas under it give probabilities.",
+      "question_count": 8
+    },
+    {
+      "number": 3,
+      "title": "Expectation and the exponential",
+      "source": "§3.1",
+      "printed_pages": "6–11",
+      "objective": "Compute means, variances, and the properties of the exponential random variable.",
+      "question_count": 8
+    },
+    {
+      "number": 4,
+      "title": "Cumulative distribution functions",
+      "source": "§3.2",
+      "printed_pages": "11–16",
+      "objective": "Use the CDF to describe discrete and continuous random variables alike.",
+      "question_count": 8
+    },
+    {
+      "number": 5,
+      "title": "Normal random variables",
+      "source": "§3.3",
+      "printed_pages": "16–20",
+      "objective": "Standardize a normal random variable and read probabilities from the normal table.",
+      "question_count": 10
+    },
+    {
+      "number": 6,
+      "title": "Conditioning on an event",
+      "source": "§3.4",
+      "printed_pages": "20–26",
+      "objective": "Condition a PDF on an event and apply the total probability and total expectation theorems.",
+      "question_count": 8
+    },
+    {
+      "number": 7,
+      "title": "Multiple continuous random variables",
+      "source": "§3.5",
+      "printed_pages": "26–39",
+      "objective": "Work with joint, marginal and conditional PDFs, the continuous Bayes rule, and independence.",
+      "question_count": 14
+    },
+    {
+      "number": 8,
+      "title": "Derived distributions",
+      "source": "§§3.6–3.7",
+      "printed_pages": "40–52",
+      "objective": "Find the PDF of a function of one or two random variables.",
+      "question_count": 10
+    }
+  ],
+  "questions": [
+    {
+      "id": "C3-N01",
+      "step": 1,
+      "group": "Notation",
+      "question": "f_X(x)",
+      "options": [
+        "The probability density function of X",
+        "The probability that X equals x",
+        "The cumulative probability up to x",
+        "The mean of X"
+      ],
+      "correct_answer": "The probability density function of X",
+      "explanation": "A PDF is a density: only its area over a set is a probability.",
+      "difficulty": "Notation",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-N02",
+      "step": 1,
+      "group": "Notation",
+      "question": "∫_B f_X(x) dx",
+      "options": [
+        "f_X(B)",
+        "P(X ∈ B)",
+        "The mean of X over B",
+        "The length of B"
+      ],
+      "correct_answer": "P(X ∈ B)",
+      "explanation": "Integrating the PDF over a set gives the probability of that set.",
+      "difficulty": "Notation",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-N03",
+      "step": 1,
+      "group": "Notation",
+      "question": "F_X(x)",
+      "options": [
+        "P(X = x)",
+        "P(X ≥ x)",
+        "P(X ≤ x)",
+        "The density of X at x"
+      ],
+      "correct_answer": "P(X ≤ x)",
+      "explanation": "The CDF accumulates probability up to the value x.",
+      "difficulty": "Notation",
+      "source_printed_page": 11,
+      "source_pdf_page": 109
+    },
+    {
+      "id": "C3-N04",
+      "step": 1,
+      "group": "Notation",
+      "question": "Φ(y)",
+      "options": [
+        "The PDF of the standard normal random variable",
+        "The mean of a normal random variable",
+        "The variance of a normal random variable",
+        "The CDF of the standard normal random variable"
+      ],
+      "correct_answer": "The CDF of the standard normal random variable",
+      "explanation": "Φ is reserved for the standard normal CDF, the function recorded in the normal table.",
+      "difficulty": "Notation",
+      "source_printed_page": 18,
+      "source_pdf_page": 116
+    },
+    {
+      "id": "C3-N05",
+      "step": 1,
+      "group": "Notation",
+      "question": "μ in the normal PDF",
+      "options": [
+        "The mean of the random variable",
+        "The standard deviation",
+        "The variance",
+        "The normalizing constant"
+      ],
+      "correct_answer": "The mean of the random variable",
+      "explanation": "The normal PDF is symmetric around μ, which is therefore its mean.",
+      "difficulty": "Notation",
+      "source_printed_page": 16,
+      "source_pdf_page": 114
+    },
+    {
+      "id": "C3-N06",
+      "step": 1,
+      "group": "Notation",
+      "question": "σ² in the normal PDF",
+      "options": [
+        "The mean",
+        "The variance of the random variable",
+        "The standard deviation",
+        "The median"
+      ],
+      "correct_answer": "The variance of the random variable",
+      "explanation": "σ is the standard deviation, so σ² is the variance.",
+      "difficulty": "Notation",
+      "source_printed_page": 16,
+      "source_pdf_page": 114
+    },
+    {
+      "id": "C3-N07",
+      "step": 1,
+      "group": "Notation",
+      "question": "λ in the PDF λe^(−λx)",
+      "options": [
+        "The mean of the random variable",
+        "The variance of the random variable",
+        "The positive parameter of an exponential random variable",
+        "A probability between 0 and 1"
+      ],
+      "correct_answer": "The positive parameter of an exponential random variable",
+      "explanation": "The exponential parameter λ is positive; the mean is 1/λ, not λ.",
+      "difficulty": "Notation",
+      "source_printed_page": 9,
+      "source_pdf_page": 107
+    },
+    {
+      "id": "C3-N08",
+      "step": 1,
+      "group": "Notation",
+      "question": "δ in P([x, x+δ]) ≈ f_X(x)·δ",
+      "options": [
+        "A probability",
+        "The density at x",
+        "The variance",
+        "The length of a small interval"
+      ],
+      "correct_answer": "The length of a small interval",
+      "explanation": "δ is an interval length taken small, which is why the approximation is good.",
+      "difficulty": "Notation",
+      "source_printed_page": 3,
+      "source_pdf_page": 101
+    },
+    {
+      "id": "C3-N09",
+      "step": 1,
+      "group": "Notation",
+      "question": "f_{X,Y}(x,y)",
+      "options": [
+        "The joint PDF of X and Y",
+        "The conditional PDF of X given Y",
+        "The marginal PDF of X",
+        "The joint CDF of X and Y"
+      ],
+      "correct_answer": "The joint PDF of X and Y",
+      "explanation": "A joint PDF is integrated over a region of the plane to give a probability.",
+      "difficulty": "Notation",
+      "source_printed_page": 26,
+      "source_pdf_page": 124
+    },
+    {
+      "id": "C3-N10",
+      "step": 1,
+      "group": "Notation",
+      "question": "f_{X|Y}(x | y)",
+      "options": [
+        "The joint PDF of X and Y",
+        "The conditional PDF of X given that Y = y",
+        "The marginal PDF of X",
+        "The probability that X = x given Y = y"
+      ],
+      "correct_answer": "The conditional PDF of X given that Y = y",
+      "explanation": "It is the joint PDF along the slice Y = y, renormalized to integrate to 1.",
+      "difficulty": "Notation",
+      "source_printed_page": 30,
+      "source_pdf_page": 128
+    },
+    {
+      "id": "C3-N11",
+      "step": 1,
+      "group": "Notation",
+      "question": "f_{X|A}(x)",
+      "options": [
+        "The PDF of the event A",
+        "The probability of A given X = x",
+        "The conditional PDF of X given the event A",
+        "The joint PDF of X and A"
+      ],
+      "correct_answer": "The conditional PDF of X given the event A",
+      "explanation": "Conditioning on an event gives an ordinary PDF in a universe where A has occurred.",
+      "difficulty": "Notation",
+      "source_printed_page": 20,
+      "source_pdf_page": 118
+    },
+    {
+      "id": "C3-N12",
+      "step": 1,
+      "group": "Notation",
+      "question": "E[X | A]",
+      "options": [
+        "The probability of A",
+        "The variance of X given A",
+        "The conditional PDF of X given A",
+        "The conditional expectation of X given the event A"
+      ],
+      "correct_answer": "The conditional expectation of X given the event A",
+      "explanation": "It integrates x against the conditional PDF f_{X|A}.",
+      "difficulty": "Notation",
+      "source_printed_page": 23,
+      "source_pdf_page": 121
+    },
+    {
+      "id": "C3-N13",
+      "step": 1,
+      "group": "Notation",
+      "question": "var(X)",
+      "options": [
+        "The expected value of (X − E[X])²",
+        "The expected value of X − E[X]",
+        "The square root of the mean",
+        "The expected value of X²"
+      ],
+      "correct_answer": "The expected value of (X − E[X])²",
+      "explanation": "Variance is the expected squared distance from the mean.",
+      "difficulty": "Notation",
+      "source_printed_page": 7,
+      "source_pdf_page": 105
+    },
+    {
+      "id": "C3-N14",
+      "step": 1,
+      "group": "Notation",
+      "question": "The dx in ∫ f_X(x) dx",
+      "options": [
+        "It is a small probability",
+        "It names the variable the integration runs over",
+        "It is the derivative of x",
+        "It is a constant multiplying the integral"
+      ],
+      "correct_answer": "It names the variable the integration runs over",
+      "explanation": "The differential marks which variable is being integrated, not a quantity of its own.",
+      "difficulty": "Notation",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-N15",
+      "step": 1,
+      "group": "Notation",
+      "question": "h in \"y = g(x) if and only if x = h(y)\"",
+      "options": [
+        "The derivative of g",
+        "The density of Y",
+        "The inverse of the function g",
+        "A second random variable"
+      ],
+      "correct_answer": "The inverse of the function g",
+      "explanation": "A strictly monotonic g can be inverted, and h is that inverse.",
+      "difficulty": "Notation",
+      "source_printed_page": 45,
+      "source_pdf_page": 143
+    },
+    {
+      "id": "C3-N16",
+      "step": 1,
+      "group": "Notation",
+      "question": "∫_{−∞}^{∞} f_{X,Y}(x,y) dy",
+      "options": [
+        "The joint CDF",
+        "The conditional PDF of X given Y",
+        "The normalization constant",
+        "The marginal PDF f_X(x)"
+      ],
+      "correct_answer": "The marginal PDF f_X(x)",
+      "explanation": "Integrating the joint PDF over the other variable leaves the marginal PDF.",
+      "difficulty": "Notation",
+      "source_printed_page": 27,
+      "source_pdf_page": 125
+    },
+    {
+      "id": "C3-01",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "What makes a random variable X continuous?",
+      "options": [
+        "Its probability law is described by a nonnegative function f_X whose integral over a set gives the probability of that set",
+        "It takes infinitely many values",
+        "Its CDF has jumps",
+        "Its PMF is uniform"
+      ],
+      "correct_answer": "Its probability law is described by a nonnegative function f_X whose integral over a set gives the probability of that set",
+      "explanation": "Continuity is defined by the existence of a PDF, not merely by having many values.",
+      "difficulty": "Concept",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-02",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "For a continuous random variable X and any single value a, P(X = a) equals",
+      "options": [
+        "f_X(a)",
+        "0",
+        "f_X(a)·a",
+        "1"
+      ],
+      "correct_answer": "0",
+      "explanation": "The integral of the PDF over a single point is zero, so including or excluding endpoints changes nothing.",
+      "difficulty": "Concept",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-03",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "Which condition must every PDF satisfy?",
+      "options": [
+        "f_X(x) ≤ 1 for all x",
+        "f_X is increasing",
+        "f_X(x) ≥ 0 for all x and ∫_{−∞}^{∞} f_X(x) dx = 1",
+        "The sum of f_X over all x is 1"
+      ],
+      "correct_answer": "f_X(x) ≥ 0 for all x and ∫_{−∞}^{∞} f_X(x) dx = 1",
+      "explanation": "A PDF must be nonnegative and enclose total area one; it is not bounded by one.",
+      "difficulty": "Concept",
+      "source_printed_page": 2,
+      "source_pdf_page": 100
+    },
+    {
+      "id": "C3-04",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "How should f_X(x) be interpreted?",
+      "options": [
+        "As the probability that X equals x",
+        "As the probability that X is at most x",
+        "As the average value of X near x",
+        "As probability mass per unit length near x"
+      ],
+      "correct_answer": "As probability mass per unit length near x",
+      "explanation": "For small δ, P([x, x+δ]) ≈ f_X(x)·δ, so f_X is a density per unit length.",
+      "difficulty": "Concept",
+      "source_printed_page": 3,
+      "source_pdf_page": 101
+    },
+    {
+      "id": "C3-05",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "Can a PDF take values larger than 1?",
+      "options": [
+        "Yes, provided the total area under it is still 1",
+        "No, a PDF is a probability",
+        "Only for discrete random variables",
+        "Only on intervals of length greater than 1"
+      ],
+      "correct_answer": "Yes, provided the total area under it is still 1",
+      "explanation": "The PDF of Example 3.3 grows without bound near zero and is still legitimate.",
+      "difficulty": "Concept",
+      "source_printed_page": 6,
+      "source_pdf_page": 104
+    },
+    {
+      "id": "C3-06",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "For a uniform random variable on [a,b], the constant value of the PDF is",
+      "options": [
+        "b − a",
+        "1/(b − a)",
+        "1/(b + a)",
+        "1/2"
+      ],
+      "correct_answer": "1/(b − a)",
+      "explanation": "The area of the rectangle of height c over [a,b] is c(b − a), which must equal one.",
+      "difficulty": "Concept",
+      "source_printed_page": 4,
+      "source_pdf_page": 102
+    },
+    {
+      "id": "C3-07",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "For X uniform on [a,b] and a set I, P(X ∈ I) equals",
+      "options": [
+        "length of I divided by length of [a,b]",
+        "length of [a,b] ∩ I",
+        "length of [a,b] ∩ I divided by length of [a,b]",
+        "1/(b − a)"
+      ],
+      "correct_answer": "length of [a,b] ∩ I divided by length of [a,b]",
+      "explanation": "Only the part of I inside [a,b] carries probability, measured as a fraction of the whole interval.",
+      "difficulty": "Concept",
+      "source_printed_page": 4,
+      "source_pdf_page": 102
+    },
+    {
+      "id": "C3-08",
+      "step": 2,
+      "group": "Continuous random variables and PDFs",
+      "question": "For a piecewise constant PDF with values c_i on [a_i, a_{i+1}), normalization requires",
+      "options": [
+        "Σ c_i = 1",
+        "Σ (a_{i+1} − a_i) = 1",
+        "max c_i = 1",
+        "Σ c_i(a_{i+1} − a_i) = 1"
+      ],
+      "correct_answer": "Σ c_i(a_{i+1} − a_i) = 1",
+      "explanation": "Each piece contributes the area of its rectangle, and the areas must add to one.",
+      "difficulty": "Concept",
+      "source_printed_page": 5,
+      "source_pdf_page": 103
+    },
+    {
+      "id": "C3-09",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "The expected value of a continuous random variable X is defined as",
+      "options": [
+        "∫_{−∞}^{∞} x f_X(x) dx",
+        "Σ_x x f_X(x)",
+        "∫_{−∞}^{∞} f_X(x) dx",
+        "the value x where f_X is largest"
+      ],
+      "correct_answer": "∫_{−∞}^{∞} x f_X(x) dx",
+      "explanation": "The discrete sum is replaced by an integral of x against the density.",
+      "difficulty": "Concept",
+      "source_printed_page": 6,
+      "source_pdf_page": 104
+    },
+    {
+      "id": "C3-10",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "The expected value rule for Y = g(X) states that E[g(X)] equals",
+      "options": [
+        "g(E[X])",
+        "∫_{−∞}^{∞} g(x) f_X(x) dx",
+        "∫_{−∞}^{∞} g(x) dx",
+        "∫_{−∞}^{∞} x f_{g(X)}(x) dx"
+      ],
+      "correct_answer": "∫_{−∞}^{∞} g(x) f_X(x) dx",
+      "explanation": "The PDF of Y is not needed: integrate g against the PDF of X.",
+      "difficulty": "Concept",
+      "source_printed_page": 7,
+      "source_pdf_page": 105
+    },
+    {
+      "id": "C3-11",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "Which identity gives the variance from moments?",
+      "options": [
+        "var(X) = E[X]² − E[X²]",
+        "var(X) = E[X²] + (E[X])²",
+        "var(X) = E[X²] − (E[X])²",
+        "var(X) = E[(X − E[X])]"
+      ],
+      "correct_answer": "var(X) = E[X²] − (E[X])²",
+      "explanation": "Expanding (X − E[X])² and using linearity gives the second moment minus the squared mean.",
+      "difficulty": "Concept",
+      "source_printed_page": 8,
+      "source_pdf_page": 106
+    },
+    {
+      "id": "C3-12",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "For Y = aX + b with scalars a and b",
+      "options": [
+        "E[Y] = aE[X] and var(Y) = a·var(X)",
+        "E[Y] = aE[X] + b and var(Y) = a²var(X) + b",
+        "E[Y] = E[X] + b and var(Y) = var(X)",
+        "E[Y] = aE[X] + b and var(Y) = a²var(X)"
+      ],
+      "correct_answer": "E[Y] = aE[X] + b and var(Y) = a²var(X)",
+      "explanation": "Shifting moves the mean but not the spread; scaling multiplies the variance by a².",
+      "difficulty": "Concept",
+      "source_printed_page": 8,
+      "source_pdf_page": 106
+    },
+    {
+      "id": "C3-13",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "For X uniform on [a,b], the mean and variance are",
+      "options": [
+        "(a + b)/2 and (b − a)²/12",
+        "(a + b)/2 and (b − a)/12",
+        "(b − a)/2 and (b − a)²/12",
+        "(a + b)/2 and (b² − a²)/12"
+      ],
+      "correct_answer": "(a + b)/2 and (b − a)²/12",
+      "explanation": "Symmetry gives the midpoint as mean; the second moment (a² + ab + b²)/3 gives the variance.",
+      "difficulty": "Concept",
+      "source_printed_page": 8,
+      "source_pdf_page": 106
+    },
+    {
+      "id": "C3-14",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "The PDF of an exponential random variable with parameter λ is",
+      "options": [
+        "e^(−λx) for x ≥ 0 and 0 otherwise",
+        "λe^(−λx) for x ≥ 0 and 0 otherwise",
+        "λe^(−λx) for all x",
+        "(1/λ)e^(−x/λ) for all x"
+      ],
+      "correct_answer": "λe^(−λx) for x ≥ 0 and 0 otherwise",
+      "explanation": "The factor λ is what makes the area over [0, ∞) equal to one.",
+      "difficulty": "Concept",
+      "source_printed_page": 9,
+      "source_pdf_page": 107
+    },
+    {
+      "id": "C3-15",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "For an exponential random variable and any a ≥ 0, P(X ≥ a) equals",
+      "options": [
+        "1 − e^(−λa)",
+        "λe^(−λa)",
+        "e^(−λa)",
+        "e^(−a/λ)"
+      ],
+      "correct_answer": "e^(−λa)",
+      "explanation": "The tail probability falls exponentially, which is the integral of λe^(−λx) from a to infinity.",
+      "difficulty": "Concept",
+      "source_printed_page": 9,
+      "source_pdf_page": 107
+    },
+    {
+      "id": "C3-16",
+      "step": 3,
+      "group": "Expectation and the exponential",
+      "question": "The mean and variance of an exponential random variable with parameter λ are",
+      "options": [
+        "λ and λ²",
+        "1/λ and 1/λ",
+        "1/λ² and 1/λ",
+        "1/λ and 1/λ²"
+      ],
+      "correct_answer": "1/λ and 1/λ²",
+      "explanation": "Integration by parts gives E[X] = 1/λ and E[X²] = 2/λ², leaving variance 1/λ².",
+      "difficulty": "Concept",
+      "source_printed_page": 10,
+      "source_pdf_page": 108
+    },
+    {
+      "id": "C3-17",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "Why is the CDF defined for every kind of random variable?",
+      "options": [
+        "Because {X ≤ x} is always an event and so always has a probability",
+        "Because every random variable has a PDF",
+        "Because every random variable has a PMF",
+        "Because every random variable is continuous"
+      ],
+      "correct_answer": "Because {X ≤ x} is always an event and so always has a probability",
+      "explanation": "The CDF needs only that {X ≤ x} be an event, which holds discrete or continuous.",
+      "difficulty": "Concept",
+      "source_printed_page": 11,
+      "source_pdf_page": 109
+    },
+    {
+      "id": "C3-18",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "The CDF of a discrete random variable",
+      "options": [
+        "is continuously varying",
+        "has a staircase form, jumping at the values of positive probability mass",
+        "is always linear",
+        "has no jumps"
+      ],
+      "correct_answer": "has a staircase form, jumping at the values of positive probability mass",
+      "explanation": "Each jump equals the probability mass at that value, and the CDF is continuous from the right.",
+      "difficulty": "Concept",
+      "source_printed_page": 12,
+      "source_pdf_page": 110
+    },
+    {
+      "id": "C3-19",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "For an integer-valued discrete random variable, the PMF is recovered from the CDF by",
+      "options": [
+        "p_X(k) = F_X(k) + F_X(k − 1)",
+        "p_X(k) = dF_X/dk",
+        "p_X(k) = F_X(k) − F_X(k − 1)",
+        "p_X(k) = F_X(k)/F_X(k − 1)"
+      ],
+      "correct_answer": "p_X(k) = F_X(k) − F_X(k − 1)",
+      "explanation": "Differencing the accumulated probability leaves the mass at k.",
+      "difficulty": "Concept",
+      "source_printed_page": 13,
+      "source_pdf_page": 111
+    },
+    {
+      "id": "C3-20",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "For a continuous random variable, the PDF is recovered from the CDF by",
+      "options": [
+        "summing the CDF values",
+        "integrating the CDF",
+        "dividing the CDF by x",
+        "differentiating: f_X(x) = dF_X/dx"
+      ],
+      "correct_answer": "differentiating: f_X(x) = dF_X/dx",
+      "explanation": "Integration builds the CDF from the PDF, so differentiation reverses it wherever the derivative exists.",
+      "difficulty": "Concept",
+      "source_printed_page": 13,
+      "source_pdf_page": 111
+    },
+    {
+      "id": "C3-21",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "Which pair of properties does every CDF have?",
+      "options": [
+        "It is monotonically nondecreasing, and tends to 0 as x → −∞ and to 1 as x → ∞",
+        "It is strictly increasing and bounded by 1/2",
+        "It is nonincreasing and tends to 0 at both ends",
+        "It is symmetric about its mean"
+      ],
+      "correct_answer": "It is monotonically nondecreasing, and tends to 0 as x → −∞ and to 1 as x → ∞",
+      "explanation": "Accumulating probability can never decrease, and the total accumulated is one.",
+      "difficulty": "Concept",
+      "source_printed_page": 12,
+      "source_pdf_page": 110
+    },
+    {
+      "id": "C3-22",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "The CDF of an exponential random variable with parameter λ, for x > 0, is",
+      "options": [
+        "e^(−λx)",
+        "1 − e^(−λx)",
+        "λe^(−λx)",
+        "1 − λe^(−λx)"
+      ],
+      "correct_answer": "1 − e^(−λx)",
+      "explanation": "Integrating λe^(−λt) from 0 to x gives 1 − e^(−λx).",
+      "difficulty": "Concept",
+      "source_printed_page": 13,
+      "source_pdf_page": 111
+    },
+    {
+      "id": "C3-23",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "The CDF of a geometric random variable with parameter p, at n = 1, 2, …, is",
+      "options": [
+        "(1 − p)^n",
+        "p(1 − p)^(n−1)",
+        "1 − (1 − p)^n",
+        "1 − p^n"
+      ],
+      "correct_answer": "1 − (1 − p)^n",
+      "explanation": "The geometric series for the first n masses sums to 1 − (1 − p)^n.",
+      "difficulty": "Concept",
+      "source_printed_page": 13,
+      "source_pdf_page": 111
+    },
+    {
+      "id": "C3-24",
+      "step": 4,
+      "group": "Cumulative distribution functions",
+      "question": "For the maximum X of three independent scores, each uniform on 1…10, F_X(k) equals",
+      "options": [
+        "3(k/10)",
+        "(k/10)/3",
+        "1 − (k/10)³",
+        "(k/10)³"
+      ],
+      "correct_answer": "(k/10)³",
+      "explanation": "All three scores must be at most k, and independence multiplies the three probabilities.",
+      "difficulty": "Concept",
+      "source_printed_page": 16,
+      "source_pdf_page": 114
+    },
+    {
+      "id": "C3-25",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "The PDF of a normal random variable with parameters μ and σ is",
+      "options": [
+        "(1/(√(2π)σ)) e^(−(x−μ)²/2σ²)",
+        "(1/(√(2π)σ)) e^(−(x−μ)/2σ)",
+        "(1/σ) e^(−(x−μ)²/2)",
+        "(1/(√(2π))) e^(−x²/2σ²)"
+      ],
+      "correct_answer": "(1/(√(2π)σ)) e^(−(x−μ)²/2σ²)",
+      "explanation": "The squared deviation in the exponent is what produces the bell shape around μ.",
+      "difficulty": "Concept",
+      "source_printed_page": 16,
+      "source_pdf_page": 114
+    },
+    {
+      "id": "C3-26",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "For a normal random variable with parameters μ and σ",
+      "options": [
+        "E[X] = 0 and var(X) = 1",
+        "E[X] = μ and var(X) = σ²",
+        "E[X] = μ and var(X) = σ",
+        "E[X] = σ and var(X) = μ²"
+      ],
+      "correct_answer": "E[X] = μ and var(X) = σ²",
+      "explanation": "Symmetry gives the mean; a change of variables and integration by parts give the variance.",
+      "difficulty": "Concept",
+      "source_printed_page": 17,
+      "source_pdf_page": 115
+    },
+    {
+      "id": "C3-27",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "If X is normal and Y = aX + b, then Y is",
+      "options": [
+        "normal, with mean μ + b and variance σ²",
+        "exponential, with parameter a",
+        "normal, with mean aμ + b and variance a²σ²",
+        "not necessarily a known distribution"
+      ],
+      "correct_answer": "normal, with mean aμ + b and variance a²σ²",
+      "explanation": "Normality is preserved by linear transformations, which is why standardizing works.",
+      "difficulty": "Concept",
+      "source_printed_page": 17,
+      "source_pdf_page": 115
+    },
+    {
+      "id": "C3-28",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "A standard normal random variable is one with",
+      "options": [
+        "mean 1 and variance 1",
+        "mean 0 and variance 0",
+        "any mean and unit variance",
+        "zero mean and unit variance"
+      ],
+      "correct_answer": "zero mean and unit variance",
+      "explanation": "Its CDF is denoted Φ and is the function tabulated in the normal table.",
+      "difficulty": "Concept",
+      "source_printed_page": 18,
+      "source_pdf_page": 116
+    },
+    {
+      "id": "C3-29",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "To standardize a normal random variable X with mean μ and variance σ², set Y equal to",
+      "options": [
+        "(X − μ)/σ",
+        "(X − μ)/σ²",
+        "X/σ − μ",
+        "(X + μ)/σ"
+      ],
+      "correct_answer": "(X − μ)/σ",
+      "explanation": "Subtracting the mean and dividing by the standard deviation gives mean 0 and variance 1.",
+      "difficulty": "Concept",
+      "source_printed_page": 18,
+      "source_pdf_page": 116
+    },
+    {
+      "id": "C3-30",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "Because the standard normal table lists Φ(y) only for y ≥ 0, Φ(−0.5) is found as",
+      "options": [
+        "Φ(0.5)",
+        "1 − Φ(0.5)",
+        "−Φ(0.5)",
+        "1 + Φ(0.5)"
+      ],
+      "correct_answer": "1 − Φ(0.5)",
+      "explanation": "Symmetry of the PDF around zero turns a left tail into the complementary right tail.",
+      "difficulty": "Concept",
+      "source_printed_page": 18,
+      "source_pdf_page": 116
+    },
+    {
+      "id": "C3-31",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "For X normal with mean μ and variance σ², P(X ≤ x) equals",
+      "options": [
+        "Φ(x − μ)",
+        "Φ(x/σ)",
+        "Φ((x − μ)/σ)",
+        "1 − Φ((x − μ)/σ)"
+      ],
+      "correct_answer": "Φ((x − μ)/σ)",
+      "explanation": "Standardize both sides of the inequality, then read the standard normal table.",
+      "difficulty": "Concept",
+      "source_printed_page": 19,
+      "source_pdf_page": 117
+    },
+    {
+      "id": "C3-32",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "Annual snowfall is normal with μ = 60 and σ = 20 inches. Using Φ(1) = 0.8413, P(X ≥ 80) is",
+      "options": [
+        "0.8413",
+        "0.3085",
+        "0.0228",
+        "0.1587"
+      ],
+      "correct_answer": "0.1587",
+      "explanation": "Standardizing gives P(Y ≥ 1) = 1 − Φ(1) = 0.1587.",
+      "difficulty": "Concept",
+      "source_printed_page": 19,
+      "source_pdf_page": 117
+    },
+    {
+      "id": "C3-33",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "Why does the normal distribution appear in so many models?",
+      "options": [
+        "The sum of many independent, identically distributed random variables has an approximately normal CDF",
+        "Every random variable is normal in the limit of small samples",
+        "It is the only PDF that integrates to one",
+        "Products of independent random variables are normal"
+      ],
+      "correct_answer": "The sum of many independent, identically distributed random variables has an approximately normal CDF",
+      "explanation": "This is the central limit theorem, which makes the normal a good model for additive effects.",
+      "difficulty": "Concept",
+      "source_printed_page": 20,
+      "source_pdf_page": 118
+    },
+    {
+      "id": "C3-34",
+      "step": 5,
+      "group": "Normal random variables",
+      "question": "In the signal detection example with zero-mean noise of variance σ², the probability of error is",
+      "options": [
+        "Φ(1/σ)",
+        "1 − Φ(1/σ)",
+        "1 − Φ(σ)",
+        "Φ(σ) − 1"
+      ],
+      "correct_answer": "1 − Φ(1/σ)",
+      "explanation": "An error needs the noise to cross the distance 1, and both transmitted signals give the same probability by symmetry.",
+      "difficulty": "Concept",
+      "source_printed_page": 20,
+      "source_pdf_page": 118
+    },
+    {
+      "id": "C3-35",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "Conditioned on the event {X ∈ A} with P(X ∈ A) > 0, the conditional PDF is",
+      "options": [
+        "f_X(x)·P(X ∈ A) for x in A, and 0 otherwise",
+        "f_X(x) for x in A, and 0 otherwise",
+        "f_X(x)/P(X ∈ A) for x in A, and 0 otherwise",
+        "P(X ∈ A) for x in A, and 0 otherwise"
+      ],
+      "correct_answer": "f_X(x)/P(X ∈ A) for x in A, and 0 otherwise",
+      "explanation": "Dividing by P(X ∈ A) is what makes the conditional PDF integrate to one.",
+      "difficulty": "Concept",
+      "source_printed_page": 21,
+      "source_pdf_page": 119
+    },
+    {
+      "id": "C3-36",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "Inside the conditioning set, the conditional PDF",
+      "options": [
+        "has a different shape from the unconditional PDF",
+        "is always uniform",
+        "is always zero",
+        "has the same shape as the unconditional PDF, scaled by the constant 1/P(X ∈ A)"
+      ],
+      "correct_answer": "has the same shape as the unconditional PDF, scaled by the constant 1/P(X ∈ A)",
+      "explanation": "Only a vertical rescaling happens; outside the set the conditional PDF is zero.",
+      "difficulty": "Concept",
+      "source_printed_page": 21,
+      "source_pdf_page": 119
+    },
+    {
+      "id": "C3-37",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "The memorylessness property of the exponential says that, given that no event has occurred by time t, the remaining waiting time",
+      "options": [
+        "is exponential with the same parameter λ, whatever t is",
+        "is exponential with parameter λt",
+        "becomes uniform on [0, t]",
+        "has mean t + 1/λ"
+      ],
+      "correct_answer": "is exponential with the same parameter λ, whatever t is",
+      "explanation": "The conditional CDF works out to 1 − e^(−λx), independent of the elapsed time t.",
+      "difficulty": "Concept",
+      "source_printed_page": 22,
+      "source_pdf_page": 120
+    },
+    {
+      "id": "C3-38",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "The conditional expectation given an event A is",
+      "options": [
+        "∫_{−∞}^{∞} x f_X(x) dx",
+        "∫_{−∞}^{∞} x f_{X|A}(x) dx",
+        "P(A)·E[X]",
+        "E[X]/P(A)"
+      ],
+      "correct_answer": "∫_{−∞}^{∞} x f_{X|A}(x) dx",
+      "explanation": "It is the ordinary definition with the conditional PDF in place of the unconditional one.",
+      "difficulty": "Concept",
+      "source_printed_page": 23,
+      "source_pdf_page": 121
+    },
+    {
+      "id": "C3-39",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "If A_1, …, A_n are disjoint events of positive probability partitioning the sample space, then f_X(x) equals",
+      "options": [
+        "Σ_i f_{X|A_i}(x)",
+        "Π_i P(A_i) f_{X|A_i}(x)",
+        "Σ_i P(A_i) f_{X|A_i}(x)",
+        "Σ_i P(A_i)"
+      ],
+      "correct_answer": "Σ_i P(A_i) f_{X|A_i}(x)",
+      "explanation": "This is the total probability theorem written for densities.",
+      "difficulty": "Concept",
+      "source_printed_page": 23,
+      "source_pdf_page": 121
+    },
+    {
+      "id": "C3-40",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "The total expectation theorem for continuous random variables states that E[X] equals",
+      "options": [
+        "Σ_i E[X | A_i]",
+        "Σ_i P(A_i)",
+        "E[X | A_1] · … · E[X | A_n]",
+        "Σ_i P(A_i) E[X | A_i]"
+      ],
+      "correct_answer": "Σ_i P(A_i) E[X | A_i]",
+      "explanation": "Multiplying the total probability formula by x and integrating gives the weighted average of conditional means.",
+      "difficulty": "Concept",
+      "source_printed_page": 23,
+      "source_pdf_page": 121
+    },
+    {
+      "id": "C3-41",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "For the piecewise constant PDF equal to 1/3 on [0,1] and 2/3 on (1,2], the mean is",
+      "options": [
+        "7/6",
+        "1",
+        "3/2",
+        "11/36"
+      ],
+      "correct_answer": "7/6",
+      "explanation": "Divide and conquer: (1/3)(1/2) + (2/3)(3/2) = 7/6.",
+      "difficulty": "Concept",
+      "source_printed_page": 25,
+      "source_pdf_page": 123
+    },
+    {
+      "id": "C3-42",
+      "step": 6,
+      "group": "Conditioning on an event",
+      "question": "You arrive uniformly between 7:10 and 7:30 for trains at 7:15 and 7:30. For 0 ≤ y ≤ 5, the waiting-time PDF f_Y(y) is",
+      "options": [
+        "1/20",
+        "1/10",
+        "1/5",
+        "1/15"
+      ],
+      "correct_answer": "1/10",
+      "explanation": "Total probability combines the two cases: (1/4)(1/5) + (3/4)(1/15) = 1/10.",
+      "difficulty": "Concept",
+      "source_printed_page": 26,
+      "source_pdf_page": 124
+    },
+    {
+      "id": "C3-43",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "Two random variables are jointly continuous when",
+      "options": [
+        "each of them separately has a PDF",
+        "their joint CDF is linear",
+        "a nonnegative joint PDF exists whose integral over any region of the plane gives the probability of that region",
+        "they are independent"
+      ],
+      "correct_answer": "a nonnegative joint PDF exists whose integral over any region of the plane gives the probability of that region",
+      "explanation": "Having marginal PDFs is not enough; the pair needs a joint density.",
+      "difficulty": "Concept",
+      "source_printed_page": 26,
+      "source_pdf_page": 124
+    },
+    {
+      "id": "C3-44",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "The joint PDF f_{X,Y}(a,c) is interpreted as",
+      "options": [
+        "the probability that X = a and Y = c",
+        "probability per unit length near a",
+        "the joint CDF at (a,c)",
+        "probability per unit area near the point (a,c)"
+      ],
+      "correct_answer": "probability per unit area near the point (a,c)",
+      "explanation": "For small δ, the probability of the δ-by-δ square at (a,c) is about f_{X,Y}(a,c)·δ².",
+      "difficulty": "Concept",
+      "source_printed_page": 27,
+      "source_pdf_page": 125
+    },
+    {
+      "id": "C3-45",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "The marginal PDF f_X is obtained from the joint PDF by",
+      "options": [
+        "integrating the joint PDF over y",
+        "differentiating the joint PDF with respect to y",
+        "dividing the joint PDF by f_Y",
+        "evaluating the joint PDF at y = 0"
+      ],
+      "correct_answer": "integrating the joint PDF over y",
+      "explanation": "Letting Y range over the whole line leaves only the dependence on x.",
+      "difficulty": "Concept",
+      "source_printed_page": 27,
+      "source_pdf_page": 125
+    },
+    {
+      "id": "C3-46",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "For a uniform joint PDF on a set S and any A ⊂ S, P((X,Y) ∈ A) equals",
+      "options": [
+        "area of A divided by area of S",
+        "area of A ∩ S divided by area of S",
+        "area of S divided by area of A",
+        "1/area of S"
+      ],
+      "correct_answer": "area of A ∩ S divided by area of S",
+      "explanation": "A uniform joint PDF makes probability proportional to area, exactly as the discrete uniform law counts outcomes.",
+      "difficulty": "Concept",
+      "source_printed_page": 28,
+      "source_pdf_page": 126
+    },
+    {
+      "id": "C3-47",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "In Buffon’s needle problem with needle length l and line spacing d (l < d), the probability of intersection is",
+      "options": [
+        "l/(πd)",
+        "πd/(2l)",
+        "2l/(πd)",
+        "l/d"
+      ],
+      "correct_answer": "2l/(πd)",
+      "explanation": "Integrating the uniform joint PDF over x ≤ (l/2)sin θ gives 2l/(πd), which also yields an experimental estimate of π.",
+      "difficulty": "Concept",
+      "source_printed_page": 29,
+      "source_pdf_page": 127
+    },
+    {
+      "id": "C3-48",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "For jointly continuous X and Y and scalars a, b, E[aX + bY] equals",
+      "options": [
+        "abE[X]E[Y]",
+        "aE[X] + bE[Y] + E[XY]",
+        "(a + b)E[X + Y]",
+        "aE[X] + bE[Y]"
+      ],
+      "correct_answer": "aE[X] + bE[Y]",
+      "explanation": "Expectation stays linear, whatever the dependence between X and Y.",
+      "difficulty": "Concept",
+      "source_printed_page": 30,
+      "source_pdf_page": 128
+    },
+    {
+      "id": "C3-49",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "The conditional PDF of X given Y = y is defined, for f_Y(y) > 0, as",
+      "options": [
+        "f_{X,Y}(x,y)/f_Y(y)",
+        "f_{X,Y}(x,y)·f_Y(y)",
+        "f_X(x)/f_Y(y)",
+        "f_{X,Y}(x,y)/f_X(x)"
+      ],
+      "correct_answer": "f_{X,Y}(x,y)/f_Y(y)",
+      "explanation": "It is the discrete formula p_{X|Y} = p_{X,Y}/p_Y with densities in place of masses.",
+      "difficulty": "Concept",
+      "source_printed_page": 30,
+      "source_pdf_page": 128
+    },
+    {
+      "id": "C3-50",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "For each fixed y with f_Y(y) > 0, the function x ↦ f_{X|Y}(x | y)",
+      "options": [
+        "integrates to f_Y(y)",
+        "integrates to 1 over x, so it is a legitimate PDF",
+        "sums to 1 over y",
+        "is always uniform"
+      ],
+      "correct_answer": "integrates to 1 over x, so it is a legitimate PDF",
+      "explanation": "Dividing by f_Y(y) is exactly the normalization that makes the slice a PDF.",
+      "difficulty": "Concept",
+      "source_printed_page": 30,
+      "source_pdf_page": 128
+    },
+    {
+      "id": "C3-51",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "The continuous Bayes rule expresses f_{X|Y}(x | y) as",
+      "options": [
+        "f_X(x)f_{Y|X}(y | x)",
+        "f_{Y|X}(y | x)/f_X(x)",
+        "f_X(x)f_{Y|X}(y | x) divided by ∫ f_X(t)f_{Y|X}(y | t) dt",
+        "f_X(x)/f_Y(y)"
+      ],
+      "correct_answer": "f_X(x)f_{Y|X}(y | x) divided by ∫ f_X(t)f_{Y|X}(y | t) dt",
+      "explanation": "The denominator is f_Y(y), computed by the total probability theorem for densities.",
+      "difficulty": "Concept",
+      "source_printed_page": 35,
+      "source_pdf_page": 133
+    },
+    {
+      "id": "C3-52",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "When the unobserved quantity X is discrete and the measurement Y is continuous, P(X = x | Y = y) equals",
+      "options": [
+        "p_X(x)f_{Y|X}(y | x)",
+        "f_{Y|X}(y | x)/p_X(x)",
+        "p_X(x)/f_Y(y)",
+        "p_X(x)f_{Y|X}(y | x)/f_Y(y)"
+      ],
+      "correct_answer": "p_X(x)f_{Y|X}(y | x)/f_Y(y)",
+      "explanation": "Conditioning on {y ≤ Y ≤ y + δ} and letting δ tend to zero cancels δ from numerator and denominator.",
+      "difficulty": "Concept",
+      "source_printed_page": 36,
+      "source_pdf_page": 134
+    },
+    {
+      "id": "C3-53",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "Two continuous random variables X and Y are independent exactly when",
+      "options": [
+        "f_{X,Y}(x,y) = f_X(x)f_Y(y) for all x, y",
+        "f_{X,Y}(x,y) = f_X(x) + f_Y(y) for all x, y",
+        "E[XY] = E[X]E[Y]",
+        "their joint PDF is uniform"
+      ],
+      "correct_answer": "f_{X,Y}(x,y) = f_X(x)f_Y(y) for all x, y",
+      "explanation": "Equivalently f_{X|Y}(x | y) = f_X(x) wherever f_Y(y) > 0: conditioning tells you nothing new.",
+      "difficulty": "Concept",
+      "source_printed_page": 37,
+      "source_pdf_page": 135
+    },
+    {
+      "id": "C3-54",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "If X and Y are independent, then var(X + Y) equals",
+      "options": [
+        "var(X)·var(Y)",
+        "var(X) + var(Y)",
+        "var(X) + var(Y) + 2E[XY]",
+        "var(X) − var(Y)"
+      ],
+      "correct_answer": "var(X) + var(Y)",
+      "explanation": "Independence also gives E[g(X)h(Y)] = E[g(X)]E[h(Y)] for any functions g and h.",
+      "difficulty": "Concept",
+      "source_printed_page": 38,
+      "source_pdf_page": 136
+    },
+    {
+      "id": "C3-55",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "The joint PDF is recovered from the joint CDF by",
+      "options": [
+        "integrating F_{X,Y} twice",
+        "differentiating F_{X,Y} with respect to x only",
+        "taking the mixed second partial derivative ∂²F_{X,Y}/∂x∂y",
+        "dividing F_{X,Y} by xy"
+      ],
+      "correct_answer": "taking the mixed second partial derivative ∂²F_{X,Y}/∂x∂y",
+      "explanation": "Two integrations build the CDF from the PDF, so two differentiations reverse them.",
+      "difficulty": "Concept",
+      "source_printed_page": 38,
+      "source_pdf_page": 136
+    },
+    {
+      "id": "C3-56",
+      "step": 7,
+      "group": "Multiple continuous random variables",
+      "question": "For three random variables, the multiplication rule reads",
+      "options": [
+        "f_{X,Y,Z}(x,y,z) = f_X(x) f_Y(y) f_Z(z)",
+        "f_{X,Y,Z}(x,y,z) = f_{X|Y,Z}(x | y,z) f_Z(z)",
+        "f_{X,Y,Z}(x,y,z) = f_{X,Y}(x,y) + f_Z(z)",
+        "f_{X,Y,Z}(x,y,z) = f_{X|Y,Z}(x | y,z) f_{Y|Z}(y | z) f_Z(z)"
+      ],
+      "correct_answer": "f_{X,Y,Z}(x,y,z) = f_{X|Y,Z}(x | y,z) f_{Y|Z}(y | z) f_Z(z)",
+      "explanation": "The product of marginals holds only under independence; the chain rule holds always.",
+      "difficulty": "Concept",
+      "source_printed_page": 39,
+      "source_pdf_page": 137
+    },
+    {
+      "id": "C3-57",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "The two-step method for finding the PDF of Y = g(X) is",
+      "options": [
+        "compute the CDF F_Y(y) = P(g(X) ≤ y), then differentiate it",
+        "compute E[g(X)], then differentiate it",
+        "substitute y for x in f_X",
+        "integrate f_X over the range of g"
+      ],
+      "correct_answer": "compute the CDF F_Y(y) = P(g(X) ≤ y), then differentiate it",
+      "explanation": "The event {g(X) ≤ y} must first be translated into an event about X.",
+      "difficulty": "Concept",
+      "source_printed_page": 40,
+      "source_pdf_page": 138
+    },
+    {
+      "id": "C3-58",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For X uniform on [0,1] and Y = √X, the PDF of Y on [0,1] is",
+      "options": [
+        "1/(2√y)",
+        "2y",
+        "y²",
+        "1"
+      ],
+      "correct_answer": "2y",
+      "explanation": "F_Y(y) = P(X ≤ y²) = y², and differentiating gives 2y.",
+      "difficulty": "Concept",
+      "source_printed_page": 40,
+      "source_pdf_page": 138
+    },
+    {
+      "id": "C3-59",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "A 180-mile trip is driven at a speed uniform on [30,60]. The PDF of the duration Y on [3,6] is",
+      "options": [
+        "1/30",
+        "y/6",
+        "6/y²",
+        "6/y"
+      ],
+      "correct_answer": "6/y²",
+      "explanation": "F_Y(y) = 2 − 6/y on that range, and differentiating gives 6/y².",
+      "difficulty": "Concept",
+      "source_printed_page": 41,
+      "source_pdf_page": 139
+    },
+    {
+      "id": "C3-60",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For Y = aX + b with a ≠ 0, the PDF of Y is",
+      "options": [
+        "a f_X(ay + b)",
+        "(1/a²) f_X((y − b)/a)",
+        "f_X(y − b)",
+        "(1/|a|) f_X((y − b)/a)"
+      ],
+      "correct_answer": "(1/|a|) f_X((y − b)/a)",
+      "explanation": "The PDF is stretched horizontally by a and scaled vertically by 1/|a| so the area stays one.",
+      "difficulty": "Concept",
+      "source_printed_page": 42,
+      "source_pdf_page": 140
+    },
+    {
+      "id": "C3-61",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "A linear function of a normal random variable is",
+      "options": [
+        "normal, with mean aμ + b and variance a²σ²",
+        "exponential",
+        "uniform",
+        "normal, with mean μ and variance σ²"
+      ],
+      "correct_answer": "normal, with mean aμ + b and variance a²σ²",
+      "explanation": "Substituting into the linear-case formula reproduces a normal PDF with those parameters.",
+      "difficulty": "Concept",
+      "source_printed_page": 44,
+      "source_pdf_page": 142
+    },
+    {
+      "id": "C3-62",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For strictly monotonic g with inverse h, the PDF of Y = g(X) is",
+      "options": [
+        "f_X(h(y))",
+        "f_X(h(y))·|dh/dy(y)|",
+        "f_X(y)·|dh/dy(y)|",
+        "f_X(h(y))/|dg/dx(y)|"
+      ],
+      "correct_answer": "f_X(h(y))·|dh/dy(y)|",
+      "explanation": "The derivative factor accounts for how the transformation stretches an interval.",
+      "difficulty": "Concept",
+      "source_printed_page": 46,
+      "source_pdf_page": 144
+    },
+    {
+      "id": "C3-63",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For X uniform on (0,1] and Y = X², the PDF of Y on (0,1] is",
+      "options": [
+        "2y",
+        "√y",
+        "1/(2√y)",
+        "1"
+      ],
+      "correct_answer": "1/(2√y)",
+      "explanation": "Here h(y) = √y, so |dh/dy| = 1/(2√y) and f_X(√y) = 1.",
+      "difficulty": "Concept",
+      "source_printed_page": 48,
+      "source_pdf_page": 146
+    },
+    {
+      "id": "C3-64",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For independent X and Y uniform on [0,1], the PDF of Z = max{X,Y} on [0,1] is",
+      "options": [
+        "z²",
+        "1/2",
+        "1",
+        "2z"
+      ],
+      "correct_answer": "2z",
+      "explanation": "Independence gives F_Z(z) = P(X ≤ z)P(Y ≤ z) = z², and differentiating gives 2z.",
+      "difficulty": "Concept",
+      "source_printed_page": 48,
+      "source_pdf_page": 146
+    },
+    {
+      "id": "C3-65",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "For independent exponentials X and Y with parameter λ, the PDF of Z = X − Y is",
+      "options": [
+        "(λ/2)e^(−λ|z|), the two-sided exponential or Laplace PDF",
+        "λe^(−λz) for z ≥ 0 and 0 otherwise",
+        "(λ/2)e^(−λz) for all z",
+        "uniform on the real line"
+      ],
+      "correct_answer": "(λ/2)e^(−λ|z|), the two-sided exponential or Laplace PDF",
+      "explanation": "Symmetry between X − Y and Y − X makes the CDF, and hence the PDF, symmetric about zero.",
+      "difficulty": "Concept",
+      "source_printed_page": 51,
+      "source_pdf_page": 149
+    },
+    {
+      "id": "C3-66",
+      "step": 8,
+      "group": "Derived distributions",
+      "question": "Which summary of the special continuous laws is correct?",
+      "options": [
+        "Uniform on [a,b] has variance (b − a)/12, exponential has variance 1/λ, and normal has variance σ",
+        "Uniform on [a,b] has variance (b − a)²/12, exponential with parameter λ has variance 1/λ², and normal with parameters μ and σ² has variance σ²",
+        "Uniform on [a,b] has variance (b + a)²/12, exponential has variance λ², and normal has variance μ",
+        "All three laws have variance equal to their mean"
+      ],
+      "correct_answer": "Uniform on [a,b] has variance (b − a)²/12, exponential with parameter λ has variance 1/λ², and normal with parameters μ and σ² has variance σ²",
+      "explanation": "These are the means and variances derived in the chapter and collected in its summary.",
+      "difficulty": "Concept",
+      "source_printed_page": 52,
+      "source_pdf_page": 150
+    }
+  ]
+}

@@ -53,7 +53,7 @@ export default function SessionPreview() {
     // options show), so they're shown for both — but never in reverse.
     const [quizMode, setQuizMode] = useState<string>('multiple-choice');
     const [quizDirection, setQuizDirection] = useState<string | undefined>(undefined);
-    const [typingLang, setTypingLang] = useState<TypingLang>('japanese');
+    const [typingLang, setTypingLang] = useState<TypingLang>('english');
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -61,7 +61,7 @@ export default function SessionPreview() {
         if (storedMode === 'typing' || storedMode === 'multiple-choice') setQuizMode(storedMode);
         const storedLang = window.localStorage.getItem('typingLang');
         if (storedLang === 'japanese' || storedLang === 'english' || storedLang === 'mix') {
-            setTypingLang(storedLang);
+            setTypingLang('english');
         }
     }, []);
 
@@ -70,7 +70,7 @@ export default function SessionPreview() {
         if (typeof window !== 'undefined') window.localStorage.setItem('typingLang', lang);
     }, []);
 
-    const showLangPills = (quizMode === 'typing' || quizMode === 'multiple-choice') && quizDirection !== 'reverse';
+    const showLangPills = false && (quizMode === 'typing' || quizMode === 'multiple-choice') && quizDirection !== 'reverse';
     const langPillVariant = quizMode === 'typing' ? 'typing' : 'choice';
     const statusQuizType = quizMode === 'typing' ? 'typing' : 'multiple_choice';
 
@@ -431,8 +431,8 @@ export default function SessionPreview() {
                     <div className="bg-[#1F1F1F] border border-[#4F4F4F] rounded-lg p-3 sm:p-4">
                         <div className="flex flex-col gap-4 sm:gap-6">
                             <div>
-                                <h2 className="text-white text-base sm:text-lg font-medium mb-1 sm:mb-2">Words in this session</h2>
-                                <p className="text-[#A1A1A1] text-xs sm:text-sm">These are the words you&apos;ll practice in this session.</p>
+                                <h2 className="text-white text-base sm:text-lg font-medium mb-1 sm:mb-2">Items in this session</h2>
+                                <p className="text-[#A1A1A1] text-xs sm:text-sm">These are the items you&apos;ll practice in this session.</p>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                                 <TabNavigation

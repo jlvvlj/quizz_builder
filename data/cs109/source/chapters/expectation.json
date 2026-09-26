@@ -1,0 +1,824 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A random variable is fully represented by its probability mass function (PMF), which represents each of the values the random variable can take on, and the corresponding probabilities. A PMF can be a lot of information. Sometimes it is useful to summarize the random variable! The most common, and arguably the most useful, summary of a random variable is its \"",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Expectation",
+     "type": "text"
+    },
+    {
+     "text": "\".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Expectation",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The expectation of a random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", written ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[X]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is the average of all the values the random variable can take on, each weighted by the probability that the random variable will take on that value.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[X] = \\sum_x x \\cdot \\p(X=x)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Expectation goes by many other names: Mean, Weighted Average, Center of Mass, 1st Moment. All of which are calculated using the same formula.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Recall that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", also written as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", is the probability mass function of the random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Here is code that calculates the expectation of the sum of two dice, based off the probability mass function:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def expectation_sum_two_dice():\n    exp_sum_two_dice = 0\n    # sum of dice can take on the values 2 through 12\n    for x in range(2, 12 + 1):\n        pr_x = pmf_sum_two_dice(x) # pmf gives Pr sum is x\n        exp_sum_two_dice += x * pr_x\n    return exp_sum_two_dice\n\t\ndef pmf_sum_two_dice(x):\n    # Return the probability that two dice sum to x\n    count = 0\n    # Loop through all possible combinations of two dice\n    for dice1 in range(1, 6 + 1):\n        for dice2 in range(1, 6 + 1):\n            if dice1 + dice2 == x:\n                count += 1\n    return count / 36  # There are 36 possible outcomes (6x6)\n",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we worked it out manually we would get that if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the sum of two dice, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X] = 7"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X] = \\sum_x x \\cdot \\p(X=x) = 2 \\cdot \\frac{1}{36} + 3 \\cdot \\frac{2}{36} + \\dots + 12 \\cdot \\frac{1}{36} = 7\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "7 is the \"average\" number you expect to get if you took the sum of two dice near infinite times. In this case it also happens to be the same as the mode, the most likely value of the sum of two dice, but this is not always the case!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "properties-of-expectation",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Properties of Expectation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Expectation of a Linear Transform",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[aX + b] = a\\text{E}[X]+b\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "b"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are constants and not random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Expectation of the Sum of Random Variables",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[X+Y] = \\text{E}[X] + \\text{E}[Y]\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This is true regardless of the relationship between ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". They can be dependent, and they can have different distributions. This also applies with more than two random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}\\Big[\\sum_{i=1}^n X_i\\Big] = \\sum_{i=1}^n \\text{E}[X_i]\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Law of The Unconscious Statistician (LOTUS)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[g(X)] = \\sum_x g(x)\\p(X=x)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "One can also calculate the expected value of a function ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "g(X)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " of a random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " when one knows the probability distribution of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " but one does not explicitly know the distribution of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "g(X)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". This theorem has the humorous name of \"the Law of the Unconscious Statistician\" (LOTUS), because it is so useful that you should be able to employ it unconsciously.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Expectation of a Constant",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[a] = a\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Sometimes in proofs, you will end up with the expectation of a constant (rather than a random variable). For example what does the ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[5]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " mean? Since 5 is not a random variable, it does not change, and will always be 5, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[5] = 5"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "expectation-of-sums-proof",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Expectation of Sums Proof",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One of the most useful properties of expectation is that the sum of expectation of random variables can be calculated by summing the expectations of each random variable on its own. Later in ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./summation_vars",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Adding Random Variables",
+     "type": "text"
+    },
+    {
+     "text": " we will learn that computing the full probability mass function (or probability density function) when adding random variables is quite hard, especially when the random variables are dependent. However the expectation of sums is always decomposable:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X+Y] = \\text{E}[X] + \\text{E}[Y]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This very useful result is somewhat surprising. I believe that the best way to understand this result is via a proof. This proof, however, will use some concepts from the next section in the course reader, Probabilistic Models. Once you have learned how to think about random variables jointly you will be able to understand this proof. There is a section of the reader that goes over the proof in details and gives a visualization for why it is true! ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./expectation_of_sums",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Proof of Expectation of Sum of Random Variables",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "example-of-law-of-unconscious-statistician",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example of Law of Unconscious Statistician",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The property of expectation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[g(X)] = \\sum_x g(x)\\p(X=x)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "is both useful and hard to understand just by reading the equation. It allows us to calculate the expectation of any function applied to a random variable! One function that will turn out to be very useful when computing ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://pathToRoot/variance",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Variance",
+     "type": "text"
+    },
+    {
+     "text": " is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X^2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". According to the Law of Unconscious Statistician:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X^2] &= \\sum_x x^2 \\p(X=x)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "g"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the squaring function. To calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X^2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we calculate expectation in a way similar to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with the exception that we square the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " before multiplying by the probability mass function. Here is code that calculates ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X^2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for the sum of two dice:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def expectation_sum_two_dice_squared():\n    exp_sum_two_dice_squared = 0\n    # sum of dice can take on the values 2 through 12\n    for x in range(2, 12 + 1):\n        pr_x = pmf_sum_two_dice(x) # pmf gives Pr(x)\n        exp_sum_two_dice_squared += x**2 * pr_x\n    return exp_sum_two_dice_squared",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": "expectation-with-continuous-random-variables",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Expectation with Continuous Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Later in the course reader we will learn about continuous random variables. Expectation for those types of random variables is very similar, but where we used summations for discrete random variables, we will instead generally use integrals. See ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://pathToRoot/continuous#ex_continuous",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Continuous Random Variables",
+     "type": "text"
+    },
+    {
+     "text": " for details.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

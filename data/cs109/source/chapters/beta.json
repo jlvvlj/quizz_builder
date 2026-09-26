@@ -1,0 +1,1160 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Beta distribution is the distribution most often used as the distribution of probabilities. In this section we are going to have a very meta discussion about how we represent probabilities. Until now probabilities have just been numbers in the range 0 to 1. However, if we have uncertainty about our probability, it would make sense to represent our probabilities as random variables (and thus articulate the relative likelihood of our belief).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Beta Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3817,
+      "sourceSha256": "3061c75164d98db78a023327ccdf2fe6a3a9e5e815c220943ed422cba13cc3e9"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is your Belief in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " After 9 Heads in 10 Flips?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine we have a coin and we would like to know its true probability of coming up heads, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We flip the coin 10 times and observe 9 heads and 1 tail. What is your belief in based off this evidence? Using the definition of probability we could guess that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p \\approx \\frac{9}{10}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". That number is a very rough estimate, especially since it is only based off 10 coin flips. Moreover the \"point-value\" ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{9}{10}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " does not have the ability to articulate how uncertain it is.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Could we instead have a random variable for the true probability? Formally, let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represent the true probability of the coin coming up heads. We don't use the symbol ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for random variables, so ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " will have to do. If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 0.7"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then the probability of heads is 0.7. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " must be a continuous random variable with support [0,1] since probabilities are continuous values which must be between 0 and 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Before flipping the coin, we could say that our belief about the coin's heads probability is uniform: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Uni}(0,1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable for the number of heads and let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable for the number of tails observed. What is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X = x \\mid H = 9, T = 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That probability is hard to think about! However it is much easier to reason about the probability with the condition reversed: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(H = 9, T = 1 \\mid X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This term asks the question: what is the probability of seeing 9 heads and 1 tail in 10 coin flips, given that the true probability of a heads is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Convince yourself that this probability is just a binomial probability mass function with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " experiments, and evaluated at ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k = 9"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(H = 9, T = 1 \\mid X=x) = \\binom{10}{9} x^9 (1-x)^1\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are presented with a perfect context for ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/inference",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "inference -- Bayes' Theorem with random variables",
+     "type": "text"
+    },
+    {
+     "text": ". We know a conditional probability in one direction and we would like to know it in the other:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(X = x \\mid H = 9, T = 1) &= \\frac{P(H=9, T=1 \\mid X=x) \\cdot f(X=x)}{P(H=9, T=1)} &\\quad \\text { Bayes Theorem } \\\\\n    &= \\frac{\\binom{10}{9} x^9 (1-x)^1 \\cdot f(X=x)}{P(H=9, T=1)} &\\quad \\text { Binomial PMF } \\\\\n    &= \\frac{\\binom{10}{9} x^9 (1-x)^1 \\cdot 1}{P(H=9, T=1)} &\\quad \\text { Uniform PDF } \\\\\n    &= \\frac{\\binom{10}{9}}{P(H=9, T=1)} x^9 (1-x)^1 &\\quad \\text { Constants to front } \\\\\n    &= K \\cdot x^9 (1-x)^1 &\\quad \\text { Rename constant } \\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Lets take a look at that function. For now we can let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "K = 110"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Regardless of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "K"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we will get the same shape, just scaled:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 645,
+    "sourceSha256": "0cf433328088af0587ac548c3750c0161ad5705fca65d359cbc232d367b813ce"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What a beautiful image. It tells us relatively likelihood over the probability that is governing our coin flips. Here are a few observations from this chart:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Even after only 10 coin flips, we are very confident that the true probability is > 0.5.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "It is almost 10 times more likely that ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X = 0.9"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " as it is that ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X = 0.6"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ".",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "f(X = 1) = 0"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ", which makes sense. How could we have flipped that one tail if the probability of heads was 1?",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Wait but why?",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In the derivation above for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(X = x \\mid X= 9, T = 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " we made the claim that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(H = 9, T = 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a constant. A lot of folks find that hard to believe. Why is that the case?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "It may be helpful to juxtapose ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(H = 9, T = 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " with ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(H = 9, T = 1 | X = x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".The later says \"what is the probability of 9 heads, given the true probability is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "\". The former says \"what is the probability of 9 heads, under all possible assignments of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "\". If you wanted to calculate you could use the Law of Total Probability:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(H = 9, T = 1) = \\int_{y = 0}^1 \\P(H = 9, T = 1 \\mid X = y) f(X = y) dy\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " That is a hard number to calculate, but it is in fact a constant with respect to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Beta Derivation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's generalize the derivation from the previous section, using ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for the number of observed heads and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for the number of observed tails.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H = h"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that we saw ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads, and let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T = t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that we saw ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " tails in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h + t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips. We want to calculate the probability density function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(X = x \\mid H = h, T = t)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We can use the exact same series of steps, starting with Bayes' Theorem:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(X = x \\mid H = h, T= t) &= \\frac{P(H=h, T=t \\mid X=x) \\cdot f(X=x)}{P(H=h, T=t)} &\\quad \\text { Bayes Theorem } \\\\\n    &= \\frac{\\binom{h+t}{h} x^h (1-x)^t}{P(H=h, T=t)} &\\quad \\text { Binomial PMF, Uniform PDF } \\\\\n    &= \\frac{\\binom{h+t}{h}}{P(H=h, T=t)} x^h (1-x)^t &\\quad \\text { Moving terms around } \\\\\n    &= \\frac{1}{c} \\cdot x^h (1-x)^t &\\quad \\text { where }c = \\int_0^1 x^h(1-x)^t dx \\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The equation that we arrived at when using a Bayesian approach to estimating our probability defines a probability density function and thus a random variable. The random variable is called a Beta distribution, and it is defined as follows:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Probability Density Function (PDF) for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Beta}(a,b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(X = x) = \\begin{cases} \\frac{1}{B(a, b)} x^{a-1}(1-x)^{b-1} & \\text { if } 0 < x <1 \\\\ 0 & \\text { otherwise }\\end{cases} &\\quad\\quad \\text{where } B(a,b) = \\int_0^1 x^{a-1}(1 - x)^{b - 1} dx\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A Beta distribution has ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X] = \\frac{a}{a+b}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Var}(X) = \\frac{ab}{(a+b)^2(a+b+1)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". All modern programming languages have a package for calculating Beta CDFs, since there is no closed-form expression for the CDF, so you won't ever be expected to compute the CDF by hand.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To model our estimate of the probability of a coin coming up heads: set ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a = h + 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "b = t + 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Beta is used as a random variable to represent a belief distribution of probabilities in contexts beyond estimating coin flips. For example perhaps a drug has been given to 6 patients, 4 of whom have been cured. We could express our belief in the probability that the drug can cure patients as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Beta}(a = 5, b = 3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 644,
+    "sourceSha256": "450bb51ec147d43144dd5f4e70da2e8873aeb923a6fa9da3d152a619133c4f98"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Notice how the most likely belief for the probability of curing a patient is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{4}{6}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the fraction of patients cured. This distribution shows that we hold a non-zero belief that the probability could be something other than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{4}{6}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It is unlikely that the probability is 0.01 or 0.09, but reasonably likely that it could be 0.5.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Beta as a Prior",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You can set ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Beta}(a,b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as a prior to reflect how biased you think the coin is a priori to flipping it. This is a subjective judgment that represents ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a + b - 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " \"imaginary\" trials with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "b - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " tails. If you then observe ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h + t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " real trials with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads you can update your belief. Your new belief would be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Beta}(a + h, b + t)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Here is the proof for the distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " when the prior was a Beta too:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If our prior belief is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Beta}(a,b)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", then our posterior is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Beta}(a +h,b + t)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(X = x \\mid H = h, T=t) &= \\frac{\\P(H = h, T = t \\mid X = x) f(X = x)}{\\P(H = h, T = t)} &\\quad \\text{Bayes Theorem} \\\\\n    &= \\frac{\\binom{h+t}{h} x^h (1-x)^t \\cdot \\frac{1}{c} \\cdot x^{a-1} (1-x)^{b-1}}{\\P(H = h, T = t)} &\\quad \\text{Binomial PMF, Beta PDF} \\\\\n    &= K \\cdot x^h (1 - x)^t \\cdot x^{a-1} (1 - x)^{b-1} &\\quad \\text{Combine constants} \\\\\n    &= K \\cdot x^{a + h -1} (1 - x)^{b + t -1} &\\quad \\text{Combine like bases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Which is the PDF of Beta",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(a + h, b + t)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "!",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It is pretty convenient that if we have a Beta prior belief, then our posterior belief is also Beta. This makes Betas especially convenient to work with, in code and in proof, if there are many updates that you will make to your belief over time. This property where the type of distribution is the same before and after an observation is called a conjugate prior.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Observation: Using the prior ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Beta}(1,1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the same as saying we haven't seen any \"imaginary\" trials, so a priori we know nothing about the coin. There is a deep connection between the beta-prior and the uniform-prior (which we used initially) -- it turns out that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Beta}(1,1) = \\text{Uni}(0,1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Quick question: Are you allowed to just make up priors and imaginary trials? Some folks think that is fine (they are called Bayesians) and some folks think that you shouldn't make up prior beliefs (they are called frequentists). In general, for small data it can make you much better at making predictions if you are able to come up with a good prior belief.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

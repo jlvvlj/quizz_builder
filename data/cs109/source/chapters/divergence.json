@@ -1,0 +1,315 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an important question! How can you quantify how different two distributions are? In other words, if I have two Probability Mass Functions, can I calculate a number that says how much they diverge from one another? Here are three reasonable ways to quantify distance between distributions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Total Variational Distance",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Loop over all possible values and calculate the absolute difference in probability.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " Total Variation Distance",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be discrete random variables",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n  \\text{TV}(X, Y) = \\frac{1}{2} \\sum_{i} |\\P(X = i) - \\P(Y = i)|\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Earth Mover's Distance",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine one distribution is a lump of dirt. How much work would it take to make it look just like the other? Also called the Wasserstein metric.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This value is very meaningful, but it doesn't have a closed-form equation. Instead it is computed by solving a linear program. If the range of values that the random variables can take on is of size ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "text": ", the linear program has a run time of O(",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n^3 \\cdot \\log n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") which is very slow.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Kullback–Leibler Divergence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be discrete random variables. Calculate the expected “excess surprise” from using Y as your Probability Mass Function instead of X when the actual Probability Mass Function is X.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " Kullback–Leibler Divergence",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be discrete random variables",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{KL}(X, Y)\n&= \\sum_{x \\in X} \\text{ExcessSurprise}(x) \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} \\Big[\\text{Surprise}_X(x) - \\text{Surprise}_Y(x)\\Big] \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} \\Big[\\log_2\\frac{1}{P(Y=x)} - \\log_2 \\frac{1}{P(X=x)}\\Big] \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} \\Big[- \\log_2 P(Y=x) + \\log_2 P(X=x)\\Big] \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X}\\ \\log_2 \\frac{P(X=x)}{P(Y=x)} \\cdot P(X=x) \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example code snippet for calculating how different an observed pmf of hurricanes per year is from a predicted Poisson distribution",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nimport math\n\ndef kl_divergence(predicted_lambda, observed_pmf):\n    \"\"\"\n    We predicted that the number of hurricanes would be\n    X ~ Poisson(predicted_lambda) and observed a real world\n    number of hurricanes Y ~ observed_pmf\n    \"\"\"\n    X = stats.poisson(predicted_lambda)\n    divergence = 0\n    # loop over all the values of hurricanes\n    for i in range(0, 40):\n      pr_X_i = X.pmf(i)\n      pr_Y_i = observed_pmf[i]\n      excess_surprise_i = math.log(pr_X_i / pr_Y_i)\n      divergence += excess_surprise_i * pr_X_i\n    return divergence\n",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,24 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In lecture 3, we worked through an example about network reliability that motivated a concept called DeMorgan's law, where you can go back and forth between AND and OR of events in order to make computations more tractable. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 8590,
+    "sourceSha256": "2412a503540f8b9dfeccde96419869ad9a886e5b39f5fcc51151f8e37be96d0d"
+   },
+   "type": "interactive-demo"
+  }
+ ],
+ "type": "doc"
+}

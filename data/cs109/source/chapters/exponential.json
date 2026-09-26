@@ -1,0 +1,279 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "An exponential distribution measures the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "amount of time",
+     "type": "text"
+    },
+    {
+     "text": " until the next event occurs. It assumes that the events occur via a Poisson process. Note that this is different from the Poisson random variable which measures the number of events in a fixed amount of time.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 3772,
+      "sourceSha256": "8df194390e14d582e568df892d995c2ce584967ac049a711931af51a8c210114"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "An exponential distribution is a great example of a continuous distribution where the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/draft/continuous#cdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "cumulative distribution function (CDF)",
+     "type": "text"
+    },
+    {
+     "text": " is much easier to work with as it allows you to answer probability questions without using integrals.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Example: Based on historical data from the USGS, earthquakes of magnitude 8.0+ happen in a certain location at a rate of 0.002 per year. Earthquakes are known to occur via a Poisson process. What is the probability of a major earthquake in the next 4 years?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the years until the next major earthquake. Because ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " measures time ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "until",
+       "type": "text"
+      },
+      {
+       "text": " the next event it fits the description of an exponential random variable: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\text{Exp}(\\lambda = 0.002)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The question is asking, what is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(Y < 4)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\p(Y < 4) \n    &= F_Y(4) && \\text{The CDF measures }\\p(Y < y) \\\\\n    &= 1 - e^{- \\lambda \\cdot y} && \\text{The CDF of an Exp} \\\\\n    &= 1 - e^{- 0.002 \\cdot 4} && \\text{The CDF of an Exp} \\\\\n    &\\approx 0.008\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note that it is possible to answer this question using the PDF, but it will require solving an integral.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "exponential-is-memoryless",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Exponential is Memoryless",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "One way to gain intuition for what is meant by the \"Poisson process\" is through the proof that the exponential distribution is ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Memorylessness",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "\"memoryless\"",
+     "type": "text"
+    },
+    {
+     "text": ". That means that the occurrence (or lack of occurrence) of events in the past does not change our belief as to how long until the next occurrence. This can be stated formally. If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Exp}(\\lambda)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then for an interval of time until the start ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "s"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and a proceeding, query, interval of time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X > s + t \\mid X > s) = \\p(X > t)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Which is something we can prove:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X > s + t \\mid X > s)\n&= \\frac{\\p(X > s + t \\text{ and } X > s)}{\\p(X > s)}\n&& \\text{Def of conditional prob.} \\\\\n&= \\frac{\\p(X > s + t )}{\\p(X > s)}\n&& \\text{Because }X > s + t\\text{ implies }X > s\\\\\n&= \\frac{1 - F_X(s + t )}{1 - F_X(s)}\n&& \\text{Def of CDF} \\\\\n&= \\frac{e^{-\\lambda (s + t)}}{e^{-\\lambda s}}\n&& \\text{By CDF of Exp} \\\\\n&= e^{-\\lambda t}\n&& \\text{Simplify} \\\\\n&= 1 - F_X(t)\n&& \\text{By CDF of Exp} \\\\\n&= \\p(X > t)\n&& \\text{Def of CDF}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,610 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How do modern scientists discover hidden chambers in massive structures, such as the Great Pyramid of Giza (t",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(32, 33, 34)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "he tomb of pharaoh Khufu)?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this chapter are going to build a tool to predict the existence of hidden chambers in the Great Pyramid of Giza using muons and probability. A muon is a special type of particle that originates in outer-space and arrives at earth as a Poisson process. On average 10,000 muons hit each square meter per minute on Earth.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 11067,
+    "sourceSha256": "50862ee004aaac766774f4eac9ca5f408f4f465dfb8ed0e25b8242c918cb2568"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When the muons hit limestone, they do not change direction, but as they travel through the limestone, they sometimes get absorbed. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this example we are going to consider a muon detector is positioned inside a chamber in the Great Pyramid. It is 100 meters below the edge of the pyramid and is pointing straight up (in other words it will only detect muons traveling straight down). Our goal is to estimate: how many meters of limestone are above our detector? This number will help us detect any hidden chambers!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "0571c7d3-8e47-45ef-8916-918794428dd8",
+    "naturalHeight": "1342",
+    "naturalWidth": "1718",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F0571c7d3-8e47-45ef-8916-918794428dd8?alt=media&token=97dc6f61-1958-47c3-acfe-1090a91b5843",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If you know how many meters of limestone each muon passes through, using a Physics principle called the Beer-Lambert law you can calculate the rate of muons arriving per month. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the meters of limestone, then the rate that will hit our detector is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "100 \\cdot e^{-x/40}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " muons per month.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "understanding-muons",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Understanding Muons",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As warmup, imagine the entire 100 meter path is limestone. In that case, the rate of muons arriving per month on the detection plate is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "100 \\cdot e^{-100/40} = 8.2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". What is the probability that in one month you would observe 12 muons?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The problem tells us that muons follow a Poisson process; so, let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "M"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of muons that we observe in one month. ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "M \\sim \\text{Poi}(\\lambda = 8.2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Using the PMF of the Poisson:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(M = 12) = \\frac{8.2^{12}e^{-8.2}}{12!}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "inferring-amount-of-limestone",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Inferring Amount of Limestone",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be your belief in the meters of limestone above the detection plate. Your prior belief is that any number of meters from 0 to 100 is equally likely: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Uni}(0, 100)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". After one month, your detection plate has been hit by 12 muons. What is your updated belief in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This is an inference problem, since we want to update our belief in a random variable, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", given an observation. In this case, since ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is continuous, we will be updating a PDF.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "M"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of muons we detect again. Using Bayes' Theorem:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(X = x | M = 12) = \\frac{P(M = 12 | X = x) f(X = x)}{P(M = 12)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(M = 12 | X = x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " follows a Poisson where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " = ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "100 \\cdot e^{-x/40}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Since ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is Uniformly distributed with a range of length 100, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(X = x) = \\frac{1}{100}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "With inference on a discrete random variable, we expand the denominator using the Law of Total Probability with a summation. For a continuous RV, the summation becomes an integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(M = m) = \\int_0^{100} P(M = m | X = x) f(X = x) dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In this case because the term we are interested in is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(M=m)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " then we want:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(M = 12) = \\int_0^{100} P(M = 12 | X = x) f(X = x) dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Putting it all together:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(&X = x | M = 12) \\\\\n    &= \\frac{P(M = 12 | X = x) f(X = x)}{P(M = 12)} \\\\ \\\\\n\n    &= \\frac{\\frac{\\left(100 \\cdot e^{-x/40}\\right)^{12}e^{-\\left(100 \\cdot e^{-x/40}\\right)}}{12!} \\cdot \\frac{1}{100}}{\\int_0^{100} \\frac{\\left(100 \\cdot e^{-x/40}\\right)^{12}e^{-\\left(100 \\cdot e^{-x/40}\\right)}}{12!} \\cdot \\frac{1}{100} dx} \\\\ \\\\\n\n    &= \\frac{e^{-\\frac{12x}{40} - 100 \\cdot e^{-x/40}}}{\\int_0^{100} e^{-\\frac{12x}{40} - 100 \\cdot e^{-x/40}} dx}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If you allow for the denominator to be a constant:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(&X = x | M = 12) \\\\\n    &= \\frac{P(M = 12 | X = x) f(X = x)}{P(M = 12)} \\\\ \n    &= \\frac{\\frac{\\left(100 \\cdot e^{-x/40}\\right)^{12}e^{-\\left(100 \\cdot e^{-x/40}\\right)}}{12!} \\cdot \\frac{1}{100}}{P(M=12)} \\\\ \\\\\n\n    &\\propto e^{-\\frac{12x}{40} - 100 \\cdot e^{-x/40}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is what that PDF equation looks like:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2900,
+    "sourceSha256": "c307b8717649605afba57cce44b2f613a080c6c645f822e7868fdbe11f1b6d14"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each muon detector that you will place will give you a probability density over the amount of limestone in the straight line above the detector. If you have multiple, you can ask the question: is there a hole in the limestone that makes each of these observations likely?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

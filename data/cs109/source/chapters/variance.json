@@ -1,0 +1,667 @@
+{
+ "content": [
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Variance of a Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "The variance is a measure of the \"spread\" of a random variable around the mean. Variance for a random variable, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", with expected value ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[X] = µ"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\text{Var}(X) = \\text{E}[(X–µ)^2]"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Semantically, this is the average distance of a sample from the distribution to the mean. When computing the variance often we use a different (equivalent) form of the variance equation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}(X) &= \\text{E}[X^2] - \\text{E}[X]^2\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}expectation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "last section",
+     "type": "text"
+    },
+    {
+     "text": " we showed that Expectation was a useful summary of a random variable (it calculates the \"weighted average\" of the random variable). One of the next most important properties of random variables to understand is variance: the measure of spread.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "To start, let's consider probability mass functions for three sets of graders. When each of them grades an assignment, meant to receive a 70/100, they each have a probability distribution of grades that they could give.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "c5174740-ca5b-4d4c-8057-ec701acc6b18",
+    "naturalHeight": "683",
+    "naturalWidth": "1633",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fc5174740-ca5b-4d4c-8057-ec701acc6b18?alt=media&token=cb81c502-e08d-46e0-8839-60fcc88b10bd",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Distributions of three types of peer graders. Data is from a massive online course.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The distribution for graders in group ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has a different ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "expectation",
+     "type": "text"
+    },
+    {
+     "text": ". The average grade that they give when grading an assignment worth 70 is a 55/100. That is clearly not great! But what is the difference between graders ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Both of them have the same expected value (which is equal to the correct grade). The graders in group ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " have a higher \"spread\". When grading an assignment worth 70, they have a reasonable chance of giving it a 100, or of giving it a 40. Graders in group ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " have much less spread. Most of the probability mass is close to 70. You want graders like those in group ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": in expectation they give the correct grade, and they have low spread. As an aside: scores in group ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " came from a probabilistic algorithm over peer grades.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Theorists wanted a number to describe spread. They invented variance to be the average of the distance between values that the random variable could take on and the mean of the random variable. There are many reasonable choices for the distance function, probability theorists chose squared deviation from the mean:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\text{Var}(X) = \\text{E}[(X–µ)^2]"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Proof",
+       "type": "text"
+      },
+      {
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{Var}(X) = \\text{E}[X^2] - \\text{E}[X]^2"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "It is much easier to compute variance using ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[X^2] - \\text{E}[X]^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". You certainly don't need to know why it's an equivalent expression, but in case you were wondering, here is the proof.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}(X) \n&= \\text{E}[(X-\\mu)^2] && \\text{Note: } \\mu = \\text{E}[X]\\\\\n&= \\sum_x (x-\\mu)^2 \\P(x) && \\text{Definition of Expectation}\\\\\n&= \\sum_x (x^2 -2\\mu x + \\mu^2) \\P(x)\n&& \\text{Expanding the square}\\\\\n&= \\sum_x x^2\\P(x)- 2\\mu \\sum_x x \\P(x) + \\mu^2 \\sum_x \\P(x)\n&& \\text{Propagating the sum}\\\\\n&= \\sum_x x^2\\P(x)- 2\\mu \\text{E}[X] + \\mu^2 \\sum_x \\P(x) && \\text{Substitute def of expectation}\\\\\n&= \\text{E}[X^2]- 2\\mu \\text{E}[X] + \\mu^2 \\sum_x \\P(x)\n&& \\text{LOTUS } g(x) = x^2 \\\\\n&= \\text{E}X^2]- 2\\mu \\text{E}[X] + \\mu^2\n&& \\text{Since }\\sum_x \\P(x) = 1\\\\\n&= \\text{E}[X^2]- 2\\text{E}[X]^2 + \\text{E}[X]^2\n&& \\text{Since }\\mu = \\text{E}[X]\\\\\n&= \\text{E}[X^2]- \\text{E}[X]^2\n&& \\text{Cancellation}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "properties-of-variance",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Properties of Variance",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Variance of a Linear Transform",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}(aX + b) = a^2\\text{\\Var}(X)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "b"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are constants and not random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Property",
+       "type": "text"
+      },
+      {
+       "text": ": Variance of a Sum",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./independent_vars",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "independent random variables",
+       "type": "text"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}(X + Y) = \\text{\\Var}(X) + \\text{Var}(Y)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "More generally, if all ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent of each other:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}\\Big(\\sum_{i=1}^n X_i\\Big) = \\sum_{i=1}^n \\text{Var}(X_i)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This rule does not apply if the random variables are not independent.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "standard_deviation",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Standard Deviation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Variance is especially useful for comparing the \"spread\" of two distributions and it has the useful property that it is easy to calculate. In general a larger variance means that there is more deviation around the mean -- more spread. However, if you look at the leading example, the units of variance are the square of points. This makes it hard to interpret the numerical value. What does it mean that the spread is 52 points^2? A more interpretable measure of spread is the square root of Variance, which we call the Standard Deviation ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Std}(X) = \\sqrt{\\text{Var}(X)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The standard deviation of our grader is 7.2 points. In this example folks find it easier to think of spread in points rather than points^2. As an aside, the standard deviation is the average distance of a sample (from the distribution) to the mean, using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Euclidean_distance",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "euclidean distance",
+     "type": "text"
+    },
+    {
+     "text": " function.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Variance with Continuous Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Later in the course reader we will learn about continuous random variables. Variance for those types of random variables is very similar. See ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}continuous#ex_continuous",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Continuous Random Variables",
+     "type": "text"
+    },
+    {
+     "text": " for details.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

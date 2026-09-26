@@ -1,0 +1,367 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When we first learned about the Binomial, we derived it using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "many coin flips example",
+     "type": "text"
+    },
+    {
+     "text": ". To derive the Multinomial Distribution, we can extend that metaphor to consider the probability of different outcomes of rolling many ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "dice",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this example we are going to imagine that we have a dice that can only have three outcomes. When you roll it you could get an A, a B or a C. What an odd dice! In order to make this metaphore as general as possible I am going to let our dice be even stranger! Imagine the probability of each of the three outcomes is not equally likely. Instead let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the probability of rolling an A, and so on. To make things concrete image:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\np_A = 0.6\\\\\np_B = 0.1\\\\\np_C = 0.3\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First here is a simulator where you can try rolling this dice 10 times:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Dice Roll Simulator",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2450,
+      "sourceSha256": "a6cc7fa92f804416c82801344a11b8144dfcf73e65cd7d740f0c314c53aae79f"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "exactly-4as-1b-and-5cs",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Exactly 4As 1B and 5Cs",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine you roll 10 dice, where each dice has three sides {A, B, C}. Here are all the orderings of outcomes for the 10 rolls where you get exactly 4 As, 1 B and 5 Cs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 41218,
+    "sourceSha256": "cf12ab49e476b68a59bc71ef63fba10efe54aa1d87bc6083f8e9f1862219af37"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Let's call each of these rows an \"ordering\" since each row is a unique way to order the 4 As, 1 B and 5 Cs. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " be the number of unique orderings.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Exactly how many unique orderings are there of 10 letters with 4 As, 1 B and 5 Cs? We can solve this problem using ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/draft/combinatorics/#perm_indisctinct",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Permutations of Indistinct Objects",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Num Orderings} = \\frac{10!}{4! \\cdot 1! \\cdot 5!} = {10 \\choose 4, 1, 5} = 1260\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these orderings can be thought of as one event, or outcome, of rolling 10 dice. Let's name ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the event that we get the exact outcome in the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th row.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's calculate the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E_{17})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Eg:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "(A, A, A, C, A, C, C, C, C, B)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In order to calculate the probability of this row, we need to know the probability of A, B, and C on our dice. Recall that:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\np_A = 0.6\\\\\np_B = 0.1\\\\\np_C = 0.3\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The the probability of getting exactly the result in row 17 is going to be:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E_{17}) &= p_A \\cdot  p_A \\cdot  p_A \\cdot  p_A \\cdot  p_B \\cdot  p_C \\cdot p_C \\cdot p_C \\cdot p_C \\cdot p_C \\\\\n&= p_A ^ 4 \\cdot p_B \\cdot p_C^5\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In fact that is the probability of every single row! Now we are ready to calculate the probability of exactly 4 As, 1 B and 5 Cs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(&\\text{exactly 4 As, 1 B and 5 Cs}) \\\\\n\t&= \\sum_{i=1}^N \\p(E_i) && \\text{Mutual Exclusion}\\\\\n\t&= \\sum_{i=1}^N p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Sub in }\\p(E_i) \\\\\n\t&= N \\cdot p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Sum $N$ times}  \\\\\n\t&= {n \\choose n_A, n_B, n_C} \\cdot p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Perm of indistinct objects}\\\\\n    &= {10 \\choose 4, 1, 5} \\cdot 0.6 ^ 4 \\cdot 0.1 \\cdot 0.3^5 && \\text{Substitution}\\\\  \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

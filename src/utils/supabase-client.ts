@@ -12,6 +12,8 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Add type definition at the top of the file
 export interface SupabaseCard {
+    authored_options?: string[] | null;
+    explanation?: string | null;
     id: number;
     japanese_word: string;
     japanese_reading: string | null;
@@ -36,6 +38,8 @@ export interface FlashCard {
 }
 
 export interface SessionWord extends FlashCard {
+    authored_options?: string[] | null;
+    explanation?: string | null;
     progress: number;
     isReview: boolean;
     totalMisses: number;
@@ -255,7 +259,7 @@ export async function fetchSupabaseSessionCards(pageSize: number = 10, section?:
             
             const { data, error } = await supabase
                 .from('words10k')
-                .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path')
+                .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path, authored_options, explanation')
                 .in('id', wordIds)
                 .order('id', { ascending: true });
 
@@ -281,7 +285,7 @@ export async function fetchSupabaseSessionCards(pageSize: number = 10, section?:
         console.log('Fetching words from words10k table...');
         let query = supabase
             .from('words10k')
-            .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path')
+            .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path, authored_options, explanation')
             .order('id', { ascending: true });
             
         if (section) query = query.eq('section', section);
@@ -309,7 +313,7 @@ export async function fetchSupabaseSessionCards(pageSize: number = 10, section?:
             console.log('No words found with startId, trying from beginning of step...');
             let retryQuery = supabase
                 .from('words10k')
-                .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path')
+                .select('id, japanese_word, japanese_reading, english, word_audio_path, english_audio_path, example_sentence_japanese, example_sentence_reading, example_sentence_english, sentence_audio_path, authored_options, explanation')
                 .order('id', { ascending: true });
                 
             if (section) retryQuery = retryQuery.eq('section', section);
@@ -444,7 +448,7 @@ export async function fetchSupabaseSessionCards(pageSize: number = 10, section?:
             }
 
             const progress = progressMap[card.id];
-            const wrongAnswers = wrongCards.map(c => c.english).filter((s): s is string => !!s);
+            const wrongAnswers = card.authored_options?.filter((answer: string) => answer !== card.english) ?? wrongCards.map(c => c.english).filter((s): s is string => !!s);
             // Readings of the same wrong cards, parallel to wrongAnswers, so the
             // forward quiz can rebuild the options as hiragana readings when the
             // option language is Japanese (or per-word Mix).
@@ -454,6 +458,7 @@ export async function fetchSupabaseSessionCards(pageSize: number = 10, section?:
             const quizCard = {
                 id: card.id,
                 question: card.japanese_word,
+                explanation: card.explanation,
                 reading: card.japanese_reading ?? undefined,
                 correctAnswer: card.english,
                 wrongAnswers,

@@ -1,0 +1,1190 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are times when it is exceptionally hard to numerically calculate probabilities for a binomial distribution, especially when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large. For example, say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n = 10000,p = 0.5)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and you want to calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X > 5500)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The correct formula is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(X > 55) &= \\sum_{i=5500}^{10000} \\P(X = x) \\\\\n&= \\sum_{i=5500}^{10000} \\binom{10000}{i}p^i(1 - p)^{10000-i}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "That is a difficult value to calculate. The biggest issue is the combination, which for moderate values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is very large. If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is an extreme value (close to 0 or 1), taking ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to a large exponent can also cause underflow. Luckily there is an easier way. For deep reasons which we will cover in our section on \"uncertainty theory\" it turns out that a binomial distribution can be very well approximated by both Normal distributions and Poisson distributions if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large enough.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Use the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Poisson approximation",
+     "type": "text"
+    },
+    {
+     "text": " when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large (>20) and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is small (<0.05). Ideally, you would have independence between results of each experiment or trial, but a slight dependence is ok.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Use the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Normal approximation",
+     "type": "text"
+    },
+    {
+     "text": " when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large (>20) and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is mid-ranged. Specifically, this is considered an accurate approximation when the variance is greater than 10; in other words, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "np(1-p) > 10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". There are situations where either a Poisson or a Normal can be used to approximate a Binomial. In that situation go with the Normal!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Tip:",
+     "type": "text"
+    },
+    {
+     "text": " When solving problems that require approximating the Binomial, a good approach is to first fully set up the problem as if it is a typical Binomial, and from there, translate the Binomial distribution parameters and RV events (i.e. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") into that of another distribution. Your goal is not to re-interpret the problem from the \"perspective\" or \"story\" of the other distribution (such as trying to identify a natural interpretation of the rate parameter for the Poisson within your problem scenario). ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "poi_approx",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Poisson Approximation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "When defining the Poisson we proved that a Binomial in the limit as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n \\rightarrow \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p = \\lambda / n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a Poisson. That same logic can be used to show that a Poisson is a great approximation for a Binomial when the Binomial has extreme values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". A Poisson random variable approximates Binomial where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is small, and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n \\cdot p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is \"moderate\". Interestingly, to calculate the things we care about (PMF, expectation, variance) we no longer need to know ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We only need to provide ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which we call the rate. When approximating a Poisson with a Binomial, always choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda = n \\cdot p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are different interpretations of \"moderate\". The accepted ranges are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n > 20"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p < 0.05"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n > 100"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p < 0.1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let's say you want to send a bit string of length ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n = 10^4"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " where each bit is independently corrupted with ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p = 10^{-6}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". What is the probability that the message will arrive uncorrupted?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We can solve this using a Poisson with ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda = np = 10^4 \\cdot 10^{-6} = 0.01"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Semantically, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda = 0.01"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " means that we expect ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "0.01"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " corrupt bits per string, in a world where we assumed bits were continuous.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Poi}(0.01)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of corrupted bits. Using the PMF for Poisson:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X = 0) &= \\frac{\\lambda^k e^{-\\lambda}}{k!} \\\\\n              &= \\frac{0.01^0 e^{-0.01}}{0!} \\\\\n              &= e^{-0.01} \\approx 0.9900498 \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We could have also modeled ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " as a binomial such that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Bin}(n=10^4, p=10^{-6})"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". That would have been impossible to calculate accurately on a computer, but would have resulted in the same number (up to the millionth decimal). ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "normal-approximation",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Normal Approximation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For a Binomial where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is large and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is mid-ranged, a Normal can be used to approximate the Binomial. Let's take a side-by-side view of a Normal and a Binomial:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "54d53ca8-6ae5-4703-9407-5a1969055350",
+    "naturalHeight": "755",
+    "naturalWidth": "1336",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F54d53ca8-6ae5-4703-9407-5a1969055350?alt=media&token=c944249d-db20-414e-a3df-8dc8a3ea20ba",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Lets say our binomial is a random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n=100, p=0.5)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and we want to calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X \\geq 55)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We could approximately calculate this probability by using the area under the closest-fit Normal distribution PDF (in this case, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim N(\\mu=50, \\sigma^2=25)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). How did we choose that particular Normal? We set the mean and variance to match the Binomial expectation and variance. The binomial expectation is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "np = 100 \\cdot 0.5 = 50"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and the Binomial variance is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "np(1-p) = 100 \\cdot 0.5 \\cdot 0.5 = 25"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Generally, to approximate a Binomial ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n,p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with large ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and moderate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we can use the Normal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim N(\\text{E}[X], \\text{Var}(X))"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim N(np, np(1-p))"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Then, because a Normal is continuous and Binomial is discrete, we have to use a continuity correction to discretize the Normal. Below, we can see the discrepancy between the smooth curve of probability density for the Normal and the discrete bars representing probability mass for the Binomial: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "4cad58ac-4287-4c3a-8bcb-abe4adaf0cf6",
+    "naturalHeight": "728",
+    "naturalWidth": "1328",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F4cad58ac-4287-4c3a-8bcb-abe4adaf0cf6?alt=media&token=8c5e6ef8-ef2a-4d58-b69d-1ab240f70415",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(X = k) &\\approx \\P\\left(k - \\frac{1}{2} < Y < k + \\frac{1}{2}\\right) = \\Phi \\left( \\frac{k - np + 0.5}{\\sqrt{np(1-p)}} \\right) - \\Phi \\left( \\frac{k - np - 0.5}{\\sqrt{np(1-p)}} \\right)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To get ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X \\geq 55)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the Binomial PMF, we would add up the probability mass in all the bars starting at 55 and up. If we instead used the complement of the CDF of the Normal to get ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y \\geq 55)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", that area under the curve of the PDF that corresponds to wouldn't line up with the relevant bars of the Binomial PMF -- it would be off by 0.5 along the x-axis (compare the red dashed line vs. the left edge of the dark blue bars).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Continuity correction adjusts what we query the Normal CDF for to account for this offset. Since the CDF will naturally be 0.5 off, we always adjust by 0.5. For example, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y \\geq 54.5)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a far more accurate approximation of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X \\geq 55)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y \\geq 55)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You should get comfortable deciding what direction to continuity correct in. Here are a few examples of discrete probability questions and the continuity correction:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1117,
+    "sourceSha256": "fe2b691140e858e402887e70e57b1acaa8159d6fa95bf940cffd735e64cc2167"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " 100 visitors to your website are given a new design. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of people who were given the new design ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "text": " spend more time on your website. Your CEO will endorse the new design if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\geq 65"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". What is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(\\text{CEO endorses change}|\\text{it has no effect})"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Binomial Setup:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note that if the new design has no effect on how long website visitors stay on the site, the probability that they spend more time on the website with the new design should be 0.5 (it's totally random).",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    X \\sim \\text{Bin}(n=100, p = 0.5)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\text{E}[X] = np = 50\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\text{Var}(X) = np(1-p) = 25\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Normal Approximation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    Y \\sim N(\\mu = 50, \\sigma^2 = 25)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X \\geq 65) \\approx \\P(Y > 64.5) = 1 - \\P(Y <  64.5) = 1 - \\Phi\\left(\\frac{64.5 - 50}{5} \\right) = 1 - \\Phi(2.9) \\approx 0.0019\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " Stanford accepts 2480 students; each accepted student has a 68% chance of attending. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of students who will attend",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". What is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X > 1745)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Binomial Setup:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    X \\sim \\text{Bin}(n = 2480, p = 0.68)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\text{E}[X] = 2480 \\cdot 0.68 = 1686.4 \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\text{Var}(X) = 2480 \\cdot 0.68(1 - 0.68) \\approx 539.7\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Normal Approximation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    Y \\sim N(\\mu = 1686.4, \\sigma^2 = 539.7)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X > 1745) &\\approx \\P(Y > 1745.5) \\\\\n                 &\\approx 1 - \\P(Y < 1745.5) \\\\\n                 &\\approx 1 - \\Phi \\left(\\frac{1745.5 - 1686.4}{\\sqrt{539.7}} \\right) \\\\\n                 &\\approx 1 - \\Phi(2.54) \\approx 0.0055\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  }
+ ],
+ "type": "doc"
+}

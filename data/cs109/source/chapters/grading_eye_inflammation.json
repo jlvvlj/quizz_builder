@@ -1,0 +1,607 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When a patient has eye inflammation, eye doctors \"grade\" the inflammation. When \"grading\" inflammation they randomly look at a single 1 millimeter by 1 millimeter square in the patient's eye and count how many \"cells\" they see.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There is uncertainty in these counts. If the true average number of cells for a given patient's eye is 6, the doctor could get a different count (say 4, or 5, or 7) just by chance. As of 2021, modern eye medicine does not have a sense of uncertainty for their inflammation grades! In this problem we are going to change that. At the same time we are going to learn about Poisson distributions over space.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "2e4d18ff-f2e8-4ae1-830b-87d5cd612acc",
+    "naturalHeight": "654",
+    "naturalWidth": "1520",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F2e4d18ff-f2e8-4ae1-830b-87d5cd612acc?alt=media&token=43f83ea4-8be6-491e-ab71-3cbb6ebd2d84",
+    "widthPct": "80"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Why is the number of cells observed in a 1x1 square governed by a Poisson process?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can approximate a distribution for the count by discretizing the square into a fixed number of equal sized buckets. Each bucket either has a cell or not. Therefore, the count of cells in the 1x1 square is a sum of Bernoulli random variables with equal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and as such can be modeled as a binomial random variable. This is an approximation because it doesn't allow for two cells in one bucket. Just like with time, if we make the size of each bucket infinitely small, this limitation goes away and we converge on the true distribution of counts. The binomial in the limit, i.e. a binomial as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n \\rightarrow \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", is truly represented by a Poisson random variable. In this context, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represents the average number of cells per 1",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\times"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "1 sample. See Figure 2.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "24ee01da-0816-4505-9f85-7a6b473e2986",
+    "naturalHeight": "666",
+    "naturalWidth": "1922",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F24ee01da-0816-4505-9f85-7a6b473e2986?alt=media&token=30081c18-287e-40e5-a2d2-30ddca77b955",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For a given patient the true average rate of cells is 5 cells per 1x1 sample. What is the probability that in a single 1x1 sample the doctor counts 4 cells?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " denote the number of cells in the 1x1 sample. We note that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Poi(5)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We want to find ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(X=4)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X=4) = \\frac{5^4 e^{-5}}{4!} \\approx 0.175\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Multiple Observations",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Heads up! This section uses concepts from Part 3. Specifically ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./independent_vars",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Independence in Variables",
+     "type": "text"
+    },
+    {
+     "text": ".  ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For a given patient the true average rate of cells is 5 cells per 1mm by 1mm sample. In an attempt to be more precise, the doctor counts cells in two different, larger 2mm by 2mm samples. Assume that the occurrences of cells in one 2mm by 2mm sample are independent of the occurrences in any other 2mm by 2mm samples. What is the probability that she counts 20 cells in the first samples and 20 cells in the second?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " denote the number of cells in each of the 2x2 samples. Since there are 5 cells in a 1x1 sample, there are 20 samples in a 2x2 sample since the area quadrupled, so we have that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y_1 \\sim \\Poi(20)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y_2 \\sim \\Poi(20)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We want to find ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(Y_1 = 20 \\land Y_2 = 20)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Since the number of cells in the two samples are independent, this is equivalent to finding ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y_1 = 20) \\P(Y_2=20)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Estimating Lambda",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Heads up! This section uses concepts from Part 5. Specifically ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./inference",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Inference",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Inflammation prior: Based on millions of historical patients, doctors have learned that the prior probability density function of true rate of cells is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(\\lambda) = K \\cdot \\lambda \\cdot e ^{-\\frac{\\lambda}{2}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "K"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a normalization constant and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " must be greater than 0.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A doctor takes a single sample and counts 4 cells. Give an equation for the updated probability density of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Use the \"Inflammation prior\" as the prior probability density over values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Your probability density may have a constant term.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(\\theta = \\lambda | X = 4)  \n&= \\frac{P(X=4|\\theta = \\lambda) f(\\theta = \\lambda)}{P(X = 4)} \\\\\n&= \\frac{\\frac{\\lambda^{4} e^{-\\lambda}}{4!} \\cdot K \\cdot \\lambda \\cdot e^{\\lambda / 2}}{P(X = 4)} \\\\\n&= \\frac{K \\cdot \\lambda^5 e^{-\\frac{3}{2}\\lambda}}{4! P(X=4)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Improvement?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A patient comes on two separate days. The first day the doctor counts 5 cells, the second day the doctor counts 4 cells. Based only on this observation, and treating the true rates on the two days as independent, what is the probability that the patient's inflammation has gotten better (in other words, that their ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has decreased)?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\theta_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the random variable for lambda on the first day and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\theta_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the random variable for lambda on the second day.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(\\theta_1 = \\lambda | X = 5) &= K_1 \\cdot \\lambda^6 e^{-\\frac{3}{2}\\lambda}  \\\\\nf(\\theta_2 = \\lambda | X = 4) &= K_2 \\cdot \\lambda^5 e^{-\\frac{3}{2}\\lambda}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The question is asking ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(\\theta_1 > \\theta_2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "? There are a few ways to calculate this exactly. One option is to integrate over all possible assignments where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\theta_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is larger than ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\theta_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n& \\int_{\\lambda_1=0}^\\infty \\int_{\\lambda_2=0}^{\\lambda_1} f(\\theta_1 = \\lambda_1, \\theta_2 = \\lambda_2) \\\\\n&= \\int_{\\lambda_1=0}^\\infty \\int_{\\lambda_2=0}^{\\lambda_1} f(\\theta_1 = \\lambda_1) \\cdot f(\\theta_2 = \\lambda_2) \\\\\n&= \\int_{\\lambda_1=0}^\\infty f(\\theta_1 = \\lambda_1) \\int_{\\lambda_2=0}^{\\lambda_1}   f(\\theta_2 = \\lambda_2)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

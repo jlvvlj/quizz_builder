@@ -1,0 +1,2494 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Diffusion is the algorithm that is used by (most) modern AI systems to produce images. In this chapter we are going to explore a specific instance of that task: generate pictures of trees from the \"tree photo distribution\" and generating images of hand drawn eights from the \"hand drawn eight distribution\".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are going to assume that we have access to a dataset with many photos of trees.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "f832f803-b65c-437b-bfe5-83011d389d55",
+    "naturalHeight": "2475",
+    "naturalWidth": "4400",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Ff832f803-b65c-437b-bfe5-83011d389d55?alt=media&token=d8d54860-fe64-4e79-a65a-3c6cb0ccf909",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here’s the full workflow for a diffusion model that we are going to cover:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "type": "bold"
+          }
+         ],
+         "text": "Forward process:",
+         "type": "text"
+        },
+        {
+         "text": " Slowly add Gaussian noise to images until they turn into pure noise.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "type": "bold"
+          }
+         ],
+         "text": "Reverse process:",
+         "type": "text"
+        },
+        {
+         "text": " Train a neural network to predict the mean for each pixel (",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "\\mu"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ") in the previous time step and remove noise step-by-step.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "type": "bold"
+          }
+         ],
+         "text": "Image generation:",
+         "type": "text"
+        },
+        {
+         "text": " Start with random noise and run the neural network in reverse ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "T"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " times to generate a realistic image.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "This elegant approach combines simple Gaussian noise with the power of deep learning to generate stunning results! In parallel to generating trees, I will pull examples from a working diffusion model I built to create hand drawn number 8s. Here is an example of the end product. If I run the program 16 times, I would get 16 different hand drawn 8s.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "3c794f42-9d65-435e-bb99-16cf90312110",
+    "naturalHeight": "732",
+    "naturalWidth": "798",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F3c794f42-9d65-435e-bb99-16cf90312110?alt=media&token=a624c3ee-8e3b-47f1-9917-08e84f184d73",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "id": "adding-noise",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Adding Noise",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "A great insight behind the diffusion algorithm is to take our dataset of images, and use it to create a dataset of images being generated from pure noise. To do this we supplement our dataset by iteratively adding gaussian noise to pixels, then train a deep learning model to remove noise.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "f01b3ddd-0fad-490e-a220-8d5066136140",
+    "naturalHeight": "1182",
+    "naturalWidth": "4248",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Ff01b3ddd-0fad-490e-a220-8d5066136140?alt=media&token=2838e095-8a66-466c-98c5-5894dd0b3208",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A reasonable number of steps would be to add 10% noise each time step, so that after ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " timesteps each pixel is fully noise. Consider a single pixel.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Formally, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable for the value of a pixel at time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the actual value of the pixel (for now think of it as a grayscale value between 0 for black and 1 for white). ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Using this notation, at each step ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", we add Gaussian noise to each pixel value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nX_{t+1} = X_t + N_t \\quad \\text{where } N_t \\sim N(0, \\sigma^2).\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since we are generating this data we know all the values in the above equation. We know the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and we know the value that we selected for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We know the values of the pixels at time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which is denoted ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We know the values of the pixels at time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t+1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which is denoted ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_{t+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is what adding noise looked like for my hand draw 8s:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "a396646a-b8bf-4af6-9870-1caa570b7811",
+    "naturalHeight": "264",
+    "naturalWidth": "1534",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fa396646a-b8bf-4af6-9870-1caa570b7811?alt=media&token=b70a03fe-cb67-4c17-b50f-f6ab972be71f",
+    "widthPct": "90"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-reverse-process",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Reverse Process",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "After we have added noise, we will",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " learn to reverse the noise adding task. We can generate a novel picture using this formula:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Reverse Process Sampling",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "start": "1"
+     },
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "marks": [
+            {
+             "attrs": {
+              "color": "rgb(33, 37, 41)"
+             },
+             "type": "textStyle"
+            }
+           ],
+           "text": "Make a new image composed entirely of random pixel values. ",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "marks": [
+            {
+             "attrs": {
+              "color": "rgb(33, 37, 41)"
+             },
+             "type": "textStyle"
+            }
+           ],
+           "text": "Repeat ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "k"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " times:",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        },
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "marks": [
+            {
+             "attrs": {
+              "color": "rgb(33, 37, 41)"
+             },
+             "type": "textStyle"
+            }
+           ],
+           "text": "a. Predict the distribution of pixel values at the previous timestep (before the gaussian noise was added).",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        },
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "marks": [
+            {
+             "attrs": {
+              "color": "rgb(33, 37, 41)"
+             },
+             "type": "textStyle"
+            }
+           ],
+           "text": "b. Sample new values for each pixel.",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "orderedList"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is what that looks like if we apply it to generating hand draw 8s:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "1f4dd179-41f1-4e48-8e72-73379aafc648",
+    "naturalHeight": "2213",
+    "naturalWidth": "3272",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F1f4dd179-41f1-4e48-8e72-73379aafc648?alt=media&token=a6386d89-ad0f-429e-a670-174435c44bb2",
+    "widthPct": "90"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This is where the machine learning comes in. How do we learn the reverse process in a principled way?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "learning-the-reverse-process",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Learning the Reverse Process",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It turns out it is sufficient to train a neural network which can predict the mean value of a pixel in a previous time step, based on the value of pixels in the current time step. Surprisingly, if we predict the mean, we can know the full sampling distribution!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a picture of what our neural network could look like. It takes in an image at a given timestep, and for each pixel, it will predict the mean of the pixel before noise was added:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "ff631411-d1e8-48ed-b8f8-71ea002c376b",
+    "naturalHeight": "719",
+    "naturalWidth": "3011",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fff631411-d1e8-48ed-b8f8-71ea002c376b?alt=media&token=a08c5abc-0ad5-4b05-8ea9-37aab874901b",
+    "widthPct": "90"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It can be trained on all the images generated in the \"adding noise\" step.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Are you sure this neural network is all we need? Thanks to some wonderful theory, the answer is \"yes\". Formally, we need to learn the distribution of the pixel in the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "previous",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " time step, given the value of all of our pixels in the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "current",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " time step:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(x_{t−1}|x_t, \\text{other pixels}_t\n)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Learning a whole distribution for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t-1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " should sound intimidating. At first blush this random variable could have any CDF! Yikes! How come the neural network only had to predict the mean, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X_{t-1}]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which we will denote ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? It turns out that predicting the mean is sufficient because of this amazing fact:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Diffusion Critical Fact: Reverse Process is also Gaussian",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "If the noise variance ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " is small enough, the distribution of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_{t}|X_{t+1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " can be approximated as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nX_{t} | X_{t+1} \\sim N(\\mu, \\sigma^2),\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "where:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "\\mu="
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " is the mean of the Gaussian, which is not known (but we assume is a complex function of the image)",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "\\sigma^2"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " is the variance of the noise that we selected when adding in Gaussian noise to our images",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "bulletList"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In words this critical fact reads like this: if we add small amounts of gaussian noise in the \"adding noise\", then the reverse distribution will always be gaussian (with known variance). This is true regardless of what the distribution of the pixel values were before we added oise.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a demo of the Diffusion Critical Fact. In this demo I first sample half a million values from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t} \\sim \\text{Beta}(2, 7)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (the critical fact doesn't depend on the distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). Then, for each value I chose a value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the diffusion process: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t+1} = X_t + N_t \\quad \\text{where } N_t \\sim N(0, \\sigma^2)."
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "On the left is a picture of all the values I sampled for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". On the right is the posterior of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " after observing that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t+1}=x_{t+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You can play with both the observation for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_{t+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and the amount of noise added ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Notice how Normal the posterior looks when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is small. Then try setting ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be 2 and see that the Normal shape goes away.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 9556,
+    "sourceSha256": "269ac0f94abc0b9fd3109bf1d9a57b650fcdb24c9bd1787407e9c4222cc73747"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A proof sketch of the Diffusion Critical Fact is provided later on in this chapter. It uses inference (and Taylor Series Expansions)At first blush this might seem like an unsurprising result. It was a big result from Physics that was discovered when folks were studying the random motion of particles in a fluid, that would cause the particles to disperse. Curious? Here is a reference where you can learn more about ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Wiener_process",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Brownian Motion",
+     "type": "text"
+    },
+    {
+     "text": " math.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The upshot of this result is that in order to reverse this process we only need to estimate the value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for each pixel in a previous timestep, given the pixels in a current timestep. Once we have the mean, we have the whole posterior distribution, and then we can sample from it!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-neural-network",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Neural Network for Reverse Sampling",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sampling an image is more work that predicting an image. But thanks to the critical fact, we can sample backwards as long as we know the mean of the distribution (we know its a normal and we know the variance). To that end we are going to build a neural network that can predict the mean of the distribution. Then we can denoise by sampling from the implied neural network.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "8c499bfc-d2b6-4b7c-a779-73dea8a638a9",
+    "naturalHeight": "2140",
+    "naturalWidth": "4152",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F8c499bfc-d2b6-4b7c-a779-73dea8a638a9?alt=media&token=b956edea-4ff1-4046-9bdc-175331bede0e",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many reasonable neural networks you could use to predict means (and that isn't the focus of this chapter). When we are predicting the mean of the pixel for the previous time step we use all the information we have: every pixel in time step ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t+1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which timestep we are on, and any information (eg text) that we have about what we are generating.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A common question is: if we can predict the mean of the pixels at time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", shouldn't we just use that as our sample at time ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? The goal is to",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": " sample",
+     "type": "text"
+    },
+    {
+     "text": " from the reverse process, not to estimate it's expectation. The reverse step is a whole Gaussian, not just its mean. Once the network gives us ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we can reconstruct the Gaussian and sample. If you always just selected ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as the previous pixel value you would generally get less faithful, less varied samples from the underlying distribution.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "training-the-neural-network",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Training the Neural Network",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We now have a machine learning challenge: learn to predict the value of a pixel before noise was added to it. How should we set up our “likelihood function” (equivalently, how could we set up a loss function)?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Because we want our model to be generative, instead of measuring how likely a single point is, the proper thing to do is to measure the quality of our predicted Gaussian. There are many good ways to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./divergence",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "compare distributions",
+     "type": "text"
+    },
+    {
+     "text": ", but the easiest to optimize is KL divergence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Happily in this case, because the distributions are Gaussian you can prove that minimizing the KL divergence is equivalent to minimizing the mean squared error of your predicted pixel and the actual pixel. See ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./diffusion#further-reading",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Further Reading",
+     "type": "text"
+    },
+    {
+     "text": "  for all the details.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At this point you have all the key concepts behind diffusion. Next steps could be to (1) implement it yourself or (2) to go deeper into the proofs of the critical facts we came across.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "proof-sketch-of-the-critical-fact",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Proof Sketch of the Critical Fact",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Claim:",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_{t} | X_{t+1} "
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is approximately Gaussian when the noise variance ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is small enough. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Notation Aside",
+       "type": "text"
+      },
+      {
+       "text": ": This proof will show the equivalent result that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_{t-1} | X_{t}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is approximately Gaussian when the noise variance ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is small enough. They are the same statement. In both claims we are inferring one step earlier given a current observation. Its just a matter of notation which one you consider to be ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "t"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". I plan to update my indices in the near future (I decided it would be clearer the way its presented earlier in the chapter, but I didn't have time to fix this proof).",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We start with Bayes’ theorem to express the conditional probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P\\bigl(x_{t-1}\\mid x_t\\bigr) = \\frac{\\P\\bigl(x_t\\mid x_{t-1}\\bigr)\\P\\bigl(x_{t-1}\\bigr)}{\\P\\bigl(x_t\\bigr)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Take the log of this expression. This is because the log of a Gaussian is a quadratic function, which will make our math easier. We can write:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\log \\P(x_{t-1}|x_t) &= \\log \\P(x_t|x_{t-1}) + \\log \\P(x_{t-1}) - \\log \\P(x_t) \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Let’s break down the two terms from the numerator of Bayes' Theorem",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Forward process likelihood:",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "From the forward process, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_t"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " given ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_{t-1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is Gaussian:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P\\bigl(x_t\\mid x_{t-1}\\bigr) = \\frac{1}{2\\pi\\sigma^2} \\exp\\bigl(-(x_t - x_{t-1})^2 / (2\\sigma^2)\\bigr).\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Taking the log, we get:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\log\\P\\bigl(x_t\\mid x_{t-1}\\bigr) = -\\frac{(x_t - x_{t-1})^2}{2\\sigma^2} + \\text{constant}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Prior on ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_{t-1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "The prior ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(x_{t-1})"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_{t-1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " at the previous step. This one is hard to know! What is the prior distribution of a pixel of a tree? However we employ a really neat trick. Its log-density can be ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "https://en.wikipedia.org/wiki/Taylor_series",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "Taylor expanded",
+       "type": "text"
+      },
+      {
+       "text": " around ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_t"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", assuming ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_{t-1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is close to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x_t"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\log & \\text{ }\\P(x_{t-1}) \\approx \\log \\P(x_t) + \\bigl[\\frac{\\partial}{\\partial x}\\log \\P(x_t)\\bigr]\\,(x_{t-1} - x_t)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This is a rather advanced math move, and it would be reasonable if this was new to you.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Putting these two terms into our original expression:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\log \\text{ }&\\P(x_{t-1}|x_t) \\\\\n&= \\log \\P(x_t|x_{t-1}) + \\log \\P(x_{t-1}) -\\log\\P(x_t)\\\\\n&\\approx -\\frac{(x_t - x_{t-1})^2}{2\\sigma^2} + \\log\\P(x_t) + \\bigl[\\frac{\\partial}{\\partial x}\\log \\P(x_t)\\bigr]\\,(x_{t-1} - x_t) -\\log\\P(x_t)\\\\\n&\\approx -\\frac{(x_t - x_{t-1})^2}{2\\sigma^2} + \\bigl[\\frac{\\partial}{\\partial x}\\log \\P(x_t)\\bigr]\\,(x_{t-1} - x_t) \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Notice in the last line, the term ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\log \\P(x_t)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " canceled with the term ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "-\\log \\P(x_t)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In order to simplify this expression further we are going to use a helpful math trick called ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Completing_the_square",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "completing the square",
+     "type": "text"
+    },
+    {
+     "text": ". There are two terms in the above expressions involving the square of the difference between ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_{t-1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which is our clue that completing the square will be helpful.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Complete the square",
+       "type": "text"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We are going to use completing the square to simplify this term. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n-\\frac{(x_t - x_{t-1})^2}{2\\sigma^2} + \\bigl[\\frac{\\partial}{\\partial x}\\log P(x_t)\\bigr]\\,(x_{t-1} - x_t)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Normally completing the square is applied to expression that look like a \"quadratic polynomial\" eg ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x^2 + bx +c"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". In that case we can rewrite the expression as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(x + \\frac{1}{2}b)^2 + k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "At first blush this expression might not look like it follows that form. In order to see how our expression can be rewritten as a \"quadratic polynomial\" recall that:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n(x_t - x_{t-1})^2 = (x_{t-1} - x_t)^2\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This means we can rewrite our original expression in a form that looks more like ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "ax^2 + bx +c"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " where the variable in this case that will take the place of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(x_{t-1} - x_t)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n-\\frac{1}{2\\sigma^2}(x_{t-1}-x_t)^2 + \\bigl[\\frac{\\partial}{\\partial x}\\log P(x_t)\\bigr]\\,(x_{t-1}-x_t)\\\\\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Factor out ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "-\\tfrac{1}{2\\sigma^2}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to make the quadratic term more explicit:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n-\\tfrac{1}{2\\sigma^2} \\Bigl[(x_{t-1} - x_t)^2 - 2\\sigma^2\\bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\bigr](x_{t-1} - x_t)\\Bigr]\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "We can now complete the square for the term in the brackets where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "b=-2\\sigma^2\\bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\bigr]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n(x_{t-1} - x_t)^2 &- 2\\sigma^2 \\Bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\Bigr](x_{t-1} - x_t)\n\\\\\n=&\n\\bigl[(x_{t-1} - x_t) - \\sigma^2 \\bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\bigr]\\bigr]^2 + \\text{constant}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Which means that the original expression can be rewritten as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n-&\\frac{(x_t - x_{t-1})^2}{2\\sigma^2} + \\bigl[\\frac{\\partial}{\\partial x}\\log P(x_t)\\bigr]\\,(x_{t-1} - x_t)\\\\\n&=\n-\\tfrac{1}{2\\sigma^2} \\Bigl[(x_{t-1} - x_t)^2 - 2\\sigma^2\\bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\bigr](x_{t-1} - x_t)\\Bigr]\n\\\\\n&=\\tfrac{1}{2\\sigma^2} \\bigl[(x_{t-1} - x_t) - \\sigma^2 \\bigl[\\tfrac{\\partial}{\\partial x}\\log P(x_t)\\bigr]\\bigr]^2 + \\text{constant}\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Putting it all together:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\log \\p(x_{t-1} | x_t) \n&= \\log \\p(x_t | x_{t-1}) + \\log \\p(x_{t-1}) - \\log \\p(x_t) \\\\\n&= -\\frac{(x_t - x_{t-1})^2}{2 \\sigma^2} + \\Big[ \\frac{\\partial}{\\partial x} \\log \\p(x_t) \\Big] (x_{t-1} - x_t) +  K \\\\\n&= -\\frac{1}{2 \\sigma^2} \\left[ \\left( x_{t-1} - x_t - \\sigma^2 \\Big[ \\frac{\\partial}{\\partial x} \\log \\p(x_t) \\Big] \\right)^2 \\right] + K\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Final Result:",
+     "type": "text"
+    },
+    {
+     "text": " Recall that the log of the gaussian PMF looks like this:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim N(μ, σ²)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". What is the log of the PMF of X?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\log P(X=x) = -\\frac{(x-\\mu)^2}{2\\sigma^2} + K\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "From the above, we see that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_{t-1}|x_t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " is Gaussian. How do we know this? The distribution is identical, up to additive factors, to the log-density of a Normal distribution:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nx_{t-1}|x_t ~ N(μ_{t-1}, σ²)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The variance remains ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which is fixed from the forward process.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "id": "further-reading",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Further Reading",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "The original diffusion paper (1): ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://arxiv.org/pdf/1503.03585",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "https://arxiv.org/pdf/1503.03585",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Step by step proof and tutorial: ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://arxiv.org/pdf/2406.08929",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "https://arxiv.org/pdf/2406.08929",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      },
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

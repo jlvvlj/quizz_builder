@@ -1,0 +1,273 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We want to generate probabilistic artwork, efficiently. We are going to use random variables to make a picture filled with non-overlapping circles:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7048,
+    "sourceSha256": "8be8225287c93fc3b61aaad25e3ae9d396aa9252d82f218ca166621fd8309bfd"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In our art, the circles are different sizes. Specifically, each circle's ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "radius",
+     "type": "text"
+    },
+    {
+     "text": " is drawn from a Pareto distribution (which is described below). The placement algorithm is greedy: we sample 1000 circle sizes. Sort them by size, largest to smallest. Loop over the circle sizes and place circles one by one.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To place a circle on the canvas, we sample the location of the center of the circle. Both the x and y coordinates are uniformly distributed over the dimensions of the canvas. Once we have selected a prospective location we then check if there would be a collision with a circle that has already been placed. If there is a collision we keep trying new locations until we find one that has no collisions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-pareto-distribution",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Pareto Distribution",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many distributions that are ascetically pleasing! However, for many reasons there is something special about a Pareto distribution. In a Pareto distribution, there is a small chance of getting objects which are several orders of magnitude larger and a large probability of getting small objects. This structure reveals itself with elegant simplicity when written down. The cumulative distribution takes the form ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X \\le x) = 1 - x^{-a}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and the corresponding density is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a / x^{a+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Pareto distribution expresses a kind of mathematical self-similarity. No matter how far one zooms in or out, the shape of the distribution remains unchanged, a property known as ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "scale invariance",
+     "type": "text"
+    },
+    {
+     "text": ". This has a striking consequence: although small values dominate the landscape, the possibility of encountering something vastly larger never disappears. The probability of exceeding a value x decays only as a power, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x^{-\\alpha}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which makes the tail fall away slowly enough for extreme events to matter. In some regimes the extremes matter so much that even the average becomes undefined; when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha \\le 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the mean itself is infinite. Such behavior sets the Pareto distribution apart from the more familiar, well-behaved distributions where moments neatly exist and extremes politely fade away.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "On a log–log plot, the tail becomes a perfect straight line, the geometric signature of its power-law decay. The Pareto distribution thus distills a universe in which the commonplace is plentiful, the extraordinary is possible, and structure emerges from the balance between rarity and abundance.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Pareto Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 5793,
+      "sourceSha256": "a3b1c37a266816e706698c88279be00d5c7464d214bbb9282ca2ed2d0ea04321"
+     },
+     "type": "interactive-demo"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "sampling-from-a-pareto-distribution",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sampling from a Pareto Distribution",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How can we draw samples from a Pareto? In python it's simple: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stats.pareto.rvs(a)",
+     "type": "text"
+    },
+    {
+     "text": ". In other programming languages, like JavaScript, it might not be that straightforward, so instead we can always use \"inverse transform sampling\". The idea is to sample a uniform random variable in the range (0, 1) and then select the value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " assignment such that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " equals the randomly chosen value.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\ny &= 1 - (\\frac{1}{x})^\\alpha \\\\\n(\\frac{1}{x})^\\alpha &= 1 - y \\\\\n\\frac{1}{x} &= (1-y)^{\\frac{1}{\\alpha}} \\\\\nx &= \\frac{1}{(1-y)^{\\frac{1}{\\alpha}}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

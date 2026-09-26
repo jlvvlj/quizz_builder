@@ -1,0 +1,1360 @@
+{
+  "everyday-c1-sets-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Rotation 1 sells 190 tickets, and those 190 people form a set; call it S. Any given traveller either belongs to S or does not, which is the whole content of writing x ∈ S or x ∉ S. The four crew working that rotation form a second set, and it shares no elements with S. Membership is the only question a set answers: S records who holds a ticket, not who arrives first, not who checked a bag."
+    }
+  ],
+  "everyday-c1-sets-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Tally starts 50 trials in a week. Those 50 accounts are a set; the ones that reach activation are a subset of it, and the ones that convert to paid are a subset of that. Each is contained in the last, so the three sets nest rather than overlap arbitrarily. Saying \"activated\" is a subset of \"started a trial\" is a claim about the product, not a definition: it holds only because an account cannot activate without first existing."
+    }
+  ],
+  "everyday-c1-sets-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "A three-way election has the outcome set Ω = {A wins, B wins, C wins}, and every contract on that election is a subset of Ω. The contract \"A wins\" is the single-element subset {A wins}; the contract \"A or B wins\" is a two-element subset. Choosing Ω before writing any contract is what makes two contracts comparable — they are subsets of the same universe, so they can be added and complemented."
+    }
+  ],
+  "everyday-c1-sets-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's network is a set of 140 people. The 20 she would call close friends form a subset, the 50 familiar contacts another, the 70 weak ties a third. These three subsets are disjoint and together they exhaust the set, which is what lets her treat them as separate populations with separate reply rates. A contact who has moved from familiar to close belongs to exactly one of them at a time, never both."
+    }
+  ],
+  "everyday-c1-sets-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "One imaging field holds 240 cells, and those 240 form the set under study. The cells fluorescing above background are a subset of it. A cell is in that subset or it is not — there is no partial membership, even though fluorescence is a continuous measurement, because the threshold decides. The set is defined by the threshold you chose, which is worth remembering when you later compare two experiments that chose differently."
+    }
+  ],
+  "everyday-c1-set-operations-a": [
+    {
+      "kind": "paragraph",
+      "text": "Let O be the bags over the weight limit and Z the bags over the size limit. A bag is flagged at the desk if it is in O ∪ Z, and it incurs both surcharges only if it is in O ∩ Z. The complement of O ∪ Z is the set of bags that pass without comment. Notice that the union is the larger set and the intersection the smaller, which is the opposite of what the words \"and\" and \"or\" suggest to most people on first reading."
+    }
+  ],
+  "everyday-c1-set-operations-b": [
+    {
+      "kind": "paragraph",
+      "text": "Let P be the trials that arrived through paid ads and A the trials that reached activation. Then P ∩ A is the set Priya cares about when she judges the ad spend, and P ∪ A is a set she has little use for. The complement of P is every trial that arrived organically or by referral, which is why a claim about \"non-paid\" traffic is a claim about a complement and depends on Ω being the week's trials and nothing else."
+    }
+  ],
+  "everyday-c1-set-operations-c": [
+    {
+      "kind": "paragraph",
+      "text": "The market lists \"A wins\", and separately \"A wins and turnout exceeds 60%\". The second is the intersection of two subsets of Ω, and because an intersection is contained in each of its parts, that contract can never be worth more than the first. If it ever trades higher, the mistake is not an opinion about politics but an arithmetic error about sets, and it can be taken apart for a certain profit."
+    }
+  ],
+  "everyday-c1-set-operations-d": [
+    {
+      "kind": "paragraph",
+      "text": "Let O be the contacts whose message registered an open and R those who replied. You would expect R to sit inside O, since a person must read a message before answering it. But R \\ O is not empty in Lena's data: blocked images mean a real read leaves no trace, so a reply can arrive from someone the tracker never counted as opening. The set difference is small, it is real, and it is the first hint that O is not what it claims to measure."
+    }
+  ],
+  "everyday-c1-set-operations-e": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be the cells transcribing gene X and Y the cells transcribing gene Y. The co-expressing cells are X ∩ Y, and the silent cells are the complement of X ∪ Y. Counting those four regions — X only, Y only, both, neither — is the whole of a two-colour imaging experiment, and the four counts must add to 240 because the regions are disjoint and together cover the field."
+    }
+  ],
+  "everyday-c1-algebra-of-sets-a": [
+    {
+      "kind": "paragraph",
+      "text": "\"No bag on this flight was flagged\" means no bag was overweight and none was oversized: the complement of O ∪ Z equals the complement of O intersected with the complement of Z. Written out, that is De Morgan's law, and it is the rule that lets the load controller check two separate lists instead of building a combined one. The two procedures give the same answer, which is exactly what the identity asserts."
+    }
+  ],
+  "everyday-c1-algebra-of-sets-b": [
+    {
+      "kind": "paragraph",
+      "text": "Marcus calls the quarter clean when no deal slipped and no deal closed at a discount. That is the complement of the union of two bad events, and De Morgan turns it into the intersection of two complements — every deal on time, and every deal at list price. The value of the rewriting is practical: the second form can be checked deal by deal, while the first requires knowing the union."
+    }
+  ],
+  "everyday-c1-algebra-of-sets-c": [
+    {
+      "kind": "paragraph",
+      "text": "A 0–0 result is the complement of \"the home team scores or the away team scores\". By De Morgan that is the same as \"the home team does not score and the away team does not score\", which is the form you can actually price, because the two goal counts are modelled separately. The identity is what connects a market on the scoreline to the two independent scoring models beneath it."
+    }
+  ],
+  "everyday-c1-algebra-of-sets-d": [
+    {
+      "kind": "paragraph",
+      "text": "A contact has gone silent when the message was neither opened nor answered — the complement of (opened ∪ replied), which De Morgan rewrites as (not opened) ∩ (not replied). Lena's follow-up list is built from the second form because her tracker reports the two signals separately. The rewriting costs nothing and makes the list computable."
+    }
+  ],
+  "everyday-c1-algebra-of-sets-e": [
+    {
+      "kind": "paragraph",
+      "text": "A cell is silent when neither allele is transcribing: the complement of the union of the two allele events, which equals the intersection of the two complements. That second form is the one the imaging software evaluates, channel by channel. Both descriptions pick out the same cells, and checking that they do is a useful sanity test on a segmentation pipeline."
+    }
+  ],
+  "everyday-c1-models-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Before Nadia can say anything about Rotation 1 she needs two things: a list of everything that could happen, and a rule assigning a number to each possibility. The list might be the 2¹⁹⁰ patterns of who shows and who does not; the rule assigns each pattern a probability. Neither half is useful alone — a list without a law says nothing about what is likely, and a law without a list has nothing to attach itself to."
+    }
+  ],
+  "everyday-c1-models-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Priya's forecast has a sample space (which trials convert and which do not) and a probability law (a 4, 9 or 22 percent conversion rate depending on channel). People often argue about the second half while silently disagreeing about the first — one person counting trials, the other counting accounts. Fixing the sample space first is not pedantry; it is what makes the two forecasts comparable."
+    }
+  ],
+  "everyday-c1-models-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "Every quoted price is the second half of a probabilistic model whose first half is usually left unstated. A contract at \\$0.62 is a probability law; what it is a law over — a single candidate winning, or winning conditional on the election happening at all — is the sample space, and disputes between traders are more often about that than about the number. Writing Ω down first is how you find out whether you disagree about the world or about the question."
+    }
+  ],
+  "everyday-c1-models-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's model needs the set of things that can happen to one email — ignored, opened and dropped, replied, forwarded — and then a number for each. Her tracker reports rates, which is the second half; the first half is her decision that \"opened and dropped\" is a distinct outcome from \"never seen\". That decision is a modelling choice, and the whole chapter's machinery only applies once it is made."
+    }
+  ],
+  "everyday-c1-models-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "The arrow diagram says signal leads to expression leads to differentiation. Turning it into a probabilistic model means listing what can happen to one cell and putting a number on each branch. The diagram is the sample space drawn badly — it shows one path where there are several — and the numbers are the probability law. Both halves were always there; only the second was left out."
+    }
+  ],
+  "everyday-c1-sample-spaces-and-events-a": [
+    {
+      "kind": "paragraph",
+      "text": "Nadia could describe Rotation 1 by the number who show, 0 through 190, or by which specific passengers show. Either is a legitimate sample space because in both cases exactly one element occurs: the possibilities are mutually exclusive and collectively exhaustive. What she cannot do is mix them — a list containing both \"183 show\" and \"passenger Ives is absent\" fails, because two of its elements can happen at once."
+    }
+  ],
+  "everyday-c1-sample-spaces-and-events-b": [
+    {
+      "kind": "paragraph",
+      "text": "Listing a visitor's fate as {bounced, started a trial, converted} looks complete until you notice that converting requires having started a trial, so two of the three can hold together. A proper sample space stops at the final state: {bounced, trialled and lapsed, trialled and paid}. The repair is not cosmetic — the additivity axiom applies only to disjoint events, so the first list cannot be summed."
+    }
+  ],
+  "everyday-c1-sample-spaces-and-events-c": [
+    {
+      "kind": "paragraph",
+      "text": "An election market lists one contract per candidate, and the list works as a sample space only because exactly one candidate wins. Add a contract for \"a coalition governs\" and the elements stop being disjoint, so the prices no longer have to sum to a dollar and the arbitrage argument collapses. Exchanges police this carefully, and the reason is the same one the book gives for insisting on mutual exclusivity."
+    }
+  ],
+  "everyday-c1-sample-spaces-and-events-d": [
+    {
+      "kind": "paragraph",
+      "text": "For a single message, Lena's outcomes are {never opened, opened and ignored, replied no, replied yes}. Exactly one of these happens per message, which is what makes the list a sample space. \"Opened\" is not on the list because it is not an outcome; it is an event — the union of the last three — and events are subsets, not elements."
+    }
+  ],
+  "everyday-c1-sample-spaces-and-events-e": [
+    {
+      "kind": "paragraph",
+      "text": "A progenitor ends up differentiated, still a progenitor, or dead. The three are exclusive at the moment of observation and they exhaust the possibilities, so they form the sample space for one cell. \"Expressed the reporter at some point\" is not one of them: it is an event cutting across all three, and treating it as a fourth outcome would double-count every cell that expressed and then differentiated."
+    }
+  ],
+  "everyday-c1-choosing-a-sample-space-a": [
+    {
+      "kind": "paragraph",
+      "text": "If Nadia only needs the chance of bumping someone, the count of passengers who show is enough, and Ω has 191 elements. If she needs to know who is bumped, and boarding priority depends on fare class and check-in time, the count is too coarse and she needs the full pattern of which passengers showed. The model is not right or wrong in itself; it is adequate or inadequate for the question, and the same flight supports both."
+    }
+  ],
+  "everyday-c1-choosing-a-sample-space-b": [
+    {
+      "kind": "paragraph",
+      "text": "To forecast revenue, Priya needs only how many of the 50 trials convert. To decide whether to keep the paid channel, she needs to know which ones, because the conversions are worth different amounts depending on where they came from. The coarser space is a function of the finer one, so nothing is lost by starting fine — but the finer space is far larger, and carrying detail you never use makes every calculation harder."
+    }
+  ],
+  "everyday-c1-choosing-a-sample-space-c": [
+    {
+      "kind": "paragraph",
+      "text": "A market on who wins needs only three outcomes. A market on the correct score needs the full pair of goal counts, and a market on over/under needs only their sum. All three are built from the same finest description, the pair (home goals, away goals), by grouping its outcomes differently. Choosing the coarsest space that still answers the question is what keeps a pricing model tractable."
+    }
+  ],
+  "everyday-c1-choosing-a-sample-space-d": [
+    {
+      "kind": "paragraph",
+      "text": "Counting how many of a 40-email wave reply is enough to estimate Lena's reply rate. It is not enough to decide whom to ask next, because that depends on which tier answered. And if she cares whether a reply arriving early makes later ones more likely, she needs the sequence, not the set. Three questions, three sample spaces, one campaign."
+    }
+  ],
+  "everyday-c1-choosing-a-sample-space-e": [
+    {
+      "kind": "paragraph",
+      "text": "Counting transcripts per cell answers whether the gene is on. It does not answer whether transcription is bursty, because a cell with twelve transcripts looks the same whether they arrived steadily or in three bursts of four. That question needs the arrival times, a much finer sample space — and it is the question that turned out to matter, which is why the field moved from counting to timing."
+    }
+  ],
+  "everyday-c1-sequential-models-a": [
+    {
+      "kind": "paragraph",
+      "text": "A passenger books, then shows or does not, then clears security or is delayed, then boards or is bumped. Drawing this as a tree makes the sample space the set of complete paths through it, and each leaf is one outcome. The tree is not a different model from the list of outcomes — it is the same model drawn so that the stages, and the order they happen in, are visible."
+    }
+  ],
+  "everyday-c1-sequential-models-b": [
+    {
+      "kind": "paragraph",
+      "text": "A visitor clicks, signs up, activates, pays. Each stage branches two ways, so the tree has sixteen leaves, and the funnel chart Priya presents to the board is that tree with the branches collapsed. Drawing it as a tree shows something the funnel chart hides: the accounts that skip activation and pay anyway are a real path, and the funnel chart has nowhere to put them."
+    }
+  ],
+  "everyday-c1-sequential-models-c": [
+    {
+      "kind": "paragraph",
+      "text": "A candidate wins Iowa or does not, then wins the nomination or does not — four leaves. The market prices individual leaves and combinations of them, and the tree is what makes clear that \"wins the nomination\" is the union of two leaves rather than a single outcome. Traders who skip the tree routinely double-count one of the paths."
+    }
+  ],
+  "everyday-c1-sequential-models-d": [
+    {
+      "kind": "paragraph",
+      "text": "Each email runs through a small tree: opened or not, then answered or not, then an introduction offered or not. Lena's whole campaign is 140 copies of this tree, one per contact, with different branch probabilities by tier. Laying it out this way makes the compounding visible — three stages at plausible rates leave very little at the last leaf."
+    }
+  ],
+  "everyday-c1-sequential-models-e": [
+    {
+      "kind": "paragraph",
+      "text": "The signalling pathway is a sequential model: the receptor binds or not, the factor is recruited or not, the gene transcribes or not. Each of the three stages branches, giving eight paths, of which the textbook diagram draws exactly one. The other seven are what the chapter is about, and the tree is where they first become visible."
+    }
+  ],
+  "everyday-c1-probability-laws-a": [
+    {
+      "kind": "paragraph",
+      "text": "Assign each of the 191 possible show-counts a nonnegative number, make the whole list sum to one, and add across disjoint groups. Nadia's model obeys all three because anything else produces a schedule she cannot act on: a negative probability has no meaning for staffing, and a list summing to 0.9 means she has forgotten an outcome. The axioms are the minimum a usable description has to satisfy."
+    }
+  ],
+  "everyday-c1-probability-laws-b": [
+    {
+      "kind": "paragraph",
+      "text": "Priya's dashboard reports a 4, 9 and 22 percent conversion rate by channel, and a blended rate. If the blended number is not the channel-weighted sum, one of two things is wrong: either the channel shares are not a partition of traffic, or some trials are being counted in two channels. Additivity is the check that catches it, and it fails loudly rather than quietly."
+    }
+  ],
+  "everyday-c1-probability-laws-c": [
+    {
+      "kind": "paragraph",
+      "text": "The YES contract trades at \\$0.62 and the NO contract at \\$0.40. Sell one of each: you collect \\$1.02 today, and at resolution exactly one of them pays \\$1.00, so you keep two cents whatever happens. The two prices had to sum to a dollar, and a market that lets them drift apart hands money to whoever notices. Normalization is not a convention agreed for tidiness; on an exchange it is a constraint with a price attached. Additivity has the same enforcement: quote the three candidates at 0.50, 0.30 and 0.25 and the same trade collects a nickel."
+    }
+  ],
+  "everyday-c1-probability-laws-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's three tiers reply at 0.70, 0.35 and 0.08, and the tiers partition her 140 contacts. The expected reply count is therefore the weighted sum over the three groups, and any other number means a contact has been assigned to two tiers or none. Additivity does the bookkeeping her spreadsheet ought to be doing."
+    }
+  ],
+  "everyday-c1-probability-laws-e": [
+    {
+      "kind": "paragraph",
+      "text": "Across a field of cells, the fractions differentiated, still progenitor, and dead are nonnegative and sum to one, because every cell ends in exactly one of those states. If the three measured fractions come to 1.04, no axiom has been violated by nature — a cell has been double-counted by the segmentation, and the arithmetic is what reveals it."
+    }
+  ],
+  "everyday-c1-discrete-models-a": [
+    {
+      "kind": "paragraph",
+      "text": "A gate agent assigns the one remaining seat at random among the passengers on the standby list. If eleven people are waiting and each is equally likely, the probability any named one gets it is 1/11, and the probability it goes to someone travelling for work is the number of such people over eleven. The discrete uniform law reduces every question to counting, which is why the counting section later in this chapter exists."
+    }
+  ],
+  "everyday-c1-discrete-models-b": [
+    {
+      "kind": "paragraph",
+      "text": "Priya pulls one of the week's 50 trials at random for a customer interview. Each is equally likely, so the chance of drawing a referral-channel account is the count of those accounts divided by 50. The uniform assumption is doing real work here and it is worth stating: if she pulls from a list sorted by activity, it is false, and the interview is no longer representative."
+    }
+  ],
+  "everyday-c1-discrete-models-c": [
+    {
+      "kind": "paragraph",
+      "text": "Suppose all 2⁶³ ways a 64-team bracket can finish were equally likely. Then the probability of any particular completed bracket is 2⁻⁶³, which is why nobody has ever filled one in perfectly. The assumption is obviously wrong — seeds differ in strength — and pricing it correctly is the whole business, but the uniform case gives the baseline against which a model's skill is measured."
+    }
+  ],
+  "everyday-c1-discrete-models-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena picks one of her 140 contacts blindly. Each has probability 1/140, so the chance she draws a close contact is 20/140, about 0.14. She will not actually choose this way, and the arithmetic quietly shows why: uniform choice spends most of her attempts on weak ties that answer eight percent of the time."
+    }
+  ],
+  "everyday-c1-discrete-models-e": [
+    {
+      "kind": "paragraph",
+      "text": "Select one cell from the imaging field at random. With 240 cells equally likely, the probability of landing on an expressing cell is the count of expressing cells over 240 — the estimate every fluorescence experiment reports. The uniform law is defensible here in a way it rarely is elsewhere, because the field of view was positioned without reference to which cells were bright."
+    }
+  ],
+  "everyday-c1-continuous-models-a": [
+    {
+      "kind": "paragraph",
+      "text": "Rotation 1 is scheduled to reach the threshold at 07:35, and in practice it does so at some instant in a forty-minute window. The sample space is an interval, not a list, and the probability of hitting any single instant exactly is zero — only intervals carry probability. If every moment in the window is equally likely, the chance of a ten-minute span is 10/40, and the calculation is length divided by length rather than count divided by count."
+    }
+  ],
+  "everyday-c1-continuous-models-b": [
+    {
+      "kind": "paragraph",
+      "text": "Cancellations land at some point in the billing month, and the sample space is the month itself. Asking for the probability that a cancellation falls exactly at noon on the 14th gives zero, which is not a defect of the model but a property of continuous ones. What Priya can ask for is the chance it falls in the last week, and that is an interval."
+    }
+  ],
+  "everyday-c1-continuous-models-c": [
+    {
+      "kind": "paragraph",
+      "text": "A goal arrives at some instant in the ninety minutes. Markets on \"a goal before half-time\" are pricing an interval, and no market prices a single instant because that probability is zero. The shift from counting outcomes to measuring intervals is what separates the in-play markets from the pre-match ones."
+    }
+  ],
+  "everyday-c1-continuous-models-d": [
+    {
+      "kind": "paragraph",
+      "text": "A reply, if it comes, arrives at some time after the message was sent — a point on a continuous line, with mean 3.1 days. The probability it arrives exactly at 3.1 days is zero; the useful quantity is the probability it arrives within the first week. Lena's follow-up rule has to be stated as an interval for this reason, not as a moment."
+    }
+  ],
+  "everyday-c1-continuous-models-e": [
+    {
+      "kind": "paragraph",
+      "text": "A transcription factor lands somewhere on a stretch of DNA, and its position is a point in a continuous interval. No single base pair carries positive probability under this idealisation; a window of twenty bases does. This is the continuous counterpart of the discrete counting model, and the same experiment supports both descriptions at different resolutions."
+    }
+  ],
+  "everyday-c1-properties-of-probability-laws-a": [
+    {
+      "kind": "paragraph",
+      "text": "Being bumped is contained in being denied the seat you booked, so its probability cannot exceed the larger event's — monotonicity, and it catches reporting errors immediately. For overlapping events the union needs care: if 8 percent of bags are overweight and 5 percent oversized, the flagged fraction is at most 13 percent and equals it only if no bag is both. Since some bags are both, the true figure is lower, and adding the two percentages overstates the problem."
+    }
+  ],
+  "everyday-c1-properties-of-probability-laws-b": [
+    {
+      "kind": "paragraph",
+      "text": "Priya reports that 30 percent of trials opened the scheduling view and 25 percent invited a teammate. The fraction doing at least one is not 55 percent, because accounts doing both are counted twice; it is 55 percent minus the overlap, and it cannot exceed 100 percent. The union bound gives her a ceiling without knowing the overlap, which is often all a first estimate needs."
+    }
+  ],
+  "everyday-c1-properties-of-probability-laws-c": [
+    {
+      "kind": "paragraph",
+      "text": "If a party can take power outright or through a coalition, the probability of it governing is the sum of the two only when they cannot both happen. Where they overlap, adding the contract prices overstates the chance and creates an apparent edge that vanishes on inspection. Inclusion–exclusion is the correction, and mispricing it is one of the more common ways a book of related positions goes quietly wrong."
+    }
+  ],
+  "everyday-c1-properties-of-probability-laws-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena asks two separate contacts to reach the same investor, with individual success probabilities 0.35 and 0.25. The chance that at least one works is not 0.60: it is 0.60 minus the chance both do. If the two attempts are independent that correction is 0.0875, giving about 0.51 — noticeably less than the naive sum, and the gap widens as she adds more parallel asks."
+    }
+  ],
+  "everyday-c1-properties-of-probability-laws-e": [
+    {
+      "kind": "paragraph",
+      "text": "If each allele transcribes with probability 0.25 in a given window, the fraction of cells with at least one active allele is not 0.50. Subtracting the both-active cases gives 0.4375 under independence. The difference between 0.50 and 0.4375 is exactly the double-counted population, and at higher rates the gap becomes large enough to change what an experiment appears to show."
+    }
+  ],
+  "everyday-c1-models-and-reality-a": [
+    {
+      "kind": "paragraph",
+      "text": "Treating the 190 passengers as showing up independently with probability 0.95 makes the arithmetic easy and is usually close enough. It is wrong on the morning a rail strike keeps a third of them off the airport train, because then the absences arrive together rather than separately. Nothing in the axioms detects this; only comparing the model's predictions with the record does, and the model is worth keeping precisely because you know when it fails."
+    }
+  ],
+  "everyday-c1-models-and-reality-b": [
+    {
+      "kind": "paragraph",
+      "text": "The 9 percent organic conversion rate summarises the last two quarters, and using it as a probability assumes next quarter resembles them. A competitor's launch, a pricing change or a shift in traffic mix all break that assumption silently, because the model has no way to notice. The number stays the same while the world moves, which is the ordinary way a business forecast goes wrong."
+    }
+  ],
+  "everyday-c1-models-and-reality-c": [
+    {
+      "kind": "paragraph",
+      "text": "A market's price is only as good as the sample space behind it, and the sample space was written by someone who imagined the ways the event could resolve. The contracts that cause disputes are the ones where reality produced an outcome nobody listed — a candidate withdrawing, a match abandoned. The resolution criteria published alongside a market are an attempt to pin down Ω in advance, and their length is a measure of how hard that is."
+    }
+  ],
+  "everyday-c1-models-and-reality-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's tier reply rates come from campaigns she ran before, when she was asking for advice rather than money. Applying them to a fundraise assumes the ask does not change the answer, which is doubtful: close contacts may reply faster and commit less. The model is still the right starting point, and the first twenty replies are the data that will correct it."
+    }
+  ],
+  "everyday-c1-models-and-reality-e": [
+    {
+      "kind": "paragraph",
+      "text": "The textbook arrow diagram is not a lie; it is a model that describes a population of a million cells very well and a single cell badly. Chapter 7 will explain why averaging makes the stochastic picture look deterministic. For now the point is that both descriptions are models, they answer different questions, and the arrow diagram's error is not being wrong but being silent about which question it answers."
+    }
+  ],
+  "everyday-c1-conditioning-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Before the day starts, Nadia gives Rotation 1 an 85 percent chance of leaving on time. At 06:40 the inbound aircraft is reported 25 minutes late, and that number is no longer right — not because the original estimate was careless, but because the set of possibilities has shrunk to those consistent with a late inbound. Conditioning is what that shrinking is called, and the new figure is a probability in exactly the same sense as the old one."
+    }
+  ],
+  "everyday-c1-conditioning-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Across all trials, 9 percent convert. Told that an account has invited three teammates in its first week, Priya should not still say 9 percent: she is now looking at a subset of trials, and that subset converts at a different rate. Conditioning does not change any account's behaviour; it changes which accounts she is averaging over."
+    }
+  ],
+  "everyday-c1-conditioning-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "A contract sits at \\$0.62 the morning of a debate and \\$0.71 the next day. Nothing about the election changed overnight except what is known, and the new price is the old probability restricted to the outcomes consistent with the debate having gone as it did. Every price move is a conditioning step, which is why traders describe their work as updating rather than predicting."
+    }
+  ],
+  "everyday-c1-conditioning-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "A weak-tie contact replies 8 percent of the time. Once Lena knows the message was opened yesterday and not answered, the relevant population is no longer all weak ties — it is the ones who read and did not respond, whose eventual reply rate is lower. The information moved her from one reference class to a smaller one, and the number moves with it."
+    }
+  ],
+  "everyday-c1-conditioning-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "Across a field, 12 percent of cells differentiate. Restricted to cells whose reporter crossed the threshold, the fraction is much higher. The cells did not change; the question did. Conditioning is how a single-cell measurement becomes informative about fate, and it is the entire logic of a reporter assay."
+    }
+  ],
+  "everyday-c1-conditional-probability-law-a": [
+    {
+      "kind": "paragraph",
+      "text": "Of 190 booked passengers, suppose 8 are travelling on staff tickets and 3 of those check a bag, while 66 passengers in total check a bag. Then P(checks a bag | staff ticket) = 3/8 = 0.375, well above the overall 66/190 ≈ 0.347. The calculation is the count in the intersection over the count in the condition — the sample space has been cut down to the eight staff tickets, and probabilities are recomputed inside it."
+    }
+  ],
+  "everyday-c1-conditional-probability-law-b": [
+    {
+      "kind": "paragraph",
+      "text": "Referral traffic is 20 percent of visitors and converts at 22 percent, so referral conversions are 0.20 × 0.22 = 0.044 of all visitors. Conditioning runs that backwards: given a visitor came by referral, the conversion probability is 0.044/0.20 = 0.22. The conditional probabilities across the three channels are themselves a valid probability law — nonnegative, and summing to one over each channel's outcomes."
+    }
+  ],
+  "everyday-c1-conditional-probability-law-c": [
+    {
+      "kind": "paragraph",
+      "text": "If \"wins Iowa and the nomination\" trades at \\$0.31 and \"wins Iowa\" at \\$0.48, the conditional market — nomination given Iowa — should trade near 0.31/0.48 ≈ \\$0.65. The definition of conditional probability is not being illustrated here; it is being quoted as a price. When the three markets drift out of that relation, the discrepancy is a trade."
+    }
+  ],
+  "everyday-c1-conditional-probability-law-d": [
+    {
+      "kind": "paragraph",
+      "text": "Of Lena's 50 familiar contacts, suppose 21 open a message and 14 of those reply. The reply rate among openers is 14/21 = 0.67, against an unconditional 14/50 = 0.28. Both numbers are correct and they answer different questions: the first tells her whether her message is persuasive, the second whether her subject line is."
+    }
+  ],
+  "everyday-c1-conditional-probability-law-e": [
+    {
+      "kind": "paragraph",
+      "text": "Suppose a promoter is ON for a quarter of the time, and when it is ON a transcript appears in a given minute with probability 0.6. Then P(transcript and ON) = 0.25 × 0.6 = 0.15, and conditioning recovers 0.15/0.25 = 0.6. The conditional law over transcripts, given the promoter is ON, is a complete probability law in its own right — that is what makes two-state models of transcription tractable."
+    }
+  ],
+  "everyday-c1-conditional-probability-modeling-a": [
+    {
+      "kind": "paragraph",
+      "text": "A booked passenger shows with probability 0.95; given they show, they clear security in time with probability 0.97; given that, they board with probability 0.99. The chance of the full path is 0.95 × 0.97 × 0.99 ≈ 0.912. The multiplication rule reads straight down the branches, and each factor is conditional on everything above it — which is why the numbers cannot be gathered from three separate reports and multiplied without checking they were measured that way."
+    }
+  ],
+  "everyday-c1-conditional-probability-modeling-b": [
+    {
+      "kind": "paragraph",
+      "text": "A visitor signs up with probability 0.06, activates given signup with probability 0.55, and pays given activation with probability 0.27. End to end that is 0.06 × 0.55 × 0.27 ≈ 0.0089. Every funnel chart is this product, and the common mistake is to measure each stage against all visitors rather than against the previous stage, which silently replaces conditional probabilities with unconditional ones and understates the result."
+    }
+  ],
+  "everyday-c1-conditional-probability-modeling-c": [
+    {
+      "kind": "paragraph",
+      "text": "The chance a candidate wins Iowa is 0.48, and given Iowa the nomination is 0.65. Multiplying gives 0.31 for both, which should match the joint contract. Pricing a parlay is the multiplication rule applied along a tree, and the reason correlated legs are priced separately is that the second factor must be conditional on the first, not its standalone probability."
+    }
+  ],
+  "everyday-c1-conditional-probability-modeling-d": [
+    {
+      "kind": "paragraph",
+      "text": "A familiar contact opens with probability 0.42, replies given opening with probability 0.83, and offers an introduction given a reply with probability 0.55. That is 0.42 × 0.83 × 0.55 ≈ 0.19 per contact. Lena needs roughly five familiar contacts per introduction, which is the compounding the multiplication rule makes visible and a per-stage dashboard hides."
+    }
+  ],
+  "everyday-c1-conditional-probability-modeling-e": [
+    {
+      "kind": "paragraph",
+      "text": "The signal is present with probability 0.7; the receptor binds given signal, 0.4; the factor is recruited given binding, 0.6; transcription follows given recruitment, 0.8. The product is 0.7 × 0.4 × 0.6 × 0.8 = 0.134. The textbook arrow diagram shows this path as though it were certain; the multiplication rule prices it at about one cell in seven, which is roughly what single-cell measurements find."
+    }
+  ],
+  "everyday-c1-total-probability-and-bayes-a": [
+    {
+      "kind": "paragraph",
+      "text": "A cockpit warning for a hydraulic fault comes from one of three causes: a genuine component failure, a wiring fault, or a bad sensor, historically 20, 30 and 50 percent of such warnings. Given a failed component the ground test also fails 0.95 of the time; for wiring it fails 0.40; for a bad sensor, 0.05. The chance the ground test fails is 0.20 × 0.95 + 0.30 × 0.40 + 0.50 × 0.05 = 0.335 by the total probability theorem. If it does fail, Bayes gives P(component | test fails) = 0.19/0.335 ≈ 0.57 — the single most likely cause, but still short of certain, which is why the manual calls for a second test rather than a part swap."
+    }
+  ],
+  "everyday-c1-total-probability-and-bayes-b": [
+    {
+      "kind": "paragraph",
+      "text": "Traffic splits 50 / 30 / 20 across paid, organic and referral, converting at 4, 9 and 22 percent. The blended conversion rate is 0.50 × 0.04 + 0.30 × 0.09 + 0.20 × 0.22 = 0.091. Given that a visitor converted, the chance they came from referral is 0.044/0.091 ≈ 0.48 — referral supplies a fifth of the traffic and nearly half the customers. This is the attribution question every growth team argues about, and it is Bayes' rule with the channel shares as the prior."
+    }
+  ],
+  "everyday-c1-total-probability-and-bayes-c": [
+    {
+      "kind": "paragraph",
+      "text": "Before polling, a candidate's chance is 0.55. A poll of this size calls the race correctly 0.80 of the time when the candidate is really ahead, and wrongly calls it for them 0.35 of the time when they are really behind. The chance the poll shows them ahead is 0.55 × 0.80 + 0.45 × 0.35 = 0.5975. Seeing that result, the posterior is 0.44/0.5975 ≈ 0.74. The move from 0.55 to 0.74 is the whole trade, and it is smaller than the poll's headline suggests because the test is far from perfect."
+    }
+  ],
+  "everyday-c1-total-probability-and-bayes-d": [
+    {
+      "kind": "paragraph",
+      "text": "Suppose 30 percent of Lena's contacts genuinely read a given message. The tracker reports an open for 95 percent of genuine readers, but image pre-fetching also reports one for 30 percent of people who never looked. So an open is reported with probability 0.30 × 0.95 + 0.70 × 0.30 = 0.495, and P(actually read | open reported) = 0.285/0.495 ≈ 0.58. Nearly half of her \"opens\" are noise, and a follow-up rule keyed to that signal is wrong four times in ten."
+    }
+  ],
+  "everyday-c1-total-probability-and-bayes-e": [
+    {
+      "kind": "paragraph",
+      "text": "Eight in a thousand library members are genuine hits. The reporter fires for 93 percent of true hits and for 3 percent of non-hits. The chance of a bright well is 0.008 × 0.93 + 0.992 × 0.03 = 0.0372, so P(true hit | bright) = 0.00744/0.0372 = 0.20. Four out of five primary hits are false, from an assay that is right 93 percent of the time — the low base rate does the damage, and it is exactly why a confirmation screen is not optional."
+    }
+  ],
+  "everyday-c1-independence-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Whether seat 14C shows up tells Nadia nothing about seat 31A, so she treats the two as independent and multiplies: the chance both show is 0.95 × 0.95 = 0.9025. Independence is a statement about her model, not an observation about the passengers, and it is the assumption doing all the work in the overbooking calculation. It is also the assumption that fails on the morning of a rail strike."
+    }
+  ],
+  "everyday-c1-independence-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Two trials at unrelated companies convert independently, so the chance both convert is the product of their rates. Two trials at the same company do not: a champion's enthusiasm moves both. Priya's forecast multiplies across her pipeline, which is defensible only because most of her deals are at different firms — and stops being defensible the quarter one customer accounts for a third of the number."
+    }
+  ],
+  "everyday-c1-independence-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "Goals in a match in Manchester and a match in Madrid are independent, so the joint probability is the product, and a parlay on both is priced by multiplying. Two markets on the same match are not independent, and multiplying them is the most reliable way to lose money on an accumulator. The test is not whether the events feel unrelated but whether knowing one would change your estimate of the other."
+    }
+  ],
+  "everyday-c1-independence-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "If Lena asks a former colleague and a university friend, their replies are plausibly independent and the chance both answer is the product of their rates. If she asks two people at the same fund, the replies are not independent — they may well discuss it. The convenience of multiplying is exactly what tempts people to assume independence where it does not hold."
+    }
+  ],
+  "everyday-c1-independence-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "Two cells respond to a signal independently in the sense that neither one's machinery touches the other's. They are nonetheless not independent in the statistical sense, because both sit in the same medium at the same temperature with the same batch of reagent. That distinction — mechanistic separateness against statistical independence — is the one the next section is built on."
+    }
+  ],
+  "everyday-c1-conditional-independence-a": [
+    {
+      "kind": "paragraph",
+      "text": "Two generators fail independently in ordinary service, so the chance both fail on a given flight is the product of two small numbers, and the aircraft is dispatched on that basis. A bird strike breaks the calculation: the failures become dependent, because a single event can take both. The right statement is that they are conditionally independent given no common-cause event — and the whole of fault-tree analysis exists to enumerate the events that must be conditioned on."
+    }
+  ],
+  "everyday-c1-conditional-independence-b": [
+    {
+      "kind": "paragraph",
+      "text": "Two customers cancelling in the same week look independent, and across a year they behave that way. In the week after a release that broke calendar sync, they are not: both cancellations have the same cause. Conditional on which release shipped, the two are independent again, which is why churn is read by cohort and by release rather than as a single monthly number."
+    }
+  ],
+  "everyday-c1-conditional-independence-c": [
+    {
+      "kind": "paragraph",
+      "text": "Wisconsin and Michigan look like separate contests, and a forecast that treats them as independent produces confident, narrow intervals. They share a national polling error, so conditional on that error being zero they are independent, and unconditionally they are strongly linked. A model that misses this reports a 98 percent chance and is wrong; the failure in 2016 was not of any single state's poll but of the independence assumption stitching them together."
+    }
+  ],
+  "everyday-c1-conditional-independence-d": [
+    {
+      "kind": "paragraph",
+      "text": "Two partners at one firm reply at rates that look independent until the firm decides it is not investing this quarter. Conditional on that decision, their replies are independent; unconditionally they move together. Lena's list looks more diversified than it is, and counting firms rather than people is the correction."
+    }
+  ],
+  "everyday-c1-conditional-independence-e": [
+    {
+      "kind": "paragraph",
+      "text": "Put two differently coloured reporters on the same promoter in the same cell. Conditional on the cell's shared state — its ribosome count, its size, its position in the cycle — the two reporters fluctuate independently. Unconditionally they are correlated, because a cell rich in machinery makes more of both. Measuring how far the two colours diverge within a cell, against how far cells diverge from one another, separates the noise intrinsic to the gene from the noise the whole cell contributes. The distinction here is not an illustration of conditional independence; it is what the experiment was built to measure."
+    }
+  ],
+  "everyday-c1-independence-of-events-a": [
+    {
+      "kind": "paragraph",
+      "text": "Dispatch requires the load sheet to balance, the de-icing certificate to be valid, and the crew to be within duty hours. Treating the three as independent, the chance all pass is the product of the three probabilities. Independence of three events needs more than the three pairs to multiply — the triple has to multiply too — and the case where pairwise independence holds without the full condition is exactly where a safety argument can look sound and be wrong."
+    }
+  ],
+  "everyday-c1-independence-of-events-b": [
+    {
+      "kind": "paragraph",
+      "text": "Signup, activation and payment might each appear independent of the others in pairs while the three together are not. Priya sees this when accounts that both signed up quickly and activated quickly convert far better than the product of the two effects suggests. Pairwise checks are cheap and they are not sufficient, which is the practical content of the distinction."
+    }
+  ],
+  "everyday-c1-independence-of-events-c": [
+    {
+      "kind": "paragraph",
+      "text": "A three-leg parlay is priced by multiplying, which assumes full mutual independence, not merely that no two legs are obviously linked. Legs can be pairwise unrelated and jointly dependent — three matches with one shared weather front, say. The parlay price is wrong in a direction that favours the book, and the error is invisible to a pairwise check."
+    }
+  ],
+  "everyday-c1-independence-of-events-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena approaches three contacts who each know her separately. Pairwise, the replies look independent. If all three were at a conference where her project came up, they are not jointly independent, and the chance of at least one reply is lower than the product suggests. The correction is to ask how the three could have a common cause, not whether any two are linked."
+    }
+  ],
+  "everyday-c1-independence-of-events-e": [
+    {
+      "kind": "paragraph",
+      "text": "Three genes under a shared regulator can show pairwise independence in expression while being jointly dependent, because the regulator's level is what ties all three together. Testing correlations in pairs and concluding the network is absent is a real failure mode in expression analysis, and it is the same mathematical point as the book's counterexample."
+    }
+  ],
+  "everyday-c1-reliability-a": [
+    {
+      "kind": "paragraph",
+      "text": "The aircraft has two hydraulic systems, and it can be dispatched as long as one works. If each fails with probability 0.004 independently, both fail with probability 0.000016 — the redundancy buys four orders of magnitude. But that figure rests entirely on independence, and a single technician servicing both, or a single power bus feeding both, makes the true number far larger. Redundancy analysis is really the business of finding the events that make components fail together, because the arithmetic is easy and the assumption is where the danger lives."
+    }
+  ],
+  "everyday-c1-reliability-b": [
+    {
+      "kind": "paragraph",
+      "text": "A deal can close through the economic buyer or through the technical champion, and Priya treats those as parallel paths: the deal is lost only if both fail. With failure probabilities 0.6 and 0.7 that is 0.42, against 0.6 for a single-threaded deal. Multi-threading a deal is redundancy, and it works for the same reason and fails for the same reason — a budget freeze takes both paths at once."
+    }
+  ],
+  "everyday-c1-reliability-c": [
+    {
+      "kind": "paragraph",
+      "text": "A contract settles if either of two designated sources reports the event. Treating the sources as independent makes settlement near-certain; but if both wire services take the same feed, the redundancy is nominal. Resolution disputes almost always come from paths that were assumed independent and were not."
+    }
+  ],
+  "everyday-c1-reliability-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena reaches an investor through an intermediate contact, and the path works only if every person in it forwards the message. Two independent two-hop paths with per-link probabilities 0.7 and 0.6 each succeed with probability 0.42, so at least one works with probability 1 − 0.58² ≈ 0.66. This is a reliability network with people as links: paths in series multiply, parallel paths combine through their complements, and adding a third route raises the chance far more than pressing harder on one. It is also where independence is most doubtful — two paths through the same firm are one path."
+    }
+  ],
+  "everyday-c1-reliability-e": [
+    {
+      "kind": "paragraph",
+      "text": "A cell needs the protein and has two copies of the gene. If each fails to express in a given window with probability 0.75, both fail with probability 0.5625, so a single copy gives 0.25 and two give 0.4375 — the backup helps, but far less than doubling. And if both copies share a regulator that is itself off, the failures are perfectly correlated and the second copy adds nothing. Diploidy is redundancy with exactly the common-cause problem an engineer would recognise."
+    }
+  ],
+  "everyday-c1-independent-trials-a": [
+    {
+      "kind": "paragraph",
+      "text": "Each of 190 booked passengers shows independently with probability 0.95, so the number who show is binomial. The chance that exactly k show is the number of ways to choose which k, times 0.95ᵏ times 0.05^(190−k). Nadia's real question is whether more than 180 show, which is a sum of eleven such terms — tedious by hand, which is what motivates the approximation in Chapter 7. The mean is 190 × 0.95 = 180.5, unsettlingly close to the 180 seats."
+    }
+  ],
+  "everyday-c1-independent-trials-b": [
+    {
+      "kind": "paragraph",
+      "text": "Fifty trials, each converting independently with probability 0.09, give a binomial count with mean 4.5. The chance that none converts is 0.91⁵⁰ ≈ 0.009, and the chance of eight or more is small but not negligible. Priya's weekly number swings for no reason other than this, and reading a good week as evidence of a better product is the most common misuse of an independent-trials model."
+    }
+  ],
+  "everyday-c1-independent-trials-c": [
+    {
+      "kind": "paragraph",
+      "text": "Hold twenty independent contracts each priced at \\$0.62. The number resolving YES is binomial with mean 12.4, and the spread around that is the risk being run. A trader who is well calibrated still has losing weeks, and the binomial says how often: the chance of nine or fewer paying out is about 12 percent, which is a bad week that means nothing at all."
+    }
+  ],
+  "everyday-c1-independent-trials-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena sends twelve messages to familiar contacts, each replying independently with probability 0.35. The expected number of replies is 4.2, and the chance of none is 0.65¹² ≈ 0.006. A wave that produces one reply is not evidence that her message is wrong — the binomial gives that outcome about 4 percent of the time — which is worth knowing before rewriting the email."
+    }
+  ],
+  "everyday-c1-independent-trials-e": [
+    {
+      "kind": "paragraph",
+      "text": "Image a hundred cells with the same construct and the same signal, and the number expressing is binomial with p the single-cell probability. Genetically identical cells give a spread, not a single number, and the width of that spread is the signature the arrow diagram cannot produce. Independence across cells is a real assumption here and a testable one: cells in contact influence one another, and their counts show it."
+    }
+  ],
+  "everyday-c1-counting-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Once Nadia assumes every seating arrangement is equally likely, every probability becomes a ratio of two counts, and the only hard part is the counting. The questions that follow — how many ways to seat 180 people, how many ways to split bags across three containers — are not arithmetic exercises attached to the chapter; they are the calculation the model demands."
+    }
+  ],
+  "everyday-c1-counting-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Before Tally can test a pricing page it has to know how many versions exist: four feature tiers, three seat bands and two billing periods do not give nine options. Counting comes first because it sizes the problem, and a team that has not counted routinely commits to testing more variants than it has traffic to resolve."
+    }
+  ],
+  "everyday-c1-counting-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "The reason no one has ever filled in a perfect 64-team bracket is a counting fact, not a sporting one, and the same is true of why a five-leg parlay pays what it pays. Counting is where a great deal of the intuition in this domain comes from, and the numbers are large enough to be genuinely surprising."
+    }
+  ],
+  "everyday-c1-counting-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Before Lena asks whether a path to an investor will work, she needs to know how many paths there are. With 140 contacts and an average of 23 connections each, the number of two-hop routes is large, and the number that are actually usable is small. Counting the first tells her where to look; the reliability calculation tells her which to use."
+    }
+  ],
+  "everyday-c1-counting-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "A twenty-residue peptide drawn from twenty amino acids has 20²⁰ possible sequences, a number with twenty-six digits. Counting is how biology establishes that something is not chance: a match that would need a search of that size to arise accidentally is evidence of a mechanism, and the argument is entirely combinatorial."
+    }
+  ],
+  "everyday-c1-counting-principle-a": [
+    {
+      "kind": "paragraph",
+      "text": "A booking reference is six characters drawn from 34 symbols — the alphabet and digits, less the two that look alike. That is 34⁶ = 1,544,804,416 references, which is why a six-character code is enough for an airline and a five-character one would not be. The counting principle is doing the work: six independent choices, each with 34 options, multiply."
+    }
+  ],
+  "everyday-c1-counting-principle-b": [
+    {
+      "kind": "paragraph",
+      "text": "Four feature tiers, three seat bands and two billing periods give 4 × 3 × 2 = 24 plan configurations, not 9. Test all of them against 50 trials a week and each cell gets two accounts, which will never resolve anything. Counting the cells before designing the test is what stops Priya running an experiment that cannot conclude."
+    }
+  ],
+  "everyday-c1-counting-principle-c": [
+    {
+      "kind": "paragraph",
+      "text": "A 64-team tournament has 63 games, each with two possible winners, so 2⁶³ ≈ 9.2 × 10¹⁸ complete brackets. Even with a good model concentrating probability on plausible outcomes, the space is vast enough that the perfect bracket is a promotional device rather than a risk. Each game is one independent choice, and the principle multiplies them."
+    }
+  ],
+  "everyday-c1-counting-principle-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena has three waves and four message templates, and she can pair any template with any wave. That is 3 × 4 = 12 combinations before she has written a word of new copy. The principle also tells her the cost of adding a fifth template: three more combinations to manage, not one."
+    }
+  ],
+  "everyday-c1-counting-principle-e": [
+    {
+      "kind": "paragraph",
+      "text": "A codon is three bases drawn from four, so there are 4³ = 64 codons coding for 20 amino acids plus a stop — which is the counting fact that forces the genetic code to be redundant. The principle gives the 64 immediately, and the redundancy follows from comparing it with 21."
+    }
+  ],
+  "everyday-c1-k-permutations-a": [
+    {
+      "kind": "paragraph",
+      "text": "Four crew work a rotation, and the four positions — purser, and three cabin stations — are distinct. Choosing four people from the pool of twelve and assigning them to named positions gives 12 × 11 × 10 × 9 = 11,880 rosters. Order matters here because the positions differ; if they were interchangeable the count would be far smaller, and that difference is the whole distinction this section draws."
+    }
+  ],
+  "everyday-c1-k-permutations-b": [
+    {
+      "kind": "paragraph",
+      "text": "Twelve onboarding steps exist and Priya will show five of them, in order, in the first-run experience. That is 12 × 11 × 10 × 9 × 8 = 95,040 sequences. Order matters because the first screen carries most of the attention, so two orderings of the same five steps are genuinely different products."
+    }
+  ],
+  "everyday-c1-k-permutations-c": [
+    {
+      "kind": "paragraph",
+      "text": "Twenty teams can finish in 20! orders, about 2.4 × 10¹⁸. A market on the top four in exact order is pricing a 4-permutation: 20 × 19 × 18 × 17 = 116,280 possibilities. The same four teams in a different order is a different contract, which is why these markets pay so much more than \"top four in any order\"."
+    }
+  ],
+  "everyday-c1-k-permutations-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena will approach three of her twenty close contacts, and the order matters because an early yes gives her something to say to the next two. That is 20 × 19 × 18 = 6,840 sequences. Treating this as a choice of three people understates the decision: she is choosing a sequence, and momentum is why."
+    }
+  ],
+  "everyday-c1-k-permutations-e": [
+    {
+      "kind": "paragraph",
+      "text": "Four kinases act in a cascade, and the order determines the output. Given eight candidate kinases, the number of ordered four-step cascades is 8 × 7 × 6 × 5 = 1,680. Establishing which ordering the cell actually uses is an experimental programme, and the permutation count is a measure of how much work it is."
+    }
+  ],
+  "everyday-c1-combinations-a": [
+    {
+      "kind": "paragraph",
+      "text": "Four of the twelve crew are selected for a recurrent-training audit, and the four are treated identically — there are no named positions. That is C(12,4) = 495 selections, against 11,880 when order mattered, a factor of 4! = 24. The same twelve people, the same four chosen, and the count differs by the number of ways to arrange them: that ratio is the definition of a combination."
+    }
+  ],
+  "everyday-c1-combinations-b": [
+    {
+      "kind": "paragraph",
+      "text": "Fifteen features are candidates and six will ship this quarter. Because they ship together, order does not matter, so the choice is C(15,6) = 5,005 possible releases. That number is the reason roadmap arguments do not resolve by enumeration, and it is the same reason a committee cannot evaluate every option."
+    }
+  ],
+  "everyday-c1-combinations-c": [
+    {
+      "kind": "paragraph",
+      "text": "With twelve markets available, a four-leg accumulator can be built in C(12,4) = 495 ways. The legs are unordered — a parlay pays the same whichever leg is listed first — so this is a combination rather than a permutation. Each of the 495 is a distinct product with a distinct price, which is how a small board of markets generates a large catalogue."
+    }
+  ],
+  "everyday-c1-combinations-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena can ask perhaps five of her thirty most plausible contacts before her ask becomes noise. The selection is C(30,5) = 142,506 possible sets. She is choosing a set rather than a sequence at this stage, and the number is a reminder that the selection matters more than the message."
+    }
+  ],
+  "everyday-c1-combinations-e": [
+    {
+      "kind": "paragraph",
+      "text": "Eight transcription factors are present and a functional complex needs three of them, with no ordering — the complex is the same however it assembled. That gives C(8,3) = 56 candidate complexes. Screening all 56 is feasible; screening the 336 ordered assemblies would not be, and knowing which count applies decides whether the experiment is possible."
+    }
+  ],
+  "everyday-c1-partitions-a": [
+    {
+      "kind": "paragraph",
+      "text": "A flight's 132 bags are loaded into three containers holding 44 each. The number of ways to divide them is the multinomial coefficient 132! / (44!)³ — a number with more than sixty digits. The partition count is larger than any combination on this page because every bag must be placed, not merely selected, and the groups are distinguishable by their position in the hold."
+    }
+  ],
+  "everyday-c1-partitions-b": [
+    {
+      "kind": "paragraph",
+      "text": "Priya's 120 accounts are divided among four reps, thirty each. That is 120! / (30!)⁴ possible territory maps. The reps are distinguishable — territories differ in travel and in existing relationships — so the groups are labelled, which is what makes this a partition rather than a set of combinations."
+    }
+  ],
+  "everyday-c1-partitions-c": [
+    {
+      "kind": "paragraph",
+      "text": "A candidate needs 270 electoral votes from fifty states with different weights, so the question is how many subsets of states sum past the threshold. This is a partition-flavoured counting problem, and the answer is why a national forecast cannot be read off a national poll: many different coalitions of states produce a win, and they have very different probabilities."
+    }
+  ],
+  "everyday-c1-partitions-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena splits 140 contacts into three waves of sizes 40, 50 and 50. The number of ways is 140! / (40! 50! 50!). The waves are distinguishable because they go out at different times and carry different messages, which is precisely why the groups are labelled and the count is a multinomial one."
+    }
+  ],
+  "everyday-c1-partitions-e": [
+    {
+      "kind": "paragraph",
+      "text": "A colony of 240 cells resolves into differentiated, progenitor and dead. A particular outcome with counts 96, 120 and 24 can arise in 240! / (96! 120! 24!) ways. That count is the combinatorial factor in front of the probability of any one such arrangement, and it is the reason the observed fractions cluster tightly around their expected values as the colony grows."
+    }
+  ],
+  "everyday-c2-basic-concepts-a": [
+    {
+      "kind": "paragraph",
+      "text": "The outcome of Rotation 1 is the whole manifest — who showed, who did not, who checked a bag. X, the number of passengers who show, assigns one number to that entire record. Different manifests give the same X, which is the point: a random variable is a function of the outcome, and functions lose detail on purpose. Compensation C = 600X is then a second random variable built from the first, and it is discrete because X takes only the 191 values 0 through 190."
+    }
+  ],
+  "everyday-c2-basic-concepts-b": [
+    {
+      "kind": "paragraph",
+      "text": "The outcome of Priya's week is the full list of 50 trials and what each did. X, the number that converted, is a function of that list. Many different weeks produce X = 5, and for a revenue forecast that is all she needs. R = 180X is a function of X and therefore a random variable too, and both are discrete even though the underlying week contains timestamps that are not."
+    }
+  ],
+  "everyday-c2-basic-concepts-c": [
+    {
+      "kind": "paragraph",
+      "text": "The outcome of a match is the pair of goal counts. The goal difference D = home − away is a random variable on that outcome, and so is the indicator that pays \\$1 when the home team wins. The market prices functions of the outcome, not the outcome itself, which is why one match supports dozens of contracts: each is a different function of the same underlying result."
+    }
+  ],
+  "everyday-c2-basic-concepts-d": [
+    {
+      "kind": "paragraph",
+      "text": "The outcome of a 40-email wave is which contacts replied and which did not. X, the number of replies, is a function of that. Lena also cares about M, the number of meetings, which is a function of the same outcome and not of X alone — two waves with four replies each can produce different meeting counts. Both are discrete, and neither is the outcome."
+    }
+  ],
+  "everyday-c2-basic-concepts-e": [
+    {
+      "kind": "paragraph",
+      "text": "The outcome for one cell is its whole history: when the promoter switched on, when each transcript appeared, when each decayed. X, the number of transcripts present at the moment of imaging, is one number extracted from all of that. It is discrete because transcripts come in whole copies, even though the history behind it runs in continuous time."
+    }
+  ],
+  "everyday-c2-pmf-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Three passengers are on the standby list and each independently clears with probability 0.6. Let X be how many clear. There are eight patterns of cleared and not, and grouping them by count gives the PMF: P(X=0) = 0.4³ = 0.064; P(X=1) = 3 × 0.6 × 0.4² = 0.288; P(X=2) = 3 × 0.6² × 0.4 = 0.432; P(X=3) = 0.6³ = 0.216. The factors of 3 are the number of patterns in each group, and the four masses sum to one. With two seats free, the chance someone is turned away is P(X=3) = 0.216."
+    }
+  ],
+  "everyday-c2-pmf-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Four trials arrive through referral, each converting independently with probability 0.22. Grouping the sixteen possible outcomes by how many convert gives P(X=0) = 0.78⁴ ≈ 0.370, P(X=1) = 4 × 0.22 × 0.78³ ≈ 0.418, P(X=2) = 6 × 0.22² × 0.78² ≈ 0.177, and the remaining mass at three and four. The coefficients 1, 4, 6, 4, 1 count the patterns, not the conversions — a distinction worth holding on to, because adding conversion counts instead of probabilities is the most common way this calculation goes wrong."
+    }
+  ],
+  "everyday-c2-pmf-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "A three-way election has outcomes A, B and C, and the market prices them at \\$0.50, \\$0.30 and \\$0.20. That list is a PMF: nonnegative masses summing to one. The probability that A or C wins is 0.50 + 0.20 = 0.70, obtained by adding masses over the set of interest. Adding the candidates' vote shares instead would be meaningless, which is the same trap in different clothing."
+    }
+  ],
+  "everyday-c2-pmf-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena writes to three close contacts, each replying independently with probability 0.70. Grouping the eight reply patterns by count gives P(X=0) = 0.027, P(X=1) = 3 × 0.7 × 0.09 = 0.189, P(X=2) = 3 × 0.49 × 0.3 = 0.441, P(X=3) = 0.343. The chance of at least two replies is 0.441 + 0.343 = 0.784, found by summing masses over the values that satisfy the event."
+    }
+  ],
+  "everyday-c2-pmf-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "A cell has two copies of a gene, each transcribing in a given window with probability 0.25, independently. Let X be the number of active alleles. Grouping the four states gives P(X=0) = 0.5625, P(X=1) = 2 × 0.25 × 0.75 = 0.375, P(X=2) = 0.0625. The factor of 2 counts which allele is the active one, and the three masses sum to one. The chance of any transcription at all is 0.4375, not 0.50."
+    }
+  ],
+  "everyday-c2-bernoulli-a": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be 1 if a booked passenger shows and 0 if not, with P(X=1) = 0.95. That single indicator carries everything the overbooking model knows about one traveller. Its usefulness is that indicators add: the number who show across 190 passengers is a sum of 190 such variables, which is how a two-valued model becomes a statement about a full aircraft."
+    }
+  ],
+  "everyday-c2-bernoulli-b": [
+    {
+      "kind": "paragraph",
+      "text": "For one trial, X = 1 on conversion and 0 otherwise, with p depending on channel — 0.04, 0.09 or 0.22. A single account is either a customer or not, and nothing in between, so every weekly number Priya reports is a sum of these indicators. The Bernoulli is the atom of the funnel, not a simplification of it."
+    }
+  ],
+  "everyday-c2-bernoulli-c": [
+    {
+      "kind": "paragraph",
+      "text": "A prediction-market contract pays \\$1 if the event happens and \\$0 if it does not: it is a Bernoulli random variable you can buy. Its expectation is p, so a fair price is p dollars, and the quoted \\$0.62 is the market's estimate of p. Nowhere else does the Bernoulli appear so literally — the instrument and the concept are the same object."
+    }
+  ],
+  "everyday-c2-bernoulli-d": [
+    {
+      "kind": "paragraph",
+      "text": "For a single weak-tie contact, X = 1 if they reply and 0 otherwise, with p = 0.08. The indicator says nothing about when the reply comes or how warm it is; it is the coarsest useful description of one attempt. Lena's campaign is 140 of these with three different values of p, which is why she reasons in tiers rather than in people."
+    }
+  ],
+  "everyday-c2-bernoulli-e": [
+    {
+      "kind": "paragraph",
+      "text": "At a given instant the promoter is either engaged or not: X = 1 with probability 0.25. This is not an approximation of a graded state — the promoter genuinely occupies one configuration or the other, and the graded expression seen in a population is the average of many such indicators. The two-state description is the physically accurate one, and the smooth curve is what averaging does to it."
+    }
+  ],
+  "everyday-c2-binomial-a": [
+    {
+      "kind": "paragraph",
+      "text": "Each of 190 booked passengers shows independently with probability 0.95, so X is binomial with n = 190 and p = 0.95. Then"
+    },
+    {
+      "kind": "formula",
+      "text": "P(X=k)=\\binom{190}{k}(0.95)^{k}(0.05)^{190-k}."
+    },
+    {
+      "kind": "paragraph",
+      "text": "The mean is 180.5 against 180 seats, so bumping is not a rare event but the ordinary case. The independence assumption is the fragile one: a rail strike correlates the absences, and the binomial then understates both tails."
+    }
+  ],
+  "everyday-c2-binomial-b": [
+    {
+      "kind": "paragraph",
+      "text": "Fifty trials each convert independently with probability 0.09, so the weekly count is binomial with mean 4.5 and standard deviation about 2.0. A week with seven conversions and a week with two are both unremarkable, roughly one standard deviation either side. Priya's dashboard shows this swing as a trend line, and the binomial says it is noise until the sample is much larger."
+    }
+  ],
+  "everyday-c2-binomial-c": [
+    {
+      "kind": "paragraph",
+      "text": "Hold twenty independent contracts each fairly priced at \\$0.62. The number resolving YES is binomial with n = 20 and p = 0.62, mean 12.4. The chance of nine or fewer paying is about 12 percent — a losing week that arrives roughly one month in eight for a trader who is perfectly calibrated. Confusing that with a broken model is how good strategies get abandoned."
+    }
+  ],
+  "everyday-c2-binomial-d": [
+    {
+      "kind": "paragraph",
+      "text": "Twelve messages, each answered independently with probability 0.35, give a binomial count with mean 4.2. The chance of no reply at all is 0.65¹² ≈ 0.006, and the chance of one or fewer is about 4 percent. So a wave producing a single reply is unlucky rather than diagnostic, and rewriting the email on that evidence is premature."
+    }
+  ],
+  "everyday-c2-binomial-e": [
+    {
+      "kind": "paragraph",
+      "text": "Image a hundred genetically identical cells under the same signal and count how many express. If each does so independently with probability p, the count is binomial, and its spread is the visible signature of single-cell variation. The arrow diagram predicts a single number; the binomial predicts a distribution with standard deviation √(100p(1−p)), which is what the microscope actually shows."
+    }
+  ],
+  "everyday-c2-geometric-a": [
+    {
+      "kind": "paragraph",
+      "text": "A standby passenger clears on any given departure with probability 0.22, independently. The number of departures until she boards is geometric: P(X=k) = (0.78)^(k−1)(0.22). Boarding on the third attempt has probability 0.78² × 0.22 ≈ 0.134. The count includes the successful departure, so the smallest value is one, not zero — and the mean, 1/0.22 ≈ 4.5 departures, is why standby on a thin route is a poor plan."
+    }
+  ],
+  "everyday-c2-geometric-b": [
+    {
+      "kind": "paragraph",
+      "text": "A rep closes any given qualified call with probability 0.12. The number of calls up to and including the first close is geometric with mean 1/0.12 ≈ 8.3. The chance of going twelve calls without a close is 0.88¹² ≈ 0.22 — better than one week in five for a rep doing nothing wrong. Sales managers who read a dry spell as a performance problem are misreading the geometric tail."
+    }
+  ],
+  "everyday-c2-geometric-c": [
+    {
+      "kind": "paragraph",
+      "text": "Backing independent outcomes each with probability 0.35 of resolving YES, the number of positions until the first winner is geometric with mean about 2.9. The chance of six straight losers is 0.65⁶ ≈ 0.075. Bankroll rules exist because that run happens often enough to matter, and the geometric is what turns \"unlucky\" into a number that can be planned around."
+    }
+  ],
+  "everyday-c2-geometric-d": [
+    {
+      "kind": "paragraph",
+      "text": "Suppose each follow-up to a familiar contact draws a reply with probability 0.35, independently. Then the number of messages until the first reply is geometric with mean about 2.9, and the chance of getting nothing after four is 0.65⁴ ≈ 0.18. The independence assumption is doing heavy lifting and is doubtful here: a fourth unanswered nudge is weaker evidence of bad luck than the model claims, because silence is informative."
+    }
+  ],
+  "everyday-c2-geometric-e": [
+    {
+      "kind": "paragraph",
+      "text": "A lineage acquires a particular mutation in any given division with probability 3 × 10⁻⁸. The number of divisions until it appears is geometric with mean 1/(3 × 10⁻⁸) ≈ 33 million. In a culture of 10⁹ cells that event is nonetheless commonplace, which is the whole difficulty with antibiotic resistance: a per-division probability that is negligible becomes a near-certainty once the population is large."
+    }
+  ],
+  "everyday-c2-poisson-a": [
+    {
+      "kind": "paragraph",
+      "text": "Passengers arrive at check-in at about 2 per minute, so the count in a minute is Poisson with λ = 2. The chance of five or more in one minute is about 0.053, which is how the desk plan is sized. The Poisson is the right model when arrivals are many, independent, and individually unlikely at any instant — true for a concourse, false the moment a delayed inbound releases 180 people at once."
+    }
+  ],
+  "everyday-c2-poisson-b": [
+    {
+      "kind": "paragraph",
+      "text": "Tally sees about 12 signups a day, and the daily count is Poisson with λ = 12, standard deviation √12 ≈ 3.5. So a day with 8 and a day with 16 are both within one standard deviation, and the week-to-week wobble on the chart is mostly this. A product change is detectable only when it moves the mean by more than the noise, which for λ = 12 means several days of data."
+    }
+  ],
+  "everyday-c2-poisson-c": [
+    {
+      "kind": "paragraph",
+      "text": "Goals arrive roughly as a Poisson process, with home teams averaging about 1.6 per match and away teams 1.1. So the chance the home side fails to score is e^(−1.6) ≈ 0.202. This is one of the few places the Poisson is empirically defended rather than assumed: the fit to a century of results is good, and the deviations that remain — low-scoring draws are a little too common — are themselves a known correction."
+    }
+  ],
+  "everyday-c2-poisson-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena receives about 1.5 unsolicited introduction requests a week, so the weekly count is Poisson with λ = 1.5. The chance of a week with none is e^(−1.5) ≈ 0.223, and the chance of four or more is about 0.066. A quiet fortnight is unremarkable; two busy weeks in a row is worth noticing."
+    }
+  ],
+  "everyday-c2-poisson-e": [
+    {
+      "kind": "paragraph",
+      "text": "Under constitutive expression, transcript counts across cells follow a Poisson distribution, and this is measured rather than assumed. That fact is a strong claim about the mechanism: it holds when initiation events are independent and rare. Bursty genes break it — their counts are overdispersed, with variance well above the mean — and the departure from Poisson is precisely how bursting was discovered."
+    }
+  ],
+  "everyday-c2-functions-of-random-variables-a": [
+    {
+      "kind": "paragraph",
+      "text": "If X passengers are bumped, compensation is C = 600X, and the PMF of C is the PMF of X with relabelled values — a linear function shifts the labels and leaves the masses alone. Fuel cost is different: it rises with total load, but the rate changes at the point where a heavier aircraft needs a longer runway, so two values of X can map to the same cost. When g is not one-to-one, masses merge, and the PMF of the output has to be built by adding them."
+    }
+  ],
+  "everyday-c2-functions-of-random-variables-b": [
+    {
+      "kind": "paragraph",
+      "text": "Revenue R = 180X relabels the values of X without touching its probabilities. Commission is not linear: it pays nothing below eight conversions and accelerates above twelve, so several values of X map to zero commission and their masses combine into a single large mass at zero. That spike is invisible if you reason about the mean alone, and it is exactly what makes quota schemes distort behaviour near the threshold."
+    }
+  ],
+  "everyday-c2-functions-of-random-variables-c": [
+    {
+      "kind": "paragraph",
+      "text": "A contract bought at \\$0.62 pays +\\$0.38 if the event happens and −\\$0.62 if not, so the payoff is a function of a Bernoulli variable taking two values. Across a book of twenty positions the payoff is a function of the count, and it is linear — which is why a trader's profit distribution has the same shape as the count distribution, merely rescaled and shifted."
+    }
+  ],
+  "everyday-c2-functions-of-random-variables-d": [
+    {
+      "kind": "paragraph",
+      "text": "If X replies arrive and each converts to a meeting with probability 0.68, the meeting count is not a deterministic function of X — it is random given X. But total time spent is: each reply costs about forty minutes of follow-up, so T = 40X exactly, and its PMF is X's with new labels. Distinguishing the two cases is the whole content of this section."
+    }
+  ],
+  "everyday-c2-functions-of-random-variables-e": [
+    {
+      "kind": "paragraph",
+      "text": "If each transcript yields about 40 protein copies, then protein count is 40X, a linear function whose PMF is X's relabelled. The fate decision is not linear: the cell differentiates only above 8,000 copies, so every X below 200 maps to the same outcome. That threshold collapses a wide distribution of transcript counts into two fates, and it is why single-cell variation produces discrete, visibly different cells rather than a smear."
+    }
+  ],
+  "everyday-c2-expectation-mean-variance-a": [
+    {
+      "kind": "paragraph",
+      "text": "With 190 booked at p = 0.95, the expected number who show is 190 × 0.95 = 180.5. Selling ten extra seats earns roughly ten fares; the expected compensation cost is 600 × E[bumped], and E[bumped] is the expected excess over 180, which is a little under one passenger. The trade is profitable in expectation and the variance is what makes it uncomfortable — standard deviation √(190 × 0.95 × 0.05) ≈ 3.0 means days when five are bumped are entirely ordinary."
+    }
+  ],
+  "everyday-c2-expectation-mean-variance-b": [
+    {
+      "kind": "paragraph",
+      "text": "Expected revenue per trial is the conversion probability times ARPU: 0.09 × \\$180 = \\$16.20 a month, against a \\$1,400 acquisition cost. The mean says the channel pays back in about seven months. The variance says a quarter built on twenty trials can miss badly, and it is the variance that decides whether Priya can plan on the average at all."
+    }
+  ],
+  "everyday-c2-expectation-mean-variance-c": [
+    {
+      "kind": "paragraph",
+      "text": "A contract bought at \\$0.62 when the true probability is 0.68 has expected profit 0.68 × 0.38 − 0.32 × 0.62 = \\$0.0600 per dollar staked. That edge is small and the variance is large: the payoff is either +0.38 or −0.62, a standard deviation of about \\$0.47. Expectation says the bet is good; variance says it takes hundreds of such bets before the goodness is visible, and both halves are needed to size a position."
+    }
+  ],
+  "everyday-c2-expectation-mean-variance-d": [
+    {
+      "kind": "paragraph",
+      "text": "Twelve emails to familiar contacts yield on average 12 × 0.35 = 4.2 replies, and at 0.55 × 0.68 per reply that is about 1.6 meetings. Lena needs perhaps fifteen meetings to close the round, so roughly nine waves. The variance matters more than usual here because she runs few waves: with so few repetitions, the average is a poor guide to any single outcome."
+    }
+  ],
+  "everyday-c2-expectation-mean-variance-e": [
+    {
+      "kind": "paragraph",
+      "text": "For a Poisson transcript count, mean and variance are equal, so their ratio — the Fano factor — is one. Biologists quote that ratio precisely because departures from it are informative: a Fano factor above one signals bursting, below one signals some regulatory feedback damping the noise. Here variance is not a nuisance around the mean; it is the measurement that identifies the mechanism."
+    }
+  ],
+  "everyday-c2-joint-pmf-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be the passengers connecting to flight P and Y those connecting to flight Q, both drawn from the same arriving load. They are dependent: a seat filled by a P-connector is not available to a Q-connector. The joint PMF gives P(X=x, Y=y) for each pair, and summing a row or column recovers the marginal for one flight alone. The marginals cannot be recombined into the joint — knowing each flight's connector distribution separately does not tell you how often both are heavy at once, which is the question the ramp actually asks."
+    }
+  ],
+  "everyday-c2-joint-pmf-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be deals closed this quarter and Y the average contract value. They are dependent, because a quarter that closes many deals usually closed smaller ones — discounting scales with volume. The joint PMF holds that relationship; the two marginals do not. Forecasting revenue as E[X] times E[Y] ignores it and, when the dependence is negative, overstates the number."
+    }
+  ],
+  "everyday-c2-joint-pmf-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "The pair (home goals, away goals) is the joint PMF from which every match market is read. Modelled as independent Poissons with λ = 1.6 and 1.1, P(2,1) = e^(−1.6)(1.6²/2) × e^(−1.1)(1.1) ≈ 0.0863. Summing the cells where home exceeds away prices the home win; summing along diagonals prices the draw; summing where the total exceeds 2.5 prices the over. One table, a dozen tradeable contracts."
+    }
+  ],
+  "everyday-c2-joint-pmf-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be opens and Y replies across a wave of twelve. They are strongly dependent — a reply nearly always follows a read — but not deterministically, because the tracker misses reads and invents others. The joint PMF holds both facts at once, and the marginal for Y alone is what Lena would get from counting replies while ignoring her tracker entirely."
+    }
+  ],
+  "everyday-c2-joint-pmf-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "Let X be transcript count and Y protein count in one cell. They are dependent, since protein is translated from transcripts, but the dependence is loose: translation and degradation add their own randomness, so a cell with twelve transcripts has a distribution of protein levels, not a fixed one. The joint PMF over the pair is what a two-channel single-cell measurement estimates, and its shape is what separates transcriptional from translational noise."
+    }
+  ],
+  "everyday-c2-functions-of-multiple-random-variables-a": [
+    {
+      "kind": "paragraph",
+      "text": "The ramp cares about X + Y, the total connecting passengers, and separately about max(X, Y), which sizes the single busiest transfer. Both are random variables built from the same joint PMF, and each is obtained by summing joint probabilities over the cells where the function takes a given value. Neither can be computed from the marginals alone when X and Y are dependent."
+    }
+  ],
+  "everyday-c2-functions-of-multiple-random-variables-b": [
+    {
+      "kind": "paragraph",
+      "text": "Revenue is X times Y — deals closed times average value — a function of two dependent variables. Its PMF comes from summing the joint probabilities over every pair whose product hits a given figure. Because the dependence is negative, the spread of the product is narrower than treating the two as independent would suggest, which is one of the few places dependence works in a forecaster's favour."
+    }
+  ],
+  "everyday-c2-functions-of-multiple-random-variables-c": [
+    {
+      "kind": "paragraph",
+      "text": "From the pair (home, away) come two of the most traded functions: the difference, which settles the match result, and the sum, which settles over/under. Both are computed by summing the joint PMF over the appropriate diagonals of the table. The same joint distribution supports both, and a trader who prices them from separate models will eventually quote a pair that cannot both be right."
+    }
+  ],
+  "everyday-c2-functions-of-multiple-random-variables-d": [
+    {
+      "kind": "paragraph",
+      "text": "If Lena runs two waves producing X and Y replies, total meetings depend on X + Y, and her calendar constraint depends on max over the weeks. Both are functions of the pair. Waves in consecutive weeks are not independent — a contact who ignored the first is in the second — so the joint PMF, not the marginals, is what the calculation needs."
+    }
+  ],
+  "everyday-c2-functions-of-multiple-random-variables-e": [
+    {
+      "kind": "paragraph",
+      "text": "Total transcript output is the sum over the two alleles. If they are independent, the PMF of the sum is a convolution of the two; if they share a regulator, it is not, and the sum has a wider spread than independence predicts. Measuring the spread of the total against the spread of each allele separately is how the shared component is quantified."
+    }
+  ],
+  "everyday-c2-more-than-two-random-variables-a": [
+    {
+      "kind": "paragraph",
+      "text": "Write Xᵢ = 1 if passenger i shows. The total is X₁ + ⋯ + X₁₉₀, and expectation passes straight through a sum whether or not the terms are independent: E[total] = 190 × 0.95 = 180.5. That linearity is what makes the overbooking mean trivial to compute even on a morning when a rail strike has made the indicators strongly dependent. Variance is where dependence bites; the mean never notices."
+    }
+  ],
+  "everyday-c2-more-than-two-random-variables-b": [
+    {
+      "kind": "paragraph",
+      "text": "Each deal in the pipeline is an indicator that closes with its own probability. The forecast is the sum of those probabilities, regardless of whether deals are independent — the same linearity, and the reason stage-weighted forecasting gets the mean roughly right even though its independence assumption is wrong. What it gets wrong is the confidence interval."
+    }
+  ],
+  "everyday-c2-more-than-two-random-variables-c": [
+    {
+      "kind": "paragraph",
+      "text": "Total profit is the sum of per-contract payoffs, and its expectation is the sum of the individual edges whatever the correlations between markets. Correlation changes the risk entirely and the expected profit not at all. Traders who check only the expectation of a book learn this the expensive way."
+    }
+  ],
+  "everyday-c2-more-than-two-random-variables-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's total replies is a sum of 140 indicators with three different values of p, so the expected total is 20 × 0.70 + 50 × 0.35 + 70 × 0.08 = 37.1. Linearity holds even though contacts at the same firm are dependent. It is the spread around 37 that the dependence inflates."
+    }
+  ],
+  "everyday-c2-more-than-two-random-variables-e": [
+    {
+      "kind": "paragraph",
+      "text": "The number of cells in a colony that differentiate is a sum of per-cell indicators. Expectation adds across them regardless of whether neighbouring cells influence one another, so the mean fraction is easy. The variance is not, and contact-mediated signalling shows up there — a colony whose cells talk produces patches rather than a random scatter, at the same mean."
+    }
+  ],
+  "everyday-c2-conditioning-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "Before boarding, X — the number of passengers who show — has its full binomial distribution. Once the gate reports 172 checked in with ten minutes to go, that distribution is replaced by a conditional one supported on much narrower values. Nothing about the passengers changed; the set of outcomes still consistent with what is known has shrunk, and the PMF is recomputed inside it."
+    }
+  ],
+  "everyday-c2-conditioning-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "At the start of the quarter the conversion count has its full distribution. Six weeks in, with three closed and eleven still live, Marcus is looking at a conditional PMF — the same model restricted to outcomes consistent with what has happened. The commit he made in week one and the number he should quote now are both correct, conditioned on different information."
+    }
+  ],
+  "everyday-c2-conditioning-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "The pre-match distribution of total goals conditions on nothing. At half-time with the score 1–0 it is replaced by a distribution over what the remaining forty-five minutes will add. In-play markets are precisely this conditioning done continuously, and the price path is the sequence of conditional distributions."
+    }
+  ],
+  "everyday-c2-conditioning-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's prior on total replies across all three waves is the full distribution. Once wave one returns six replies from twelve messages, the conditional distribution for the remaining waves shifts up — and shifts her estimate of her own reply rate at the same time. The second effect is the one a fixed-parameter model misses."
+    }
+  ],
+  "everyday-c2-conditioning-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "Across all cells, transcript count has one distribution. Restricted to cells where the promoter was observed to engage at least once in the window, the distribution is different and shifted upward. The conditional PMF is what a live-imaging experiment reports, and comparing it with the unconditional one is how the ON-state output rate is estimated."
+    }
+  ],
+  "everyday-c2-conditioning-on-an-event-a": [
+    {
+      "kind": "paragraph",
+      "text": "Condition on the event that the inbound aircraft is more than twenty minutes late. Within that event, the PMF of missed connections shifts markedly: what was a distribution concentrated near zero now has real mass at four and above. The conditional PMF is a proper PMF — its masses are the originals restricted to the event and divided by the event's probability, so they sum to one again."
+    }
+  ],
+  "everyday-c2-conditioning-on-an-event-b": [
+    {
+      "kind": "paragraph",
+      "text": "Condition on the event that a trial invited at least two teammates in week one. Within that subset, the conversion count has a different and higher-centred PMF. Dividing by the probability of the conditioning event is what renormalises it, and skipping that division is the arithmetic slip that makes conditional rates look smaller than they are."
+    }
+  ],
+  "everyday-c2-conditioning-on-an-event-c": [
+    {
+      "kind": "paragraph",
+      "text": "Condition the total-goals PMF on a sending-off in the first forty-five minutes. The masses redistribute — fewer goals from the reduced side, more from the other — and the renormalised distribution is what the in-play over/under is repriced against. The conditioning event has probability around 0.04, and everything inside it is rescaled by that."
+    }
+  ],
+  "everyday-c2-conditioning-on-an-event-d": [
+    {
+      "kind": "paragraph",
+      "text": "Restricted to contacts whose message registered an open, the PMF of replies per wave is higher-centred. But the conditioning event is itself unreliable here, since pre-fetching fires opens for people who never read. Conditioning on a noisy event gives a conditional PMF that is correct given the event as defined, and the event as defined is not the event Lena cares about."
+    }
+  ],
+  "everyday-c2-conditioning-on-an-event-e": [
+    {
+      "kind": "paragraph",
+      "text": "Condition the transcript-count PMF on the cell having at least one transcript. This removes the mass at zero and rescales the rest by 1/(1 − e^(−λ)), which for λ = 1.2 means dividing by about 0.699. Any assay that can only see cells it detects reports this conditional distribution rather than the true one, and the zero-truncation is a systematic bias, not noise."
+    }
+  ],
+  "everyday-c2-conditioning-on-another-variable-a": [
+    {
+      "kind": "paragraph",
+      "text": "Let D be the inbound delay in ten-minute bands and M the missed connections. For each value of D there is a conditional PMF of M, and together they describe how delay translates into misconnects. E[M | D = d] rises with d, and the whole table is what the operations team uses to decide whether to hold the departing flight — a decision made per value of D, not on the average delay."
+    }
+  ],
+  "everyday-c2-conditioning-on-another-variable-b": [
+    {
+      "kind": "paragraph",
+      "text": "Let C be the channel and X the conversions from a fixed number of trials. Conditioning on C gives three different PMFs with means 4, 9 and 22 percent of the trials. The unconditional PMF is the channel-weighted mixture, and it has a larger spread than any of the three components — a fact that makes the blended number a poor description of any actual cohort."
+    }
+  ],
+  "everyday-c2-conditioning-on-another-variable-c": [
+    {
+      "kind": "paragraph",
+      "text": "If the two goal counts are modelled as independent, the conditional PMF of away goals given home goals is just the away marginal, and that independence is the model's central and most questioned assumption. Real matches show mild negative dependence at high scorelines, and correct-score markets are where the discrepancy shows up first."
+    }
+  ],
+  "everyday-c2-conditioning-on-another-variable-d": [
+    {
+      "kind": "paragraph",
+      "text": "Let T be the tier and X the replies from a wave of twelve. The conditional PMFs have means 8.4, 4.2 and 1.0 across close, familiar and weak. Lena plans wave by wave using these, not using the blended mean of 3.2, because no wave she actually sends is drawn from the mixture."
+    }
+  ],
+  "everyday-c2-conditioning-on-another-variable-e": [
+    {
+      "kind": "paragraph",
+      "text": "For each transcript count X, protein count Y has its own conditional PMF, roughly centred at 40X but with real spread from translation and degradation. The full picture is this family of conditional distributions, and E[Y | X = x] is the translation efficiency curve that a paired measurement sets out to estimate."
+    }
+  ],
+  "everyday-c2-conditional-expectation-a": [
+    {
+      "kind": "paragraph",
+      "text": "E[M | D] is a number for each delay band; treating D as random makes it a random variable. The total expectation theorem recovers the overall mean: E[M] = Σ P(D = d) E[M | D = d]. The season's average misconnect count is therefore a weighted average of the per-band figures, and improving the worst band matters in proportion to how often it occurs — which is what the weighting makes precise."
+    }
+  ],
+  "everyday-c2-conditional-expectation-b": [
+    {
+      "kind": "paragraph",
+      "text": "E[X | channel] takes values 0.04, 0.09 and 0.22 per trial. Weighting by the channel shares gives E[X] = 0.50 × 0.04 + 0.30 × 0.09 + 0.20 × 0.22 = 0.091 per trial. Priya already knew the blended rate from the dashboard; the total expectation theorem shows it is not an independent fact but a consequence of the three conditional rates and the traffic mix."
+    }
+  ],
+  "everyday-c2-conditional-expectation-c": [
+    {
+      "kind": "paragraph",
+      "text": "E[total goals | score at half-time] varies by state, and averaging over the half-time distribution returns the pre-match expectation. That consistency is not optional: a set of in-play prices that does not average back to the pre-match price is arbitrageable, and the total expectation theorem is the constraint being violated."
+    }
+  ],
+  "everyday-c2-conditional-expectation-d": [
+    {
+      "kind": "paragraph",
+      "text": "E[replies | tier] is 8.4, 4.2 and 1.0 per twelve-message wave. Weighting by how many waves Lena sends to each tier gives her overall expectation. The theorem also tells her where effort pays: shifting one wave from weak ties to familiar contacts moves the total by 3.2 expected replies, which is the calculation behind her sequencing."
+    }
+  ],
+  "everyday-c2-conditional-expectation-e": [
+    {
+      "kind": "paragraph",
+      "text": "E[X | promoter ON] is much larger than E[X | promoter OFF], and the observed population mean is the ON-fraction-weighted average of the two. With the promoter ON a quarter of the time, a population mean of 3 transcripts implies an ON-state rate near 12. This is how a bulk number is decomposed into a switching rate and an output rate — the total expectation theorem run backwards."
+    }
+  ],
+  "everyday-c2-independence-introduction-a": [
+    {
+      "kind": "paragraph",
+      "text": "X and Y, the indicators for two unrelated passengers showing up, are independent if the joint PMF factors: P(X=x, Y=y) = P(X=x)P(Y=y) for every pair. That is a stronger statement than the two being uncorrelated, and it is what lets the whole 190-passenger count be treated as binomial. It is also an assumption about the model, testable against the record and false on strike days."
+    }
+  ],
+  "everyday-c2-independence-introduction-b": [
+    {
+      "kind": "paragraph",
+      "text": "Conversion indicators for trials at unrelated companies factor, so the joint PMF is the product of the marginals. Two seats at the same company do not factor: one champion drives both. Priya's pipeline model assumes factorisation throughout, which is why a quarter dominated by one large account behaves nothing like the forecast."
+    }
+  ],
+  "everyday-c2-independence-introduction-c": [
+    {
+      "kind": "paragraph",
+      "text": "Goal counts in unrelated matches factor, so a parlay price is the product of the two contract prices. Two markets on the same match never factor, and the correct-score and over/under markets on one game are the clearest case: knowing one constrains the other sharply. Multiplying them is the standard way an accumulator is mispriced."
+    }
+  ],
+  "everyday-c2-independence-introduction-d": [
+    {
+      "kind": "paragraph",
+      "text": "Reply indicators for a former colleague and a university friend factor. For two partners at the same fund they do not, because the firm forms a view and both partners hold it. Lena's expected reply count is unaffected by this; the chance that she gets zero replies from a wave is substantially higher than the independent model says."
+    }
+  ],
+  "everyday-c2-independence-introduction-e": [
+    {
+      "kind": "paragraph",
+      "text": "Expression indicators for two distant cells factor to a good approximation. For two cells in contact they do not, since signalling couples them. The distinction matters for the variance of a colony-level count and not at all for its mean, which is the general shape of what independence buys and what it does not."
+    }
+  ],
+  "everyday-c2-independence-from-an-event-a": [
+    {
+      "kind": "paragraph",
+      "text": "X, the number who show, is independent of an event A when P(X=x | A) = P(X=x) for every x — the event teaches nothing about the variable. \"The catering truck was late\" is such an event. \"There is a rail strike\" is not: conditioning on it moves every mass in the distribution, which is precisely why it cannot be ignored in the dispatch decision."
+    }
+  ],
+  "everyday-c2-independence-from-an-event-b": [
+    {
+      "kind": "paragraph",
+      "text": "The number of conversions this week is independent of the event that the office fire alarm was tested on Tuesday: the conditional PMF equals the unconditional one. It is not independent of the event that a competitor announced a price cut. Independence from an event is a statement that the conditional PMF is unchanged, value by value — a stronger requirement than the means happening to match."
+    }
+  ],
+  "everyday-c2-independence-from-an-event-c": [
+    {
+      "kind": "paragraph",
+      "text": "A contract's payoff distribution is independent of an event when conditioning on that event leaves the price unchanged. Most news is of this kind, and a market that twitches at every headline is treating independent events as informative. Distinguishing the two is the job, and the test is whether the conditional distribution genuinely differs."
+    }
+  ],
+  "everyday-c2-independence-from-an-event-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's reply count is not independent of the event that she sent during the first week of August — conditioning on it lowers every part of the distribution. Her open rate, oddly, is closer to independent of it, because pre-fetching happens whether or not anyone is at their desk. One statistic is sensitive to the event and the other is not, and that difference is itself diagnostic."
+    }
+  ],
+  "everyday-c2-independence-from-an-event-e": [
+    {
+      "kind": "paragraph",
+      "text": "Transcript count should be independent of which imaging session a cell was photographed in — if it is not, something about the session, temperature or focus, is affecting the measurement. Testing independence from a nuisance event is how batch effects are caught, and the test is exactly the condition that the conditional PMF equals the unconditional one."
+    }
+  ],
+  "everyday-c2-independence-of-random-variables-a": [
+    {
+      "kind": "paragraph",
+      "text": "Two passengers' show indicators are independent when the joint PMF factors into the product of the marginals for every pair of values. Under that assumption the variance of the total is the sum of the variances: 190 × 0.95 × 0.05 ≈ 9.0, giving a standard deviation of about 3.0. Drop independence and the mean is untouched while that standard deviation can double, which is the entire practical consequence."
+    }
+  ],
+  "everyday-c2-independence-of-random-variables-b": [
+    {
+      "kind": "paragraph",
+      "text": "Are deals closed and average contract value independent? If they were, the joint PMF would factor and revenue's variance would follow the simple rule. They are not — bigger quarters carry more discounting — so the factorisation fails and the product's distribution has to be computed from the joint PMF. Assuming independence here is comfortable and wrong in a direction that flatters the forecast."
+    }
+  ],
+  "everyday-c2-independence-of-random-variables-c": [
+    {
+      "kind": "paragraph",
+      "text": "A two-leg parlay is priced by multiplying, which asserts that the joint PMF of the two outcomes factors. For matches in different countries that is defensible. For two markets on one match it is plainly false, and the resulting price is wrong by the amount of the dependence. Independence of random variables is the assumption a parlay price is made of."
+    }
+  ],
+  "everyday-c2-independence-of-random-variables-d": [
+    {
+      "kind": "paragraph",
+      "text": "Replies from close contacts and replies from weak ties are plausibly independent, so the joint PMF factors and the variance of the total is the sum. That is what lets Lena treat her three tiers as separate experiments running in parallel. Within a tier, contacts who know each other break it, and the tiers were drawn to keep such clusters together for exactly that reason."
+    }
+  ],
+  "everyday-c2-independence-of-random-variables-e": [
+    {
+      "kind": "paragraph",
+      "text": "Two alleles transcribe independently when the joint PMF of their transcript counts factors. This is the null hypothesis the two-colour experiment tests, and it fails: the two counts are correlated because they share the cell's machinery. The size of the failure is the extrinsic noise, so here independence is not an assumption to be defended but a baseline whose violation is the measurement."
+    }
+  ],
+  "everyday-c2-independence-of-several-variables-a": [
+    {
+      "kind": "paragraph",
+      "text": "With 190 independent show indicators, the variance of the total is the sum of the individual variances — the property that makes the binomial variance np(1−p) ≈ 9.0. Across a season of flights, the average number who show has variance shrinking like 1/n, so Nadia's estimate of p gets sharper the longer she watches. That shrinking is the mechanism behind everything in Chapter 7."
+    }
+  ],
+  "everyday-c2-independence-of-several-variables-b": [
+    {
+      "kind": "paragraph",
+      "text": "The mean conversion rate over n independent weekly cohorts has variance equal to the single-week variance divided by n. Four weeks halves the standard deviation; sixteen quarters it. This is the arithmetic that says how long an A/B test must run, and it is why Priya cannot resolve a one-point difference on a single week of 50 trials."
+    }
+  ],
+  "everyday-c2-independence-of-several-variables-c": [
+    {
+      "kind": "paragraph",
+      "text": "Across twenty mutually independent positions, the variance of total profit is the sum of the per-position variances, so the standard deviation grows like √20 while the expected edge grows like 20. Edge accumulates faster than noise, which is the whole basis of the business — and it is also why the ratio only becomes comfortable after hundreds of positions, not twenty."
+    }
+  ],
+  "everyday-c2-independence-of-several-variables-d": [
+    {
+      "kind": "paragraph",
+      "text": "Lena's 140 attempts, treated as mutually independent, give a total reply count whose standard deviation is the root of the summed variances — about 5.0 around a mean of 37. That is a relative spread of roughly 13 percent, tolerable. Her twenty close contacts alone give a mean of 14 with a standard deviation near 2.0, and the fifteen-meeting target sits close enough to the edge that the spread decides the outcome."
+    }
+  ],
+  "everyday-c2-independence-of-several-variables-e": [
+    {
+      "kind": "paragraph",
+      "text": "Average an independent per-cell quantity over 10⁶ cells and the variance of the average is the single-cell variance divided by a million, so the standard deviation falls by a factor of a thousand. A quantity that varies wildly cell to cell reads as a clean, reproducible number in bulk. This is the whole answer to the question the scenario opened with, and Chapter 7 makes it a theorem."
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In machine learning, like many fields of computer science, we often deal with high-dimensional points, and high-dimensional spaces have some surprising probabilistic properties.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let random ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "value",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a Uni(0, 1).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let random ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "point",
+     "type": "text"
+    },
+    {
+     "text": " of dimension ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "d"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a list of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "d"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " random values: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "[X_1 \\dots X_d]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "aca20433-9080-403c-ab84-edfe014d849b",
+    "naturalHeight": "482",
+    "naturalWidth": "426",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Faca20433-9080-403c-ab84-edfe014d849b?alt=media&token=0e00a794-575a-453f-8629-f525b39db9a0",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A random ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "value",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is close to an edge if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is less than 0.01 ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is greater than 0.99. What is the probability that a random value is close to an edge?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that a random value is close to an edge.\n ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(E) = P(X_i < 0.01) + P(X_i > 0.99) = 0.02"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A random ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "point",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "[X_1, X_2, X_3]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of dimension 3 is close to an edge if ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "any",
+     "type": "text"
+    },
+    {
+     "text": " of its values are close to an edge. What is the probability that a 3-dimensional point is close to an edge?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The event is equivalent to the complement of none of the dimensions of the point is close to an edge, which is: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "1 - (1 - P(E))^3 = 1 - 0.98^3 \\approx 0.058"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A random ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "point",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "[X_1, \\dots X_{100}]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of dimension 100 is close to an edge if ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "any",
+     "type": "text"
+    },
+    {
+     "text": " of its values are close to an edge. What is the probability that a 100-dimensional point is close to an edge?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Similarly, it is: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "1 - (1 - P(E))^{100} = 1 - 0.98^{100} \\approx 0.867"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many other phenomena of high-dimensional points: for example, the Euclidean distance between points starts to converge.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,240 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The Categorical Distribution is a fancy name for random variables which takes on values ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "other than numbers",
+     "type": "text"
+    },
+    {
+     "text": ". As an example, imagine a random variable for the weather today. A natural representation for the weather is one of a few categories: {sunny, cloudy, rainy, snowy}. Unlike in past examples, these values are not integers or real valued numbers! Are we allowed to continue? Sure! We can represent this random variable as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a categorical random variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": " There isn't much that you need to know about Categorical distributions. They work the way you might expect. To provide the Probability Mass Function (PMF) for a categorical random variable, you just need to provide the probability of each category. For example, if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the weather today, then the PMF should associate all the values that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " could take on with the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " takes on those values. Here is an example PMF for the weather Categorical:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X = \\text{Sunny}) = 0.49"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X = \\text{Cloudy}) = 0.30"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X = \\text{Rainy}) = 0.20"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X = \\text{Snowy}) = 0.01"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 3303,
+    "sourceSha256": "b6c8e470ab1eda7af032fff003c453ba9795f2a5c0e43ab222e578823aea1363"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Notice that the probabilities must sum to 1. This is because (in this version) the weather must be one of the four categories. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Since the values are not numeric, this random variable will ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "not",
+     "type": "text"
+    },
+    {
+     "text": " have an expectation (values are not numbers), variance, or a PMF expressed as a function, as opposed to a table.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Note to your future self: A categorical distribution is a simplified version of a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://chrispiech.github.io/probabilityForComputerScientists/part3/multinomial/",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "multinomial distribution",
+     "type": "text"
+    },
+    {
+     "text": " where the number of outcomes is 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

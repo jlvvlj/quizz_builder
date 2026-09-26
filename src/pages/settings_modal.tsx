@@ -10,7 +10,7 @@ interface SettingsModalProps {
     onSettingsChange?: () => void
 }
 
-const parseSessionSize = (value: string) => Math.max(1, parseInt(value, 10) || 1)
+const parseSessionSize = (value: string) => Math.max(1, Math.min(100, parseInt(value, 10) || 1))
 
 export default function SettingsModal({ onClose, onSettingsChange }: SettingsModalProps) {
     const [activeTab, setActiveTab] = useState("general")
@@ -140,13 +140,7 @@ export default function SettingsModal({ onClose, onSettingsChange }: SettingsMod
                 >
                     <span className="sm:hidden">Quiz</span><span className="hidden sm:inline">Quiz Settings</span>
                 </button>
-                <button
-                    className={`px-3 sm:px-4 py-3 text-sm sm:text-lg whitespace-nowrap ${activeTab === "japanese" ? "text-[#FF0054] border-b-2 border-[#FF0054]" : "text-white opacity-70"
-                        }`}
-                    onClick={() => setActiveTab("japanese")}
-                >
-                    <span className="sm:hidden">Japanese</span><span className="hidden sm:inline">Japanese Study Modes</span>
-                </button>
+
                 <button
                     className={`px-3 sm:px-4 py-3 text-sm sm:text-lg whitespace-nowrap ${activeTab === "shortcut" ? "text-[#FF0054] border-b-2 border-[#FF0054]" : "text-white opacity-70"
                         }`}
@@ -301,31 +295,15 @@ export default function SettingsModal({ onClose, onSettingsChange }: SettingsMod
                                 <div className="flex items-center justify-between text-white">
                                     <div>
                                         <span>Quiz Direction</span>
-                                        <p className="text-sm text-[#A1A1A1] mt-1">Choose which language to show as the question</p>
+                                        <p className="text-sm text-[#A1A1A1] mt-1">Choose which side to show as the question</p>
                                     </div>
                                     <select
                                         value={settings.quizDirection}
                                         onChange={(e) => updateSettings('quizDirection', e.target.value)}
                                         className="bg-[#181818] border border-[#4F4F4F] text-white rounded px-3 py-2"
                                     >
-                                        <option value="forward">Japanese → English</option>
-                                        <option value="reverse">English → Japanese</option>
-                                    </select>
-                                </div>
-
-                                <div className="flex items-center justify-between text-white">
-                                    <div>
-                                        <span>Kanji frequency order</span>
-                                        <p className="text-sm text-[#A1A1A1] mt-1">Choose the sequence used for kanji quiz sections</p>
-                                    </div>
-                                    <select
-                                        value={settings.kanjiFrequencySource}
-                                        onChange={(e) => updateSettings('kanjiFrequencySource', e.target.value)}
-                                        className="bg-[#181818] border border-[#4F4F4F] text-white rounded px-3 py-2"
-                                    >
-                                        <option value="default">Default</option>
-                                        <option value="appearance">Kanji ranked by appearance</option>
-                                        <option value="jpdb">Anime &amp; manga</option>
+                                        <option value="forward">Question → Answer</option>
+                                        <option value="reverse">Answer → Question</option>
                                     </select>
                                 </div>
 
@@ -421,7 +399,7 @@ export default function SettingsModal({ onClose, onSettingsChange }: SettingsMod
                                     <div className="min-w-0">
                                         <div>Play the answer word on a correct answer</div>
                                         <div className="text-sm text-[#A1A1A1] mt-1">
-                                            Plays the other-side audio when you answer correctly (JA→EN plays the English word; EN→JA plays the Japanese word).
+                                            Plays the answer audio when the deck includes recordings.
                                         </div>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer shrink-0">
@@ -430,28 +408,6 @@ export default function SettingsModal({ onClose, onSettingsChange }: SettingsMod
                                             className="sr-only peer"
                                             checked={settings.playCorrectAnswerAudio}
                                             onChange={(e) => updateSettings('playCorrectAnswerAudio', e.target.checked)}
-                                        />
-                                        <div className="w-11 h-6 bg-[#181818] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-[#181818] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#4F4F4F] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FF0054]"></div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {activeTab === "japanese" && (
-                    <div className="max-w-3xl mx-auto">
-                        <div className="bg-[#262626] rounded-lg p-4 sm:p-6 border border-[#4F4F4F]">
-                            <h3 className="font-medium text-lg text-white mb-6">Japanese Study Modes</h3>
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between text-white">
-                                    <span>Show Furigana</span>
-                                    <label className="relative inline-flex items-center cursor-pointer">
-                                        <input 
-                                            type="checkbox" 
-                                            className="sr-only peer"
-                                            checked={settings.showFurigana}
-                                            onChange={(e) => updateSettings('showFurigana', e.target.checked)}
                                         />
                                         <div className="w-11 h-6 bg-[#181818] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-[#181818] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#4F4F4F] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FF0054]"></div>
                                     </label>

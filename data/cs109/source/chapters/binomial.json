@@ -1,0 +1,921 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In this section, we will discuss the binomial distribution. To start, imagine the following example. Consider ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " independent trials of an experiment where each trial is a \"success\" with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the number of successes in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " trials. This situation is truly common in the natural world, and as such, there has been a lot of research into such phenomena. Random variables like ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are called binomial random variables. If you can identify that a process fits this description, you can inherit many already proved properties such as the PMF formula, expectation, and variance!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "f9580633-ecc5-4a15-9919-0acc365b7020",
+    "naturalHeight": "829",
+    "naturalWidth": "1481",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Ff9580633-ecc5-4a15-9919-0acc365b7020?alt=media&token=6198ad23-609d-435c-aa45-973ecba99d02",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Here are a few examples of binomial random variables:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "justify"
+       },
+       "content": [
+        {
+         "text": "# of heads in ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "n"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " coin flips",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "justify"
+       },
+       "content": [
+        {
+         "text": "# of 1’s in randomly generated length ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "n"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " bit string",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "justify"
+       },
+       "content": [
+        {
+         "text": "# of disk drives crashed in 1000 computer cluster, assuming disks crash independently",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "bulletList"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 3979,
+      "sourceSha256": "5239f4d49afc4616ffba114ffb9c5a95deaccd2487e5b1321b54794c1c1abeb4"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "One way to think of the binomial is as the sum of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}bernoulli",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Bernoulli",
+     "type": "text"
+    },
+    {
+     "text": " variables. Say that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y_i \\sim \\text{Ber}(p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is an indicator Bernoulli random variable which is 1 if experiment ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a success. Then if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the total number of successes in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " experiments, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n, p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nX = \\sum_{i=1}^n Y_i\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Recall that the outcome of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " will be 1 or 0, so one way to think of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is as the sum of those 1s and 0s.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Binomial PMF",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The most important property to know about a binomial is its ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}pmf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "PMF function",
+     "type": "text"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "f522eb5a-3d8c-4214-b121-c0f157052466",
+    "naturalHeight": "814",
+    "naturalWidth": "1427",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Ff522eb5a-3d8c-4214-b121-c0f157052466?alt=media&token=9fa428af-f25e-4a21-9ecf-359f3ea0bc50",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Recall, we derived this formula as part of the example on the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips, where each flip is heads with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "0.5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Many Coin Flips",
+     "type": "text"
+    },
+    {
+     "text": ". To briefly review, if you think of each experiment as being distinct, then there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{n}{k}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ways of permuting ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " successes from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " experiments. For any of the mutually exclusive permutations, the probability of that permutation is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^k (1-p)^{n-k}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The name binomial comes from the term ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{n}{k}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which is formally called the binomial coefficient.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "binomialExpectation",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Binomial Expectation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There is an easy way to calculate the expectation of a binomial and a hard way.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The easy way is to leverage the fact that a binomial is the sum of Bernoulli ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}bernoulli#indicator",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "indicator",
+     "type": "text"
+    },
+    {
+     "text": " random variables. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = \\sum_{i=1}^{n} Y_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is an indicator of whether the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th experiment was a success: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y_i \\sim \\text{Ber}(p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Since the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "{{pathToRoot}}expectation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "expectation of the sum",
+     "type": "text"
+    },
+    {
+     "text": " of random variables is the sum of expectations, we can add the expectation, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[Y_i] = p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", of each of the Bernoulli's:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X] &= \\text{E}\\Big[\\sum_{i=1}^{n} Y_i\\Big] && \\text{Since }X = \\sum_{i=1}^{n} Y_i \\\\\n&= \\sum_{i=1}^{n}\\text{E}[ Y_i] && \\text{Expectation of sum} \\\\\n&= \\sum_{i=1}^{n}p && \\text{Expectation of Bernoulli} \\\\\n&= n \\cdot p && \\text{Sum $n$ times}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The hard way is to use the definition of expectation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X] &= \\sum_{i=0}^n i \\cdot \\p(X = i) && \\text{Def of expectation} \\\\\n&= \\sum_{i=0}^n i \\cdot \\binom{n}{i} p^i(1-p)^{n-i} && \\text{Sub in PMF} \\\\\n& \\cdots && \\text{Many steps later} \\\\\n&= n \\cdot p\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Binomial Distribution in Python",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "As you might expect, you can use binomial distributions in code. The standardized library for binomials is ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scipy.stats.binom",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "One of the most helpful methods that this package provides is a way to calculate the PMF. For example, say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n=5,p=0.6)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and you want to find ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X=2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " you could use the following code:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\n\n# define variables for x, n, and p\nn = 5\np = 0.6\nx = 2\n\n# use scipy to compute the pmf\np_x = stats.binom.pmf(x, n, p)\n\n# use the probability for future work\nprint(f'P(X = {x}) = {p_x}')",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Console:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "P(X = 2) = 0.2304",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Another particularly helpful function is the ability to generate a random sample from a binomial. For example, say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n=10, p=0.3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represents the number of requests to a website. We can draw 100 samples from this distribution using the following code:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\n\n# define variables for n and p\nn = 10\np = 0.3\n\n# use scipy to compute the random samples\nsamples = stats.binom.rvs(n, p, size=100)\n\n# use the probability for future work\nprint(samples)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Console:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "[4 5 3 1 4 5 3 1 4 6 5 6 1 2 1 1 2 3 2 5 2 2 2 4 4 2 2 3 6 3 1 1 4 2 6 2 4 2 3 3 4 2 4 2 4 5 0 1 4 3 4 3 3 1 3 1 1 2 2 2 2 3 5 3 3 3 2 1 3 2 1 2 3 3 4 5 1 3 7 1 4 1 3 3 4 4 1 2 4 4 0 2 4 3 2 3 3 1 1 4]",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "You might be wondering what a random sample is! ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "A random sample is a randomly chosen assignment for our random variable.",
+     "type": "text"
+    },
+    {
+     "text": " Above we have 100 such assignments. The probability that value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is chosen is given by the PMF: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You will notice that even though 8 is a possible assignment to the binomial above, in 100 samples we never saw the value 8. Why? Because ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X=8) \\approx 0.0014"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You would need to draw 1,000 samples before you would expect to see an 8.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are also functions for getting the mean, the variance, and more. You can read the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scipy.stats.binom",
+     "type": "text"
+    },
+    {
+     "text": " documentation, especially the list of methods.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

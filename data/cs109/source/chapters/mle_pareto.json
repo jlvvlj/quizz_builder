@@ -1,0 +1,325 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You are creating artwork with different sized circles which follow a Pareto distribution: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Pareto}(\\alpha)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". A Pareto distribution is defined by a single parameter, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and has PDF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(x) = \\frac{\\alpha}{x^{\\alpha + 1}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You would like the alpha in your artwork to match that of sand in your local beach. You go to the beach and collect 100 particles of sand and measure their size. Call the measured radii ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x_1, x2, \\dots, x_{100}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "observations = [1.677, 3.812, 1.463, 2.641, 1.256, 1.678, 1.157, \n  1.146, 1.323, 1.029, 1.238, 1.018, 1.171, 1.123, 1.074, 1.652, \n  1.873, 1.314, 1.309, 3.325, 1.045, 2.271, 1.305, 1.277, 1.114, \n  1.391, 3.728, 1.405, 1.054, 2.789, 1.019, 1.218, 1.033, 1.362, \n  1.058, 2.037, 1.171, 1.457, 1.518, 1.117, 1.153, 2.257, 1.022, \n  1.839, 1.706, 1.139, 1.501, 1.238, 2.53 , 1.414, 1.064, 1.097, \n  1.261, 1.784, 1.196, 1.169, 2.101, 1.132, 1.193, 1.239, 1.518, \n  2.764, 1.053, 1.267, 1.015, 1.789, 1.099, 1.25 , 1.253, 1.418, \n  1.494, 1.015, 1.459, 2.175, 2.044, 1.551, 4.095, 1.396, 1.262, \n  1.351, 1.121, 1.196, 1.391, 1.305, 1.141, 1.157, 1.155, 1.103, \n  1.048, 1.918, 1.889, 1.068, 1.811, 1.198, 1.361, 1.261, 4.093, \n  2.925, 1.133, 1.573] ",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Goal:",
+     "type": "text"
+    },
+    {
+     "text": " derive a formula for the MLE estimate of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " based on the data you have collected.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Writing the Log Likelihood Function",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The first major objective in MLE is to come up with a likelihood expression for our data. To do so we start by writing how likely our dataset looks, in terms of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    L(\\alpha) = f(x_1, \\dots, x_{100} \\mid \\alpha) = \\prod_{i=1}^{100} \\frac{\\alpha}{x_i^{\\alpha + 1}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Optimization will be much easier if, instead of directly optimizing this likelihood, we instead try to optimize the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "log",
+     "type": "text"
+    },
+    {
+     "text": " likelihood: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    LL(\\alpha) = \\text{log}L(\\alpha) &= \\text{log} \\left( \\prod_{i=1}^{100} \\frac{\\alpha}{x_i^{\\alpha + 1}} \\right) \\\\\n                                    &= \\sum_{i=1}^{100} \\text{ log} \\left(  \\frac{\\alpha}{x_i^{\\alpha + 1}} \\right) \\\\\n                                    &= \\sum_{i=1}^{100} \\text{ log } \\alpha - (\\alpha + 1) \\text{ log } x_i \\\\\n                                    &= 100 \\text{ log } \\alpha - (\\alpha + 1) \\sum_{i=1}^{100} \\text{ log } x_i\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Selecting the Best ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are going to select ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the value which maximizes the log likelihood. To do so we are going to need the derivative of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "LL(\\alpha)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " w.r.t. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\frac{\\partial LL(\\alpha)}{\\partial \\alpha} &= \\frac{\\partial}{\\partial \\alpha} \\left( 100 \\text{ log } \\alpha - (\\alpha + 1) \\sum_{i=1}^{100} \\text{ log } x_i \\right) \\\\\n    &= \\frac{100}{\\alpha} - \\sum_{i=1}^{100} \\text{ log } x_i\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One way to optimize is to take the derivative and set it equal to zero:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    0 &= \\frac{100}{\\alpha} - \\sum_{i=1}^{100} \\text{ log } x_i \\\\\n    \\sum_{i=1}^{100} \\text{ log } x_i &= \\frac{100}{\\alpha} \\\\\n    \\alpha &= \\frac{100}{\\sum_{i=1}^{100} \\text{ log } x_i} \\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At this point we have a formula that we can use to calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Wahoo!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting It Into Code",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import math\n\ndef estimate_alpha(observations):\n    # This code computes the MLE estimate of alpha\n    log_sum = 0\n    for x_i in observations:\n        log_sum += math.log(x_i)\n    n = len(observations)\n    return n / log_sum\n\ndef main():\n    observations = [1.677, 3.812, 1.463, 2.641, 1.256, 1.678, 1.157, 1.146, \n      1.323, 1.029, 1.238, 1.018, 1.171, 1.123, 1.074, 1.652, 1.873, 1.314, \n      1.309, 3.325, 1.045, 2.271, 1.305, 1.277, 1.114, 1.391, 3.728, 1.405, \n      1.054, 2.789, 1.019, 1.218, 1.033, 1.362, 1.058, 2.037, 1.171, 1.457, \n      1.518, 1.117, 1.153, 2.257, 1.022, 1.839, 1.706, 1.139, 1.501, 1.238, \n      2.53 , 1.414, 1.064, 1.097, 1.261, 1.784, 1.196, 1.169, 2.101, 1.132, \n      1.193, 1.239, 1.518, 2.764, 1.053, 1.267, 1.015, 1.789, 1.099, 1.25 , \n      1.253, 1.418, 1.494, 1.015, 1.459, 2.175, 2.044, 1.551, 4.095, 1.396, \n      1.262, 1.351, 1.121, 1.196, 1.391, 1.305, 1.141, 1.157, 1.155, 1.103, \n      1.048, 1.918, 1.889, 1.068, 1.811, 1.198, 1.361, 1.261, 4.093, 2.925, \n      1.133, 1.573]\n    alpha = estimate_alpha(observations)\n    print(alpha)\n\nif __name__ == '__main__':\n    main()",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  }
+ ],
+ "type": "doc"
+}

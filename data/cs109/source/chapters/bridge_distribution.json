@@ -1,0 +1,787 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Bridge is one of the most popular collaborative card games. It is played with four players in two teams. A few interesting probability problems come up in this game. You do not need to know the rules of bridge to follow this example. I focus on a set of probability problems which are most important for game strategy.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Distribution of Hand Strength",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The way folks play bridge is that they make a calculation about their \"hand strength\" and then make decisions based off that number. The strength of your hand is a number which is equal to 4 times the number of \"aces\", 3 times the number of \"kings\", 2 times the number of \"queens\" and 1 times the number of \"jacks\" in your hand. No other cards contribute to your hand strength. Each player has 13 cards in their hand. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's look at hand strength as a random variable. It seems complex to compute from first principles -- but perhaps we could run a simulation? Here we simulate a million deals of bridge hands and calculate the hand strengths. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the strength of a hand. From the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/fall25/probability",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Definition of Probability",
+     "type": "text"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X=x) \\approx \\frac{\\text{count}(x)}{100000}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1250,
+    "sourceSha256": "5b6dbb602a15700941ac452a3f8381071552662c75472ddf2b9b22e4af0d1460"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Wait! Is that a Poisson?",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "This PMF looks a lot little bit like a poisson PMF with rate ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda = 10"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". There is a nice explanation for why the rate might be 10. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the value of your hand. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the points of the ith card in your hand, which has 13 cards:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nH = \\sum_{i=1}^{13} X_i\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "First we compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\E[X_i]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the expectation of points for the ith card in your hand — without considering the other cards . A card can take on four non zero values ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_i \\in \\{1, 2, 3, 4\\}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". For each value there are four cards out of 52 with that value, eg  ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(X_i=1) = \\frac{4}{52}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Thus",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X_i] &= \\sum_x x \\cdot \\p(X_i=x) \\\\\n&= (1+2+3+4)\\frac{1}{13} \\\\\n&= \\frac{10}{13}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We can then calculate ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\E[H]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " by using the fact that the expectation of the sum of random variables is the sum of expectations, regardless of independence:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[H]\n&= \\sum_{i=1}^{13} \\E[X_i] \\\\\n&= 13 \\cdot \\E[X_i] \\\\\n&= 13 \\cdot \\frac{10}{13} \\\\\n&= 10\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "However, it turns out that the variance of hand strength we learned from simulation is not 10 (its closer to 12). As you may recall for a poisson the expectation should equal variance. As such this looks like a Poisson, but it is not a Poisson.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Joint Distribution of Hand Strength Among Two Hands",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What really matters in bridge is the strength of your hand ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "text": " your partner's hand (recall that in Bridge you play with a partner). We know that the two hands are not independent of each other. If I tell you that your partner has a strong hand, that means there are fewer \"high value\" cards that can be in your hand, and as such my belief in your strength has changed. If you think about each player's hand strength as a random variable, we care about the joint distribution of hand strength. In the joint distribution below the x-axis is your partner's hand strength and on the y-axis is your hand strength. The value is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(\\text{Partner} = x, \\text{YourPoints} = y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This joint distribution was calculated by simulating a million randomly dealt hands:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 4864,
+    "sourceSha256": "671e9074b67486ad2d030adebf18a467e9ed7fbda774468fea5f552ff0e27b63"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "From this joint distribution we can compute conditional probabilities. For example we can compute the conditional distribution of your partner's points given your points using lookups from the joint:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(&\\text{Partner} = x | \\text{YourPoints} = y) \\\\\n&= \\frac\n{ \\p(\\text{Partner} = x, \\text{YourPoints} = y) }\n{\\p(\\text{YourPoints} = y)}\n&& \\text{Cond. Prob.}\n\\\\\n&= \\frac\n{ \\p(\\text{Partner} = x, \\text{YourPoints} = y) }\n{\\sum_z \\p(\\text{Partner} = z, \\text{YourPoints} = y)}\n&& \\href{ {{pathToLang}}part1/law_total/}{\\text{LOTP} }\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a working demo of the result:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 5712,
+    "sourceSha256": "91f16e8ee842f243ebc94e6b7c0f8e09c8bee083cb74b8897bd5ed946a68f8b3"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Distribution of Suit Splits",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When playing the game there are many times when one player will know exactly how many cards there are of a certain suit between their two opponents' hands (call the opponents A and B). However, the player won't know the \"split\": how many of that particular suit are in opponent A's hand and how many cards of that suit are in opponent B's hand.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Both opponents have equal sized ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/glossary_of_card_game_terms",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "hands",
+     "type": "text"
+    },
+    {
+     "text": " with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards left. Across the two hands there are a known number of cards of a particular suit (eg spades) ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and you want to know how many are in one hand and how many cards of that suit are in the other.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A few notes: If there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards in each of the 2 hands there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards total between the two players. At the start of a game of bridge ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=13"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It must be the case that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n \\leq 2k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " because you can't have more cards of the suit left than the number of cards! If there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of a suit, then there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2k - n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of other suits. This problem assumes that the cards are properly shuffled.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Probability of different splits of the suit:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable representing the number of the suit in opponent A's hand. We can calculate the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " equals different values ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " by counting equally likely outcomes.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(Y = i) = \\frac\n{ {n \\choose i} \\cdot {2\\cdot k-n \\choose k-i} }\n{ {2\\cdot k \\choose k}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each outcome in the sample set is a chosen set of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " distinct cards to be dealt to one player (out of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards). To create an outcome in the event space we first choose the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards from the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " cards of the given suit. We then choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k-i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the cards of other suits. For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k = 13"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " here is the PMF over splits:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we want to think about the probability of a given split, it is sufficient to choose one hand (call it \"hand one\"). If I tell you how many of a suit are in one hand, you can automatically figure out how many of the suit are in the other hand: recall that the number of the suit sums to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Probability that either hand has at least ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " cards of suit",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable representing the highest number of cards of the suit in either hand. We can calculate the probability by using probability of or.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X \\geq j) = 1 - \\sum_{i=n-j+1}^{j - 1}\\p(Y= i)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Demo",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 4342,
+    "sourceSha256": "1bd30f65eb41bb3abdff16b1e38270dc0d959010fb1e3248170b1fcdf845672f"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

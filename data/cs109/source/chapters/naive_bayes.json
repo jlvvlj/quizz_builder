@@ -1,0 +1,525 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Naïve Bayes is a Machine Learning algorithm for the 'classification task'. It makes the substantial assumption (called the Naïve Bayes assumption) that all features are independent of one another, given the classification label. This assumption is wrong, but allows for a fast and quick algorithm that is often useful. In order to implement Naïve Bayes you will need to learn how to train your model and how to use it to make predictions, once trained.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Training (aka Parameter Estimation)",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The objective in training is to estimate the probabilities ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X_i | Y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for all ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "0 < i \\leq m"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " features. We use the symbol ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{p}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to make it clear that the probability is an estimate.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using an MLE estimate:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n     \\hat{p}(X_i = x_i \\mid Y = y) = \\frac{ (\\text{\\# training examples where $X_i = x_i$ and $Y = y$})}{(\\text{\\# training examples where $Y = y$})}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using a Laplace MAP estimate:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n     \\hat{p}(X_i = x_i \\mid Y = y) = \\frac{ (\\text{\\# training examples where $X_i = x_i$ and $Y = y$}) + 1 }{(\\text{\\# training examples where $Y = y$}) + 2}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The prior probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " trained using an MLE estimate:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n     \\hat{p}(Y = y) = \\frac{ (\\text{\\# training examples where $Y = y$})}{(\\text{\\# training examples})}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Prediction",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For an example with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x} = [x_1, x_2, \\dots , x_m]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", estimate the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n     \\hat{y} &= \\argmax_{y = \\{0, 1\\}} \\;\\log \\hat{p}(Y = y) + \\sum_{i=1}^m \\log \\hat{p}(X_i = x_i \\mid Y = y)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that for small enough datasets you may not need to use the log version of the argmax.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Theory",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the world of classification when we make a prediction we want to choose the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that maximizes ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(Y = y \\mid \\mathbf{X})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\hat{y} \n    &= \\argmax_{y = \\{0, 1\\}} P(Y = y\\mid\\mathbf{X} = \\mathbf{X}) \\\\\n    &\\quad= \\argmax_{y = \\{0, 1\\}}  \\frac{P(Y=y)P(\\mathbf{X} =\\mathbf{x}\\mid Y = y)}{P(\\mathbf{X} =\\mathbf{x})} \\\\\n    &\\quad= \\argmax_{y = \\{0, 1\\}} P(Y=y)P(\\mathbf{X} =\\mathbf{x}\\mid Y = y) \\quad\\text{(since $P(\\mathbf{X} =\\mathbf{x})$ is constant w.r.t. $Y$)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using our training data we could interpret the joint distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{X}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as one giant multinomial with a different parameter for every combination of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{X} = \\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y = y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If for example, the input vectors are only length one. In other words ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|\\mathbf{x}| = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and the number of values that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can take on are small, say binary, this is a totally reasonable approach. We could estimate the multinomial using MLE or MAP estimators and then calculate argmax over a few lookups in our table.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The bad times hit when the number of features becomes large. Recall that our multinomial needs to estimate a parameter for every unique combination of assignments to the vector ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and the value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|\\mathbf{x}| = n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " binary features then this strategy is going to take order ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathcal{O}(2^n)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " space and there will likely be many parameters that are estimated without any training data that matches the corresponding assignment.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Naïve Bayes Assumption",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The Naïve Bayes Assumption is that each feature of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mathbf{x}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is independent of one another given ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Naïve Bayes Assumption is wrong, but useful. This assumption allows us to make predictions using space and data which is linear with respect to the size of the features: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathcal{O}(n)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|\\mathbf{x}| = n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". That allows us to train and make predictions for huge feature spaces such as one which has an indicator for every word on the internet. Using this assumption the prediction algorithm can be simplified.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\hat{y} \n    &= \\argmax\\limits_{y = \\{0, 1\\}} \\;P(Y = y)P(\\mathbf{X} = \\mathbf{x}\\mid Y = y) \\\\ \n    &= \\argmax\\limits_{y = \\{0, 1\\}} \\; P(Y= y)\\prod_i P(X_i = x_i\\mid Y = y) \\\\ \n    &= \\argmax\\limits_{y = \\{0, 1\\}} \\; \\log P(Y = y)  + \\sum_i \\log P(X_i = x_i\\mid Y = y) \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the last step we leverage the fact that the argmax of a function is equal to the argmax of the log of a function. This algorithm is both fast and stable both when training and making predictions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

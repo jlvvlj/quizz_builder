@@ -1,0 +1,999 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Discrete",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Two discrete random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are called independent if:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(X=x,Y=y) = \\P(X=x)\\P(Y=y) \\text{ for all } x,y\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Intuitively: knowing the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " tells us nothing about the distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If two variables are not independent, they are called dependent. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(34, 34, 34)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "Corollary: If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(34, 34, 34)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(34, 34, 34)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " are independent discrete random variables, then",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X < x, Y < y) = P(X < x) \\, P(Y < y) \\quad \\text{for all } x, y.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Here is the proof:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X < x, Y < y)\n&= \\sum_{x' < x} \\sum_{y' < y} P(X = x', Y = y') \\\\[0.5em]\n&= \\sum_{x' < x} \\sum_{y' < y} P(X = x') \\, P(Y = y') \n    && \\text{(by independence)} \\\\[0.5em]\n&= \\left( \\sum_{x' < x} P(X = x') \\right)\n   \\left( \\sum_{y' < y} P(Y = y') \\right) \\\\[0.5em]\n&= P(X < x) \\, P(Y < y).\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "This is conceptually similar to independent events, but we are dealing with multiple ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "variables",
+     "type": "text"
+    },
+    {
+     "text": ". Make sure to keep your events and variables distinct.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Continuous",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Two continuous random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are called independent if:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(X\\leq a, Y \\leq b) = \\P(X \\leq a)\\P(Y \\leq b) \\text{ for all } a,b\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This can be stated equivalently using either the CDF or the PDF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nF_{X,Y}(a,b) &= F_{X}(a)F_{Y}(b) \\text{ for all } a,b \\\\\nf(X=x,Y=y) &= f(X=x)f(Y=y) \\text{ for all } x,y\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "More generally, if you can factor the joint density function then your random variables are independent (or the joint probability function for discrete random variables):",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n&f(X=x,Y=y) = h(x)g(y) \\\\\n&\\P(X=x,Y=y) = h(x)g(y)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "g"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represent any function! I intentionally didn't write ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(X=x,Y=y) = f(X=x)f(Y=y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as I wanted to make it clear that it is enough to factor the joint. You don't have to also show that the separated functions are in fact the marginal probability mass functions. In other words you don't have to show that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "h(x) = f(X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example: Showing Independence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the # of requests to a web server/day and that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N \\sim \\Poi(\\lambda)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Each request comes from a human with probability = ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " or from a \"bot\" with probability = ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "1-p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Define ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to be the # of requests from humans/day and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to be the # of requests from bots/day. Show that the number of requests from humans, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", is independent of the number of requests from bots, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Since requests come in independently, the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " conditioned on knowing the number of requests is a Binomial. Specifically:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n(X|N) &\\sim \\Bin(N,p)\\\\\n(Y|N) &\\sim \\Bin(N, 1-p)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "To get started we need to first write an expression for the joint probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". To do so, we use the chain rule:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X=x,Y=y) = \\P(X = x, Y=y|N = x+y)\\P(N = x+y)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We can calculate each term in this expression. The first term is the PMF of the binomial ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X|N"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " having ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " \"successes\". The second term is the probability that the Poisson ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " takes on the value ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x+y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n   &\\P(X = x, Y=y|N = x+y) = \\binom{x + y}{x}p^x(1-p)^y \\\\\n   &\\P(N = x + y) = e^{-\\lambda}\\frac{\\lambda^{x+y}}{(x+y)!}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Now we can put those together we have an expression for the joint:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n   &\\P(X = x, Y=y) = \\binom{x + y}{x}p^x(1-p)^y e^{-\\lambda}\\frac{\\lambda^{x+y}}{(x+y)!}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "At this point we have derived the joint distribution over ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". In order to show that these two are independent, we need to be able to factor the joint:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n   \\P&(X = x, Y=y) \\\\\n   &= \\binom{x + y}{x}p^x(1-p)^y e^{-\\lambda}\\frac{\\lambda^{x+y}}{(x+y)!} \\\\\n   &= \\frac{(x+y)!}{x! \\cdot y!} p^x(1-p)^y e^{-\\lambda}\\frac{\\lambda^{x+y}}{(x+y)!} \\\\\n   &= \\frac{1}{x! \\cdot y!} p^x(1-p)^y e^{-\\lambda}\\lambda^{x+y} \\quad\\quad \\text{(Cancel (x+y)!)} \\\\\n   &= \\frac{p^x \\cdot \\lambda^x}{x!} \\cdot \\frac{(1-p)^y \\cdot \\lambda^{y}}{y!}  \\cdot e^{-\\lambda} \\quad\\quad \\text{(Rearrange)} \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Because the joint can be factored into a term that only has ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and a term that only has ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the random variables are independent.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "symmetry-of-independence",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Symmetry of Independence",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Independence is symmetric. That means that if random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are independent, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This claim may seem meaningless but it can be very useful. Imagine a sequence of events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1,X_2, \\dots"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a \"record value\" (e.g. it is larger than all previous values). Is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_{n+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? It is easier to answer that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_{n+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". By symmetry of independence both claims must be true.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Expectation of Products",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Lemma: ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Product of Expectation for Independent Random Variables",
+       "type": "text"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If two random variables ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent, the expectation of their product is the product of the individual expectations.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n &E[X \\cdot Y] = E[X] \\cdot E[Y] \\quad\\quad \\text{ if } X \\text{ and } Y \\text{ are independent}\\\\\n &E[g(X)h(Y)] = E[g(X)]E[h(Y)] \\quad\\quad \\text{ where } g \\text{ and } h \\text{ are functions}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note that this assumes that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent. Contrast this to the sum version of this rule (expectation of sum of random variables is the sum of individual expectations) which does ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "not",
+       "type": "text"
+      },
+      {
+       "text": " require the random variables to be independent.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

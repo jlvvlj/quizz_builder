@@ -33,14 +33,7 @@ export default function Sidebar({ onOpenSettings, onLogout }: SidebarProps) {
 
     const items: Item[] = [
         { label: 'Home', icon: Home, href: '/', matchPrefix: '/', mobile: true },
-        { label: 'Quizz', icon: Layers, href: '/jalingo', matchPrefix: '/jalingo', mobile: true },
-        { label: 'Courses', icon: BookOpen, href: '/home', matchPrefix: '/home', mobile: true },
-        { label: 'Anime', icon: Tv, href: '/anime', matchPrefix: '/anime', mobile: true },
-        { label: 'Custom', icon: Youtube, href: '/custom', matchPrefix: '/custom', mobile: true },
-        { label: 'Review', icon: Clock, href: '/review', matchPrefix: '/review' },
-        { label: 'Achievements', icon: Trophy, href: '/achievements', matchPrefix: '/achievements' },
-        { label: 'Subscription', icon: CreditCard, href: '/subscription', matchPrefix: '/subscription' },
-        { label: 'Help', icon: HelpCircle, href: '/help', matchPrefix: '/help' },
+        { label: 'Learning decks', icon: BookOpen, href: '/home', matchPrefix: '/home', mobile: true },
         { label: 'Settings', icon: Settings, onClick: onOpenSettings, mobile: true },
         { label: 'Logout', icon: LogOut, onClick: onLogout, mobile: true },
     ];
@@ -132,9 +125,9 @@ export default function Sidebar({ onOpenSettings, onLogout }: SidebarProps) {
                 className="group fixed top-0 left-0 z-30 hidden md:flex h-screen w-16 hover:w-56 flex-col bg-[#1F1F1F] text-white border-r border-[#4F4F4F] transition-all duration-200 overflow-hidden"
             >
                 <div className="flex h-16 items-center px-4 border-b border-[#4F4F4F]">
-                    <span className="text-xl font-bold whitespace-nowrap text-[#FF0054]">J</span>
+                    <span className="text-xl font-bold whitespace-nowrap text-[#FF0054]">Q</span>
                     <span className="ml-2 text-lg font-semibold whitespace-nowrap text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                        Jalingo
+                        Quizz
                     </span>
                 </div>
 

@@ -1,0 +1,979 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The single most important random variable type is the Normal (aka Gaussian) random variable, parametrized by a mean (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") and variance (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), or sometimes equivalently written as mean and variance (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a normal variable we write ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim N(\\mu, \\sigma^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The normal is important for many reasons: it is generated from the summation of independent random variables and as a result it occurs often in nature. Many things in the world are not distributed normally but data scientists and computer scientists model them as Normal distributions anyways. Why? Because it is the most entropic (conservative) modeling decision that we can make for a random variable while still matching a particular expectation (average value) and variance (spread).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Probability Density Function (PDF) for a Normal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim N(\\mu, \\sigma^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f_X(x) = \\frac{1}{\\sigma \\sqrt{2\\pi} } e ^{\\frac{-(x-\\mu)^2}{2\\sigma^2}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Notice the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the exponent of the PDF function. When ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is equal to the mean (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "e"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is raised to the power of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and the PDF is maximized.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "By definition a Normal has ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[X] = \\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Var}(X) = \\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There is no closed form for the integral of the Normal PDF, and as such there is no closed-form CDF. However, we can use a transformation of any Normal to a Normal with a pre-computed CDF. The result of this mathematical gymnastics is that the CDF for a Normal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim N(\\mu, \\sigma^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    F_X(x) = \\Phi\\left(\\frac{x - \\mu}{\\sigma}\\right)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\Phi"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a pre-computed function that represents that CDF of the Standard Normal.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": null,
+      "level": "4",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Normal (Gaussian) Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 4418,
+      "sourceSha256": "cfc455a4958ee2f25c2f8f96daa57a7f9dce886f1a654f0222d342a473b84c58"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "linear-transform",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Linear Transform",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a Normal such that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim N(\\mu, \\sigma^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a linear transform of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " such that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y = aX + b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is also a Normal where:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    Y \\sim N(a\\mu + b, a^2\\sigma^2)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Projection to Standard Normal",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For any Normal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we can find a linear transform from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to the Standard Normal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z \\sim N(0, 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Note that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the typical notation choice for the Standard Normal. For any Normal, if you subtract the mean (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") of the Normal and divide by the standard deviation (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") the result is always the Standard Normal. We can prove this mathematically. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "W = \\frac{X - \\mu}{\\sigma}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nW &= \\frac{X -\\mu}{\\sigma} && \\text{ Transform X: Subtract by $\\mu$ and dividing by $\\sigma$} \\\\ \n  & = \\frac{1}{\\sigma}X - \\frac{\\mu}{\\sigma} && \\text{ Use algebra to rewrite the equation}\\\\ \n  & = aX + b && \\text{ Linear transform where $a = \\frac{1}{\\sigma}$, $b = - \\frac{\\mu}{\\sigma}$ }\\\\ \n   &\\sim N(a\\mu + b, a^2\\sigma^2) && \\text{ The linear transform of a Normal is another Normal}\\\\ \n &\\sim N\\bigg(\\frac{\\mu}{\\sigma} - \\frac{\\mu}{\\sigma}, \\frac{\\sigma^2}{\\sigma^2}\\bigg) && \\text{ Substituting values in for $a$ and $b$}\\\\ \n &\\sim N(0, 1) && \\text{ The standard normal}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using this transform we can express ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F_X(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the CDF of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", in terms of the known CDF of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F_Z(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Since the CDF of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is so common it gets its own Greek symbol: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\Phi(x)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nF_X(x) &= P(X \\leq x) \\\\\n&= P\\left(\\frac{X - \\mu}{\\sigma} \\leq \\frac{x - \\mu}{\\sigma}\\right) \\\\\n&= P\\left(Z \\leq \\frac{x - \\mu}{\\sigma}\\right)\\\\\n&= \\Phi\\left(\\frac{x - \\mu}{\\sigma}\\right)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\Phi(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be looked up in a table. Every modern programming language also has the ability to calculate the CDF of a normal random variable!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Example: Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X\\sim \\mathcal{N}(3, 16)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", what is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(X > 0)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X > 0) &= P\\left(\\frac{X-3}{4} > \\frac{0-3}{4}\\right) = P\\left(Z > -\\frac{3}{4}\\right) = 1 - P\\left(Z \\leq -\\frac{3}{4}\\right)\\\\\n&= 1 - \\Phi\\left(-\\frac{3}{4}\\right) = 1 - (1- \\Phi\\left(\\frac{3}{4}\\right)) = \\Phi\\left(\\frac{3}{4}\\right) = 0.7734\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "What is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(2 < X < 5)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(2 < X < 5) &= P\\left(\\frac{2 - 3}{4} < \\frac{X-3}{4} < \\frac{5-3}{4}\\right) = P\\left(-\\frac{1}{4} < Z < \\frac{2}{4}\\right)\\\\\n&= \\Phi\\left(\\frac{2}{4}\\right)-\\Phi\\left(-\\frac{1}{4}\\right) = \\Phi\\left(\\frac{1}{2}\\right)-(1 - \\Phi\\left(\\frac{1}{4}\\right)) = 0.2902\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Example: You send voltage of 2 or -2 on a wire to denote 1 or 0. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " = voltage sent and let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "R"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " = voltage received. ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "R = X + Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\mathcal{N}(0, 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is noise. When decoding, if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "R \\geq 0.5"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " we interpret the voltage as 1, else 0. What is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "P(\\text{error after decoding}|\\text{original bit} = 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X + Y < 0.5) &= P(2 + Y < 0.5) \\\\\n&= P(Y < -1.5) \\\\\n&= \\Phi(-1.5) \\\\\n&\\approx 0.0668\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Example: The 67% rule of a normal within one standard deviation. What is the probability that a normal variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim N(\\mu, \\sigma)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " has a value within one standard deviation of its mean?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(\\text{Within one }\\sigma \\text{ of } \\mu) \n\\quad &= \\p(\\mu - \\sigma < X < \\mu + \\sigma)\n\\quad\\quad \\\\\n&= \\p(X < \\mu + \\sigma) - \\p(X < \\mu - \\sigma)\n\\quad\\quad\\quad\\quad && \\text{Prob of a range} \\\\\n&= \\Phi\\Big(\\frac{(\\mu + \\sigma)-\\mu}{\\sigma}\\Big) -\n\\Phi\\Big(\\frac{(\\mu - \\sigma)-\\mu}{\\sigma}\\Big)\n\\quad\\quad&& \\text{CDF of Normal} \\\\\n&= \\Phi\\Big(\\frac{\\sigma}{\\sigma}\\Big) -\n\\Phi\\Big(\\frac{- \\sigma}{\\sigma}\\Big)\n\\quad\\quad && \\text{Cancel $\\mu$s} \\\\\n&= \\Phi(1) -\n\\Phi(-1)\n\\quad\\quad&& \\text{Cancel $\\sigma$s} \\\\\n&\\approx 0.8413 - 0.1587 \\approx 0.683\n\\quad\\quad&& \\text{Plug into $\\Phi$}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We made no assumption about the value of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mu"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " or the value of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " so this will apply to every single normal random variable. Since it uses the Normal CDF this doesn't apply to other types of random variables. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "CDF Calculator",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To calculate the Cumulative Density Function (CDF) for a Normal (aka Gaussian) random variable at a value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", also written as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", you can transform your distribution to the “Standard Normal” and look up the corresponding value in the standard normal CDF. However, most programming libraries will provide a Normal CDF function, which does this lookup for you:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 2183,
+      "sourceSha256": "834d36afd2684e5eac66675dbc0c0e7e9318b106ac6d633b8bb85654d2450de5"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In python, you can calculate these values using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scipy",
+     "type": "text"
+    },
+    {
+     "text": " library:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\n\n# get the input values\nmean = 1.0\nstd_dev = 0.5\nquery = 0.1 # aka x\n\n# calc the CDF in two lines\nX = stats.norm(mean, std_dev)\np = X.cdf(query)\n\n# calc the CDF in one line\np = stats.norm.cdf(query, mean, std_dev)\n",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It is important to note that in the python library, the second parameter for the Normal distribution is standard deviation (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "not the variance ",
+     "type": "text"
+    },
+    {
+     "text": "(",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), as it is typically defined in math notation. Recall that standard deviation is the square root of variance.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

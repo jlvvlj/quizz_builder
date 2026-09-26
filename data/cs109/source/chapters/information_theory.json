@@ -1,0 +1,870 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Information theory is an incredibly powerful perspective which plays a central role in a ton of algorithms, including Decision Trees, the WordleBot, Adaptive Tests, Optimal Poker Play and even compression of data (like Huffman Encoding or even JPEG files)! The goal of this chapter is to balance showing off the awesome power of Information Theory while also keeping things as straightforward as possible. To that end, a great place to start is thinking about how you could write a bot that can play the question answering game of, “Think of an Animal”.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Think of an Animal!",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The game of “Think of an Animal” goes like this: The human is going to be thinking of an animal. We assume that the distribution of how often they choose an animal is known (based off how popular the animal is to four year olds).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "ef207e02-7035-4b59-b84e-fce8fd5946a3",
+    "naturalHeight": "1805",
+    "naturalWidth": "4280",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fef207e02-7035-4b59-b84e-fce8fd5946a3?alt=media&token=fd133f5c-4bb6-4355-9b8a-2e27c61cdd79",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The task of your algorithm is to select which question to ask next. Assume you are given a bank of yes or no questions which include classics like:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Is it a pet?",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Does it live in the water?",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Are you thinking of a dog?",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "bulletList"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Choosing a Best Question",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How can we choose the best question to ask? Consider a simplified game with five animals (Dog, Cat, Elephant, Bear and Monkey) and only two questions to choose from “Is it a pet?” and “Is it a Dog?” For each question we can use the Law of Total Probability to think through the probability the response will be “yes” or “no”. Even better! For each possible answer to each possible question, we can think through the resulting probability mass function over animals if we were to see that answer to that question:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "445fe55b-146e-4de7-ba13-203f5537f926",
+    "naturalHeight": "2085",
+    "naturalWidth": "3451",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F445fe55b-146e-4de7-ba13-203f5537f926?alt=media&token=a82e5ca1-2caf-462d-8f3c-69a0498aca95",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are so close! If we could only quantify how much uncertainty the four resulting probability mass functions have, we could simply choose the question that minimizes our expected uncertainty as to what animal the person is thinking of. This quantification of uncertainty is formally called “Entropy” and it is the key concept in Information Theory.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Measure of Uncertainty from a High Level",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be any random variable. A very elegant way to quantify how much uncertainty the Probability Mass Function of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represents is to think through all the values that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " could take on and for each value calculate how surprised you would be if it turned out that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in fact took on that value. If you calculate a weighted sum over these surprise values, you would get the expected Surprise of the random variable",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n&\\text{Uncertainty}(X) \\\\\n&= E[\\text{Surprise}(X)] \\\\\n&= \\sum_x \\text{Surprise}(x) \\cdot P(X=x)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That is the big idea! The main remaining todo is to define what we mean by “Surprise” of an event.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Measure of Surprise of an Event",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How should we quantify the degree to which we would be surprised if we were told that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " took on the value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? There are many ways one could quantify Surprise, all of which are based on the probability of the event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Here are three reasonable Surprise functions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "d135532d-af0e-4458-996d-a7346ab91a3d",
+    "naturalHeight": "1265",
+    "naturalWidth": "4221",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fd135532d-af0e-4458-996d-a7346ab91a3d?alt=media&token=5ac20dc0-ca03-4af1-9add-82637ae17d2f",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "All of these functions hit the following desiderata:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Low probability events are surprising",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "High probability events are not surprising",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Surprise is a monotonically decreasing function of probability",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "bulletList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For many reasons, Information Theory defines Surprise using a variation of the middle equation ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Surprise}(E) = \\log_2 \\frac{1}{P(E)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Looking at the relationship between ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Surprise}(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we can observe some of those intuitive relationships:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 978,
+    "sourceSha256": "ea02eb71d260804e38896dcb4eb16cd99d5e61b419f0bb0c9922530988a97a39"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If an event with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E) = 1/16"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " were to occur we would be four times as “Surprised” as if an event with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E) = 1/2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " were to occur. That feels nice!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Surprise of an Event (Information Content)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The information content, also called the surprisal or self-information, of an event E is a function which increases as the probability of an event decreases. When the probability is close to 1, the surprisal of the event is low, but if the probability is close to 0, the surprisal of the event occurring is high. This relationship is described by the function:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Surprise}(E) = \\log_2 \\Big(\\frac{1}{\\p(E)} \\Big)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This can be written (in a more confusing way) as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Surprise}(E) &= \\log_2 \\Big(\\frac{1}{\\p(E)} \\Big)  \\\\\n&= \\log_2 \\p(E)^{-1} \\\\\n&= -\\log_2 \\p(E)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In the initial definition of Surprise of an Event, the function name ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "I"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " was used as shorthand for Surprise. ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "I"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " stands for “Information Content” or “Self Information”, two other names for Surprise of an event.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many other stories that we could tell for why ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\log_2 \\frac{1}{\\p(E)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a great choice for our measure of Surprise. Claude Shannon, the father of information theory, chose the base 2 logarithm because it would allow you to express your amount of surprise in bits (as in 0, 1 values used in a computer). Information theory has many applications, but it was first invented when he was trying to come up with a way to optimally compress text based data!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Uncertainty of a Random Variable (Entropy)",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now that we have a formal definition of Surprise we can revisit the computation of Uncertainty of a random variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Uncertainty of an Random Variable (Entropy)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be our measure of how much uncertainty we have about a random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Define ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to be the expected surprise of observing the assignment to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H(X) = E[\\text{Surprise}(X)]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Using the Law of Unconscious Statistician, and the definition of Surprise of an event, we can expand out the formula for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nH(X) = \\sum_{x \\in X} \\log_2 \\Big(\\frac{1}{\\p(X=x)}\\Big) \\cdot \\p(X=x)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Uncertainty (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "H"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ") can also be rewritten (in a more confusing way) as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{H}(X)\n&= \\sum_{x \\in X} \\text{Surprise}(X=x) \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} \\log_2 \\frac{1}{P(X=x)} \\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} \\log_2 P(X=x) ^{-1}\\cdot P(X=x) \\\\\n&= \\sum_{x \\in X} - \\log_2 P(X=x)\\cdot P(X=x) \\\\\n&= - \\sum_{x \\in X} \\log_2 P(X=x)\\cdot P(X=x) \\\\\n&= - \\sum_{x \\in X} \\log_2 P(X=x)\\cdot P(X=x)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is code that calculates the Uncertainty (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") of a random variable, based on its probability mass function:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import numpy as np\n\ndef calc_uncertainty(pmf):\n    \"\"\"\n    Calculate how much uncertainty is represented by this \n    probability mass function. Also known as the Entropy of a\n    random variable, H(X).\n    \"\"\"\n    uncertainty = 0\n    for x in pmf:\n        p_x = pmf[x]\n        # skip zero probabilities\n        if p_x == 0: continue\n        surprise_x = np.log2(1/p_x)\n        uncertainty += surprise_x * p_x\n    return uncertainty",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We now have all the theoretical tools we need to select our best question in the game of “Think of an Animal”. For each possible resulting Probability Mass Function, we can calculate the Uncertainty (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") of that PMF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The question “Is it a pet?” has an expected uncertainty of 1.3. The question “Is it a Dog?” has an expected uncertainty of 1.7. As such we would be less uncertain about what animal our friend is thinking about, in expectation, if we were to ask the question “Is it a pet?”",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This is one of many applications of Information Theory!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

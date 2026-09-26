@@ -1,0 +1,587 @@
+{
+ "content": [
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Data = [6.47, 5.82, 8.7, 4.76, 7.62, 6.95, 7.44, 6.73, 3.38, 5.89, 7.81, 6.93, 7.23, 6.25, 5.31, 7.71, 7.42, 5.81, 4.03, 7.09, 7.1, 7.62, 7.74, 6.19, 7.3, 7.37, 6.99, 2.97, 3.3, 7.08, 6.23, 3.67, 3.05, 6.67, 6.5, 6.08, 3.7, 6.76, 6.56, 3.61, 7.25, 7.34, 6.27, 6.54, 5.83, 6.44, 5.34, 7.7, 4.19, 7.34]",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Histogram of Data",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 986,
+    "sourceSha256": "6ea0582dcb74fe16bdfac15a29c7b2bd36e0ed64fda87f891b2c7f7e2bd9c505"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 5452,
+    "sourceSha256": "5661ccd952b41b0ebb6acbdd2e9859c1d42d401b94cb4be8e5e7397e02ddbf08"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": "what-is-a-gaussian-mixture",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is a Gaussian Mixture?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A Gaussian Mixture describes a random variable whose PDF could come from one of two Gaussians (or more, but we will just use two in this demo). There is a certain probability the sample will come from the first Gaussian, otherwise it comes from the second. It has five parameters: 4 to describe the two Gaussians and one to describe the relative weighting of the two Gaussians.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is some Python code to generate data from a Gaussian Mixture:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\ndef sample():\n   # choose group membership\n   membership = stats.bernoulli.rvs(0.2)\n   if membership == 1:\n      # sample from gaussian 1\n      return stats.norm.rvs(3.5,0.7)\n   else:\n      # sample from gaussian 2\n      return stats.norm.rvs(6.8,0.7)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "4",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Probability Density Function:",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nf(X=x) = t \\cdot f(A=x) + (1-t) \\cdot f(B=x) & \\quad & \\quad \\text{ such that } A \\sim N(\\mu_a, \\sigma_a^2), B \\sim N(\\mu_b, \\sigma_b^2)  \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting it all together, the PDF of a Gaussian Mixture is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nf(x) = t \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_a} e^{-\\frac{1}{2}\\big(\\frac{x-\\mu_a}{\\sigma_a}\\big)^2}\\Big)\n\n+ (1-t) \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_b} e^{-\\frac{1}{2}\\big(\\frac{x-\\mu_b}{\\sigma_b}\\big)^2}\\Big)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "mle-for-gaussian-mixturespecial-note-even-though-the-generative-story-has-a-bernoulli-group-membership-it-is-never-observed-mle-maximizes-the-likelihood-of-the-observed-data",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "MLE for Gaussian Mixture",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Special note: even though the generative story has a Bernoulli (group membership) it is never observed. MLE maximizes the likelihood of the observed data.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\vec{\\theta}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = [",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "t"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma_b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "] be the parameters. Because the math will get long I will use ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as notation in place of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\vec{\\theta}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Just keep in mind that it is a vector.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Likelihood function:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nL(\\theta) &= \\prod_i^n f(x_i | \\theta) \\\\\n&= \\prod_i^n \\Big[t \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_a} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}\\Big)\n+ (1-t) \\cdot\\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_b} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_b}{\\sigma_b}\\big)^2}\\Big)\\Big]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Log Likelihood function:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nLL(\\theta) \\;=\\; \\log L(\\theta) \\;=\\; \\log \\prod_i^n f(x_i | \\theta) \\;=\\;  \\sum_i^n \\log f(x_i | \\theta)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That is sufficient for now, but if you wanted to expand out the term you would get:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nLL(\\theta)  &= \\sum_i^n \\log  \\Big[t \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_a} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}\\Big)\n+ (1-t) \\cdot\\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_b} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_b}{\\sigma_b}\\big)^2}\\Big)\\Big]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example of calculating a partial derivative with respect to one of the parameters, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You would need a derivative like this for all parameters.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Caution: When I first wrote this demo I thought it would be a simple derivative. It is not so simple because the log has a sum in it. As such the log term doesn't reduce. The log still serves to make the outer ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\prod"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " into a ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sum"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". As such the LL partial derivatives are solvable, but the proof uses quite a lot of chain rule.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Takeaway: The main takeaway from this section (in case you want to skip the derivative proof) is that the resulting derivative is complex enough that we will want a way to compute argmax without having to set that derivative equal to zero and solving for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mu_a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Enter gradient descent!",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A good first step when doing a huge derivative of a log likelihood function is to think of the derivative for the log of likelihood of a single datapoint. This is the inner sum in the log likelihood expression:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} \\log f(x_i|\\theta)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Before we start:  notice that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " does not show up in this term from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(x_i|\\theta)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": (1-t) ⋅ ( (1)/(√(2π)σᵦ) e^(-1/2((xᵢ-μ_b)/σᵦ)² ) ) = K. In the proof, when we encounter this term, we are going to think of it as a constant which we call K. Ok, let's go for it!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} & \\log f(x_i|\\theta) \\\\\n&= \\frac{1}{f(x_i|\\theta)} \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} f(x_i|\\theta) \\\\ \n&= \\frac{1}{f(x_i|\\theta)} \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} \\Big[t \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_a} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}\\Big)\n+ K\\Big]  \\\\ \n&= \\frac{1}{f(x_i|\\theta)} \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} \\Big[t \\cdot \\Big(\\frac{1}{\\sqrt{2\\pi}\\sigma_a} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}\\Big)\\Big]  \\\\ \n&= \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a} \\cdot \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}  \\\\ \n&= \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a} \\cdot  e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2} \\cdot \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} \\Big[-\\frac{1}{2}\\Big(\\frac{x_i-\\mu_a}{\\sigma_a}\\Big)^2\\Big] \\\\ \n&= \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a} \\cdot  e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2}  \\cdot \\Big[-\\Big(\\frac{x_i-\\mu_a}{\\sigma_a}\\Big) \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a} \\Big(\\frac{x_i-\\mu_a}{\\sigma_a}\\Big)\\Big] \\\\ \n&= \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a} \\cdot  e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2} \\cdot \\Big[ -\\Big(\\frac{x_i-\\mu_a}{\\sigma_a}\\Big) \\cdot \\frac{-1}{\\sigma_a}\\Big]  \\\\ \n&= \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a^3} \\cdot  e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2} \\cdot (x_i-\\mu_a)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That was for a single data-point. For the full dataset:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} \\mu_a} \n&=  \\sum_i^n \\frac{\\mathrm{d}}{\\mathrm{d} \\mu_a}  \\log f(x_i|\\theta)\\\\\n&= \\sum_i^n \\frac{t}{f(x_i|\\theta) \\sqrt{2\\pi}\\sigma_a^3} \\cdot  e^{-\\frac{1}{2}\\big(\\frac{x_i-\\mu_a}{\\sigma_a}\\big)^2} \\cdot (x_i-\\mu_a)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This process should be repeated for all five parameters! Now, how should we find a value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which, in the presence of the other settings to parameters, and the data, makes this derivative zero? Setting the derivative = 0 and solving for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu_a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is not going to work.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Use an Optimizer to Estimate Parameters",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Once we have a ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "LL"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " function and the derivative of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "LL"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with respect to each parameter we are ready to compute argmax using an optimizer. In this case the best choice would probably be gradient ascent (or gradient descent with negative log likelihood).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\nabla_{\\theta} LL(\\theta)\n&=\\begin{bmatrix}\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} t}\\\\\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} \\mu_a}\\\\\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} \\mu_b}\\\\\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} \\sigma_a}\\\\\n\\frac{\\mathrm{d} LL(\\theta)}{\\mathrm{d} \\sigma_b}\\\\\n\\end{bmatrix}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

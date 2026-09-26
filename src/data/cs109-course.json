@@ -1,0 +1,567 @@
+{
+  "courseId": "cs109",
+  "title": "Probability for Computer Scientists",
+  "subtitle": "Stanford CS109 course reader",
+  "source": {
+    "url": "https://probabilitycoders.stanford.edu/spr26/probability",
+    "book": "cs109-spr26",
+    "fetchedAt": "2026-09-26T04:28:35+00:00"
+  },
+  "parts": [
+    {
+      "deckId": "cs109-part-1",
+      "number": 1,
+      "key": "core",
+      "title": "Core Probability",
+      "chapters": [
+        {
+          "id": "probability",
+          "title": "Probability",
+          "available": true
+        },
+        {
+          "id": "equally_likely",
+          "title": "Equally Likely Outcomes",
+          "available": true
+        },
+        {
+          "id": "axioms",
+          "title": "Axioms of Probability",
+          "available": true
+        },
+        {
+          "id": "prob_or",
+          "title": "Probability of “or”",
+          "available": true
+        },
+        {
+          "id": "cond_prob",
+          "title": "Conditional Probability",
+          "available": true
+        },
+        {
+          "id": "law_total",
+          "title": "Law of Total Probability",
+          "available": true
+        },
+        {
+          "id": "bayes_theorem",
+          "title": "Bayes' Theorem",
+          "available": true
+        },
+        {
+          "id": "independence",
+          "title": "Independence",
+          "available": true
+        },
+        {
+          "id": "prob_and",
+          "title": "Probability of “and”",
+          "available": true
+        },
+        {
+          "id": "demorgans",
+          "title": "De Morgan's Law",
+          "available": true
+        },
+        {
+          "id": "log_probabilities",
+          "title": "Log Probabilities",
+          "available": true
+        },
+        {
+          "id": "many_flips",
+          "title": "Many Coin Flips",
+          "available": true
+        },
+        {
+          "id": "counting",
+          "title": "Counting",
+          "available": true
+        },
+        {
+          "id": "combinatorics",
+          "title": "Combinatorics",
+          "available": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "bacteria_evolution",
+          "title": "Bacteria Evolution",
+          "available": true
+        },
+        {
+          "id": "pr_rain_city",
+          "title": "Google Rain Prediction",
+          "available": true
+        },
+        {
+          "id": "random_walks",
+          "title": "Random Walks",
+          "available": true
+        },
+        {
+          "id": "binomial_diff_p",
+          "title": "Binomial with Different Probs",
+          "available": true
+        },
+        {
+          "id": "netflix_genres",
+          "title": "Netflix Genres",
+          "available": true
+        },
+        {
+          "id": "poker",
+          "title": "Poker",
+          "available": true
+        },
+        {
+          "id": "beamsearch",
+          "title": "Beam Search",
+          "available": false
+        },
+        {
+          "id": "serendipity",
+          "title": "Serendipity",
+          "available": true
+        },
+        {
+          "id": "monty_hall",
+          "title": "Monty Hall",
+          "available": true
+        },
+        {
+          "id": "server_example",
+          "title": "Router Example",
+          "available": true
+        }
+      ]
+    },
+    {
+      "deckId": "cs109-part-2",
+      "number": 2,
+      "key": "rvs",
+      "title": "Random Variables",
+      "chapters": [
+        {
+          "id": "rvs",
+          "title": "Random Variables",
+          "available": true
+        },
+        {
+          "id": "pmf",
+          "title": "Probability Mass Functions",
+          "available": true
+        },
+        {
+          "id": "expectation",
+          "title": "Expectation",
+          "available": true
+        },
+        {
+          "id": "variance",
+          "title": "Variance",
+          "available": true
+        },
+        {
+          "id": "bernoulli",
+          "title": "Bernoulli Distribution",
+          "available": true
+        },
+        {
+          "id": "binomial",
+          "title": "Binomial Distribution",
+          "available": true
+        },
+        {
+          "id": "poisson",
+          "title": "Poisson Distribution",
+          "available": true
+        },
+        {
+          "id": "more_discrete",
+          "title": "More Discrete Distributions",
+          "available": true
+        },
+        {
+          "id": "categorical",
+          "title": "Categorical Distributions",
+          "available": true
+        },
+        {
+          "id": "continuous",
+          "title": "Continuous Distributions",
+          "available": true
+        },
+        {
+          "id": "uniform",
+          "title": "Uniform Distribution",
+          "available": true
+        },
+        {
+          "id": "exponential",
+          "title": "Exponential Distribution",
+          "available": true
+        },
+        {
+          "id": "normal",
+          "title": "Normal Distribution",
+          "available": true
+        },
+        {
+          "id": "binomial_approx",
+          "title": "Binomial Approximation",
+          "available": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "100_binomial_problems",
+          "title": "Many Binomial Problems",
+          "available": true
+        },
+        {
+          "id": "winning_series",
+          "title": "Winning Series",
+          "available": true
+        },
+        {
+          "id": "approximate_counting",
+          "title": "Approximate Counting",
+          "available": true
+        },
+        {
+          "id": "jury",
+          "title": "Jury Selection",
+          "available": true
+        },
+        {
+          "id": "grading_eye_inflammation",
+          "title": "Grading Eye Inflamation",
+          "available": true
+        },
+        {
+          "id": "grades_not_normal",
+          "title": "Grades are Not Normal",
+          "available": true
+        },
+        {
+          "id": "curse_of_dimensionality",
+          "title": "Curse of Dimensionality",
+          "available": true
+        },
+        {
+          "id": "algorithmic_art",
+          "title": "Algorithmic Art",
+          "available": true
+        },
+        {
+          "id": "ur_dice",
+          "title": "Game of Ur",
+          "available": true
+        }
+      ]
+    },
+    {
+      "deckId": "cs109-part-3",
+      "number": 3,
+      "key": "models",
+      "title": "Probabilistic Models",
+      "chapters": [
+        {
+          "id": "joint",
+          "title": "Joint Probability",
+          "available": true
+        },
+        {
+          "id": "marginalization",
+          "title": "Marginalization",
+          "available": true
+        },
+        {
+          "id": "multinomial",
+          "title": "Multinomial",
+          "available": true
+        },
+        {
+          "id": "continuous_joint",
+          "title": "Continuous Joint",
+          "available": true
+        },
+        {
+          "id": "inference",
+          "title": "Inference",
+          "available": true
+        },
+        {
+          "id": "bayesian_networks",
+          "title": "Bayesian Networks",
+          "available": true
+        },
+        {
+          "id": "independent_vars",
+          "title": "Independence in Variables",
+          "available": true
+        },
+        {
+          "id": "correlation",
+          "title": "Correlation",
+          "available": true
+        },
+        {
+          "id": "computational_inference",
+          "title": "General Inference",
+          "available": true
+        },
+        {
+          "id": "name2age",
+          "title": "Name to Age",
+          "available": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "fairness",
+          "title": "Fairness in Artificial Intelligence",
+          "available": true
+        },
+        {
+          "id": "federalist",
+          "title": "Federalist Paper Authorship",
+          "available": true
+        },
+        {
+          "id": "prob_baby_delivery",
+          "title": "Probability of Baby Delivery",
+          "available": true
+        },
+        {
+          "id": "bayesian_carbon_dating",
+          "title": "Bayesian Carbon Dating",
+          "available": true
+        },
+        {
+          "id": "pyramids",
+          "title": "Pyramid Hidden Chambers",
+          "available": true
+        },
+        {
+          "id": "digital_vision_test",
+          "title": "Digital Vision Test",
+          "available": true
+        },
+        {
+          "id": "bridge_distribution",
+          "title": "Bridge Distribution",
+          "available": true
+        },
+        {
+          "id": "expectation_of_sums",
+          "title": "Expectation of Sum Proof",
+          "available": true
+        },
+        {
+          "id": "bayesian_viral_load_test",
+          "title": "Bayesian Viral Load Test",
+          "available": true
+        },
+        {
+          "id": "dart_logo",
+          "title": "CS109 Logo",
+          "available": true
+        },
+        {
+          "id": "tracking_in_2D",
+          "title": "Tracking in 2D",
+          "available": true
+        }
+      ]
+    },
+    {
+      "deckId": "cs109-part-4",
+      "number": 4,
+      "key": "theory",
+      "title": "Uncertainty Theory",
+      "chapters": [
+        {
+          "id": "beta",
+          "title": "Beta Distribution",
+          "available": true
+        },
+        {
+          "id": "summation_vars",
+          "title": "Adding Random Variables",
+          "available": true
+        },
+        {
+          "id": "clt",
+          "title": "Central Limit Theorem",
+          "available": true
+        },
+        {
+          "id": "samples",
+          "title": "Sampling",
+          "available": true
+        },
+        {
+          "id": "bootstrapping",
+          "title": "Bootstrapping",
+          "available": true
+        },
+        {
+          "id": "algorithmic_analysis",
+          "title": "Algorithmic Analysis",
+          "available": true
+        },
+        {
+          "id": "information_theory",
+          "title": "Information Theory",
+          "available": true
+        },
+        {
+          "id": "divergence",
+          "title": "Distance Between Distributions",
+          "available": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "thompson",
+          "title": "Thompson Sampling",
+          "available": true
+        },
+        {
+          "id": "night_sight",
+          "title": "Night Sight",
+          "available": true
+        },
+        {
+          "id": "p_hacking",
+          "title": "P-Hacking",
+          "available": true
+        },
+        {
+          "id": "differential_privacy",
+          "title": "Differential Privacy",
+          "available": true
+        }
+      ]
+    },
+    {
+      "deckId": "cs109-part-5",
+      "number": 5,
+      "key": "ml",
+      "title": "Machine Learning",
+      "chapters": [
+        {
+          "id": "parameter_estimation",
+          "title": "Parameter Estimation",
+          "available": true
+        },
+        {
+          "id": "mle",
+          "title": "Maximum Likelihood Estimation",
+          "available": true
+        },
+        {
+          "id": "map",
+          "title": "Maximum A Posteriori",
+          "available": true
+        },
+        {
+          "id": "machine_learning",
+          "title": "Machine Learning",
+          "available": true
+        },
+        {
+          "id": "log_regression",
+          "title": "Logistic Regression",
+          "available": true
+        },
+        {
+          "id": "naive_bayes",
+          "title": "Naïve Bayes",
+          "available": true
+        },
+        {
+          "id": "classification_performance",
+          "title": "Evaluating Classifiers",
+          "available": true
+        },
+        {
+          "id": "linear_regression",
+          "title": "Linear Regression",
+          "available": true
+        },
+        {
+          "id": "ml_python",
+          "title": "Machine Learning in Python",
+          "available": true
+        },
+        {
+          "id": "diffusion",
+          "title": "Diffusion",
+          "available": true
+        }
+      ],
+      "applications": [
+        {
+          "id": "mle_demo",
+          "title": "MLE Demos",
+          "available": true
+        },
+        {
+          "id": "mle_pareto",
+          "title": "MLE Pareto Distribution",
+          "available": true
+        },
+        {
+          "id": "mixture_models",
+          "title": "MLE Mixture Model",
+          "available": true
+        }
+      ]
+    }
+  ],
+  "reference": {
+    "title": "Reference",
+    "chapters": [
+      {
+        "id": "notation",
+        "title": "Notation Reference",
+        "available": true
+      },
+      {
+        "id": "core_probability_ref",
+        "title": "Core Probability Reference",
+        "available": true
+      },
+      {
+        "id": "all_distributions",
+        "title": "Random Variable Reference",
+        "available": true
+      },
+      {
+        "id": "calculators",
+        "title": "Calculators",
+        "available": true
+      },
+      {
+        "id": "python",
+        "title": "Python Reference",
+        "available": true
+      },
+      {
+        "id": "calculus",
+        "title": "Calculus Reference",
+        "available": true
+      },
+      {
+        "id": "llm_api",
+        "title": "Language Model Tool",
+        "available": true
+      }
+    ]
+  }
+}

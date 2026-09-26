@@ -31,7 +31,9 @@ Two things bite every time, so follow this exactly.
 ### App login is NOT Supabase Auth
 
 The app has its own `users` table (bcrypt `password_hash`, `auth_provider`)
-and sets a plain `userId` cookie. `POST /api/auth/login` and
+and issues an opaque HttpOnly `quiz_session` cookie. Middleware verifies the
+expiring hashed token in `app_sessions` before supplying the trusted `userId`
+to legacy handlers. Never accept a browser-provided userId as authentication. `POST /api/auth/login` and
 `POST /api/auth/signup` are the only ways in. A user created through Supabase
 Auth (`auth.users`, admin API, etc.) **cannot** log in — don't waste time on it.
 
@@ -41,7 +43,7 @@ documented here so any session can sign in without asking):
 - Email: `claude-verify@example.com`
 - Password: `JalingoTest123!`
 
-Authenticate by hitting the endpoint directly (sets the `userId` cookie):
+Authenticate by hitting the endpoint directly (sets the `quiz_session` cookie):
 
 ```sh
 curl -s -X POST http://localhost:<port>/api/auth/login \
@@ -171,3 +173,38 @@ kanji path. Concretely:
   engine is what scopes something to words-only.
 - For kanji, the "Japanese" answer is the **on'yomi reading**; for words it's the
   hiragana reading. English is the meaning/translation in both.
+
+## Formula hover explanations (chapters 1, 2 and every chapter after)
+
+Tooltips exist to teach notation, not to label glyphs. Two rules, enforced by
+`node scripts/test-formula-tooltips.cjs`:
+
+**1. Never explain ultra-basic notation.** No tooltip on `+`, `-`, `=`, `×`,
+`/`, comparison signs, brackets, punctuation, a bare `P`, or a plain number
+(including a number with a trailing period or a numeric power such as
+`10^{-2}`). A reader who needs `+` explained is not reading this chapter.
+`shouldExplainTerm()` in `src/utils/formula-notation.ts` is the single gate —
+both the inline-notation path (`formulaModel`) and the authored-TeX path
+(`latexFormulaModel`) route through it, as does the scanned-source path in
+`FormulaExplorer.tsx`. Widen the rule there, never per call site.
+
+**2. Explain a compound atom as a whole, plus what is inside its brackets.**
+`P(A∣B)` gets exactly two tooltips — "The probability that A occurs, given
+that B occurs." on the whole atom and "The event that A occurs, given that B
+occurs." on `A∣B` — and none on `P`, the parentheses or the bar.
+`P(A₁∪A₂∪A₃)` reads "The probability that A₁, A₂, or A₃ occurs (including
+overlaps)." `probabilityTerms()` + `describeEvent()` build these; extend
+`describeEvent` for new event shapes rather than annotating symbols
+individually.
+
+Two supporting invariants:
+
+- **A label never shows authored TeX.** `mathLabel()` turns `p_{X\mid Y}` into
+  `pX|Y` and `X^{2}` into `X²`. Use it for any new label; never hand-roll
+  subscript or superscript mapping.
+- **A literal dollar sign in prose is authored as `\$`.** `$…$` delimits math,
+  so unescaped currency ("we receive $1") swallows the sentence into an
+  expression and produces a pile of junk tooltips.
+
+Run `node scripts/test-formula-tooltips.cjs` after touching any of this, and
+add each new chapter's data file to that script's `CHAPTERS` list.

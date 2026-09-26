@@ -92,8 +92,8 @@ export default function WordCard({
     return (
         <div className="bg-[#262626] border border-[#4F4F4F] rounded-3xl p-3 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-0 hover:bg-[#2F2F2F] transition-colors">
             <div className="flex-1 min-w-0">
-                <div className="text-2xl sm:text-3xl font-medium flex items-center gap-2 text-white">
-                    <div className="flex-shrink-0">
+                <div className="text-2xl sm:text-3xl font-medium flex flex-wrap items-center gap-2 text-white">
+                    <div className="min-w-0 break-words">
                         {showFurigana && word.reading ? (
                             <ruby>
                                 {word.word}
