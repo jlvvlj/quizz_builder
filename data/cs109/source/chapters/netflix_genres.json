@@ -1,0 +1,406 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When recommending movies, Netflix cares about estimating the probability that a user will like a given movie, based on their viewing history. In order to make this problem tractable, they classify movies into a (large number) of specific genres such a \"Tearjerker\" or \"Quirky Romance\".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The probability that a Netflix user likes a movie ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the \"Tearjerker\" genre: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Given that they like the Tearjerker genre is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_i = 0.4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "Given that they do not like the Tearjerker genre is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "q_i = 0.9"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "60% of Netflix users like the Tearjerker genre. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Netflix assumes that, given a user’s preference for the genre, liking movie ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are conditionally independent events for any movies ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You may express all your answers in terms of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "q"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "s and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "s. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Questions",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that a user likes movies ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given that they like the Tearjerker genre?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\np_1 \\cdot p_2 \\cdot p_3\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that they like movies ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given that they like the Tearjerker genre?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "L_i |G"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that they like movie ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "T_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " given that they like the Tearjerker genre. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Answer} \n&= \\P(L_1|G \\or L_2|G \\or L_3|G) \\\\\n&= 1−P(L_1|G \\or L_2|G \\or L_3|G)^C \\\\\n&= 1−P(L_1^C|G \\and L_2^C |G \\and L_3^C  |G) \\\\\n&= 1−(1− p_1)(1− p_2)(1− p_3) \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Another approach is to use the inclusion/exclusion principle to expand the first line of the previous answer: ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Answer} \n&= P(L1|G \\or L2|G \\or L3|G)\\\\\n&= p_1 + p_2 + p_3 \n−(p_1\\cdot p_2)\n−(p_1\\cdot p_3)\n−(p_2 \\cdot p_3) \n+ (p_1 \\cdot p_2 \\cdot p_3) \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that they like the Tearjerker genre given that they like ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(G& \\mid L_1 L_2 L_3) \\\\\n&= \\frac{P(L_1 L_2 L_3 \\mid G) P(G)}{P(L_1 L_2 L_3 \\mid G) P(G) + P(L_1 L_2 L_3 \\mid G^C) P(G^C)} \\\\\n&= \\frac{(p_1 p_2 p_3)(0.6)}{(p_1 p_2 p_3)(0.6) + (q_1 q_2 q_3)(0.4)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

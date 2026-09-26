@@ -26,3 +26,6 @@ data/kanjidic/
 
 # Supabase CLI local state
 supabase/.temp/
+
+# Python bytecode from the build scripts
+__pycache__/

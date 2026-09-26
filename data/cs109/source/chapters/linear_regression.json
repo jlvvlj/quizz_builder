@@ -1,0 +1,851 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "So far, we have focused on Classification. Now, we will look at another machine learning task called regression.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "regression",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Regression",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Regression is a task where the goal is to predict continuous-valued labels, rather than discrete class labels. Just as with classification, our datapoints have the form ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(\\mathbf{x}^{(i)},y^{(i)})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", but now our labels ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be any real number. The most classic regression algorithm is Linear Regression.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A good mental model for regression is that we are fitting a \"line of best fit\" to the data. Let's first look at the case where we have only one feature per datapoint (so ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a single number, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). We can plot ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for each datapoint on the x-axis and the true label ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " on the y-axis. Then, the goal of linear regression is to draw the line that best represents the relationship between the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values. Formally, our model takes the form ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = \\theta_1 x + \\theta_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are the learned parameters (you may recognize this equation as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = mx + b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from previous math classes).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "1ea9c566-676e-4887-8290-1643b5718841",
+    "naturalHeight": "571",
+    "naturalWidth": "723",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F1ea9c566-676e-4887-8290-1643b5718841?alt=media&token=55ff70b1-30cb-4b5a-a394-75aa38ca6636",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this example, our fitted model is the dotted line, which has the equation ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = 0.42x - 0.36"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The parameter ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_1 = 0.42"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represents the slope of the line, while the parameter ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_0 = -0.36"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is called the \"intercept\" or \"bias\" and corresponds to the value on the y-axis where the model line crosses it. This bias term is included for the same reasons we include it in Logistic Regression models.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a vector of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "m"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " features and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "m > 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the same idea holds, although it's more difficult to visualize. In general, the goal of regression is to fit a function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = f(\\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that outputs values as close to the true labels ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as possible. In linear regression, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(\\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is always a linear combination of the values in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which we can write as:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\hat{y}^{(i)} = \\theta_0 + \\sum_{j=1}^m \\theta_j x_j^{(i)} = \\theta^{T}\\mathbf{x}^{(i)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Why do we use the notation ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the equation of a regression model? Because we can use this equation to make predictions! For any input ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we can plug in that value and get out a resulting ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that would be a point precisely on the dotted line. In the example plot above, we don't have any data around ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x = 2.5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", so we might wonder what the best guess is for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x = 2.5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This equation tells us it is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = 0.42 \\cdot 2.5 - 0.36 = 0.69"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since regression has a different goal from classification, instead of using measures like accuracy to report how well a model fits the data, we might use correlation, mean squared error (MSE), or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-linear-regression-model",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Linear Regression Model",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To apply parameter estimation to linear regression, we need a probabilistic model that will let us write a likelihood.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We will assume that the true labels ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are generated by a two-step process. In the first step, a latent (not observed) value is generated via some linear function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(\\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of the features ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In the second step, random Gaussian noise, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which is distributed as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z \\sim N(\\mu=0, \\sigma^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is added to this latent value. The result is the actual ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value we observe:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    y^{(i)} = \\theta^{T}\\mathbf{x}^{(i)} + Z & \\quad \\quad & \\text{ where } Z \\sim N(0, \\sigma^2)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This assumption allows us to directly express a distribution for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Since the expression ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta^{T}\\mathbf{x}^{(i)} + Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " boils down to adding some number to a Normal distribution, we can apply the rules for linear transforms of a Normal:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    y^{(i)} \\sim N(\\theta^{T}\\mathbf{x}^{(i)}, \\sigma^2)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now, we are able to express the likelihood of our observed data in terms of the PDF of the Normal. If we have ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " I.I.D. observations ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(\\mathbf{x}^{(1)},y^{(1)}), (\\mathbf{x}^{(2)},y^{(2)}), \\dots , (\\mathbf{x}^{(N)},y^{(N)})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the probability density for a single datapoint is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n f(y^{(i)} \\mid \\mathbf{x}^{(i)} , \\theta) = \\frac{1}{\\sqrt{2\\pi} \\sigma} \\text{exp} \\left( -\\frac{(y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)})^2}{2\\sigma^2} \\right)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "From here, we proceed with estimating the values for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using MLE. We begin by writing the likelihood function.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nL(\\theta) &= \\prod_{i=1}^N f(y^{(i)}, \\mathbf{x}^{(i)} \\mid \\theta) && \\quad \\text{Let's break up this joint}\\\\\n&= \\prod_{i=1}^N f(y^{(i)} \\mid \\mathbf{x}^{(i)}, \\theta) f(\\mathbf{x}^{(i)}) && \\quad f(\\mathbf{x}^{(i)}) \\text{ is independent of } \\theta\\\\\n &= \\prod_{i=1}^N \\frac{1}{\\sqrt{2\\pi} \\sigma} \\text{exp} \\left( -\\frac{(y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)})^2}{2\\sigma^2} \\right) f(\\mathbf{x}^{(i)}) && \\quad \\text{Substitute in }f(y^{(i)} \\mid \\mathbf{x}^{(i)}, \\theta)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Then we take the log to get the log likelihood function:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n LL(\\theta) &= \\log L(\\theta) \\\\\n &= \\log \\prod_{i=1}^N\\frac{1}{\\sqrt{2\\pi} \\sigma} \\text{exp} \\left( -\\frac{(y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)})^2}{2\\sigma^2} \\right) f(\\mathbf{x}^{(i)}) &&\\text{Substitute in }L(\\theta)\\\\\n &= \\sum_{i=1}^N \\log \\frac{1}{\\sqrt{2\\pi} \\sigma} \\text{exp} \\left( -\\frac{(y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)})^2}{2\\sigma^2} \\right) + \\sum_{i=1}^N \\log  f(\\mathbf{x}^{(i)}) &&\\text{Log of a product is the sum of logs}\\\\\n &= N \\log \\frac{1}{\\sqrt{2\\pi} \\sigma} - \\frac{1}{2\\sigma^2}\\sum_{i=1}^N \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)}\\right)^2 + \\sum_{i=1}^N \\log  f(\\mathbf{x}^{(i)}) &&\\text{Apply log to exp, pull constants out}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since we want to find the argmax with respect to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of this function, we can disregard constant multipliers and terms that don’t include ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (the first and last term). We are left with trying to find a value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that maximizes:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\hat{\\theta} &= \\underset{\\theta}{\\operatorname{argmax}}  - \\sum_{i=1}^N \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)} \\right)^2\\\\\n                 &= \\underset{\\theta}{\\operatorname{argmin}} \\sum_{i=1}^N \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)} \\right)^2\\\\\n\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This result says that the values for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that make the data most likely are those that minimize the sum of squared errors between predictions, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = \\theta^{T} \\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and true labels ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Notice that this expression doesn't have ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in it! The best parameter values for linear regression are not dependent on what variance we assume for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", so in practice we don't need to worry about estimating that variance in order to fit the model.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To find the optimal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values, one option is to use gradient ascent (or descent, for the argmin). This requires the derivative of the expression above for each of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values in our vector of parameters:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\frac{\\partial LL(\\theta)}{\\partial \\theta_j} &= - \\sum_{i=1}^N \\frac{\\partial }{\\partial \\theta_j} \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)} \\right)^2 \\\\\n    &= - \\sum_{i=1}^N 2 \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)} \\right) \\cdot (-x_j^{(i)}) \\\\\n    &= 2 \\sum_{i=1}^N \\left( y^{(i)} - \\theta^{T} \\mathbf{x}^{(i)} \\right) \\cdot x_j^{(i)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

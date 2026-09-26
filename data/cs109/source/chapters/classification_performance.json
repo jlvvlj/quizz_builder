@@ -1,0 +1,514 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Once you have trained a machine learning model, you might ask, \"how good is it?\" Quantifying the goodness of a model's predictions are useful when we want to compare models and choose the best one for our use case. We call statistics that measure how good models are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "metrics",
+     "type": "text"
+    },
+    {
+     "text": ". For binary classification, the most common metric is accuracy.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "measuring-classification-accuracy-and-more",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Accuracy",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "For binary classification, accuracy is defined as the fraction of model predictions that are correct.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "That is, to calculate model accuracy on a test set of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " datapoints, we 1) generate a model prediction ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\hat{y}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for each datapoint, 2) count the number of datapoints where that prediction matches the true label (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\hat{y} = y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "), and 3) divide that count by ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We often report accuracy as a percent.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Important: model accuracy is always computed with respect to some dataset, and the resulting number can be very dependent on the data used! As a silly example, consider a terrible model that always predicts ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", no matter what the input features are. The accuracy of this model on a dataset where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for only 10% of datapoints will be 10%. But on a dataset where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for 90% of datapoints, our accuracy will be 90%! To address this, accuracy can be computed only on \"balanced\" datasets, where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for half of the dataset and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for the other half. In general, you should at least be aware of how balanced or imbalanced your dataset is, so you can interpret accuracy correctly.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We also have formal terms to categorize all the ways a binary prediction ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " could match or not match the true label ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 847,
+    "sourceSha256": "908d6e565bf7c4e7170c0d4cf9fb165738ca6ce1711104f1a0fedd2dfa0dc80a"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You will sometimes see accuracy defined using these terms:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\text{Accuracy} = \\frac{\\text{(True Positives)} + \\text{(True Negatives)}}{\\text{(True Positives)} + \\text{(True Negatives)} + \\text{(False Positives)} + \\text{(False Negatives)}}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "These terms are particularly useful whenever we care much more about one type of incorrect prediction over the other! For example, if a self-driving car is trying to predict if a person is in front of the car (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") or not (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), false positives might be inconvenient, but a false negative could be deadly. In that case, we should monitor the model's false negative rate (the fraction of predictions that are false negatives), in addition to accuracy.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many other metrics for measuring how good a model is at binary classification, each with advantages and limitations: precision, recall, sensitivity, specificity, area under the ROC curve (auROC), area under the precision-recall curve (auPRC), and more. No metric can perfectly summarize everything in one number, so which metrics to use depends on what model behavior you care about.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Training vs. Test Data",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine that we train two models -- Model A and Model B -- on the same data and classification task, but we use different algorithms (such as Logistic Regression vs. Naive Bayes). We then compute the accuracy of both models, using two datasets: first, the same data they were trained on, and second, some new data we didn't have when we trained the models. Here are the results:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 611,
+    "sourceSha256": "cd7066c2549cdfe9dc3c72dbdf38b65055e64335479957e2df2099de61ed5e10"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Which of these models should we choose? Model B achieves the highest accuracy in the whole table, but that was on data seen during training; on the other had, Model A maintained decent accuracy when tested on new data. It turns out that Model A is the better choice!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When we train a machine learning model, we don't want the model to just memorize the examples in the data it sees while training. Instead, we want the model to learn the relationships between input features and labels in a way that will ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "generalize",
+     "type": "text"
+    },
+    {
+     "text": ", or extend to data the model has not seen yet. The idea is that models that cannot generalize have not really learned anything valuable; plus, we often plan to deploy the models in contexts where they need to make accurate predictions on previously unseen data. So, how well a model generalizes to new data is what really matters.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the example above, having new data (not used during training) to compute accuracy on was crucial. Generally, it is a ubiquitous practice in machine learning to evaluate models by ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "splitting data into training vs. test examples",
+     "type": "text"
+    },
+    {
+     "text": ". The simplest way to do a train-test split is to randomly sample somewhere between 10-30% of the examples in your dataset to hold out for model testing purposes only. Then, the remaining 70-90% is the only data the model is allowed to access during training -- because peeking at the test data before test time would be cheating! After model training, we compute accuracy or other metrics using the test data and report those.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In Python, the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " library has a handy function for making random train-test splits:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from sklearn.model_selection import train_test_split\n\n# what fraction of the data should be held out for testing?\ntest_frac = 0.25\n\n# inputs:\n#  - X: 2D numpy array with dimensions [num_datapoints, num_features]\n#  - y: 1D numpy array with length [num_datapoints]\n# returns:\n#  - The input arrays, randomly split into training and test data\nX_train, y_train, X_test, y_test = train_test_split(X, y, test_size=test_frac)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There can be lots of nuance in the best way to construct train-test splits, how much data to hold out for testing, and how to avoid accidental \"train-test contamination\", where information about the test data leaks into training indirectly. But at a minimum, it is the standard to always report metrics on a held-out set of test data not used in training because generalization is the end goal.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "baselines",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Baselines",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Once you've computed a metric for your model on test data, how should you interpret that number? Certainly, this depends on what data you are modeling; but in any case, it can be helpful to determine an upper and/or lower bound on what sort of metric values you might expect. We call these bounds, which we will eventually compare against our own model's performance, baselines.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example, imagine that in the case of Model A and B above, we had the following two baselines: 1) a lower bound from a model that just always predicts ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", no matter what, and 2) an upper bound of predictions made by a real person (let's say human-like performance is the \"gold standard\" for this specific problem). We would expect a model like Logistic Regression to perform somewhere between these two extremes -- it will hopefully have a higher accuracy than the trivial lower bound, but it is also unlikely to beat the upper bound of a human's abilities.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Comparison to a lower bound can suggest whether a model is working correctly and whether it has learned anything valuable (if a model's accuracy matches that of a trivial baseline, then it isn't a useful model). Sometimes simple baselines perform surprisingly well, so until you compare against a lower bound, you won't know if your model's accuracy is actually impressive or not.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Comparison to an upper bound is informative because any gap between your model and the upper bound implies that there might be better alternative models out there for you to try. As an example, for the task of image classification (\"Is this a picture of a dog, cat, etc?\"), human accuracy was used as an upper bound for a long time. Bit by bit, as model after model was developed to outperform previous models, the gap between our best models and human-level accuracy shrunk; measuring this gap was one way of interpreting progress in that subfield.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

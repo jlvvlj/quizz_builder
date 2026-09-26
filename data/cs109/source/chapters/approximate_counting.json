@@ -1,0 +1,1012 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Suppose you want a counter that can ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "represent astronomically large values",
+     "type": "text"
+    },
+    {
+     "text": " while using only a few bits of state. A classic trick is a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "approximate (stochastic) counter",
+     "type": "text"
+    },
+    {
+     "text": ": instead of incrementing deterministically, it increments more and more ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "rarely",
+     "type": "text"
+    },
+    {
+     "text": " as it grows. Concretely, when the counter’s internal level is n, we attempt to increment it, but succeed only with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2^{-n}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The stored value is tiny (just ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), yet we ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "interpret",
+     "type": "text"
+    },
+    {
+     "text": " the counter as approximately ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2^n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The toy implementation below follows this idea. The function ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_counter_simulation",
+     "type": "text"
+    },
+    {
+     "text": " simulates counting up to a number ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "true_count",
+     "type": "text"
+    },
+    {
+     "text": " using the stochastic counting algorithm. It stores a count, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (which starts at -1) and each time there is an event to count, we call ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_increment",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_increment",
+     "type": "text"
+    },
+    {
+     "text": " returns 1 with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{2^n}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (by requiring ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " consecutive heads) and 0 otherwise; we then add the result of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_increment",
+     "type": "text"
+    },
+    {
+     "text": " to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Finally, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_counter_simulation",
+     "type": "text"
+    },
+    {
+     "text": " returns ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2^n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as the estimate of the true count.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the real world you would not know, or keep track of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "true_count",
+     "type": "text"
+    },
+    {
+     "text": ". Instead you would simply keep ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which will be a very very small number.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def stochastic_counter_simulation(true_count):\n    n = -1\n    for i in range(true_count):\n        n += stochastic_increment(n)\n    return 2 ** n  # 2^n, aka 2 to the power of n\n\ndef stochastic_increment(n):\n    # To return 1 you need n heads. Always returns 1 if n is <= 0\n    for i in range(n):\n        if not coin_flip():\n            return 0\n    return 1\n\ndef coin_flip():\n    # returns true 50% of the time\n    return random.random() < 0.5",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The result of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_counter_simulation",
+     "type": "text"
+    },
+    {
+     "text": " will not always be the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "true_count",
+     "type": "text"
+    },
+    {
+     "text": ". In this worked example, we would like to show that the expected return is equal to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "true_count",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First a few helpful definitions",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable for the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " at the end of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "stochastic_counter(4)",
+     "type": "text"
+    },
+    {
+     "text": ". Note that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is not a binomial because the probabilities of each outcome change.  ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the return value of the function. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R = 2^X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which is a function of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Unbiased when ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "true_count",
+     "type": "text"
+    },
+    {
+     "text": " = 4",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section we are going to show that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[R] = 4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " when the true count is 4. Recall the law of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./expectation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "unconscious statistician",
+     "type": "text"
+    },
+    {
+     "text": " :",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "E[R] = \\sum_{x} 2^x \\cdot P(X=x)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can compute each of the probabilities ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " separately and then put it all together. Note that the first two calls to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "count",
+     "type": "text"
+    },
+    {
+     "text": " will always return 1. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that the ith call returns 1. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that the ith call returns 0. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can't be less than 1 because the first two calls to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "count",
+     "type": "text"
+    },
+    {
+     "text": " always return 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(T_3, T_4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(H_3, T_4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(T_3, H_4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(H_3, H_4)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At the point of the third call to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "count",
+     "type": "text"
+    },
+    {
+     "text": ", n = 1. If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then n=2 for the fourth call and the loop runs twice.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(H_3,T_4) \n&= P(H_3) \\cdot P(T_4|H_3) \\\\\n&= \\frac{1}{2} \\cdot \\bigl(\\frac{1}{2} + \\frac{1}{4}\\bigr)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(H_3,H_4)\n&= P(H_3) \\cdot P(H_4|H_3) \\\\\n&= \\frac{1}{2} \\cdot \\frac{1}{2}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then n=1 for the fourth call.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(T_3,H_4)\n&= P(T_3) \\cdot P(H_4|T_3) \\\\\n&= \\frac{1}{2} \\cdot \\frac{1}{2}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(T_3,T_4)\n&= P(T_3) \\cdot P(T_4|T_3) \\\\\n&= \\frac{1}{2} \\cdot \\frac{1}{2}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Plug everything in:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE[R] &= \\sum_{x=1}^3 2^x \\cdot P(X=x) \\\\\n&= 2 \\cdot \\frac{1}{4}  + 4 \\cdot \\frac{5}{8} + 8 \\cdot \\frac{1}{8}\\\\\n&= 4\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "generalizability",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Generalizability",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This section is beyond the scope of what we have learned. I included it because I thought it was neat!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can prove that the expectation of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is always equal to the true count. The most common way to show that stochastic counting is correct in expectation, is via a proof by induction. The inductive proof works as follows. Assume that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[R_k] = k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for some ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k \\geq 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We can then show that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[R_{k+1}] = k+1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The proof uses a concept called the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./algorithmic_analysis",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Law of Total Expectation",
+     "type": "text"
+    },
+    {
+     "text": ", which is something we will formally introduce later in the class. By the law of total expectation we have:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE&[R_{k+1}]\\\\\n  &= E\\big[\\,E[R_{k+1} \\mid N_k]\\,\\big] \n     && \\text{(law of total expectation)} \\\\[6pt]\n\n  &= E\\Big[\\, P(\\text{success}\\mid N_k)\\cdot 2^{N_k+1} \n           + P(\\text{fail}\\mid N_k)\\cdot 2^{N_k} \\,\\Big] \n     && \\text{(definition of update rule)} \\\\[6pt]\n\n  &= E\\Big[\\, (2^{-N_k}) \\cdot 2^{N_k+1} \n           + (1-2^{-N_k}) \\cdot 2^{N_k} \\,\\Big] \n     && \\text{(since $P(\\text{success})=2^{-N_k}$)} \\\\[6pt]\n\n  &= E\\Big[\\, 2 + 2^{N_k} - 1 \\,\\Big] \\\\[6pt]\n\n  &= E[\\,2^{N_k} + 1\\,] \\\\[6pt]\n\n  &= E[R_k] + 1.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Hence: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[R_{k+1}] = k + 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Therefore the claim holds for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k+1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", completing the induction.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

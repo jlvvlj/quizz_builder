@@ -1,0 +1,361 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "De Morgan's Laws are a pair of very helpful formulas to convert from an expression of the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "text": "of events into the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "text": " of events (and vice versa). ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If, for example, you need the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or ",
+     "type": "text"
+    },
+    {
+     "text": "and you know the events are independent (which makes the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "text": "easy), you can use De Morgan's Law for or to first convert the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "text": " expression into an ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "text": "expression. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "de-morgans-law-for-or",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "De Morgan's Law for or",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": De Morgan's Law for ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "or",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P&(E_1 \\or E_2 \\or \\cdots E_n)\\\\\n&= 1 - \\P\\Big((E_1 \\or E_2 \\or \\cdots E_n)^C\\Big) \\\\\n&= 1 -\\P(E_1^C \\and E_2^C \\and \\cdots E_n^C)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One way to gain intuition is pictorially. Consider the events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " depicted bellow. The area in white can either be expressed as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E \\or F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1 - \\P(E^C \\and F^C)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "b458b867-0e7e-42a7-863a-92bc3605e9d3",
+    "naturalHeight": "664",
+    "naturalWidth": "889",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fb458b867-0e7e-42a7-863a-92bc3605e9d3?alt=media&token=7edc5c5a-079c-4f4f-9d1a-9a7e5546e6e9",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "de-morgans-law-for-and",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "De Morgan's Law for and",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": De Morgan's Law for ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P&(E_1 \\and E_2 \\and \\cdots E_n)\\\\\n&= 1 - \\P\\Big((E_1 \\and E_2 \\and \\cdots E_n)^C\\Big) \\\\\n&= 1 -\\P(E_1^C \\or E_2^C \\or \\cdots E_n^C)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Again, we can gain intuition from a picture of arbitrary events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The area in white can be written as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E \\and F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1 - \\p(E^C \\or F^C)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "575c0a68-df24-4f57-a460-5bc8272629a2",
+    "naturalHeight": "664",
+    "naturalWidth": "889",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F575c0a68-df24-4f57-a460-5bc8272629a2?alt=media&token=3b46ef17-4929-4e96-ab25-5d03eaedbc2d",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,344 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine having to make the following series of decisions. You have two drugs you can administer, drug 1, or drug 2. Initially you have no idea which drug is better. You want to know which drug is the most effective, but at the same time, there are costs to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "exploration",
+     "type": "text"
+    },
+    {
+     "text": " — the stakes are high.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "plaintext"
+   },
+   "content": [
+    {
+     "text": "Welcome to the drug simulator. \nThere are two drugs: 1 and 2.\n\nNext patient. Which drug? (1 or 2): 1\nFailure. Yikes!\n\nNext patient. Which drug? (1 or 2): 2\nSuccess. Patient lives!\n\nNext patient. Which drug? (1 or 2): 2\nFailure. Yikes!\n\nNext patient. Which drug? (1 or 2): 1\nFailure. Yikes!\n\nNext patient. Which drug? (1 or 2): 1\nSuccess. Patient lives!\n\nNext patient. Which drug? (1 or 2): 1\nFailure. Yikes!\n\nNext patient. Which drug? (1 or 2): 2\nSuccess. Patient lives!\n\nNext patient. Which drug? (1 or 2): 2\nFailure. Yikes!\n\nNext patient. Which drug? (1 or 2): ",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This problem is surprisingly complex. It sometimes goes by the name \"the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Multi-armed_bandit",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "multi-armed bandit",
+     "type": "text"
+    },
+    {
+     "text": " problem!\" In fact, the perfect answer to this question can be exponentially hard to calculate. There are many approximate solutions and it is an active area of research.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One solution has risen to be a rather popular option: Thompson Sampling. It is easy to implement, elegant to understand, has provable ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "guarantees",
+     "type": "text"
+    },
+    {
+     "text": " [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.jmlr.org/papers/volume17/14-087/14-087.pdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "1",
+     "type": "text"
+    },
+    {
+     "text": "], and in practice does very well [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://proceedings.neurips.cc/paper/2011/file/e53a0a2978c28872a4505bdb51db06dc-Paper.pdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "2",
+     "type": "text"
+    },
+    {
+     "text": "].",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What You Know About The Choices",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The first step in Thompson sampling is to express what you know (and what you do not know) about your choices. Let us revisit the example of the two drugs in the previous section. By the end we had tested drug 1 four times (with 1 success) and we had tested drug 2 four times (with 2 successes). A sophisticated way to represent our belief in the two hidden probabilities behind drug 1 and drug 2 is to use the Beta distribution. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the belief in the probability for drug 1 and let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the belief in the probability for drug 2.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nX_1 \\sim \\Beta(a = 2, b = 4)\\\\\nX_2 \\sim \\Beta(a = 3, b = 3)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Recall that in the Beta distribution with a uniform prior the first parameter, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", is the number of observed successes + 1. The second parameter, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", is the number of observed fails + 1. It is helpful to look at these two distributions graphically:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we had to guess, drug 2 is looking better, but there is still a lot of uncertainty, represented by the high variance in these beliefs. That is a helpful representation. But how can we use this information to make a good decision on the next drug.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Making a Choice",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It is hard to know what is the right choice! If you only had one more patient, then it is clear what you should do. You should calculate the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_2 > X_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and if that probability is over 0.5 then you should choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". However, if you need to continually administer the pills then it is less clear what is the right choice. If you choose 1, you miss out on the chance to learn more about 2. What should we do? We need to balance this need for \"exploring\" and the need to take advantage of what we already know.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The simple idea behind Thompson Sampling is to randomly make your choice according to its probability of being optimal. In this case we should choose drug 1 with the probability that 1 is > 2. How do people do this in practice? They have a very simple formula. Take a random sample from each Beta distribution. Choose the option which has a larger value for its sample.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "sample_a = sample_beta(2, 4)\nsample_b = sample_beta(3, 3)\nif sample_a > sample_b:\n    choose choice a \nelse:\n    choose choice b",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What does it mean to take a sample? It means to choose a value according to the probability density (or probability mass) function. So in our example above, we might sample 0.4 for drug 1, and sample 0.35 for drug 2. In which case we would go with drug 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At the start Thompson Sampling \"explores\" quite a lot of time. As it gets more confident that one drug is better than another, it will start to choose that drug most of the time. Eventually it will converge to knowing which drug is best, and it will always choose that drug.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

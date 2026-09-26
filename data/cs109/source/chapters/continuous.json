@@ -1,0 +1,886 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "So far, all random variables we have seen have been ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "discrete",
+     "type": "text"
+    },
+    {
+     "text": ". In all the cases we have seen in CS109 this meant that our RVs could only take on integer values. Now it's time for ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "continuous",
+     "type": "text"
+    },
+    {
+     "text": " random variables which can take on values in the real number domain (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{R}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). Continuous random variables can be used to represent measurements with arbitrary precision (e.g height, weight, time).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "From Discrete to Continuous",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "To make our transition from thinking about discrete random variables, to thinking about continuous random variables, lets start with a thought experiment: Imagine you are running to catch the bus. You know that you will arrive at 2:15pm but you don't know exactly when the bus will arrive, and want to think of the arrival time in minutes past 2pm as a random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " so that you can calculate the probability that you will have to wait more than five minutes, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(15 < T < 20)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We immediately face a problem. For discrete distributions we would describe the probability that a random variable takes on exact values. This doesn't make sense for continuous values, like the time the bus arrives. As an example, what is the probability that the bus arrives at exactly 2:17pm and 12.12333911102389234 seconds? Similarly, if I were to ask you: what is the probability of a child being born with weight ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "exactly",
+     "type": "text"
+    },
+    {
+     "text": " equal to 3.523112342234 kilos, you might recognize that question as ridiculous. No child will have precisely that weight. Real values can have infinite precision and as such it is a bit mind boggling to think about the probability that a random variable takes on a specific value.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Instead, let's start by discretizing time, our continuous variable, by breaking it into 5 minute chunks. We can now think about something like, the probability that the bus arrives between 2:00p and 2:05 as an event with some probability (see figure below on the left). Five minute chunks seem a bit coarse. You could imagine that instead, we could have discretized time into 2.5 minute chunks (figure in the center). In this case the probability that the bus shows up between 15 mins and 20 mins after 2pm is the sum of two chunks, shown in orange. Why stop there? In the limit we could keep breaking time down into smaller and smaller pieces. Eventually we will be left with a derivative of probability at each moment of time, where the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(15 < T < 20)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the integral of that derivative between 15 and 20 (figure on the right).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "baaae356-e5a6-481f-88fd-a76da1f13abd",
+    "naturalHeight": "697",
+    "naturalWidth": "2497",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fbaaae356-e5a6-481f-88fd-a76da1f13abd?alt=media&token=79e20df7-bc6b-4d8d-bbed-a4cb08d159f6",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is what that looks like using real data from the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://mbta-massdot.opendata.arcgis.com/datasets/ef464a75666349f481353f16514c06d0/about",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Massachusetts Public Bus Data",
+     "type": "text"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 4174,
+    "sourceSha256": "76e04cdebcca67478b1b5619441934159a50361d22c718408f4019799b0eb99e"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The graph shows over 34,000 bus arrivals at the most popular stop. Each bus arrival has a recorded arrival time (in seconds, relative to when the bus was meant to show up). This graph shows the distribution of different arrival times. The graph defaults to discretizing time into 120 second (2 minute) bins. Watch what happens when you decrease the bin width. When the bin width approaches zero, the probability becomes a probability density.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "probability-density-functions",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Probability Density Functions",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In the world of discrete random variables, the most important property of a random variable was its probability mass function (PMF) that would tell you the probability of the random variable taking on any value. When we move to the world of continuous random variables, we are going to need to rethink this basic concept. In the continuous world, every random variable instead has a Probability ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Density",
+     "type": "text"
+    },
+    {
+     "text": " Function (PDF) which defines the relative likelihood that a random variable takes on a particular value. We traditionally use the symbol ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for the probability density function and write it in one of two ways:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(X = x) \\quad \\text{ or } \\quad f(x)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Where the notation on the right hand side is shorthand and the lowercase ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " implies that we are talking about the relative likelihood of upper case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Like in the bus example, the PDF is the derivative of probability. This means that the PDF has the important property that you can integrate over it to find the probability that the random variable takes on values within a range ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(a,b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " Continuous Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a Continuous Random Variable if there is a Probability Density Function (PDF) ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " that takes in real valued numbers ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " such that:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(a \\leq X \\leq b) = \\int_a^b f(X=x) dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The following properties must also hold. These preserve the axiom that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(a \\leq X \\leq b)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a probability:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "0 \\leq \\P(a \\leq X \\leq b) \\leq 1"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(-\\infty < X < \\infty) = 1"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "A common misconception is to think of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as a probability. It is instead what we call a probability density. It represents probability/unit of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Generally this is only meaningful when we either take an integral over the PDF ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "text": " we compare probability densities. As we mentioned when motivating probability densities, the probability that a continuous random variable takes on a specific value (to infinite precision) is 0.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(X = a) = \\int_a^a f(X=x) dx = 0\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "That is pretty different than in the discrete world where we often talked about the probability of a random variable taking on a particular value.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "cdf",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Cumulative Distribution Function",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Having a probability density is great, but it means we are going to have to solve an integral every single time we want to calculate a probability. To avoid this unfortunate fate, we are going to use a standard called a cumulative distribution function (CDF). The CDF is a function which takes in a number and returns the probability that a random variable takes on a value less than that number. It has the pleasant property that, if we have a CDF for a random variable, we don't need to integrate to answer probability questions!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For a continuous random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the Cumulative Distribution Function, written ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nF(x) = \\P(X \\leq x) = \\int_{-\\infty}^x f(X=x) dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Why is the CDF the probability that a random variable takes on a value ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "less than",
+     "type": "text"
+    },
+    {
+     "text": " the input value as opposed to greater than? It is a matter of convention. But it is a useful convention. Most probability questions can be solved simply by knowing the CDF and taking advantage of the fact that the integral over the range ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "-\\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is 1. Here are a few examples of how you can answer probability questions by just using a CDF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Probability Query} &\\quad \\text{Solution} &\\quad \\text{Explanation} \\\\\nP(X < a) &\\quad F(a) &\\quad \\text{This is the definition of the CDF.} \\\\\nP(X \\leq a) &\\quad F(a) &\\quad \\text{Trick question. } P(X = a) = 0 \\\\\nP(X > a) &\\quad 1 - F(a) &\\quad P(X < a) + P(X > a) = 1 \\\\\nP(a \\leq X \\leq b) &\\quad F(b) - F(a) &\\quad F(a) + P(a < X < b) = F(b)\n\\end{aligned}\n"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The cumulative distribution also exists for discrete random variables, but there is less utility to a CDF in the discrete world as none of our discrete random variables had \"closed-form\" (e.g. without any summation) functions for the CDF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nF(a) = \\sum_{i=1}^a \\P(X = i)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "solveForK",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Solving for Constants",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be a continuous random variable with PDF:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(x) = \\begin{cases} \n          C(4x - 2x^2) & 0 < x < 2 \\\\\n          0 & \\text{otherwise}\n       \\end{cases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In this function, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a constant. What value is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "? Since we know that the PDF must sum to 1:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    &\\int_0^2 C(4x - 2x^2) dx = 1 \\\\\n    &C(2x^2 - \\frac{2x^3}{3}) \\bigg\\rvert _0^2 = 1 \\\\\n    &C \\left(8 - \\frac{16}{3} \\right) = 1 \\\\\n    &C = 3/8\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Now that we know ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "C"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", what is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X > 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X > 1) &= \\int_1^\\infty f(x) dx \\\\\n&= \\int_1^2 \\frac{3}{8} (4x - 2x^2) dx \\\\\n&= \\frac{3}{8} \\left( 2x^2 - \\frac{2x^3}{3} \\right) \\bigg\\rvert_1^2 \\\\\n&= \\frac{3}{8} \\left[ \\left(8 - \\frac{16}{3} \\right) - \\left(2 - \\frac{2}{3} \\right) \\right] = \\frac{1}{2} \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "ex_continuous",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Expectation and Variance of Continuous Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For continuous RV ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{E}[X] &= \\int_{-\\infty}^\\infty x f(x) dx \\\\ \n\\text{E}[g(X)] &= \\int_{-\\infty}^\\infty g(x) f(x) dx \\\\ \n\\text{E}[X^n] &= \\int_{-\\infty}^\\infty x^n f(x) dx \\\\ \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For both continuous and discrete RVs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n&\\text{E}[aX + b] = a\\text{E}[X] + b \\\\\n&\\text{Var}(X) = \\text{E}[(X - \\mu)^2] = \\text{E}[X^2] - (\\text{E}[X])^2 \\\\\n&\\text{Var}(aX + b) = a^2 \\text{Var}(X)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the chapter on ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./continuous",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Continuous Random Variables",
+     "type": "text"
+    },
+    {
+     "text": " we used the story of considering when a bus would arrive. The graphs used in that chapter were entirely hypothetical. Out of curiosity I decided to look into what real world bus data could look like. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

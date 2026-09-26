@@ -1,0 +1,540 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the Supreme Court case: Berghuis v. Smith, the Supreme Court (of the US) discussed the question: \"If a group is underrepresented in a jury pool, how do you tell?\"",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Justice Breyer [Stanford Alum] opened the questioning by invoking the binomial theorem. He hypothesized a scenario involving:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "“an urn with a thousand balls, and ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "black"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "sixty",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "black"
+         },
+         "type": "textStyle"
+        },
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "black"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "are",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "black"
+         },
+         "type": "textStyle"
+        },
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " yellow",
+       "type": "text"
+      },
+      {
+       "text": ", and nine hundred forty are ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "black"
+         },
+         "type": "textStyle"
+        },
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "navy blue",
+       "type": "text"
+      },
+      {
+       "text": ", and then you select them at random… twelve at a time.”  According to Justice Breyer and the binomial theorem, if the ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "yellow balls",
+       "type": "text"
+      },
+      {
+       "text": " were black jurors then “you would expect… something like a third to a half of juries would have at least one ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "yellow ball",
+       "type": "text"
+      },
+      {
+       "text": "” on them. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "blockquote"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "First, here is a simulator which can recreate the experiment that Justice Breyer was referring to. In this simulation, there are 940 navy balls and 60 yellow balls in an urn. We will select 12:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1993,
+    "sourceSha256": "1b90a823043e6841af3647572e8a144339bdd5ecb8a624df3f22135c41798eb7"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability of at least one yellow ball being selected?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "explanation",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Explanation:",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Technically, since jurors are selected without replacement, you should represent the number of under-representative jurors as being a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./more_discrete#hyper-geometric-random-variable",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Hyper Geometric Random Variable",
+     "type": "text"
+    },
+    {
+     "text": ", a random variable that we cover in ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./more_discrete",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "More Discrete Distributions",
+     "type": "text"
+    },
+    {
+     "text": ". The Hyper Geometric is a random variable that models ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "the \"number of successes in a sample of size ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " drawn ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "without replacement",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " from a population of size ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "N",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " that contains ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "K",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " successes\". If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the number of minority jurors selected:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}X&\\sim \\text{HyperGeo}(N=1000, K=60,n=12)\\\\\n\t\t\t\t\t\tP(X \\geq 1) &= 1 - P(X = 0) \\\\\n\t\t\t\t\t\t\t\t\t&= 1 - \\frac{ {60 \\choose 0}{940 \\choose 12} }{1000 \\choose 12} \\\\\n\t\t\t\t\t\t\t\t\t&\\approx 0.5261\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "However Justic Breyer made his case by citing a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./binomial",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Binomial distribution",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". This isn't a perfect use of binomial, because the binomial assumes that each experiment has equal likelihood (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ") of success. Because the jurors are selected without replacement, the probability of getting a minority juror changes slightly after each selection (and depending on what the selection was). However, as we will see, because the probabilities don't change too much the binomial distribution is not too far off. Again, let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "be the number of minority jurors selected:",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nX&\\sim \\Bin(n=12, p=0.06)\\\\\n\t\t\t\t\t\tP(X \\geq 1) &= 1 - P(X = 0) \\\\\n\t\t\t\t\t\t\t\t\t&= 1 - {60 \\choose 0}(1- 0.06)^{12} \\\\\n\t\t\t\t\t\t\t\t\t&\\approx 0.5241\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Acknowledgements: Problem posed and solved by Mehran Sahami. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "[",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.supremecourt.gov/oral_arguments/argument_transcripts/2009/08-1402.pdf?utm_source=chatgpt.com",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "1",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "] The original source on the oral arguments of the case",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

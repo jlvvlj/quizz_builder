@@ -1,0 +1,449 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Machine Learning is the subfield of computer science that gives computers the ability to perform tasks without being explicitly programmed. There are several different tasks that fall under the domain of machine learning and several different algorithms for \"learning\". In this chapter, we are going to focus mostly on Classification and two classic Classification algorithms: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/log_regression",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Logistic Regression",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/naive_bayes",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Naive Bayes",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Classification",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In classification tasks, your job is to use training data with feature/label pairs (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", y) in order to estimate a function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{y} = g(\\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This function can then be used to make a prediction. In classification, the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " takes on one of a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "discrete",
+     "type": "text"
+    },
+    {
+     "text": " number of values, called classes. The most straightforward type of classification is binary classification, where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " only takes on two possible class values (usually 0 or 1). We typically want to predict the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that is most likely, given the input features for our model, so we often choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "g(\\mathbf{x}) = \\underset{y}{\\operatorname{argmax }}\\text{ }\\hat{P}(Y=y|\\mathbf{X} = \\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the classification task, you are given a dataset of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " training pairs: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    (\\mathbf{x}^{(1)},y^{(1)}), (\\mathbf{x}^{(2)},y^{(2)}), \\dots , (\\mathbf{x}^{(N)},y^{(N)})\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a vector of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "m"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " discrete features for the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th training example and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the discrete class label for the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th training example.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In our introduction to classification, we will often assume that all values in our training dataset are binary. While this is not a necessary assumption, it makes it much easier to learn the core concepts. Specifically, we assume that all labels are binary, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y^{(i)} \\in \\{0, 1\\} \\text{ }\\forall i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and all features are binary, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x^{(i)}_{j} \\in \\{0, 1\\} \\text{ }\\forall i, j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Visualizing Classification",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One interpretation of the classification task is that the model needs to learn how to use the input features to distinguish or separate the different classes as best it can. If we picture all of our datapoints as being points in some space, then ideally the datapoints belonging to one class would all cluster close to one another, but be distant from the datapoints belonging to other classes. The model's goal, then, is to learn where to draw one or more \"lines\", sometimes called decision boundaries, that neatly separate the points belonging to different classes. If the model can do that, it can make accurate predictions by predicting every point on one side of the line as belonging to one class, and every point on the other side of the line as belonging to another class.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "adf6a829-009b-4674-8fb7-20f30a258f8f",
+    "naturalHeight": "523",
+    "naturalWidth": "681",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fadf6a829-009b-4674-8fb7-20f30a258f8f?alt=media&token=2a986e4d-7563-44f7-afc2-3cccacf21bf7",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the example above, each dot is a datapoint, positioned according to its two input features ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x} = (x_1, x_2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " on the x- and y-axis. Each datapoint is also colored according to its class label ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y \\in \\{0,1,2\\}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The datapoints with the label ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y=0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are quite distinct from the datapoints with other labels, according to their features, so they can be easily separated with a decision boundary such as the dotted line shown. This would be a relatively easy classification problem for any simple model to learn!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "However, classification will not always be this straightforward. For many real-world datasets, the datapoints belonging to different classes may not be completely separable. For example, in the plot above, it is impossible to draw a line and perfectly separate the datapoints such that all the points where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " lie on one side of the line and all of the points ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " lie on the other side. Thus, no \"linear\" model (like logistic regression) is able to distinguish these two classes with perfect ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/classification_performance",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "accuracy",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "(Aside: you may hear neural networks referred to as \"nonlinear\" models. Instead of only looking for straight lines to separate classes with, nonlinear models can also try separating classes by learning more complicated curves, which makes it possible to draw a boundary between datapoints not separable by any straight line. This is one reason why neural networks commonly outperform simpler models.)",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,336 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sometimes you just feel like squashing normals:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Logit Normal",
+       "type": "text"
+      },
+      {
+       "text": " The logit normal is the continuous distribution that results from applying a special \"squashing\" function to a Normally distributed random variable. The squashing function maps all values the normal could take on onto the range 0 to 1. If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{LogitNormal}(\\mu, \\sigma^2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " it has:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\text{PDF:}&& &f_X(x) = \\begin{cases}\n    \\frac{1}{\\sigma(\\sqrt{2\\pi})x(1 - x)}e^{-\\frac{(\\text{logit}(x) - \\mu)^2}{2\\sigma^2}} & \\text{if } 0 < x < 1\\\\\n    0 & \\text{otherwise}\n    \\end{cases} \\\\\n    \\text{CDF:} && &F_X(x) = \\Phi\\Big(\\frac{\\text{logit}(x) - \\mu}{\\sigma}\\Big)\\\\\n    \\text{Where:} && &\\text{logit}(x) = \\text{log}\\Big(\\frac{x}{1-x}\\Big)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A new theory shows that the Logit Normal better fits exam score distributions than the traditionally used Normal. Let's test it out! We have some set of exam scores for a test with min possible score 0 and max possible score 1, and we are trying to decide between two hypotheses:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": our grade scores are distributed according to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Normal}(\\mu = 0.7, \\sigma^2 = 0.2^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".  ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": our grade scores are distributed according to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{LogitNormal}(\\mu = 1.0, \\sigma^2 = 0.9^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "41b19d16-abc1-41b2-b377-2907d43ffcc8",
+    "naturalHeight": "693",
+    "naturalWidth": "933",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F41b19d16-abc1-41b2-b377-2907d43ffcc8?alt=media&token=fc9b0e50-8ed7-45cb-9814-08cccf1bc301",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Under the normal assumption, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", what is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(0.9 < X < 1.0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Provide a numerical answer to two decimal places.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(0.9 < X < 1.0) = \\Phi\\left(\\frac{1.0 - 0.7}{0.2}\\right) - \\Phi\\left(\\frac{0.9 - 0.7}{0.2}\\right) = \\Phi(1.5) - \\Phi(1.0) = 0.9332 - 0.8413 = 0.09\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Under the logit-normal assumption, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", what is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(0.9 < X < 1.0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Which we can solve for numerically:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nF_X(1.0) - F_X(0.9) = \\Phi\\Big(\\frac{\\text{logit}(1.0) - 1.0}{0.9}\\Big) - \\Phi\\Big(\\frac{\\text{logit}(0.9) - 1.0}{0.9}\\Big) = 1 - \\Phi(1.33) \\approx 0.91\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Under the normal assumption, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "H_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", what is the maximum value that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can take on?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\infty\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Before observing any test scores, you assume that (a) one of your two hypotheses is correct and (b) that initially, each hypothesis is equally likely to be correct, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(H_1)=P(H_2)=\\frac{1}{2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You then observe a single test score, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 0.9"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". What is your updated probability that the Logit-Normal hypothesis is correct?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(H_2|X = 0.9) &= \\frac{f(X = 0.9|H_2)P(H_2)}{f(X = 0.9|H_2)P(H_2) + f(X = 0.9|H_1)P(H_1)}\\\\\n&= \\frac{f(X = 0.9|H_2)}{f(X = 0.9|H_2) + f(X = 0.9|H_1)}\\\\\n&= \\frac{\\frac{1}{\\sigma(\\sqrt{2\\pi})0.9*(1 - 0.9)}e^{-\\frac{(\\text{logit}(0.9) - 1.0)^2}{2*0.9^2}}}{\\frac{1}{\\sigma(\\sqrt{2\\pi})0.9*(1 - 0.9)}e^{-\\frac{(\\text{logit}(0.9) - 1.0)^2}{2*0.9^2}} + \\frac{1}{0.2\\sqrt{2\\pi}}e^{-\\frac{(0.9 - 0.7)^2}{2*0.2^2}}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

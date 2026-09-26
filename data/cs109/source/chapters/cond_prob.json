@@ -1,0 +1,823 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In English, a conditional probability states “what is the chance of an event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " happening given that I have already observed some other event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "”. It is a critical idea in machine learning and probability because it allows us to update our probabilities in the face of new evidence.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When you condition on an event happening you are entering the universe where that event has taken place. Formally, once you condition on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " the only outcomes that are now possible are the ones which are consistent with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In other words your ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/probability",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "sample space",
+     "type": "text"
+    },
+    {
+     "text": " will now be reduced to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". As an aside, in the universe where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has taken place, all rules of probability still hold!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Conditional Probability.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " given that event ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " already happened:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E \\mid F) = \\frac{\\p(E \\and F)}{\\p(F)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(E|F)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " can be read as the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " conditioned on ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let’s use a visualization to get an intuition for why the conditional probability formula is true. Again consider events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which have outcomes that are subsets of a sample space with 50 equally likely outcomes, each one drawn as a hexagon:",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "db6d277f-2f83-4665-901b-81bd04e47777",
+    "naturalHeight": "559",
+    "naturalWidth": "811",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fdb6d277f-2f83-4665-901b-81bd04e47777?alt=media&token=f4fc2b15-3f97-4a08-86b7-18fe52ff8dca",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "Conditioning on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " means that we have entered the world where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has happened (and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which has 14 equally likely outcomes, has become our new sample space). Given that event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has occurred, the conditional probability that event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " occurs is the subset of the outcomes of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that are consistent with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In this case we can visually see that those are the three outcomes in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E \\and F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Thus we have the:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E \\mid F) = \\frac{\\p(E \\and F)}{\\p(F)} = \\frac{3/50}{14/50} = \\frac{3}{14} \\approx 0.21\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Even though the visual example (with equally likely outcome spaces) is useful for gaining intuition, conditional probability applies regardless of whether the sample space has equally likely outcomes!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "conditional-probability-example",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conditional Probability Example",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let’s use a real world example to better understand conditional probability: movie recommendation. Imagine a streaming service like Netflix wants to figure out the probability that a user will watch a movie ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (for example, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Life_Is_Beautiful",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Life is Beautiful",
+     "type": "text"
+    },
+    {
+     "text": "), based on knowing that they watched a different movie ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (say ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Am%C3%A9lie",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Amélie",
+     "type": "text"
+    },
+    {
+     "text": "). To start let’s answer the simpler question, what is the probability that a user watches the movie Life is Beautiful, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? We can solve this problem using the definition of probability and a dataset of movie watching [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.kaggle.com/netflix-inc/netflix-prize-data",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "1",
+     "type": "text"
+    },
+    {
+     "text": "]:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E) &= \\lim_{n \\rightarrow \\infty} \\frac{\\text{count}(E)}{n} \\\\\n&\\approx \\frac{\\text{\\# people who watched movie } E}{\\text{\\# people on Netflix}} \\\\\n&= \\frac{1,234,231}{50,923,123} \\\\\n&\\approx 0.02\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In fact we can do this for many movies ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1945,
+    "sourceSha256": "e6d4da7152aa5e74547323893d59ae27b9bd09da7cc703231a160499acb79bd0"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now for a more interesting question. What is the probability that a user will watch the movie Life is Beautiful (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), given they watched Amélie (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ")? We can use the definition of conditional probability.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E\\mid F) &= \\frac{\\p(E \\and F)}{\\p(F)} && \\text{Def of Cond Prob} \\\\\n&\\approx \\frac{\n (\\text{\\# who watched } E \\and F)/ (\\text{\\# of people on Netflix})\n}{\n (\\text{\\# who watched movie } F)/(\\text{\\# people on Netflix})\n} && \\text{Def of Prob}\n\\\\\n&\\approx \\frac{\\text{\\# of people who watched both } E \\and F}{\\text{\\# of people who watched movie } F}\n&& \\text{Simplifying}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that someone watches the movie Amélie, we can now calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E\\mid F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "conditional",
+     "type": "text"
+    },
+    {
+     "text": " probability that someone watches movie ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1949,
+    "sourceSha256": "3d39c3131ada1a5b59381d104783ed8e10d16b03c106ebfea7342c7989d77b26"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Why do some probabilities go up, some probabilities go down, and some probabilities are unchanged after we observe that the person has watched Amélie (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ")? If you know someone watched Amélie, they are more likely to watch Life is Beautiful, and less likely to watch Star Wars. We have new information on the person!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "cond_paradigm",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Conditional Paradigm",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When you condition on an event you enter the universe where that event has taken place. In that new universe all the laws of probability still hold. Thus, as long as you condition consistently on the same event, every one of the tools we have learned still apply. Let’s look at a few of our old friends when we condition consistently on an event (in this case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "G"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "):",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1333,
+    "sourceSha256": "2a8ace3a4359995e056da506c75a472d8e034deaec94038c9f27a4d7f8ab6884"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conditioning on Multiple Events",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The conditional paradigm also applies to the definition of conditional probability! Again if we consistently condition on some event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "G"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " occurring, the rule still holds:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E \\mid F, G) = \\frac{\\p(E \\and F \\mid G)}{\\p(F \\mid G)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The term ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E \\mid F, G)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is new notation for conditioning on multiple events. You should read that term as “The probability of E occurring, given that both F and G have occurred”. This equation states that the definition for conditional probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E \\mid F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " still applies in the universe where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "G"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has occurred. Do you think that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E \\mid F, G)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " should be equal to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E \\mid F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? The answer is: sometimes yes and sometimes no.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

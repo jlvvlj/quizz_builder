@@ -1,0 +1,1320 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Now that we have learned about joint probabilities, we have all the tools we need to prove one of the most useful properties of Expectation: the fact that the expectation of a sum of random variables is equal to the sum of expectation (even if the variables are not independent). In other words:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "For any two random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ",",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE[X+Y] = E[X] + E[Y]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The proof is going to use the Law of Unconcious statistician (",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./expectation#lotus",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "LOTUS",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ") where the function is addition!",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Proof: Expectation of Sums",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be any two random variables:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\n  \\E&[X+Y] \\\\\n  &= \\sum_{x} \\sum_{y} (x + y) \\cdot P(X=x, Y=y) && LOTUS\\\\\n  &= \\sum_{x} \\sum_{y} x \\cdot P(X=x, Y=y) + y \\cdot P(X=x, Y=y) && \\text{Distribute}\\\\\n  &= \\sum_{x} \\sum_{y} x \\cdot P(X=x, Y=y) + \\sum_{y} \\sum_{x} y \\cdot P(X=x, Y=y) && \\text{Rearrange Sums}\\\\\n  &= \\sum_{x} x \\sum_{y} P(X=x, Y=y) + \\sum_{y} y \\sum_{x} P(X=x, Y=y) && \\text{Factor Out}\\\\\n  &= \\sum_{x} x \\cdot P(X=x) + \\sum_{y} y \\cdot P(Y=y) && \\text{Def of Marginal}\\\\\n  &= \\E[X] + \\E[Y] && \\text{Def of Expectation}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "At no point in the proof do we need to assume that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " are independent. In the second step the joint probability ends up in each sum, and in both cases, one of the sums ends up marginalizing over the joint probability!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "",
+    "level": "4",
+    "textAlign": "left"
+   },
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "id": "demonstration-of-the-proof",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Demonstration of the Proof",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here is an example to show the idea behind the proof. This table shows the joint probabilities ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=x, Y=y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "for two random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "that are not independent. You will see how computing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X+Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "is the sum of terms that are used in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2491,
+    "sourceSha256": "28152befb80d257ee742851a0259daf7ac3737fd85e77b51100c1687448a7dfd"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Aside: These two random variables can each only take on two values. Having only four values in the joint table will make it easier to gain intuition.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Computing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " using joint probabilities",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "A key insight from the proof is that we can compute using values from the joint. To do this we are going to use ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./marginalization",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "marginalization",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "P(X = x) = \\sum_{y} P(X = x, Y = y)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "We can expand ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "so that it is calculated only using values from the joint probability table:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE[X] \n&= \\sum_{x} x \\cdot P(X = x) \\\\\n&= \\sum_{x} x \\cdot \\sum_{y} P(X = x, Y = y)  && \\text{Marginalization of }X\\\\\n&= \\sum_{x} \\sum_{y} x \\cdot P(X = x, Y = y)&& \\text{Distribute }y\\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 3479,
+    "sourceSha256": "7c7322d4dd32b4b662c8da7f804f32d9778406c6830ee03a0e41cd5c3da97bef"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " = 0.1 + 0.3 + 0.4 + 0.8 = 1.6",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Computing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " using joint probabilities:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Similarly, we can compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "using only values from the joint:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE[Y] \n&= \\sum_{y} y \\cdot P(Y = y) \\\\\n&= \\sum_{x} y \\cdot \\sum_{x} P(X = x, Y = y)  && \\text{Marginalization of }Y\\\\\n&= \\sum_{x} \\sum_{y} y \\cdot P(X = x, Y = y)&& \\text{Distribute }x\\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 3493,
+    "sourceSha256": "b2f42193c05c880bf4860d480e05ce2d131cffa2014e53f0e829e0771c828264"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Computing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X+Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " using joint probabilities:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "We can rewrite ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X+Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "to be the sum of terms used in the calculations of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "above:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n  E[X + Y] \n  &= \\sum_{x,y}(x + y) \\cdot P(X = x, Y = y)\\\\\n  &= \\sum_{x,y} x \\cdot P(X = x, Y = y) + y\\cdot P(X = x, Y = y) \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Recall that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(x,y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "is shorthand for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=x, Y=y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using the above derivation of the formula for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X+Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in terms of values from the joint probability table:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n  E[X + Y] = \\sum_{x,y} x \\cdot P(X = x, Y = y) + y\\cdot P(X = x, Y = y) \n  \\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 4673,
+    "sourceSha256": "099c51aea31e5ae04553be651acaf264ea2ad66434806c02d5cff4a8917e7c6d"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Plugging in values:",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "E[",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X+Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "] = ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.1",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.4",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.3",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "1.5",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.4",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.8",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.8",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "2.0",
+     "type": "text"
+    },
+    {
+     "text": " = 6.3",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We can observe that each of these values showed up exactly once when calculating and . This is why the proof works for any two random variables, even if they are not independent.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "E[",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "] = ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.1",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.3",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.4",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.8",
+     "type": "text"
+    },
+    {
+     "text": " = 1.6",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "E[",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "] = ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.4",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "1.5",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "0.8",
+     "type": "text"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": ""
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "2.0",
+     "type": "text"
+    },
+    {
+     "text": " = 4.7",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Because they are summing the same values, it is no surprise that the sum of the expectations is equal to the expectation of the sum:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "E[X + Y] = E[X] + E[Y] = 1.6 + 4.7 = 6.3"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

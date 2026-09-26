@@ -1,0 +1,609 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Because of shifting patterns in name popularity, a person's name is a hint as to their age. The United States publishes a data which contains counts of how many US residents were born with a given name in a given year, based off Social Security applications. We can use inference to compute the reverse probability distribution: an updated belief in a person's age, given their name. As a reminder, if I know the year someone was born, I can calculate their age within one year.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2684,
+    "sourceSha256": "e5c3cffc56795e7f47ffbb7398b6c7ba3b415c5d24502c098bb764bfc5848c21"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This demo is based on real data from US Social Security applications between 1914 and 2014. Thank you to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.kaggle.com/kaggle/us-baby-names",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "https://www.kaggle.com/kaggle/us-baby-names",
+     "type": "text"
+    },
+    {
+     "text": " for compiling the data.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 371,
+    "sourceSha256": "4498549739b7ec932586c1f74f7d8b93cc16cb74742aa075c2845dbc3a7ebcf7"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": "5c046f98-c7d7-4f93-9de7-68b13d17eb4b",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Computation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The US Social Security applications data provides you with a function: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "count(year, name)",
+     "type": "text"
+    },
+    {
+     "text": " which returns the number of US citizens, born in a given year with a given name. You also have access to a list ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "names",
+     "type": "text"
+    },
+    {
+     "text": " which has each name ever given in the US and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "years",
+     "type": "text"
+    },
+    {
+     "text": " which has all the years. This function is implicitly giving us the joint probability over names and birth year. The probability of a joint assignment to name and birth year can be estimated as the count of people with that name, born on that year, over the total number of people in the dataset. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the year someone is born, and let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be their name. We will use k to denote the number of entries in the dataset:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(B = b,N = n) \\approx \n\t\\frac{\\text{count}(b, n)}\n\t{k}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The question we would really like to answer is: what is your belief that a resident was born in 1950, given that their name is Gary?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can get started by applying the definition of conditional probability for random variables:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p( B = 1950 | N = \\text{Gary} ) = \\frac{\\P(N = \\text{Gary} , B = 1950)}{\\P(N = \\text{Gary})}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note: Bayes' Theorem is a more typical choice for inference tasks like this one. However, in this case its was necessary because it is easier to compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(B=b,N=n)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(N=n|B=b)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". That is why we used the definition of conditional probability instead. The conditional probability approach this leaves one term to compute: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(N=\\text{Gary})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which we can compute using marginalization:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P( N = \\text{Gary}) &= \\sum_{y \\in \\text{years}} P(B = y,N = \\text{Gary})\\\\\n&\\approx \\sum\\limits_{y \\in \\text{years}} \\frac{\\text{count}(y, \\text{Gary})}{k}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting this all together we have:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P( B = 1950 | N = \\text{Gary} ) \n&= \\frac{\\P(N = \\text{Gary} , B = 1950)}{\\P(N = \\text{Gary})} \\\\\n&\\approx \n\\frac\n{\n\t\\Big(\n\t\\frac{\\text{count}(1950, \\text{Gary})}\n\t{k}\n\t\\Big)\n}\n{\n\t\\Big(\n\t\\frac{  \\sum\\limits_{y \\in \\text{years}} \\text{count}(y, \\text{Gary})}{k}\n\t\\Big)\n} \\\\\n&\\approx\n\\frac\n{\n\t\\text{count}(1950, \\text{Gary})\n}\n{\n\t\\sum\\limits_{y \\in \\text{years}} \\text{count}(y, \\text{Gary})\n}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "More generally, for any name, we can compute the conditional probability mass function over birth year ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P( B = b | N = n ) \n&\\approx \n\\frac\n{\n\t\\text{count}(b, n)\n}\n{\n\t\\sum\\limits_{y \\in \\text{years}} \\text{count}(y, n)\n}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "8654cdac-b42d-4a79-abba-8810f66dc31a",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Names that Give Away Your Age",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Some names have certain years where they were exceptionally popular. These names provide quite a lot of information about birth year. Let's look at some of the names with the highest max probability.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Medium Popularity (>10,000 people with the name)",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 958,
+    "sourceSha256": "6d9ccd48a22a748a84ca99ba0e2fefbfc208199cb209c321e6eaff1e9acf146b"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A search for \"Katina 1972\" brought up this interesting article about a baby named Katina in a 1972",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "http://www.nancy.cc/2012/01/25/baby-name-katina/",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": " CBS Soap Opera",
+     "type": "text"
+    },
+    {
+     "text": ". Marquita's popularity was likely from a 1983 ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.youtube.com/watch?v=K2LcWa4G0W4",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "toothpase add",
+     "type": "text"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Ashanti_(singer)",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Ashanti Douglas",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Miley_Cyrus",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Miley Cirus",
+     "type": "text"
+    },
+    {
+     "text": " were popular singers in 2002 and 2008 respectively.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "High Popularity (>100,000 people with the name)",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 921,
+    "sourceSha256": "f8844c7d87604b3e2ae7fd36430c01b4bf19d2fca83101bc578b9d8953158f6f"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "2c6bee58-3483-4860-b299-47209406d3d4",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Confidence in Probabilities",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Some names don't seem to have enough data to make good probability estimates. Can we quantify our uncertainty in such probability estimates? For example, if a name has only 10,000 entries in the database, of which only 100 were born in the year 1950, how confident are we that the true probability for 1950 is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{100}{10000}=0.01"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? One way to express our uncertainty would be through a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://chrispiech.github.io/probabilityForComputerScientists/en/part4/beta",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Beta Distribution",
+     "type": "text"
+    },
+    {
+     "text": ", which we will learn about in the next section. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We could represent our belief in the probability as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X∼\\text{Beta}(a=101,b=9901)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " reflecting that we have seen 100 people born in 1950 and 9900 people who were not. We can plot that belief, zoomed into the range [0, 0.03]:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 223,
+    "sourceSha256": "51ab18eee4a121cee987d36ae89c94130df316373fa23255b422e250554401c4"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can now ask questions such as, what is the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is within 0.002 of 0.01?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(&0.008 < X < 0.012) \\\\\n&= P(X < 0.012) - P(X < 0.008) \\\\\n&= F_X(0.012) - F_X(0.008) \\\\\n&= 0.966 - 0.013 \\\\\n&= 0.953\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Semantically this leads to the claim that, after observing 100 births with a name in 1950, out of 10,000 births with that name over the whole dataset, there is a 95% chance that the probability of someone being born in 1950 is 0.010 ± 0.002.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

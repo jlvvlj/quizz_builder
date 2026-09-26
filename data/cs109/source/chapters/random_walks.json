@@ -1,0 +1,2346 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Random walks are a common algorithm for traversing graphs. As a starting point, we'll examine how they behave for a simple example graph structure.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "020047bf-7caa-46ae-acff-18a1f35a8b54",
+    "naturalHeight": "644",
+    "naturalWidth": "2572",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F020047bf-7caa-46ae-acff-18a1f35a8b54?alt=media&token=6c555bdc-9755-41b3-9a72-d769de6a43ca",
+    "widthPct": "80"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider the following algorithm for traversing a number line, like the one shown above:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Random Walk Algorithm",
+       "type": "text"
+      },
+      {
+       "text": " (for a number line):",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Start at position 0.",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "For ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "n"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " iterations:",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        },
+        {
+         "content": [
+          {
+           "content": [
+            {
+             "attrs": {
+              "textAlign": "left"
+             },
+             "content": [
+              {
+               "text": "Flip a coin with probability ",
+               "type": "text"
+              },
+              {
+               "attrs": {
+                "showEditor": false,
+                "value": "p"
+               },
+               "type": "math_inline"
+              },
+              {
+               "text": " of getting heads.",
+               "type": "text"
+              }
+             ],
+             "type": "paragraph"
+            }
+           ],
+           "type": "listItem"
+          },
+          {
+           "content": [
+            {
+             "attrs": {
+              "textAlign": "left"
+             },
+             "content": [
+              {
+               "text": "If you get heads, go right 1 unit; otherwise, go left.",
+               "type": "text"
+              }
+             ],
+             "type": "paragraph"
+            }
+           ],
+           "type": "listItem"
+          }
+         ],
+         "type": "bulletList"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "bulletList"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We would like to reason about the possible positions on the number line that we end up at after ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " iterations. Let's start with the case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The possible end positions and moves that lead to them are:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 664,
+    "sourceSha256": "0d7c3ceb0990c10a8ae421d4a298cba7f2e93f0ae242b3ef7bc58fa824f3ac51"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that we will only end up at even-numbered positions if we take an even number of steps.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since each iteration of the algorithm is independent, we can multiply the probabilities of each individual move in a series of moves. This gives us ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{End at 2}) = p^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{End at }-2) = (1-p)^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To find the probability of ending at 0, we must consider both of the mutually exclusive paths back to 0:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(\\text{End at }0) &= \\P(\\text{(Left, Right) or (Right, Left)}) \\\\\n              &= \\P(\\text{Left, Right}) + \\P(\\text{Right, Left}) \\\\\n              &= (1-p)p + p(1-p) = 2p(1-p)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A common pitfall is to only account for one of the two possible paths back to 0 and conclude ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{End at }0) = p(1-p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " instead. You can verify ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2p(1-p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is correct by checking that the probabilities of all possible outcomes sum to 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There's an analogy here to flipping a coin twice and counting the number of heads. If the coin has probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of landing on heads, then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(2\\text{ heads}) = p^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ",  ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(0 \\text{ heads}) = (1 - p)^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(1 \\text{ head}) = 2p(1-p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", which are the same probabilities as above.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now, let's scale up: what if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Then the possible end positions",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are the even numbers from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "-10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to 10. Only one series of moves ends at position 10 (going right all 10 iterations) or position -10 (left all 10 iterations), but all other outcomes are composed of multiple paths.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example, to land on position 2 after 10 iterations means the random walk must have gone right exactly 6 times and left exactly 4 times (we had to go right two more times than we went left). Here are all the possible series of moves that satisfy this:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7622,
+    "sourceSha256": "da20b1a822b17ddbdd1e07f06d82b014fa23eff8b785a50fe5b2fbf7412b0d1b"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these paths have probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^6(1-p)^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It would be the same pitfall again to say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{End at }2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the probability of just one path, though; instead, we want to sum this probability as many times as there are mutually exclusive paths to this position, or equivalently, count the possible paths and then multiply that count by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^6(1-p)^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The number of ways can we go right 6 times and left 4 times is the same as choosing 6 out of 10 total steps to be the steps where we go right, or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{10}{6}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Thus:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n \\P(\\text{End at }2) = \\binom{10}{6}p^6(1-p)^4\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If that expression looks familiar, that's because we derived it in ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Many Coin Flips",
+     "type": "text"
+    },
+    {
+     "text": "! If we flip a coin 10 times with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of heads each flip, then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(6\\text{ heads}) =  \\binom{10}{6}p^6(1-p)^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". More explicitly, the number of moves to the right in an ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-step random walk along a number line is described by the same probabilities as the number of heads seen in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips. The idea that both scenarios can be described by the same probabilities is formalized once we recognize that both are instances of the Binomial.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "id": "dna-mutations",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "DNA Mutations",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now let's look at a more complex graph to analyze a problem about DNA sequence mutations.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A species of bacteria is rapidly multiplying inside a dish. Each time a bacterium clones itself, it copies its DNA sequence (a very long ordered list made up of the letters A, C, G, and T). DNA copying is an error-prone process, so mutations sometimes occur -- i.e., at a certain position in the DNA sequence, the letter A changes to, say, a C. Each time a mutation occurs, the original letter changes to one of the three other letters with equal likelihood.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Assume that before any mutations occur, there is an A at a particular position in the DNA sequence. What is the probability that after ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " mutations, there is an A at this position again?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This problem might not sound like it's about a random walk at first, but it can be represented as one!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2662,
+    "sourceSha256": "a7bc28d95b5bb9e3b3b0dc2e1e6f61b60f7c4434b9ca94c2778f2df33dfafe09"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The graph above shows the four DNA letters as four nodes, and the allowed \"moves\" or mutations as edges connecting the nodes. For example, the line from A to T allows mutations from A to T or from T to A. Our graph is fully connected because any letter can mutate to any other letter -- but not to themselves (by definition, the letter must change when a mutation occurs). We also know from the problem that all possible moves on this graph are equally likely.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "With the problem scenario represented as this graph, we can re-frame the event of \"mutating from A back to A after ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " mutations\" as the event that we start at node A on the graph, perform an ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-step random walk, and find ourselves back at node A.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As you might guess, random walks on this graph is more complicated to analyze than the earlier number line example! But we can still start using the same tactic that works in so many probability problems, enumerating all the possible outcomes to get some intuition:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2614,
+    "sourceSha256": "a14c5249d44cd0d75831df64cb3cd6c8314699a538cb96b501a59e9400c3d305"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Simplest Case: Two Mutations",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th letter in the random walk mutation sequence is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " could be A, C, G, or T). For example, the first outcome listed above when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " shows ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0,C_1,A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", then, we want to find ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", given that we know the start (0th) letter is A.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since each random walk sequence above is unique, these outcomes are mutually exclusive. If an event can be broken down into a set of mutually exclusive outcomes, then ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/prob_or",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Probability of Or",
+     "type": "text"
+    },
+    {
+     "text": " tells us the probability of the event is the sum of the probabilities of all the individual outcomes. So, what is the probability of a single outcome?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's take ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0,C_1,A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as an example. Since ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_0) = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we are interested in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(C_1,A_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".  Using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/prob_and",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Chain Rule",
+     "type": "text"
+    },
+    {
+     "text": " with consistent conditioning on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(C_1,A_2|A_0) &= \\P(C_1 | A_0) \\P(A_2 | A_0,C_1)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that whenever we use the Chain Rule, we get to decide in what order we \"chain\" the events; in this case, it's key to follow chronological order.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Next, let's observe that if a mutation always changes the letter (no consecutive repeat letters are allowed), and the three possible new letters are equally likely, then the probability of mutating to any specific different letter is 1/3. Formally, for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i > 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(A_i|C_{i-1}) = \\P(A_i|G_{i-1}) = \\P(A_i|T_{i-1}) = \\P(C_i|A_{i-1}) = \\P(C_i|G_{i-1}) = \\dots = \\P(T_i|G_{i-1}) = \\frac{1}{3}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(A_i|A_{i-1}) = \\P(C_i|C_{i-1}) = \\P(G_i|G_{i-1}) = \\P(T_i|T_{i-1}) = 0\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This gives us a value for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(C_1|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the Chain Rule above, but not ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2|A_0,C_1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". How can we reason about this term? We can recognize a case of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Conditional Independence!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we know that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " happened, does it matter that the starting letter was A for determining what the next mutation could be? No, our probability of mutating from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is unchanged by what letter came before ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Formally, we can say that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_{i+2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is independent of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_{i}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "conditioned on",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_{i+1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This means ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2|A_0,C_1) = \\P(A_2|C_1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". (They are not independent without conditioning on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", though! We verify this shortly when we find ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2|A_0) \\neq \\P(A_2|C_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": after two mutations, we're more likely to be back at the letter we started with than a different letter.) Thanks to Conditional Independence,",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(C_1,A_2|A_0) =\\P(C_1 | A_0) \\P(A_2 | C_1) = \\frac{1}{3} \\cdot \\frac{1}{3} = \\frac{1}{9}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The same approach gives us that the probability of any outcome listed above for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is also ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{9}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "So, back to Probability of Or: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2 | A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{9}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " times the number of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-conditioned outcomes where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " happens. For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we can count 3 outcomes, corresponding to the three options of C, G, or T for the first mutation, and that gives us:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(A_2|A_0) = 3 \\cdot \\frac{1}{9} = \\frac{1}{3}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Interestingly, if we try this approach for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(C_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(G_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_2|C_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or any other two-mutation outcome with different start vs. end letters, we get ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{2}{9}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " instead of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{3}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The difference arises from the step where we count outcomes that end with a particular letter. For example, there are only two valid outcomes where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_2|A_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " -- ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0,G_1,C_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0,T_1, C_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " -- because there are only two bases left that aren't A or C to choose as the middle letter.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This line of reasoning is parallel with another approach to this problem: pure counting. For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and given ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|S| = 3 \\cdot 3 = 9"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " if we have 3 letter options for each of two mutation-steps, and counting ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|E|"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is equivalent to our outcome-count above. When we found that any outcome had probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{9}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we proved equally likely outcomes, which is necessary for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E) = \\frac{|E|}{|S|}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Either strategy for solving this problem faces the same challenge of increasing difficulty as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " grows: counting the size of the event space.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Scaling Up To Larger ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's try to generalize our findings for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " by seeing what changes when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First, we'll choose an example outcome to find the probability of: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_0,C_1,G_2,A_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Via the Chain Rule:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(C_1,G_2,A_3|A_0) &= \\P(C_1|A_0) \\P(G_2|A_0,C_1) \\P(A_3|A_0,C_1,G_2) \\\\\n                        &= \\P(C_1|A_0) \\P(G_2|C_1) \\P(A_3|G_2) \\\\\n                        &= \\left( \\frac{1}{3} \\right)^3 = \\frac{1}{27}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conditional Independence simplifies the Chain Rule again, so each term is still ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{3}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This suggests an inductive pattern: the probability of any single outcome, when all the outcomes start on one specific letter, is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{1}{3^n}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for any positive integer ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n "
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using the pure-counting approach instead, we could similarly find the size of the sample space to be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "3^n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In either approach, where things get interesting is counting the size of the event space. Think through the constraints implied if the start and end letter are both A, and letters can't repeat consecutively -- it isn't possible for either of the intermediate letters in  length-4 mutation sequences to be A, but they also have to be distinct. We have 3 choices for the first mutation and 2 choices for the second, so ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|E| = 6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", giving us a total probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{6}{27} = \\frac{2}{9}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As an aside, it's neat how this is the same as the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(C_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(G_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(T_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "! To intuit why this is the case, you could ruminate on how the possible second-to-last mutations would relate to the probability of the final mutation being an A. Using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/law_total",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Law of Total Probability",
+     "type": "text"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(A_3 | A_0) &= \\P(A_3|A_0,C_2) \\P(C_2|A_0) + \\P(A_3|A_0,G_2) \\P(G_2|A_0) + \\P(A_3|A_0,T_2) \\P(T_2|A_0) \\\\\n                  &= \\P(A_3|C_2) \\P(C_2|A_0) + \\P(A_3|G_2) \\P(G_2|A_0) + \\P(A_3|T_2) \\P(T_2|A_0) \\\\\n                  &= \\frac{1}{3} \\P(C_2|A_0) + \\frac{1}{3} \\P(G_2|A_0) + \\frac{1}{3} \\P(T_2|A_0) \\\\\n                  &= \\frac{1}{3} \\cdot 3 \\cdot \\P(C_2|A_0) = \\P(C_2|A_0)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The later steps use the fact that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(C_2|A_0) = \\P(G_2|A_0) = \\P(T_2|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". What this says is: there are three possible letters you could mutate ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "from",
+     "type": "text"
+    },
+    {
+     "text": " to end on A, and each of those letters has equal probability (1/3) of being the second-to-last mutation, and those two factors cancel out.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting that aside aside...can we generalize our event space count? Even looking at ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", it's not obvious how. For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we must consider two subgroups of outcomes with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": outcomes with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and outcomes with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "C_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "G_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " instead. Counting these two groups separately and then adding those counts together is necessary because ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " determines the number of choices for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the case of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": there are 3 possible letters for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", so 9 outcomes overall.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the case of not-",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": we have 3 options for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", 2 options for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " since they can each be any letter besides ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or the letter we chose previously.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting these counts together, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|E| = 9 + 3 \\cdot 2 \\cdot 2 = 21"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Using ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "|S| = 3^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_4|A_0) = \\frac{21}{81}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n = 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we'd again have to consider subgroups in our event space count: outcomes with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A_3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or no intermediate As...  ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Other Approaches: Code",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Brute-force enumeration via code is one hack to calculate these probabilities for higher ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def get_next_letter(letter, letters=[\"A\", \"C\", \"G\", \"T\"]):\n    # if \"A\", return \"C\"; if \"C\", return \"G\"; etc.\n    try:\n        return letters[letters.index(letter) + 1]\n    except:\n        # if here, we don't have a \"next letter\" (we're at T, the end)\n        return False\n\ndef get_next_outcome(outcome):\n    # recursive function for getting next possible mutation sequence\n    # ex: [\"A\", \"A\"] returns [\"A\", \"C\"]\n    #     [\"C\", \"T\"] returns [\"G\", \"A\"] (so the previous letter updates)\n    \n    next_letter = get_next_letter(outcome[-1])\n    if next_letter:\n        # if here, last letter was not T, so just increment last letter\n        return outcome[:-1] + [next_letter]\n    else:\n        # if here, the last letter was T, so we need to update multiple\n        # letters to make the next outcome (maybe do multiple recursions).\n        # like how in binary, 01011 + 1 -> 01100 (digits 1-3 updated)\n        next_outcome = get_next_outcome(outcome[:-1])\n        \n        # analogous to the new 0s in the binary example: when we update\n        # multiple letters, we put As where there were Ts at the end\n        return next_outcome + [\"A\"]\n\ndef any_consecutive_letters(outcome):\n    # check if an outcome follows the rule that no letters repeat consecutively\n    for i in range(len(outcome) - 1):\n        if outcome[i] == outcome[i+1]:\n            return True\n    return False\n\ndef count_outcomes(n, start_letter=\"A\", end_event=\"A\"):\n    sample_space = 0  # |E|\n    event_space = 0   # |S|\n\n    # loop through all possible n-length sequences, starting with \"all As\"\n    outcome = [start_letter] + [\"A\"] * n\n    while True:\n        # end condition for get_next_outcome() iterating through all sequences\n        if outcome[0] != start_letter:\n            break\n\n        if not any_consecutive_letters(outcome): # is this outcome even valid?\n            sample_space += 1\n            if outcome[-1] == end_event: # if end letter is what we're looking for\n                event_space += 1\n\n        outcome = get_next_outcome(outcome)\n\n    return event_space / sample_space ",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Other Approaches: Recursion",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we really wanted to avoid counting event spaces, though, we could return to that aside from earlier. Recall the Law of Total Probability tells us (generalizing here):",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(A_i|A_0) = \\P(C_{i-1}|A_0) = \\P(G_{i-1}|A_0) = \\P(T_{i-1}|A_0) \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can make this even more useful by observing that the probability of getting any of the four letters at a particular iteration must be 1, according to the second ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/axioms",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Axiom of Probability",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(A_{i-1} | A_0) + \\P(C_{i-1} | A_0) + \\P(G_{i-1} | A_0) + \\P(T_{i-1} | A_0) &= 1 \\\\\n    \\P(A_{i-1} | A_0) + \\P(C_{i-1} | A_0) + \\P(C_{i-1} | A_0) + \\P(C_{i-1} | A_0) &= 1 \\\\\n    \\P(A_{i-1} | A_0) + 3 \\P(C_{i-1} | A_0) &= 1 \\\\\n    \\P(C_{i-1} | A_0) &= \\frac{1}{3} (1 - \\P(A_{i-1} | A_0))\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Putting these together, we arrive at the following recursive relationship, which can be used to find ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(A_i|A_0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for any ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i > 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(A_i | A_0) = \\frac{1}{3} (1 - \\P(A_{i-1} | A_0))\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "This page contributed by Kelly.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -138,10 +138,12 @@ function sourceFormulaTerms(region: SourceRegion, context: string) {
 // ("we receive \$1") is never parsed as an expression.
 const MATH_SPAN = /((?<!\\)\$(?:\\\$|[^$])+?(?<!\\)\$)/g;
 const literalDollars = (text: string) => text.replace(/\\\$/g, '$');
-export function LessonLatexText({text, context}: {text: string; context: string}) {
-    return <p className="lesson-math-paragraph">{text.split(MATH_SPAN).map((part, index) => part.startsWith('$') && part.endsWith('$') && part.length > 2
+export function LessonLatexText({text, context, inline = false}: {text: string; context: string; inline?: boolean}) {
+    const parts = text.split(MATH_SPAN).map((part, index) => part.startsWith('$') && part.endsWith('$') && part.length > 2
         ? <InlineFormula key={index} source={literalDollars(part.slice(1, -1))} context={context} latex />
-        : <span key={index}>{literalDollars(part)}</span>)}</p>;
+        : <span key={index}>{literalDollars(part)}</span>);
+    // Inline for titles, where a paragraph element would be invalid inside the heading.
+    return inline ? <span>{parts}</span> : <p className="lesson-math-paragraph">{parts}</p>;
 }
 
 function FormulaModal({ children, trigger, title = 'Formula explained' }: { children: React.ReactNode; trigger: React.ReactNode; title?: string }) {

@@ -1,0 +1,220 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let’s consider the relationship between knowing the concepts used in a midterm question, and getting the question correct, taking into account guessing and making silly mistakes. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To explore this lets define two different events:",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that a student gets the answer right (aka correct)",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "K"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that the student knows the concepts to the midterm question",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Generally we can observe ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or its complement, and we want to estimate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "K"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Based on previous students responses to this problem we know that:",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(K) = 3/4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the probability that a learner knows the concepts to the midterm question. ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(R|K^C) = 1/4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the probability that a learner gets the answer correct if they don’t know the concepts. ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(R^C|K) = 1/10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the probability that a learner gets the question incorrect given they do know the concepts. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "question",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Question",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that a learner gets the question correct?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(R) \n&= P(R \\mid K) P(K) + P(R \\mid K^c) P(K^c)\\\\\n&= \\big[1 - P(R^C \\mid K)\\big] \\cdot P(K) + P(R \\mid K^C) \\cdot \\big[1-P(K^C)\\big]\\\\\n&= \\frac{9}{10} \\cdot \\frac{3}{4} + \\frac{1}{4}\\cdot \\frac{1}{4}\\\\\n&= \\frac{27}{40} + \\frac{1}{16}  \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that the learner knows the concepts given that they got the answer correct?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "[TODO: finish this]...",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

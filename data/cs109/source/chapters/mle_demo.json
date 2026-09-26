@@ -1,0 +1,594 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Poisson",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's look at a toy problem where we need to estimate the parameter ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for a Poisson using MLE. We'll build some intuition for the idea behind MLE through this example.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A doctor on call can receive calls independently at all hours of the day.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Each day last week, the doctor counted how many calls she received per day: [10, 4, 7, 6, 8, 4, 5].",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "What is the probability the doctor receives more than 8 calls today?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The problem scenario encourages us to choose a Poisson to model the number of calls the doctor receives each day. But what value should ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be? We will need to use the data provided to estimate it.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "More generally:",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Given some data that we consider as coming from some probabilistic model, what are the ideal parameter values for that model?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This question has no single correct answer, but below is the perspective that dominates most machine learning algorithms used today.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Histogram of Data",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 674,
+    "sourceSha256": "8539afffe5467ec26ffed2bb862724bbba0d522e892da4222b8316368d011b86"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1665,
+    "sourceSha256": "5964fae9f01cf033a92940726a35d0634a2190311dd1f415eaaace2fa6694605"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the two plots above, we see (top) a histogram of our observed data, and (bottom) the Poisson PMF. Using the slider, we can adjust the Poisson PMF according to different values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". For certain values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the resulting PMF is positioned nearer to our datapoints along the x-axis, which suggests better agreement between the data and the choice of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Notably, when we set the slider to some specific ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value, each bar of the PMF indicates how likely it would have been to see any specific datapoint, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "if",
+     "type": "text"
+    },
+    {
+     "text": " the slider value was the true underlying ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If we wanted, we could compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X = x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given any potential ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value by plugging in both ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " into the Poisson PMF equation.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "The central idea of Maximum Likelihood Estimation",
+     "type": "text"
+    },
+    {
+     "text": " is that this measurement of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X = x | \\lambda)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is precisely how we can evaluate the goodness of fit of candidate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values. The ideal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value should be the one that makes the data the most likely -- that is, the value that ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "maximizes",
+     "type": "text"
+    },
+    {
+     "text": " the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "likelihood",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The plot below shows a measurement of \"likelihood\" of all our datapoints as a function of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 805,
+    "sourceSha256": "5cfa5db600fa462bd2d1167aae15aacc7533fc5778da3045ba37db713844c97c"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This curve indicates that extreme values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are less likely to have produced our data than more moderate values, between 5 and 9. Interestingly, there is a peak! This curve contains one maximum, representing the point where the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value used resulted in the highest possible likelihood. Surely that value must be a good estimate for the true ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Normal",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's try to manually perform maximum likelihood estimation with a Normal distribution. In this case, we need to estimate the two parameters of the Normal: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here are the 20 data points, which we assume come from a Normal distribution:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "[6.3 , 5.5 , 5.4, 7.1, 4.6, 6.7, 5.3 , 4.8, 5.6, 3.4, 5.4, 3.4, 4.8, 7.9, 4.6, 7.0, 2.9, 6.4, 6.0 , 4.3]",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Your job is to use the sliders below choose parameter values that make the data look as likely as possible.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 802,
+    "sourceSha256": "cc96c35444c96ca235650ebf42d875c180e587e526aad50b6bb4e769058366e6"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 3192,
+    "sourceSha256": "eb25d9d139ff35713ce45be7d41f24850e4fd29074da974d821da6aa5b00b78b"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Similar to the Poisson example, we can roughly eyeball how to center the Normal distribution on the mean of the datapoints, and that very approximately corresponds to what MLE tells us is the value of the mean that maximizes the likelihood of the data. However, optimizing for the best ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value is a less obvious game to play by eye, so we have to check the value of the likelihood function for guidance.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

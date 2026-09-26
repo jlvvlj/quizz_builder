@@ -1,0 +1,683 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "An astute person once observed that when looking at a picture, like the one we saw for conditional probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "c5986956-cef8-4c02-b06b-8fa33f03b2ad",
+    "naturalHeight": "559",
+    "naturalWidth": "811",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fc5986956-cef8-4c02-b06b-8fa33f03b2ad?alt=media&token=fdb5bcbe-5a06-4de6-93e5-d4f683fb1098",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "that event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be thought of as having two parts, the part that is in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(E \\and F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and the part that isn’t, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(E \\and F^c)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This is true because ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F^c"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are (a) mutually exclusive sets of outcomes which (b) together cover the entire sample space. After further investigation this proved to be mathematically true, and there was much rejoicing:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E) &= \\p(E \\and F) + \\p(E \\and F^c)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This observation proved to be particularly useful when it was combined with the chain rule and gave rise to a tool so useful, it was given the big name, law of total probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E) &= \\p(E \\and F) + \\p(E \\and F^c) \\\\\n&= \\p(E | F) \\p(F) + \\p(E | F^c) \\p(F^c) \\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Law of Total Probability (LOTP)",
+       "type": "text"
+      },
+      {
+       "text": " If we combine our above observation with the chain rule, we get a very useful formula the Law of Total Probability of LOTP for short:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E) &= \\p(E | F) \\p(F) + \\p(E | F^c) \\p(F^c)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There is a more general version of the rule. If you can divide your sample space into any number of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "mutually exclusive",
+     "type": "text"
+    },
+    {
+     "text": " events: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_1, B_2, \\dots B_n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " such that every outcome in the sample space falls into one of those events, then:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E) \n&= \\sum_{i=1}^n \\p(E \\and B_i) \\quad\\quad\\text{Extension of our observation}\\\\\n&= \\sum_{i=1}^n \\p(E | B_i) \\p(B_i) \\quad\\quad\\text{Using chain rule on each term}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "lotp-many",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Law of Total Probability: Many Background Events",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F^C"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are always mutually exclusive and they always cover the entire sample space, no matter what ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " represents! If you can find more than two background events that are also mutually exclusive, and their union covers the entire sample space (the universe of outcomes) then you can use the generalized version of the law of total probability.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To generalize the law of total probability, imagine we can divide the sample space into several mutually exclusive background events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "( B_1, B_2, \\dots, B_n )"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", where these sets are collectively exhaustive. Collectively exhaustive is a formal way to say that exactly one of these events will occur. In this case, any event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be decomposed by considering  the likelihood of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " within each of these disjoint sets.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "e55a0df2-eeee-4da8-819a-f30ce17dd8e1",
+    "naturalHeight": "424",
+    "naturalWidth": "1208",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fe55a0df2-eeee-4da8-819a-f30ce17dd8e1?alt=media&token=15f94f0d-41c2-4ee1-b2b2-92d514f77b53",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the image above, you could compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be equal to",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p\\Big[(E \\and B_1) \\text{ }\\or\\text{ }(E \\and B_2)\\text{ }  \\or\\text{ }\\dots\\text{ } \\or\\text{ }(E \\and B_n)\\big]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many real world cases where it is much easier to think of the probability of an event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the context of a background event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Suppose you are trying to determine the likelihood that a randomly selected individual will test positive for a certain disease, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The population can be divided into three mutually exclusive background groups:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "B_1"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ": Individuals who are high-risk (e.g., individuals with a known exposure to the disease),",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "B_2"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ": Individuals who are medium-risk (e.g., individuals with a family history of the disease but no direct exposure),",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "B_3"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ": Individuals who are low-risk (e.g., the general population without known risk factors).",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these groups has a different probability of testing positive for the disease, and the total probability of a random individual testing positive can be broken down as follows:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P&(E) \\\\\n&= \\P(E \\and B_1) + \\P(E \\and B_2) + \\P(E \\and B_3) && \\href{\\#lotp-many}{\\text{LOTP}}\\\\\n&= \\P(E | B_1)\\P(B_1) + \\P(E | B_2)\\P(B_2) + \\P(E | B_3)\\P(B_3) && \\text{Chain Rule}\\\\\n&= \\sum_{i=1}^{3} \\P(E \\mid B_i)\\P(B_i) && \\text{Sum Notation}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Where:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "P(E | B_1)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " is the probability of testing positive in the high-risk group",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "P(E | B_2)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " is the probability of testing positive in the medium-risk groups,",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "P(E | B_3)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " is the probability of testing positive in the low-risk group.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": " ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "P(B_1), P(B_2), P(B_3)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " are the probabilities of a person being in the high-risk, medium-risk, and low-risk groups.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "bulletList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This use of the Law of Total Probability works because everyone belongs to one and only one background event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(B_1, B_2, B_3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In other words the events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " span the sample space. Moreover, each person is in only one of the sets, and as such they are mutually exclusive. This use of the Law of Total Probability is helpful because it is easier to think of the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", testing positive, in the context of the background events, where you know how at-risk the patient is.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

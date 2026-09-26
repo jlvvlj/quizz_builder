@@ -1,0 +1,811 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "So far we have set the foundation for how we can represent probabilistic models with multiple random variables. These models are especially useful because they let us perform a task called “inference” where we update our belief about one random variable in the model, conditioned on new information about another. Inference in general is hard! In fact, it has been proven that in the worst case, the inference task can be NP-Hard where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the number of random variables ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.sciencedirect.com/science/article/pii/000437029090060D",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "[1]",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First we are going to practice it with two random variables (in this section). Then, later in this unit we are going to talk about inference in the general case, with many random variables.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Earlier we looked at conditional probabilities for events. The first task in inference is to understand how to combine conditional probabilities and random variables. The equations for both the discrete and continuous case are intuitive extensions of our understanding of conditional probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-discrete-conditional",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Discrete Conditional",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The discrete case, where every random variable in your model is discrete, is a straightforward combination of what you know about conditional probability (which you learned in the context of events). Recall that every relational operator applied to a random variable ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/rvs#rv_vs_event",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "defines an event",
+     "type": "text"
+    },
+    {
+     "text": ". As such the rules for conditional probability directly apply: The conditional probability mass function (PMF) for the discrete case:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let X and Y be discrete random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Def:",
+       "type": "text"
+      },
+      {
+       "text": " Conditional definition with discrete random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X=x|Y=y)=\\frac{P(X=x,Y=y)}{P(Y=y)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Def:",
+       "type": "text"
+      },
+      {
+       "text": " Bayes' Theorem with discrete random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X=x|Y=y)=\\frac{P(Y=y|X=x)P(X=x)}{P(Y=y)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the presence of multiple random variables, it becomes increasingly useful to use shorthand! The above definition is identical to this notation where a lowercase symbol such as x is short hand for the event X=x:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(x|y)=\\frac{P(x,y)}{P(y)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The conditional definition works for any event and as such we can also write conditionals using cumulative density functions (CDFs) for the discrete case:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(X \\leq a | Y=y) \n    &= \\frac{\\P(X \\leq a, Y=y)}{\\p(Y=y)} \\\\\n    &= \\frac{\\sum_{x\\leq a} \\P(X=x,Y=y)}{\\P(Y=y)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a neat result: this last term can be rewritten, by a clever manipulation. We can make the sum extend over the whole fraction:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(X \\leq a | Y=y) \n    &= \\frac{\\sum_{x\\leq a} \\P(X=x,Y=y)}{\\P(Y=y)} \\\\\n    &= \\sum_{x\\leq a} \\frac{\\P(X=x,Y=y)}{\\P(Y=y)} \\\\\n    &= \\sum_{x\\leq a} \\P(X=x|Y=y)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In fact it becomes straightforward to translate the rules of probability (such as Bayes' Theorem, law of total probability, etc) to the language of discrete random variables: we simply need to recall that every relational operator applied to a random variable ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/rvs#rv_vs_event",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "defines an event",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Mixing Discrete and Continuous",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What happens when we want to reason about ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "continuous",
+     "type": "text"
+    },
+    {
+     "text": " random variables using our rules of probability (such as Bayes' Theorem, law of total probability, chain rule, etc)? There is a simple practical answer: the rules still apply, but we have to replace probability terminology with probability ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "density",
+     "type": "text"
+    },
+    {
+     "text": " functions. As a concrete example let's look at Bayes' Theorem with one continuous random variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Def:",
+       "type": "text"
+      },
+      {
+       "text": " Bayes' Theorem with mixed discrete and continuous.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let X be a continuous random variable and let N be a discrete random variable. The conditional probabilities of X given N and N given X respectively are:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(X=x|N=n) =  \\frac{\\P(N=n|X=x)f(X=x)}{\\p(N=n)}\\quad\\quad\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\p(N=n|X=x) =  \\frac{f(X=x|N=n)\\p(N=n)}{f(X=x)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "These equations might seem complicated since they mix probability densities and probabilities. Why should we believe that they are correct? First, observe that anytime the random variable on the left-hand side of the conditional is continuous, we use a density; whenever it is discrete, we use a probability. This result can be derived by making the observation: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "P(X = x) = f(X=x) \\cdot \\epsilon_x"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the limit as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\epsilon_x \\rightarrow 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In order to obtain a probability from a density function you integrate under that function. If you wanted to approximate the probability that X = x you could consider the area created by a rectangle which has height f(X=x) and some very small width. As that width gets smaller, your answer becomes more accurate.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\epsilon_x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is problematic if it is left in a formula. However, if we can get them to cancel, we can arrive at a working equation. This is the key insight used to derive the rules of probability in the context of one or more continuous random variables. Again, let X be a continuous random variable and let N be a discrete random variable:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\p(N=n|X=x) &=  \\frac{P(X=x|N=n)\\p(N=n)}{P(X=x)}  \\quad\\quad\\text{Bayes' Theorem}\\\\\n     &=  \\frac{f(X=x|N=n) \\cdot \\epsilon_x \\cdot \\p(N=n)}{f(X=x) \\cdot \\epsilon_x}\\quad\\quad \\P(X = x) = f(X=x) \\cdot \\epsilon_x\\\\\n     &=  \\frac{f(X=x|N=n)  \\cdot \\p(N=n)}{f(X=x)}  \\quad\\quad\\text{Cancel } \\epsilon_x\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This strategy applies beyond Bayes' Theorem. For example here is a version of the Law of Total Probability when X is continuous and N is discrete:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(X=x) &=  \\sum_{n \\in N} f(X=x | N = n) \\p(N = n)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Probability Rules with Continuous Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The strategy used in the above section can be used to derive the rules of probability in the presence of continuous random variables. The strategy also works when there are multiple continuous random variables. For example here is Bayes' Theorem with two continuous random variables.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Def:",
+       "type": "text"
+      },
+      {
+       "text": " Bayes' Theorem with continuous random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let X and Y be continuous random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(X=x|Y=y) = \\frac{f(X=x,Y=y)}{f(Y=y)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example: Inference with a Continuous Variable",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider the following question:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Question:",
+       "type": "text"
+      },
+      {
+       "text": " At birth, girl elephant weights are distributed as a Gaussian with mean 160kg, and standard deviation 7kg. At birth, boy elephant weights are distributed as a Gaussian with mean 165kg, and standard deviation of 3kg. All you know about a newborn elephant is that it is 163kg. What is the probability that it is a girl?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer:",
+       "type": "text"
+      },
+      {
+       "text": " Let G be an indicator that the elephant is a girl. G is Bern(p = 0.5)",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "Let X be the distribution of weight of the elephant.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X | G = 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N(μ = 160, σ² = 7²)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X | G = 0"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N(μ = 165, σ² = 3²)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(G = 1 | X = 163) &= \\frac{f(X = 163 | G = 1) \\P(G = 1)}{f(X = 163)} \\quad\\quad \\text{Bayes} \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If we can solve this equation we will have our answer. What is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(X = 163 | G = 1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "? It is the ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "https://{{pathToRoot}}/normal",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "probability density function of a gaussian",
+       "type": "text"
+      },
+      {
+       "text": " X which has ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "μ=160"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "σ^2 = 7^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " at the point ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x=163"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(X = 163 | G = 1)  &= \\frac{1}{\\sigma \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\Big(\\frac{x-\\mu}{\\sigma}\\Big)^2}\\quad\\quad \\text{PDF Gauss}\\\\\n&= \\frac{1}{7 \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\Big(\\frac{163-160}{7}\\Big)^2}\\quad\\quad \\text{PDF } X \\text{ at } 163\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Next we note that P(",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "G"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " = 0) = P(",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "G"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " = 1) = ½. Putting this all together, and using the law of total probability to compute the denominator we get:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p&(G = 1 | X = 163) \\\\\n&=  \\frac{f(X = 163 | G = 1) \\P(G = 1)}{f(X = 163)} \\\\\n\n&=  \\frac{f(X = 163 | G = 1) \\P(G = 1)}{f(X = 163 | G = 1) \\P(G = 1) + f(X = 163 | G = 0) \\P(G = 0)}\\\\\n\n&=  \\frac{\\frac{1}{7 \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\Big(\\frac{163-160}{7}\\Big)^2} \\cdot \\frac{1}{2}}{\\frac{1}{7 \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\Big(\\frac{163-160}{7}\\Big)^2} \\cdot \\frac{1}{2} + \\frac{1}{3 \\sqrt{2 \\pi}} e^{-\\frac{1}{2}\\Big(\\frac{163-165}{3}\\Big)^2} \\cdot \\frac{1}{2}} \\\\\n\n&=  \\frac\n{\\frac{1}{7} e^{-\\frac{1}{2}\\Big(\\frac{9}{49}\\Big)}}\n{\\frac{1}{7} e^{-\\frac{1}{2}\\Big(\\frac{9}{49}\\Big)}  + \\frac{1}{3} e^{-\\frac{1}{2}\\Big(\\frac{4}{9}\\Big)^2}}\\\\\n&\\approx 0.328\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  }
+ ],
+ "type": "doc"
+}
