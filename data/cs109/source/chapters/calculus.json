@@ -1,0 +1,1926 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "id": "derivative",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Derivatives",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      },
+      {
+       "text": " Derivative",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A derivative measures the amount that a function’s output changes with respect to its input.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In 2D graphical terms, it is the slope of the function at a given point. The derivative of a function ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " can be represented as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{d f(x)}{dx}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " or ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f ′(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". You may have seen derivatives of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{dy}{dx}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for functions ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y = f (x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example, the derivative of a moving object’s position with respect to time is its velocity. In the world of probability, the derivative of the Cumulative Distribution Function (CDF) is the Probability Density Function (PDF). ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      },
+      {
+       "text": " Partial Derivatives",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The partial derivative of a function with multiple variables is the derivative with respect to just one of those variables, while holding all other variables as constants. For instance, given ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(x, y) = x^2y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f}{\\partial y} = x^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f}{\\partial y} = 2xy"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". That is, the partial derivative of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " with respect to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and the partial derivative of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " with respect to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "2xy"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "common-derivatives",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Common Derivatives",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here are some common derivatives to keep in mind. When the variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is used, it represents an arbitrary real number.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition: ",
+       "type": "text"
+      },
+      {
+       "text": "Chain Rule",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For functions of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "h(x) = f (g(x))"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "g"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are both differentiable:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\frac{\\partial h(x)}{\\partial x} \n= \\frac{\\partial f(x)}{\\partial g(x)} \n\\cdot \\frac{\\partial g(x)}{\\partial x} \n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition: ",
+       "type": "text"
+      },
+      {
+       "text": "Product Rule",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For functions of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "h(x) = f(x) \\cdot g(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "g"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are both differentiable:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "center"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "h'(x) = f'(x) \\cdot g(x) + f(x) \\cdot g'(x)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Power Rule:",
+       "type": "text"
+      },
+      {
+       "text": " for functions of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = x^a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f ′(x) = a · x^{a−1}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example: ",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = x^{\\frac{3}{2}}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "    →    ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x}= \\frac{3}{2}x^{\\frac{1}{2}}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For functions of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = a^x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " (where the base is a constant), ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x} = \\log(a) · a^x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " This is particularly handy for Euler’s number ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "e"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", where if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = e^x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the derivative is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x}  = \\log(e) · e^x = f (x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": " \\log(e) = 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For functions of the form ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\log_a(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x} = \\frac{1}{ln(a) · x}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " This is particularly handy for Euler’s number ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "e"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ": if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\log(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x} = \\frac{1}{\\log(e) · x} = \\frac{1}{x}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Logistic Function: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\frac{1}{1 + e^{−ax}}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This function is used in Logistic Regression, a classification algorithm discussed in Lecture 24, as well as neural networks and other machine learning applications. (You don't need to know this before then!)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Derivative:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x}  = a · f (x) · [1 − f (x)]"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " The sigmoid function is a special case of the logistic function where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "a = 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". So, this simplifies as: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\frac{1}{1 + e^{−x}}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "   →    ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x}  = f (x) · [1 − f (x)]"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Derivative Practice",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here are some example functions and their derivatives that you should be able to calculate comfortably.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\log(x)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Derivative:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x}= -\\frac{1}{x}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\frac{2x}{e^{x^2}+5}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Derivative:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x} = \\dfrac{2}{e^{x^2}+5} - \\dfrac{4x^2 e^{x^2}}{(e^{x^2}+5)^2}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\log_2(x) + x^3 · e^x"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Derivative:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial f(x)}{\\partial x} = \\frac{1}{x \\ln(2)} + 3x^2 · e^x + x^3 · e^x"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x, y) = \\ln \\left(3x · e^{x^2+x+ \\frac{1}{y}} \\right)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Partial Derivatives:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial}{\\partial x} f (x, y) = \\frac{1}{x} + 2x + 1 "
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\partial}{\\partial y} f (x, y) =  - \\frac{1}{y^2}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "id": "integral",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Integrals",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are two main types of integrals: definite integrals and indefinite integrals.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " An indefinite integral is the inverse operation of a derivative (antiderivative), up to a constant. The indefinite integral of a function ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is another function ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " such that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F ′"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", or the derivative of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", is equal to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Definition:",
+       "type": "text"
+      },
+      {
+       "text": " A definite integral performs an integration between limits or bounds. It is the continuous analog of a sum. In 2D graphical terms, it is the area under the curve of a function with respect to the x-axis. Using the terminology above, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\int^b_a f = F (b) − F (a)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the world of probability, the indefinite integral of the PDF is the CDF. Because the total probability of all possible events must equal 1, the definite integral of a valid PDF of a single variable from −∞ to ∞ is always equal to 1. (Note: if this is unfamiliar to you, don’t worry! We’ll cover this in Lecture 9.)",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Linearity Rules of Integration: ",
+       "type": "text"
+      },
+      {
+       "text": "Constant factors can be moved out of integrals. In addition, integrals can be split over sums and differences. For example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int [a · f (x) + b · g(x)] dx = a \\int f (x)dx + b \\int g(x)dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The above rule also holds when considering functions of different variables. For example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int f (x) g(y) dx dy = \\int f(x)dx \\int g(y)dy\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This is particularly relevant for joint probability distributions of independent random variables.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Splitting A Definite Integral:",
+       "type": "text"
+      },
+      {
+       "text": " Any definite integral from lower bound ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to upper bound ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "b"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " can be split into a sum of two definite integrals that collectively span the same range:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\int_a^b f(x) dx = \\int_a^x f(x) dx + \\int_x^b f(x) dx\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "integral-practice",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Integral Practice",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here are some example functions and their associated integrals that you should be calculate to do comfortably. (Note: for rigor, a constant ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "c"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is added to the indefinite integrals).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = x^3 + \\frac{1}{x}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Indefinite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int f (x) dx = \\frac{x^4}{4} + \\ln |x| + c\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note: the integral of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{1}{x}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " includes an absolute value in the logarithm because logarithms are only valid for non-negative numbers.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " Example Definite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int_5^6 f (x) dx = \\left[ \\frac{x^4}{4} + \\ln |x| \\right]_5^6 = \\frac{6^4}{4} + \\ln(6) - \\frac{5^4}{4} - \\ln(5)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x) = \\frac{3}{2\\sqrt{3x−10}}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Hint: if you’re stuck, use the Chain Rule! ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Indefinite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\int f (x)dx = \\sqrt{3x − 10} + c\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example Definite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int_5^6 f (x) dx = \\left[ \\sqrt{3x − 10} \\right]_5^6 = \\sqrt{8} - \\sqrt{5}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x, y) = \\left( 2^x − \\frac{1}{x^2} \\right) · y^2"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Indefinite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int f (x, y) dxdy = \\left( \\frac{2x}{\\ln(2) + \\frac{1}{x}} \\right) · \\frac{y^3}{3} + c\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "\u0012Note: here the constant ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "c"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " can be used to represent any combination of single variable functions (i.e ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "g(x)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " or ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "h(y)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ") because taking a partial derivative of the final result with respect to both ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " would zero out these functions. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Function:",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f (x, y) = \\frac{3}{x} + y"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Hint: be careful about the correctly applying (or not) any Linearity Rules of Integration! ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example Definite Integral:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int_{y=0}^3 \\int_{x=2}^4 f (x, y)dxdy &= \\int_{y=0}^3 \\left[ 3 \\ln(x) + yx \\right]_{x=2}^4 dy \\\\\n                                       &= \\int_{y=0}^3 3 \\ln(2) + 2y dy \\\\\n                                       &= \\left[ 3 y \\ln(2) + y^2 \\right]_{y=0}^3 \\\\\n                                       &= 9 \\ln(2) + 9 \\approx 15.24\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Credit: this reference was made by Laywood Fayne, Janice Teoh, and Kelly Cochran.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,917 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The multinomial is an example of a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "parametric",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " distribution for multiple random variables. The multinomial is a gentle introduction to joint distributions. It is a extension of the binomial. In both cases, you have ",
+     "type": "text"
+    },
+    {
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " independent experiments. In a binomial each outcome is a \"success\" or \"not success\". In a multinomial there can be more than two outcomes (multi). A great analogy for the multinomial is: we are going to roll an ",
+     "type": "text"
+    },
+    {
+     "text": "m",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " sided dice ",
+     "type": "text"
+    },
+    {
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " times. We care about reporting the number of outcomes of each side of your dice.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here is the formal definition of the multinomial. Say you perform ",
+     "type": "text"
+    },
+    {
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " independent trials of an experiment where each trial results in one of ",
+     "type": "text"
+    },
+    {
+     "text": "m",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " outcomes, with respective probabilities: ",
+     "type": "text"
+    },
+    {
+     "text": "p1,p2,…,pm",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " (constrained so that ",
+     "type": "text"
+    },
+    {
+     "text": "∑ipi=1",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "). Define ",
+     "type": "text"
+    },
+    {
+     "text": "Xi",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " to be the number of trials with outcome ",
+     "type": "text"
+    },
+    {
+     "text": "i",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". A multinomial distribution is a closed form function that answers the question: What is the probability that there are ",
+     "type": "text"
+    },
+    {
+     "text": "ci",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " trials with outcome ",
+     "type": "text"
+    },
+    {
+     "text": "i",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". Mathematically:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n          \\P(&X_1=c_1,X_2 = c_2, \\dots , X_m = c_m) \\\\\n          &= { {n} \\choose {c_1,c_2,\\dots , c_m} }\\cdot p_1^{c_1} \\cdot p_2^{c_2}\\dots p_m^{c_m} \\\\\n          &=  { {n} \\choose {c_1,c_2,\\dots , c_m} }\\cdot \\prod_i p_i^{c_i} \n          \\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "This is our first joint random variable model! We can express it in a card, much like we would for random variables:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Multinomial with Three Outcomes",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 6276,
+      "sourceSha256": "92af14496835d3de350abd7215be7dedc7a58d31d398e139d54dc13268a626cd"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Of course, a Multinomial could describe more than three outcomes:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Multinomial Joint Distribution (General)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2398,
+      "sourceSha256": "29bfd2b304d16c4a15e281cdaffdba6ad9198f99f7a4c5318a8f9c1989ff9855"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "examples",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Examples",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Standard Dice Example:",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "A 6-sided die is rolled 7 times. What is the probability that you roll: 1 one, 1 two, 0 threes, 2 fours, 0 fives, 3 sixes (disregarding order).",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X_1=1,X_2 = 1&, X_3 = 0,X_4 = 2,X_5 = 0,X_6 = 3) \\\\&= \\frac{7!}{2!3!}\\left(\\frac{1}{6}\\right)^1\\left(\\frac{1}{6}\\right)^1\\left(\\frac{1}{6}\\right)^0\\left(\\frac{1}{6}\\right)^2\\left(\\frac{1}{6}\\right)^0\\left(\\frac{1}{6}\\right)^3\\\\\n&=420\\left(\\frac{1}{6}\\right)^7\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Weather Example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Each day the weather in Bayeslandia can be {Sunny, Cloudy, Rainy} where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p_{\\text{sunny}}=0.7"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p_{\\text{cloudy}}=0.2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p_{\\text{rainy}}=0.1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Assume each day is independent of one another. What is the probability that over the next 7 days we have 5 sunny days, 1 cloudy day and 1 rainy days?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n  \\P(X_{\\text{sunny}}=5,X_{\\text{rainy}} = 1&, X_{\\text{cloudy}} = 1) \\\\\n  &= \\frac{7!}{5!1!1!} (0.7)^5 \\cdot (0.2)^1 \\cdot (0.1) ^1 \\\\\n  &\\approx 0.14\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": " How does that compare to the probability that every day is sunny?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n  \\P(X_{\\text{sunny}}=7,X_{\\text{rainy}} = 0&, X_{\\text{cloudy}} = 0) \\\\\n  &= \\frac{7!}{7!} (0.7)^7 \\cdot (0.2)^0 \\cdot (0.1) ^0 \\\\\n  &\\approx 0.08\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The Multinomial is especially popular because of its use as a model of language. For a full example see the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./federalist",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Federalist Paper Authorship",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " example.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "derivation-using-many-dice-rolls",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Derivation Using Many Dice Rolls",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When we first learned about the Binomial, we derived it using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "many coin flips example",
+     "type": "text"
+    },
+    {
+     "text": ". To derive the Multinomial Distribution, we can extend that metaphor to consider the probability of different outcomes of rolling many ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "dice",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this example we are going to imagine that we have a dice that can only have three outcomes. When you roll it you could get an A, a B or a C. What an odd dice! In order to make this metaphore as general as possible I am going to let our dice be even stranger! Imagine the probability of each of the three outcomes is not equally likely. Instead let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the probability of rolling an A, and so on. To make things concrete image:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\np_A = 0.6\\\\\np_B = 0.1\\\\\np_C = 0.3\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First here is a simulator where you can try rolling this dice 10 times:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Dice Roll Simulator",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2450,
+      "sourceSha256": "a6cc7fa92f804416c82801344a11b8144dfcf73e65cd7d740f0c314c53aae79f"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "exactly-4as-1b-and-5cs",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Exactly 4As, 1 B, and 5 Cs",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine you roll 10 dice, where each dice has three sides {A, B, C}. Here are all the orderings of outcomes for the 10 rolls where you get exactly 4 As, 1 B and 5 Cs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 41218,
+    "sourceSha256": "cf12ab49e476b68a59bc71ef63fba10efe54aa1d87bc6083f8e9f1862219af37"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Let's call each of these rows an \"ordering\" since each row is a unique way to order the 4 As, 1 B and 5 Cs. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " be the number of unique orderings.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Exactly how many unique orderings are there of 10 letters with 4 As, 1 B and 5 Cs? We can solve this problem using ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "/draft/combinatorics/#perm_indisctinct",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Permutations of Indistinct Objects",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Num Orderings} = \\frac{10!}{4! \\cdot 1! \\cdot 5!} = {10 \\choose 4, 1, 5} = 1260\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these orderings can be thought of as one event, or outcome, of rolling 10 dice. Let's name ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the event that we get the exact outcome in the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th row.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's calculate the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E_{17})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Eg:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "(A, A, A, C, A, C, C, C, C, B)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In order to calculate the probability of this row, we need to know the probability of A, B, and C on our dice. Recall that:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\np_A = 0.6\\\\\np_B = 0.1\\\\\np_C = 0.3\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The the probability of getting exactly the result in row 17 is going to be:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E_{17}) &= p_A \\cdot  p_A \\cdot  p_A \\cdot  p_A \\cdot  p_B \\cdot  p_C \\cdot p_C \\cdot p_C \\cdot p_C \\cdot p_C \\\\\n&= p_A ^ 4 \\cdot p_B \\cdot p_C^5\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In fact that is the probability of every single row! Now we are ready to calculate the probability of exactly 4 As, 1 B and 5 Cs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(&\\text{exactly 4 As, 1 B and 5 Cs}) \\\\\n\t&= \\sum_{i=1}^N \\p(E_i) && \\text{Mutual Exclusion}\\\\\n\t&= \\sum_{i=1}^N p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Sub in }\\p(E_i) \\\\\n\t&= N \\cdot p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Sum $N$ times}  \\\\\n\t&= {n \\choose n_A, n_B, n_C} \\cdot p_A ^ 4 \\cdot p_B \\cdot p_C^5 && \\text{Perm of indistinct objects}\\\\\n    &= {10 \\choose 4, 1, 5} \\cdot 0.6 ^ 4 \\cdot 0.1 \\cdot 0.3^5 && \\text{Substitution}\\\\  \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

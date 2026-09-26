@@ -1,0 +1,532 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A binomial distribution is a remarkably useful way to model the world. Recall that it is a model of the number of heads on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips if each coin flip is independent, and the probability of a heads on each coin is the same: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section we are going to explore what to do if you break the second assumption, that each coin has the same probability of success. Instead let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the probability that the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th coin is a heads. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are going to write a pseudo-code function ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "binomial_diff_p(p_list, k)",
+     "type": "text"
+    },
+    {
+     "text": " that calculates the exact probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " successes in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " independent events if each event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " has a different probability of success, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "p_list[i]",
+     "type": "text"
+    },
+    {
+     "text": ". You will be passed in the success probabilities as a list called ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "p_list",
+     "type": "text"
+    },
+    {
+     "text": " which is of length ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def binomial_diff_p(p_list, k):\n    # TODO: our code here",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are going to solve this problem in code, not via equations, because the solution is more elegant when expressed in python.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "example-scenario",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example Scenario",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example use of your function. The UK is competing in 5 winter Olympic events. Their probabilities of winning a medal in each event are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "[0.4, 0.6, 0.9, 0.2, 0.1]",
+     "type": "text"
+    },
+    {
+     "text": " respectively. Their chance of winning exactly three medals is: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "binomial_diff_p(p_list = [0.4, 0.6, 0.9, 0.2, 0.1], k = 3) ",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can't model the number of medals they win as a Binomial because the probability of a win is not the same in each event.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "approach",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Approach",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This solution is modeled after the derivation in the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Many Coin Flips",
+     "type": "text"
+    },
+    {
+     "text": " example. In that derivation, the idea was to think of all the unique ways that a list of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads and tails could have exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads. For example recall the list of all the ways of getting exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7618,
+    "sourceSha256": "5a2a3e71364360e28209524aad86fba66dac8d219e46e2ade03d23f63647c2e2"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these outcome rows are mutually exclusive, so the probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads is simply the sum of the probability of each outcome row. In the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./many_flips",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Many Coin Flips",
+     "type": "text"
+    },
+    {
+     "text": " example the math simplified nicely because the probability of each outcome row was exactly the same. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Our approach will be the same to the extent that we can compute the probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads as the sum of mutually exclusive outcome rows, and we will have the same set of outcome rows. The difference is that each outcome row will have a different probability because a heads in one position is not necessarily the same probability as a heads in a different one.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "solution",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Solution",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here we first create all the outcome rows with a H for success (heads) and a T for not-success (tails). If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", then the set ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "outcomes_with_k_successes",
+     "type": "text"
+    },
+    {
+     "text": " will be exactly the one shown in the section above.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Next we are going to add up the probability of each of these (mutually exclusive) outcome rolls. The function ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "pr_of_outcome",
+     "type": "text"
+    },
+    {
+     "text": " computes the probability of each individual outcome row:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "\nfrom itertools import permutations\nfrom math import factorial\n\ndef binomial_diff_p(p_list, k):\n    n = len(p_list)\n    total_prob = 0\n\n    # create a list with k 1s, and n-k 0s\n    # for example [1, 1, 1, 0, 0]\n    template = ['H'] * k + ['T'] * (n-k)\n\n    # get all permutations of the template list\n    outcomes_with_k_successes = set(permutations(template))\n\n    # each outcome is mutually exclusive. Add their probabilities\n    for outcome in outcomes_with_k_successes:\n        total_prob += pr_of_outcome(p_list, outcome)\n\n    return total_prob\n\ndef pr_of_outcome(p_list, outcome):\n   pr = 1\n   n = len(p_list)\n   for i in range(n):\n      p_success = p_list[i]\n      if outcome[i] == 1:\n          pr *= p_success\n      else:\n          pr *= (1 - p_success)\n   return pr\n   ",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  }
+ ],
+ "type": "doc"
+}

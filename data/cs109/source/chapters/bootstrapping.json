@@ -1,0 +1,395 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The bootstrap is a newly invented statistical technique for both understanding distributions of statistics and for calculating ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-values (a ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-value is the probability that a scientific claim is incorrect). It was invented here at Stanford in 1979 when mathematicians were just starting to understand how computers, and computer simulations, could be used to better understand probabilities.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The first key insight is that: if we had access to the underlying distribution (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") then answering almost any question we might have as to how accurate our statistics are becomes straightforward.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example, in the previous section we gave a formula for how you could calculate the sample variance from a sample of size ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We know that in expectation our sample variance is equal to the true variance. But what if we want to know the probability that the true variance is within a certain range of the number we calculated? That question might sound dry, but it is critical to evaluating scientific claims! If you knew the underlying distribution, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", you could simply repeat the experiment of drawing a sample of size ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", calculate the sample variance from our new sample and test what portion fell within a certain range.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The next insight behind bootstrapping is that the best estimate that we can get for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is from our sample itself! The simplest way to estimate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (and the one we will use in this class) is to assume that the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X=k)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is simply the fraction of times that k showed up in the sample. Note that this defines the probability mass function of our estimate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\hat{F}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def bootstrap(sample):\n   N = number of elements in sample\n   pmf = estimate the underlying pmf from the sample\n   stats = []\n   repeat 10,000 times:\n      resample = draw N new samples from the pmf\n      stat = calculate your stat on the resample\n      stats.append(stat)\n   stats can now be used to estimate the distribution of the stat",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Bootstrapping is a reasonable thing to do because the sample you have is the best and only information you have about what the underlying population distribution actually looks like. Moreover most samples will, if they're randomly chosen, look quite like the population they came from.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Var}(S^2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we could calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S_i^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for each resample i and after 10,000 iterations, we could calculate the sample variance of all the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S_i^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "s. You might be wondering why the resample is the same size as the original sample (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). The answer is that the variation of the statistic you are calculating could depend on the size of the sample (or the resample). To accurately estimate the distribution of the stat we must use resamples of the same size.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The bootstrap has strong theoretical guarantees, and is accepted by the scientific community. It breaks down when the underlying distribution has a “long tail” or if the samples are not I.I.D.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example of p-value calculation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are trying to figure out if people are happier in Bhutan or in Nepal. We sample ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n_1 = 200"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " individuals in Bhutan and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n_2 = 300"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " individuals in Nepal and ask them to rate their happiness on a scale from 1 to 10. We measure the sample means for the two samples and observe that people in Nepal are slightly happier--the difference between the Nepal sample mean and the Bhutan sample mean is 0.5 points on the happiness scale.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If you want to make this claim scientific you should calculate a ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "-value. A p-value is the probability that, when the null hypothesis is true, the statistic measured would be equal to, or more extreme than, the value you are reporting. The null hypothesis is the hypothesis that there is no relationship between two measured phenomena or no difference between two groups.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the case of comparing Nepal to Bhutan, the null hypothesis is that there is no difference between the distribution of happiness in Bhutan and Nepal. The null hypothesis argument is: there is no difference in the distribution of happiness between Nepal and Bhutan. When you drew samples, Nepal had a mean that was 0.5 points larger than Bhutan by chance.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can use bootstrapping to calculate the p-value. First, we estimate the distribution under the null hypothesis by making a probability mass function from all of our samples from Nepal and Bhutan.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def pvalue_bootstrap(bhutan_sample, nepal_sample):\n   N = size of the bhutan_sample\n   M = size of the nepal_sample\n   universal_sample = combine bhutan_samples and nepal_samples\n   universal_pmf = estimate the underlying pmf of the universalSample\n   count = 0\n   observed_difference = mean(nepal_sample) - mean(bhutan_sample)\n   repeat 10,000 times:\n      bhutan_resample = draw N new samples from the universalPmf\n      nepal_resample = draw M new samples from the universalPmf\n      mu_bhutan = sample mean of the bhutanResample\n      mu_nepal = sample mean of the nepalResample\n      mean_difference = |muNepal - muBhutan|\n      if mean_difference > observed_difference:\n         count += 1\n   pvalue = count / 10,000",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This is particularly nice because nowhere did we have to make an assumption about a parametric distribution that our samples came from (ie we never had to claim that happiness is gaussian). You might have heard of a t-test. That is another way of calculating p-values, but it makes the assumption that both samples are gaussian and that they both have the same variance. In the modern context where we have reasonable computer power, bootstrapping is a more correct and versatile tool.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

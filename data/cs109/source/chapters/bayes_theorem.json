@@ -1,0 +1,1403 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Bayes' Theorem is one of the most important equations in probability for computer scientists. In a nutshell, Bayes' theorem provides a way to convert a conditional probability from one direction, say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(E|F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", to the other direction, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(F|E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Bayes' theorem is a mathematical identity which we can derive ourselves. Start with the definition of conditional probability and then expand the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " term using the chain rule:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(F|E) \n&= \\frac{\\p(F \\and E)}{\\p(E)} && \\text{Def of }\n\\href{ ./cond_prob/}{\\text{conditional probability}} \\\\\n&= \\frac{\\p(E | F) \\cdot \\p(F)}{\\p(E)} && \\text{Substitute the }\n\\href{ ./cond_prob/}{\\text{chain rule}} \\text{ for $\\p(F \\and E)$}\n\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Recall the chain rule: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(F \\and E) = \\P(E|F) \\cdot \\P(F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "This theorem makes no assumptions about ",
+     "type": "text"
+    },
+    {
+     "text": "E",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " or ",
+     "type": "text"
+    },
+    {
+     "text": "F",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " so it will apply for any two events. Bayes' theorem is exceptionally useful because it turns out to be the ubiquitous way to answer the question: \"how can I update a belief about something, which is not directly observable, given evidence.\" This is for good reason. For many \"noisy\" measurements it is straightforward to estimate the probability of the noisy observation given the true state of the world. However, what you would really like to know is the conditional probability the other way around: what is the probability of the true state of the world given evidence. There are countless real world situations that fit this situation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example 1: Medical tests",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What you want to know:",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " Probability of a disease ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        },
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "given",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " a test result",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What is easier to know:",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " Probability of a test result ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        },
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "given",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " the true state of disease",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Causality:",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " We believe that diseases influence test results",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example 2: Student ability",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What you want to know:",
+       "type": "text"
+      },
+      {
+       "text": " Student knowledge of a subject ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "given",
+       "type": "text"
+      },
+      {
+       "text": " their answers",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What is easier to know:",
+       "type": "text"
+      },
+      {
+       "text": " Likelihood of answers ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "given",
+       "type": "text"
+      },
+      {
+       "text": " a student's knowledge of a subject",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Causality:",
+       "type": "text"
+      },
+      {
+       "text": " We believe that ability influences answers",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example 3: Cell phone location",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What you want to know:",
+       "type": "text"
+      },
+      {
+       "text": " Where is a cell phone, given noisy measure of distance to tower",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "What is easier to know:",
+       "type": "text"
+      },
+      {
+       "text": " Error in noisy measure, given the true distance to tower",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Causality:",
+       "type": "text"
+      },
+      {
+       "text": " We believe that cell phone location influences distance measure ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "There is a pattern here: in each example we care about knowing some unobservable -- or hard to observe -- state of the world. This state of the world \"causes\" some easy-to-observe evidence. For example: having the flu (something we would like to know) ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "causes",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " a fever (something we can easily observe), not the other way around. Let's define some events. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Define ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "U"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " unobserved event. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Define ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " for the event that I observe my evidence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "This makes it clear that Bayes' theorem allows us to calculate an updated belief in the unobserved event given evidence: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(U|E)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ": Bayes' Theorem",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "The most common form of Bayes' Theorem is ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Bayes' Theorem Classic",
+       "type": "text"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(U|E) = \\frac{\\p(E | U) \\cdot \\p(U)}{\\p(E)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "There are names for the different terms in the Bayes' Rule formula. The term ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(U|E)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is often called the \"posterior\": it is your updated belief of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "B"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " after you take into account evidence ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The term ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(U)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is often called the \"prior\": it was your belief before seeing any evidence. The term ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(E|U)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is called the likelihood term and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(E)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is often called the normalization constant.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "There are several techniques for handling the case where the denominator is not known. One technique is to use the law of total probability to expand out the term, resulting in another formula, called ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Bayes' Theorem with Law of Total Probability",
+       "type": "text"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p&(U|E) \\\\\n&= \\frac{\\p(E | U) \\cdot \\p(U)}{\\p(E)} && \\text{Bayes}\\\\\n&= \\frac{\\p(E | U) \\cdot \\p(U)}{\\p(E|U)\\cdot \\p(U) + \\p(E|U^\\c) \\cdot \\p(U^\\c)} && \\href{./law_total}{\\text{LOTP}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "Recall the law of total probability which is responsible for our new denominator:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E) = \\p(E|U)\\cdot \\p(U) + \\p(E|U^\\c) \\cdot \\p(U^\\c)\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "A common scenario for applying the Bayes' Rule formula is when you want to know the probability of something “unobservable” given an “observed” event! For example, you want to know the probability that a student understands a concept, given that you observed them solving a particular problem. It turns out it is much easier to first estimate the probability that a student can solve a problem given that they understand the concept and then to apply Bayes' Theorem. Intuitively, you can think about this as updating a belief given evidence",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "bayes-theorem-for-medicine",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Probability of Disease using Bayes' Theorem",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here we work through a classic application of Bayes' theorem: what is the probability that someone has a disease given a \"noisy\" test. The noisy test has a known probability of giving a positive result when the patient has the illness (which is often not exactly 1.0) and a known probability of giving a positive result when the patient does not have the illness (which is often not exactly 0.0).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "For example, consider the Mammogram test for breast cancer. The mammogram test returns a positive result 95% of the time for patients who have breast cancer. The test returns a positive result 7% of the time for people who do not have breast cancer. Because the test is noisy, a \"positive\" Mammogram result does not guarantee that the patient has breast cancer.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Calculator",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "text": "Probability of Disease with Bayes' Theorem",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 4812,
+      "sourceSha256": "9bc91e5b87801509a45539142d7a289bbd939102e466866af118db8be73640c4"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "natural-frequency-intuition",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Natural Frequency Intuition",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One way to build intuition for Bayes Theorem is to think about \"natural frequences\". Let's take another approach to answer the probability question in the above example on belief of disease given a test. In this take, we are going to imagine we have a population of 1000 people. Let's think about how many of those have the disease and test positive and how many don't have the disease and test positive. This visualization is based off the numbers in the fields above. Feel free to change them!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are many possibilities for how many people have the disease, but one very plausible number is 1000, the number of people in our population, multiplied by the probability of the disease:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1000 \\times \\P(\\text{Disease})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " people have the disease",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1000 \\times [1 - \\P(\\text{Disease})]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " people do not have the disease",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We can count what fraction of the people who have the disease test positive, and what fraction of people who do not have the disease test positive. Here is an interactive demo:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Demo",
+       "type": "text"
+      },
+      {
+       "text": ": Natural Frequency and Bayes'",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 7585,
+      "sourceSha256": "2878e0ff5904695289a18fb375c1d22a0853ad5ed82abb88d065bf59de42e2f8"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The unintuitive result where you observe a positive test result, but you still think the patient is unlikely (probability < 0.5) to have the disease often occurs when the \"",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Probability a randomly chosen person has the disease\" is low.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "bayes-with-the-general-law-of-total-probability",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Bayes' with the General Law of Total Probability",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the examples we have seen so far in this chapter, we have expanded the denominator of Bayes' Theorem ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the standard version of the law of total probability (LOTP):",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E) = \\p(E|U)\\cdot \\p(U) + \\p(E|U^\\c) \\cdot \\p(U^\\c)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You can also expand the denominator using the more general version of the Law of Total Probability if you have a set of events which are mutually exclusive and collectively exhaustive. In that case you can expand the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the law of total probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Bayes' Theorem with the General Law of Total Probaiblity",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If a set of events ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "B_j"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are mutually exclusive and collectively exhaustive",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "text": "(eg at least one of the events must occur) then:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(B_i | E) &= \\frac{\\p(E|B_i) \\cdot \\p(B_i)}{\\p(E)}\n&& \\text{Bayes Theorem} \\\\\n &= \\frac{\\p(E|B_i) \\cdot \\p(B_i)}{\\sum_{j=1}^n \\p(E|B_j) \\cdot \\p(B_j)}\n&& \\href{./law_total}{\\text{LOTP}} \\\\\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For example say we are trying to track a phone which could be in any one of n discrete locations and we have prior beliefs ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(B_1)\\dots \\P(B_n)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as to whether the phone is in location ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Now we gain some evidence (such as a particular signal strength from a particular cell tower) that we call ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and we need to update all of our probabilities to be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(B_i|E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We should use Bayes' Theorem!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The probability of the observation, assuming that the the phone is in location ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E|B_i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", is something that can be given to you by an expert. In this case the probability of getting a particular signal strength given a location ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " will be determined by the distance between the cell tower and location ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " .",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Since we are assuming that the phone must be in ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "exactly",
+     "type": "text"
+    },
+    {
+     "text": " one of the locations, we can find the probability of any of the event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " by first applying Bayes' Theorem and then applying the general version of the law of total probability..",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

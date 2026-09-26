@@ -1,0 +1,335 @@
+{
+ "content": [
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Bernoulli Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3404,
+      "sourceSha256": "3d611a1297360b2ec1505252791813a3da13e4140e73f593fbae2c9b4cd9de2d"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Binomial Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3979,
+      "sourceSha256": "5239f4d49afc4616ffba114ffb9c5a95deaccd2487e5b1321b54794c1c1abeb4"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Poisson Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2875,
+      "sourceSha256": "6f9284fddab952865e173c7964fe47d6d1061ff8fdd65c3a9c9919324cbe8e6b"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Geometric Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3852,
+      "sourceSha256": "4c7ff593522e634bfbb3b70f818cb472157acb11a95638b9dc62ca23712a9957"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Negative Binomial Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 5373,
+      "sourceSha256": "806285983d2be485a56d1c3493c22ebfa063cbc30505cc5b6cfbaf8095aa0566"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Hypergeometric Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 6164,
+      "sourceSha256": "8d22d549ec02fb6f0e5888885eff31dd784737fc11c931f7981f4534a4c74221"
+     },
+     "type": "interactive-demo"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note: the parameter names in this textbook are different than the ones in wikipedia. We keep to the convention of only using upper case variables for random variables or events. We let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the same as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " in the binomial.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Uniform Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 4942,
+      "sourceSha256": "320f899fd240b988eab3583cbd84169b65e4d688a18727c554d5e5485fbf72f1"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Exponential Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3772,
+      "sourceSha256": "8df194390e14d582e568df892d995c2ce584967ac049a711931af51a8c210114"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Normal (Gaussian) Random Variable ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 4418,
+      "sourceSha256": "cfc455a4958ee2f25c2f8f96daa57a7f9dce886f1a654f0222d342a473b84c58"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Beta Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3817,
+      "sourceSha256": "253e0d1a0a71d1402059cb571e2a94a605221c6d04a1987391db75b09318bea0"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

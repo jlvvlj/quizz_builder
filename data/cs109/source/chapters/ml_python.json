@@ -1,0 +1,863 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section, we will work through an example of applying a classification algorithm to a dataset in Python. Along the way, we'll talk about the helpful functionality of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " Python library.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "dataset-format",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Dataset Format",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Mathematically, we have been representing our data as a list of pairs, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "((\\mathbf{x}^{(1)},y^{(1)}), (\\mathbf{x}^{(2)},y^{(2)}), \\dots , (\\mathbf{x}^{(N)},y^{(N)}))"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". But what does this look like in practice? When saved into a file, a dataset might look like this:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "X1   X2   X3   X4   Y\n5.1  3.5  1.4  0.2  0\n4.9  3.   1.4  0.2  0\n4.7  3.2  1.3  0.2  1\n4.6  3.1  1.5  0.2  1\n5.   3.6  1.4  0.2  0",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this file format, the first row is a header, and each row after that is one of the examples (or datapoints) in the dataset, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(\\mathbf{x}^{(i)},y^{(i)})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The value in the \"Y\" column is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and the value in the column labeled ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " corresponds to the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th feature value,  ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}_j^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Note that while there's no particular reason why the rows are examples and the features are columns, instead of the other way around, this is the conventional format. We could load in this file using a library like ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "numpy",
+     "type": "text"
+    },
+    {
+     "text": " or ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "pandas",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Is there also a standard way to store this data in Python variables? As an example, let's look at a dataset called iris that is pre-saved into the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " Python library:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from sklearn import datasets\n\niris_dataset = datasets.load_iris()\nX, y = iris_dataset[\"data\"], iris_dataset[\"target\"]",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can use one variable to store all of the labels for our data as a list: [",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y^{(1)}, y^{(2)}, \\dots, y^{(N)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "], and another variable to store all of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " values as a 2-dimensional numpy array. In this iris example, there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N = 150"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " examples, and each ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}^{(i)}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a vector of 4 features, so the variable ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "X",
+     "type": "text"
+    },
+    {
+     "text": " is an array with 150 rows and 4 columns.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-scikit-learn-workflow",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " Workflow",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In supervised machine learning, our process usually follows these steps:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "start": "1"
+     },
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Load in and prepare the data, including ",
+           "type": "text"
+          },
+          {
+           "marks": [
+            {
+             "attrs": {
+              "class": null,
+              "href": "https://{{pathToRoot}}/classification_performance",
+              "rel": "noopener noreferrer nofollow",
+              "target": "_blank"
+             },
+             "type": "link"
+            }
+           ],
+           "text": "splitting into training and test data",
+           "type": "text"
+          },
+          {
+           "text": ".",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Create the model we want to use.",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Train the model: fit parameters based on the training data.",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "marks": [
+            {
+             "attrs": {
+              "class": null,
+              "href": "https://{{pathToRoot}}/classification_performance",
+              "rel": "noopener noreferrer nofollow",
+              "target": "_blank"
+             },
+             "type": "link"
+            }
+           ],
+           "text": "Measure how good the trained model is on the test data",
+           "type": "text"
+          },
+          {
+           "text": ".",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "orderedList"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In Python, a very commonly-used library for (non-deep learning) machine learning is ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": ". The classic way of using this library aligns with the steps above nicely. Continuing from the previous code block:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "# import whichever model you want to use\nfrom sklearn.linear_model import DecisionTreeClassifier\n\n# Step 1: Pre-process data as needed (make train-test split)\nX_train, y_train, X_test, y_test = train_test_split(X, y, test_size=0.2)\n\n# Step 2: Create the model!\n# (its parameters are just random until we train)\nmodel = DecisionTreeClassifier(min_samples_split=20,\n                               criterion=\"entropy\")\n\n# Step 3: Train the model (fit params)\nmodel.fit(X_train, y_train)\n\n# Step 4: measure model accuracy etc.\n# (predict on test data, then compare y_preds_test to y_test...)\ny_preds_test = model.predict(X_test)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This example uses a model/algorithm called a Decision Tree, but to use a different algorithm instead, you can just replace ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "DecisionTreeClassifier",
+     "type": "text"
+    },
+    {
+     "text": " with any algorithm of your choosing! ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://scikit-learn.org/stable/supervised_learning.html",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Here is scikit-learn's full list of options",
+     "type": "text"
+    },
+    {
+     "text": ", including algorithms for both classification and regression.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You'll notice that for most algorithms, there are several arguments that you can optionally specify. We call these settings  ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "hyperparameters",
+     "type": "text"
+    },
+    {
+     "text": " -- they are distinct from parameters because we do not estimate optimal values for them directly using techniques like MLE. We saw our first example of a hyperparameter in gradient ascent, when we had to choose a learning rate. Though using default ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " hyperparameter settings can work just fine, you'll often notice that you can improve model performance by adjusting them. Hyperparameter tuning is what we call the process where you try several different possible settings for these arguments, re-training the model each time, and then choose the ones that work best. There are several different strategies for efficient hyperparameter tuning; ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " has ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_randomized_search.html#sphx-glr-auto-examples-model-selection-plot-randomized-search-py",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "examples here",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Also note that in the example above, after we split the data into training and test data, we were careful to only use ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "X_train",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "y_train",
+     "type": "text"
+    },
+    {
+     "text": " in Step 3. Similarly, to measure model performance in Step 4, we should only use ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "X_test",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "y_test",
+     "type": "text"
+    },
+    {
+     "text": ". There are also tons of built-in options in ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "scikit-learn",
+     "type": "text"
+    },
+    {
+     "text": " to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://scikit-learn.org/stable/modules/model_evaluation.html#string-name-scorers",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "compute metrics",
+     "type": "text"
+    },
+    {
+     "text": ", including accuracy for classification, mean squared error for regression, and much more.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Other Useful Tips",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "The ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://scikit-learn.org/stable/auto_examples/index.html",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "many examples",
+         "type": "text"
+        },
+        {
+         "text": " in ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "style": null
+           },
+           "type": "code"
+          }
+         ],
+         "text": "scikit-learn",
+         "type": "text"
+        },
+        {
+         "text": "'s documentation are an excellent resource to explore.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Sometimes you'll want to work with data in complex formats, where the features are not obvious or not usable in their raw form. Two common examples are text and image data. In these cases, you need a method for ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "type": "bold"
+          }
+         ],
+         "text": "feature extraction",
+         "type": "text"
+        },
+        {
+         "text": ". For text data, you can use a \"bag of words\" approach, where each feature is a count of how many times a word (or phrase) appears in each text example. While this strategy is straightforward, it has drawbacks: ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "style": null
+           },
+           "type": "code"
+          }
+         ],
+         "text": "scikit-learn",
+         "type": "text"
+        },
+        {
+         "text": " has some ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "tools for this and more info",
+         "type": "text"
+        },
+        {
+         "text": ". Image data is trickier; neural networks are state of the art for this because they can automatically learn feature extraction in a way simpler models can't.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  }
+ ],
+ "type": "doc"
+}

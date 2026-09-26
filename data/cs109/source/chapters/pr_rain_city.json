@@ -1,0 +1,212 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Weather prediction services, such as the Google Weather \"nowcast\" will give you predictions for events such as \"it rains tomorrow in San Francisco\":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "942fa218-d6d6-44b2-83ee-c9dcafa9f0c8",
+    "naturalHeight": "264",
+    "naturalWidth": "1280",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F942fa218-d6d6-44b2-83ee-c9dcafa9f0c8?alt=media&token=dd322e92-f92f-4aea-ae1b-cd8344cf1a65",
+    "widthPct": "70"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "A Google Weather prediction showing 90% chance of rain in San Francisco",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "But San Francisco is so large! And the weather can be so different depending on where you are!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The task of prediction the probability that \"it rains tomorrow in San Francisco\" is complicated because the probability of rain is highly dependent on where you are in San Francisco (for those of you who haven't spent too much time there, the different neighborhoods have very different microclimates). For example, it could be very sunny in Mission District and very Rainy in the Presidio!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "296ce579-d1fc-4e83-b4d5-e10bfc79c159",
+    "naturalHeight": "666",
+    "naturalWidth": "678",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F296ce579-d1fc-4e83-b4d5-e10bfc79c159?alt=media&token=922b3840-624f-4bdf-a403-8ae7efff663d",
+    "widthPct": "60"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For each district Google can compute the probability of rain tomorrow (based off the chance of its models of how weather systems will move across the city). Moreover, because of the number of people who use their other services (such as Android phones), Google has a very good estimate of how likely a person is to be in each district. Using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./law_total#lotp-many",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Law of Total Probability",
+     "type": "text"
+    },
+    {
+     "text": ", Google can combine these values to get the overall probability of rain tomorrow for a randomly sampled location.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "  Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "R"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the event that it rains tomorrow in San Francisco (for a randomly selected location)",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "  Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the selected location",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example of the sort of data Google will have access to:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 781,
+    "sourceSha256": "79648d9d023481a6bcc7a72ba93d9c38278db8a3fa01c8d6c32f928c310192b5"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The overall probability of rain in San Francisco can then be calculated as:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP&(R) \\\\\n&= \\sum_{\\text{district } i} P(R \\text{ and } D_i) \\\\\n&= \\sum_{\\text{district } i} P(R|D_i) \\cdot P(D_i)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this example we only considered the law of total probability around the background event of location. In practice, Google Weather also uses time of day as a background event when giving a statement on the probability of rain tomorrow in San Francisco.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

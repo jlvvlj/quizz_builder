@@ -1,0 +1,24 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a demo of the Monty Hall Game!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 9622,
+    "sourceSha256": "459b132afe6acd6532c938a16ff34e2bba85de16d1382d0a582c5c7f083aed7e"
+   },
+   "type": "interactive-demo"
+  }
+ ],
+ "type": "doc"
+}

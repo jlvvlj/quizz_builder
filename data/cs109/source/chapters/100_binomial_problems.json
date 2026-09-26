@@ -1,0 +1,1737 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Just for fun (and to give you a lot of practice) I wrote a generative probabilistic program which could sample binomial distribution problems. Here are 100 binomial questions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Questions",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 1:",
+     "type": "text"
+    },
+    {
+     "text": " Laura is running a server cluster with 50 computers. The probability of a crash on a given server is 0.5. What is the standard deviation of crashes?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 1:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of crashes.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 0.5)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Std}(X) &= \\sqrt{np(1-p)} \\\\ &= \\sqrt{50 \\cdot 0.5 \\cdot (1 - 0.5)}\\\\ &= 3.54\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 2:",
+     "type": "text"
+    },
+    {
+     "text": " You are showing an online-ad to 30 people. The probability of an ad ignore on each ad shown is 2/3. What is the expected number of ad clicks?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 2:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of ad clicks.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 30, p = 1/3)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X] &= np \\\\ &= 30 \\cdot 1/3 \\\\ &= 10\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 3:",
+     "type": "text"
+    },
+    {
+     "text": " A machine learning algorithm makes binary predictions. The machine learning algorithm makes 50 guesses where the probability of an incorrect prediction on a given guess is 19/25. What is the probability that the number of correct predictions is greater than 0?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 3:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of correct predictions.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 6/25)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X > 0) &=  1 - \\P(0 \\le X \\le 0)\\\\\n &= 1 - {n \\choose 0} p^0 (1 - p)^{n - 0}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 4:",
+     "type": "text"
+    },
+    {
+     "text": " Wind blows independently across 50 locations. The probability of no wind at a given location is 0.5. What is the expected number of locations that have wind?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 4:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of locations that have wind.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 0.5)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X] &= np \\\\ &= 50 \\cdot 0.5 \\\\ &= 25.0\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 5:",
+     "type": "text"
+    },
+    {
+     "text": " Wind blows independently across 30 locations. What is the standard deviation of locations that have wind? The probability of wind at each location is 0.6.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 5:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of locations that have wind.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 30, p = 0.6)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Std}(X) &= \\sqrt{np(1-p)} \\\\ &= \\sqrt{30 \\cdot 0.6 \\cdot (1 - 0.6)}\\\\ &= 2.68\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 6:",
+     "type": "text"
+    },
+    {
+     "text": " You are trying to mine bitcoins. There are 50 independent attempts where the probability of mining a bitcoin on a given attempt is 0.6. What is the expectation of bitcoins mined?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 6:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of bitcoins mined.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 0.6)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X] &= np \\\\ &= 50 \\cdot 0.6 \\\\ &= 30.0\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 7:",
+     "type": "text"
+    },
+    {
+     "text": " You are testing a new medicine on 40 patients. What is P(X is exactly 38)? The number of cured patients can be represented by a random variable X. X ~ Bin(40, 3/10).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 7:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of cured patients.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 40, p = 3/10)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 38) &= \\binom{n}{38} p^{38} (1 - p)^{n - 38 } \\\\\n      &= \\binom{40}{38} 3/10^{38} (1 - 3/10)^{2 } \\\\\n      &< 0.00001\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 8:",
+     "type": "text"
+    },
+    {
+     "text": " You are manufacturing chips and are testing for defects. There are 50 independent tests and 0.5 is the probability of a defect on each test. What is the standard deviation of defects?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 8:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of defects.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 0.5)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Std}(X) &= \\sqrt{np(1-p)} \\\\ &= \\sqrt{50 \\cdot 0.5 \\cdot (1 - 0.5)}\\\\ &= 3.54\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 9:",
+     "type": "text"
+    },
+    {
+     "text": " Laura is flipping a coin 12 times. The probability of a tail on a given coin-flip is 5/12. What is the probability that the number of tails is greater than or equal to 2?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 9:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of tails.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 12, p = 5/12)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X >= 2) &=  1 - \\P(0 \\le X \\le 1)\\\\\n &= 1 - \\sum_{i = 0}^{1} \\binom{n}{i} p^i (1 - p)^{n - i}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 10:",
+     "type": "text"
+    },
+    {
+     "text": " You are asking a survey question where responses are “like” or “dislike”. There are 30 responses. You can assume each response is independent where the probability of a dislike on a given response is 1/6. What is the probability that the number of likes is greater than 28?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 10:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of likes.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 30, p = 5/6)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X > 28) &= \\P(29 \\le X \\le 30)\\\\\n &= \\sum_{i = 29}^{30} \\binom{n}{i} p^i (1 - p)^{n - i}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 11:",
+     "type": "text"
+    },
+    {
+     "text": " A ball hits a series of 50 pins where it can bounce either right or left. The probability of a left on a given pin hit is 0.4. What is the standard deviation of rights?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 11:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of rights.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 50, p = 3/5)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Std} &= \\sqrt{np(1-p)} \\\\ &= \\sqrt{50 \\cdot 3/5 \\cdot (1 - 3/5)}\\\\ &= 3.46\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 12:",
+     "type": "text"
+    },
+    {
+     "text": " You are sending a stream of 30 bits to space. The probability of no corruption on a given bit is 1/3. What is the probability that the number of corruptions is 10?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 12:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of corruptions.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 30, p = 2/3)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 10) &= \\binom{n}{10} p^{10} (1 - p)^{20} \\\\\n      &= \\binom{30}{10} (2/3)^{10} (1 - 2/3)^{20} \\\\\n      &= 0.00015\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 13:",
+     "type": "text"
+    },
+    {
+     "text": " Wind blows independently across locations. The probability of wind at a given location is 0.9. The number of independent locations is 20. What is the probability that the number of locations that have wind is not less than 19?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 13:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of locations that have wind.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 20, p = 0.9)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X >= 19) &= \\P(19 \\le X \\le 20)\\\\\n &= \\sum_{i = 19}^{20} \\binom{n}{i} p^i (1 - p)^{n - i}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 14:",
+     "type": "text"
+    },
+    {
+     "text": " You are sending a stream of bits to space. There are 30 independent bits where 5/6 is the probability of a no corruption on each bit. What is the probability that the number of corruptions is 21?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 14:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of corruptions.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 30, p = 1/6)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 21) &= \\binom{n}{21} p^{21} (1 - p)^{9} \\\\\n      &= \\binom{30}{21} (1/6)^{21} (1 - 1/6)^{9} \\\\\n      &< 0.00001\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 15:",
+     "type": "text"
+    },
+    {
+     "text": " Cody generates random bit strings. There are 20 independent bits. Each bit has a 1/4 probability of resulting in a 1. What is the probability that the number of 1s is 11?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 15:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of 1s.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 20, p = 1/4)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 11) &= \\binom{n}{11} p^{11} (1 - p)^{9} \\\\\n      &= \\binom{20}{11} (1/4)^{11} (1 - 1/4)^{9} \\\\\n      &= 0.00301\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 16:",
+     "type": "text"
+    },
+    {
+     "text": " In a restaurant some customers ask for a water with their meal. A random sample of 40 customers is selected where the probability of a water requested by a given customer is 9/20. What is the probability that the number of waters requested is 16?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 16:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of waters requested.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 40, p = 9/20)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 16) &= \\binom{n}{16} p^{16} (1 - p)^{24} \\\\\n      &= \\binom{40}{16} (9/20)^{16} (1 - 9/20)^{24} \\\\\n      &= 0.10433\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 17:",
+     "type": "text"
+    },
+    {
+     "text": " A student is guessing randomly on an exam with 12 questions. What is the expected number of correct answers? The probability of a correct answer on a given question is 5/12.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 17:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of correct answers.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 12, p = 5/12)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X] &= np \\\\ &= 12 \\cdot 5/12 \\\\ &= 5\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 18:",
+     "type": "text"
+    },
+    {
+     "text": " Laura is trying to mine bitcoins. The number of bitcoins mined can be represented by a random variable X. X ~ Bin(n = 100, p = 1/2). What is P(X is equal to 53)?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 18:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of bitcoins mined.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 100, p = 1/2)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X = 53) &= \\binom{n}{53} p^{53} (1 - p)^{47} \\\\\n      &= \\binom{100}{53} (1/2)^{53} (1/2)^{47} \\\\\n      &= 0.06659\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 19:",
+     "type": "text"
+    },
+    {
+     "text": " You are showing an online-ad to customers. The ad is shown to 100 people. The probability of an ad ignore on a given ad shown is 1/2. What is the standard deviation of ad clicks?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 19:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of ad clicks.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 100, p = 0.5)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Std}(X) &= \\sqrt{np(1-p)} \\\\ &= \\sqrt{100 \\cdot 0.5 \\cdot (1 - 0.5)}\\\\ &= 5.00\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question 20:",
+     "type": "text"
+    },
+    {
+     "text": " You are running a server cluster with 40 computers. 5/8 is the probability of a computer continuing to work on each server. What is the expected number of crashes?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer 20:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of crashes.\n",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n = 40, p = 3/8)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X] &= np \\\\ &= 40 \\cdot 3/8 \\\\ &= 15\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

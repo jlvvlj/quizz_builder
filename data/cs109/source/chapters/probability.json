@@ -1,0 +1,1185 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What does it mean when someone makes a claim like \"the probability that you find a pearl in an oyster is 1 in 5,000?\" or \"the probability that it will rain tomorrow is 52%\"? In this chapter we start by defining some key terminology: \"events\" and \"experiments.\" We then define probability, and finally, we introduce some core axioms and provable identities.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "events-and-experiments",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Events and Experiments",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "When we speak about probabilities, there is always an implied context, which we formally call the \"experiment\". For example: flipping two coins is something that probability folks would call an experiment. In order to precisely speak about probability, we must first define two sets: the set of all possible outcomes of an experiment, and the subset that we consider to be our event (",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Set_(mathematics)",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "what is a set?",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ").",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Sample Space, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "S"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "A Sample Space is the set of all possible outcomes of an experiment. For example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Coin flip: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "S = \\{\\text{Heads}, \\text{Tails}\\}"
+           },
+           "type": "math_inline"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Flipping two coins: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "S"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " = {(H, H), (H, T), (T, H), (T, T)}",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Roll of 6-sided die: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "S"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " = {1, 2, 3, 4, 5, 6}",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "The number of emails you receive in a day: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "S = \\{x|x ∈ ℤ, x ≥ 0\\}"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " (non-neg. ints)",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "YouTube hours in a day: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "S = \\{x|x ∈ ℝ,0 ≤ x ≤ 24\\}"
+           },
+           "type": "math_inline"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "bulletList"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Sample Space is the background outcomes from which you get the really exciting outcomes: events!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Event, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "An Event is some subset of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "S"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " that we ascribe meaning to. In set notation ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E ⊆ S"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". For example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "content": [
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Heads on a coin flip: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "E"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " = {Heads}",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "At least 1 head on 2 coin flips = {(H, H), (H, T), (T, H)}",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Roll of die is 3 or less: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "E"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " = {1, 2, 3}",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "You receive less than 20 emails in a day: ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "E={x|x∈ℤ,0≤x<20}"
+           },
+           "type": "math_inline"
+          },
+          {
+           "text": " (non-neg. ints)",
+           "type": "text"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      },
+      {
+       "content": [
+        {
+         "attrs": {
+          "textAlign": "left"
+         },
+         "content": [
+          {
+           "text": "Wasted day (≥ 5 YouTube hours): ",
+           "type": "text"
+          },
+          {
+           "attrs": {
+            "showEditor": false,
+            "value": "E={x|x∈ℝ,5≤x≤24}"
+           },
+           "type": "math_inline"
+          }
+         ],
+         "type": "paragraph"
+        }
+       ],
+       "type": "listItem"
+      }
+     ],
+     "type": "bulletList"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Events are often represented as capital letters, such as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "definition-of-probability",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Definition of Probability",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "It wasn't until the 20th century that humans figured out a way to precisely define what the word probability means:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(\\text{Event}) \n  = \\lim_{n \\rightarrow \\infty}\n    \\frac\n        {\\text{count}(\\text{Event})}\n        {n}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "In English this reads: let's say you perform ",
+     "type": "text"
+    },
+    {
+     "text": "n",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " trials of an \"experiment\" which could result in a particular \"",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://chrispiech.github.io/probabilityForComputerScientists/en/part1/probability/#events",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Event",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "\" occurring. The probability of the event occurring, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{Event})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", is the ratio of trials that result in the event, written as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\count(\\text{Event})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", to the number of trials performed, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". In the limit, as your number of trials approaches infinity, the ratio will converge to the true probability. People also apply other semantics to the concept of a probability. One common meaning ascribed is that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(E)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " is a measure of the chance of event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " occurring.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Measure of uncertainty",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ": It is tempting to think of probability as representing some natural randomness in the world. That might be the case. But perhaps the world isn't random. I propose a deeper way of thinking about probability. There is so much that we as humans don't know, and probability is our robust language for expressing our belief that an event will happen given our limited knowledge. This interpretation acknowledges your own uncertainty of an event. Perhaps if you knew the position of every water molecule, you could perfectly predict tomorrow's weather. But we don't have such knowledge and as such we use probability to talk about the chance of rain tomorrow given the information that we have access to.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Origins of probabilities",
+     "type": "text"
+    },
+    {
+     "text": ": The different interpretations of probability are reflected in the many origins of probabilities that you will encounter in the wild (and not so wild) world. Some probabilities are calculated analytically using mathematical proofs. Some probabilities are calculated from data, experiments or simulations. Some probabilities are just made up to represent a belief. Most probabilities are generated from a combination of the above. For example, someone will make up a prior belief, that belief will be mathematically updated using data and evidence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Probabilities and percentages",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ": You might hear people refer to a probability as a percent. That the probability of rain tomorrow is 32%. The proper way to state this would be to say that 0.32 is the probability of rain. Percentages are simply probabilities multiplied by 100. \"Percent\" is Latin for \"out of one hundred\".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "simulating-probability-as-a-limit",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Simulating Probability",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider the probability of rolling a \"5\" or a \"6\" on a fair six-sided dice. The definition of probability above says that: if you were to keep rolling a dice, as the number of times you roll, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", approaches infinity the ratio of the count of times you saw an outcome of either a 5 or a 6 to the number of rolls, will approach the true probability of the event that you get a 5 or a 6. Lets take it out for a spin. When you hit the \"Start Rolling\" button we will start simulating dice rolls. You can speed up the simulation to try to see what happens after thousands of rolls. Notice how the estimated probability approaches the 2/6 = 0.33 repeating....",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Define",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    },
+    {
+     "text": " Event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the event that you roll either a 5 or a 6 on a six-sided dice:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7271,
+    "sourceSha256": "58536ef83ab48a6b15633643a265d8a2ecaf0b8dec2b9c039f02bf6aa4ef7aa6"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "This demonstration is useful to give you a sense for what probabilities are. More! You can use this \"simulation\" approach to calculate probabilities yourself.",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " This is especially true for those of you who are able to code. If you can generate trials from the sample space, you can put that simulation in a for loop, run the simulation many times, and simply estimate your probability of an event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " the fraction of simulations that produced an outcome from the event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". By the definition of probability, as your number of simulations approaches infinity, the estimate becomes more accurate. Of course, a probability computed via simulations will always be an estimate as you can not run infinite simulations!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "At this point many students would like to know: \"how many simulations are necessary to get a good estimate of the probability?\" We will be able to answer that question later on in the book (see the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/clt",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Central Limit Theorem",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " chapter). For now, its sufficient to say: for most events, simulate as much as you can. If you are unable to simulate more than 100 trials you should be rather skeptical of your probability.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Probability from Datasets",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The same logic that allows us to estimate probabilities from simulations also suggests that we should be able to estimate probabilities from many datasets. If we have a dataset with many rows (tending towards infinity), and you assume that each \"row\" or datapoint in your dataset is one simulated experiment, then the probability of an event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be estimated by counting in the dataset. Here is an example:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " Use the definition of probability to approximate the answer to the question: \"What is the probability a newborn elephant child is male?\" Contrary to what you might think the gender outcomes of a newborn elephant are not equally likely between male and female. You have data from a report in Animal Reproductive Science which states that 3,070 elephants were born in Myanmar of which 2,180 were male [",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "https://www.sciencedirect.com/science/article/pii/S0378432008004442?casa_token=ZTNldN7tjWQAAAAA:4lqVmht0l5ZWe0IsmUFei9VnYrtMAdQ9v4SAEkNCdOh6BBgFFesmlF6YQytPwVNrfrrPxNjbRoE",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "1",
+       "type": "text"
+      },
+      {
+       "text": "]. Humans also don't have a 50/50 sex ratio at birth [",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "https://www.aihw.gov.au/getmedia/2a0c22a2-ba27-4ba0-ad47-ebbe51854cd6/aihw-per-100-in-brief.pdf.aspx",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "2",
+       "type": "text"
+      },
+      {
+       "text": "].",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Answer:",
+       "type": "text"
+      },
+      {
+       "text": " The Experiment is: A single elephant birth in Myanmar.",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "The sample space is the set of possible sexes assigned at birth, {Male, Female, Intersex}.",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "E is the event that a new-born elephant child is male, which in set notation is the subset {Male} of the sample space. The outcomes are not equally likely.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "By the definition of probability, the ratio — of trials that result in the event, to the total number of trials — will tend to our desired probability:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(\\text{Born Male}) &= \\p(E) \\\\\n\t\t&= \\lim_{n \\rightarrow \\infty}\\frac{\\text{count}(E)}{n} \\\\\n\t    &\\approx \\frac{2,180}{3,070} \\\\\n\t    &\\approx 0.710\\end{aligned}\n"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Since 3,000 is quite a bit less than infinity, this is an approximation. It turns out, however, to be a rather good one. A few important notes: there is no guarantee that our estimate applies to elephants outside Myanmar. Later in the class we will develop language for \"how confident we can be in a number like 0.71 after 3,000 trials?\" Using tools from later in class we can say that we have 98% confidence that the true probability is within 0.02 of 0.710. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "what-does-a-probability-mean",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "type": "heading"
+  }
+ ],
+ "type": "doc"
+}

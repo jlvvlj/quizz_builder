@@ -1,0 +1,714 @@
+{
+ "content": [
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This demo used to be live. We now know that the delivery happened on Jan 23rd. Lets go back in time to Jan 1st and see what the probability looked like at that point. ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "What is the probability that Laura gives birth today (given that she hasn't given birth up until today)?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Today's Date: 1/Jan/2021",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Due Date: 18/Jan/2021",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Probability of delivery today: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "0.014",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Probability of delivery in next 7 days: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "0.144",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Current days past due date: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "-17",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " days",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Unconditioned probability mass before today: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "0.128",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How likely is delivery, in humans, relative to the due date? There have been millions of births which gives us a relatively good picture ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "#cite1",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "[1]",
+     "type": "text"
+    },
+    {
+     "text": ". The length of human pregnancy varies by quite a lot! Have you heard that it is 9 months? That is a rough, point estimate. The mean duration of pregnancy is 278.6 days, and pregnancy length has a standard deviation (SD) of 12.5 days. This distribution is not normal, but roughly matches a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Skew_normal_distribution",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "skewed normal",
+     "type": "text"
+    },
+    {
+     "text": ". This is a general probability mass function for the first pregnancy collected from hundreds of thousands of women (this PMF is very similar across demographics, but changes based on whether the woman has given birth before): ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1749,
+    "sourceSha256": "4ec69c08af85b69b6799b1c8ee5484ba2af60c529ff4575a466ecdfe66a551bd"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Of course, we have more information. Specifically, we know that Laura ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "hasn't",
+     "type": "text"
+    },
+    {
+     "text": " given birth up until today (we will update this example when that changes). We also know that babies which are over 14 days late are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Labor_induction",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "induced",
+     "type": "text"
+    },
+    {
+     "text": " on day 14. How likely is delivery given that we haven't delivered up until today? Note that the y-axis is scaled differently:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2091,
+    "sourceSha256": "8970bf81f9895476e4acc7330c9acbdfe102643e8b47f9abd17930dac3524e5c"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's approach this problem formally using inference. First we introduce a random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to represent the days after delivery that the baby is born. Note that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be negative if the baby is due before the due date. We can use Inference to update our belief in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given our observation that we have not delivered yet:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(D = i | \\text{No Baby Yet}) &= \\frac{\\P(\\text{No Baby Yet} | D = i) \\P(D = i)}{\\P(\\text{No Baby Yet})} \\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{No Baby Yet} | D = i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is always either 1 or 0. Note that conditioning on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D=i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " means we are being told the actual date of delivery. If the delivery hasn't happened yet (eg today is before ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") then the probability of No Baby Yet is 1. If the delivery has already happened (eg today is after ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") then the probability of No Baby Yet is 0.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(D = i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is our prior belief (the probability of delivery dates based off historical data). ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{No Baby Yet})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the normalization constant. Instead of calculating it explicitly, we can compute the numerators for each value of i. We can then normalize the distribution (compute the sum of the numerators, and divide every probability by this sum) in order to implicitly compute it. An equivalent (but more compute heavy) solution would be to expand ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(\\text{No Baby Yet})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the law of total probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\P(\\text{No Baby Yet}) = \\sum_i \\P(\\text{No Baby Yet} | D = i) \\P(D = i)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How do we deal with the fact that babies are induced after ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D = 14"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Well we can adjust our prior so that all of the probability for days 14 and on is shifted to day 14. This is equivalent to the following calculation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\P(D = 14) = \\sum_{i \\geq 14} \\P(D = i)"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def update_belief_baby(prior, today = -19):\n   # pr_D[i] is P(D = i| No Baby Yet).\n   pr_D = {}\n   min_i = -50\n   max_i = 14\n   for i in range(min_i, max_i + 1):\n       # P(NoBaby | D = i)\n       likelihood = 0 if i < today else 1\n       pr_D[i] = likelihood * prior[i]\n   # implicitly computes the LOTP\n   normalize(pr_D)\n   return pr_D\n\n\ndef normalize(unormalized_pmf):\n   total_sum = sum(unormalized_pmf.values())\n   normalized = {}\n   for key, value in unormalized_pmf.items():\n      normalized[key] = value / total_sum\n   return normalized\n",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Implementation notes: this calculation was performed by storing the PDF as a list of (day, probability) points. These values are sometimes called weighted samples, or “particles” and are the key component to a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Particle_filter",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "particle filtering",
+     "type": "text"
+    },
+    {
+     "text": " approach. After we observe no-delivery, we set the probability of every point which has a day before today to be 0, and then re-normalize the remaining points (aka we “filter” the “particles”). This is convenient because the “posterior” belief doesn’t follow a simple equation – using particles means we never have to write that equation down in our code.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Extension Problem",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Chris had two other good friends who had babies with the exact same due date (Really! This actually happened). What is the probability that all three babies are delivered on the exact same day?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Probability of three couples on the same day: ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "0.002",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "How did we get that number? Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the probability that one baby is delivered on day ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " – this number can be read off the probability mass function.  Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that all three babies are delivered on day ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Note that the event ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is mutually exclusive with the event that all three babies are born on another day (So for example, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is mutually exclusive with ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_3"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " etc). Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "N=3"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that all babies are born on the same day:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(N=3) &= \\sum_i \\p(D_i) && \\text{Since days are mutually exclusive} \\\\\n&= \\sum_i p_i^3 && \\text{Since the three couples are independent}\\\\\n&\\approx 0.002\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "[1] ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.sciencedirect.com/science/article/pii/S0029784400011315?casa_token=yV-QZInYkl8AAAAA:0U_Z2dT-r0y1etlX8hRG5ulyrjtzoVXRXIlvJkcSyXhtllUlkhWPNr5f3MJL0LMFzHZv5TwsN4Q",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Predicting delivery date by ultrasound and last menstrual period in early gestation",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Acknowledgements: This problem was first posed to me by Chris Gregg.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

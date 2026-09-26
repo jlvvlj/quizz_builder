@@ -1,0 +1,585 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section we are going to use probability to analyze code. Specifically we are going to be calculating expectations on code: expected run time, expected resulting values etc. The reason that we are going to focus on expectation is that it has several ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/expectation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "nice properties",
+     "type": "text"
+    },
+    {
+     "text": ". One of the most useful properties that we have seen so far is that the expectation of a sum, is the sum of expectations, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "regardless",
+     "type": "text"
+    },
+    {
+     "text": " of whether the random variables are independent of one another. In this section we will see a few more helpful properties, including the Law of Total Expectation, which is also helpful in analyzing code:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Law of Total Expectation",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The law of total expectation gives you a way to calculate ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\E[X]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " in the scenario where it is easier to compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\E[X|Y=y]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " where Y is some other random variable:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\E[X]\n&= \\sum_y \\E[X|Y=y] \\P(Y=y)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That definition has a new piece of syntax, the conditional expectation of X given Y:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Conditional Expectation",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If you enter the world where you know some event (such as the assignment to a random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", then the concept of expectation still holds:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nE[X|Y=y] = \\sum_x x \\cdot P(X=x | Y=y)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "One useful note: if you don't specify the value of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " then this conditional expectation formula is a function, where the inputs are assignments to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and the result is a number.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "distributed-file-system",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Distributed File System",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine the task of loading a large file from your computer at Stanford, over the internet. Your file is stored in a distributed file system. In a distributed file system, the closest instance of your file might be on one of several computers at different locations in the world. Imagine you know the probability that the file is in one of a few locations ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "l"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(L=l)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and for each location the expected time, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", to get the file, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\E[T|L=l]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", given it is in that location:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 754,
+    "sourceSha256": "1ed5bd71419cdd7daf0cb29c4b3c411ce3df6e869ff49e110204598ef896e403"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Law of Total Expectation gives a straightforward way to compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\E[T]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\E[T]\n&= \\sum_l \\E[T|L=l] \\P(L=l)\\\\\n&= 0.5 \\cdot 0.3 + 0.2 \\cdot 20.7 +  0.3 \\cdot 96.3\\\\\n&= 33.3 \\text{ seconds}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Toy Example of Recursive Code",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine in theoretical computer science, there are many times where you want to analyze the expected runtime of an algorithm. To practice this technique let's try to solve a simple recursive function. Let Y be the value returned by recurse(). What is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def recurse():\n    x = random.choice([1, 2, 3])  # Equally likely values\n    if x == 1:\n        return 3\n    else if (x == 2):\n        return 5 + recurse()\n    else:\n        return 7 + recurse()",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In order to solve this problem we are going to need to use the law of total expectation considering ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as your background variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\E[Y]\n= &\\sum_{i \\in \\{1,2,3\\}} \\E[Y|X=i] \\P(X=i)\\\\\n=&+\\E[Y|X=1] \\P(X=1) \\\\\n&+ \\E[Y|X=2] \\P(X=2) \\\\\n&+ \\E[Y|X=3] \\P(X=3)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We know the probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X=x) = \\frac{1}{3}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x \\in \\{1,2,3\\}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". How can we compute a value such as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\E[Y|X=2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Well that is the expectation of your return, in the world where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X=2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In that case you will return 5 + recurse(). The expectation of that is 5 + ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\E[Y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Plugging a similar result for each case we can continue our solution:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\E[Y|X=1] &= 3\\\\\n\\E[Y|X=2] &= 5 + \\E[Y]\\\\\n\\E[Y|X=3] &= 7 + \\E[Y]\\\\\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now we can just plug values into the law of total expectation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\E[Y]\n= &\\sum_{i \\in \\{1,2,3\\}} \\E[Y|X=i] \\P(X=i)\\\\\n=&\\E[Y|X=1] \\P(X=1) + \\E[Y|X=2] \\P(X=2) + \\E[Y|X=3] \\P(X=3)  \\\\\n=&3 \\cdot 1/3 \\\\\n &+ (5 + \\E[Y]) \\cdot 1/3\\\\\n &+ (7 + \\E[Y]) \\cdot 1/3\\\\\n= &(15 + 2\\E[Y]) \\cdot 1/3 \\\\\n1/3 \\cdot \\E[Y] = &5 \\\\\n\\E[Y] = &15\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Proof of Law of Total Expectation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's prove the law of total expectation. In this proof we are going to go backwards! We are going to start with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sum_y E[X|Y=y]\\P(Y=y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and show this equals ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Our first step will be to expand ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X|Y=y]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The rest of the proof will just be algebra:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\sum_y& E[X|Y=y]\\P(Y=y) \\\\\n\\quad&= \\sum_y\\sum_x x \\P(X =x | Y = y) \\P(Y = y) \\\\\n\\quad&= \\sum_y\\sum_x x \\P(X =x , Y = y)  \\\\\n\\quad&= \\sum_x\\sum_y x \\P(X =x , Y = y)  \\\\\n\\quad&= \\sum_x x \\sum_y  \\P(X =x , Y = y)  \\\\\n\\quad&= \\sum_x x \\P(X =x)  \\\\\n\\quad&= \\E[X]\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,731 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Factorial",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as an integer. This example computes ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "20!"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import math\nprint(math.factorial(20))",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Choose",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As of Python 3.8, you can compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n \\choose m"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the math module. This example computes ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "10 \\choose 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import math\nprint(math.comb(10, 5))",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Natural Exponent",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Calculate ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "e^x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". For example this computes ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "e^3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import math\nprint(math.exp(3))",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "id": "scipy",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "SciPy Stats Library",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "SciPy is a free and open source library for scientific computing that is built on top of NumPy. You may find it helpful to use SciPy to check the answers you obtain in the written section of your problem sets. NumPy has the capability of drawing samples from many common distributions (type `help(np.random)` in the python interpreter), but SciPy has the added capability of computing the probability of observing events, and it can perform computations directly on the probability mass/density functions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Binomial",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make a Binomial Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and compute its probability mass function (PMF) or cumulative density function (CDF). We love the scipy stats library because it defines all the functions you would care about for a random variable, including expectation, variance, and even things we haven't talked about in CS109, like entropy. This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Bin}(n = 10, p = 0.2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It calculates a few statistics on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It then calculates ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X = 3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X \\leq 4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Finally it generates a few random samples from ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nX = stats.binom(10, 0.2)  # Declare X to be a binomial random variable\nprint(X.pmf(3))           # P(X = 3)\nprint(X.cdf(4))           # P(X <= 4)\nprint(X.mean())           # E[X]\nprint(X.var())            # Var(X)\nprint(X.std())            # Std(X)\nprint(X.rvs())            # Get a random sample from X\nprint(X.rvs(10))          # Get 10 random samples form X",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "From a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "terminal",
+     "type": "text"
+    },
+    {
+     "text": " you can always use the \"help\" command to see a full list of methods defined on a variable (or for a package):",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nX = stats.binom(10, 0.2) # Declare X to be a binomial random variable\nhelp(X)                  # List all methods defined for X",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Poisson",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make a Poisson Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim \\text{Poi}(\\lambda = 2)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It then calculates ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(Y = 3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nY = stats.poisson(2)  # Declare Y to be a poisson random variable\nprint(Y.pmf(3))       # P(Y = 3)\nprint(Y.rvs())        # Get a random sample from Y",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Geometric",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make a Geometric Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the number of trials until a success. This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Geo}(p = 0.75)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nX = stats.geom(0.75)  # Declare X to be a geometric random variable\nprint(X.pmf(3))       # P(X = 3)\nprint(X.rvs())        # Get a random sample from Y",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Normal",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make a Normal Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A \\sim N(\\mu = 3, \\sigma^2 = 16)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It then calculates ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f_Y(0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F_Y(0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "red"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Very Important!!!",
+     "type": "text"
+    },
+    {
+     "text": " In class, the second parameter to a normal was the variance (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). In the scipy library, the second parameter is the standard deviation (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ").",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import math\nfrom scipy import stats\nA = stats.norm(3, math.sqrt(16)) # Declare A to be a normal random variable\nprint(A.pdf(4))                  # f(3), the probability density at 3\nprint(A.cdf(2))                  # F(2), which is also P(A < 2)\nprint(A.rvs())                   # Get a random sample from A",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Exponential",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make an Exponential Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "B \\sim \\text{Exp}(\\lambda = 4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\n# λ is a common parameterization for the exponential,\n# but scipy uses `scale` which is 1/λ\n# Note that scipy also allows a `loc` argument, which\n# functions as an offset and comes first by default,\n# so writing `scale=` is required\nB = stats.expon(scale=1/4)\nprint(B.pdf(1))             # f(1), the probability density at 1\nprint(B.cdf(2))             # F(2) which is also P(B < 2)\nprint(B.rvs())              # Get a random sample from B",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Beta",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Make a Beta Random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This example declares ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Beta}(\\alpha = 1, \\beta = 3)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nX = stats.beta(1, 3)  # Declare X to be a beta random variable\nprint(X.pdf(0.5))     # f(0.5), the probability density at 1\nprint(X.cdf(0.7))     # F(0.7) which is also P(X < 0.7)\nprint(X.rvs())        # Get a random sample from X",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

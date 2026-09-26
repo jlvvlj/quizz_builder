@@ -1,0 +1,999 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this chapter, we expand beyond the Binomial and Poisson distributions to explore a few additional discrete distributions: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "./geometric-random-variable",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Geometric",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Negative Binomial",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Hypergeometric, and Zipf",
+     "type": "text"
+    },
+    {
+     "text": ". The goal is not for you to memorize every formula, but rather to learn how to recognize and work with a new distribution if someone introduces it to you. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "geometric-random-variable",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Geometric Random Variable",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "geometric-random-variable-card",
+      "level": "4",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Geometric Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 3852,
+      "sourceSha256": "4c7ff593522e634bfbb3b70f818cb472157acb11a95638b9dc62ca23712a9957"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "While the Binomial distribution describes scenarios that fit the metaphor of \"number of heads in a fixed set of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips\", the Geometric distribution describes scenarios where we instead figuratively flip a coin ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "until",
+     "type": "text"
+    },
+    {
+     "text": " we see our first heads or success, and then we stop. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It can be confusing to differentiate between these two random variables because they are both about independent trials with binary outcomes, but recognizing when to apply which random variable is an important skill to hone. When deciding what random variable to use for solving any particular problem, here are two questions you can ask yourself:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "  1. Which random variable's required conditions best fit the problem scenario?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Before we apply the Binomial, for example, we must verify that a) we have ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " (a fixed number of) independent trials, and b) each trial has a consistent probability ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " of success. If a problem doesn't involve a fixed number of trials no matter how you look at it, then the Binomial isn't a good fit.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "On the other hand, while the Geometric also requires a consistent probability ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " of success per trial, it fits situations where the number of independent trials isn't fixed; instead, the number of trials is determined by how long it takes to get the first success.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "  2. Which random variable best helps me find the probability I'm looking for?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Often, we can ask multiple questions about the same overall scenario, and which random variable to use depends on what question we're asking. We want to use whichever distribution has a PMF that can produce either the probability we want or intermediates useful for finding a desired final probability.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here are a few examples of different questions that are most directly answered using either a Binomial  or Geometric random variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Scenario:",
+       "type": "text"
+      },
+      {
+       "text": " During lecture, Chris has a 5% probability of giving out a mandarin on each slide.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Binomial Question:",
+       "type": "text"
+      },
+      {
+       "text": " If a lecture is 80 slides long, what is the probability Chris gives out 6 mandarins?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Geometric Question:",
+       "type": "text"
+      },
+      {
+       "text": " What is the probability Chris gives out the first mandarin on slide 25?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Scenario:",
+       "type": "text"
+      },
+      {
+       "text": " A particular disease is so rare that a doctor only has a 0.1% chance of seeing a patient with this disease on any given day.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Binomial Question:",
+       "type": "text"
+      },
+      {
+       "text": " What is the probability a doctor sees two or more patients with this disease over a 10-year period?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Geometric Question:",
+       "type": "text"
+      },
+      {
+       "text": " What is the probability a doctor sees their first patient with this disease only in the 10th year of their career?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that both Geometric questions above are about \"trials until first success\", while the Binomial questions ask about \"number of successes over this many trials\".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Geometric PMF",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We saw previously how the Binomial distribution's probability mass function follows from core probability tools and concepts. Here we describe the PMF of the Geometric through the same lens.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Geo}(p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the number of coin flips until we see the first heads, and let's examine ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 3"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as an example. This event states that we flipped the coin three times total and got Tails-Tails-Heads. We know the first two flips resulted in Tails because if they hadn't, we would have gotten our first heads earlier than flip #3! We can break down this three-flip outcome by recognizing we have independence between flips, which allows us to multiply the probability of each flip's result together:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X = 3) &= \\P(\\text{flip 1 Tails}) \\cdot \\P(\\text{flip 2 Tails}) \\cdot \\P(\\text{flip 3 Heads}) \\\\\n              &= (1 - p)(1 - p)p\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This result generalizes: for any ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we know that the sequence of flips will be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " Tails, followed by 1 Heads, in that order, and the math looks similar:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(X = x) &= \\P(\\text{flip 1 Tails}) \\cdot \\P(\\text{flip 2 Tails}) \\dots \\P(\\text{flip } x - 1 \\text{ Tails}) \\cdot \\P(\\text{flip }x\\text{ Heads}) \\\\\n              &= (1 - p)(1-p)\\dots(1-p)p = (1-p)^{x-1}p\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You might wonder why the Geometric PMF doesn't include a combination like the Binomial PMF does. In the derivation of the Binomial PMF, the combination was us accounting for all the possible orderings of the flips in the outcome (with Heads being indistinct from another, and same for Tails). On the other hand, Geometric outcomes have a constrained order -- there is always only one Heads, and it is always the last flip -- so there aren't multiple orderings to account for.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "negative-binomial-random-variable",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Negative Binomial Random Variable",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "negative-binomial-random-variable",
+      "level": "4",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Negative Binomial Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 5312,
+      "sourceSha256": "5f06f4623ff0e4727a7f60a7782338abd4c9926e6bae5a70b12727f9eba31964"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Negative Binomial is a generalization of the Geometric (despite its name suggesting a connection to the Binomial). If the Geometric describes metaphorical coin flips until your ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "first",
+     "type": "text"
+    },
+    {
+     "text": " heads, the Negative Binomial describes flips until your ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "first",
+     "type": "text"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads. When ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the Negative Binomial is identical to the Geometric.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "the-negative-binomial-pmf",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Negative Binomial PMF",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{NegBin}(r=3,p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and let's determine ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X = x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x = 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from first principles.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Unlike with the Geometric, when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r > 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", there are multiple outcomes corresponding to each assignment to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": TTHHH, THTHH, TTHTH, ... (where T = Tails, H = Heads). These outcomes are different orderings of 3 Heads and 2 Tails, with the extra constraint that the last flip must always be Heads. Note that although the last flip is constrained, the remaining ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "r - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads can happen any time.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "As with the Binomial and Geometric, the probability of any specific outcome can be found by multiplying the probabilities of the results for each flip:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(\\text{TTHHH}) &= (1-p)(1-p)\\cdot p\\cdot p \\cdot p = p^3(1-p)^2 \\\\\n    \\P(\\text{THTHH}) &= (1-p)\\cdot p \\cdot (1 - p) \\cdot p \\cdot p = p^3(1-p)^2 \\\\\n    &\\dots\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "No matter what the ordering is, the probability of any one outcome is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^3(1-p)^2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or more generally, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^r(1 - p)^{x - r}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Analogous to how we derived the Binomial PMF, here we can also count the number of possible orderings where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and multiply that count by the probability of any single ordering. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we could arrange the 3 Heads and 2 Tails any way we like, there would be ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{5}{3}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ways to do so, but we can't including orderings where the last flip is Tails in our count. If we fix the last flip to be Heads, then we have 4 remaining flips to distribute 2 Tails and 2 remaining Heads between. The number of ways to do this is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{4}{2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", or more generally ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\binom{x - 1}{r - 1}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". So, the subtraction of 1 in the PMF's combination comes from recognizing that we must fix that last flip to be heads, so it isn't considered in our count of possible orderings.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "hyper-geometric-random-variable",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Hyper Geometric Random Variable",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "hyper-geometric-random-variable",
+      "level": "4",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Hyper Geometric Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 6245,
+      "sourceSha256": "c1be56f4244cb4e6cf467e198a08343f96973800422582f107cfc2254115ffca"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For an example problem that uses the Hypergeometric, see ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/jury",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Jury Selection",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "zipf-distribution",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Zipf Distribution",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "id": "zipf-distribution",
+      "level": "4",
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Zipf Distribution",
+       "type": "text"
+      }
+     ],
+     "type": "heading"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 4712,
+      "sourceSha256": "f3c70532277d8a8451267a17e8a77105f3a88dbeebe6f5f52cda9ea8b04a88e5"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

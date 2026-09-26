@@ -1,0 +1,651 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "An important insight regarding probabilistic models with many random variables is that \"the joint distribution is complete information.\" From the joint distribution you can compute all probability questions involving those random variables in the model. This chapter is an example of that insight.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The central question of this chapter is: Given a joint distribution, how can you compute the probability of random variables on their own?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "marginalization-from-two-random-variables",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Marginalization From Two Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "To start, consider two random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". If you are given the joint how can you compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X = x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Recall that if you have the joint you have a way to know the probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X = x,Y = y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for any value ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "x"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We already have a technique for computing ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X = x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the joint. We can use the Law of Total Probability (LOTP)! In this case the events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y = y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " make up the \"background events\":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(X = x) = \\sum_y \\P(X = x,Y = y)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that to apply the LOTP it must be the case that the different events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y = i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " must be mutually exclusive and it must be the case that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sum_y \\P(Y = y) = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Both are true.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If we wanted ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(Y = y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we could again use the Law of Total Probability, this time with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " taking on each of its possible values as the background events: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(Y = y) = \\sum_x \\P(X = x,Y = y)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Example: Favorite Number",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider the following joint distribution for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a person's favorite binary digit and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is their year at Stanford.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 776,
+    "sourceSha256": "34afd17b02d77ec3c8a29857f132cfb7f22a1c60a53ca7253e82886a1dd4db93"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is the joint distribution:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1067,
+    "sourceSha256": "c25abc97dc4133eef7adf0465b9b275cc346f537deeaca0be4a3edb14993f1ea"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that a student's favorite digit is 0, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X = 0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? We can use the LOTP to compute this probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(X = 0) = &\\sum_y \\P(X = 0, Y =y) \\\\\n               = & \\text{ } \\P(X = 0, Y = \\text{Frosh}) \\\\\n              &  + \\P(X = 0, Y = \\text{Soph}) \\\\\n              &  + \\P(X = 0, Y = \\text{Junior}) \\\\\n              &  + \\P(X = 0, Y = \\text{Senior}) \\\\\n              &  + \\P(X = 0, Y = 5+) \\\\\n              = & \\text{ } 0.01 + 0.05 + 0.04 + 0.03 + 0.02 = 0.15\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Marginalization with More Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The idea of marginalization can be extended to joint distributions with more than two random variables. Consider having three random variables ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we could marginalize out any of the variables:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    P(X = x) &= \\sum_{y,z} \\P(X = x, Y = y, Z = z) \\\\\n    P(Y = y) &= \\sum_{x,z} \\P(X = x, Y = y, Z = z) \\\\\n    P(Z = z) &= \\sum_{x,y} \\P(X = x, Y = y, Z = z)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Notation:",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " Double Sum",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "In this case the double sum notation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\sum_{y,z}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Also written equivalently as:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\sum_y \\sum_z\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "means that we are summing over all possible values of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "z"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". For example, if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a random variable with 3 possible values and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Z"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a random variable with 4 possible values, then ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sum_{y,z}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " means that we are summing over all 12 possible combinations of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "z"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is an example in code. Assume we have a function ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "joint(x, y, z)",
+     "type": "text"
+    },
+    {
+     "text": " and that all ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and can take on values in the set ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\{0,1,2,3,4\\}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "def prob_X_equals_x(x):\n    prob_sum = 0\n    for y in range(5):\n        for z in range(5):\n            prob_sum += joint(x, y, z)\n    return prob_sum",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  }
+ ],
+ "type": "doc"
+}

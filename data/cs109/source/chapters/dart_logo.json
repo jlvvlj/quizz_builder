@@ -1,0 +1,655 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "id you know that we used a stochastic process to generate the CS109 logo? Throw 300,000 darts at a picture of the Stanford seal and only keep the pixels that are hit by at least one dart. Each dart has it's x-pixel and y-pixel chosen independently at random from gaussian distributions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and be a constant that equals the size of the logo (its width is equal to its height). ",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "text": "For the Stanford seal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S=300"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable which represent the x-pixel. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\mathcal{N}\\left(\\mu = \\frac{S}{2}, \\sigma^2 = (\\frac{S}{2})^2\\right)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be a random variable which represents the y-pixel.  ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim \\mathcal{N}\\left(\\mu = \\frac{S}{3},\\sigma^2 = (\\frac{S}{5})^2\\right)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You can re-run the process by pressing the Play animation button:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7122,
+    "sourceSha256": "6b08ec918f25154d3e61e496a710c9300bb4935a245cfb718b5bba1c55e6e300"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is the probability density function of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "  (left) and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " (right) on their own: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2509,
+    "sourceSha256": "d8a07ccca76287c166e28956750581bcdf510b94594179ba3a195d496986868c"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Because each dart has an ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " value, its location is represented by a joint distribution. Because ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " are continuous, we can't represent the joint as a table. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is a plot the 2D probability density function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(X=x, Y=y)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1701,
+    "sourceSha256": "9eee76443a7b2b8653e84d4d0f3bca8dbd649e0787767e7edb98f1fc40ddc0dc"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This is a function that has two inputs. The darkness of the color reflects the probability density. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Because we know the way the image was created we can reason about some questions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Question: ",
+       "type": "text"
+      },
+      {
+       "text": "What is the probability a dart lands in the center pixel of a canvas that is 300 by 300? ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In other words, what is the probability that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "150 < X < 151"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "150 < Y < 151"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "? ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Recall the distributions for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nX \\sim \\mathcal{N}\\!\\left(\\mu_X=\\frac{300}{2},\\;\\sigma_X=\\frac{300}{2}\\right)\\\\\nY \\sim \\mathcal{N}\\!\\left(\\mu_Y=\\frac{300}{3},\\;\\sigma_Y=\\frac{300}{5}\\right)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Because the two random variables are independent:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(&150 < X < 151,\\;\\;  150 < Y < 151)  \\\\\n&=\\P(150 < X < 151) \\cdot \\P(150 < Y < 151)\\\\\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Because the two random variables are Gaussian:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(150 \\le X \\le 151)\n&=\n\\Phi\\!\\left(\\frac{151 - 150}{150}\\right)\n-\n\\Phi\\!\\left(\\frac{150 - 150}{150}\\right) \\\\\nP(150 \\le Y \\le 151)\n&=\n\\Phi\\!\\left(\\frac{151 - 300}{180}\\right)\n-\n\\Phi\\!\\left(\\frac{150 - 300}{180}\\right)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "So if you compute the two numbers and multiply them together you get the probability that a dart hits the center pixel is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(150 \\le X \\le 151,\\;\\; 150 \\le Y \\le 151)\n\\approx 9.4\\times 10^{-6}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Question: ",
+       "type": "text"
+      },
+      {
+       "text": "What is the probability that if you throw 300,000 darts, no a single dart hits the center pixel? ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "M"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that all darts miss the center pixel.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In order for no dart to hit the center pixel, it must be the case that:",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "dart 1 misses the center pixel, and",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "dart 2 misses the center pixel, and",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "dart 3 misses the center pixel, and",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "...",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "dart 300,000 misses the center pixel",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the event that dart ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " misses the center pixel. In the previous problem, we calculated ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(E_i^C)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the probability that a dart hits the center pixel. As such:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(E_i) = 1 -  9.4\\times 10^{-6}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Because each dart is independent, the probability of the event ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "M"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", that no dart hits the center pixel, is the product of the probability of each event ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(M) &= \\prod_{i=1}^{300,000} \\P(E_i)\\\\\n&= \\prod_{i=1}^{300,000} \\big[1 - 9.4\\times 10^{-6}\\big]\\\\\n&=\\big[1 - 9.4\\times 10^{-6}\\big] ^{300000}\\\\\n&\\approx 0.06\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In other words, there is about a 94% chance that the center pixel gets included in the final image!",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

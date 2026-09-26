@@ -1,0 +1,684 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "In CS109 this quarter we will sometimes use the concept of Large Language Models to help students build a deeper intuition for probability theory and also to give you all a better look under the hood of one of the newest tools in AI. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "what-is-a-large-language-model",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is a Large Language Model?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Large Language Models (LLMs) like ChatGPT, Claude, and Gemini are some of the most powerful AI tools to emerge in recent years. LLMs are called generative AI because they generate text. You might be wondering, what are they really doing under the hood? At their core, LLMs are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "probability machines",
+     "type": "text"
+    },
+    {
+     "text": ". They don’t “know facts” in the way a textbook does. Instead, they predict the probability of a next \"token\" given text seen so far. ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "That’s it? Just probability?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Probability is a powerful thing. Especially when the model has been trained on vast amounts of text (like the entire internet, all books ever written) and can capture rich relationships in language. This allows it to make predictions that ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "feel",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " fluent and informed, even though underneath it’s always “just” calculating probabilities.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When generating text, the model asks: ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Given what I have already seen, what is the most probable thing to come next? ",
+     "type": "text"
+    },
+    {
+     "text": "LLMs generate entire strings of text by repeatedly asking this question over and over for each ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "token",
+     "type": "text"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Tokens are the smallest “unit” of text that an LLM considers",
+     "type": "text"
+    },
+    {
+     "text": ". If you are curious about tokens check out the section at the bottom of this handout. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Next Token Probabilities",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Imagine the model has already seen the text \"After CS109 we went to \":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "96343878-1d2a-400b-8299-b019f4a4f003",
+    "naturalHeight": "414",
+    "naturalWidth": "1600",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F96343878-1d2a-400b-8299-b019f4a4f003?alt=media&token=1d9f30f7-4408-4c10-b03e-c2b925b72d07",
+    "widthPct": "50"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The LLM first breaks the text into bite sized strings called tokens. In order to chose the next token, the model computes a probability distribution over all possible next tokens, given what it has seen so far. The dictionary below shows an example relationship between possible next tokens, and the probability that the token will come next: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "# keys are possible next tokens.\n# values is the corresponding probability\nnext_token_prob = {\n  \"the\" : 0.49 \n  \"CoHo\" : 0.23 \n  \"sleep\" : 0.10 \n  \"dance\" : 0.09 \n}",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "So, which token actually comes next? The model will sample these tokens based on the probability distribution! In the above example, the token \"the\" is most likely.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "In case you are curious - many researchers have spent lots of time thinking about the best way to decide how to chose the best next sequence of tokens. For example, should it be a “greedy” algorithm where we always pick the word with the highest probability or should we try to make full sentences that have highest probability? Perhaps surprisingly, greedy algorithms seem to perform very well at this task! This is still an active area of research. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "chain-rule-of-probability",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Chain Rule of Probability",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "LLMs build up sequences token by token, using the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "chain rule of probability",
+     "type": "text"
+    },
+    {
+     "text": ". Let’s define ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the event that the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i^{th}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " token in our sequence is the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "observed token",
+     "type": "text"
+    },
+    {
+     "text": " at that position. For example, in the phrase ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "\"After CS109 we went to \"",
+     "type": "text"
+    },
+    {
+     "text": " we have the following events:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nT_1 &: \\text{is the event that the first token is ``After''}, \\\\\nT_2 &: \\text{is the event that the second token is `` CS''}, \\\\\nT_3 &: \\text{is the event that the third token is ``109''}, \\\\\nT_4 &: \\text{is the event that the fourth token is `` we ''}, \\\\\nT_5 &: \\text{is the event that the fourth token is ``went''}, \\\\\nT_6 &: \\text{is the event that the fifth token is `` to ''}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When an LLM sees the prompt, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "\"After CS109 we went to \"",
+     "type": "text"
+    },
+    {
+     "text": ", it first computes the probability that all of these events happen together. Formally, ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(T_1 \\text{ and } T_2 \\text{ and } T\\_3 \\text{ and } T\\_4 \\text{ and } T\\_5 \\text{ and } T_6) "
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can break down ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(T_1, T_2, T_3, T_4, T_5, T_6)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the chain rule of probability. In this notation we switched from writing out \"and\" to using a , instead.",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " The two notations are equivalent and we are switching to the short hand version to save space. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(T_1, T_2, T_3, T_4, T_5, T_6) \n&= P(T_1 \\mid \\langle \\text{start} \\rangle) \\\\\n&\\quad \\cdot P(T_2 \\mid T_1, \\langle \\text{start} \\rangle) \\\\\n&\\quad \\cdot P(T_3 \\mid T_1, T_2, \\langle \\text{start} \\rangle) \\\\\n&\\quad \\cdot P(T_4 \\mid T_1, T_2, T_3, \\langle \\text{start} \\rangle) \\\\\n&\\quad \\cdot P(T_5 \\mid T_1, T_2, T_3, T_4, \\langle \\text{start} \\rangle) \\\\\n&\\quad \\cdot P(T_6 \\mid T_1, T_2, T_3, T_4, T_5, \\langle \\text{start} \\rangle) \\\\\n&= \\prod_{i=1}^{6} P\\bigl(T_i \\,\\mid\\, T_1, \\dots, T_{i-1}, \\langle \\text{start} \\rangle \\bigr).\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The language model assigns probabilities to these events step by step. Starting from a special \"start\" token, it generates: ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(T_1 \\mid \\langle \\text{start} \\rangle), \\\\\nP(T_2 \\mid T_1, \\langle \\text{start} \\rangle), \\\\\nP(T_3 \\mid T_2, T_1, \\langle \\text{start} \\rangle), \\\\\nP(T_4 \\mid T_3, T_2, T_1, \\langle \\text{start} \\rangle), \\\\\nP(T_4 \\mid T_4, T_3, T_2, T_1, \\langle \\text{start} \\rangle), \\\\\nP(T_6 \\mid T_5, T_4, T_3, T_2, T_1, \\langle \\text{start} \\rangle).\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Then, multiplying all of these terms together (as shown in the first equation) computes the probability of the entire sequence: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(T_1, T_2, T_3, T_4, T_5, T_6)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This is exactly what a large language model computes and then uses this to determine what text to generate next. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Tokens",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Earlier we said that LLMs think in units of texts called tokens. What is a token? LLMs process text in unites called tokens which are pieces of words, punctuation, or spaces. For example, the phrase:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "“Hello, World!” ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "might be split into tokens like this: (where each color is a different token). ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "<|begin_of_text|>",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "rgb(169, 51, 255)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "Hello",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "deeppink"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "World!",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "red"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "<|end_of_text|>",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(0, 0, 0)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "As you can see, LLMs add special tokens to mark the beginning and end of a text sequence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "type": "horizontalRule"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Written by Juliette Woodrow",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

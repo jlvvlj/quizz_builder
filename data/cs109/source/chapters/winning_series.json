@@ -1,0 +1,587 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Golden State Warriors are the basketball team for the Bay Area. The Warriors are going to play the Bucks (another professional basketball team) in a best of 7 series during the next NBA finals. They will win the series if you win at least 4 games. What is the probability that the warriors win the series? Each game is independent. Each game, the warriors have a 0.55 probability of winning.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This problem is equivalent to: Flip a biased coin 7 times (with a ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=0.55"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " probability of getting a heads). What is the probability of at least 4 heads?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "de0e9a11-276a-4680-ad0d-90cc1f48be0a",
+    "naturalHeight": "1252",
+    "naturalWidth": "1878",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fde0e9a11-276a-4680-ad0d-90cc1f48be0a?alt=media&token=cd954e67-c5e0-46a1-94f5-c4c199183288",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Note",
+     "type": "text"
+    },
+    {
+     "text": ": without loss of generality you could imagine that the two teams always play all 7 games, regardless of the outcome. Technically they stop playing after one team has achieved 4 wins, because the outcomes of the games no longer impact who wins. However, you could imagine that they continue.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability that the warriors win the series? Leave your answer to 3 decimal places",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A critical step is to define a random variable and to recognize it is a Binomial. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of games won. Since each game is independent, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n=7, p =0.55)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The question is asking: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X \\geq 4)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "To answer this question, first recognize that:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\\P(&X \\geq 4) \\\\&=  \\P(X = 4 \\or X = 5\\or X = 6 \\or X = 7)\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Since each of these events; ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X=4"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X=5"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", etc are mutually exclusive, the probability of the “or” is simply the sum of the probabilities.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\\P(&X \\geq 4) \\\\&= \\P(X = 4) + \\P(X = 5) + \\P(X = 6) + \\P(X = 7) \\\\&= \\sum_{i=4}^7 P(X = i)\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Each of these probabilities are PMF questions:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\\P(X \\geq 4) &= \\sum_{i=4}^7 P(X = i) \\\\&= \\sum_{i=4}^7  {n \\choose i} p^i (1-p)^{n-i} \\\\&= \\sum_{i=4}^7  {7 \\choose i} 0.55^i \\cdot 0.45^{7-i} \\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is that equation graphically. It represents the sum of these columns in the PMF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "8ca893b6-a787-40dc-bdd3-af49bc7f0611",
+    "naturalHeight": "1164",
+    "naturalWidth": "2122",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F8ca893b6-a787-40dc-bdd3-af49bc7f0611?alt=media&token=44e0e703-f4e1-489b-bcb5-fb711752ce9f",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At this point we have an equation -- but how should we compute it? We could do it by hand! Or using a calculator. Or, we can use python, and specifically the scipy package:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\n\npr = 0\n# calculate the sum\nfor i in range(4, 8): \n   # this for loop gives i in [4,5,6,7] \n   pr_i = stats.binom.pmf(i, n = 7, p = 0.55)\n   pr += pr_i\n\nprint(f'P(X >= 4) = {pr}')",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Which produces the  correct answer:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "text"
+   },
+   "content": [
+    {
+     "text": "P(X >= 4) = 0.6082877968750001",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Buggy Solution",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A good reason to study this problem is because of this common misconception for how to compute ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X \\geq 4)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It is worth understanding why it is wrong.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Incorrectly trying to recreate the binomial",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Similar to how we defined a binomial distribution PMF equation (see: ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "{{pathToRoot}}many_flips",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "Many Coin Flips",
+       "type": "text"
+      },
+      {
+       "text": ") we can construct outcomes of the seven game series where the warriors win.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "We are going to choose 4 slots where the Warriors win, and we don't care about the rest. They could either be wins or losses. Out of 7 games, select 4 where the Warriors win. There are ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "7 \\choose 4"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ways to do so. The probability of each particular selection of four games to win is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p^4"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " because we need them to win those four games, and we don't care about the rest. As such the probability is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X \\geq 4) = {7 \\choose 4} p^4\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This idea seems good, but it doesn't work. First of all, we can recognize that there is a problem by considering the outcome if we set ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p = 1.0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In this case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X \\geq 4) = {7 \\choose 4} p^4 = {7 \\choose 4} 1^4= 35"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Clearly 35 is an invalid probability (which is much greater than 1). As such this can't be the right answer.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "But what is wrong with this approach? Lets enumerate the 35 different outcomes that they are considering. Let B = we don't know who wins. Let W = the warriors win. Here each outcome is the assignment to each of the 7 games in the series:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "text"
+   },
+   "content": [
+    {
+     "text": "    (B, B, B, W, W, W, W)\n    (B, B, W, B, W, W, W)\n    (B, B, W, W, B, W, W)\n    (B, B, W, W, W, B, W)\n    (B, B, W, W, W, W, B)\n    (B, W, B, B, W, W, W)\n    (B, W, B, W, B, W, W)\n    (B, W, B, W, W, B, W)\n    (B, W, B, W, W, W, B)\n    (B, W, W, B, B, W, W)\n    (B, W, W, B, W, B, W)\n    (B, W, W, B, W, W, B)\n    (B, W, W, W, B, B, W)\n    (B, W, W, W, B, W, B)\n    (B, W, W, W, W, B, B)\n    (W, B, B, B, W, W, W)\n    (W, B, B, W, B, W, W)\n    (W, B, B, W, W, B, W)\n    (W, B, B, W, W, W, B)\n    (W, B, W, B, B, W, W)\n    (W, B, W, B, W, B, W)\n    (W, B, W, B, W, W, B)\n    (W, B, W, W, B, B, W)\n    (W, B, W, W, B, W, B)\n    (W, B, W, W, W, B, B)\n    (W, W, B, B, B, W, W)\n    (W, W, B, B, W, B, W)\n    (W, W, B, B, W, W, B)\n    (W, W, B, W, B, B, W)\n    (W, W, B, W, B, W, B)\n    (W, W, B, W, W, B, B)\n    (W, W, W, B, B, B, W)\n    (W, W, W, B, B, W, B)\n    (W, W, W, B, W, B, B)\n    (W, W, W, W, B, B, B)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It is in fact the case that the probability of any of these 35 outcomes is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". For example: (W, W, W, W, B, B, B). The warriors need to win the first 4 independent games: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Then there are three events where either team could win. The probability of “B”, that either team could win, is 1. That makes sense. Either the warriors win or the other team wins. As such our probability of any given outcome, aka row in the set of outcomes above, is: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p^4 \\cdot 1^3 = p^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The bug here is that these outcomes are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "not",
+     "type": "text"
+    },
+    {
+     "text": " mutually exclusive, yet the answer treats them as such. In the many coin flips example, we constructed outcomes in the format  (T, T, T, H, H, T, H). These outcomes are in fact mutually exclusive. It’s not possible for two distinct lists of outcomes to simultaneously exist. On the other hand in the version where “B” stands for either team could win, the outcomes do have overlap. For example consider the two rows from the examples above:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "text"
+   },
+   "content": [
+    {
+     "text": "    (B, W, W, W, B, B, W)\n    (B, W, W, W, B, W, B)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "These could both occur (and hence are not mutually exclusive). For example if the warriors win all 7 games! Or the warriors win all games except for games 1 and 5. Both events are satisfied. Because the events are not mutually exclusive, if we want the probability of the “or” of each of these events we can ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "not",
+     "type": "text"
+    },
+    {
+     "text": " just sum the probabilities of each of the events (and that is exactly what ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(X \\geq 4) = {7 \\choose 4} p^4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " implies). Instead you would need to use inclusion-exclusion for the or of 35 events (yikes!). Alternatively see the answer we propose above.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

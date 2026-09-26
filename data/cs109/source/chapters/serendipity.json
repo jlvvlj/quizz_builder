@@ -1,0 +1,84 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "align": "center",
+    "id": "5609e3bd-2c6d-4e9b-abed-1e2b455945e4",
+    "naturalHeight": "1067",
+    "naturalWidth": "1600",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F5609e3bd-2c6d-4e9b-abed-1e2b455945e4?alt=media&token=7066bad7-bb7b-4897-a617-ff7f97f6ae1b",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "The word serendipity comes from the Persian fairy tale of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/The_Three_Princes_of_Serendip",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Three Princes of Serendip",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Problem",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is the probability of a serendipitous encounter with a friend? Imagine you live in an area with a large general population (e.g. Stanford with 17,000 students). A small subset of the population are friends. What are the chances that you run into at least one friend if you see a handful of people from the population? Assume that seeing each person from the population is equally likely.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 8473,
+    "sourceSha256": "46cdff5e43183fd49ae7cc17a11faf5962889007561521eb4920448e7332630c"
+   },
+   "type": "interactive-demo"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,1111 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of two events, say ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", written ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(E \\and F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", is the probability of both events happening. You might see equivalent notations ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(EF)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(E∩F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(E,F)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " to mean the probability of and. How you calculate the probability of event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " and event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "F"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " happening depends on whether or not the events are \"independent\". In the same way that mutual exclusion makes it easy to calculate the probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of events, independence is a property that makes it easy to calculate the probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of events.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "and-with-independent-events",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "And with Independent Events",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "If events are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/independence",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "independent",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " then calculating the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " becomes simple multiplication:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ": Probability of ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " for independent events.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "If two events: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent then the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " occurring is:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(E \\and F)=P(E)⋅P(F)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "This property applies regardless of how the probabilities of E and F were calculated and whether or not the events are mutually exclusive.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "The independence principle extends to more than two events. For ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " events ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", … ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E_n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " that are ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "mutually",
+       "type": "text"
+      },
+      {
+       "text": " independent of one another ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(0, 29, 53)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "—",
+       "type": "text"
+      },
+      {
+       "text": " the independence equation also holds for all subsets of the events.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E_1 \\and E_2 \\and \\dots \\and E_n) = \\prod_{i=1}^n \\p(E_i)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "We can prove this equation by combining the definition of conditional probability and the definition of independence.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Proof",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "italic"
+        }
+       ],
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "text": "If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is independent of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " then ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(E \\and F) = \\p(E) \\cdot \\P(F)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\t\\p(E|F) &= \\frac{\\p(E \\and F)}{\\p(F)} && \\text{Definition of }\n\t\\href{./cond_prob}{\\text{conditional probability}} \n\t\\\\\n\t\\p(E) &=  \\frac{\\p(E \\and F)}{\\p(F)} && \\text{Definition of }\n\t\\href{./independence}{\\text{independence}} \\\\\n\t\\p(E \\and F) &= \\p(E) \\cdot \\p(F) && \\text{Rearranging terms}\n\t\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "See the chapter on ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/independence",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "independence",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " to learn about when you can assume that two events are independent.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "and-with-dependent-events",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "And",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " with Dependent Events",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Events which are not independent are called ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "dependent",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " events. How can you calculate the probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "and",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of dependent events? There is a direct formula called the chain rule which can be directly derived from the definition of conditional probability:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": The Chain Rule",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "The formula in the definition of ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "https://{{pathToRoot}}/cond_prob",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "conditional probability",
+       "type": "text"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " can be re-arranged to derive a general way of calculating the probability of the ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " of any two events:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E \\and F) = \\p(E | F) \\cdot \\p(F)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "The chain rule states that the probability of observing events ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " is the probability of observing ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ", multiplied by the probability of observing ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ", given that you have observed ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "F"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ". ",
+       "type": "text"
+      },
+      {
+       "text": "There is nother special about ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " that says it should go first. Equivalently:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(E \\and F) = \\p(F \\and E) =  \\p(F | E) \\cdot \\p(E)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "It generalizes to more than two events:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p&(E_1 \\and E_2 \\and \\dots \\and E_n) \\\\\n= &\\p(E_1) \\cdot \\p(E_2|E_1) \\cdot \\p(E_3 |E_1 \\and E_2) \\cdots  \\\\  &\\p(E_n|E_1 \\dots E_{n−1})\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  }
+ ],
+ "type": "doc"
+}

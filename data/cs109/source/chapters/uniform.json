@@ -1,0 +1,243 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The most basic of all the continuous random variables is the uniform random variable, which is equally likely to take on any value in its range (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha, \\beta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "). X is a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "uniform random variable",
+     "type": "text"
+    },
+    {
+     "text": " (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\Uni(\\alpha, \\beta)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") if it has PDF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    f(x) = \\begin{cases} \\frac{1}{\\beta - \\alpha} &\\text{when } \\alpha \\leq x \\leq \\beta \\\\ \n0 & \\text{otherwise} \\end{cases}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Notice how the density ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1/(\\beta - \\alpha)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is exactly the same regardless of the value for x. That makes the density uniform. So why is the PDF ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1/(\\beta - \\alpha)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and not 1? That is the constant that makes it such that the integral over all possible inputs evaluates to 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 4855,
+      "sourceSha256": "ccaaa21a648a06f817c9819729d5dff973f38d8e2034f15c87ac7a86c76edef4"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      },
+      {
+       "text": " You are running to the bus stop. You don’t know exactly when the bus arrives. You believe all times between 2 and 2:30 are equally likely. You show up at 2:15pm. What is P(wait < 5 minutes)?",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "T"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the time, in minutes after 2pm that the bus arrives. Because we think that all times are equally likely in this range, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "T \\sim \\Uni(\\alpha = 0, \\beta = 30)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The probability that you wait 5 minutes is equal to the probability that the bus shows up between 2:15 and 2:20. In other words ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\p(15 < T < 20)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\p(\\text{Wait under 5 mins}) &= \\p(15 < T < 20) \\\\\n    &= \\int_{15}^{20} f_T(x) dx \\\\ \\\\\n    &= \\int_{15}^{20} \\frac{1}{\\beta - \\alpha} dx \\\\ \\\\\n    &= \\int_{15}^{20} \\frac{1}{30} dx \\\\ \\\\\n    &= \\frac{x}{30}\\bigg\\rvert_{15}^{20} \\\\\n    &= \\frac{20}{30} - \\frac{15}{30}  = \\frac{5}{30}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can come up with a closed form for the probability that a uniform random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is in the range ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "a"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "b"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", assuming that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\alpha \\leq a \\leq b \\leq \\beta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\P(a \\leq X \\leq b) &= \\int_a^b f(x) dx \\\\\n    &= \\int_a^b \\frac{1}{\\beta - \\alpha} dx \\\\\n    &= \\frac{ b - a }{ \\beta - \\alpha }\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

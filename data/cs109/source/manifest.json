@@ -1,0 +1,703 @@
+{
+ "source": "https://probabilitycoders.stanford.edu/spr26/probability",
+ "title": "Probability for Computer Science",
+ "book": "cs109-spr26",
+ "fetchedAt": "2026-09-26T04:28:35+00:00",
+ "outline": [
+  {
+   "title": "Reference",
+   "sections": [
+    "notation",
+    "core_probability_ref",
+    "all_distributions",
+    "calculators",
+    "python",
+    "calculus",
+    "llm_api"
+   ],
+   "examples": [],
+   "key": "notation"
+  },
+  {
+   "sections": [
+    "probability",
+    "equally_likely",
+    "axioms",
+    "prob_or",
+    "cond_prob",
+    "law_total",
+    "bayes_theorem",
+    "independence",
+    "prob_and",
+    "demorgans",
+    "log_probabilities",
+    "many_flips",
+    "counting",
+    "combinatorics"
+   ],
+   "key": "core",
+   "title": "Part 1: Core Probability",
+   "examples": [
+    "bacteria_evolution",
+    "pr_rain_city",
+    "random_walks",
+    "binomial_diff_p",
+    "netflix_genres",
+    "poker",
+    "beamsearch",
+    "serendipity",
+    "monty_hall",
+    "server_example"
+   ]
+  },
+  {
+   "examples": [
+    "100_binomial_problems",
+    "winning_series",
+    "approximate_counting",
+    "jury",
+    "grading_eye_inflammation",
+    "grades_not_normal",
+    "curse_of_dimensionality",
+    "algorithmic_art",
+    "ur_dice"
+   ],
+   "key": "rvs",
+   "sections": [
+    "rvs",
+    "pmf",
+    "expectation",
+    "variance",
+    "bernoulli",
+    "binomial",
+    "poisson",
+    "more_discrete",
+    "categorical",
+    "continuous",
+    "uniform",
+    "exponential",
+    "normal",
+    "binomial_approx"
+   ],
+   "title": "Part 2: Random Variables"
+  },
+  {
+   "examples": [
+    "fairness",
+    "federalist",
+    "prob_baby_delivery",
+    "bayesian_carbon_dating",
+    "pyramids",
+    "digital_vision_test",
+    "bridge_distribution",
+    "expectation_of_sums",
+    "bayesian_viral_load_test",
+    "dart_logo",
+    "tracking_in_2D"
+   ],
+   "key": "models",
+   "title": "Part 3: Probabilistic Models",
+   "sections": [
+    "joint",
+    "marginalization",
+    "multinomial",
+    "continuous_joint",
+    "inference",
+    "bayesian_networks",
+    "independent_vars",
+    "correlation",
+    "computational_inference",
+    "name2age"
+   ]
+  },
+  {
+   "sections": [
+    "beta",
+    "summation_vars",
+    "clt",
+    "samples",
+    "bootstrapping",
+    "algorithmic_analysis",
+    "information_theory",
+    "divergence"
+   ],
+   "key": "theory",
+   "examples": [
+    "thompson",
+    "night_sight",
+    "p_hacking",
+    "differential_privacy"
+   ],
+   "title": "Part 4: Uncertainty Theory"
+  },
+  {
+   "title": "Part 5: Machine Learning",
+   "examples": [
+    "mle_demo",
+    "mle_pareto",
+    "mixture_models"
+   ],
+   "sections": [
+    "parameter_estimation",
+    "mle",
+    "map",
+    "machine_learning",
+    "log_regression",
+    "naive_bayes",
+    "classification_performance",
+    "linear_regression",
+    "ml_python",
+    "diffusion"
+   ],
+   "key": "ml"
+  },
+  {
+   "title": "Drafts",
+   "sections": [
+    "pseudorandomnumbers",
+    "irt",
+    "many_dice",
+    "clt_proof",
+    "deep_learning"
+   ],
+   "examples": [],
+   "key": "drafts"
+  }
+ ],
+ "titles": {
+  "poker": "Poker",
+  "pseudorandomnumbers": "Pseudo Random Numbers",
+  "variance": "Variance",
+  "categorical": "Categorical Distributions",
+  "equally_likely": "Equally Likely Outcomes",
+  "mle_demo": "MLE Demos",
+  "parameter_estimation": "Parameter Estimation",
+  "poisson": "Poisson Distribution",
+  "approximate_counting": "Approximate Counting",
+  "joint": "Joint Probability",
+  "differential_privacy": "Differential Privacy",
+  "many_dice": "Many Dice Rolls",
+  "divergence": "Distance Between Distributions",
+  "more_discrete": "More Discrete Distributions",
+  "combinatorics": "Combinatorics",
+  "p_hacking": "P-Hacking",
+  "binomial_diff_p": "Binomial with Different Probs",
+  "grading_eye_inflammation": "Grading Eye Inflamation",
+  "uniform": "Uniform Distribution",
+  "bayesian_viral_load_test": "Bayesian Viral Load Test",
+  "bayesian_networks": "Bayesian Networks",
+  "counting": "Counting",
+  "independence": "Independence",
+  "demorgans": "De Morgan's Law",
+  "birthday_paradox": "Birthday Paradox",
+  "monty_hall": "Monty Hall",
+  "counting_graphs": "Counting Graphs",
+  "map": "Maximum A Posteriori",
+  "axioms": "Axioms of Probability",
+  "all_distributions": "Random Variable Reference",
+  "diffusion": "Diffusion",
+  "python": "Python Reference",
+  "bootstrapping": "Bootstrapping",
+  "calculus": "Calculus Reference",
+  "ur_dice": "Game of Ur",
+  "algorithmic_art": "Algorithmic Art",
+  "marginalization": "Marginalization",
+  "bridge_distribution": "Bridge Distribution",
+  "log_probabilities": "Log Probabilities",
+  "log_regression": "Logistic Regression",
+  "pr_rain_city": "Google Rain Prediction",
+  "tracking_in_2D": "Tracking in 2D",
+  "mle": "Maximum Likelihood Estimation",
+  "classification_performance": "Evaluating Classifiers",
+  "beta": "Beta Distribution",
+  "samples": "Sampling",
+  "llm_api": "Language Model Tool",
+  "enigma": "Enigma Machine",
+  "clt": "Central Limit Theorem",
+  "continuous": "Continuous Distributions",
+  "night_sight": "Night Sight",
+  "pmf": "Probability Mass Functions",
+  "digital_vision_test": "Digital Vision Test",
+  "inference": "Inference",
+  "rvs": "Random Variables",
+  "axioms_old": "Axioms of Probability",
+  "enigm": "Enigma",
+  "serendipity": "Serendipity",
+  "many_flips": "Many Coin Flips",
+  "equally_likely_old": "Equally Likely Outcomes",
+  "law_total": "Law of Total Probability",
+  "linear_regression": "Linear Regression",
+  "ml_python": "Machine Learning in Python",
+  "probability": "Probability",
+  "exponential": "Exponential Distribution",
+  "server_example": "Router Example",
+  "random_shuffles": "Random Shuffles",
+  "jury": "Jury Selection",
+  "deep_learning": "Deep Learning",
+  "machine_learning": "Machine Learning",
+  "curse_of_dimensionality": "Curse of Dimensionality",
+  "name2age": "Name to Age",
+  "binomial": "Binomial Distribution",
+  "prob_baby_delivery": "Probability of Baby Delivery",
+  "winning_series": "Winning Series",
+  "normal": "Normal Distribution",
+  "fairness": "Fairness in Artificial Intelligence",
+  "computational_inference": "General Inference",
+  "calculators": "Calculators",
+  "mixture_models": "MLE Mixture Model",
+  "independent_vars": "Independence in Variables",
+  "grades_not_normal": "Grades are Not Normal",
+  "bayes_theorem": "Bayes' Theorem",
+  "clt_proof": "Central Limit Theorem Proof",
+  "poker_old": "Texas Holdem Poker",
+  "irt": "Item Response Theory",
+  "thompson": "Thompson Sampling",
+  "correlation": "Correlation",
+  "multinomial": "Multinomial",
+  "information_theory": "Information Theory",
+  "expectation": "Expectation",
+  "dart_logo": "CS109 Logo",
+  "rectangles_in_a_grid": "Rectangles in a Grid",
+  "continuous_joint": "Continuous Joint",
+  "naive_bayes": "Naïve Bayes",
+  "bernoulli": "Bernoulli Distribution",
+  "federalist": "Federalist Paper Authorship",
+  "algorithmic_analysis": "Algorithmic Analysis",
+  "100_binomial_problems": "Many Binomial Problems",
+  "prob_or": "Probability of <b>or</b>",
+  "probability_old": "Definition of Probability",
+  "random_walks": "Random Walks",
+  "mle_pareto": "MLE Pareto Distribution",
+  "notation": "Notation Reference",
+  "diversity_shapes": "Set Diversity",
+  "netflix_genres": "Netflix Genres",
+  "pyramids": "Pyramid Hidden Chambers",
+  "expectation_of_sums": "Expectation of Sum Proof",
+  "core_probability_ref": "Core Probability Reference",
+  "prob_and": "Probability of <b>and</b>",
+  "beamsearch": "Beam Search",
+  "binomial_approx": "Binomial Approximation",
+  "cond_prob": "Conditional Probability",
+  "summation_vars": "Adding Random Variables",
+  "bacteria_evolution": "Bacteria Evolution",
+  "bayesian_carbon_dating": "Bayesian Carbon Dating"
+ },
+ "chapters": {
+  "notation": {
+   "sha256": "617bce7b6f0854e7d7693200e44b1fea5bbcb08b5ec40b8be3ad4ad8c6761da5",
+   "publishedAt": "2025-12-10T23:43:50.689Z"
+  },
+  "core_probability_ref": {
+   "sha256": "c15badff06b5bb2e8b28078654196b5a638b3690db2dd863a4c3ff07f9d16b55",
+   "publishedAt": "2025-12-10T23:44:01.941Z"
+  },
+  "all_distributions": {
+   "sha256": "dcfcdbc4d556c12d128904afe104126f15d818ce54f785dd76972f72a184a304",
+   "publishedAt": null
+  },
+  "calculators": {
+   "sha256": "8d9d1c0950c9c9b15a0a4d1299c958afc776267866bf4625ebc44037cbbca8cf",
+   "publishedAt": null
+  },
+  "python": {
+   "sha256": "d26fd33007bc24159974c5303e0750e5e4a4092c8827b542e2da000301365297",
+   "publishedAt": "2025-12-10T23:43:58.929Z"
+  },
+  "calculus": {
+   "sha256": "313f4f0266ec53e63d2c19f9530c5855077253e7ba44e693a364e4ebe40b9b3e",
+   "publishedAt": "2025-12-10T23:43:59.259Z"
+  },
+  "llm_api": {
+   "sha256": "092061b2dced0329e676251f8641c7466e6f07c2248947d0008141bc91263095",
+   "publishedAt": null
+  },
+  "probability": {
+   "sha256": "8feb8834b7386932ea855c4429fae7d09c37de90c00384f26fe30174ed0107fc",
+   "publishedAt": "2025-12-10T23:43:30.225Z"
+  },
+  "equally_likely": {
+   "sha256": "cdf880276d4f835537c56debb7cd7082f65d14fff2ff532fe2e9dedd1c9aa0f8",
+   "publishedAt": "2025-12-10T23:44:02.747Z"
+  },
+  "axioms": {
+   "sha256": "f10e0fb007717f102504bad350a337647e0189812f18812e79f276505f768c19",
+   "publishedAt": "2025-12-10T23:43:41.278Z"
+  },
+  "prob_or": {
+   "sha256": "af7dcec7843241caed819be76d91e0f1b6234aac3f7456beb43be898e9808607",
+   "publishedAt": "2025-12-10T23:44:03.134Z"
+  },
+  "cond_prob": {
+   "sha256": "cb4b477fef5c1ec690254e3e746b8cd3e7d2bc20126c856fed438146ae0c2858",
+   "publishedAt": "2025-12-10T23:43:39.627Z"
+  },
+  "law_total": {
+   "sha256": "9307026900817abe91e089a564428b7c9b9f4b766af1fa40019c23cb0ad647c7",
+   "publishedAt": "2025-12-10T23:43:46.145Z"
+  },
+  "bayes_theorem": {
+   "sha256": "ea2902caf904a41e97754054b49463c5f21ccabd22a80f8780f2085d6345aaab",
+   "publishedAt": "2025-12-10T23:43:57.058Z"
+  },
+  "independence": {
+   "sha256": "a4cf7fbcc06840f9c734001b5eec2acef6e5db9a391c8cf65fec01027d681a5d",
+   "publishedAt": "2025-12-10T23:43:38.444Z"
+  },
+  "prob_and": {
+   "sha256": "164e0538b489be2bede6ed301553f267bba8736636dac8c7e321b65a4c642745",
+   "publishedAt": "2025-12-10T23:43:38.752Z"
+  },
+  "demorgans": {
+   "sha256": "b3b1873f94f44be1883d15441a02e8132a15f7233163ed57c405a54a06945b43",
+   "publishedAt": "2025-12-10T23:43:38.059Z"
+  },
+  "log_probabilities": {
+   "sha256": "468ea05c099375c9910ca743478ddb37cd451bb8066a6f5672e68dfbd246e2b0",
+   "publishedAt": "2025-12-10T23:43:47.514Z"
+  },
+  "many_flips": {
+   "sha256": "bf4cccc0b7a550f8a8de7cb4382a23684b302924418a98ab9f87b62da646c8fa",
+   "publishedAt": "2025-12-10T23:43:35.732Z"
+  },
+  "counting": {
+   "sha256": "7e6812fe7e33ea5b47e8807e794e29354d997b19a038b3942fdccf89b9dfb586",
+   "publishedAt": null
+  },
+  "combinatorics": {
+   "sha256": "1babb06eea2f11e8fa02860fc257771198fec343ba114fef1c2370391851eef9",
+   "publishedAt": "2025-12-10T23:43:36.835Z"
+  },
+  "bacteria_evolution": {
+   "sha256": "28692f10d0ab7ac6582e6ed128c03b45406bae66aa897bc91c036706daceceb8",
+   "publishedAt": "2025-12-10T23:43:52.664Z"
+  },
+  "pr_rain_city": {
+   "sha256": "dd3d3ef89574a5ba7a10b792c61d022887f35cbb83c20e0b0dae1318052e1f80",
+   "publishedAt": "2025-12-10T23:43:39.289Z"
+  },
+  "random_walks": {
+   "sha256": "8e9f6b210fd2ab04c5b7f86d7d5f97fd91feb98229b95c67b58e9eda265339a8",
+   "publishedAt": "2025-12-10T23:43:34.367Z"
+  },
+  "binomial_diff_p": {
+   "sha256": "26b85214a3a847e1cded359cc2758788de9cb56af970d532e623de34006b4862",
+   "publishedAt": "2025-12-10T23:43:59.581Z"
+  },
+  "netflix_genres": {
+   "sha256": "367ef383d74d2360ddf1112489d6653208fdb4c6a95ca09d0f652b61493e1c50",
+   "publishedAt": "2025-12-10T23:43:41.579Z"
+  },
+  "poker": {
+   "sha256": "9fe48196d9c41ef348857a69e29f3d935145c81f8fea089e424c1ff1396b0907",
+   "publishedAt": null
+  },
+  "serendipity": {
+   "sha256": "43823aa3222478a205e0f5b8e94f5b3a38d6f616f61d2ba18d20569f1b9ecae0",
+   "publishedAt": "2025-12-10T23:43:57.744Z"
+  },
+  "monty_hall": {
+   "sha256": "0c79f75adc6fd619f870ec425bc3a6f9825c8aa255b05cb50c602eba472ab0b7",
+   "publishedAt": null
+  },
+  "server_example": {
+   "sha256": "41aefa33720ec0cbbea8bccae0e8f4a6b131dd7faf8759408fdfb60a92ce22eb",
+   "publishedAt": null
+  },
+  "rvs": {
+   "sha256": "42eea3d946e66befacfb18d6d9da75e35a39c627db8bd9049643c5f8b968f3ba",
+   "publishedAt": null
+  },
+  "pmf": {
+   "sha256": "6be1e9d0545c2dc4d432566d36ad7eb1d775230d9651455f5a941f55db42c4e8",
+   "publishedAt": "2025-12-10T23:44:02.937Z"
+  },
+  "expectation": {
+   "sha256": "b3e5c6b5a40b4167a77c4044adcfabc0fa55d29d034e87713a88d38e2cb89e4c",
+   "publishedAt": "2025-12-10T23:44:02.200Z"
+  },
+  "variance": {
+   "sha256": "e9f1a5fa577c81b1550dc0bc47e5dd954d78f1005ed1ac57fe63b45df0bb34a7",
+   "publishedAt": "2025-12-10T23:43:51.010Z"
+  },
+  "bernoulli": {
+   "sha256": "601b10c3502d4710def0c70310c7c3c6431da137d74fa8fb4ca53c646116fae9",
+   "publishedAt": "2025-12-10T23:43:47.071Z"
+  },
+  "binomial": {
+   "sha256": "3403201d7eed28044d6d7b9c308dcc82e87d616a74752808dc91c96e55d3dc8c",
+   "publishedAt": "2025-12-10T23:43:44.673Z"
+  },
+  "poisson": {
+   "sha256": "90e7895b03f94ef40908cf67571f2562b95b9dfe969688549f8d1ff77ce35e1e",
+   "publishedAt": "2025-12-10T23:43:45.134Z"
+  },
+  "more_discrete": {
+   "sha256": "88a3666acb641a8fd9922989ecab83d7a17ee2258f6ec628c4d3e571507c2594",
+   "publishedAt": "2025-12-10T23:44:00.013Z"
+  },
+  "categorical": {
+   "sha256": "d36cde84be863db7ef77580164529f9d654549b18330023557c3304b93814ace",
+   "publishedAt": "2025-12-10T23:43:37.328Z"
+  },
+  "continuous": {
+   "sha256": "85d883e92f19a1320913f38554bc497ae88943ffb8ae51120c9baa288864c57b",
+   "publishedAt": "2025-12-10T23:43:56.701Z"
+  },
+  "uniform": {
+   "sha256": "318662b906c5fe19d5e76747f6ca803367ad500dc7fdc907597216ef678961ee",
+   "publishedAt": "2025-12-10T23:43:40.979Z"
+  },
+  "exponential": {
+   "sha256": "9f77d678689a6e4c7ca68f6335b0f01b1575bb10cec05557d4fbe3158f3983ef",
+   "publishedAt": "2025-12-10T23:43:59.748Z"
+  },
+  "normal": {
+   "sha256": "be74b43ba072520c777eb506bde0306943dba1c1b3e4f9efaff0fe19fd8bbe34",
+   "publishedAt": null
+  },
+  "binomial_approx": {
+   "sha256": "03304ab98ebddea29b3762e131dc7a65b4d78950221e476c16bac42c1356e38c",
+   "publishedAt": "2025-12-10T23:43:52.005Z"
+  },
+  "100_binomial_problems": {
+   "sha256": "40edd81dbda77e16ffabdeb00e201f98114a1e7914420c5ce3c8b7048f6bdbdf",
+   "publishedAt": "2025-12-10T23:43:46.428Z"
+  },
+  "winning_series": {
+   "sha256": "a90c4d68a4d7e47675c70833c47cfaf66f22bc4c3c848c145878b6245dddaec5",
+   "publishedAt": "2025-12-10T23:43:33.249Z"
+  },
+  "approximate_counting": {
+   "sha256": "7f7c4aa0c9d88c96cb3bcc3fa2f4634137c05fb05a6cebd96488366cc7fa7554",
+   "publishedAt": "2025-12-10T23:43:32.605Z"
+  },
+  "jury": {
+   "sha256": "aa72fabe08b5ebf4c8d24b740e8614c6ecabdf52651061729fc000da8c2b1d27",
+   "publishedAt": "2025-12-10T23:43:49.608Z"
+  },
+  "grading_eye_inflammation": {
+   "sha256": "ae8d3a4791da8d2e5782222be398859ebac096ef3e858b3d0d00e8e45f84e576",
+   "publishedAt": "2025-12-10T23:43:33.867Z"
+  },
+  "grades_not_normal": {
+   "sha256": "18ef67f7050cd7eb8c71504fb6809528133368fec6508f8cf8903cba77364ead",
+   "publishedAt": "2025-12-10T23:43:51.637Z"
+  },
+  "curse_of_dimensionality": {
+   "sha256": "4b0b886615b1508c489cc3464c31cf299e21ef88ef09795fef22900dce109d9b",
+   "publishedAt": "2025-12-10T23:43:58.378Z"
+  },
+  "algorithmic_art": {
+   "sha256": "8b94655fd429733049209876dec108933afe46e041843dfd99aa7907d0bd5622",
+   "publishedAt": null
+  },
+  "ur_dice": {
+   "sha256": "3a9d33e98c80c224894e82b850e59ce50ab267320b7525227e512e803ad5b391",
+   "publishedAt": "2025-12-10T23:44:01.702Z"
+  },
+  "joint": {
+   "sha256": "396b9d1e7c4370740e394abf78c15048843ca6eaf64e9039acc75cc3244d43ac",
+   "publishedAt": "2025-12-10T23:43:47.841Z"
+  },
+  "marginalization": {
+   "sha256": "27f78fb804ef75b76a94c3e15f36ae4692fb48f2b55255ae0b86cdda23d4bb43",
+   "publishedAt": "2025-12-10T23:43:56.403Z"
+  },
+  "multinomial": {
+   "sha256": "7aba7d7970abf1b0378797fb8451298647914df54944d3902f86306c924e4877",
+   "publishedAt": "2025-12-10T23:43:50.117Z"
+  },
+  "continuous_joint": {
+   "sha256": "09ffed012fc80832fbc83e536bdefa67dde3060d983e0b8aa5f494f23148593e",
+   "publishedAt": "2025-12-10T23:43:40.678Z"
+  },
+  "inference": {
+   "sha256": "63a70eefea419cb3395786af2fa7aa66e74b61d1832cf36880748357013b7e85",
+   "publishedAt": "2025-12-10T23:43:44.400Z"
+  },
+  "bayesian_networks": {
+   "sha256": "d19e477b6745e88902de627ebf0217eeb7c216a20e5f6fb872448f2d20ed8d51",
+   "publishedAt": "2025-12-10T23:43:55.197Z"
+  },
+  "independent_vars": {
+   "sha256": "03ea75a15286d7a34714e7052e9304e7fa45ad303eb2c9793a0a10fbd8e35014",
+   "publishedAt": "2025-12-10T23:43:43.047Z"
+  },
+  "correlation": {
+   "sha256": "f8441942ad82f5b0f310c79667ef4c47bad77b1d913ff3f320f5d26d98eda8c3",
+   "publishedAt": "2025-12-10T23:43:30.895Z"
+  },
+  "computational_inference": {
+   "sha256": "a199ec3b59ac10de0b7e802b689e815f57bb9ad06e8b2a31b9f88e3bd9af09b8",
+   "publishedAt": null
+  },
+  "name2age": {
+   "sha256": "5d970a5446d863160a270666f2c5464a170656a68b5eced61d1c3689928f288b",
+   "publishedAt": "2025-12-10T23:43:48.726Z"
+  },
+  "fairness": {
+   "sha256": "13b84e0c32a934eed41cc733bcdd74f6b1f333db4a56b4df31fa26865517b425",
+   "publishedAt": "2025-12-10T23:43:45.932Z"
+  },
+  "federalist": {
+   "sha256": "1a181772b2ab4f4995fcb9d951c12623b6c30db8ae416c7e8010f1d62bf4019d",
+   "publishedAt": "2025-12-10T23:43:48.049Z"
+  },
+  "prob_baby_delivery": {
+   "sha256": "60b37d4bb791eed1ed2b14e025e92cf51427cb8d28e8c1ef3458758b4153d3f6",
+   "publishedAt": "2025-12-10T23:43:54.907Z"
+  },
+  "bayesian_carbon_dating": {
+   "sha256": "5b7c227c387838e34b5ba23d2abce846bb9ddb276239dad262c6a070ce53641f",
+   "publishedAt": "2025-12-10T23:43:35.226Z"
+  },
+  "pyramids": {
+   "sha256": "2a72e608a19bc925fae9d36f0f79cef82babe6f4fcd3ccdd11a998fc3fcc4d73",
+   "publishedAt": null
+  },
+  "digital_vision_test": {
+   "sha256": "a8733b864f5932b3d87f4c0c62a183a34925683074d1cd4544e68711bfe1082b",
+   "publishedAt": "2025-12-10T23:43:43.380Z"
+  },
+  "bridge_distribution": {
+   "sha256": "0bf7772b315ffb941d489fbd6d7d2da515bd5d1aab86499eb969012edefc49cf",
+   "publishedAt": "2025-12-10T23:43:56.006Z"
+  },
+  "expectation_of_sums": {
+   "sha256": "ab0979d1d0d67093f9593aded2a35072b803299c7d6689bb1ceb74661edb8cd7",
+   "publishedAt": "2025-12-10T23:43:36.425Z"
+  },
+  "bayesian_viral_load_test": {
+   "sha256": "c08ec2c60891c64c3632a2881393465696ee2319d3e62f3f1797d9ba71857d83",
+   "publishedAt": "2025-12-10T23:43:53.432Z"
+  },
+  "dart_logo": {
+   "sha256": "55691105035a1e1e6a98e6425a30309eff9ff2e98cb3749e8eddf0ee56517abc",
+   "publishedAt": null
+  },
+  "tracking_in_2D": {
+   "sha256": "2be51f465c7298f8af2d589b59258bdd17d5461b774c9f294b3705ddffd746ba",
+   "publishedAt": "2025-12-10T23:43:42.293Z"
+  },
+  "beta": {
+   "sha256": "fea43894a0b848f3d9bb492e99fe30751e34cc87d8ee8c010dec2a78e00d4e6b",
+   "publishedAt": null
+  },
+  "summation_vars": {
+   "sha256": "4a927c657525358f85ad70dd4a9f5a2aaa180cd65c5c681dc2f176dc2a399a3e",
+   "publishedAt": "2025-12-10T23:43:55.437Z"
+  },
+  "clt": {
+   "sha256": "495c7a394e5691df1478787761e415cb9ba38948167fab5507a4ea68ed16dde2",
+   "publishedAt": "2025-12-10T23:44:00.715Z"
+  },
+  "samples": {
+   "sha256": "463346a64ba1edaab0886e047ed78532135a4e8a9b329bb9f914e2aad557780c",
+   "publishedAt": "2025-12-10T23:43:37.635Z"
+  },
+  "bootstrapping": {
+   "sha256": "0696731107829dfeee5b203dc22e5822ed848e1567b036c88bf0415db3473e1f",
+   "publishedAt": "2025-12-10T23:43:48.496Z"
+  },
+  "algorithmic_analysis": {
+   "sha256": "32d7aafee82d336ee5db997546f61a9a77da33951c7dcbf5b941a3aa11f6a1e9",
+   "publishedAt": null
+  },
+  "information_theory": {
+   "sha256": "68a3f4fd5f06050a83173b2b462aadb6567868c7ede5d20d273154307a864e3d",
+   "publishedAt": "2025-12-10T23:44:00.281Z"
+  },
+  "divergence": {
+   "sha256": "bdd926970b4f826b7539a887d531ff7d9a1c47da138d0eddd13e52bfdd966d5b",
+   "publishedAt": "2025-12-10T23:43:49.394Z"
+  },
+  "thompson": {
+   "sha256": "0c3e9d66d001305e20dc3efaaa7c8d16c884f3befd5bfe21286a6028ea7aeb39",
+   "publishedAt": "2025-12-10T23:43:49.189Z"
+  },
+  "night_sight": {
+   "sha256": "5fd991b3d0c63103800c4e091f944b266aa0d697c19620f09ac3964cd629c515",
+   "publishedAt": "2025-12-10T23:43:33.557Z"
+  },
+  "p_hacking": {
+   "sha256": "600b3e73a383fc4c093a300e73741fec6b55aa910e36c7626ff10fe967028409",
+   "publishedAt": "2025-12-10T23:43:48.268Z"
+  },
+  "differential_privacy": {
+   "sha256": "b66a8a4db81ac2179032b587c548d62106d295e522d4777b8b2532a85f934ac4",
+   "publishedAt": "2025-12-10T23:44:02.374Z"
+  },
+  "parameter_estimation": {
+   "sha256": "c2d5dcddada658ec54d0056fa0fde51db647af7d7e5c5a3a06abf74c91de3477",
+   "publishedAt": "2025-12-10T23:43:46.656Z"
+  },
+  "mle": {
+   "sha256": "4507a7d06687f5f7fc22f4f43e8953deec7c4b7a90fd2c7903b2d72f3d62dbde",
+   "publishedAt": "2025-12-10T23:43:53.161Z"
+  },
+  "map": {
+   "sha256": "f99a3f38ddf864300cb1495ffc8af18ffe33fa0b78ae700cd6b8ef24a0dd5c11",
+   "publishedAt": "2025-12-10T23:43:41.875Z"
+  },
+  "machine_learning": {
+   "sha256": "b1facd08413e6f2e572da76f284a7f7543d2db7416ec118d79a34d7666bc3529",
+   "publishedAt": "2025-12-10T23:43:58.199Z"
+  },
+  "log_regression": {
+   "sha256": "cf453b26b442a3b4dd86d10f5d862d33693eda6ec2b632e6a42cf6865d08864f",
+   "publishedAt": "2025-12-10T23:44:03.540Z"
+  },
+  "naive_bayes": {
+   "sha256": "d8ed30679b3a8565f760134d58d8665d5f2596d64ecaae870382f0968b6ee484",
+   "publishedAt": "2025-12-10T23:43:46.852Z"
+  },
+  "classification_performance": {
+   "sha256": "a939c0d043757c7b85a738f91e8fa39a061960776455ebe385b93fde532890db",
+   "publishedAt": "2025-12-10T23:43:31.328Z"
+  },
+  "linear_regression": {
+   "sha256": "59712c0319b4921feb92adf0acbb414bb4e3d105ff59c97c1b0840f1f5fee55f",
+   "publishedAt": null
+  },
+  "ml_python": {
+   "sha256": "42c8ab55e7f353d6270a90af3a5ae890ec035defa80de581a4fbbf53fddd36a2",
+   "publishedAt": "2025-12-10T23:43:54.423Z"
+  },
+  "diffusion": {
+   "sha256": "2458ac4140c75e393379f9b76fab783218978ce882bab6a05ac66d69978f06d9",
+   "publishedAt": null
+  },
+  "mle_demo": {
+   "sha256": "4315cb24d9a90a08c2dc604b0196423080aa99050671c083acfb791a031ccd31",
+   "publishedAt": "2025-12-10T23:44:03.348Z"
+  },
+  "mle_pareto": {
+   "sha256": "82ceeecaa00a6b31994acfb6ca72cee2252d0cb3bd31625543d558bd18d92180",
+   "publishedAt": "2025-12-10T23:43:40.352Z"
+  },
+  "mixture_models": {
+   "sha256": "1e46cc82c8e9a3bd9405ef327d4af0743d64d30e435280a34486c8f9be3ccc42",
+   "publishedAt": "2025-12-10T23:43:52.937Z"
+  },
+  "pseudorandomnumbers": {
+   "sha256": "74b4b156674b4cd7c035ecf27f9ee7cf725157a49ea2214cc584ea2cb52a184d",
+   "publishedAt": "2025-12-10T23:43:32.918Z"
+  },
+  "irt": {
+   "sha256": "a4fa0c84bb06f31a4be7bd380db52c4eb549aa5564fc7f9024083c62e7778a04",
+   "publishedAt": "2025-12-10T23:43:40.006Z"
+  },
+  "many_dice": {
+   "sha256": "b1c40eff3049329f9a07f36be3c2f8d4559f738694c282c30e0b29ca720aac51",
+   "publishedAt": "2025-12-10T23:43:58.740Z"
+  },
+  "clt_proof": {
+   "sha256": "ab5689f27dff4ac37d1619e689d376201e1f7bf7c5a0b62fb04a0c12cd3ccef2",
+   "publishedAt": "2025-12-10T23:43:32.100Z"
+  }
+ },
+ "unavailable": [
+  "beamsearch",
+  "deep_learning"
+ ]
+}

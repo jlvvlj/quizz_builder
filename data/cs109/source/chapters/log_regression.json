@@ -1,0 +1,728 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Logistic Regression is a classification algorithm (I know, terrible name. Perhaps Logistic Classification would have been better) that works by trying to learn a function that approximates ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(y|x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It makes the central assumption that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(y|x)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " can be approximated as a sigmoid function applied to a linear combination of input features. It is particularly important to learn because logistic regression is the basic building block of artificial neural networks.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Mathematically, for a single training datapoint (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}, y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") Logistic Regression assumes:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(Y=1|\\mathbf{X}=\\mathbf{x}) &= \\sigma(z) \\text{ where } z = \\theta_0 + \\sum_{i=1}^m \\theta_i x_i\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This assumption is often written in the equivalent forms:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    P(Y=1|\\mathbf{X}=\\mathbf{x}) &=\\sigma(\\mathbf{\\theta}^T\\mathbf{x}) &&\\text{ where we always set $x_0$ to be 1}\\\\\n    P(Y=0|\\mathbf{X}=\\mathbf{x}) &=1-\\sigma(\\mathbf{\\theta}^T\\mathbf{x}) &&\\text{ by total law of probability}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using these equations for probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y|X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we can create an algorithm that selects values of theta that maximize that probability for all data. I am first going to state the log probability function and partial derivatives with respect to theta. Then later we will (a) show an algorithm that can choose optimal values of theta and (b) show how the equations were derived.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "An important thing to realize is that: given the best values for the parameters (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "), logistic regression often can do a great job of estimating the probability of different class labels. However, given bad, or even random, values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " it does a poor job. The amount of “intelligence” that your logistic regression machine learning algorithm has is dependent on having good values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Notation",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Before we get started I want to make sure that we are all on the same page with respect to notation. In logistic regression, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a vector of parameters of length m and we are going to learn the values of those parameters based off of n training examples. The number of parameters should be equal to the number of features of each datapoint.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Two pieces of notation that we use often in logistic regression that you may not be familiar with are:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\mathbf{\\theta}^T\\mathbf{x} &= \\sum_{i=1}^m \\theta_i x_i = \\theta_1 x_1 + \\theta_2 x_2 + \\dots + \\theta_m x_m && \\text{dot product, aka weighted sum}\\\\\n    \\sigma(z) &= \\frac{1}{1+ e^{-z}}  && \\text{sigmoid function}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Log Likelihood",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In order to choose values for the parameters of logistic regression we use Maximum Likelihood Estimation (MLE). As such we are going to have two steps: (1) write the log-likelihood function and (2) find the values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " that maximize the log-likelihood function.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The labels that we are predicting are binary, and the output of our logistic regression function is supposed to be the probability that the label is one. This means that we can (and should) interpret each label as a Bernoulli random variable: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y \\sim \\text{Bern}(p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p = \\sigma(\\theta^T \\mathbf{x})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n P(Y=y | X = \\mathbf{x}) = \\sigma({\\mathbf{\\theta}^T\\mathbf{x}})^y \\cdot \\left[1 - \\sigma({\\mathbf{\\theta}^T\\mathbf{x}})\\right]^{(1-y)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now that we know the probability mass function, we can write the likelihood of all the data:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nL(\\theta) =& \\prod_{i=1}^n P(Y=y^{(i)} | X = \\mathbf{x}^{(i)}) && \\text{The likelihood of independent training labels}\\\\\n=& \\prod_{i=1}^n \\sigma({\\mathbf{\\theta}^T\\mathbf{x}^{(i)}})^{y^{(i)}} \\cdot \\left[1 - \\sigma({\\mathbf{\\theta}^T\\mathbf{x}^{(i)}})\\right]^{(1-y^{(i)})} && \\text{Substituting the likelihood of a Bernoulli}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "And if you take the log of this function, you get the reported Log Likelihood for Logistic Regression. The log likelihood equation is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    LL(\\theta) = \\sum_{i=1}^n y^{(i)} \\log \\sigma(\\mathbf{\\theta}^T\\mathbf{x}^{(i)}) + (1-y^{(i)}) \\log [1 - \\sigma(\\mathbf{\\theta}^T\\mathbf{x}^{(i)})]\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Recall that in MLE the only remaining step is to choose parameters (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") that maximize log likelihood.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Gradient of Log Likelihood",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now that we have a function for log-likelihood, we simply need to choose the values of theta that maximize it. We can find the best values of theta by using an optimization algorithm. However, in order to use an optimization algorithm, we first need to know the partial derivative of log likelihood with respect to each parameter. First I am going to give you the partial derivative (so you can see how it is used). Then I am going to show you how to derive it:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    \\frac{\\partial LL(\\theta)}{\\partial \\theta_j} = \\sum_{i=1}^n \\left[\n  y^{(i)} - \\sigma(\\mathbf{\\theta}^T\\mathbf{x}^{(i)})\n \\right] x_j^{(i)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Gradient Descent Optimization",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Our goal is choosing parameters (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") that maximize likelihood, and we know the partial derivative of log likelihood with respect to each parameter. We are ready for our optimization algorithm.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the case of logistic regression we can't solve for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " mathematically. Instead we use a computer to choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". To do so we employ an algorithm called gradient descent (a classic in optimization theory). The idea behind gradient descent is that if you continuously take small steps downhill (in the direction of your negative gradient), you will eventually make it to a local minima. In our case we want to maximize our likelihood. As you can imagine, minimizing a negative of our likelihood will be equivalent to maximizing our likelihood.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n \\theta_j^{\\text{ new}} &= \\theta_j^{\\text{ old}} + \\eta \\cdot \\frac{\\partial LL(\\theta^{\\text{ old}})}{\\partial \\theta_j^{\\text{ old}}} \\\\\n&= \\theta_j^{\\text{ old}} + \\eta \\cdot \\sum_{i=1}^n \\left[\n  y^{(i)} - \\sigma(\\mathbf{\\theta}^T\\mathbf{x}^{(i)})\n \\right] x_j^{(i)}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Where η is the magnitude of the step size that we take. If you keep updating ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " using the equation above you will converge on the best values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You now have an intelligent model. ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here is the gradient ascent algorithm for logistic regression in pseudo-code:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "58001b83-e8a3-4ce0-aedf-8d7cbe02d338",
+    "naturalHeight": "964",
+    "naturalWidth": "1523",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F58001b83-e8a3-4ce0-aedf-8d7cbe02d338?alt=media&token=89d78861-95d9-486d-9c72-dbd77f88b8fd",
+    "widthPct": "80"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Pro-tip: Don't forget that in order to learn the value of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\theta_0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " you can simply define x₀ to always be 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Derivations",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section we provide the mathematical derivations for the gradient of log-likelihood. The derivations are worth knowing because these ideas are heavily used in Artificial Neural Networks.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Our goal is to calculate the derivative of the log likelihood with respect to each theta. To start, here is the definition for the derivative of a sigmoid function with respect to its inputs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n     \\frac{\\partial}{\\partial z} \\sigma(z) = \\sigma(z)[1 - \\sigma(z)] && \\text{to get the derivative with respect to $\\theta$, use the chain rule}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Take a moment and appreciate the beauty of the derivative of the sigmoid function. The reason that sigmoid has such a simple derivative stems from the natural exponent in the sigmoid denominator.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Since the likelihood function is a sum over all of the data, and in calculus the derivative of a sum is the sum of derivatives, we can focus on computing the derivative of one example. The gradient of theta is simply the sum of this term for each training datapoint.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "First I am going to show you how to compute the derivative the hard way. Then we are going to look at an easier method. The derivative of gradient for one datapoint (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbf{x}, y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "):",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n \\frac{\\partial LL(\\theta)}{\\partial \\theta_j} &= \\frac{\\partial }{\\partial \\theta_j} y \\log \\sigma(\\mathbf{\\theta}^T\\mathbf{x}) + \\frac{\\partial }{\\partial \\theta_j} (1-y) \\log [1 - \\sigma(\\mathbf{\\theta}^T\\mathbf{x}] && \\text{derivative of sum of terms}\\\\\n&=\\left[\\frac{y}{\\sigma(\\theta^T\\mathbf{x})} - \\frac{1-y}{1-\\sigma(\\theta^T\\mathbf{x})} \\right] \\frac{\\partial}{\\partial \\theta_j} \\sigma(\\theta^T \\mathbf{x}) &&\\text{derivative of log $f(x)$}\\\\\n&=\\left[\\frac{y}{\\sigma(\\theta^T\\mathbf{x})} - \\frac{1-y}{1-\\sigma(\\theta^T\\mathbf{x})} \\right] \\sigma(\\theta^T \\mathbf{x}) [1 - \\sigma(\\theta^T \\mathbf{x})]\\mathbf{x}_j && \\text{chain rule + derivative of sigma}\\\\\n&=\\left[\\frac{y - \\sigma(\\theta^T\\mathbf{x})}{\\sigma(\\theta^T \\mathbf{x}) [1 - \\sigma(\\theta^T \\mathbf{x})]}\\right] \\sigma(\\theta^T \\mathbf{x}) [1 - \\sigma(\\theta^T \\mathbf{x})]\\mathbf{x}_j && \\text{algebraic manipulation}\\\\\n&= \\left[y - \\sigma(\\theta^T\\mathbf{x}) \\right] \\mathbf{x}_j && \\text{cancelling terms}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Derivatives Without Tears",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That was the hard way. Logistic regression is the building block of Artificial Neural Networks. If we want to scale up, we are going to have to get used to an easier way of calculating derivatives. For that we are going to have to welcome back our old friend the chain rule. By the chain rule:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\frac{\\partial LL(\\theta)}{\\partial \\theta_j} &= \n \\frac{\\partial LL(\\theta)}{\\partial p} \n \\cdot  \\frac{\\partial p}{\\partial \\theta_j}\n && \\text{Where } p =  \\sigma(\\theta^T\\textbf{x})\\\\\n&= \n \\frac{\\partial LL(\\theta)}{\\partial p} \n \\cdot  \\frac{\\partial p}{\\partial z} \n \\cdot  \\frac{\\partial z}{\\partial \\theta_j}\n && \\text{Where } z =  \\theta^T\\textbf{x}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Chain rule is the decomposition mechanism of calculus. It allows us to calculate a complicated partial derivative (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{\\partial LL(\\theta)}{\\partial \\theta_j}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") by breaking it down into smaller pieces.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nLL(\\theta) &= y \\log p + (1-y) \\log (1 - p) && \\text{Where } p =  \\sigma(\\theta^T\\textbf{x}) \\\\\n \\frac{\\partial LL(\\theta)}{\\partial p} &= \\frac{y}{p} - \\frac{1-y}{1-p} && \\text{By taking the derivative}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\np &= \\sigma(z) && \\text{Where }z = \\theta^T\\textbf{x}\\\\\n\\frac{\\partial p}{\\partial z} &= \\sigma(z)[1- \\sigma(z)] && \\text{By taking the derivative of the sigmoid}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n z &= \\theta^T\\textbf{x}  && \\text{As previously defined}\\\\\n \\frac{\\partial z}{\\partial \\theta_j} &= \\textbf{x}_j && \\text{ Only $\\textbf{x}_j$ interacts with $\\theta_j$}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of those derivatives was much easier to calculate. Now we simply multiply them together.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\frac{\\partial LL(\\theta)}{\\partial \\theta_j} &=\n \\frac{\\partial LL(\\theta)}{\\partial p} \n \\cdot  \\frac{\\partial p}{\\partial z} \n \\cdot  \\frac{\\partial z}{\\partial \\theta_j} \\\\\n &=\n\\Big[\\frac{y}{p} - \\frac{1-y}{1-p}\\Big]\n \\cdot  \\sigma(z)[1- \\sigma(z)]\n \\cdot \\textbf{x}_j && \\text{By substituting in for each term} \\\\\n&=\n\\Big[\\frac{y}{p} - \\frac{1-y}{1-p}\\Big]\n \\cdot p[1- p]\n \\cdot \\textbf{x}_j && \\text{Since }p =  \\sigma(z)\\\\\n &=\n[y(1-p) - p(1-y)]\n \\cdot \\textbf{x}_j && \\text{Multiplying in} \\\\\n &= [y - p]\\textbf{x}_j && \\text{Expanding} \\\\\n&= [y - \\sigma(\\theta^T\\textbf{x})]\\textbf{x}_j  && \\text{Since } p =  \\sigma(\\theta^T\\textbf{x})\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

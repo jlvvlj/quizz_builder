@@ -1,0 +1,1184 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section on uncertainty theory we are going to explore some of the great results in probability theory. As a gentle introduction we are going to start with convolution. Convolution is a very fancy way of saying \"adding\" two different random variables together. The name comes from the fact that adding two random variables requires you to \"convolve\" their distribution functions. It is interesting to study in detail because (1) many natural processes can be modeled as the sum of random variables, and (2) because mathematicians have made great progress on proving convolution theorems. For some particular random variables computing convolution has closed form equations. Importantly convolution is the sum of the random variables themselves, not the addition of the probability density functions (PDF)s that correspond to the random variables.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "#general",
+            "rel": null,
+            "target": null
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Adding Two Random Variables",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "#poissons",
+            "rel": null,
+            "target": null
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Sum of Independent Poissons",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "#binomials",
+            "rel": null,
+            "target": null
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Sum of Independent Binomials",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "#normals",
+            "rel": null,
+            "target": null
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Sum of Independent Normals",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "#uniforms",
+            "rel": null,
+            "target": null
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Sum of Independent Uniforms",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "id": "general",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Adding Two Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Deriving an expression for the likelihood for the sum of two random variables requires an interesting insight. If your random variables are discrete then the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X + Y = n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the sum of mutually exclusive cases where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 0 \\text{ and } Y = n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = 1 \\text{ and } Y = n - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " etc. In fact all of the mutually exclusive cases can be enumerated in a sum:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Def: General Rule for the Convolution of Discrete Variables ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\p(X + Y = n) = \\sum_{i=-\\infty}^{\\infty} \\p(X = i, Y = n- i)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If the random variables are independent you can further decompose the term ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X = i, Y = n- i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Let's expand on some of the mutually exclusive cases where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X+Y=n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1232,
+    "sourceSha256": "72b2f34e597b4648a2e81938be207bd40f28f7c0f8596964ccba4be3eddfaa25"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider the sum of two independent dice. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be the outcome of each dice. Here is the probability mass function for the sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X + Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's use this context to practice deriving the sum of two variables, in this case ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X + Y = n)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", starting with the General Rule for the Convolution of Discrete  Random Variables. We start by considering values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " between 2 and 7. In this range ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X = i, Y = n- i) = \\frac{1}{36}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for all values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " between 1 and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n-1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". There is exactly one outcome of the two dice where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y = n - i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". For values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " outside this range ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n- i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is not a valid dice outcome and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X = i, Y = n- i) = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p&(X + Y = n) \\\\\n&= \\sum_{i=-\\infty}^{\\infty} \\p(X = i, Y = n- i) \\\\\n&= \\sum_{i=1}^{n-1} \\p(X = i, Y = n- i) \\\\\n&= \\sum_{i=1}^{n-1} \\frac{1}{36}\\\\\n&= \\frac{n-1}{36}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " greater than 7 we could use the same approach, though different values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " would make ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(X = i, Y = n- i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " non-zero.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This derivation for a general rule has a continuous equivalent:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n&f(X+Y = n) = \\int_{i=-\\infty}^{\\infty} f(X = n-i, Y=i) di\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "id": "poissons",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sum of Independent Poissons",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For any two Poisson random variables: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Poi(\\lambda_1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\Poi(\\lambda_2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the sum of those two random variables is another Poisson: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X + Y \\sim \\Poi(\\lambda_1 + \\lambda_2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". This holds even when ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda_1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is not the same as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda_2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "How could we prove the above claim?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Example derivation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(Z = n) \n&= P(X + Y = n) \\\\\n&= \\sum_{k=-\\infty}^{\\infty} \\p(X = k, Y = n- k) && \\text{(Convolution)}\\\\\n&= \\sum_{k=-\\infty}^{\\infty} P(X = k) P(Y = n - k) && \\text{(Independence)}\\\\\n&= \\sum_{k=0}^n P(X = k) P(Y = n - k) &&\\text{(Range of X and Y)}\\\\\n&= \\sum_{k=0}^n e^{-\\lambda_1} \\frac{\\lambda_1^k}{k!} e^{-\\lambda_2} \\frac{\\lambda_2^{n-k}}{(n-k)!} && \\text{(Poisson PMF)} \\\\\n&= e^{- (\\lambda_1 + \\lambda_2)} \\sum_{k=0}^n \\frac{\\lambda_1^k \\lambda_2^{n-k}}{k!(n-k)!} \\\\\n&= \\frac{ e^{- (\\lambda_1 + \\lambda_2)}}{n!} \\sum_{k=0}^n \\frac{n!}{k!(n-k)!} \\lambda_1^k \\lambda_2^{n-k} \\\\\n&= \\frac{ e^{- (\\lambda_1 + \\lambda_2)}}{n!} (\\lambda_1 + \\lambda_2)^n && \\text{(Binomial theorem)}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note that the Binomial Theorem (which we did not cover in this class, but is often used in contexts like expanding polynomials) says that for two numbers ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "a"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "b"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and positive integer ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(a+b)^n = \\sum_{k=0}^n \\binom{n}{k} a^k b^{n-k}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "binomials",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sum of Independent Binomials with equal ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For any two independent Binomial random variables with the same \"success\" probability ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ": ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Bin(n_1,p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\Bin(n_2,p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the sum of those two random variables is another binomial: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X + Y \\sim \\Bin(n_1 + n_2,p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This result hopefully makes sense. The convolution is the number of successes across ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Since each trial has the same probability of success, and there are now ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n_1 + n_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " trials, which are all independent, the convolution is simply a new Binomial. This rule does not hold when the two Binomial random variables have different parameters ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "normals",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sum of Independent Normals",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "For any two independent Normal random variables ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\mathcal{N}(\\mu_1,\\sigma_1^2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\mathcal{N}(\\mu_2,\\sigma_2^2)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " the sum of those two random variables is another Normal: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": ""
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nX +Y \\sim \\mathcal{N}(\\mu_1 + \\mu_2,\\sigma_1^2 + \\sigma_2^2)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Again, this only holds when the two Normals are independent.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "uniforms",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Sum of Independent Uniforms",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " are independent uniform random variables where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Uni(0,1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\Uni(0,1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nf(X+Y=n) = \n\\begin{cases}\nn,   & \\text{if } 0 < n \\le 1,\\\\\n2-n, & \\text{if } 1 < n \\le 2,\\\\\n0,   & \\text{otherwise.}\n\\end{cases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Example derivation",
+       "type": "text"
+      },
+      {
+       "text": ": ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Calculate the PDF of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X + Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for independent uniform random variables ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\Uni(0,1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim \\Uni(0,1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "? First plug in the equation for general convolution of independent random variables:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(X+Y=n) \n    &= \\int_{i=0}^{1} f(X=n-i, Y=i)\\,di\\\\\n    &= \\int_{i=0}^{1} f(X=n-i)f(Y=i)\\,di && \\text{Independence}\\\\\n     &= \\int_{i=0}^{1} f(X=n-i)\\,di && \\text{Because } f(Y=y) = 1\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "It turns out that is not the easiest thing to integrate. By trying a few different values of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " in the range ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "[0,2]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " we can observe that the PDF we are trying to calculate is discontinuous at the point ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and thus will be easier to think about as two cases: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n < 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n > 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". If we calculate ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "f(X+Y=n)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " for both cases and correctly constrain the bounds of the integral we get simple closed forms for each case:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    f(X+Y=n) = \\begin{cases} n &\\text{if } 0 < n \\leq 1 \\\\ \n2-n & \\text{if } 1 < n \\leq 2 \\\\\n0 & \\text{else} \\end{cases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  }
+ ],
+ "type": "doc"
+}

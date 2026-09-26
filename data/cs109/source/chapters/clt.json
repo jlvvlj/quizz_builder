@@ -1,0 +1,995 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are two ways that you could state the central limit theorem. Either that the sum of IID random variables is normally distributed, or that the average of IID random variables is normally distributed.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Central Limit Theorem (Sum Version)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_1, X_2 \\dots X_n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be independent and identically distributed random variables. The ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "sum",
+       "type": "text"
+      },
+      {
+       "text": " of these random variables approaches a normal as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n \\rightarrow \\infty"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\sum_{i=1}^{n}X_i \\sim N\\bigl(n \\cdot \\mu,\\; n \\cdot \\sigma^2\\bigr)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mu = \\E[X_i]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma^2 = \\Var(X_i)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Note that since each ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is identically distributed they share the same expectation and variance.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "At this point you probably think that the central limit theorem is awesome. But it gets even better. With some algebraic manipulation we can show that if the sample mean of IID random variables is normal, it follows that the sum of equally weighted IID random variables must also be normal:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Central Limit Theorem (Average Version)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_1, X_2 \\dots X_n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be independent and identically distributed random variables. The ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "average",
+       "type": "text"
+      },
+      {
+       "text": " of these random variables approaches a normal as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n \\rightarrow \\infty"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\frac{1}{n}\\sum_{i=1}^{n}X_i \\sim N\\bigl(\\mu,\\; \\frac{\\sigma^2}{n}\\bigr)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mu = \\E[X_i]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma^2 = \\Var(X_i)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "central-limit-theorem-intuition",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Central Limit Theorem Intuition",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the previous section we explored what happens when you ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/summation_vars",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "add two random variables",
+     "type": "text"
+    },
+    {
+     "text": ". What happens when you add more than two random variables? For example, what if I wanted to add up 100 different uniform random variables:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from random import random\n\ndef add_100_uniforms():\n   total = 0\n   for i in range(100):\n       # returns a sample from uniform(0, 1)\n       x_i = random()\n       total += x_i\n   return total",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The value, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "total",
+     "type": "text"
+    },
+    {
+     "text": " returned by this function will be a random variable. Hit the button below to run the function and observe the resulting value of total:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2210,
+    "sourceSha256": "197911581fdf659da035c3e1663fdb4871b64663ee517838331eb96c3b24d72c"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What does total look like as a distribution? Let's calculate ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "total",
+     "type": "text"
+    },
+    {
+     "text": " many times and visualize the histogram of values it produces.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1963,
+    "sourceSha256": "a3ae676103ac4a0a24c38a4b42857c8a92115fb7f9b69aed34fd6f3eb4a0cd8d"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That is interesting! ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "total",
+     "type": "text"
+    },
+    {
+     "text": " which is the sum of 100 independent uniforms looks normal. Is that a special property of uniforms? No! It turns out to work for almost any type of distribution (as long as the thing you are adding has finite mean and finite variance, everything we have covered in this reader).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Sum of 40 ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " where ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i \\sim \\Beta(a = 5, b = 4)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": "? Normal.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Sum of 90 ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " where ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i \\sim \\Poi(\\lambda = 4)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": "? Normal.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Sum of 50 dice-rolls? Normal.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Average of 10000  ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": " where ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "X_i \\sim \\Exp(\\lambda = 8)"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": "? Normal.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "bulletList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For any distribution the sum, or average, of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " independent equally-weighted samples from that distribution, will be normal.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "continuity-correction",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Continuity Correction",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Now we can see that the Binomial Approximation using a Normal actually derives from the central limit theorem. Recall that, when computing probabilities for a normal approximation, we had to use a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/binomial_approx#norm_approx",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "continuity correction",
+     "type": "text"
+    },
+    {
+     "text": ". This was because we were approximating a discrete random variable (a binomial) with a continuous one (a normal). You should use a continuity correction any time your normal is approximating a discrete random variable. The rules for a general continuity correction are the same as the rules for the binomial-approximation continuity correction.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In the motivating example above, where we added 100 uniforms, a continuity correction isn't needed because the sum of uniforms is continuous. In the dice sum example below, a continuity correction is needed because die outcomes are discrete.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "examples",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Examples",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "You will roll a 6 sided dice 10 times. Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the total value of all 10 dice = ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_1 + X_2 + \\dots + X_{10}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". You win the game if ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\leq 25"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " or ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\geq 45"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Use the central limit theorem to calculate the probability that you win. Recall that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "E[X_i] = 3.5"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{Var}(X_i) = \\frac{35}{12}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the approximating normal. By the Central Limit Theorem ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim N(10 \\cdot E[X_i], 10 \\cdot \\Var(X_i))"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Substituting in the known values for expectation and variance: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y \\sim N(35, 29.2)"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(&X \\leq 25 \\text{ or } X \\geq 45) \\\\\n&= \\P(X \\leq 25) + \\P(X \\geq 45) \\\\\n&\\approx \\P(Y < 25.5) + \\P(Y > 44.5) \\quad\\text{(Continuity Correction)} \\\\\n&\\approx \\P(Y < 25.5) + [1 -\\P(Y < 44.5)]\\\\\n&\\approx \\Phi\\bigl(\\frac{25.5 - 35}{\\sqrt{29.2}}\\bigr) + \\Bigl[1 - \\Phi\\bigl(\\frac{44.5- 35}{\\sqrt{29.2}}\\bigr)\\Bigr] \\quad\\text{(Normal CDF)}\\\\\n&\\approx \\Phi(-1.76) + [1 - \\Phi(1.76)]\\\\\n&\\approx 0.039 + (1-0.961) \\approx 0.078\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Example:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Say you have a new algorithm and you want to test its running time. You have an idea of the variance of the algorithm's run time: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\sigma^2 = 4\\text{sec}^2"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " but you want to estimate the mean: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\mu = t"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "sec. You can run the algorithm repeatedly (IID trials). How many trials do you have to run so that your estimated runtime = ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "t \\pm 0.5"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " with 95\\% certainty? Let",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X_i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the run time of the ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i\\text{-th}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " run (for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "1 \\leq i \\leq n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ").",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n0.95 = P(-0.5 \\leq \\frac{\\sum_{i=1}^nX_i}{n} - t \\leq 0.5)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "By the central limit theorem, the standard normal ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Z"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " must be equal to:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nZ &= \\frac{\\left(\\sum_{i=1}^n X_i\\right) - n\\mu}{\\sigma \\sqrt{n}} \\\\\n&=  \\frac{\\left(\\sum_{i=1}^n X_i\\right) - nt}{2 \\sqrt{n}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Now we rewrite our probability inequality so that the central term is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Z"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n0.95&= P\\bigl(-0.5 \\leq \\frac{\\sum_{i=1}^nX_i}{n} - t \\leq 0.5\\bigr)=P\\Bigl(\\frac{-0.5\\sqrt{n}}{2} \\leq \\frac{\\sum_{i=1}^nX_i}{n} - t \\leq \\frac{0.5\\sqrt{n}}{2}\\Bigr)\\\\\n&=P\\Bigl(\\frac{-0.5\\sqrt{n}}{2} \\leq \\frac{\\sqrt{n}}{2}\\frac{\\sum_{i=1}^nX_i}{n} - \\frac{\\sqrt{n}}{2}t \\leq \\frac{0.5\\sqrt{n}}{2}\\Bigr)=P\\Bigl(\\frac{-0.5\\sqrt{n}}{2} \\leq \\frac{\\sum_{i=1}^nX_i}{2\\sqrt{n}} - \\frac{\\sqrt{n}}{\\sqrt{n}}\\frac{\\sqrt{n}t}{2} \\leq \\frac{0.5\\sqrt{n}}{2}\\Bigr)\\\\\n&=P\\Bigl(\\frac{-0.5\\sqrt{n}}{2} \\leq \\frac{\\sum_{i=1}^nX_i - nt}{2\\sqrt{n}}  \\leq \\frac{0.5\\sqrt{n}}{2}\\Bigr)\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "And now we can find the value of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " that makes this equation hold.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n0.95&= \\phi\\bigl(\\frac{\\sqrt{n}}{4}\\bigr) - \\phi\\bigl(-\\frac{\\sqrt{n}}{4}\\bigr) = \\phi\\bigl(\\frac{\\sqrt{n}}{4}\\bigr) - \\bigl(1- \\phi\\bigl(\\frac{\\sqrt{n}}{4}\\bigr)\\bigr) \\\\\n &= 2\\phi\\bigl(\\frac{\\sqrt{n}}{4}\\bigr) - 1\\\\\n0.975 &= \\phi\\bigl(\\frac{\\sqrt{n}}{4}\\bigr)\\\\\n\\phi^{-1}(0.975) &= \\frac{\\sqrt{n}}{4} \\\\\n1.96 &= \\frac{\\sqrt{n}}{4}\\\\\nn &= 61.4\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Thus it takes 62 runs. If you are interested in how this extends to cases where the variance is unknown, look into variations of the students’ t-test.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  }
+ ],
+ "type": "doc"
+}

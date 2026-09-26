@@ -1,0 +1,632 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "A ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Random Variable (RV)",
+     "type": "text"
+    },
+    {
+     "text": " is a variable that probabilistically takes on a value, and they are one of the most important constructs in all of probability theory. You can think of an RV as being like a variable in a programming language, and in fact random variables are just as important to probability theory as variables are to programming. Random Variables take on values, have types, and have domains over which they are applicable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Random variables work with all of the foundational theory we have built up to this point. We can define events that occur if the random variable takes on values that satisfy a numerical test (e.g. does the variable equal 5, is the variable less than 8).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Lets look at a first example of a random variable. Say we flip three fair coins. We can define a random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the total number of “heads” on the three coins. We can ask about the probability of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " taking on different values using the following notation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the number of heads in three coin flips.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y = 0) = 1/8"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "                                                  (T, T, T)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y = 1) = 3/8"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "                                                  (H, T, T), (T, H, T), (T, T, H)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y = 2) = 3/8"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "                                                  (H, H, T), (H, T, H), (T, H, H)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y = 3) = 1/8"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "                                                  (H, H, H)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(Y \\geq 4) = 0 "
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "                                                      (it isn't possible for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " to be anything but 0,1,2,3)",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Even though we use the same notation for random variables and for events (both use capital letters), they are distinct concepts. An event is a scenario, a random variable is an object. The scenario where a random variable takes on a particular value (or range of values) is an event. When possible, I will try and use letters ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E,F,G"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for events and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X,Y,Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for random variables.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Using random variables is a convenient notation technique that assists in decomposing problems. There are many different types of random variables (indicator, binary, choice, Bernoulli, etc). The two main families of random variable types are discrete and continuous. Discrete random variables can only take on integer values. Continuous random variables can take on decimal values. We are going to develop our intuitions using discrete random variable and then introduce continuous.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "properties-of-random-variables",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Properties of Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are many properties of a random variable some of which we will dive into extensively. Here is a brief summary. Each random variable has:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1738,
+    "sourceSha256": "6ebc3f41a612a8ce63f7956487d70717d6f648173c4baf32d07af31ccc1bed27"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "You should set a goal of deeply understanding what each of these properties mean. There are many more properties than the ones in the table above: properties like ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/information_theory",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "entropy",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Median",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "median",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Skewness",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "skew",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Kurtosis",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "kurtosis",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "rv_vs_event",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Random Variables vs Events",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Random variables and events are two different concepts. An event is an outcome, or a set of outcomes, to an experiment. A random variable is more like an experiment -- it will take on an outcome eventually. Probabilities are over events, so if you want to talk about probability in the context of a random variable, you must construct an event. You can make events by using any of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Relational_operator",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Relational Operators",
+     "type": "text"
+    },
+    {
+     "text": ": <, ≤, >, ≥, =, or ≠ (not equal to). This is analogous to coding where you can use relational operators to create boolean expressions from numbers.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Lets continue our example of the random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " which represents the number of heads on three coin flips. Here are some events using the variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1349,
+    "sourceSha256": "d01cb26b8279198745c582c52c16d21dab9e82cadec1076355bb09c57c5292fb"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "You will see many examples like this last one, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y = y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", in this text book as well as in scientific and math research papers. It allows us to talk about the likelihood of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " taking on a value, in general. For example, later in this book we will derive that for three coin flips where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the number of heads, the probability of getting exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(Y = y) = \\frac{0.75}{y!(3-y)!} \\quad\\quad \\text{ If } 0 \\leq y \\leq 3\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "This statement above is a function which takes in a parameter as input and returns the numeric probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y = y)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as output. This particular expression allows us to talk about the probability that the number of heads is 0, 1, 2 or 3 all in one expression. You can plug in any one of those values for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to get the corresponding probability. It is customary to use lower-case symbols for non-random values.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The use of an equals sign in the \"event\" can be confusing. For example, what does this expression say: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(Y = 1) = 0.375"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? It says that the probability that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Y"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " \"takes on the value 1\" is 0.375. For discrete random variables, this function is called the \"",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/pmf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "probability mass function",
+     "type": "text"
+    },
+    {
+     "text": "\", and it is the topic of our next chapter.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

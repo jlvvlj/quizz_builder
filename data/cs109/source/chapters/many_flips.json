@@ -1,0 +1,4389 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this section we are going to consider the number of heads on ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips. This thought experiment is going to be a basis for much probability theory! It goes far beyond coin flips.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Say a coin comes up heads with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Most coins are fair and as",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "black"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " such come up heads with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=0.5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "black"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". There are many events for which coin flips are a great analogy that have different ",
+     "type": "text"
+    },
+    {
+     "text": "values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " so let's leave ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " as a variable. You can try simulating flipping coins here. Note that ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": " is short for Heads and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": " is short for Tails. We think of each coin as distinct:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Coin Flip Simulator",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "sourceBytes": 2238,
+      "sourceSha256": "40cbd388b77931601709be3ca530972d7ada88835fe45e3b342b6bc974239eba"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Using the math in this chapter we will be able to calculate the probability of different numbers of heads. For example, if you flip ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " coins which have a ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=0.6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " probability of landing heads,",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " the probability of getting exactly 7 heads is 0.215. This chapter is organized into the following sections:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://{{pathToRoot}}/many_flips#warmups",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Warmups",
+         "type": "text"
+        },
+        {
+         "text": ": We calculate the probability of a few exact outcomes.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://{{pathToRoot}}/many_flips#exactly-k-heads",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Exactly k heads",
+         "type": "text"
+        },
+        {
+         "text": ". We derive the general formula.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://{{pathToRoot}}/many_flips#more-than-k-heads",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "More than k heads",
+         "type": "text"
+        },
+        {
+         "text": ". We explore this interesting related problem",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "id": "warmups",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Warmups",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In all of these warmups we are going to consider the probability of different outcomes when you flip a coin n times and each time the probability of heads is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". In each solution we will consider the case where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=0.6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "type": "hardBreak"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "What is the probability that all ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " flips are heads?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "This question is asking what is the probability of getting the outcome:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": "H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Where each flip lands in heads (",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": "H",
+       "type": "text"
+      },
+      {
+       "text": "). Each coin flip is independent so we can use the rule for probability of ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "and",
+       "type": "text"
+      },
+      {
+       "text": " with independent events. As such, the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " heads is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " multiplied ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " times: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p^k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ".",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=10"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p=0.6"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " then the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " heads ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "= p^n =0.6^{10}≈ 0.006"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "What is the probability that all ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " flips are tails?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "Lets say ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=10"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " this question is asking what is the probability of getting:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Each coin flip is independent. The probability of tails (",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "text": ") on any coin flip is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "1−p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Again, since the coin flips are independent, the probability of tails n times on ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " flips is ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(1−p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " multiplied by itself n times: ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(1−p)^n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=10"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p=0.6"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " then the probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " tails is around 0.0001.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "First ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " heads then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n−k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " tails",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "Lets say ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=10"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k=4"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ", this question is asking what is the probability of getting:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": "H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ",",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "blue"
+         },
+         "type": "code"
+        }
+       ],
+       "text": " H",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": "black"
+         },
+         "type": "code"
+        }
+       ],
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "style": null
+         },
+         "type": "code"
+        }
+       ],
+       "text": "T",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "The coins are still independent! The first ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " heads occur with probability ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p^k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " the run of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n−k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " tails occurs with probability ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(1−p)^{n−k}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ". The probability of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " heads then ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n−k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " tails is the product of those two terms:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\np^k \\cdot (1-p)^{n-k}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "exactly-k-heads",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " heads",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Next lets try to figure out the probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads in the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " flips. Importantly we don't care where in the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " flips that we get the heads, as long as there are ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of them. Note that this question is different than the question of first ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads and then ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n−k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " tails which requires that the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads come first! That particular result does generate exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " coin flips, but there are others.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are many others! Let's ask the computer to list the ways we could generate exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads within ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " coin flips. The output region is scrollable:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 7618,
+    "sourceSha256": "5a2a3e71364360e28209524aad86fba66dac8d219e46e2ade03d23f63647c2e2"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Let's call each of these rows an \"ordering\" since each row is a unique way to order the 4 heads and 6 tails. Let ",
+     "type": "text"
+    },
+    {
+     "text": "N",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " be the number of unique orderings.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Exactly how many unique orderings are there with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " flips? ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N=210"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". Why? Each ordering listed above is a permutation of the list [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "]. As such, the question \"how many orderings are there?\" is analogous to the question, how many distinct orderings of characters are possible for the string \"HHHHTTTTT\"? Because ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " characters are indistinct from one another (and same for ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ") we can solve this problem using ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/combinatorics/#perm_indisctinct",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Permutations of Indistinct Objects",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Num Orderings} = \\frac{n!}{k! (n-k)!} = {n \\choose k}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Each of these orderings can be thought of as one event, or outcome, of flipping 10 coins. Let's name ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the event that we get the exact outcome in the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "th row. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the event that we get [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": "], ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the event that we get [",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "text": "], and so on.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads is the probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of each of these events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". If you flip a coin 10 times, it is not possible to have more than one of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " events occur (e.g. both ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " can't be true if you flip 10 coins). In other words, each of these events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " is \"mutually exclusive\" and as such:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\t\\p(\\text{exactly $k$ heads}) \n\t&= \\p(E_1 \\or E_2 \\or \\ldots \\or E_N) \\\\\n\t &= \\sum_{i=1}^N \\p(E_i)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "The next question is, what is the probability of each of these events ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here is a arbitrarily chosen ordering which satisfies the event of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads in ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " coin flips. It is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_{128}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", the ordering on row 128 in the list above",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "blue"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "blue"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "H",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": "black"
+       },
+       "type": "code"
+      }
+     ],
+     "text": ",",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "deeppink"
+       },
+       "type": "textStyle"
+      },
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "T",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "What is the probability of event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E_{128}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ", the exact sequence of heads and tails in the example above? Each coin flip is still independent, so we multiply ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " for each heads and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "1−p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " for each tails.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(E_{128}) = (1-p) \\cdot p \\cdot (1-p) \\cdot (1-p) \\cdot p \\cdot (1-p) \\cdot (1-p) \\cdot p \\cdot p \\cdot (1-p)\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "If you rearrange these multiplication terms you get:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\t\\p(E_{128}) &= p \\cdot p \\cdot p \\cdot p \\cdot (1-p) \\cdot (1-p) \\cdot (1-p) \\cdot (1-p) \\cdot (1-p) \\cdot (1-p)\\\\\n\t&= p^4 \\cdot (1-p)^{6}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "There is nothing too special about row 128. If you chose any row, you would get ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " independent heads and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n−k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " independent tails. For any row ",
+     "type": "text"
+    },
+    {
+     "text": "i",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\P(E_i)=p^k⋅(1−p)^{n−k}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Now we are ready to calculate the probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(\\text{exactly $k$ heads}) \n\t&= \\sum_{i=1}^N \\p(E_i) && \\text{Mutual Exclusion}\\\\\n\t&= \\sum_{i=1}^N p^k \\cdot (1-p)^{n-k} && \\text{Sub in }\\p(E_i) \\\\\n\t&= N \\cdot p^k \\cdot (1-p)^{n-k} && \\text{Sum $N$ times}  \\\\\n\t&= {n \\choose k} \\cdot p^k \\cdot (1-p)^{n-k} && \\text{Perm of indistinct objects} \n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Let's bring that back to the example of getting exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads out of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " where the probability of getting a heads on any one flip is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=0.6"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". The probability of exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads is:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(\\text{exactly $k$ heads}) \n&= {n \\choose k} \\cdot p^k \\cdot (1-p)^{n-k} &&\\text{Just derived!}\\\\\n\t&= {10 \\choose 4} \\cdot 0.6^4 \\cdot (1-0.6)^{10-4} && \\text{Sub in $n$, $k$, $p$} \\\\\n\t&= 210 \\cdot 0.6^4 \\cdot 0.4^6 && \\text{Simplify} \\\\\n\t&= 0.111\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "Here is what that equation looks like for different values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You can also edit the values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "We are done! This result is truly useful. Care about the probability of number of voters who vote for a candidate? Care about the number of people who get a disease? Care about the number of people who click on an ad? This derivation is the basis for all of those problems! Later in this book we will formalize this incredible result into the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/binomial",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Binomial Random Variable",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "more-than-k-heads",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "More than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " heads",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "There are many cases where you care about the probability of more than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads. We can derive a solution based on the formula for exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": "If you want the probability of getting more than ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=4"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads out of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " coin flips it is the probability of the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " of each of the events where you get exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i=5,6,7,8,9,10"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". Note that all the events where you get exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads are mutually exclusive from the events where you get exactly ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " heads when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i≠j"
+     },
+     "type": "math_inline"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": ". For example if you flip a coin 10 times, it is not possible to get exactly 4 heads and to also get exactly 5 heads. As such the probability of ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "or",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "rgb(33, 37, 41)"
+       },
+       "type": "textStyle"
+      }
+     ],
+     "text": " becomes addition:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p&(\\text{more than $k$ heads}) \\\\\n\t&= \\sum_{i=k+1}^n \\p(\\text{exactly $i$ heads}) && \\text{Mutual Exclusion}\\\\\n\t&= \\sum_{i=k+1}^n {n \\choose i} \\cdot p^i \\cdot (1-p)^{n-i} && \\text{Substitution}\\\\\n\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  }
+ ],
+ "type": "doc"
+}

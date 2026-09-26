@@ -1,0 +1,680 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "A Poisson random variable gives the probability of a given number of events in a fixed interval of time (or space). It makes the Poisson assumption that events occur with a known constant mean rate and independently of the time since the last event.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 2875,
+      "sourceSha256": "6f9284fddab952865e173c7964fe47d6d1061ff8fdd65c3a9c9919324cbe8e6b"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Poisson Intuition",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In this section we show the intuition behind the Poisson derivation. It is both a great way to deeply understand the Poisson, as well as good practice with Binomial distributions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Let's work on the problem of predicting the chance of a given number of events occurring in a fixed time interval — the next minute. For example, imagine you are working on a ride sharing application and you care about the probability of how many requests you get from a particular area. From historical data, you know that the average requests per minute is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda = 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". What is the probability of getting 1, 2, 3, etc requests in a minute?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We could approximate a solution to this problem by using a binomial distribution! Lets say we split our minute into 60 seconds, and make each second an ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "pathToRoot/bernoulli",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "indicator Bernoulli",
+     "type": "text"
+    },
+    {
+     "text": " variable — you either get a request or you don't. If you get a request in a second, the indicator is 1. Otherwise it is 0. Here is a visualization of our 60 binary-indicators. In this example imagine we have requests at 2.75 and 7.12 seconds. the corresponding indicator variables are ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "color": "blue"
+       },
+       "type": "textStyle"
+      },
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "blue",
+     "type": "text"
+    },
+    {
+     "text": " filled in boxes:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "1 minute",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1457,
+    "sourceSha256": "223b7aa17b2fda6949506a0405b7c3d040912f98b033dbde9211f27bafdcbec2"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The total number of requests received over the minute can be approximated as the sum of the sixty indicator variables, which conveniently matches the description of a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "pathToRoot/binomial",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "binomial",
+     "type": "text"
+    },
+    {
+     "text": " — a sum of Bernoullis. Specifically define ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the number of requests in a minute. ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\mathrm{Bin}(n=60, p=5/60)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". What is the probability, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", of a success on a single trial? To make the expectation of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " equal the observed historical average ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda = 5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we should choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " so that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda = \\mathbb{E}[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\lambda &= \\E[X] \\quad\\quad && \\text{Expectation matches historical average} \\\\\n\\lambda &= n \\cdot p \\quad\\quad && \\text{Expectation of a Binomial is } n \\cdot p \\\\\np &= \\frac{\\lambda}{n} \\quad\\quad && \\text{Solving for $p$}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "In this case since ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda=5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=60"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", we should choose ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=5/60"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and state that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\mathrm{Bin}(n=60, p=5/60)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Now that we have a form for ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " we can answer probability questions about the number of requests by using the Binomial PMF:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X = x) = \\binom{n}{x} p^x (1-p)^{n-x}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "So for example:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X=1) &= \\binom{60}{1} (5/60)^1 (55/60)^{59} \\approx 0.0295\\\\\n\\p(X=2) &= \\binom{60}{2} (5/60)^2 (55/60)^{58} \\approx 0.0790\\\\\n\\p(X=3) &= \\binom{60}{3} (5/60)^3 (55/60)^{57} \\approx 0.1389\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Great! But don't forget that this was an approximation. We didn't account for the fact that there can be more than one event in a single second. One way to assuage this issue is to divide our minute into more fine-grained intervals (the choice to split it into 60 seconds was rather arbitrary). Instead lets divide our minute into 600 deciseconds, again with requests at 2.75 and 7.12 seconds:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "1 minute",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2102,
+    "sourceSha256": "961aa569d3e8d1893dbde58bea30dbec089808c60b516e9b7def75c70ada4b93"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Now ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "n=600"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=5/600"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\mathrm{Bin}(n=600, \\,p=5/600)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We can repeat our example calculations using this better approximation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X=1) &= \\binom{600}{1} (5/600)^1 (595/600)^{599} \\approx 0.0333\\\\\n\\p(X=2) &= \\binom{600}{2} (5/600)^2 (595/600)^{598} \\approx 0.0837\\\\\n\\p(X=3) &= \\binom{600}{3} (5/600)^3 (595/600)^{597} \\approx 0.1402\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 3130,
+      "sourceSha256": "32e02b39c4c132530d9219d7313b3f242d9a074319350757caa82ee579ac6d5f"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "The larger n is, the more accurate the approximation. So what happens when n is infinity? It becomes a Poisson!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Poisson, a Binomial in the limit",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Or if we really cared about making sure that we don't get two events in the same bucket, we can divide our minute into infinitely small buckets:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "1 minute",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 2104,
+    "sourceSha256": "2a6c65a2df160a44b4bc6dd9e1f7f5161b70b61ec6f2df04228850f052c57162"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Proof:",
+       "type": "text"
+      },
+      {
+       "text": " Derivation of the Poisson",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "What does the PMF of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " look like now that we have infinite divisions of our minute? We can write the equation and think about it as n goes to infinity. Recall that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " still equals ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda/n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\P(X=x) = \\lim_{n \\rightarrow \\infty} \\binom{n}{x} (\\lambda / n)^x(1-\\lambda/n)^{n-x}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "While it may look intimidating, this expression simplifies nicely. This proof uses a few special limit rules that we haven't introduced in this book:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\n\\begin{aligned}\n\\mathrm{P}(X=x) & =\\lim _{n \\rightarrow \\infty}\\binom{n}{x}(\\lambda / n)^x(1-\\lambda / n)^{n-x} \\quad \\quad &\\text{Start: binomial in the limit} \\\\\n& =\\lim _{n \\rightarrow \\infty}\\binom{n}{x} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{(1-\\lambda / n)^n}{(1-\\lambda / n)^x} \\quad \\quad &\\text{Expanding the power terms} \\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{n!}{(n-x)!x!} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{(1-\\lambda / n)^n}{(1-\\lambda / n)^x} \\quad \\quad &\\text{Expanding the binomial term}\\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{n!}{(n-x)!x!} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{e^{-\\lambda}}{(1-\\lambda / n)^x} \\quad \\quad &\\text{Rule: } \\lim _{n \\rightarrow \\infty}(1-\\lambda / n)^n=e^{-\\lambda}\\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{n!}{(n-x)!x!} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{e^{-\\lambda}}{1} \\quad \\quad &\\text{Rule: } \\lim _{n \\rightarrow \\infty} \\lambda / n=0\\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{n!}{(n-x)!} \\cdot \\frac{1}{x!} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{e^{-\\lambda}}{1} \\quad \\quad &\\text{Splitting first term} \\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{n^x}{1} \\cdot \\frac{1}{x!} \\cdot \\frac{\\lambda^x}{n^x} \\cdot \\frac{e^{-\\lambda}}{1} \\quad \\quad & \\lim _{n \\rightarrow \\infty} \\frac{n!}{(n-x)!}=n^x\\\\\n& =\\lim _{n \\rightarrow \\infty} \\frac{\\lambda^x}{x!} \\cdot \\frac{e^{-\\lambda}}{1} \\quad \\quad &\\text{Cancel } n^x\\\\\n& =\\frac{\\lambda^x \\cdot e^{-\\lambda}}{x!} \\quad \\quad &\\text{Simplify}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "That is a beautiful expression! Now we can calculate the real probability of number of requests in a minute, if the historical average is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda=5"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(X=1)&=\\frac{5^1\\cdot e^{-5}}{1!} = 0.03369\\\\\n\\p(X=2)&=\\frac{5^2\\cdot e^{-5}}{2!}= 0.08422\\\\\n\\p(X=3)&=\\frac{5^3\\cdot e^{-5}}{3!} = 0.14037\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "This is both more accurate and much easier to compute!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Changing Time Frames",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Say you are given a rate over one unit of time, but you want to know the rate in another unit of time. For example, you may be given the rate of hits to a website per minute, but you want to know the probability over a 20 minute period. You would just need to multiply this rate by 20 in order to go from the “per 1 minute of time” rate to obtain the “per 20 minutes of time” rate.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

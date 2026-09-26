@@ -1,0 +1,563 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Parametric Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "There are many classic and commonly-seen random variable abstractions that show up in the world of probability. At this point in the class, you will learn about several of the most significant parametric discrete distributions. When solving problems, if you can recognize that a random variable fits one of these formats, then you can use its pre-derived probability mass function (PMF), expectation, variance, and other properties. Random variables of this sort are called ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "parametric",
+     "type": "text"
+    },
+    {
+     "text": " random variables. If you can argue that a random variable falls under one of the studied parametric types, you simply need to provide parameters. A good analogy is a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "class",
+     "type": "text"
+    },
+    {
+     "text": " in programming. Creating a parametric random variable is very similar to calling a constructor with input parameters.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Bernoulli Random Variables",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "A Bernoulli random variable (also called a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "boolean",
+     "type": "text"
+    },
+    {
+     "text": " or ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "indicator",
+     "type": "text"
+    },
+    {
+     "text": " random variable) is the simplest kind of parametric random variable. It can take on two values, 1 and 0. It takes on a 1 if an experiment with probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " resulted in success and a 0 otherwise. Some example uses include a coin flip, a random binary digit, whether a disk drive crashed, and whether someone likes a Netflix movie. Here ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the parameter, but different instances of Bernoulli random variables might have different values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Here is a full description of the key properties of a Bernoulli random variable. If ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is declared to be a Bernoulli random variable with parameter ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", denoted ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\text{Ber}(p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ": ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "sourceBytes": 3400,
+      "sourceSha256": "2aa63ffdb5e8697fe46604201575c6c44864b0a8fdb3e377dc37c6c6a185f630"
+     },
+     "type": "interactive-demo"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Because Bernoulli distributed random variables are parametric, as soon as you declare a random variable to be of type Bernoulli you automatically can know all of these pre-derived properties! Some of these properties are straightforward to prove for a Bernoulli. For example, you could have solved for expectation:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Proof: Expectation of a Bernoulli. If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a Bernoulli with parameter ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Ber}(p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[X] &= \\sum_x x \\cdot \\p(X=x) && \\text{Definition of expectation} \\\\\n&= 1 \\cdot p + 0 \\cdot (1-p) &&\\\nX \\text{ can take on values 0 and 1} \\\\\n&= p && \\text{Remove the 0 term}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "Proof: Variance of a Bernoulli. If ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a Bernoulli with parameter ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Ber}(p)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ": To compute variance, first compute ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\text{E}[X^2]"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{E}[X^2]\n&= \\sum_x x^2 \\cdot \\p(X=x) &&\\text{LOTUS}\\\\\n&= 0^2 \\cdot (1-p) + 1^2 \\cdot p\\\\\n&= p\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\text{Var}(X)\n&= \\text{E}[X^2] - \\text{E}[X]^2&& \\text{Def of variance} \\\\\n&= p - p^2 && \\text{Substitute }\\text{E}[X^2]=p, \\text{E}[X] = p \\\\\n&= p (1-p) && \\text{Factor out }p\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "purpleBox"
+  },
+  {
+   "attrs": {
+    "id": "indicator",
+    "level": "2",
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Indicator Random Variable",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        },
+        {
+         "type": "italic"
+        }
+       ],
+       "text": "Definition",
+       "type": "text"
+      },
+      {
+       "text": ": Indicator Random Variable",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "justify"
+     },
+     "content": [
+      {
+       "text": "An indicator variable is a Bernoulli random variable which takes on the value 1 if an underlying event occurs, and 0 otherwise.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Indicator random variables are a convenient way to convert the \"true/false\" outcome of an event into a number. That number may be easier to incorporate into an equation. See the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "binomial#binomialExpectation",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "binomial expectation derivation",
+     "type": "text"
+    },
+    {
+     "text": " for an example.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "A random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is an indicator variable for an event ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " when ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " occurs and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " does not occur. Indicator random variables are Bernoulli random variables, with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p=\\P(A)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is a common choice of name for an indicator random variable.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Here are some properties of indicator random variables: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(I=1)=\\P(A)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{E}[I]=\\P(A)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,885 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We are able to know the age of ancient artifacts using a process called carbon dating. This process involves a lot of uncertainty! You observe a measurement of 90% of natural C14 molecules in a sample. What is your belief distribution over the age of the sample? This task requires probabilistic models because we have to think about two random variables together: the age ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of the sample, and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "M"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " the remaining C14 molecules.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Carbon Dating Demo",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Imagine you have just taken a sample from your artifact. For the sample size you took, a living organism would have had 1000 molecules of C14. Use this demo to explore the relationship between how much C14 is left and your belief distribution for how old your artifact is.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 6351,
+    "sourceSha256": "7ad348a42f2a2d3eeac08a259d00189dadbd12443ca5eeb59e08bc993e9afc8d"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note: this demo was created in 2023 and the age reported is relative to that year! This chapter only has historical C14 rates from 10,000 years ago and as such is not able to estimate age when there are fewer than 350 molecules of C14 in the sample.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "bba66598-8b37-4d21-9b12-ddfa20c2ff3d",
+    "naturalHeight": "575",
+    "naturalWidth": "767",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fbba66598-8b37-4d21-9b12-ddfa20c2ff3d?alt=media&token=ebe927a9-3ea2-48dd-9e63-2c098aa9ecde",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Carbon dating allows us to know the age of things that used to be alive, like dinosaur bones.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Understanding Decay of C14 molecule",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "All living things have a constant proportion of a radioactive molecule called C14 in them. When living things die those molecules start to decay radioactively. Specifically, the time to decay in years, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", of a single C14 molecule is distributed as an exponential, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T \\sim \\text{Exp}(\\lambda = 1/8267)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where 8267 is the mean life of C14.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider a single C14 molecule. What is the probability that it decays within 750 years?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(T \\leq 750) &= 1 - e^{-\\lambda \\cdot 750} &&\\text{Exp. CDF}\\\\\n&= 1 - e^{-\\frac{1}{8267}\\cdot 750} \\\\\n&= 0.0867\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "That is only for a single molecule. Since C14 molecules decay independently, it is not much harder to think of how many are left out of a larger initial count of C14. A particular sample started with 1000 molecules. What is the probability that exactly 900 are left after 750 years? This is equivalently the event that 100 molecules have decayed.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nX &\\sim \\Bin(n=1000, p = 0.0867) \\\\\nP(X = 100) &= {1000 \\choose 100}0.0867^{100}(1-0.0867)^{900} \\\\\n&\\approx 0.0144\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Let's generalize. Define ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "M"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be a random variable for the number of molecules left, and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to be the age of the sample. The probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(M = m \\mid A = i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " of having m remaining C14 molecules given that the artifact is i years old will be equal to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X = n - m)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where n is the starting number of C14 molecules, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p = 1 - e^{-i/8267}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\Bin(n, p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the count of decayed C14 molecules.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Inferring Age From C14",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You observe a measurement of 900 C14 molecules in a sample. You assume that the sample originally had 1000 C14 molecules when it died. Infer ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(A = i \\mid M = 900)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A = i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is the event that the sample organism died ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " years ago. Note that age is a discrete random variable which takes on whole numbers of years. You will need use ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(M = m \\mid A = i)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from the previous part.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For your prior belief you know that the sample must be between ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 100 and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 10000 inclusive and you assume that every year in that range is equally likely.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "This is a perfect case for Bayes theorem. However instead of updating our belief in an event, like we did in ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./bayes_theorem",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "Bayes Theorem",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ", we are updating the belief over all the values that a random variable can take on, a process called ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "class": null,
+          "href": "./inference",
+          "rel": "noopener noreferrer nofollow",
+          "target": "_blank"
+         },
+         "type": "link"
+        }
+       ],
+       "text": "inference",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ". Here is the generalized version of Bayes' theorem for infering age, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "A"
+       },
+       "type": "math_inline"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP&(A = i \\mid M= 900) \\\\\n&= \\frac{\\P(M=900\\mid A=i) \\P(A=i)}{\\P(M=900)} \\\\\n&= \\P(M=900\\mid A=i) \\cdot \\frac{\\P(A = i)}{\\P(M=900)} \\\\\n&= \\P(M=900\\mid A=i) \\cdot K\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The critical part of the last line was to recognize that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\frac{\\P(A = i)}{\\P(M=900)}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a constant with respect to ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "i"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The term ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(A=i)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is constant as our prior over A was uniform. We could compute the value of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(M=900)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " explicitly using the law of total probability. In code this is most easily implemented by computing all values of ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(M=900\\mid A=i)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and normalizing as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "K"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " will be the value that makes all of the values ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(A=i\\mid M=900)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " sum to 1.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Fluctuating History",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The amount of C14 in the atmosphere fluctuates over time; it is not a constant baseline! Here is the delta C14 (per 1000 molecules) that you would have found if the object died a different number of years ago. To incorporate this information we simply start our binomial with 1000 molecules plus the delta for the year, downloaded from a public dataset (",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "http://intcal.org/js/jsintcal20/index.html?xscale=adbc&yscale=d14c&sets%5b%5d=1",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "IntCal Historical Atmospheric C14)",
+     "type": "text"
+    },
+    {
+     "text": ":",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 3389,
+    "sourceSha256": "c8ef692d988989f0546934bc7e529d3192b99a97aeff8f98096920363289f085"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This offset is archaeology theory not probability theory. We include it in this chapter because otherwise our code will give an incorrect prediction. Also, it gives the posterior a really interesting shape (see the demo).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Python Code",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The math, derived above, leads to the following python code for a function ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "inference(m)",
+     "type": "text"
+    },
+    {
+     "text": " which returns the probability mass function for age ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "A"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", given an observation of m C14 molecules in a sample that should have 1000 molecules, were it alive today. Notice the use of normalization to avoid explicitly computing the prior or ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(M=m)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " from Bayes Theorem.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "from scipy import stats\nimport math\n\nC14_MEAN_LIFE = 8267\n\ndef inference(m = 900):\n    \"\"\"\n    Returns a dictionary A, where A[i] contains the \n    corresponding probability, P(A = i| M = m).\n    m is the number of C14 molecules remaining and i \n    is age in years. i is in the range 100 to 10000\n    \"\"\"\n    A = {}\n    for i in range(100,10000+1):\n        A[i] = calc_likelihood(m, i) # P(M = m | A = i)\n    # implicitly computes the normalization constant\n    normalize(A)\n    return A\n\ndef calc_likelihood(m, age):\n    \"\"\"\n    Computes P(M = m | A = age), the probability of\n    having m molecules left given the sample is age\n    years old. Uses the exponential decay of C14\n    \"\"\"\n    n_original = 1000 + delta_start(age)\n    n_decayed = n_original - m\n    p_single = 1 - math.exp(-age/C14_MEAN_LIFE)\n    return stats.binom.pmf(n_decayed, n_original, p_single)\n\ndef normalize(prob_dict):\n    # first compute the sum of the probability\n    sum = 0\n    for key, pr in prob_dict.items():\n        sum += pr\n    # then divide each probability by that sum\n    for key, pr in prob_dict.items():\n        prob_dict[key] = pr / sum\n    # now the probabilities sum to 1 (aka are normalized)\n\ndef delta_start(age):\n    \"\"\"\n    The amount of atmospheric C14 is not the same every\n    year. If the sample died \"age\" years ago, then it would\n    have started with slightly more, or slightly less than\n    1000 C14 molecules. We can look this value up from the\n    IntCal database. See the next section!\n    \"\"\"\n    return historical_c14_delta[age]",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Industry Strength Bayesian Carbon Dating",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are other sources of uncertainty in Carbon Dating which we have not considered. For example, a common source of uncertainty is laboratory error: if the same sample were sent to a lab several times, different results would come back.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Perhaps the most fascinating extension is modeling “stratigraphic” relationships. Often in archaeological sites, you can know the relative age of artifacts based on their position in sediment. This requires a joint model of the age of each artifact with the constraint that you know some are older than others. Inference can then be performed using a General Inference technique (often MCMC) and will be much more accurate.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Binomial Approximations?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Could we have used an approximation for the binomial PMF calculation? In Bayesian Carbon dating both a normal and a Poisson approximation are appropriate. The decay binomial ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\Bin(n, p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " is well approximated by either a Poisson with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\lambda = n \\cdot p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " or a Gaussian with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mu = n \\cdot p"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sigma^2 = n \\cdot p \\cdot (1-p)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". This could be used to speed up calculations. Let’s rework the example where we had ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X \\sim \\Bin(n=1000, p=0.0867)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We computed that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(X=100)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 0.0144",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Poisson Approximation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nY &\\sim \\Poi(\\lambda=86.7) \\\\\n\\P(X = 100)& \\approx \\P(Y=100) \\\\\n&= \\texttt{scipy.stats.poi.pmf}(100, 86.7) \\\\\n&\\approx 0.0151\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "  Normal Approximation:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nY &\\sim \\N(\\mu=86.7, \\sigma^2 = 79.2) \\\\\n\\P(X = 100)& \\approx \\P(Y>100.5) - \\P(Y>99.5)\\\\\n&\\approx 0.0146\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

@@ -1,0 +1,839 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Artificial Intelligence often gives the impression that it is objective and “fair”. However, algorithms are made by humans and trained by data which may be biased. There are several examples of deployed AI algorithms that have been shown to make decisions that were biased based on gender, race or other protected demographics — even when there was no intention for it.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "These examples have also led to a necessary research into a growing field of algorithmic fairness. How can we demonstrate, or prove, that an algorithm is behaving in a way that we think is appropriate? What is fair? Clearly these are complex questions and are deserving of a complete conversation. This example is simple for the purpose of giving an introduction to the topic.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "b8a3658d-8e92-4386-9279-cdd4732b5378",
+    "naturalHeight": "1032",
+    "naturalWidth": "1752",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2Fb8a3658d-8e92-4386-9279-cdd4732b5378?alt=media&token=963a61f1-ab97-4874-8536-7a76a3a063f4",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "ML stands for Machine Learning. Solon Barocas and Moritz Hardt, “Fairness in Machine Learning”, NeurIPS 2017",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "What is Fairness?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "An artificial intelligence algorithm is going to be used to make a binary prediction (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "G"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for guess) for whether a person will repay a loan.  The question has come up:  is the algorithm “fair” with respect to a binary protected demographic (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for demographic)? To answer this question we are going to analyze predictions the algorithm made on historical data. We are then going to compare the predictions to the true outcome (",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "T"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for truth). Consider the following joint probability table from the history of the algorithm’s predictions:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1569,
+    "sourceSha256": "d04aa8ab85c1968c74a9c3aa8e33f0a28be06fa11af47b8a2fecb395078d3af9"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Recall that cell ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D=i,G=j,T=k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " contains the probability ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\P(D=i,G=j,T=k)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". A joint probability table gives the probability of all combination of events. Recall that since each cell is mutually exclusive, the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sum_i \\sum_j \\sum_k \\P(D=i,G=j,T=k) = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Note that this assumption of mutual exclusion could be problematic for demographic variables (some people are mixed ethnicity, etc.) which gives you a hint that we are just scratching the surface in our conversation about fairness. Let’s use this joint probability to learn about some of the common definitions of fairness.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Practice with joint marginalization What is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(D=0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? What is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(D=1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "? Probabilities with assignments to a subset of the random variables in the joint distribution can be calculated by a process called marginalization: sum the probability from all cells where that assignment is true.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(D=1) &= \\sum_{j \\in \\{0, 1\\}} \\sum_{k \\in \\{0, 1\\}} \\p(D= 1, G= j, T = k)\\\\\n&= 0.01 + 0.01 + 0.02 + 0.08 = 0.12\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(D=0) &= \\sum_{j \\in \\{0, 1\\}} \\sum_{k \\in \\{0, 1\\}} \\p(D= 0, G= j, T = k)\\\\\n&= 0.21 + 0.32 + 0.07 + 0.28 = 0.88\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Note that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(D=0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " + ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(D=1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 1. That implies that the demographics are mutually exclusive.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Fairness definition #1: Parity\n",
+       "type": "text"
+      },
+      {
+       "text": "An algorithm satisfies “parity” if the probability that the algorithm makes a positive prediction (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "G=1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ") is the same regardless of being conditioned on demographic variable.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Does this algorithm satisfy parity?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(G=1|D=1) \n    &= \\frac{P(G = 1, D = 1)}{P(D=1)} \\\\\n    && \\text{Cond. Prob.}\\\\\n    &= \\frac{P(G = 1, D = 1, T= 0) + P(G=1, D = 1, T=1)}{P(D=1)} \\\\\n    && \\text{Prob or}\\\\\n    &= \\frac{0.01 + 0.08}{0.12} = 0.75\n    && \\text{From joint}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nP(G=1|D=0) \n    &= \\frac{P(G = 1, D = 0)}{P(D=0)} \\\\\n    && \\text{Cond. Prob.}\\\\\n    &= \\frac{P(G = 1, D = 0, T= 0) + P(G=1, D = 0, T=1)}{P(D=0)} \\\\\n    && \\text{Prob or}\\\\\n    &= \\frac{0.32 + 0.28}{0.88} \\approx 0.68\n    && \\text{From joint}\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "No. Since ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G=1|D=1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ≠ ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G=1|D=0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " this algorithm does not satisfy parity. It is more likely to guess 1 when the demographic indicator is 1.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Fairness definition #2: Calibration",
+       "type": "text"
+      },
+      {
+       "text": "\nAn algorithm satisfies “calibration” if the probability that the algorithm is correct (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "G=T"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ") is the same regardless of demographics.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Does this algorithm satisfy calibration?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The algorithm satisfies calibration if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = T | D = 0) = P(G = T | D = 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    P(G = T | D = 0)\\ &=\\ P(G = 1, T = 1 | D = 0) + P(G = 0, T = 0 | D = 0)\\\\\n    &= \\frac{0.28 + 0.21}{0.88} \\approx 0.56 \\\\\n     P(G = T | D = 1)\\ &=\\ P(G = 1, T = 1 | D = 1) + P(G = 0, T = 0 | D = 1)\\\\\n    &= \\frac{0.08 + 0.01}{0.12} = 0.75\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "No: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = T | D = 0)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ≠  ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = T | D = 1)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Fairness definition #3: Equality of Odds",
+       "type": "text"
+      },
+      {
+       "text": "\nAn algorithm satisfies “equality of odds” if the probability that the algorithm predicts a positive outcome (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "G=1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ") is the same regardless of demographics given that the outcome will occur (",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "T=1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ").",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": " Does this algorithm satisfy equality of odds?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The algorithm satisfies equality of odds if ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = 1 | D = 0, T = 1) = P(G = 1 | D = 1, T = 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n    P(G = 1 | D = 1, T = 1)\\\n    &= \\frac{P(G = 1 , D = 1, T = 1)}{P(D = 1, T = 1)}\\\\\n    &= \\frac{0.08}{0.08 + 0.02} = 0.8 \\\\\n    P(G = 1 | D = 0, T = 1)\\\n    &= \\frac{P(G = 1 , D = 0, T = 1)}{P(D = 0, T = 1)}\\\\\n    &= \\frac{0.28}{0.28 + 0.07} = 0.8\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Yes: ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = 1 | D = 0, T = 1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "P(G = 1 | D = 1, T = 1)"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Which of these definitions seems right to you? It turns out, it can actually be proven that these three cannot be jointly optimized, and this is called the Impossibility Theorem of Machine Fairness. In other words, any AI system we build will necessarily violate some notion of fairness. For a deeper treatment of the subject, here is a useful summary of the latest research ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://arxiv.org/pdf/2001.09784.pdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Pessach et al. Algorithmic Fairness",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Gender Shades",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In 2018, Joy Buolamwini and Timnit Gebru had a breakthrough result called “gender shades” published in the first conference on Fairness, Accountability and Transparency in ML [1]. They showed that facial recognition algorithms, which had been deployed to be used by Facebook, IBM and Microsoft, were substantially better at making predictions (in this case classifying gender) when looking at lighter skinned men than darker skinned women. Their work exposed several shortcomings in production AI: biased datasets, optimizing for average accuracy (which means that the majority demographic gets most weight), lack of awareness of intersectionality, and more. Let’s take a look at some of their results.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": "4369589f-eaee-4667-ac6f-74ab92527bca",
+    "naturalHeight": "788",
+    "naturalWidth": "1400",
+    "src": "https://firebasestorage.googleapis.com/v0/b/probabilityforcs.firebasestorage.app/o/uploads%2Fimages%2F4369589f-eaee-4667-ac6f-74ab92527bca?alt=media&token=3950daff-4fb7-4295-9a4a-899d6f728654",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "center"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Figure by Joy Buolamwini and Timnit Gebru. Facial recognition algorithms perform very differently depending on who they are looking at. ",
+     "type": "text"
+    },
+    {
+     "text": "[1]",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Timnit and Joy looked at three classifiers trained to predict gender, and computed several statistics. Let’s take a look at one statistic, accuracy, for one of the facial recognition classifiers, IBMs:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 561,
+    "sourceSha256": "004cecb0ab02fe15505bd48141ca705a0a99a2f55b1556de3dac8eb0a9f928ad"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Using the language of fairness, accuracy measures ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(G=T)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The cell in the table above under “Women” says the accuracy when looking at photos of women ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(G=T|D = \\text{Women})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". It is easy to show that these production level systems are terribly “uncalibrated”:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\p(G=T|D = \\text{Woman}) &\\neq \\p(G=T|D = \\text{Man})\\\\\n\\p(G=T|D = \\text{Lighter}) &\\neq \\p(G=T|D = \\text{Darker})\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Why should we care about calibration and not the other definitions of fairness? In this case the classifier was making a prediction of gender where a positive prediction (say predicting women) doesn’t have a directly associated reward as in our above example, where we were predicting if someone should receive a loan. As such the most salient idea is: is the algorithm just as accurate for different genders (calibration)?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 586,
+    "sourceSha256": "483d3563002e84c3c837049b264054116482cb18529fa3de47292cc66952a760"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If the algorithms were “fair” according to the calibration you would expect the accuracy to be the same regardless of demographics. Instead there is almost a 34.2 percentage point difference! ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(G=T|D = \\text{Darker Woman})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 65.3 compared to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\p(G=T|D = \\text{Lighter Man})"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " = 99.7",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "[1] ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Buolamwini, Gebru. Gender Shades. 2018",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Ways Forward?",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Wadsworth et al. ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "http://stanford.edu/~cpiech/bio/papers/fairnessAdversary.pdf",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Achieving Fairness through Adversarial Learning",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

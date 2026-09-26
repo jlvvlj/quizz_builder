@@ -1,0 +1,603 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Question from Fall 2022 Stanford Midterm",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We are going to build a Bayesian Viral Load Test which updates a belief distribution regarding a patient's viral load. Though viral load is continuous, in our test we represent it by discretizing the quantity into whole numbers between 0 and 99, inclusive. The units of viral load are the number of viral instances per million samples.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "If a person has a viral load of 9 (in other words, 9 viruses out of every 1 million samples) what is the probability that a random sample from the person is a virus?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\frac{9}{1,000,000}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "We test 100,000 samples from one person for the virus. If the person's true viral load is 9, what is the probability that exactly 1 of our 100,000 samples is a virus? Use a computationally efficient approximation to compute your answer. Your approximation should respect that there is 0 probability of getting negative virus samples.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let's define a random variable ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", the number of samples that are viral given the true viral load is 9. The question is asking for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\P(X=1)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We can think about this as a binomial process, where the number of trials is the number of samples and the probability is the probability that a sample is viral.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nn = 100,000,\\;\\; p = \\frac{9}{1,000,000}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Notice that ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is very small and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is very large, so we can use the Poisson approximation to approximate our answer. We find ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\lambda = np = 100,000 \\cdot 9/1,000,000 = 0.9"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", so ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X \\sim \\text{Poi}(\\lambda = 0.9)"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". The last step is to use the PMF of the Poisson distribution.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X = 1) = \\frac{(0.9)^1 e^{-0.9}}{1!}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Based on what we know about a patient (their symptoms and personal history) we have encoded a prior belief in a list ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "prior",
+     "type": "text"
+    },
+    {
+     "text": " where ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "prior[i]",
+     "type": "text"
+    },
+    {
+     "text": " is the probability that the viral load equals ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      },
+      {
+       "attrs": {
+        "style": "rgb(232, 62, 140)"
+       },
+       "type": "code"
+      }
+     ],
+     "text": "prior",
+     "type": "text"
+    },
+    {
+     "text": " is of length 100 and has keys 0 through 99.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "justify"
+   },
+   "content": [
+    {
+     "text": "Write an equation for the updated probability that the true viral load is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " given that we observe a count of 1 virus sample out of 100,000 tested. Recall that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "0 \\leq i \\leq 99"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". You may use approximations.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "V"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the viral load of the patient.",
+       "type": "text"
+      },
+      {
+       "type": "hardBreak"
+      },
+      {
+       "text": "Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be the observed samples that are viral out of 100,000",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "We want to find",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n    \\P(V= i | X = 1)\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "We can apply Bayes Rule to get ",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n   \\P(V= i | X = 1) = \\frac{\\P(X=1 | V = i) \\cdot \\P(V = i)}{\\P(X = 1)}\n\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "If we know the true viral load, we know the probability of each sample being viral. As such ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " is a binomial:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nX \\sim \\Bin(n=100000,\\;\\; p = \\frac{i}{1000000})\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "We can approximate ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "X"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": "as a Poisson! Let ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " be ",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "attrs": {
+          "color": "rgb(33, 37, 41)"
+         },
+         "type": "textStyle"
+        }
+       ],
+       "text": " approximation to a binomial with ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n=100000"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "p = \\frac{i}{1000000}"
+       },
+       "type": "math_inline"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\lambda = np = 100000 \\cdot \\frac{i}{1000000} = \\frac{i}{10}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "So ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " can be written as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "Y\\sim \\Poi(\\lambda = \\frac{i}{10})"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Now we can solve for the first term in our Bayes Rule expression:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nP(X=1|V=i) &\\approx P(Y=1|V=i)\\\\\n&\\approx \\frac{\\frac{i}{10}e^{\\frac{-i}{10}}}{1!} \\\\\n&= \\frac{i}{10}e^{\\frac{-i}{10}}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Lets plug that result in:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n   \\P&(V= i | X = 1) \\\\\n   &= \\frac{\\P(X=1 | V = i) \\cdot \\P(V = i)}{\\P(X = 1)}\\\\\n   &= \\frac{\\frac{i}{10}e^{-\\frac{i}{10}} \\cdot \\P(V = i)}{\\P(X=1)}\\\\\n   &= \\frac{\\frac{i}{10}e^{-\\frac{i}{10}} \\cdot \\texttt{prior[i]}}{\\P(X=1)}\\\\\n   &= \\frac{\\frac{i}{10}e^{-\\frac{i}{10}} \\cdot \\texttt{prior[i]}}{\n   \\sum\\limits_{j=0}^{99} \\frac{j}{10}e^{-\\frac{j}{10}} \\cdot \\texttt{prior[j]}\n   }\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Note the last line uses the general law of total probability",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

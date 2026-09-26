@@ -1,0 +1,676 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Have you ever wondered how this works?",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import random\n\nfor i in range(10):\n    # generate a random uniform(0, 1)\n    x = random.random()\n    print(x)",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "You have likely used code like ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "random.random()",
+     "type": "text"
+    },
+    {
+     "text": ". In this chapter we are going to cover how it is implemented.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Python (as well as many modern programming languages) use the Mersenne Twister algorithm to create random bit strings, which can then be turned in random integers in a range, real valued numbers, or random selections from a list. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "mersenne-twister",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Mersenne Twister",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Mersenne Twister (MT) is one of the most commonly used pseudo-random number generators (PRNGs) in modern computing. All PRNGs have a \"period\" which is the number of random numbers generated before the random number generator starts producing an already produced sequence. Developed in 1997 by Makoto Matsumoto and Takuji Nishimura, the Mersenne Twister name comes from the fact that its period length is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "2^{19937} - 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", a ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://en.wikipedia.org/wiki/Mersenne_prime",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "Mersenne prime",
+     "type": "text"
+    },
+    {
+     "text": ". This enormous period ensures that the sequence of numbers generated takes a very long time before it repeats. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Key Characteristics",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Long Period: MT has a period of ",
+         "type": "text"
+        },
+        {
+         "attrs": {
+          "showEditor": false,
+          "value": "2^{19937} - 1"
+         },
+         "type": "math_inline"
+        },
+        {
+         "text": ", which is significantly longer than most older PRNGs.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Speed: It can be implemented efficiently in software, providing fast generation of random numbers.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Good Statistical Properties: It passes numerous statistical randomness tests (e.g., ",
+         "type": "text"
+        },
+        {
+         "marks": [
+          {
+           "attrs": {
+            "class": null,
+            "href": "https://en.wikipedia.org/wiki/Diehard_tests",
+            "rel": "noopener noreferrer nofollow",
+            "target": "_blank"
+           },
+           "type": "link"
+          }
+         ],
+         "text": "Diehard tests",
+         "type": "text"
+        },
+        {
+         "text": ").",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "Overview of The Mersenne Twister",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The Mersenne Twister",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": " ",
+     "type": "text"
+    },
+    {
+     "text": "works by keeping an internal “state array” of 624 32-bit numbers. You (or your programming language’s RNG) provide an initial seed. A loop runs through indices 1 to 623, deriving each new value in the initial state array from the previous one. After this loop, the state array of 624 32-bit integers is fully populated. Before the values are used they are twisted.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Twist Step",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The algorithm gets its name from a recurrence relation to “twist” the current state array into a new state array. Essentially, for each index, it looks at elements in triplets (for instance, ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "state[i]",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "state[i+1]",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "state[i+325]",
+     "type": "text"
+    },
+    {
+     "text": ") and combines them to produce a new number that will occupy ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "state[i]",
+     "type": "text"
+    },
+    {
+     "text": " in the next generation.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "Generating a random value",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "start": "1"
+   },
+   "content": [
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Extract a Number (Tempering Step)",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      },
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "From the state array, one 32-bit number is selected as the next random output. This output is then “tempered”—some bits are mixed around with XOR and shifts to improve the distribution of the final output. The algorithm keeps track of a state position so that next time it will start with a different value from the state array. Once the algorithm has used up all 624 positions, it goes through a “twist” step to refresh all 624 numbers, ensuring a large period before the sequence repeats.",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    },
+    {
+     "content": [
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Creating the Desired Type of Random",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      },
+      {
+       "attrs": {
+        "textAlign": "left"
+       },
+       "content": [
+        {
+         "text": "Python then does extra processing to turn random bits into the desired format (eg to make a random uniform it gets two 32 bit numbers, combines them, and then divides by the largest value a double can store. ",
+         "type": "text"
+        }
+       ],
+       "type": "paragraph"
+      }
+     ],
+     "type": "listItem"
+    }
+   ],
+   "type": "orderedList"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "If you want to see more details, here is a wonderful video:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.youtube.com/watch?v=QTk2AxzZYfc",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "https://www.youtube.com/watch?v=QTk2AxzZYfc",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "predicting-pseudo-random-number-values",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Predicting Pseudo Random Number Values",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "One of the biggest problems with Psuedo Random Numbers is that they are deterministic. For older random number generators (before 1997) if you observed a single random number generation, you could have a really good idea about what values could come next. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "While the Mersenne Twister is excellent for simulations, modeling, and other applications where statistical randomness is sufficient, it is not cryptographically secure. Once 624 consecutive 32-bit outputs are observed (the size of the state array list), the next outputs can be predicted, even if you don't know the seed. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "This code uses a public library called RandCrack. After observing 624 values, it can start to predict the result of your next call to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "style": null
+       },
+       "type": "code"
+      }
+     ],
+     "text": "random.random()",
+     "type": "text"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "language": "python"
+   },
+   "content": [
+    {
+     "text": "import random\nimport math\nfrom randcrack import RandCrack\n\n# the largest number in a 32 bit integer\nlargest_32_bit_num = math.pow(2, 32) - 1\n# the length of the Mersenne Twister state\nmersenne_twister_length = 624\n\ndef main():\n    # 1) Create RandCrack and observe 624 consecutive 32-bit outputs\n    #    so it can reconstruct the Mersenne Twister state.\n    rand_crack = RandCrack()\n    for _ in range(mersenne_twister_length):\n        observed_random_value = random.getrandbits(32)\n        rand_crack.submit(observed_random_value)\n\n    # 2) Now you can predict the results of random.random\n    print(\"Predicting ten random.random() call:\\n\")\n    for i in range(10):\n        predicted_float = predict_random_float(rand_crack)\n        actual_float = random.random()\n        print(\"Predicted float:\", predicted_float)\n        print(\"Actual float:   \", actual_float)\n        print(\"\")\n        \ndef predict_random_float(rand_crack):\n    \"\"\"\n    Predict the next random.random() using RandCrack.\n    We need to predict the next two random 32-bit bitstrings produced \n    by the random library. Then we need to reproduce how python creates \n    Python's random.random() consumes two 32-bit outputs internally.\n    \"\"\"\n    # 1. predict the next two 32 bit values produced by the PRNG\n    a = rand_crack.predict_randrange(0, largest_32_bit_num)\n    b = rand_crack.predict_randrange(0, largest_32_bit_num)\n\n    # 2. combine the two 32 bit values to predict the next Uni(0,1)\n    # python 3.11 implementation of random.random()\n    partA = a // 32\n    partA *= int(math.pow(2, 26))\n    partB = b // 64\n    \n    # double precision floats have 53 bits for the significand\n    return (partA | partB) / math.pow(2, 53)\n\nif __name__ == \"__main__\":\n    main()",
+     "type": "text"
+    }
+   ],
+   "type": "codeBlock"
+  },
+  {
+   "attrs": {
+    "id": "true-random-number-generators",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "True Random Number Generators",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For cryptographic solutions, the \"predictable\" nature of pseudo random number generators can be a huge issue. As such, companies that need unpredictable random numbers use many creative solutions. A fun one used in the real world every day is based on Lava Lamps!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "CloudFlare, a company that provides web security, uses a camera pointed at a wall of Lava Lamps:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "align": "center",
+    "id": null,
+    "naturalHeight": null,
+    "naturalWidth": null,
+    "src": "https://static1.xdaimages.com/wordpress/wp-content/uploads/2023/03/cloudflare-wall-of-entropy.jpg",
+    "widthPct": "100"
+   },
+   "type": "kindImage"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "It takes the pixel values of the camera and use it to create a \"true\" random number generation.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "There are other sources of random numbers: eg the precision bits on human movements of things like a mouse, or even background random noise.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Here is another great video on True Random Number Generators",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://www.youtube.com/watch?v=1cuufmeoijg",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "https://www.youtube.com/watch?v=1cUUfMeOijg",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  }
+ ],
+ "type": "doc"
+}

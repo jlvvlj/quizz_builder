@@ -1,0 +1,2395 @@
+{
+ "content": [
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this chapter, we explore a striking and elegant proof of the Central Limit Theorem (CLT) attributed to Terrence Tao. The key idea is called the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "moment method",
+     "type": "text"
+    },
+    {
+     "text": ". This approach shows that, by examining all moments of appropriately normalized sums of independent and identically distributed (iid) random variables, those moments match precisely with the moments of a Gaussian distribution. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For any random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the moments of that random variable (eg ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^3]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\dots"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") are a finger print of the random variable. If you show that two random variables have the same value for every moment ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^k]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then it must be the case that the two random variables also have the same probability density function.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this proof we are going to focus on showing that the sum of IID random variables with mean 0 and standard deviation 1 indeed converges to a normal distribution. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1, X_2, \\ldots, X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be iid. Define the sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S_N = X_1 + X_2 + \\cdots + X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The normalized random variable of interest is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = \\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We will compare the distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to that of a standard normal variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Below is a brief comparison of the first few moments of a standard Gaussian ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with the corresponding limiting moments ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We are going to prove that these moments match for all values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", as long as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N \\to \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1053,
+    "sourceSha256": "d9fb32031202390f8740eaabcd4f09189ab913c4928accb0dcafc5f89b60b6a9"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": "outline",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Outline of the proof",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "1) We first define the special double factorial sequence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "2) Next, we show how this sequence arises as the moments of a standard Gaussian.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "3) Then, we look at the moments of the normalized sum of iid variables and see that, for large numbers of summands, these moments approximate the same double factorial pattern.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Double Factorial Sequence",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A double factorial with an odd argument, denoted ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", is a product of all odd numbers down to 1 from n. For instance, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "7!! = 7 \\times 5 \\times 3 \\times 1 = 105"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "5!! = 5 \\times 3 \\times 1 = 15"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We can construct a sequence ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " by setting it to be ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(k-1)!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " when k is even, and 0 when k is odd. Symbolically, for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k \\ge 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nD_k = \\begin{cases}\n(k - 1)!!, & k \\text{ even}, \\\\\n0, & k \\text{ odd}.\n\\end{cases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "One reason this sequence is so fundamental in our discussion is that it counts the number of pair partitions of k labeled items. With k items, if k is even, you can form exactly ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(k-1)!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ways to partition them into pairs; if k is odd, no perfect pairing is possible, hence zero.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "gaussian-moments",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Moments of the Standard Normal",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "TODO, clean up this section. Do not use \\mathbb for expectation. Make things as clear as possible, especially in the section on integration by parts...",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We examine a standard Gaussian (or normal) random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with mean 0 and variance 1, ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z \\sim N(\\mu=0, \\sigma^2=1)"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with probability density function ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "f(Z=x) = \\frac{1}{\\sqrt{2\\pi}} e^{-(1/2)x^2}."
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " The k-th moment is defined via the law of the unconscious statistician to be:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nE[Z^k] &= \\int\\limits_{-\\infty}^{\\infty} x^k \\cdot f(Z=x) \\, dx \\\\\n&=\\int\\limits_{-\\infty}^{\\infty} x^k \\cdot \\frac{1}{\\sqrt{2\\pi}} e^{-\\frac{x^2}{2}} \\, dx \\\\\n&=\\frac{1}{\\sqrt{2\\pi}} \\int\\limits_{-\\infty}^{\\infty} x^k \\cdot e^{-\\frac{x^2}{2}} \\, dx \\\\\n&=\\frac{1}{\\sqrt{2\\pi}} I_k  && \\text{s.t. } I_k = \\int\\limits_{-\\infty}^{\\infty} x^k \\cdot e^{-\\frac{x^2}{2}} \n\n\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The key result is that for even ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the moment ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Z^k]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " equals ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and for odd ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", it is zero. In other words, it matches precisely the sequence ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D_k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". One way to see this is via integration by parts. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "Integration by Parts of the ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": "th",
+       "type": "text"
+      },
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": " moment of a Standard Normal",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Choose:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nu = x^{k-1},\n\n\\quad\n\ndv = x \\, e^{-\\frac{x^2}{2}}\\,dx.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Then",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\ndu = (k-1)\\,x^{k-2}\\,dx,\n\n\\quad\n\nv = \\int x\\,e^{-\\frac{x^2}{2}}\\,dx.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Observe that:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int x\\,e^{-\\frac{x^2}{2}}\\,dx\n\n= - e^{-\\frac{x^2}{2}},\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Since differentiating ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "- e^{-\\frac{x^2}{2}}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " yields ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "x\\,e^{-\\frac{x^2}{2}}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". So",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nv = -e^{-\\frac{x^2}{2}}.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "Now apply integration by parts:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n&\\int_{-\\infty}^\\infty x^{k-1}\n\n\\Bigl(x e^{-\\frac{x^2}{2}}\\Bigr)\\,dx \\\\\n&=\n\n\\Bigl[\\,x^{k-1}\\,(-e^{-\\frac{x^2}{2}})\\Bigr]{-\\infty}^\\infty\n\n\\;-\\;\n\n\\int{-\\infty}^\\infty (-e^{-\\frac{x^2}{2}})\n\n\\,\\bigl[(k-1)x^{k-2}\\bigr]\\,dx.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "The boundary term ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "\\bigl[x^{k-1}(-e^{-x^2/2})\\bigr]_{-\\infty}^\\infty"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " vanishes because ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "e^{-x^2/2}"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " goes to 0 very quickly as ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "|x|\\to\\infty"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". Thus,",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\n\\int_{-\\infty}^\\infty x^k e^{-\\frac{x^2}{2}}\\,dx\n\n\\;=\\;\n\n(k-1)\\int_{-\\infty}^\\infty x^{k-2}\\,e^{-\\frac{x^2}{2}}\\,dx.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "In other words:",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nI_k\n\n\\;=\\;\n\n(k-1)\\,I_{k-2}.\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Performing this integral using integration by parts (see above) provides us with this really interesting result:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nI_k = (k-1) I_{k-2},\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "which, upon normalization by the constant ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{2\\pi}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the denominator, leads exactly to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Z^k] = (k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for even ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "When ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k=1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then by definition ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Z]=0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " since the mean of the standard normal is zero. Using the recurrence relationship ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I_k = (k=1) I_{k-2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", you can deduce that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[Z^k]=0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for all odd values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "moments-sums",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Moments of Normalized Sums",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Our next step is to show that you get the same moments when you consider the sum of IID random variables!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " copies of a mean-zero, unit-variance random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1, X_2, \\ldots, X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", each with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[X_i] = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\text{Var}(X) = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We further assume independence. Define the sum:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nS_N = X_1 + X_2 + \\cdots + X_N.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We scale by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{N}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", because the variance of the sum grows linearly with N; dividing by the square root of N keeps the resulting variance from blowing up. Hence, the meaningful “normalization” is by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{N}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "The statement of the CLT is that as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N \\to \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the normalized sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " converges in distribution to a Gaussian. The moment method shows this by comparing all moments of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to the Gaussian's moments.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\mathbb{E}\\Big[\\big(\\tfrac{S_N}{\\sqrt{N}}\\big)^k\\Big] = \\frac{1}{N^{k/2}}\\,E\\big[S_N^k\\big].\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We expand ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(X_1 + \\cdots + X_N)^k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and group terms by whether they share indices. Terms that involve one of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to an odd power alone have zero expectation, due to mean zero. Other combinations may have small or large contributions, but the largest contributions for big N come from grouping factors in pairs (because those yield nonzero expected values and contribute a factor of N^... as we will see).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A key combinatorial observation: surviving terms in the expansion are precisely those where the exponents of each distinct index come in pairs. For even k, this lines up with the partition of k labels into pairs; for odd k, there is no complete pairing and the limit of the moment goes to 0. In essence, after normalizing by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N^{k/2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the number of ways to choose index-pairs that survive converges to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", matching the Gaussian's k-th moment for even k.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Number of Pair Partitions",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can connect this to our counting and combinatorics knowledge. Recall from the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/counting#counting-with-steps",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "counting",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/combinatorics",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "combinatorics",
+     "type": "text"
+    },
+    {
+     "text": " chapters that pairing objects (such as indices in an expansion) often involves either step-by-step enumerations or partitioning sets. Here, we specifically use the fact that each time we find pair partitions, it corresponds to those terms that survive in the moment expansions. Counting the number of such pairings is essentially counting the ways to group nodes in pairs—an instance of combinatorial partitioning logic. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Below is a small interactive snippet illustrating pair partitions for some k. Each partition of k items into pairs will correspond to how indices line up in the expansion:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 941,
+    "sourceSha256": "85bea853dca83388795a9ba7588223cb12259bba02e22b981e12d4c1bef103da"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The table above shows how (k-1)!! emerges for even k. For instance, when k=2, there is exactly 1 pair partition; when k=4, there are 3 ways to pair up 4 items, matching 3 = (4-1)!!; and so on. This perfectly parallels which terms in the expansion of (X₁+...+Xₙ)^k survive, since each variable must appear an even number of times for the expectation not to vanish.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "conclusion",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conclusion: Matching Moments and the CLT",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "By analyzing each moment of the normalized sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and showing it converges to the same value as the corresponding moment of a standard Gaussian, we get what is known as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "moment\\,convergence"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Under suitable technical assumptions (such as all moments existing and some boundedness criteria), moment convergence implies that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " converges to the Gaussian distribution in the sense of distribution (i.e., distribution functions converge). This is the essence of the Central Limit Theorem. In short, any reasonable iid mean-zero, variance-one variables, when summed in large numbers and rescaled, will produce a Gaussian shape.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Thus,} \\quad \\frac{1}{N^{k/2}}\\,\\mathbb{E}\\big[S_N^k\\big]\\;\\longrightarrow\\;\\mathbb{E}[Z^k]=D_k,\\quad \\text{as }N\\to\\infty.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The moment method offers a combinatorial perspective on why the bell curve emerges so universally. Double factorials count pairings, while Gaussian integrals lead to those exact same numerical values for even-powered moments. Whether you’re summing dice outcomes, coin flips, or any other iid process (with suitable finite variance), the final distributions get forced into that iconic bell shape. Terence Tao’s elegant proof shows that this doesn’t rely on complicated transforms or convolution arguments alone: it emerges from the straightforward counting of moments and the combinatorics of pair partitions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "clt_proof",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "id": "clt_proof",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Central Limit Theorem via the Moment Method",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this chapter, we explore a striking and elegant proof of the Central Limit Theorem (CLT) attributed to Terrence Tao. The key idea is called the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "italic"
+      }
+     ],
+     "text": "moment method",
+     "type": "text"
+    },
+    {
+     "text": ". This approach shows that, by examining all moments of appropriately normalized sums of independent and identically distributed (iid) random variables, those moments match precisely with the moments of a Gaussian distribution. Over many steps, we discover that these sums inevitably tend toward a bell-curve shape. A central ingredient in this argument is a particular sequence of numbers related to ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "type": "bold"
+      }
+     ],
+     "text": "double factorials (!!)",
+     "type": "text"
+    },
+    {
+     "text": ", which appear in the formula for Gaussian moments and also appear combinatorially when we expand the powers of sums.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "For any random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the moments of that random variable (eg ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^2]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^3]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\dots"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ") are a finger print of the random variable. If you show that two random variables have the same value for every moment ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "E[X^k]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " then it must be the case that the two random variables also have the same probability density function.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "In this proof we are going to focus on showing that the sum of IID random variables with mean 0 and standard deviation 1 indeed converges to a normal distribution. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1, X_2, \\ldots, X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " be iid, each with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[X_i] = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[X_i^2] = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Define the sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "S_N = X_1 + X_2 + \\cdots + X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". The normalized random variable of interest is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X = \\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We will compare the distribution of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to that of a standard normal variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Below is a brief comparison of the first few moments of a standard Gaussian ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with the corresponding limiting moments ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We are going to prove that these moments match for all values of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", as long as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N \\to \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Below, we have extended our table to go up to k = 8.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 1053,
+    "sourceSha256": "d9fb32031202390f8740eaabcd4f09189ab913c4928accb0dcafc5f89b60b6a9"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "id": "outline",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Outline of the proof",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "1) We first define the special double factorial sequence. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "2) Next, we show how this sequence arises as the moments of a standard Gaussian.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "3) Then, we look at the moments of the normalized sum of iid variables and see that, for large numbers of summands, these moments approximate the same double factorial pattern.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "content": [
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "marks": [
+        {
+         "type": "bold"
+        }
+       ],
+       "text": "The Double Factorial Sequence",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "A double factorial with an odd argument, denoted ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "n!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ", is a product of all odd numbers down to 1 from n. For instance, ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "7!! = 7 \\times 5 \\times 3 \\times 1 = 105"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " and ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "5!! = 5 \\times 3 \\times 1 = 15"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ". We can construct a sequence ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "D_k"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " by setting it to be ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(k-1)!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " when k is even, and 0 when k is odd. Symbolically, for ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "k \\ge 1"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": ":",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    },
+    {
+     "attrs": {
+      "rawTex": "\\begin{aligned}\nD_k = \\begin{cases}\n(k - 1)!!, & k \\text{ even}, \\\\\n0, & k \\text{ odd}.\n\\end{cases}\n\\end{aligned}"
+     },
+     "type": "block-tex"
+    },
+    {
+     "attrs": {
+      "textAlign": "left"
+     },
+     "content": [
+      {
+       "text": "One reason this sequence is so fundamental in our discussion is that it counts the number of pair partitions of k labeled items. With k items, if k is even, you can form exactly ",
+       "type": "text"
+      },
+      {
+       "attrs": {
+        "showEditor": false,
+        "value": "(k-1)!!"
+       },
+       "type": "math_inline"
+      },
+      {
+       "text": " ways to partition them into pairs; if k is odd, no perfect pairing is possible, hence zero.",
+       "type": "text"
+      }
+     ],
+     "type": "paragraph"
+    }
+   ],
+   "type": "borderedBox"
+  },
+  {
+   "attrs": {
+    "id": "gaussian-moments",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Gaussian Moments and Double Factorials",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We examine a standard Gaussian (or normal) random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "Z"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " with mean 0 and variance 1. Its probability density function is ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "p_Z(x) = \\frac{1}{\\sqrt{2\\pi}} e^{-(1/2)x^2}."
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " The k-th moment is defined via the law of the unconscious statistician, i.e.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\mathbb{E}[Z^k] = \\int_{-\\infty}^{\\infty} x^k p_Z(x) \\, dx.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The key result is that for even k, the moment ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[Z^k]"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " equals ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", and for odd k, it is zero. In other words, it matches precisely the sequence ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "D_k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". One way to see this is via integration by parts. For example, if we let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "k \\ge 2"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", then we can use:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\mathbb{E}[Z^k] = \\int_{-\\infty}^{\\infty} x^k \\frac{1}{\\sqrt{2\\pi}} e^{-\\tfrac{1}{2} x^2} \\, dx.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can outline the integration by parts more explicitly. Let ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "I_k = \\int_{-\\infty}^{\\infty} x^k e^{-\\tfrac{1}{2} x^2} \\, dx"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Differentiating inside the integral—and carefully grouping factors—gives us a recursion:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nI_k = (k-1) I_{k-2},\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "which, upon normalization by the constant ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{2\\pi}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " in the denominator, leads exactly to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[Z^k] = (k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " for even k and 0 for odd k. Furthermore, the symmetry about zero of the Gaussian ensures that all odd-powered integrals vanish, reinforcing the recursion approach.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "moments-sums",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Moments of Normalized Sums",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Our next step is to show that you get the same moments when you consider the sum of IID random variables!",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Consider N copies of a mean-zero, unit-variance random variable ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_1, X_2, \\ldots, X_N"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", each with ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[X_i] = 0"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\mathbb{E}[X_i^2] = 1"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". We further assume independence. Define the sum:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\nS_N = X_1 + X_2 + \\cdots + X_N.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We scale by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{N}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", because the variance of the sum grows linearly with N; dividing by the square root of N keeps the resulting variance from blowing up. (If instead you divided by N, you’d get a random variable of variance 1/N times the sum's variance, which goes to 0.) Hence, the meaningful “normalization” is by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\sqrt{N}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ".",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": ""
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": "The statement of the CLT is that as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N \\to \\infty"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the normalized sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " converges in distribution to a Gaussian. The moment method shows this by comparing all moments of ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to the Gaussian's moments.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\mathbb{E}\\Big[\\big(\\tfrac{S_N}{\\sqrt{N}}\\big)^k\\Big] = \\frac{1}{N^{k/2}}\\,\\mathbb{E}\\big[S_N^k\\big].\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We expand ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(X_1 + \\cdots + X_N)^k"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and group terms by whether they share indices. Terms that involve one of the ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "X_i"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " to an odd power alone have zero expectation, due to mean zero. Other combinations may have small or large contributions, but the largest contributions for big N come from grouping factors in pairs (because those yield nonzero expected values and contribute a factor of N^... as we will see).",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "A key combinatorial observation: surviving terms in the expansion are precisely those where the exponents of each distinct index come in pairs. For even k, this lines up with the partition of k labels into pairs; for odd k, there is no complete pairing and the limit of the moment goes to 0. In essence, after normalizing by ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "N^{k/2}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", the number of ways to choose index-pairs that survive converges to ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "(k-1)!!"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ", matching the Gaussian's k-th moment for even k.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": null,
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Number of Pair Partitions",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "We can connect this to our counting and combinatorics knowledge. Recall from the ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/counting#counting-with-steps",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "counting",
+     "type": "text"
+    },
+    {
+     "text": " and ",
+     "type": "text"
+    },
+    {
+     "marks": [
+      {
+       "attrs": {
+        "class": null,
+        "href": "https://{{pathToRoot}}/combinatorics",
+        "rel": "noopener noreferrer nofollow",
+        "target": "_blank"
+       },
+       "type": "link"
+      }
+     ],
+     "text": "combinatorics",
+     "type": "text"
+    },
+    {
+     "text": " chapters that pairing objects (such as indices in an expansion) often involves either step-by-step enumerations or partitioning sets. Here, we specifically use the fact that each time we find pair partitions, it corresponds to those terms that survive in the moment expansions. Counting the number of such pairings is essentially counting the ways to group nodes in pairs—an instance of combinatorial partitioning logic. ",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Below is a small interactive snippet illustrating pair partitions for some k. Each partition of k items into pairs will correspond to how indices line up in the expansion:",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "sourceBytes": 941,
+    "sourceSha256": "85bea853dca83388795a9ba7588223cb12259bba02e22b981e12d4c1bef103da"
+   },
+   "type": "interactive-demo"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The table above shows how (k-1)!! emerges for even k. For instance, when k=2, there is exactly 1 pair partition; when k=4, there are 3 ways to pair up 4 items, matching 3 = (4-1)!!; and so on. This perfectly parallels which terms in the expansion of (X₁+...+Xₙ)^k survive, since each variable must appear an even number of times for the expectation not to vanish.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "conclusion",
+    "level": "3",
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "Conclusion: Matching Moments and the CLT",
+     "type": "text"
+    }
+   ],
+   "type": "heading"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "By analyzing each moment of the normalized sum ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " and showing it converges to the same value as the corresponding moment of a standard Gaussian, we get what is known as ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "moment\\,convergence"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": ". Under suitable technical assumptions (such as all moments existing and some boundedness criteria), moment convergence implies that ",
+     "type": "text"
+    },
+    {
+     "attrs": {
+      "showEditor": false,
+      "value": "\\frac{S_N}{\\sqrt{N}}"
+     },
+     "type": "math_inline"
+    },
+    {
+     "text": " converges to the Gaussian distribution in the sense of distribution (i.e., distribution functions converge). This is the essence of the Central Limit Theorem. In short, any reasonable iid mean-zero, variance-one variables, when summed in large numbers and rescaled, will produce a Gaussian shape.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "rawTex": "\\begin{aligned}\n\\text{Thus,} \\quad \\frac{1}{N^{k/2}}\\,\\mathbb{E}\\big[S_N^k\\big]\\;\\longrightarrow\\;\\mathbb{E}[Z^k]=D_k,\\quad \\text{as }N\\to\\infty.\n\\end{aligned}"
+   },
+   "type": "block-tex"
+  },
+  {
+   "attrs": {
+    "textAlign": "left"
+   },
+   "content": [
+    {
+     "text": "The moment method offers a combinatorial perspective on why the bell curve emerges so universally. Double factorials count pairings, while Gaussian integrals lead to those exact same numerical values for even-powered moments. Whether you’re summing dice outcomes, coin flips, or any other iid process (with suitable finite variance), the final distributions get forced into that iconic bell shape. Terence Tao’s elegant proof shows that this doesn’t rely on complicated transforms or convolution arguments alone: it emerges from the straightforward counting of moments and the combinatorics of pair partitions.",
+     "type": "text"
+    }
+   ],
+   "type": "paragraph"
+  },
+  {
+   "attrs": {
+    "id": "clt_proof",
+    "level": "2",
+    "textAlign": "left"
+   },
+   "type": "heading"
+  }
+ ],
+ "type": "doc"
+}
