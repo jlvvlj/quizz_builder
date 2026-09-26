@@ -263,6 +263,11 @@ export function describeTerm(symbol: string, context = '', expression = '', deta
   const counting=/counting|combinatorics|poker/.test(context);
   const inclusion=/prob-or-inclusion-exclusion/.test(context);
   if(s==='S') return 'Sample space S: the set of every possible outcome of the experiment.';
+  if(/serendipity/.test(context)) {
+   if(s==='p') return 'p: the total population, everyone you could possibly see.';
+   if(s==='f') return 'f: the number of your friends in the population.';
+   if(s==='s') return 's: the number of people you see.';
+  }
   if(/^(.+)(\^\(C\)|ᶜ)$/.test(s)) return `Complement of ${s.replace(/(\^\(C\)|ᶜ)$/,'')}: every outcome in the sample space that is not in it.`;
   if(/random-walks/.test(context) && /^[ACGT][₀-₉ᵢₙ]+$/.test(s)) return `${s}: the event that the DNA letter after mutation step ${s.slice(1).replace(/[₀-₉]/g,d=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(d).toString()).replace('ᵢ','i').replace('ₙ','n')} is ${s[0]}.`;
   if(/random-walks/.test(context) && /^N[₀-₉ᵢₙ+]+$/.test(s)) return `${s}: the event that the DNA letter at this step is N, which stands for any of A, C, G, or T.`;

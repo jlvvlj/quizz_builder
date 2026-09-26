@@ -59,7 +59,7 @@ Probabilities and percentages: You might hear people refer to a probability as a
 
 
 @@ probability-simulating-probability | 1.1 | Simulating Probability | subsection | probability
-Consider the probability of rolling a "5" or a "6" on a fair six-sided dice. The definition of probability above says that: if you were to keep rolling a dice, as the number of times you roll, $n$, approaches infinity the ratio of the count of times you saw an outcome of either a 5 or a 6 to the number of rolls, will approach the true probability of the event that you get a 5 or a 6. Lets take it out for a spin. When you hit the "Start Rolling" button we will start simulating dice rolls. You can speed up the simulation to try to see what happens after thousands of rolls. Notice how the estimated probability approaches the 2/6 = 0.33 repeating....
+Consider the probability of rolling a "5" or a "6" on a fair six-sided dice. The definition of probability above says that: if you were to keep rolling a dice, as the number of times you roll, $n$, approaches infinity the ratio of the count of times you saw an outcome of either a 5 or a 6 to the number of rolls, will approach the true probability of the event that you get a 5 or a 6. Lets take it out for a spin. When you hit the "Start rolling" button we will start simulating dice rolls. You can speed up the simulation to try to see what happens after thousands of rolls. Notice how the estimated probability approaches the 2/6 = 0.33 repeating....
 
 Define: Event $E$ is the event that you roll either a 5 or a 6 on a six-sided dice:
 
@@ -137,12 +137,7 @@ You could define your sample space to be all the possible sum values of two dice
 
 Consider the sample space from the previous section where we thought of the dice as distinct and enumerated all of the outcomes in the sample space. The first number is the roll on die 1 and the second number is the roll on die 2. Note that (1, 2) is distinct from (2, 1). Since each outcome is equally likely, and the sample space has exactly 36 outcomes, the likelihood of any one outcome is $\frac{1}{36}$. Here is a visualization of all outcomes:
 
-(1,1) (1,2) (1,3) (1,4) (1,5) (1,6)
-(2,1) (2,2) (2,3) (2,4) (2,5) (2,6)
-(3,1) (3,2) (3,3) (3,4) (3,5) (3,6)
-(4,1) (4,2) (4,3) (4,4) (4,5) (4,6)
-(5,1) (5,2) (5,3) (5,4) (5,5) (5,6)
-(6,1) (6,2) (6,3) (6,4) (6,5) (6,6)
+@interactive equally-likely-1
 
 The event (sum of dice is 7) is the subset of the sample space where the sum of the two dice is 7. Each outcome in the event is highlighted in blue. There are 6 such outcomes: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1). Notice that (1, 6) is a different outcome than (6, 1). To make the outcomes equally likely we had to make the dice distinct.
 
@@ -164,7 +159,11 @@ Here are some basic truths about probabilities that we accept as axioms:
 
 > Definition: Axioms of Probability
 
-@interactive axioms-1
+| Axiom | What it says |
+|---|---|
+| Axiom 1: $0 \le P(E) \le 1$ | All probabilities are numbers between 0 and 1. |
+| Axiom 2: $P(S) = 1$ | All outcomes must be from the sample space. |
+| Axiom 3: if $E$ and $F$ are mutually exclusive, then $P(E \text{ or } F) = P(E) + P(F)$ | The probability of “or” for mutually exclusive events. |
 
 @endcard
 
@@ -184,7 +183,10 @@ Here are two equations which can be directly proved given the three axioms given
 
 > Two identities
 
-@interactive axioms-2
+| Identity | What it says |
+|---|---|
+| Identity 1: $P(E^C) = 1 - P(E)$ | The probability of event $E$ not happening. |
+| Identity 2: if $E \subseteq F$, then $P(E) \le P(F)$ | Events which are subsets. |
 
 @endcard
 
@@ -400,7 +402,12 @@ Why do some probabilities go up, some probabilities go down, and some probabilit
 @@ cond-prob-the-conditional-paradigm | 1.5 | The Conditional Paradigm | subsection | cond_prob
 When you condition on an event you enter the universe where that event has taken place. In that new universe all the laws of probability still hold. Thus, as long as you condition consistently on the same event, every one of the tools we have learned still apply. Let’s look at a few of our old friends when we condition consistently on an event (in this case $G$):
 
-@interactive cond-prob-3
+| Name of rule | Original rule | Rule conditioned on $G$ |
+|---|---|---|
+| Axiom of probability 1 | $0 \le P(E) \le 1$ | $0 \le P(E|G) \le 1$ |
+| Axiom of probability 2 | $P(S) = 1$ | $P(S|G) = 1$ |
+| Axiom of probability 3 | $P(E \text{ or } F) = P(E) + P(F)$ for mutually exclusive events | $P(E \text{ or } F|G) = P(E|G) + P(F|G)$ for mutually exclusive events |
+| Identity 1 | $P(E^C) = 1 - P(E)$ | $P(E^C|G) = 1 - P(E|G)$ |
 
 
 @@ cond-prob-conditioning-on-multiple-events | 1.5 | Conditioning on Multiple Events | subsection | cond_prob
@@ -573,15 +580,11 @@ Here we work through a classic application of Bayes' theorem: what is the probab
 
 For example, consider the Mammogram test for breast cancer. The mammogram test returns a positive result 95% of the time for patients who have breast cancer. The test returns a positive result 7% of the time for people who do not have breast cancer. Because the test is noisy, a "positive" Mammogram result does not guarantee that the patient has breast cancer.
 
-> Calculator: Probability of Disease with Bayes' Theorem
-
 @interactive bayes-theorem-1
-
-@endcard
 
 
 @@ bayes-theorem-natural-frequency-intuition | 1.7 | Natural Frequency Intuition | subsection | bayes_theorem
-One way to build intuition for Bayes Theorem is to think about "natural frequences". Let's take another approach to answer the probability question in the above example on belief of disease given a test. In this take, we are going to imagine we have a population of 1000 people. Let's think about how many of those have the disease and test positive and how many don't have the disease and test positive. This visualization is based off the numbers in the fields above. Feel free to change them!
+One way to build intuition for Bayes Theorem is to think about "natural frequences". Let's take another approach to answer the probability question in the above example on belief of disease given a test. In this take, we are going to imagine we have a population of 1000 people. Let's think about how many of those have the disease and test positive and how many don't have the disease and test positive. This population starts from the same numbers as the calculator above. Feel free to change them!
 
 There are many possibilities for how many people have the disease, but one very plausible number is 1000, the number of people in our population, multiplied by the probability of the disease:
 
@@ -591,11 +594,7 @@ $1000 \times [1 - P(\text{Disease})]$ people do not have the disease
 
 We can count what fraction of the people who have the disease test positive, and what fraction of people who do not have the disease test positive. Here is an interactive demo:
 
-> Demo: Natural Frequency and Bayes'
-
 @interactive bayes-theorem-2
-
-@endcard
 
 The unintuitive result where you observe a positive test result, but you still think the patient is unlikely (probability < 0.5) to have the disease often occurs when the "Probability a randomly chosen person has the disease" is low.
 
@@ -1018,7 +1017,7 @@ $$\begin{aligned}
 
 The next question is, what is the probability of each of these events $E_i$?
 
-Here is a arbitrarily chosen ordering which satisfies the event of exactly $k=4$ heads in $n=10$ coin flips. It is $E_{128}$, the ordering on row 128 in the list above
+Here is an arbitrarily chosen ordering which satisfies the event of exactly $k=4$ heads in $n=10$ coin flips. It is $E_{128}$, the ordering on row 128 in the list above:
 
 T, H, T, T, H, T, T, H, H, T
 
@@ -1270,7 +1269,20 @@ $$\begin{aligned}
 
 Solution: 5 total digits would give 5! permutations. But that is assuming the 0’s and 1’s are distinguishable (to make that explicit, let’s give each one a subscript). Here are the $3! \cdot 2!$ = 12 different ways that we could have arrived at the identical string “01100” if we thought of each 0 and 1 as unique.
 
-@interactive combinatorics-1
+| 0 | 1 | 1 | 0 | 0 |
+|---|---|---|---|---|
+| $0_1$ | $1_1$ | $1_2$ | $0_2$ | $0_3$ |
+| $0_1$ | $1_1$ | $1_2$ | $0_3$ | $0_2$ |
+| $0_2$ | $1_1$ | $1_2$ | $0_1$ | $0_3$ |
+| $0_2$ | $1_1$ | $1_2$ | $0_3$ | $0_1$ |
+| $0_3$ | $1_1$ | $1_2$ | $0_1$ | $0_2$ |
+| $0_3$ | $1_1$ | $1_2$ | $0_2$ | $0_1$ |
+| $0_1$ | $1_2$ | $1_1$ | $0_2$ | $0_3$ |
+| $0_1$ | $1_2$ | $1_1$ | $0_3$ | $0_2$ |
+| $0_2$ | $1_2$ | $1_1$ | $0_1$ | $0_3$ |
+| $0_2$ | $1_2$ | $1_1$ | $0_3$ | $0_1$ |
+| $0_3$ | $1_2$ | $1_1$ | $0_1$ | $0_2$ |
+| $0_3$ | $1_2$ | $1_1$ | $0_2$ | $0_1$ |
 
 Since identical digits are indistinguishable, all the listed permutations are the same. For any given
 permutation, there are 3! ways of rearranging the 0’s and 2! ways of rearranging the 1’s (resulting in
@@ -1422,6 +1434,7 @@ In this section we are going to be counting the many different ways that we can 
 The most common case that we will want to consider is when all of the items you are putting into buckets are distinct. In that case you can think of bucketing as a series of steps, and employ the step rule of counting. The first step? You put the first distinct item into a bucket (there are number-of-buckets ways to do this). Second step? You put the second distinct item into a bucket (again, there are number-of-buckets ways to do this).
 
 > Definition: Bucketing of Distinct Items
+
 Suppose you want to place $n$ distinguishable items into $r$ containers. The ways of doing so is:
 
 $$\begin{aligned}
@@ -1508,7 +1521,10 @@ Let $D_i$ be the selected location
 
 Here is an example of the sort of data Google will have access to:
 
-@interactive pr-rain-city-1
+| | Mission District | Presidio | $\dots$ | SOMA |
+|---|---|---|---|---|
+| $P(R|D_i)$ | 0.23 | 0.84 | $\dots$ | 0.52 |
+| $P(D_i)$ | 0.15 | 0.02 | $\dots$ | 0.24 |
 
 The overall probability of rain in San Francisco can then be calculated as:
 
@@ -1529,15 +1545,19 @@ Random walks are a common algorithm for traversing graphs. As a starting point, 
 Consider the following algorithm for traversing a number line, like the one shown above:
 
 > Random Walk Algorithm (for a number line)
+
 - Start at position 0.
-- For $n$ iterations: - Flip a coin with probability $p$ of getting heads.
-- If you get heads, go right 1 unit; otherwise, go left.
+- For $n$ iterations: flip a coin with probability $p$ of getting heads. If you get heads, go right 1 unit; otherwise, go left.
 
 @endcard
 
 We would like to reason about the possible positions on the number line that we end up at after $n$ iterations. Let's start with the case $n = 2$. The possible end positions and moves that lead to them are:
 
-@interactive random-walks-1
+| End position | Moves |
+|---|---|
+| $-2$ | (Left, Left) |
+| $0$ | (Left, Right) or (Right, Left) |
+| $2$ | (Right, Right) |
 
 Note that we will only end up at even-numbered positions if we take an even number of steps.
 
@@ -2008,7 +2028,7 @@ Out of those, how many have no opponents that beat you (or, if it is easier, at 
 @@ serendipity | 1.15 | Serendipity | section | serendipity
 @figure 5609e3bd-2c6d-4e9b-abed-1e2b455945e4 | A crowded city park on a sunny day, with the skyline in the background.
 
-The word serendipity comes from the Persian fairy tale of the Three Princes of Serendip
+The word serendipity comes from the Persian fairy tale of the Three Princes of Serendip.
 
 ### Problem
 
@@ -2016,14 +2036,82 @@ What is the probability of a serendipitous encounter with a friend? Imagine you 
 
 @interactive serendipity-1
 
+### Terms
+
+First let's define some useful terms: $p$ is the total population, $s$ is the number of people you see, and $f$ is the number of your friends. Let $E$ be the event that you see at least one friend, and let $E_i^C$ be the event that you don't know the $i$th person you see, given that you also didn't know anyone you saw before them.
+
+### Solution
+
+$$\begin{aligned}
+P(E) &= 1 - P(E^C) \\
+&= 1 - \prod_{i=0}^{s-1} P(E_i^C) \\
+&= 1 - \prod_{i=0}^{s-1} \frac{p-f-i}{p-i}
+\end{aligned}$$
+
+You can calculate $P(E_i^C)$ using equally likely outcomes. There are $p-i$ folks left to choose from and there are $p-f-i$ who are not folks you know (notice that value is the size of the sample space minus the number of people you know).
+
+$$P(E_i^C) = \frac{p-f-i}{p-i}$$
+
+### Alternative Approach
+
+Another way to solve this problem is using counting. Since each way of seeing $s$ people is equally likely, we can use the equally likely outcomes probability calculation:
+
+$$P(E) = \frac{|E|}{|S|}$$
+
+Where $S$ is the sample space (all the ways of seeing $s$ people) and $E$ is the event (all the ways of seeing $s$ people where at least one is a friend).
+
+One way to approach this problem is to directly count all ways you see one or more friends. That is hard. You'd have to count ways of seeing exactly one friend, exactly two friends, etc. It is easier to calculate the ways that you see zero friends. If we can calculate the probability of seeing zero friends, our answer is just $1 - (\text{that probability})$.
+
+Let the sample space $S$ be the set of ways that you could see $s$ people. The size of the sample space is the total population choose the number of people seen. The event space is the set of ways that you could see no friends. Its size is the number of non-friends (the population minus your friends) choose the number of people seen. Thus the probability of not seeing a friend is:
+
+$$P(\text{not seen}) = \frac{\binom{p-f}{s}}{\binom{p}{s}}$$
+
+The probability you see at least one friend is then:
+
+$$P(\text{seen}) = 1 - \frac{\binom{p-f}{s}}{\binom{p}{s}}$$
+
+With 17,000 students, 150 friends, and 100 people seen, that works out to about 0.59. Isn't that surprising?
+
 
 @@ monty-hall | 1.15 | Monty Hall | section | monty_hall
-Here is a demo of the Monty Hall Game!
+Here is a demo of the Monty Hall game! Pick a door. The host, who knows where the prize is, then opens every other door except one, and never reveals the prize. You can stay with the door you picked or switch to the one left closed.
 
 @interactive monty-hall-1
 
+With $n$ doors, staying wins only when your first pick was right, which happens with probability $1/n$. Switching wins in every other case, with probability $(n-1)/n$. The host's actions "concentrate" the remaining probability into the other door.
+
 
 @@ server-example | 1.15 | Router Example | section | server_example
-In lecture 3, we worked through an example about network reliability that motivated a concept called DeMorgan's law, where you can go back and forth between AND and OR of events in order to make computations more tractable.
+Network reliability is a good example of De Morgan's law at work: you can go back and forth between the “and” and the “or” of events in order to make a computation far more tractable.
+
+### Formalizing Network Reliability
+
+Let $E$ be the event that a functional path from A to B exists. Let $R_i$ be the event that router $i$ functions correctly, where $P(R_i) = p$. The routers work independently of one another.
+
+### Method 1: Inclusion–Exclusion
+
+We define $E$ as the union of all router successes:
+
+$$E = R_1 \cup R_2 \cup \dots \cup R_n$$
+
+Inclusion–exclusion then expands $P(E)$ into one term for every non-empty group of routers: $2^n - 1$ terms in all.
+
+### Method 2: Complement
+
+We define $E^C$ as the event that no functional path exists.
+
+First, the complement rule:
+
+$$P(E) = 1 - P(E^C)$$
+
+Second, De Morgan's law. A path fails only if all routers fail:
+
+$$E^C = R_1^C \cap R_2^C \cap \dots \cap R_n^C$$
+
+Third, independence. Since the routers are independent, the intersection becomes a product:
+
+$$P(E^C) = P(R_1^C) \cdot P(R_2^C) \cdots P(R_n^C) = (1-p)^n$$
+
+$$P(E) = 1 - (1-p)^n$$
 
 @interactive server-example-1

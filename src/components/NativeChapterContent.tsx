@@ -14,6 +14,10 @@ export default function NativeChapterContent({blocks, context}: {blocks: LessonB
         </figure>;
         if(block.kind==='code') return <pre key={index} className="overflow-x-auto rounded-lg border border-[#3A3A3A] bg-[#111111] p-4 text-sm leading-6 text-[#E5E5E5]"><code data-language={block.language}>{block.text}</code></pre>;
         if(block.kind==='list') return <ul key={index} className="list-disc space-y-2 pl-6">{(block.items ?? []).map((item, i) => <li key={i}><LessonLatexText text={item} context={context} /></li>)}</ul>;
+        if(block.kind==='table') return <div key={index} className="overflow-x-auto"><table className="lesson-table w-full border-collapse text-left text-base">
+            <thead><tr>{(block.header ?? []).map((cell, i) => <th key={i} className="border-b border-[#4F4F4F] px-3 py-2 font-semibold text-white"><LessonLatexText text={cell} context={context} inline /></th>)}</tr></thead>
+            <tbody>{(block.rows ?? []).map((row, r) => <tr key={r} className="border-b border-[#333333]">{row.map((cell, c) => <td key={c} className="px-3 py-2 align-top"><LessonLatexText text={cell} context={context} inline /></td>)}</tr>)}</tbody>
+        </table></div>;
         if(block.kind==='interactive') return <Cs109Interactive key={index} id={block.text} />;
         return <LessonLatexText key={index} text={block.text} context={context} />;
     };

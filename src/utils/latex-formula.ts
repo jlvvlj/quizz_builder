@@ -38,8 +38,11 @@ export function latexFormulaModel(source: string, context = ''): FormulaModel {
             continue;
         }
         if (source[i] === '\\') {
-            const command = source.slice(i).match(/^\\([A-Za-z]+|[\s\S])/)![0];
+            let command = source.slice(i).match(/^\\([A-Za-z]+|[\s\S])/)![0];
             i += command.length;
+            // \dots picks centred or low dots from the token after it; once that token is wrapped in a
+            // mark it can no longer see it, so settle the choice here, as KaTeX would on the bare source.
+            if (command === '\\dots') command = /^\s*(?:[-+=<>]|\\(?:cup|cap|cdot|times|le|ge|leq|geq|ne|neq|approx|equiv|pm|lt|gt)(?![A-Za-z]))/.test(source.slice(i)) ? '\\cdots' : '\\ldots';
             const name = command.slice(1);
             if (['text', 'mathrm', 'operatorname', 'begin', 'end'].includes(name)) {
                 const body = group();

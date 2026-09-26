@@ -36,7 +36,7 @@ for(const unit of data.units){
  let cardOpen=false;
  for(const block of unit.content){
   assert.ok(!/@endcard|@figure|@interactive|@summary|@@/.test(block.text||''),`${unit.id}: directive leaked into text`);
-  if(block.kind==='keypoint'){assert.ok(!cardOpen,`Nested card ${unit.id}`);cardOpen=true;}
+  if(block.kind==='keypoint'){assert.ok(!cardOpen,`Nested card ${unit.id}`);cardOpen=true;assert.ok(!block.text.includes('\n')&&block.text.length<=120,`${unit.id}: card title swallowed its body: ${block.text.slice(0,60)}`);}
   if(block.kind==='cardEnd'){assert.ok(cardOpen,`Unmatched card end ${unit.id}`);cardOpen=false;}
   if(block.kind==='figure'){assert.ok(fs.existsSync('public'+block.src),`Missing ${block.src}`);assert.ok(block.alt&&block.alt.length>20,`${unit.id}: figure needs a description`);figures.add(block.image);}
   if(block.kind==='interactive')slots.push(block.text);
@@ -66,9 +66,9 @@ assert.match(notation.probabilityTerms('E \\text{ and } F','cs109-part-1/prob-an
 assert.match(notation.probabilityTerms('E^C','cs109-part-1/axioms-provable-identities').whole.definition,/E does not occur/);
 assert.match(notation.describeTerm('e','cs109-part-1/log-probabilities-intro'),/natural logarithm/);
 assert.match(notation.describeTerm('n','cs109-part-1/many-flips-intro'),/coin flips/);
-// Interactive figures: every slot the text refers to must be built before the part ships.
+// Interactive figures: every slot the text refers to must be built.
 const registry=fs.readFileSync('src/components/interactive/cs109/registry.tsx','utf8');
 const unbuilt=slots.filter(id=>!registry.includes(`'${id}'`));
 console.log(`Passed: 66 lessons, ${data.sections.length} sections, 14 figures, ${math} exact math token/structure comparisons, ${terms} explained terms.`);
 console.log(`Interactive slots: ${slots.length}, built ${slots.length-unbuilt.length}${unbuilt.length?`; not built: ${unbuilt.join(', ')}`:''}.`);
-if(process.env.STRICT)assert.equal(unbuilt.length,0,'unbuilt interactive figures');
+assert.equal(unbuilt.length,0,'unbuilt interactive figures');

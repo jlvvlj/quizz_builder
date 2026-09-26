@@ -4,7 +4,7 @@ import chapterThree from '@/data/probability-chapter-3-source.json';
 import cs109PartOne from '@/data/cs109-part-1-source.json';
 
 export interface LessonBlock {
-    kind: 'paragraph' | 'formula' | 'heading' | 'keypoint' | 'cardEnd' | 'figure' | 'code' | 'list' | 'interactive';
+    kind: 'paragraph' | 'formula' | 'heading' | 'keypoint' | 'cardEnd' | 'figure' | 'code' | 'list' | 'table' | 'interactive';
     /** For an interactive block, the id of the figure to place there. */
     text: string;
     /** Book chapters only: the PDF page the block was transcribed from. */
@@ -14,6 +14,8 @@ export interface LessonBlock {
     alt?: string;
     language?: string;
     items?: string[];
+    header?: string[];
+    rows?: string[][];
 }
 
 export interface SourceImage {

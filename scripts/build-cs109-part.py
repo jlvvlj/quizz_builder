@@ -14,6 +14,7 @@ Manuscript syntax, one block per blank-line-separated paragraph:
   @interactive <id>                                  one of this course's interactive figures, in place
   ```lang … ```                                      a code block (may contain blank lines)
   - item                                             a bulleted list, one item per line
+  | a | b |                                          a table; the first row is its header
   @summary text                                      a Key ideas line for the lesson
 """
 import argparse, base64, io, json, re, urllib.request
@@ -33,6 +34,16 @@ def image_sources():
             for child in node.get('content') or []: walk(child)
     for chapter_id in json.loads((SOURCE / 'manifest.json').read_text())['chapters']: walk(chapter(chapter_id))
     return found
+
+
+def cells(line):
+    """A table row's cells. A bar inside $…$ is notation (P(E|G)), not a cell boundary."""
+    out, current, math = [], '', False
+    for i, ch in enumerate(line.strip()[1:-1]):
+        if ch == '$' and (i == 0 or line.strip()[i] != '\\'): math = not math
+        if ch == '|' and not math: out.append(current.strip()); current = ''; continue
+        current += ch
+    return out + [current.strip()]
 
 
 def parse_blocks(body, number):
@@ -61,6 +72,10 @@ def parse_blocks(body, number):
             blocks.append({'kind': 'formula', 'text': part[2:-2].strip()}); continue
         if part.startswith('### '): blocks.append({'kind': 'heading', 'text': part[4:]}); continue
         if part.startswith('> '): blocks.append({'kind': 'keypoint', 'text': part[2:].strip()}); continue
+        if all(line.startswith('|') for line in part.split('\n')):
+            rows = [cells(line) for line in part.split('\n') if not re.fullmatch(r'\|[\s:|-]+\|', line.strip())]
+            assert len({len(r) for r in rows}) == 1, f'Ragged table: {part[:60]}'
+            blocks.append({'kind': 'table', 'text': '', 'header': rows[0], 'rows': rows[1:]}); continue
         if all(line.startswith('- ') for line in part.split('\n')):
             blocks.append({'kind': 'list', 'text': '', 'items': [line[2:].strip() for line in part.split('\n')]}); continue
         assert not part.startswith('@'), f'Unknown directive: {part[:60]}'
