@@ -63,28 +63,27 @@ Proposed, following the Bertsekas chapters:
 - Interactive figures come from this app's registry (`src/components/interactive/`). `SetTheory`, `ChanceEvents`, `ConditionalProbability`, and `Counting` already cover much of Part 1, and `RandomVariables`, `DiscreteDistributions`, `Expectation`, and `Variance` much of Part 2. The reader's simulations — dice rolls converging on a probability, many coin flips — would be new figures.
 - Quiz questions are seeded into the deck at section_5, as for chapters 1–3.
 
-### Everyday scenarios
+### Everyday stories
 
-The five running scenarios of the Bertsekas course — an airline route, a SaaS growth engine, a forecast market, a warm-intro campaign, and stochastic gene expression — cover the same base topics as Part 1, and most Part 1 chapters have an existing counterpart unit that carries all five of them:
+Part 1 has 177 everyday stories across 37 lessons, drawn from the five running scenarios — Meridian Air, Tally, the Forecast Market, the Warm Intro and One Cell — which were copied from the book course and adapted. They belong to this course alone: `src/data/cs109-part-1-everyday.md` holds them, each headed by its lesson, scenario and title; `scripts/build-cs109-everyday.cjs` builds `src/data/cs109-everyday.json`; nothing refers to the book course's story files, and the Part 1 test fails if anything does.
 
-| Part 1 chapter | Existing scenario unit |
-|---|---|
-| Probability | `c1-sample-spaces-and-events`, `c1-models-introduction` |
-| Equally Likely Outcomes | `c1-discrete-models` |
-| Axioms of Probability | `c1-probability-laws`, `c1-properties-of-probability-laws` |
-| Probability of “or” | `c1-properties-of-probability-laws`, `c1-set-operations` |
-| Conditional Probability | `c1-conditioning-introduction`, `c1-conditional-probability-law` |
-| Law of Total Probability | `c1-total-probability-and-bayes` |
-| Bayes' Theorem | `c1-total-probability-and-bayes` |
-| Independence | `c1-independence-introduction`, `c1-independence-of-events`, `c1-conditional-independence` |
-| Probability of “and” | `c1-sequential-models`, `c1-independent-trials` |
-| De Morgan's Law | `c1-algebra-of-sets` |
-| Counting | `c1-counting-introduction`, `c1-counting-principle` |
-| Combinatorics | `c1-k-permutations`, `c1-combinations`, `c1-partitions` |
-| Log Probabilities | — |
-| Many Coin Flips | `c1-independent-trials` (in part) |
+Each story was checked against the exact lesson it sits in rather than assumed to fit:
 
-Log Probabilities and most of Many Coin Flips have no counterpart and would need new scenario blocks. Whether reused blocks are shared with the Bertsekas course or copied into Part 1's own manifest is a decision for Part 1.
+- Copied stories are rewritten in this course's notation and wording: `S` for the sample space, "section" and "part" rather than "chapter" and "book", `P(E | F)`, and events joined by "and" and "or".
+- Where one book story combined two ideas that this course teaches in separate lessons, it was split. The book's total-probability-and-Bayes stories became a law-of-total-probability story and a Bayes story, with the two-case versions in the law of total probability's Intro and in Bayes' Intro, and the three-case versions in the lessons on many background events and on Bayes with the general law.
+- Stories were rewritten where the book version did not demonstrate the lesson's point: the Forecast Market's inclusion–exclusion story used two events that cannot both happen, and now uses "A wins" and "turnout exceeds 60%", which can; One Cell's "expressed the reporter at some point" was called an event of a sample space it is not a subset of, and now says a finer sample space is needed.
+- Lessons with no book counterpart got new stories: simulating probability, probability from datasets, the provable identities, mutually exclusive events, "or" with mutually exclusive events, the conditional paradigm, "and" with independent events, De Morgan's law for "and", very small probabilities in logs, more than k heads, counting with "or" in the mutually exclusive case, and bucketing.
+- Each scenario keeps one set of numbers across lessons, so a reader can follow it: Meridian Air's late inbound gives 85 percent on time overall, 45 percent given a late inbound, and an 11 percent chance of a late inbound given an on-time departure. Every figure was recomputed.
+- Two figures in the book course's own stories are wrong, and are correct here: twenty independent \$0.62 contracts end with nine or fewer paying out with probability about 9 percent, not 12; and 20²⁰ has twenty-seven digits, not twenty-six.
+
+Story arithmetic is typeset and explained like lesson math, and it is held to the same rule: every term resolves to a definition written for this course.
+
+Lessons without stories, and why:
+
+- Short prefaces whose idea arrives in the next lesson: the Intros of 1.1, 1.4, 1.9, 1.10, 1.11, 1.12 and 1.14, and 1.13's "Counting with Or".
+- Lessons that restate or extend a result their neighbours already illustrate: inclusion–exclusion with three and with n events, conditioning on multiple events, the alternative definition of independence, its symmetry, independence and complements, how to establish independence, the properties of logarithms, products becoming addition, logs being negative, the Warmups, and counting with "or" in the general case.
+- The Applications section, whose lessons are themselves worked applications.
+- Bayes' Intro carries Meridian Air, Tally and the Forecast Market; the Warm Intro and One Cell appear in the two lessons that follow, where their noisy tests match the mammogram and the natural-frequency view.
 
 ## Rebuild and verify
 
