@@ -46,6 +46,23 @@ export function getCourse(id: string): Course | undefined {
     return courses.find(course => course.id === id);
 }
 
+/**
+ * The catalog section a reader part lives at. Its lessons are routed by their own data, so a part
+ * opens as soon as it has lessons, before its quiz deck exists.
+ */
+export function partSection(part: CoursePart): string {
+    return `section_${part.number + 4}`;
+}
+
+export function partForSection(sectionId: string): CoursePart | undefined {
+    return cs109Course.parts.find(part => partSection(part) === sectionId);
+}
+
+export function sectionForDeck(deckId: string): string | undefined {
+    const part = cs109Course.parts.find(p => p.deckId === deckId);
+    return part && partSection(part);
+}
+
 export function courseOfDeck(deckId: string): Course | undefined {
     return courses.find(course => course.deckIds.includes(deckId));
 }

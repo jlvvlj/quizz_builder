@@ -6,7 +6,7 @@ import { useEffect,useState } from 'react';
 import LoadingState from '@/components/LoadingState';
 import CircularProgress from '@/components/CircularProgress';
 import { CatalogSection, useCatalog } from '@/utils/catalog';
-import { courses, CoursePart } from '@/utils/courses';
+import { courses, CoursePart, partSection } from '@/utils/courses';
 import { deckName, getSourceChapter } from '@/utils/probability-source';
 import { useQuizType } from '@/utils/quiz-mode';
 import { calculateSectionProgress } from '@/utils/progress-calculator';
@@ -16,6 +16,15 @@ function DeckCard({s,sections,progress}:{s:CatalogSection;sections:CatalogSectio
  return <div onClick={()=>router.push(`/steps?section=${s.id}`)} className="bg-[#262626] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors">
  <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">{s.deck.title}</h2><p className="text-[#A1A1A1] text-sm">{chapter ? `${deckName(chapter)} lessons` : `${s.deck.question_label} → ${s.deck.answer_label}`}</p><p className="text-[#A1A1A1] text-sm mt-2">{chapter ? ` ${chapter.sections.length} sections · ${chapter.lessonCount} lessons` : `${s.count} items · ${s.steps.length} steps`}</p>{sections.filter(x=>x.deck.id===s.deck.id).length>1&&<p className="text-[#A1A1A1] text-sm">Section {s.id.replace('section_','')}</p>}</div>
  <div className="flex flex-col items-end gap-4 shrink-0">{!chapter&&<CircularProgress progress={progress[s.id]||0} size={50} strokeWidth={6} progressColor="#FF0054" backgroundColor="#181818"/>}<button onClick={e=>{e.stopPropagation();router.push(`/steps?section=${s.id}`);}} className="bg-[#181818] border border-[#4F4F4F] text-white px-3 py-2 rounded-lg hover:bg-[#2F2F2F] flex items-center gap-2 text-sm"><Play className="w-4 h-4"/>Start</button></div></div>
+ </div>;
+}
+
+// A part with lessons but no quiz deck yet: it opens straight into its lessons.
+function PartCard({part}:{part:CoursePart}){
+ const router=useRouter();const chapter=getSourceChapter(part.deckId)!;const href=`/steps?section=${partSection(part)}`;
+ return <div onClick={()=>router.push(href)} className="bg-[#262626] border border-[#4F4F4F] rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-[#2F2F2F] transition-colors">
+ <div className="flex items-start justify-between gap-3"><div className="min-w-0"><h2 className="text-lg sm:text-xl font-semibold text-white mb-2">Part {part.number} · {part.title}</h2><p className="text-[#A1A1A1] text-sm">{deckName(chapter)} lessons</p><p className="text-[#A1A1A1] text-sm mt-2">{chapter.sections.length} sections · {chapter.lessonCount} lessons</p></div>
+ <button onClick={e=>{e.stopPropagation();router.push(href);}} className="shrink-0 bg-[#181818] border border-[#4F4F4F] text-white px-3 py-2 rounded-lg hover:bg-[#2F2F2F] flex items-center gap-2 text-sm"><Play className="w-4 h-4"/>Start</button></div>
  </div>;
 }
 
@@ -44,6 +53,7 @@ export default function HomeRoute(){
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">{course.deckIds.map(deckId=>{
   const live=sections.filter(s=>s.deck.id===deckId);const part=course.parts?.find(p=>p.deckId===deckId);
   if(live.length)return live.map(s=><DeckCard key={s.id} s={s} sections={sections} progress={progress}/>);
+  if(part&&getSourceChapter(deckId))return <PartCard key={deckId} part={part}/>;
   return part?<PlannedPartCard key={deckId} part={part} courseId={course.id}/>:null;
  })}</div></section>)}
  {other.length>0&&<section aria-label="Other decks"><h2 className="text-xl sm:text-2xl font-bold text-white mb-4">Other decks</h2>

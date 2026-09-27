@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import LoadingState from '@/components/LoadingState';
 import { useCatalog } from '@/utils/catalog';
-import { CourseEntry, getCourse } from '@/utils/courses';
+import { CourseEntry, getCourse, partSection } from '@/utils/courses';
+import { getSourceChapter } from '@/utils/probability-source';
 
 function EntryList({ title, entries }: { title: string; entries: CourseEntry[] }) {
     if (entries.length === 0) return null;
@@ -39,7 +40,7 @@ export default function CourseRoute() {
         {error && <p role="alert" className="mt-4 text-red-400">{error}</p>}
         <div className="mt-8 space-y-8">
             {course.parts.map(part => {
-                const live = sections?.find(section => section.deck.id === part.deckId);
+                const live = sections?.find(section => section.deck.id === part.deckId) ?? (getSourceChapter(part.deckId) ? { id: partSection(part) } : undefined);
                 return <section key={part.deckId} id={`part-${part.number}`} aria-label={`Part ${part.number} ${part.title}`} className="scroll-mt-8 rounded-xl border border-[#4F4F4F] bg-[#262626] p-5 sm:p-6">
                     <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
                         <div>
