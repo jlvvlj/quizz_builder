@@ -4,11 +4,15 @@ import StepsPage from '@/components/StepsPage';
 import { useCatalog } from '@/utils/catalog';
 import { getSourceChapter } from '@/utils/probability-source';
 import { ProbabilitySourceOutline } from '@/components/ProbabilitySourceCourse';
+import { partForSection } from '@/utils/courses';
 export default function Steps(){
  const router=useRouter();const {sections,error}=useCatalog();
  if(error)return <p role="alert" className="p-6 text-red-400">{error}</p>;
  if(!router.isReady||!sections)return <LoadingState text="Loading steps"/>;
  const section=sections.find(s=>s.id===router.query.section);
+ const part=typeof router.query.section==='string'?partForSection(router.query.section):undefined;
+ // A reader part with lessons opens from its lessons, whether or not its quiz deck is seeded yet.
+ if(!section&&part&&getSourceChapter(part.deckId))return <ProbabilitySourceOutline deckId={part.deckId} sectionId={router.query.section as string}/>;
  if(!section)return <p className="p-6 text-white">This section has no learning content.</p>;
  if(getSourceChapter(section.deck.id))return <ProbabilitySourceOutline deckId={section.deck.id} sectionId={section.id}/>;
  return <StepsPage onCourseSelect={()=>{}} onSettingsClick={()=>{}} currentSection={section.id} numSteps={section.steps.length} actualSteps={section.steps} deckId={section.deck.id} deckTitle={section.deck.title} deckDescription={section.deck.description}/>;
