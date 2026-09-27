@@ -4,6 +4,7 @@ import LoadingState from '@/components/LoadingState';
 import { useCatalog } from '@/utils/catalog';
 import { getLesson } from '@/utils/lessons';
 import { getSourceChapter } from '@/utils/probability-source';
+import { sectionForDeck } from '@/utils/courses';
 import { ProbabilitySourceLesson } from '@/components/ProbabilitySourceCourse';
 import {
     AlertTriangle,
@@ -45,7 +46,8 @@ export default function LessonPage() {
         return <LoadingState text="Loading lesson" />;
     }
 
-    if (section && getSourceChapter(deckId) && section.deck.id === deckId) {
+    const ownSection = section ? section.deck.id === deckId : sectionForDeck(deckId) === sectionId;
+    if (getSourceChapter(deckId) && ownSection) {
         return <ProbabilitySourceLesson deckId={deckId} sectionId={sectionId} itemId={typeof router.query.item === 'string' ? router.query.item : undefined} />;
     }
 
