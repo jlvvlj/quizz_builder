@@ -4,6 +4,7 @@ import diagramHeights from '@/data/probability-chapter-1-diagrams.json';
 import chapterOneEveryday from '@/data/probability-chapter-1-everyday.json';
 import chapterTwoEveryday from '@/data/probability-chapter-2-everyday.json';
 import everydayContent from '@/data/probability-everyday-content.json';
+import cs109Everyday from '@/data/cs109-everyday.json';
 import Link from 'next/link';
 import ChapterContents from './ChapterContents';
 import ChapterPracticeLinks from './ChapterPracticeLinks';
@@ -61,10 +62,12 @@ function AssetList({ title, assets, context = '' }: { title: string; assets: Sou
 }
 
 function EverydayExamples({ deckId, unitId, context }: { deckId: string; unitId: string; context: string }) {
-    const manifest = (deckId === 'probability-chapter-2' ? chapterTwoEveryday : chapterOneEveryday) as Record<string, {id: string; scenario: string; title: string}[]>;
+    // Each course keeps its own stories: the CS109 parts read theirs, the book chapters theirs.
+    const cs109 = cs109Everyday as unknown as {manifests: Record<string, Record<string, {id: string; scenario: string; title: string}[]>>; content: Record<string, {kind: string; text: string}[]>};
+    const manifest = (cs109.manifests[deckId] ?? (deckId === 'probability-chapter-2' ? chapterTwoEveryday : chapterOneEveryday)) as Record<string, {id: string; scenario: string; title: string}[]>;
     const entries = manifest[unitId];
     if (!entries?.length) return null;
-    const blocks = everydayContent as Record<string, {kind: string; text: string}[]>;
+    const blocks = (cs109.manifests[deckId] ? cs109.content : everydayContent) as Record<string, {kind: string; text: string}[]>;
     return <section className="space-y-5" aria-label="Everyday examples">
         <h2 className="text-xl font-semibold text-white">Everyday examples <span className="ml-1 text-sm font-normal text-[#A1A1A1]">{entries.length}</span></h2>
         {entries.map(entry => <div key={entry.id} className="rounded-xl border border-[#3A3A3A] bg-[#202020] p-4 sm:p-5" data-everyday-asset={entry.id}>

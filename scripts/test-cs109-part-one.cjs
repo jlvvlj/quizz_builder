@@ -49,10 +49,28 @@ for(const unit of data.units){
  assert.ok(!cardOpen,`Unclosed card ${unit.id}`);
 }
 assert.equal(figures.size,14);
+// Everyday stories: CS109's own, built from its own file, in this course's words.
+const everyday=require('../src/data/cs109-everyday.json');
+const manifest=everyday.manifests['cs109-part-1'];
+let stories=0;
+for(const [unit,entries] of Object.entries(manifest)){
+ assert.ok(data.units.some(u=>u.id===unit),`Stories for an unknown lesson ${unit}`);
+ assert.ok(entries.length<=5&&new Set(entries.map(e=>e.scenario)).size===entries.length,`${unit}: one story per scenario at most`);
+ for(const entry of entries){
+  const blocks=everyday.content[entry.id];stories++;
+  assert.ok(blocks&&blocks.length,`Missing story ${entry.id}`);
+  for(const block of blocks){
+   assert.doesNotMatch(block.text,/Ω|\bchapter\b|\bthe book\b|\bthis book\b/i,`${entry.id} uses the book course's wording`);
+   assert.equal((block.text.match(/(?<!\\)\$/g)||[]).length,0,`${entry.id}: unescaped $ would start math`);
+   // Story arithmetic is typeset and explained too, and must also resolve to this course's definitions.
+   for(const line of block.text.split('\n'))for(const part of notation.splitMath(line))if(part.math)for(const term of notation.formulaModel(part.text,'cs109-part-1/'+unit).terms){terms++;if(FALLBACK.test(term.definition))generic.push(`${entry.id}: ${term.symbol} → ${term.definition}`);}
+  }
+ }
+}
 if(generic.length){console.log(generic.slice(0,30).join('\n'));}
 assert.equal(generic.length,0,`${generic.length} terms fell back to a generic definition`);
 // The two courses never share content: nothing in CS109's data may point at the book course.
-for(const file of ['src/data/cs109-part-1-native.md','src/data/cs109-part-1-source.json','src/data/cs109-course.json'])
+for(const file of ['src/data/cs109-part-1-native.md','src/data/cs109-part-1-source.json','src/data/cs109-course.json','src/data/cs109-part-1-everyday.md','src/data/cs109-everyday.json'])
  assert.doesNotMatch(fs.readFileSync(file,'utf8'),/probability-chapter-\d|everyday-c\d|Bertsekas|Tsitsiklis/,`${file} refers to the book course`);
 // Source errata must stay corrected.
 const all=JSON.stringify(data);
@@ -69,6 +87,6 @@ assert.match(notation.describeTerm('n','cs109-part-1/many-flips-intro'),/coin fl
 // Interactive figures: every slot the text refers to must be built.
 const registry=fs.readFileSync('src/components/interactive/cs109/registry.tsx','utf8');
 const unbuilt=slots.filter(id=>!registry.includes(`'${id}'`));
-console.log(`Passed: 66 lessons, ${data.sections.length} sections, 14 figures, ${math} exact math token/structure comparisons, ${terms} explained terms.`);
+console.log(`Passed: 66 lessons, ${data.sections.length} sections, 14 figures, ${math} exact math token/structure comparisons, ${terms} explained terms, ${stories} everyday stories across ${Object.keys(manifest).length} lessons.`);
 console.log(`Interactive slots: ${slots.length}, built ${slots.length-unbuilt.length}${unbuilt.length?`; not built: ${unbuilt.join(', ')}`:''}.`);
 assert.equal(unbuilt.length,0,'unbuilt interactive figures');
