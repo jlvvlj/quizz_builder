@@ -1,0 +1,1772 @@
+{
+  "title": "Core Probability",
+  "source": "Probability for Computer Science (Stanford CS109 course reader, spring 2026), Part 1",
+  "proposed_mode": "multiple_choice",
+  "choice_count": 4,
+  "steps": [
+    {
+      "number": 1,
+      "title": "Notation",
+      "question_count": 14
+    },
+    {
+      "number": 2,
+      "title": "Probability and equally likely outcomes",
+      "question_count": 10
+    },
+    {
+      "number": 3,
+      "title": "Axioms and the probability of “or”",
+      "question_count": 10
+    },
+    {
+      "number": 4,
+      "title": "Conditional probability and the law of total probability",
+      "question_count": 10
+    },
+    {
+      "number": 5,
+      "title": "Bayes’ theorem",
+      "question_count": 10
+    },
+    {
+      "number": 6,
+      "title": "Independence and the probability of “and”",
+      "question_count": 11
+    },
+    {
+      "number": 7,
+      "title": "De Morgan’s law and log probabilities",
+      "question_count": 8
+    },
+    {
+      "number": 8,
+      "title": "Many coin flips",
+      "question_count": 8
+    },
+    {
+      "number": 9,
+      "title": "Counting and combinatorics",
+      "question_count": 13
+    },
+    {
+      "number": 10,
+      "title": "Applications",
+      "question_count": 13
+    }
+  ],
+  "questions": [
+    {
+      "id": "CS109-P1-01-01",
+      "step": 1,
+      "group": "Notation",
+      "question": "S",
+      "options": [
+        "An event we ascribe meaning to",
+        "The probability of an event",
+        "The sample space: the set of all possible outcomes of an experiment",
+        "The number of trials performed"
+      ],
+      "correct_answer": "The sample space: the set of all possible outcomes of an experiment",
+      "explanation": "S is the set every outcome of the experiment belongs to; events are subsets of it.",
+      "lesson": "probability-events-and-experiments",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-01-02",
+      "step": 1,
+      "group": "Notation",
+      "question": "E ⊆ S",
+      "options": [
+        "E is the sample space itself",
+        "E is an event: a subset of the sample space",
+        "E is an outcome that always occurs",
+        "E has probability 1"
+      ],
+      "correct_answer": "E is an event: a subset of the sample space",
+      "explanation": "An event is any subset of S that we ascribe meaning to.",
+      "lesson": "probability-events-and-experiments",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-01-03",
+      "step": 1,
+      "group": "Notation",
+      "question": "count(E) / n, as n → ∞",
+      "options": [
+        "The number of outcomes in E",
+        "P(E) for equally likely outcomes only",
+        "The probability that E never occurs",
+        "P(E): the fraction of n trials that produce E, in the limit"
+      ],
+      "correct_answer": "P(E): the fraction of n trials that produce E, in the limit",
+      "explanation": "The definition of probability is the limit of the fraction of trials in which the event occurs.",
+      "lesson": "probability-definition-of-probability",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-01-04",
+      "step": 1,
+      "group": "Notation",
+      "question": "|E| / |S|",
+      "options": [
+        "P(E) for any sample space",
+        "The probability of the complement of E",
+        "P(E) when every outcome in S is equally likely",
+        "The number of outcomes in E"
+      ],
+      "correct_answer": "P(E) when every outcome in S is equally likely",
+      "explanation": "Counting outcomes gives the probability only when every outcome has the same probability.",
+      "lesson": "equally-likely",
+      "reader_chapter": "equally_likely"
+    },
+    {
+      "id": "CS109-P1-01-05",
+      "step": 1,
+      "group": "Notation",
+      "question": "Eᶜ",
+      "options": [
+        "The event that E happens twice",
+        "The complement of E: every outcome in S that is not in E",
+        "An event mutually exclusive with S",
+        "The conditional version of E"
+      ],
+      "correct_answer": "The complement of E: every outcome in S that is not in E",
+      "explanation": "Eᶜ contains exactly the outcomes of S outside E, so P(Eᶜ) = 1 − P(E).",
+      "lesson": "axioms-provable-identities",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-01-06",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(E or F)",
+      "options": [
+        "The probability that exactly one of E and F occurs",
+        "The probability that E, F, or both occur",
+        "The probability that both E and F occur",
+        "P(E) + P(F) in every case"
+      ],
+      "correct_answer": "The probability that E, F, or both occur",
+      "explanation": "“Or” includes the outcomes where both events occur.",
+      "lesson": "prob-or-intro",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-01-07",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(E and F)",
+      "options": [
+        "The probability that E or F occurs",
+        "P(E) × P(F) in every case",
+        "The probability that both E and F occur",
+        "The probability that E occurs given F"
+      ],
+      "correct_answer": "The probability that both E and F occur",
+      "explanation": "P(E and F), also written P(EF), P(E ∩ F) or P(E, F), is the probability both happen.",
+      "lesson": "prob-and-intro",
+      "reader_chapter": "prob_and"
+    },
+    {
+      "id": "CS109-P1-01-08",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(E | F)",
+      "options": [
+        "The probability of E and F together",
+        "The probability of F given E",
+        "The probability of E divided by that of F",
+        "The probability of E given that F has already happened"
+      ],
+      "correct_answer": "The probability of E given that F has already happened",
+      "explanation": "Conditioning on F restricts the sample space to the outcomes consistent with F.",
+      "lesson": "cond-prob-intro",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-01-09",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(E | F, G)",
+      "options": [
+        "The probability of E, F and G together",
+        "The probability of E given F or G",
+        "The probability of E and F given G",
+        "The probability of E given that both F and G have occurred"
+      ],
+      "correct_answer": "The probability of E given that both F and G have occurred",
+      "explanation": "A comma after the bar means every listed event is conditioned on.",
+      "lesson": "cond-prob-conditioning-on-multiple-events",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-01-10",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(U | E) in Bayes’ theorem",
+      "options": [
+        "The prior: the belief in U before any evidence",
+        "The likelihood of the evidence given U",
+        "The normalization constant",
+        "The posterior: the updated belief in U after seeing the evidence E"
+      ],
+      "correct_answer": "The posterior: the updated belief in U after seeing the evidence E",
+      "explanation": "Bayes’ theorem turns the prior P(U) into the posterior P(U | E).",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-01-11",
+      "step": 1,
+      "group": "Notation",
+      "question": "P(E | U) in Bayes’ theorem",
+      "options": [
+        "The posterior",
+        "The prior",
+        "The likelihood: the probability of the evidence if U is true",
+        "The normalization constant"
+      ],
+      "correct_answer": "The likelihood: the probability of the evidence if U is true",
+      "explanation": "The likelihood is usually the easy direction to know, which is why Bayes’ theorem is useful.",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-01-12",
+      "step": 1,
+      "group": "Notation",
+      "question": "log P(E), with no base written",
+      "options": [
+        "The natural logarithm of P(E), with base e",
+        "The base-10 logarithm of P(E)",
+        "The base-2 logarithm of P(E)",
+        "The probability that E occurs e times"
+      ],
+      "correct_answer": "The natural logarithm of P(E), with base e",
+      "explanation": "In this course a log with no written base is the natural log.",
+      "lesson": "log-probabilities-intro",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-01-13",
+      "step": 1,
+      "group": "Notation",
+      "question": "n choose r",
+      "options": [
+        "n! / (n − r)!: the number of ordered selections",
+        "rⁿ: the number of ways to fill r buckets",
+        "n! / (r!(n − r)!): the number of ways to choose r of n distinct objects when order does not matter",
+        "n! / r!: the orderings of the chosen objects"
+      ],
+      "correct_answer": "n! / (r!(n − r)!): the number of ways to choose r of n distinct objects when order does not matter",
+      "explanation": "Dividing out the r! orders of the chosen objects and the (n − r)! orders of the rest leaves the unordered selections.",
+      "lesson": "combinatorics-combinations-of-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-01-14",
+      "step": 1,
+      "group": "Notation",
+      "question": "rⁿ, in bucketing",
+      "options": [
+        "The number of ways to choose r of n items",
+        "The number of orderings of n items",
+        "The number of ways to place n distinct items into r containers",
+        "The number of ways to place r items into n containers"
+      ],
+      "correct_answer": "The number of ways to place n distinct items into r containers",
+      "explanation": "Each of the n items is one step with r choices, and the step rule multiplies them.",
+      "lesson": "combinatorics-bucketing-with-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-02-01",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "What is the sample space for flipping two coins?",
+      "options": [
+        "{H, T}",
+        "{(H, H), (H, T), (T, T)}",
+        "{HH, TT}",
+        "{(H, H), (H, T), (T, H), (T, T)}"
+      ],
+      "correct_answer": "{(H, H), (H, T), (T, H), (T, T)}",
+      "explanation": "Each outcome records both coins; (H, T) and (T, H) are different outcomes.",
+      "lesson": "probability-events-and-experiments",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-02",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "Which set is the event “at least one head” on two coin flips?",
+      "options": [
+        "{(H, H)}",
+        "{(H, H), (H, T), (T, H)}",
+        "{(H, T), (T, H)}",
+        "{(H, H), (H, T), (T, H), (T, T)}"
+      ],
+      "correct_answer": "{(H, H), (H, T), (T, H)}",
+      "explanation": "The event collects every outcome of the sample space with at least one head.",
+      "lesson": "probability-events-and-experiments",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-03",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "Of 3,070 elephants born in Myanmar, 2,180 were male. What is the estimated probability that a newborn elephant is male?",
+      "options": [
+        "About 0.5",
+        "About 0.290",
+        "About 0.710",
+        "About 2.180"
+      ],
+      "correct_answer": "About 0.710",
+      "explanation": "The definition of probability estimates P(E) as count(E) / n = 2,180 / 3,070 ≈ 0.710.",
+      "lesson": "probability-probability-from-datasets",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-04",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "How is a 32% chance of rain properly stated as a probability?",
+      "options": [
+        "The probability of rain is 32",
+        "The probability of rain is 3.2",
+        "The probability of rain is 0.032",
+        "The probability of rain is 0.32"
+      ],
+      "correct_answer": "The probability of rain is 0.32",
+      "explanation": "Percentages are probabilities multiplied by 100.",
+      "lesson": "probability-definition-of-probability",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-05",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "How do you estimate P(E) by simulation?",
+      "options": [
+        "Run one trial and check whether E occurred",
+        "Count the outcomes in E and divide by the number of events",
+        "Run many trials and take the fraction that produced an outcome in E",
+        "Average the probabilities of every outcome"
+      ],
+      "correct_answer": "Run many trials and take the fraction that produced an outcome in E",
+      "explanation": "By the definition of probability, the fraction of simulated trials in E approaches P(E) as trials grow.",
+      "lesson": "probability-simulating-probability",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-06",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "You can only simulate 80 trials of an experiment. What does the lesson advise?",
+      "options": [
+        "Be rather skeptical of the estimated probability",
+        "The estimate is exact once you have more than 50 trials",
+        "Simulation cannot estimate probabilities at all",
+        "Round the estimate to the nearest tenth and trust it"
+      ],
+      "correct_answer": "Be rather skeptical of the estimated probability",
+      "explanation": "The lesson warns that with fewer than 100 trials you should be rather skeptical of the estimate.",
+      "lesson": "probability-simulating-probability",
+      "reader_chapter": "probability"
+    },
+    {
+      "id": "CS109-P1-02-07",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "Two fair, distinct dice are rolled. What is the probability that they sum to 7?",
+      "options": [
+        "1/11",
+        "7/36",
+        "1/6",
+        "1/12"
+      ],
+      "correct_answer": "1/6",
+      "explanation": "Six of the 36 equally likely outcomes sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1).",
+      "lesson": "equally-likely",
+      "reader_chapter": "equally_likely"
+    },
+    {
+      "id": "CS109-P1-02-08",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "Why is {2, 3, …, 12} a buggy sample space for P(sum of two dice is 7)?",
+      "options": [
+        "It leaves out some possible sums",
+        "It contains sums that cannot happen",
+        "A sample space must contain pairs, not numbers",
+        "Its outcomes are not equally likely, so |E| / |S| does not apply"
+      ],
+      "correct_answer": "Its outcomes are not equally likely, so |E| / |S| does not apply",
+      "explanation": "A sum of 2 is far less likely than a sum of 7, so counting sums does not give probabilities.",
+      "lesson": "equally-likely",
+      "reader_chapter": "equally_likely"
+    },
+    {
+      "id": "CS109-P1-02-09",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "A random number is drawn uniformly from 0 to 1. What is the probability it lands between 0.3 and 0.7?",
+      "options": [
+        "0.3",
+        "0.4",
+        "0.7",
+        "0.5"
+      ],
+      "correct_answer": "0.4",
+      "explanation": "For equally likely continuous outcomes, the probability is the size of the event over the size of S: 0.4 / 1.",
+      "lesson": "equally-likely",
+      "reader_chapter": "equally_likely"
+    },
+    {
+      "id": "CS109-P1-02-10",
+      "step": 2,
+      "group": "Probability and equally likely outcomes",
+      "question": "In a sample space S of equally likely outcomes, what is the probability of any one outcome?",
+      "options": [
+        "|S|",
+        "1 / 2",
+        "|S| − 1",
+        "1 / |S|"
+      ],
+      "correct_answer": "1 / |S|",
+      "explanation": "The outcomes are equally likely and their probabilities sum to 1.",
+      "lesson": "equally-likely",
+      "reader_chapter": "equally_likely"
+    },
+    {
+      "id": "CS109-P1-03-01",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "What does axiom 1 of probability state?",
+      "options": [
+        "0 ≤ P(E) ≤ 1",
+        "P(S) = 1",
+        "P(E or F) = P(E) + P(F)",
+        "P(Eᶜ) = 1 − P(E)"
+      ],
+      "correct_answer": "0 ≤ P(E) ≤ 1",
+      "explanation": "Every probability lies between 0 and 1.",
+      "lesson": "axioms-intro",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-03-02",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "What does axiom 2 of probability state?",
+      "options": [
+        "0 ≤ P(E) ≤ 1",
+        "P(∅) = 1",
+        "P(E) + P(F) = 1",
+        "P(S) = 1"
+      ],
+      "correct_answer": "P(S) = 1",
+      "explanation": "Every outcome is in the sample space, so it has probability 1.",
+      "lesson": "axioms-intro",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-03-03",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "What does axiom 3 of probability state?",
+      "options": [
+        "For any E and F, P(E or F) = P(E) + P(F)",
+        "If E and F are mutually exclusive, P(E or F) = P(E) + P(F)",
+        "If E and F are independent, P(E and F) = P(E)P(F)",
+        "P(E or F) = P(E) + P(F) − P(E and F)"
+      ],
+      "correct_answer": "If E and F are mutually exclusive, P(E or F) = P(E) + P(F)",
+      "explanation": "Probabilities of mutually exclusive events add.",
+      "lesson": "axioms-intro",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-03-04",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "Which identity follows from the axioms for the complement of E?",
+      "options": [
+        "P(Eᶜ) = 1 − P(E)",
+        "P(Eᶜ) = P(E)",
+        "P(Eᶜ) = 1 / P(E)",
+        "P(Eᶜ) = P(S) + P(E)"
+      ],
+      "correct_answer": "P(Eᶜ) = 1 − P(E)",
+      "explanation": "E and Eᶜ are mutually exclusive and together cover S, so P(E) + P(Eᶜ) = 1.",
+      "lesson": "axioms-provable-identities",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-03-05",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "If E ⊆ F, what must be true?",
+      "options": [
+        "P(E) ≥ P(F)",
+        "P(E) ≤ P(F)",
+        "P(E) = P(F)",
+        "P(E) + P(F) = 1"
+      ],
+      "correct_answer": "P(E) ≤ P(F)",
+      "explanation": "An event contained in another cannot be more likely.",
+      "lesson": "axioms-provable-identities",
+      "reader_chapter": "axioms"
+    },
+    {
+      "id": "CS109-P1-03-06",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "When are two events mutually exclusive?",
+      "options": [
+        "When knowing one tells you nothing about the other",
+        "When together they cover the sample space",
+        "When they have the same probability",
+        "When no outcome is in both of them"
+      ],
+      "correct_answer": "When no outcome is in both of them",
+      "explanation": "Mutually exclusive events cannot both happen: E ∩ F = ∅.",
+      "lesson": "prob-or-mutually-exclusive-events",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-03-07",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "On one fair die roll, what is P(even or three or less)?",
+      "options": [
+        "5/6",
+        "1",
+        "1/2",
+        "2/3"
+      ],
+      "correct_answer": "5/6",
+      "explanation": "The event is {1, 2, 3, 4, 6}. Adding 1/2 + 1/2 would count the outcome 2 twice.",
+      "lesson": "prob-or-or-with-non-mutually-exclusive-events",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-03-08",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "For any two events E and F, P(E or F) equals",
+      "options": [
+        "P(E) + P(F)",
+        "P(E) + P(F) − P(E and F)",
+        "P(E) × P(F)",
+        "P(E) + P(F) + P(E and F)"
+      ],
+      "correct_answer": "P(E) + P(F) − P(E and F)",
+      "explanation": "Inclusion–exclusion subtracts the outcomes that adding would count twice.",
+      "lesson": "prob-or-or-with-non-mutually-exclusive-events",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-03-09",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "In inclusion–exclusion for three events, what is the sign of P(E₁ and E₂ and E₃)?",
+      "options": [
+        "Minus: it is subtracted",
+        "It does not appear",
+        "Plus: it is added back",
+        "It is subtracted twice"
+      ],
+      "correct_answer": "Plus: it is added back",
+      "explanation": "Add single events, subtract pairs, then add the triple back.",
+      "lesson": "prob-or-inclusion-exclusion-with-three-events",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-03-10",
+      "step": 3,
+      "group": "Axioms and the probability of “or”",
+      "question": "How many probability terms does inclusion–exclusion have for n events?",
+      "options": [
+        "n",
+        "2ⁿ − 1",
+        "n²",
+        "n!"
+      ],
+      "correct_answer": "2ⁿ − 1",
+      "explanation": "There is one term for every non-empty subset of the n events.",
+      "lesson": "prob-or-inclusion-exclusion-with-events",
+      "reader_chapter": "prob_or"
+    },
+    {
+      "id": "CS109-P1-04-01",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "What is the definition of P(E | F)?",
+      "options": [
+        "P(E) / P(F)",
+        "P(E and F) / P(E)",
+        "P(E) × P(F)",
+        "P(E and F) / P(F)"
+      ],
+      "correct_answer": "P(E and F) / P(F)",
+      "explanation": "Restrict to the universe where F happened and ask how much of it is also in E.",
+      "lesson": "cond-prob-intro",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-02",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "In a sample space of 50 equally likely hexagons, F has 14 and E and F share 3. What is P(E | F)?",
+      "options": [
+        "3/50",
+        "14/50",
+        "3/17",
+        "3/14"
+      ],
+      "correct_answer": "3/14",
+      "explanation": "P(E | F) = (3/50) / (14/50) = 3/14.",
+      "lesson": "cond-prob-intro",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-03",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "Once you condition on F, what becomes the sample space?",
+      "options": [
+        "Fᶜ",
+        "F",
+        "E and F",
+        "S, unchanged"
+      ],
+      "correct_answer": "F",
+      "explanation": "Only outcomes consistent with F remain possible.",
+      "lesson": "cond-prob-intro",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-04",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "How can P(watches E | watched F) be estimated from viewing data?",
+      "options": [
+        "People who watched both E and F, divided by people who watched F",
+        "People who watched E, divided by people who watched F",
+        "People who watched both, divided by all users",
+        "People who watched F, divided by people who watched E"
+      ],
+      "correct_answer": "People who watched both E and F, divided by people who watched F",
+      "explanation": "Both counts in the definition share the same total, which cancels.",
+      "lesson": "cond-prob-conditional-probability-example",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-05",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "Conditioned consistently on G, what is P(Eᶜ | G)?",
+      "options": [
+        "1 − P(E)",
+        "1 − P(E | G)",
+        "P(E | G)",
+        "1 − P(G)"
+      ],
+      "correct_answer": "1 − P(E | G)",
+      "explanation": "Every rule of probability still holds inside the universe where G occurred.",
+      "lesson": "cond-prob-the-conditional-paradigm",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-06",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "Which expression equals P(E | F, G)?",
+      "options": [
+        "P(E and F and G) / P(E)",
+        "P(E | F) × P(E | G)",
+        "P(E and F | G) / P(F | G)",
+        "P(E | G) / P(F | G)"
+      ],
+      "correct_answer": "P(E and F | G) / P(F | G)",
+      "explanation": "The definition of conditional probability, applied in the universe where G has occurred.",
+      "lesson": "cond-prob-conditioning-on-multiple-events",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-04-07",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "The law of total probability with a single background event F gives P(E) =",
+      "options": [
+        "P(E | F) + P(E | Fᶜ)",
+        "P(E | F)P(F)",
+        "P(E and F) − P(E and Fᶜ)",
+        "P(E | F)P(F) + P(E | Fᶜ)P(Fᶜ)"
+      ],
+      "correct_answer": "P(E | F)P(F) + P(E | Fᶜ)P(Fᶜ)",
+      "explanation": "E splits into the part in F and the part outside it, and the chain rule expands each part.",
+      "lesson": "law-total-intro",
+      "reader_chapter": "law_total"
+    },
+    {
+      "id": "CS109-P1-04-08",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "What must the background events B₁, …, Bₙ satisfy for the law of total probability?",
+      "options": [
+        "They are mutually exclusive and together cover the sample space",
+        "They are independent of E",
+        "They all have the same probability",
+        "Each one contains E"
+      ],
+      "correct_answer": "They are mutually exclusive and together cover the sample space",
+      "explanation": "Every outcome must fall in exactly one background event.",
+      "lesson": "law-total-law-of-total-probability-many-background-events",
+      "reader_chapter": "law_total"
+    },
+    {
+      "id": "CS109-P1-04-09",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "A population is 10% high-risk, 30% medium-risk and 60% low-risk, testing positive with probability 0.5, 0.2 and 0.05. What is P(positive)?",
+      "options": [
+        "0.14",
+        "0.75",
+        "0.25",
+        "0.05"
+      ],
+      "correct_answer": "0.14",
+      "explanation": "0.5 × 0.1 + 0.2 × 0.3 + 0.05 × 0.6 = 0.05 + 0.06 + 0.03 = 0.14.",
+      "lesson": "law-total-law-of-total-probability-many-background-events",
+      "reader_chapter": "law_total"
+    },
+    {
+      "id": "CS109-P1-04-10",
+      "step": 4,
+      "group": "Conditional probability and the law of total probability",
+      "question": "If F is the event that a user watched Amélie, what is P(watched Amélie | F)?",
+      "options": [
+        "0.03",
+        "0.5",
+        "1",
+        "It cannot be known"
+      ],
+      "correct_answer": "1",
+      "explanation": "Given F, F is certain.",
+      "lesson": "cond-prob-conditional-probability-example",
+      "reader_chapter": "cond_prob"
+    },
+    {
+      "id": "CS109-P1-05-01",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "What is the classic form of Bayes’ theorem?",
+      "options": [
+        "P(U | E) = P(E | U) / P(U)",
+        "P(U | E) = P(E | U) P(E) / P(U)",
+        "P(U | E) = P(U) P(E)",
+        "P(U | E) = P(E | U) P(U) / P(E)"
+      ],
+      "correct_answer": "P(U | E) = P(E | U) P(U) / P(E)",
+      "explanation": "Write the “and” with the chain rule and divide by P(E).",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-02",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "In Bayes’ theorem, what is P(U) called?",
+      "options": [
+        "The prior",
+        "The posterior",
+        "The likelihood",
+        "The evidence"
+      ],
+      "correct_answer": "The prior",
+      "explanation": "It is the belief in U before any evidence is seen.",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-03",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "In Bayes’ theorem, what is P(E) called?",
+      "options": [
+        "The prior",
+        "The posterior",
+        "The likelihood",
+        "The normalization constant"
+      ],
+      "correct_answer": "The normalization constant",
+      "explanation": "It makes the posterior probabilities sum to one.",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-04",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "When is Bayes’ theorem most useful?",
+      "options": [
+        "When the two events are independent",
+        "When the prior is exactly 0.5",
+        "When P(evidence | hidden state) is easy to know but you want P(hidden state | evidence)",
+        "When the evidence is certain"
+      ],
+      "correct_answer": "When P(evidence | hidden state) is easy to know but you want P(hidden state | evidence)",
+      "explanation": "Hidden states cause observable evidence, so the likelihood is usually what you can estimate.",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-05",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "A test is positive 95% of the time with a disease and 7% of the time without it, and 1% of people have the disease. What is P(disease | positive)?",
+      "options": [
+        "About 0.95",
+        "About 0.93",
+        "About 0.12",
+        "About 0.01"
+      ],
+      "correct_answer": "About 0.12",
+      "explanation": "0.95 × 0.01 / (0.95 × 0.01 + 0.07 × 0.99) = 0.0095 / 0.0788 ≈ 0.12.",
+      "lesson": "bayes-theorem-probability-of-disease-using-bayes-theorem",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-06",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "Why can a positive test still leave the disease unlikely?",
+      "options": [
+        "The test is usually wrong for sick patients",
+        "Bayes’ theorem ignores the prior",
+        "When the disease is rare, most positive results come from the much larger healthy group",
+        "A positive test lowers the probability of disease"
+      ],
+      "correct_answer": "When the disease is rare, most positive results come from the much larger healthy group",
+      "explanation": "The lesson notes this happens when the probability a random person has the disease is low.",
+      "lesson": "bayes-theorem-natural-frequency-intuition",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-07",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "Of 1,000 people, 50 have a disease. The test is positive for 90% of the sick and 10% of the healthy. What fraction of those who test positive are sick?",
+      "options": [
+        "0.90",
+        "0.50",
+        "About 0.05",
+        "About 0.32"
+      ],
+      "correct_answer": "About 0.32",
+      "explanation": "45 sick people test positive and 95 healthy ones do: 45 / 140 ≈ 0.32.",
+      "lesson": "bayes-theorem-natural-frequency-intuition",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-08",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "With mutually exclusive, exhaustive events B₁, …, Bₙ, the denominator of P(Bᵢ | E) is",
+      "options": [
+        "Σⱼ P(Bⱼ | E)",
+        "Σⱼ P(E | Bⱼ) P(Bⱼ)",
+        "P(E | Bᵢ) P(Bᵢ)",
+        "Πⱼ P(E | Bⱼ)"
+      ],
+      "correct_answer": "Σⱼ P(E | Bⱼ) P(Bⱼ)",
+      "explanation": "The general law of total probability expands P(E) over the background events.",
+      "lesson": "bayes-theorem-bayes-with-the-general-law-of-total-probability",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-09",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "A phone is in location 1, 2 or 3 with prior 0.5, 0.3, 0.2. A signal is seen with probability 0.1, 0.4 and 0.8 from each. Given the signal, what is P(location 3)?",
+      "options": [
+        "0.2",
+        "0.8",
+        "About 0.48",
+        "About 0.33"
+      ],
+      "correct_answer": "About 0.48",
+      "explanation": "P(signal) = 0.05 + 0.12 + 0.16 = 0.33, and 0.16 / 0.33 ≈ 0.48.",
+      "lesson": "bayes-theorem-bayes-with-the-general-law-of-total-probability",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-05-10",
+      "step": 5,
+      "group": "Bayes’ theorem",
+      "question": "With a single hypothesis U, Bayes’ denominator expanded by the law of total probability is",
+      "options": [
+        "P(E | U) + P(E | Uᶜ)",
+        "P(E | U) P(U) + P(E | Uᶜ) P(Uᶜ)",
+        "P(U | E) + P(Uᶜ | E)",
+        "P(E | U) P(U)"
+      ],
+      "correct_answer": "P(E | U) P(U) + P(E | Uᶜ) P(Uᶜ)",
+      "explanation": "The evidence can arise with U or without it.",
+      "lesson": "bayes-theorem-intro",
+      "reader_chapter": "bayes_theorem"
+    },
+    {
+      "id": "CS109-P1-06-01",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "Which statement defines E as independent of F?",
+      "options": [
+        "P(E and F) = 0",
+        "P(E | F) = P(E)",
+        "P(E | F) = P(F)",
+        "P(E or F) = P(E) + P(F)"
+      ],
+      "correct_answer": "P(E | F) = P(E)",
+      "explanation": "Knowing F does not change the belief in E.",
+      "lesson": "independence-intro",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-02",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "If E and F are independent, P(E and F) equals",
+      "options": [
+        "P(E) + P(F)",
+        "P(E | F) × P(F | E)",
+        "P(E) × P(F)",
+        "0"
+      ],
+      "correct_answer": "P(E) × P(F)",
+      "explanation": "The chain rule gives P(E | F)P(F), and independence makes P(E | F) = P(E).",
+      "lesson": "independence-alternative-definition",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-03",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "If E is independent of F, what follows?",
+      "options": [
+        "F is independent of E",
+        "F is dependent on E",
+        "E and F are mutually exclusive",
+        "P(E) = P(F)"
+      ],
+      "correct_answer": "F is independent of E",
+      "explanation": "Bayes’ theorem shows the definition is symmetric.",
+      "lesson": "independence-independence-is-symmetric",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-04",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "If A and B are independent, which pair is also independent?",
+      "options": [
+        "A and Bᶜ",
+        "A and A",
+        "A and (A and B)",
+        "None: complements break independence"
+      ],
+      "correct_answer": "A and Bᶜ",
+      "explanation": "Independence carries over to any complements: A with Bᶜ, Aᶜ with B, and Aᶜ with Bᶜ.",
+      "lesson": "independence-independence-and-complements",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-05",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "What is the probability of 5 heads on 5 independent flips of a fair coin?",
+      "options": [
+        "5/2",
+        "1/5",
+        "1/10",
+        "1/32"
+      ],
+      "correct_answer": "1/32",
+      "explanation": "(1/2)⁵ = 1/32.",
+      "lesson": "independence-generalized-independence",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-06",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "What does it take for events E₁, …, Eₙ to be independent?",
+      "options": [
+        "Every subset of them multiplies: the “and” of any subset is the product of their probabilities",
+        "Each pair of events multiplies",
+        "The “and” of all n events multiplies",
+        "No two events share an outcome"
+      ],
+      "correct_answer": "Every subset of them multiplies: the “and” of any subset is the product of their probabilities",
+      "explanation": "Independence of several events is a condition on every subset, not only pairs.",
+      "lesson": "independence-generalized-independence",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-07",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "Three independent parallel routers each work with probability 0.9. What is the probability that at least one works?",
+      "options": [
+        "0.729",
+        "0.9",
+        "0.27",
+        "0.999"
+      ],
+      "correct_answer": "0.999",
+      "explanation": "1 − P(all fail) = 1 − 0.1³ = 0.999.",
+      "lesson": "independence-parallel-networks-example",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-08",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "E₁, E₂, E₃ are conditionally independent given F. What follows?",
+      "options": [
+        "P(E₁, E₂, E₃) = P(E₁) P(E₂) P(E₃)",
+        "The events are mutually exclusive",
+        "F is independent of each Eᵢ",
+        "P(E₁, E₂, E₃ | F) = P(E₁ | F) P(E₂ | F) P(E₃ | F)"
+      ],
+      "correct_answer": "P(E₁, E₂, E₃ | F) = P(E₁ | F) P(E₂ | F) P(E₃ | F)",
+      "explanation": "Conditional independence does not imply independence once you stop conditioning on F.",
+      "lesson": "independence-conditional-independence",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-06-09",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "For any events E and F, the chain rule gives P(E and F) =",
+      "options": [
+        "P(E | F) × P(F)",
+        "P(E) × P(F)",
+        "P(E | F) + P(F)",
+        "P(E) / P(F)"
+      ],
+      "correct_answer": "P(E | F) × P(F)",
+      "explanation": "Rearrange the definition of conditional probability.",
+      "lesson": "prob-and-and-with-dependent-events",
+      "reader_chapter": "prob_and"
+    },
+    {
+      "id": "CS109-P1-06-10",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "The chain rule for n events gives P(E₁ and … and Eₙ) =",
+      "options": [
+        "P(E₁) P(E₂) ⋯ P(Eₙ)",
+        "P(E₁) P(E₂ | E₁) P(E₃ | E₁, E₂) ⋯ P(Eₙ | E₁, …, Eₙ₋₁)",
+        "P(E₁ | E₂) P(E₂ | E₃) ⋯",
+        "P(E₁) + P(E₂) + ⋯ + P(Eₙ)"
+      ],
+      "correct_answer": "P(E₁) P(E₂ | E₁) P(E₃ | E₁, E₂) ⋯ P(Eₙ | E₁, …, Eₙ₋₁)",
+      "explanation": "Each factor is conditioned on everything before it.",
+      "lesson": "prob-and-and-with-dependent-events",
+      "reader_chapter": "prob_and"
+    },
+    {
+      "id": "CS109-P1-06-11",
+      "step": 6,
+      "group": "Independence and the probability of “and”",
+      "question": "Two events each have positive probability and are mutually exclusive. Are they independent?",
+      "options": [
+        "Yes: they share no outcomes",
+        "Yes, always",
+        "Only if their probabilities are equal",
+        "No: learning that one occurred makes the other impossible"
+      ],
+      "correct_answer": "No: learning that one occurred makes the other impossible",
+      "explanation": "If E occurs, P(F | E) = 0, which differs from P(F) > 0.",
+      "lesson": "independence-intro",
+      "reader_chapter": "independence"
+    },
+    {
+      "id": "CS109-P1-07-01",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "De Morgan’s law for “or” states that P(E₁ or ⋯ or Eₙ) =",
+      "options": [
+        "1 − P(E₁ᶜ and ⋯ and Eₙᶜ)",
+        "1 − P(E₁ᶜ or ⋯ or Eₙᶜ)",
+        "P(E₁ᶜ and ⋯ and Eₙᶜ)",
+        "P(E₁) × ⋯ × P(Eₙ)"
+      ],
+      "correct_answer": "1 − P(E₁ᶜ and ⋯ and Eₙᶜ)",
+      "explanation": "At least one event occurs exactly when not all of them fail to occur.",
+      "lesson": "demorgans-de-morgan-s-law-for-or",
+      "reader_chapter": "demorgans"
+    },
+    {
+      "id": "CS109-P1-07-02",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "De Morgan’s law for “and” states that P(E₁ and ⋯ and Eₙ) =",
+      "options": [
+        "1 − P(E₁ᶜ and ⋯ and Eₙᶜ)",
+        "1 − P(E₁ᶜ or ⋯ or Eₙᶜ)",
+        "P(E₁ᶜ or ⋯ or Eₙᶜ)",
+        "P(E₁) + ⋯ + P(Eₙ)"
+      ],
+      "correct_answer": "1 − P(E₁ᶜ or ⋯ or Eₙᶜ)",
+      "explanation": "All events occur exactly when none of them fails.",
+      "lesson": "demorgans-de-morgan-s-law-for-and",
+      "reader_chapter": "demorgans"
+    },
+    {
+      "id": "CS109-P1-07-03",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "You need P(E or F) and E and F are independent. How does De Morgan’s law help?",
+      "options": [
+        "It removes the need for complements",
+        "It turns the “or” into an “and” of complements, which independence makes a product",
+        "It makes the events mutually exclusive",
+        "It turns the “or” into a sum of the two probabilities"
+      ],
+      "correct_answer": "It turns the “or” into an “and” of complements, which independence makes a product",
+      "explanation": "P(E or F) = 1 − P(Eᶜ)P(Fᶜ) when E and F are independent.",
+      "lesson": "demorgans-intro",
+      "reader_chapter": "demorgans"
+    },
+    {
+      "id": "CS109-P1-07-04",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "If P(E) = 0.00001, what is log P(E), with the natural log?",
+      "options": [
+        "About −5",
+        "About −11.51",
+        "About 0.00001",
+        "About 11.51"
+      ],
+      "correct_answer": "About −11.51",
+      "explanation": "ln(0.00001) ≈ −11.51.",
+      "lesson": "log-probabilities-intro",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-07-05",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "Which property of logarithms is correct?",
+      "options": [
+        "log(xy) = log x × log y",
+        "log(x + y) = log x + log y",
+        "log(xy) = y log x",
+        "log(xy) = log x + log y"
+      ],
+      "correct_answer": "log(xy) = log x + log y",
+      "explanation": "The log of a product is the sum of the logs.",
+      "lesson": "log-probabilities-properties-of-logarithms",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-07-06",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "What is log Πᵢ P(Eᵢ)?",
+      "options": [
+        "Πᵢ log P(Eᵢ)",
+        "log Σᵢ P(Eᵢ)",
+        "Σᵢ P(Eᵢ)",
+        "Σᵢ log P(Eᵢ)"
+      ],
+      "correct_answer": "Σᵢ log P(Eᵢ)",
+      "explanation": "Products of probabilities become sums of log probabilities.",
+      "lesson": "log-probabilities-products-become-addition",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-07-07",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "Since 0 ≤ P(E) ≤ 1, what range must log P(E) lie in?",
+      "options": [
+        "0 ≤ log P(E) ≤ 1",
+        "−∞ ≤ log P(E) ≤ 0",
+        "−1 ≤ log P(E) ≤ 1",
+        "0 ≤ log P(E) ≤ ∞"
+      ],
+      "correct_answer": "−∞ ≤ log P(E) ≤ 0",
+      "explanation": "log(1) = 0, and the log falls toward −∞ as the probability approaches 0.",
+      "lesson": "log-probabilities-logs-of-probabilities-are-negative",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-07-08",
+      "step": 7,
+      "group": "De Morgan’s law and log probabilities",
+      "question": "Why do programs work with log probabilities?",
+      "options": [
+        "Logs make probabilities positive",
+        "Logs make every probability equal",
+        "Floating point cannot represent very small probabilities, but their logs are easy to store",
+        "Floating point cannot store numbers above 1"
+      ],
+      "correct_answer": "Floating point cannot represent very small probabilities, but their logs are easy to store",
+      "explanation": "Python cannot represent a probability below 2.225e-308, yet its log, −307.652, is easy to store; the probability of a whole document is that small.",
+      "lesson": "log-probabilities-representing-very-small-probabilities",
+      "reader_chapter": "log_probabilities"
+    },
+    {
+      "id": "CS109-P1-08-01",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "Ten flips, each heads with probability 0.6. What is P(all ten are heads)?",
+      "options": [
+        "0.6",
+        "About 0.06",
+        "About 0.006",
+        "0.1"
+      ],
+      "correct_answer": "About 0.006",
+      "explanation": "Independent flips multiply: 0.6¹⁰ ≈ 0.006.",
+      "lesson": "many-flips-warmups",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-02",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "Ten flips, each heads with probability 0.6. What is P(all ten are tails)?",
+      "options": [
+        "0.4",
+        "About 0.0001",
+        "About 0.006",
+        "About 0.04"
+      ],
+      "correct_answer": "About 0.0001",
+      "explanation": "(1 − 0.6)¹⁰ = 0.4¹⁰ ≈ 0.0001.",
+      "lesson": "many-flips-warmups",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-03",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "What is the probability of k heads followed by n − k tails, in that order?",
+      "options": [
+        "pᵏ (1 − p)ⁿ⁻ᵏ",
+        "(n choose k) pᵏ (1 − p)ⁿ⁻ᵏ",
+        "pᵏ + (1 − p)ⁿ⁻ᵏ",
+        "k p (1 − p)"
+      ],
+      "correct_answer": "pᵏ (1 − p)ⁿ⁻ᵏ",
+      "explanation": "One specific ordering: multiply p for each head and 1 − p for each tail.",
+      "lesson": "many-flips-warmups",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-04",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "How many orderings of 10 flips have exactly 4 heads?",
+      "options": [
+        "40",
+        "1,024",
+        "210",
+        "5,040"
+      ],
+      "correct_answer": "210",
+      "explanation": "10! / (4! 6!) = (10 choose 4) = 210.",
+      "lesson": "many-flips-exactly-heads",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-05",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "What is the probability of exactly k heads in n flips?",
+      "options": [
+        "(n choose k) pᵏ (1 − p)ⁿ⁻ᵏ",
+        "pᵏ (1 − p)ⁿ⁻ᵏ",
+        "k / n",
+        "(n choose k) pⁿ"
+      ],
+      "correct_answer": "(n choose k) pᵏ (1 − p)ⁿ⁻ᵏ",
+      "explanation": "Add the probability pᵏ(1 − p)ⁿ⁻ᵏ of each of the (n choose k) mutually exclusive orderings.",
+      "lesson": "many-flips-exactly-heads",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-06",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "Ten flips, each heads with probability 0.6. What is P(exactly 4 heads)?",
+      "options": [
+        "0.4",
+        "About 0.0053",
+        "About 0.111",
+        "About 0.251"
+      ],
+      "correct_answer": "About 0.111",
+      "explanation": "210 × 0.6⁴ × 0.4⁶ ≈ 0.111.",
+      "lesson": "many-flips-exactly-heads",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-07",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "What is the probability of more than k heads in n flips?",
+      "options": [
+        "Σᵢ₌ₖ₊₁ⁿ (n choose i) pⁱ (1 − p)ⁿ⁻ⁱ",
+        "1 − (n choose k) pᵏ (1 − p)ⁿ⁻ᵏ",
+        "(n choose k+1) pᵏ⁺¹",
+        "Πᵢ₌ₖ₊₁ⁿ (n choose i) pⁱ"
+      ],
+      "correct_answer": "Σᵢ₌ₖ₊₁ⁿ (n choose i) pⁱ (1 − p)ⁿ⁻ⁱ",
+      "explanation": "Add the probabilities of exactly i heads for every i above k.",
+      "lesson": "many-flips-more-than-heads",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-08-08",
+      "step": 8,
+      "group": "Many coin flips",
+      "question": "Why can the probabilities of “exactly i heads” for different i be added?",
+      "options": [
+        "The events are mutually exclusive: ten flips cannot have exactly 4 and exactly 5 heads",
+        "The flips are independent",
+        "Each event has the same probability",
+        "They are conditionally independent"
+      ],
+      "correct_answer": "The events are mutually exclusive: ten flips cannot have exactly 4 and exactly 5 heads",
+      "explanation": "Addition of probabilities needs mutually exclusive events.",
+      "lesson": "many-flips-more-than-heads",
+      "reader_chapter": "many_flips"
+    },
+    {
+      "id": "CS109-P1-09-01",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "Two strings are each hashed into one of 100 buckets. How many ways can they be stored?",
+      "options": [
+        "200",
+        "100",
+        "4,950",
+        "10,000"
+      ],
+      "correct_answer": "10,000",
+      "explanation": "Step rule: 100 choices for the first string times 100 for the second.",
+      "lesson": "counting-counting-with-steps",
+      "reader_chapter": "counting"
+    },
+    {
+      "id": "CS109-P1-09-02",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "Each point of a 19 × 19 Go board is empty, black or white. How many board configurations are there?",
+      "options": [
+        "361³",
+        "3 × 361",
+        "3³⁶¹",
+        "2³⁶¹"
+      ],
+      "correct_answer": "3³⁶¹",
+      "explanation": "Each of the 361 points is one step with 3 choices.",
+      "lesson": "counting-counting-with-steps",
+      "reader_chapter": "counting"
+    },
+    {
+      "id": "CS109-P1-09-03",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "Each pixel can take one of about 17 million colours. Roughly how many distinct 12-pixel pictures are there?",
+      "options": [
+        "About 2 × 10⁸",
+        "About 10¹²",
+        "About 10⁸⁶",
+        "About 10⁸⁰"
+      ],
+      "correct_answer": "About 10⁸⁶",
+      "explanation": "(17 million)¹² ≈ 10⁸⁶ — more than the atoms in the observable universe.",
+      "lesson": "counting-counting-with-steps",
+      "reader_chapter": "counting"
+    },
+    {
+      "id": "CS109-P1-09-04",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "20 routes pass through Mt Kilimanjaro, 15 through Mombasa, and none through both. How many routes are there?",
+      "options": [
+        "35",
+        "300",
+        "20",
+        "5"
+      ],
+      "correct_answer": "35",
+      "explanation": "The sets are mutually exclusive, so the counts add: 20 + 15.",
+      "lesson": "counting-counting-with-or-the-mutually-exclusive-case",
+      "reader_chapter": "counting"
+    },
+    {
+      "id": "CS109-P1-09-05",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "For sets A and B that may overlap, |A or B| =",
+      "options": [
+        "|A| + |B| − |A and B|",
+        "|A| + |B|",
+        "|A| × |B|",
+        "|A| + |B| + |A and B|"
+      ],
+      "correct_answer": "|A| + |B| − |A and B|",
+      "explanation": "Inclusion–exclusion subtracts the outcomes counted in both sets.",
+      "lesson": "counting-counting-with-or-the-general-case",
+      "reader_chapter": "counting"
+    },
+    {
+      "id": "CS109-P1-09-06",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "How many orderings of the letters in “BAYES” are there?",
+      "options": [
+        "120",
+        "25",
+        "60",
+        "5"
+      ],
+      "correct_answer": "120",
+      "explanation": "Five distinct letters: 5! = 120.",
+      "lesson": "combinatorics-permutations-of-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-07",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "A 4-digit passcode leaves 4 smudges over 4 distinct digits. How many passcodes are possible?",
+      "options": [
+        "256",
+        "4",
+        "24",
+        "16"
+      ],
+      "correct_answer": "24",
+      "explanation": "Each digit is used once, so the orderings are 4! = 24.",
+      "lesson": "combinatorics-permutations-of-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-08",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "How many distinct orderings of “MISSISSIPPI” are there?",
+      "options": [
+        "39,916,800",
+        "34,650",
+        "1,663,200",
+        "11"
+      ],
+      "correct_answer": "34,650",
+      "explanation": "11! / (1! 4! 4! 2!) = 34,650.",
+      "lesson": "combinatorics-permutations-of-indistinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-09",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "How many distinct bit strings use three 0’s and two 1’s?",
+      "options": [
+        "120",
+        "12",
+        "5",
+        "10"
+      ],
+      "correct_answer": "10",
+      "explanation": "5! / (3! 2!) = 10.",
+      "lesson": "combinatorics-permutations-of-indistinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-10",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "A 4-digit passcode leaves 3 smudges over 3 digits. How many passcodes are possible?",
+      "options": [
+        "36",
+        "24",
+        "12",
+        "81"
+      ],
+      "correct_answer": "36",
+      "explanation": "One digit repeats: 3 choices of which, times 4! / 2! = 12 orderings each.",
+      "lesson": "combinatorics-permutations-of-indistinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-11",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "How many ways are there to choose 2 villagers from a district of 8,000?",
+      "options": [
+        "63,992,000",
+        "16,000",
+        "8,000²",
+        "31,996,000"
+      ],
+      "correct_answer": "31,996,000",
+      "explanation": "(8000 choose 2) = 8000 × 7999 / 2 = 31,996,000.",
+      "lesson": "combinatorics-combinations-of-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-12",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "Choose 3 of 6 books, but not both the 8th and 9th edition of the same text. How many selections are there?",
+      "options": [
+        "20",
+        "16",
+        "12",
+        "4"
+      ],
+      "correct_answer": "16",
+      "explanation": "All selections minus the forbidden ones: (6 choose 3) − (4 choose 1) = 20 − 4.",
+      "lesson": "combinatorics-combinations-of-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-09-13",
+      "step": 9,
+      "group": "Counting and combinatorics",
+      "question": "How many ways are there to hash 10 different strings into 5 buckets?",
+      "options": [
+        "5¹⁰",
+        "10⁵",
+        "(10 choose 5)",
+        "5 × 10"
+      ],
+      "correct_answer": "5¹⁰",
+      "explanation": "Each string is one step with 5 buckets to choose from.",
+      "lesson": "combinatorics-bucketing-with-distinct-objects",
+      "reader_chapter": "combinatorics"
+    },
+    {
+      "id": "CS109-P1-10-01",
+      "step": 10,
+      "group": "Applications",
+      "question": "10% of bacteria carry a mutation. Mutated bacteria survive antibiotics with probability 0.20, others with probability 0.01. What is P(survive)?",
+      "options": [
+        "0.21",
+        "0.020",
+        "0.10",
+        "0.029"
+      ],
+      "correct_answer": "0.029",
+      "explanation": "Law of total probability: 0.20 × 0.10 + 0.01 × 0.90 = 0.029.",
+      "lesson": "bacteria-evolution",
+      "reader_chapter": "bacteria_evolution"
+    },
+    {
+      "id": "CS109-P1-10-02",
+      "step": 10,
+      "group": "Applications",
+      "question": "In the same population, what is the probability that a surviving bacterium carries the mutation?",
+      "options": [
+        "About 0.69",
+        "0.10",
+        "0.20",
+        "About 0.029"
+      ],
+      "correct_answer": "About 0.69",
+      "explanation": "Bayes: 0.20 × 0.10 / 0.029 ≈ 0.69, up from 10% before the antibiotics.",
+      "lesson": "bacteria-evolution",
+      "reader_chapter": "bacteria_evolution"
+    },
+    {
+      "id": "CS109-P1-10-03",
+      "step": 10,
+      "group": "Applications",
+      "question": "A random walk steps right with probability p and left otherwise. What is P(back at 0 after 2 steps)?",
+      "options": [
+        "p(1 − p)",
+        "p²",
+        "(1 − p)²",
+        "2p(1 − p)"
+      ],
+      "correct_answer": "2p(1 − p)",
+      "explanation": "Two paths return to 0: (Left, Right) and (Right, Left).",
+      "lesson": "random-walks",
+      "reader_chapter": "random_walks"
+    },
+    {
+      "id": "CS109-P1-10-04",
+      "step": 10,
+      "group": "Applications",
+      "question": "A DNA letter starts at A and each mutation changes it to one of the other three letters with equal probability. What is P(A again after 2 mutations)?",
+      "options": [
+        "1/9",
+        "1/4",
+        "2/3",
+        "1/3"
+      ],
+      "correct_answer": "1/3",
+      "explanation": "3 of the 9 equally likely two-step sequences return to A.",
+      "lesson": "random-walks",
+      "reader_chapter": "random_walks"
+    },
+    {
+      "id": "CS109-P1-10-05",
+      "step": 10,
+      "group": "Applications",
+      "question": "In the Monty Hall game with 3 doors, what is the probability of winning by switching?",
+      "options": [
+        "2/3",
+        "1/2",
+        "1/3",
+        "1"
+      ],
+      "correct_answer": "2/3",
+      "explanation": "Staying wins only if the first pick was right (1/3); switching wins otherwise.",
+      "lesson": "monty-hall",
+      "reader_chapter": "monty_hall"
+    },
+    {
+      "id": "CS109-P1-10-06",
+      "step": 10,
+      "group": "Applications",
+      "question": "n independent routers each work with probability p. Which expression gives P(a path exists)?",
+      "options": [
+        "pⁿ",
+        "np",
+        "(1 − p)ⁿ",
+        "1 − (1 − p)ⁿ"
+      ],
+      "correct_answer": "1 − (1 − p)ⁿ",
+      "explanation": "By De Morgan, a path fails only if every router fails.",
+      "lesson": "server-example",
+      "reader_chapter": "server_example"
+    },
+    {
+      "id": "CS109-P1-10-07",
+      "step": 10,
+      "group": "Applications",
+      "question": "You see 100 people from 17,000 students, 150 of them your friends. About how likely is it you see at least one friend?",
+      "options": [
+        "About 0.009",
+        "About 0.15",
+        "About 0.59",
+        "About 0.99"
+      ],
+      "correct_answer": "About 0.59",
+      "explanation": "1 − Π (17,000 − 150 − i) / (17,000 − i) over the 100 people seen ≈ 0.59.",
+      "lesson": "serendipity",
+      "reader_chapter": "serendipity"
+    },
+    {
+      "id": "CS109-P1-10-08",
+      "step": 10,
+      "group": "Applications",
+      "question": "How does Google combine P(rain | district) into one probability of rain for the city?",
+      "options": [
+        "Σᵢ P(R | Dᵢ)",
+        "Πᵢ P(R | Dᵢ)",
+        "Σᵢ P(R | Dᵢ) P(Dᵢ), the law of total probability",
+        "The largest P(R | Dᵢ)"
+      ],
+      "correct_answer": "Σᵢ P(R | Dᵢ) P(Dᵢ), the law of total probability",
+      "explanation": "The districts are mutually exclusive and cover the city.",
+      "lesson": "pr-rain-city",
+      "reader_chapter": "pr_rain_city"
+    },
+    {
+      "id": "CS109-P1-10-09",
+      "step": 10,
+      "group": "Applications",
+      "question": "The UK competes in 5 independent Olympic events, winning a medal in each with probability 0.4, 0.6, 0.9, 0.2 and 0.1. What is P(exactly 3 medals)?",
+      "options": [
+        "About 0.267",
+        "0.216",
+        "About 0.289",
+        "0.6"
+      ],
+      "correct_answer": "About 0.289",
+      "explanation": "Add the probability of each of the (5 choose 3) = 10 mutually exclusive ways to win exactly three events; each multiplies pᵢ for a win and 1 − pᵢ for a loss.",
+      "lesson": "binomial-diff-p",
+      "reader_chapter": "binomial_diff_p"
+    },
+    {
+      "id": "CS109-P1-10-10",
+      "step": 10,
+      "group": "Applications",
+      "question": "Why can’t the UK’s number of medals be modeled with the Many Coin Flips formula (n choose k) pᵏ (1 − p)ⁿ⁻ᵏ?",
+      "options": [
+        "The probability of success differs from event to event",
+        "The events are not mutually exclusive",
+        "There are fewer than 10 events",
+        "A medal count cannot be zero"
+      ],
+      "correct_answer": "The probability of success differs from event to event",
+      "explanation": "The outcome rows are the same, but each row now has its own probability, so they must be added one by one.",
+      "lesson": "binomial-diff-p",
+      "reader_chapter": "binomial_diff_p"
+    },
+    {
+      "id": "CS109-P1-10-11",
+      "step": 10,
+      "group": "Applications",
+      "question": "In Texas Hold’em you see 7 cards, and 5 opponents each hold 2 unseen cards. How many ways are there to deal the remaining 45 cards into those 10 open slots?",
+      "options": [
+        "10!",
+        "45 × 44 × ⋯ × 36 = 45! / 35!",
+        "45¹⁰",
+        "(45 choose 10)"
+      ],
+      "correct_answer": "45 × 44 × ⋯ × 36 = 45! / 35!",
+      "explanation": "Step rule: 45 choices for the first slot, 44 for the second, and so on down to 36 for the tenth.",
+      "lesson": "poker",
+      "reader_chapter": "poker"
+    },
+    {
+      "id": "CS109-P1-10-12",
+      "step": 10,
+      "group": "Applications",
+      "question": "How does a Monte Carlo simulation estimate the probability that your poker hand wins?",
+      "options": [
+        "Count the cards that beat your hand and divide by 52",
+        "Deal the unknown cards at random many times and take the fraction of deals you win",
+        "Multiply the probabilities of each opponent losing",
+        "Evaluate one random deal of the remaining cards"
+      ],
+      "correct_answer": "Deal the unknown cards at random many times and take the fraction of deals you win",
+      "explanation": "P(win) ≈ Count(times you win) / N trials; with N = 10,000 or more the estimate is very accurate.",
+      "lesson": "poker",
+      "reader_chapter": "poker"
+    },
+    {
+      "id": "CS109-P1-10-13",
+      "step": 10,
+      "group": "Applications",
+      "question": "Liking movies T₁, T₂, T₃ is conditionally independent given liking the genre G. What is P(likes T₁, T₂ and T₃ | G)?",
+      "options": [
+        "p₁ + p₂ + p₃",
+        "p₁ p₂ p₃",
+        "1 − (1 − p₁)(1 − p₂)(1 − p₃)",
+        "max(p₁, p₂, p₃)"
+      ],
+      "correct_answer": "p₁ p₂ p₃",
+      "explanation": "Conditionally independent events multiply within the universe where G holds.",
+      "lesson": "netflix-genres",
+      "reader_chapter": "netflix_genres"
+    }
+  ]
+}

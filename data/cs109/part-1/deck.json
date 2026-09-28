@@ -1,0 +1,9 @@
+{
+  "id": "cs109-part-1",
+  "section": "section_5",
+  "title": "Probability for Computer Scientists · Core Probability",
+  "description": "Learn sample spaces and events, the definition and axioms of probability, the probability of “or” and “and”, conditional probability, the law of total probability, Bayes’ theorem, independence, De Morgan’s law, log probabilities, many coin flips, counting and combinatorics, and their applications.",
+  "question_label": "Question",
+  "answer_label": "Answer",
+  "question_format": "multiple_choice"
+}
